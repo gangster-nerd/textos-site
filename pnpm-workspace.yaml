@@ -1,2 +1,5 @@
+# sharp est une dépendance native optionnelle de Next, non utilisée par l'export statique.
+# On tranche explicitement son script d'install (false = ignoré) pour lever le gate pnpm 11
+# ERR_PNPM_IGNORED_BUILDS de façon déterministe en CI (build + frozen-lockfile).
 allowBuilds:
-  sharp: set this to true or false
+  sharp: false
