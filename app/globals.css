@@ -1,0 +1,40 @@
+:root {
+  --bg: #0b0c0e;
+  --fg: #e9eaec;
+  --muted: #9aa0a6;
+  --line: #23262b;
+  --accent: #7cc4ff;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main { max-width: 46rem; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+
+.kicker { color: var(--accent); font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.8rem; }
+
+h1 { font-size: 2.6rem; line-height: 1.1; margin: 0.4rem 0 1rem; }
+
+.lede { font-size: 1.2rem; color: var(--fg); }
+
+.muted { color: var(--muted); }
+
+h2 { font-size: 1.15rem; margin: 2.5rem 0 0.75rem; }
+
+ul.measures { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+ul.measures li { padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+
+.note { margin-top: 2.5rem; padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); font-size: 0.95rem; }
+
+footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
