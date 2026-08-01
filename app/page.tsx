@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { buildHomepageJsonLd } from "@/lib/entity-graph";
 import { CAPABILITY_LABELS, CAPABILITY_STATUS, isMarketable, type CapabilityId } from "@/lib/capability-registry";
 
@@ -38,6 +39,11 @@ export default function Home() {
         observable with a given method, we report it as <strong>not observable</strong> &mdash;
         never as zero.
       </div>
+
+      {/* Maillage interne : collection → lien → page (tranche verticale S0). */}
+      <p>
+        <Link href="/faq">Questions about how TextOS measures &rarr;</Link>
+      </p>
 
       <footer>
         <span>Product in active development. This site publishes only what is measured and validated.</span>
