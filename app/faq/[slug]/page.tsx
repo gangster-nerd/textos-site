@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { siteConfig } from "@/lib/config/site";
 import { listPublishedSlugs, loadDocument } from "@/lib/content/content-loader";
 import { buildArticleJsonLd } from "@/lib/schema-org/build-article";
 import { serializeJsonLd } from "@/lib/schema-org/serialize";
@@ -27,7 +28,10 @@ export async function generateMetadata({
   return {
     title: doc.frontmatter.title,
     description: doc.frontmatter.description,
-    alternates: { canonical: `/${COLLECTION}/${slug}` },
+    // Origine provisoire : pas de canonical (valeur inconnue = absente, jamais fausse).
+    ...(siteConfig.allowIndexing
+      ? { alternates: { canonical: `/${COLLECTION}/${slug}` } }
+      : {}),
     robots:
       doc.frontmatter.indexingPolicy === "noindex"
         ? { index: false, follow: true }

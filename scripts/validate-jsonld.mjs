@@ -115,8 +115,17 @@ if (faqFiles.length === 0) {
     if (nodes.some((n) => "featureList" in n)) {
       fail(`featureList interdit sur une page FAQ (${p})`);
     }
-    for (const key of ["@id", "url", "headline"]) {
-      if (!article[key]) fail(`Article sans ${key} (${p})`);
+    if (!article.headline) fail(`Article sans headline (${p})`);
+
+    // Auto-référence absolue (@id/url) OPTIONNELLE : présente seulement si
+    // l'origine est réelle et indexable ; sinon la valeur inconnue se déclare
+    // absente (jamais localhost ni URL qui 404). Si elle est là, elle ne doit
+    // jamais pointer vers un tiers ni vers une origine provisoire.
+    for (const key of ["@id", "url"]) {
+      const v = article[key];
+      if (v && /textos\.io|localhost|127\.0\.0\.1/i.test(v)) {
+        fail(`Article ${key} pointe vers une origine interdite/provisoire : ${v} (${p})`);
+      }
     }
 
     console.log(`✅ ${file} : Article valide, sans SoftwareApplication ni featureList`);

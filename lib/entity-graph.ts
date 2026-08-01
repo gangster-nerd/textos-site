@@ -4,16 +4,19 @@
 import { FEATURE_LIST } from "./capability-registry";
 import { siteConfig } from "./config/site";
 
-const SITE_URL = siteConfig.origin;
-
 type JsonLd = Record<string, unknown>;
 
 export function buildHomepageJsonLd(): JsonLd[] {
+  // Origine provisoire (allowIndexing=false) : pas d'url absolue dans le JSON-LD.
+  // Une valeur inconnue se déclare absente, jamais fausse (localhost / URL qui 404).
+  // S'auto-rétablit dès qu'une origine réelle et indexable est tranchée.
+  const originUrl: JsonLd = siteConfig.allowIndexing ? { url: siteConfig.origin } : {};
+
   const organization: JsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "TextOS",
-    url: SITE_URL,
+    ...originUrl,
     description:
       "TextOS is an Authority Intelligence System: it measures how AI answer engines cite a brand, reproducibly and defensibly.",
     // sameAs : réels et vérifiables uniquement (schema-map §5). Aucun placeholder → absent tant qu'aucun profil vérifié.
@@ -23,7 +26,7 @@ export function buildHomepageJsonLd(): JsonLd[] {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "TextOS",
-    url: SITE_URL,
+    ...originUrl,
     inLanguage: "en",
   };
 

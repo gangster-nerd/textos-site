@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config/site";
 import { loadCollection } from "@/lib/content/content-loader";
 
 export const dynamic = "force-static";
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   title: "Questions about how TextOS measures",
   description:
     "What TextOS automates, what it does not, and where measurement ends and judgement begins.",
-  alternates: { canonical: "/faq" },
+  // Origine provisoire : pas de canonical (valeur inconnue = absente, jamais fausse).
+  ...(siteConfig.allowIndexing ? { alternates: { canonical: "/faq" } } : {}),
 };
 
 export default function FaqIndex() {

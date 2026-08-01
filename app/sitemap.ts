@@ -5,6 +5,11 @@ import { loadCollection, isIndexable } from "@/lib/content/content-loader";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Origine provisoire : pas de sitemap. Des <loc> vers localhost / une URL qui
+  // 404 déclareraient de fausses URLs aux crawlers. robots.txt interdit déjà tout
+  // tant que allowIndexing est false. S'auto-rétablit avec une origine réelle.
+  if (!siteConfig.allowIndexing) return [];
+
   const docs = loadCollection("faq").filter(isIndexable);
 
   const latest = docs.length

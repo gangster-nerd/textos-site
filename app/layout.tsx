@@ -13,11 +13,14 @@ export const metadata: Metadata = {
   },
   description:
     "TextOS measures how AI answer engines cite your brand — reproducibly, with dispersion and completeness. Not a score. A measurement.",
-  alternates: { canonical: "/" },
+  // Origine provisoire : pas de canonical. Une valeur inconnue se déclare absente,
+  // jamais par une valeur fausse (localhost / URL qui 404).
+  ...(siteConfig.allowIndexing ? { alternates: { canonical: "/" } } : {}),
   openGraph: {
     type: "website",
     siteName: "TextOS",
-    url: siteConfig.origin,
+    // Origine provisoire : pas d'og:url absolu (valeur inconnue = absente, jamais fausse).
+    ...(siteConfig.allowIndexing ? { url: siteConfig.origin } : {}),
     title: "TextOS — Authority Intelligence System",
     description:
       "Measure authority presence in AI answer engines — reproducibly and defensibly.",
