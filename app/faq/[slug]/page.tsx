@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { listPublishedSlugs, loadDocument } from "@/lib/content/content-loader";
@@ -66,6 +67,13 @@ export default async function Page({
 
           <Markdown remarkPlugins={[remarkGfm]}>{doc.body}</Markdown>
         </article>
+
+        {/* Parcours 2 du maillage : FAQ → doctrine de mesure (homepage).
+            Ancre vers la racine seulement — aucun fragment #… relevé, on ne crée
+            pas d'ancre morte ; le libellé décrit l'entité de destination. */}
+        <nav aria-label="Related">
+          <Link href="/">how TextOS measures authority presence</Link>
+        </nav>
       </main>
     </>
   );

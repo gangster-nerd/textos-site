@@ -52,7 +52,7 @@ The FEVER research benchmark formalised verification as a distinct task in which
 
 ## Can an extracted claim still be false?
 
-Yes. If an observed answer contains a false, incomplete or unsupported proposition, deterministic extraction can still reproduce that proposition consistently. Extraction fidelity and factual correctness are different properties.
+Yes. An extracted claim can still be false, incomplete or unsupported. If an observed answer contains such a proposition, deterministic extraction can still reproduce that proposition consistently. Extraction fidelity and factual correctness are different properties.
 
 This is why an extracted claim should be read as **a traceable representation of what the observed answer said**, not as a certified fact about the world. The evidence supports inspection of the observation and the extraction boundary; it does not remove the need for separate verification when truth is the question being asked.
 
@@ -71,13 +71,13 @@ The Claim Evidence Layer currently addresses the first two layers. It does not c
 
 ## How does this boundary fit the wider TextOS measurement doctrine?
 
-TextOS applies the same discipline to authority-presence measurement. Direct, Indirect and Total are separate measures; Total Authority Presence is a union of direct and indirect presence, never a sum. When a signal is not observable with a given method, TextOS reports it as not observable, never as zero.
+The boundary between claim extraction and claim verification follows the same epistemic rule as TextOS’s authority-presence measurements: every output must retain the status of what was actually observed. Direct, Indirect and Total are separate measures; Total Authority Presence is a union of direct and indirect presence, never a sum. When a signal is not observable with a given method, TextOS reports it as not observable, never as zero.
 
-The common principle is that an observation must retain its actual epistemic status. A missing observation is not absence, an extracted proposition is not a verified fact, and a measurement is not a score.
+Under the same rule, a missing observation is not evidence of absence, an extracted proposition is not a verified fact, and a measurement is not a score.
 
 ## Why make this limitation explicit?
 
-Because the boundary determines what the output can support. A system that distinguishes capture, extraction and verification gives evaluators a clearer basis for deciding what they may rely on and what still requires separate evidence or human judgement.
+Making the boundary between claim extraction and truth verification explicit determines what a buyer may safely infer from the output. An evaluator can rely on TextOS to distinguish captured Answer Evidence from deterministically extracted claims, while recognising that separate evidence or human judgement is still required to determine whether a claim is true.
 
 TextOS therefore states the limitation directly: the Claim Evidence Layer captures Answer Evidence and extracts claims deterministically. It does not automatically verify whether those claims are true.
 
