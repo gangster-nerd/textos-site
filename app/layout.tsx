@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://textos.io"),
+  metadataBase: new URL(siteConfig.origin),
+  robots: siteConfig.allowIndexing
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
   title: {
     default: "TextOS — Authority Intelligence System",
     template: "%s | TextOS",
@@ -13,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "TextOS",
-    url: "https://textos.io",
+    url: siteConfig.origin,
     title: "TextOS — Authority Intelligence System",
     description:
       "Measure authority presence in AI answer engines — reproducibly and defensibly.",

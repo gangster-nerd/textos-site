@@ -1,11 +1,14 @@
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/lib/config/site";
 
 export const dynamic = "force-static";
 
-// site-runtime-architecture.spec.md §6 : textos.io est crawlable.
 export default function robots(): MetadataRoute.Robots {
+  if (!siteConfig.allowIndexing) {
+    return { rules: { userAgent: "*", disallow: "/" } };
+  }
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://textos.io/sitemap.xml",
+    sitemap: `${siteConfig.origin}/sitemap.xml`,
   };
 }

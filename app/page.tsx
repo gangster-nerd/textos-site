@@ -41,7 +41,9 @@ export default function Home() {
 
       <footer>
         <span>Product in active development. This site publishes only what is measured and validated.</span>
-        <a href="https://app.textos.io/login?returnTo=/dashboard">Se connecter →</a>
+        {/* Lien de connexion retiré : le domaine app.textos.io n'est pas contrôlé.
+            À rétablir une fois le domaine produit tranché (décision produit distincte). */}
+        <span aria-disabled="true">Se connecter (bientôt)</span>
       </footer>
     </main>
   );

@@ -2,8 +2,9 @@
 // Source de vérité doctrinale : entity-graph.spec.md (§1, §3), schema-map.spec.md (§1, §4, §5).
 
 import { FEATURE_LIST } from "./capability-registry";
+import { siteConfig } from "./config/site";
 
-const SITE_URL = "https://textos.io";
+const SITE_URL = siteConfig.origin;
 
 type JsonLd = Record<string, unknown>;
 
