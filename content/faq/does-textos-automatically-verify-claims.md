@@ -65,19 +65,19 @@ A precise evaluation therefore separates four layers:
 1. **Observation:** what answer material was captured?
 2. **Extraction:** what claims were identified in that material?
 3. **Verification:** what independent evidence supports or refutes each claim?
-4. **Judgement:** what conclusion should a person or governed system draw?
+4. **Judgement:** what conclusion should a person or downstream system draw?
 
 The Claim Evidence Layer currently addresses the first two layers. It does not collapse them into the third or fourth.
 
 ## How does this boundary fit the wider TextOS measurement doctrine?
 
-The boundary between claim extraction and claim verification follows the same epistemic rule as TextOS’s authority-presence measurements: every output must retain the status of what was actually observed. Direct, Indirect and Total are separate measures; Total Authority Presence is a union of direct and indirect presence, never a sum. When a signal is not observable with a given method, TextOS reports it as not observable, never as zero.
+Every TextOS output must retain the status of what was actually observed, never collapsed into inference. The same epistemic rule governs authority-presence measurement — Direct, Indirect and Total are separate measures; Total Authority Presence is a union of direct and indirect presence, never a sum; when a signal is not observable with a given method, TextOS reports it as not observable, never as zero — and it governs the Claim Evidence Layer in exactly the same way: captured Answer Evidence and extracted claims are never silently relabelled as verified facts.
 
 Under the same rule, a missing observation is not evidence of absence, an extracted proposition is not a verified fact, and a measurement is not a score.
 
 ## Why make this limitation explicit?
 
-Making the boundary between claim extraction and truth verification explicit determines what a buyer may safely infer from the output. An evaluator can rely on TextOS to distinguish captured Answer Evidence from deterministically extracted claims, while recognising that separate evidence or human judgement is still required to determine whether a claim is true.
+Stating the boundary between claim extraction and truth verification explicitly defines what a buyer may safely conclude from TextOS output. An evaluator can rely on TextOS to distinguish captured Answer Evidence from deterministically extracted claims, while recognising that separate evidence or human judgement is still required to determine whether a claim is true.
 
 TextOS therefore states the limitation directly: the Claim Evidence Layer captures Answer Evidence and extracts claims deterministically. It does not automatically verify whether those claims are true.
 
