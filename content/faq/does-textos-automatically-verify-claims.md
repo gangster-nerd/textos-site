@@ -16,6 +16,10 @@ claimIds:
   - s8-no-automatic-verification
   - hp1-measurement-doctrine
   - hp2-metric-integrity
+clusterId: measurement-trust
+ctaVariant: measurement_request
+visualIds:
+  - epistemic-layers-v1
 targetQuery: "does TextOS verify claims"
 searchIntent: commercial_investigation
 shortAnswer:

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "tsx scripts/build-attribution-manifest.ts",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "validate:jsonld": "node scripts/validate-jsonld.mjs"
@@ -23,6 +24,7 @@
     "@types/node": "^22.10.7",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
+    "tsx": "^4.23.1",
     "typescript": "^5.7.3",
     "vitest": "^4.1.10"
   },

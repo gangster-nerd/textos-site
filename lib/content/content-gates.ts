@@ -1,5 +1,13 @@
 import { CAPABILITY_STATUS, type Status } from "@/lib/capability-registry";
 import { findClaim, type Surface } from "@/lib/claims-registry";
+import { getCluster } from "@/lib/content/content-cluster-registry";
+import { getCtaVariant } from "@/lib/conversion/cta-registry";
+import {
+  assertCtaPublishable,
+  resolveCtaForDocument,
+  type CtaResolution,
+} from "@/lib/conversion/cta-resolver";
+import { getVisual } from "@/lib/visuals/visual-registry";
 import type { ContentFrontmatter } from "./content-schema";
 
 const SURFACE_BY_CONTENT_TYPE: Record<ContentFrontmatter["contentType"], Surface> = {
@@ -68,6 +76,59 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
     }
   }
 
+  // Cluster taxonomique : doit exister et ne pas être retiré.
+  const cluster = getCluster(fm.clusterId);
+  if (!cluster) throw new Error(`Cluster inconnu du registre : ${fm.clusterId}`);
+  if (cluster.status === "retired") {
+    throw new Error(`Cluster retiré, contenu non rattachable : ${fm.clusterId}.`);
+  }
+
+  // CTA : la variante doit EXISTER (refus bruyant — une variante fantôme est une erreur de
+  // contenu, pas un CTA absent). Si elle est `approved`, elle doit être PUBLIABLE, sinon le build
+  // échoue : destination, surface, capacités commercialisables, claims autorisés sur sales_copy.
+  //
+  // NOTE : on ne vérifie PAS que requiredCapabilities ⊆ fm.capabilityIds. Les deux ensembles ont
+  // des fonctions distinctes — l'article gouverne ses affirmations éditoriales, le CTA gouverne une
+  // surface commerciale prouvée par ses propres claims. Exiger l'inclusion forcerait un article à
+  // revendiquer des capacités dont il ne parle pas pour pouvoir porter son propre CTA.
+  const ctaVariant = getCtaVariant(fm.ctaVariant);
+  if (!ctaVariant) throw new Error(`CTA inconnue du registre : ${fm.ctaVariant}`);
+  assertCtaPublishable(ctaVariant, fm.contentType);
+
+  // Résolution STRICTE : c'est elle qui fait autorité, et la seule que le rendu consommera.
+  const ctaResolution: CtaResolution = resolveCtaForDocument({
+    configuredVariant: fm.ctaVariant,
+    contentType: fm.contentType,
+  });
+
+  // Visuels : chaque id doit exister, être approved, couvrir ce contentType — et ne PAS introduire
+  // de claim clandestin. Sans le dernier contrôle, une page pourrait déclarer trois claims
+  // autorisés dans son frontmatter puis afficher un schéma approuvé qui en porte un quatrième,
+  // non déclaré : le claim entrerait dans la page sans passer par le gate de claims.
+  for (const visualId of fm.visualIds ?? []) {
+    const visual = getVisual(visualId);
+    if (!visual) throw new Error(`Visuel inconnu du registre : ${visualId}`);
+    if (visual.status !== "approved") {
+      throw new Error(`Visuel ${visualId} non approved (statut ${visual.status}).`);
+    }
+    if (!visual.allowedContentTypes.includes(fm.contentType)) {
+      throw new Error(
+        `Visuel ${visualId} non autorisé sur le contentType ${fm.contentType}.`
+      );
+    }
+    const documentClaims = new Set(fm.claimIds);
+    for (const claimId of visual.claimIds) {
+      if (!findClaim(claimId)) {
+        throw new Error(`Visuel ${visualId} porte un claim inconnu du registre : ${claimId}.`);
+      }
+      if (!documentClaims.has(claimId)) {
+        throw new Error(
+          `Visuel ${visualId} porte ${claimId}, absent des claimIds du document — un visuel ne peut pas introduire un claim non déclaré.`
+        );
+      }
+    }
+  }
+
   // Tous les labels, pas seulement le premier : une restriction ne doit
   // jamais disparaître quand plusieurs capacités sont référencées.
   const maturityLabels = [
@@ -78,5 +139,5 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
     ),
   ];
 
-  return { capabilities, surface, maturityLabels };
+  return { capabilities, surface, maturityLabels, ctaResolution };
 }

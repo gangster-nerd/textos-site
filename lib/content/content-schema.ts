@@ -1,11 +1,10 @@
 import { z } from "zod";
 
-export const ContentTypeSchema = z.enum([
-  "developer_note",
-  "changelog_entry",
-  "faq_entry",
-  "product_article",
-]);
+import { CONTENT_TYPES } from "./content-types";
+
+// Littéraux importés du module partagé (`content-types.ts`) : les registres CTA / visuel en ont
+// besoin pour leurs `allowedContentTypes` et ne peuvent donc pas importer ce schéma (cycle).
+export const ContentTypeSchema = z.enum(CONTENT_TYPES);
 
 export const EditorialStatusSchema = z.enum([
   "draft",
@@ -34,6 +33,13 @@ export const ContentFrontmatterSchema = z
 
     capabilityIds: z.array(z.string().min(1)).min(1),
     claimIds: z.array(z.string().min(1)).min(1),
+
+    // Taxonomie + conversion. Le contenu déclare des IDENTIFIANTS ; la copy CTA,
+    // les destinations et les métadonnées visuelles vivent dans leurs registres.
+    // La forme est validée ici ; l'appartenance aux registres est vérifiée par les gates.
+    clusterId: z.string().min(1),
+    ctaVariant: z.string().min(1),
+    visualIds: z.array(z.string().min(1)).optional(),
 
     targetQuery: z.string().min(1),
     searchIntent: z.enum([

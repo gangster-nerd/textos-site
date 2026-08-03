@@ -1,0 +1,146 @@
+// Résolution CTA — SOURCE UNIQUE, STRICTE, de la vérité de conversion.
+//
+// Doctrine (arbitrage S1) :
+//   Le contenu choisit une INTENTION de conversion. Le gate décide si elle est AUTORISÉE.
+//   Le composant ne fait que RENDRE cette décision.
+//
+// Conséquence sur les signatures : `resolveCtaForDocument` exige tout le contexte dont elle a
+// besoin — aucun paramètre optionnel. Une même fonction ne peut pas être stricte avec contexte et
+// permissive sans : cette asymétrie serait une voie de contournement dès que `ContentCta` serait
+// employé sur une autre route ou dans un autre template. Le composant, lui, ne résout plus rien :
+// il reçoit la variante DÉJÀ résolue.
+//
+// Séparation des deux ensembles de capacités, à ne jamais confondre :
+//   document.capabilityIds     → prémisses du corps ÉDITORIAL
+//   cta.requiredCapabilities   → prémisses de la proposition COMMERCIALE (surface gouvernée)
+// Le CTA n'a pas à être « couvert » par l'article : il est entièrement prouvé par SES claims. Un
+// article peut donc porter un CTA de mesure sans revendiquer les capacités vendues — sans quoi il
+// faudrait polluer son frontmatter avec des capacités dont il ne parle pas.
+
+import { CAPABILITY_STATUS, isMarketable, type Status } from "@/lib/capability-registry";
+import { findClaim } from "@/lib/claims-registry";
+import type { ContentTypeName } from "@/lib/content/content-types";
+import { getCtaVariant, type CtaVariant, type CtaVariantId } from "./cta-registry";
+
+/** Surface commerciale des claims portés par un CTA. Distincte des surfaces éditoriales. */
+const SALES_SURFACE = "sales_copy" as const;
+
+export interface CtaResolution {
+  /** Ce que le contenu a DEMANDÉ (frontmatter), même si c'est irrésoluble. */
+  configuredVariant: string;
+  /** Ce qui sera RENDU — `null` = aucun CTA. C'est cette valeur que reçoit `ContentCta`. */
+  resolvedVariant: CtaVariantId | null;
+  /** Version du CTA rendu ; `null` quand rien n'est rendu. Jamais l'un sans l'autre. */
+  version: number | null;
+  /** Définition du CTA rendu ; `null` quand rien n'est rendu. */
+  definition: CtaVariant | null;
+}
+
+export interface ResolveCtaForDocumentInput {
+  configuredVariant: string;
+  /** REQUIS. Le contexte n'est jamais optionnel : sans lui, pas de décision. */
+  contentType: ContentTypeName;
+}
+
+const NOT_RESOLVED = (configuredVariant: string): CtaResolution => ({
+  configuredVariant,
+  resolvedVariant: null,
+  version: null,
+  definition: null,
+});
+
+/**
+ * Règle d'éligibilité UNIQUE d'une variante `approved`, exprimée comme liste de violations.
+ *
+ * Deux consommateurs, un seul jeu de règles : `assertCtaPublishable` les transforme en échec de
+ * build, `resolveCtaForDocument` en `null`. Aucune règle n'est réécrite d'un côté ou de l'autre.
+ */
+export function ctaViolations(v: CtaVariant, contentType: ContentTypeName): string[] {
+  const problems: string[] = [];
+
+  // Destination réelle : un CTA approuvé sans URL serait un lien mort.
+  if (v.destination === null) {
+    problems.push(`approved sans destination — aucune URL réelle n'existe`);
+  }
+
+  // Surface : le contentType doit être couvert par la variante.
+  if (!v.allowedContentTypes.includes(contentType)) {
+    problems.push(`non autorisée sur le contentType ${contentType}`);
+  }
+
+  // Capacités de la PROPOSITION COMMERCIALE : connues et globalement public_marketable.
+  // Adosser un CTA à une capacité non commercialisable serait un overclaim (même doctrine que le
+  // verrou featureList de l'entity-graph). Aucun rapport avec les capabilityIds de l'article.
+  for (const capId of v.requiredCapabilities) {
+    const status = CAPABILITY_STATUS[capId as keyof typeof CAPABILITY_STATUS] as
+      | Status
+      | undefined;
+    if (!status) {
+      problems.push(`requiert une capacité inconnue : ${capId}`);
+    } else if (!isMarketable(status)) {
+      problems.push(`requiert ${capId} (statut ${status}, non public_marketable)`);
+    }
+  }
+
+  // Claims de la proposition commerciale : la surface sales_copy est gouvernée à part, et chaque
+  // claim doit être adossé à une capacité que le CTA revendique lui-même. C'est ce qui rend la
+  // proposition entièrement prouvée par ses propres claims.
+  const required = new Set(v.requiredCapabilities);
+  for (const claimId of v.claimIds) {
+    const claim = findClaim(claimId);
+    if (!claim) {
+      problems.push(`porte un claim inconnu du registre : ${claimId}`);
+      continue;
+    }
+    if (!claim.allowedSurfaces.includes(SALES_SURFACE)) {
+      problems.push(`porte ${claimId}, non autorisé sur la surface ${SALES_SURFACE}`);
+    }
+    if (claim.capabilityId === null || !required.has(claim.capabilityId)) {
+      problems.push(
+        `porte ${claimId} (capabilityId ${claim.capabilityId ?? "null"}), hors des requiredCapabilities du CTA`
+      );
+    }
+  }
+
+  return problems;
+}
+
+/**
+ * Échec BRUYANT au build pour une variante `approved` mal configurée. Le silence serait un piège :
+ * un CTA approuvé qui ne rend rien sans explication est plus coûteux à diagnostiquer qu'un build
+ * rouge. Ne dit rien des variantes `disabled`/`retired`/`none` — leur non-rendu est voulu.
+ */
+export function assertCtaPublishable(v: CtaVariant, contentType: ContentTypeName): void {
+  if (v.status !== "approved") return;
+  const problems = ctaViolations(v, contentType);
+  if (problems.length > 0) {
+    throw new Error(`CTA "${v.id}" est approved mais ${problems.join(" ; ")}.`);
+  }
+}
+
+/**
+ * Résolution stricte. Ne lève jamais : un CTA irrésoluble n'est pas une erreur, c'est un `null`.
+ * (Le refus bruyant, quand il est justifié, est le rôle de `assertCtaPublishable` via `runGates`.)
+ */
+export function resolveCtaForDocument(input: ResolveCtaForDocumentInput): CtaResolution {
+  const { configuredVariant, contentType } = input;
+  const definition = getCtaVariant(configuredVariant);
+
+  if (!definition) return NOT_RESOLVED(configuredVariant);
+
+  // `none` : sentinel. Résout vers null PAR IDENTITÉ, quel que soit son statut — il ne peut donc
+  // jamais devenir un CTA visible, même si quelqu'un le passait un jour en `approved`.
+  if (definition.id === "none") return NOT_RESOLVED(configuredVariant);
+
+  if (definition.status !== "approved") return NOT_RESOLVED(configuredVariant);
+  if (ctaViolations(definition, contentType).length > 0) {
+    return NOT_RESOLVED(configuredVariant);
+  }
+
+  return {
+    configuredVariant,
+    resolvedVariant: definition.id,
+    version: definition.version,
+    definition,
+  };
+}
