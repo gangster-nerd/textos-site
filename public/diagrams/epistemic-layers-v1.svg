@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 280" role="img"
+     aria-labelledby="elv1-title elv1-desc" font-family="system-ui, sans-serif">
+  <title id="elv1-title">The four epistemic layers and the Claim Evidence Layer scope</title>
+  <desc id="elv1-desc">Four layers left to right: Observation, Extraction, Verification, Judgement. A dashed boundary encloses Observation and Extraction, marking the current Claim Evidence Layer scope. Verification and Judgement fall outside that boundary.</desc>
+
+  <rect width="820" height="280" fill="#ffffff"/>
+
+  <!-- Périmètre actuel : Claim Evidence Layer (Observation + Extraction) -->
+  <rect x="12" y="70" width="392" height="132" rx="10"
+        fill="#eef4ff" stroke="#3b6fd4" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="24" y="58" font-size="15" font-weight="600" fill="#3b6fd4">Claim Evidence Layer — current scope</text>
+
+  <!-- Frontière capture/extraction | vérification/jugement -->
+  <line x1="420" y1="40" x2="420" y2="232" stroke="#b0b7c3" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <text x="420" y="252" font-size="12" fill="#8a93a3" text-anchor="middle">boundary</text>
+
+  <!-- Layer boxes -->
+  <g font-size="16" font-weight="600" text-anchor="middle">
+    <rect x="30" y="100" width="160" height="72" rx="8" fill="#ffffff" stroke="#3b6fd4" stroke-width="2"/>
+    <text x="110" y="142" fill="#1c2430">Observation</text>
+
+    <rect x="230" y="100" width="160" height="72" rx="8" fill="#ffffff" stroke="#3b6fd4" stroke-width="2"/>
+    <text x="310" y="142" fill="#1c2430">Extraction</text>
+
+    <rect x="452" y="100" width="160" height="72" rx="8" fill="#ffffff" stroke="#9aa3b2" stroke-width="2"/>
+    <text x="532" y="142" fill="#1c2430">Verification</text>
+
+    <rect x="642" y="100" width="160" height="72" rx="8" fill="#ffffff" stroke="#9aa3b2" stroke-width="2"/>
+    <text x="722" y="142" fill="#1c2430">Judgement</text>
+  </g>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="elv1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7686"/>
+    </marker>
+  </defs>
+  <g stroke="#6b7686" stroke-width="2" marker-end="url(#elv1-arrow)" fill="none">
+    <line x1="190" y1="136" x2="228" y2="136"/>
+    <line x1="390" y1="136" x2="450" y2="136"/>
+    <line x1="612" y1="136" x2="640" y2="136"/>
+  </g>
+</svg>

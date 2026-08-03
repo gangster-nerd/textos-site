@@ -12,5 +12,17 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+
+      # Types puis logique, AVANT le build : un gate cassé (registre Zod, sous-ensemble de claims
+      # d'un visuel, résolution CTA) doit rougir sur la PR, pas seulement sur le poste de dev.
+      - run: pnpm typecheck
+      - run: pnpm test
+
       - run: pnpm build
+
+      # Assertions portant sur l'export lui-même : absence de CTA dans out/, visuel rendu avec alt
+      # et figcaption, manifeste d'attribution. Elles se sautent d'elles-mêmes quand out/ n'existe
+      # pas encore — les relancer ICI est la seule façon de garantir qu'elles s'exécutent vraiment.
+      - run: pnpm exec vitest run tests/exported-html.test.ts
+
       - run: pnpm validate:jsonld

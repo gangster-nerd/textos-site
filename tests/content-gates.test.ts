@@ -14,6 +14,9 @@ const base = {
   sourceCommit: "1178684",
   capabilityIds: ["claim-evidence-layer"],
   claimIds: ["s8-answer-evidence-capture"],
+  // Taxonomie + conversion, requis depuis S1 (validés contre leurs registres par les gates).
+  clusterId: "measurement-trust",
+  ctaVariant: "measurement_request",
   targetQuery: "q",
   searchIntent: "commercial_investigation" as const,
   shortAnswer: { body: "b", claimIds: ["s8-answer-evidence-capture"] },

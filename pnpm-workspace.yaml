@@ -1,5 +1,10 @@
-# sharp est une dépendance native optionnelle de Next, non utilisée par l'export statique.
-# On tranche explicitement son script d'install (false = ignoré) pour lever le gate pnpm 11
+# On tranche explicitement les scripts d'install natifs pour lever le gate pnpm 11
 # ERR_PNPM_IGNORED_BUILDS de façon déterministe en CI (build + frozen-lockfile).
+#
+# sharp  : dépendance native optionnelle de Next, non utilisée par l'export statique → ignoré.
+# esbuild: moteur de tsx (postbuild du manifeste). Son binaire de plateforme est fourni par le
+#          paquet optionnel @esbuild/darwin-*|linux-* ; le script d'install ne fait que le
+#          vérifier → ignoré, conformément à la même doctrine.
 allowBuilds:
+  esbuild: false
   sharp: false
