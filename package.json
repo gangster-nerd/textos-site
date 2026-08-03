@@ -9,6 +9,7 @@
     "postbuild": "tsx scripts/build-attribution-manifest.ts",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "validate:jsonld": "node scripts/validate-jsonld.mjs"
   },
   "dependencies": {
