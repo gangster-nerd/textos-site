@@ -101,7 +101,32 @@ Public domain      → pending
 Aucun rebranding en cours. Les contenus continuent d'employer TextOS comme nom de travail ; la
 bascule de marque sera un chantier gouverné (D0B/S4), pas une réécriture au fil des pages.
 
-## Devenir du déploiement GitHub Pages
+## Origine technique de référence
+
+**Vercel est l'origine technique de référence du site.** L'intégration Git en est la seule source :
+push sur une branche → Preview Deployment, merge sur `main` → Production Deployment, chacun
+rattaché à son SHA.
+
+Elle demeure **non autoritative et non indexable** : ce n'est ni la marque, ni l'origine publique
+définitive. Le domaine public sera traité en **D0B / S4**.
+
+## GitHub Pages — retiré
+
+L'ancienne publication `gangster-nerd.github.io/textos-site/` est **retirée**. Le workflow
+`deploy-pages` est supprimé et la publication Pages est désactivée dans les réglages du dépôt.
+
+Motif : servie sous un chemin de projet sans `basePath`, elle renvoyait 404 sur tout chemin absolu
+— CSS, chunks JS, et les images depuis S1. Le HTML était lisible, rien d'autre ne se chargeait.
+Laisser tourner une seconde origine, cassée de surcroît, entretenait une ambiguïté permanente sur
+laquelle fait référence.
+
+Le dépôt, les runs CI et les SHA de merge constituent l'historique ; une publication cassée n'y
+ajoutait rien.
+
+<details>
+<summary>Historique de la décision</summary>
+
+## Devenir du déploiement GitHub Pages (décision, avant application)
 
 Le site a été publié sur `gangster-nerd.github.io/textos-site/` jusqu'au 2026-08-03 (SHA `133e5d1`).
 Cette publication est **cassée par construction** : servie sous un chemin de projet sans `basePath`,
@@ -131,3 +156,5 @@ commit → push → Preview Vercel depuis le SHA → PR → merge
 Désactiver le seul workflow ne suffira pas : l'ancien artefact peut rester servi. Il faudra
 également couper la publication Pages dans les réglages du dépôt, ou vérifier que l'ancienne URL ne
 sert plus le site.
+
+</details>
