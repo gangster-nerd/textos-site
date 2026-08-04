@@ -20,6 +20,9 @@ const S8_SURFACES: Surface[] = ["developer_note", "changelog", "faq"];
 // pas de les ouvrir aux surfaces éditoriales : HP1/HP2 continuent de gouverner la doctrine publique,
 // ces claims-ci gouvernent uniquement la proposition commerciale. Deux registres de discours.
 const SALES_ONLY: Surface[] = ["sales_copy"];
+// Surfaces MÉTHODOLOGIQUES : le cluster public d'explication de la méthode. Volontairement
+// restreintes — ces claims décrivent la mesure, ils ne vendent rien et ne portent aucun CTA.
+const METHODOLOGY_SURFACES: Surface[] = ["product_article", "faq"];
 const DOCTRINE_SURFACES: Surface[] = [
   "developer_note",
   "changelog",
@@ -108,6 +111,76 @@ export const CLAIMS: readonly Claim[] = [
       "TextOS's current Authority Presence measurement is not a score and does not include recommendations, ROI estimates, or guarantees of ranking or AI citation.",
     evidenceRefs: ["homepage-approved-copy", "public-product-refusals"],
     allowedSurfaces: SALES_ONLY,
+  },
+
+  // --- Méthode de mesure (S3) — cluster public de méthodologie ---
+  //
+  // Chaque claim est rattaché à une capacité RÉELLE du registre, toutes `public_marketable`. Les
+  // libellés publics ne sont jamais utilisés comme identifiants : « Authority Presence measurement »
+  // est le libellé de `observe-authority-presence`.
+  {
+    id: "m1-observation-unit",
+    capabilityId: "observe-authority-presence",
+    statement:
+      "TextOS observes one engine answer at a time, on a versioned query panel, and keeps each observation separate. The observation, not the brand, is the unit of measurement.",
+    evidenceRefs: ["homepage-approved-copy", "textos-v0@1178684"],
+    allowedSurfaces: METHODOLOGY_SURFACES,
+  },
+  {
+    id: "m2-direct-share-of-model",
+    capabilityId: "direct-share-of-model",
+    statement:
+      "Direct Share of Model is the share of eligible observations in which the tracked entity is cited as a source by the answer engine.",
+    evidenceRefs: ["homepage-approved-copy"],
+    allowedSurfaces: METHODOLOGY_SURFACES,
+  },
+  {
+    id: "m3-indirect-mention-share",
+    capabilityId: "indirect-mention-share",
+    statement:
+      "Indirect Mention Share is the share of eligible observations in which the tracked entity is named inside the answer text. It is evaluated independently of whether the entity is also cited as a source.",
+    evidenceRefs: ["homepage-approved-copy"],
+    allowedSurfaces: METHODOLOGY_SURFACES,
+  },
+  {
+    id: "m4-total-is-a-union",
+    capabilityId: "total-authority-presence",
+    statement:
+      "Total Authority Presence is the union of direct and indirect presence, counted once per observation. It is never the arithmetic sum of Direct Share of Model and Indirect Mention Share.",
+    evidenceRefs: ["homepage-approved-copy"],
+    allowedSurfaces: METHODOLOGY_SURFACES,
+  },
+  {
+    id: "m5-not-observable-is-not-zero",
+    capabilityId: "quality-ledger",
+    statement:
+      "When a signal cannot be observed, TextOS reports it as not observable. A missing observation is never recorded as a measured zero.",
+    evidenceRefs: ["homepage-approved-copy"],
+    allowedSurfaces: METHODOLOGY_SURFACES,
+  },
+  {
+    id: "m6-quality-ledger-contextualises",
+    capabilityId: "quality-ledger",
+    statement:
+      "Observation coverage, completeness, dispersion, provenance and observability status describe how well a measurement is supported. They contextualise the measured result and are never combined with it into a single composite figure.",
+    evidenceRefs: ["homepage-approved-copy"],
+    allowedSurfaces: METHODOLOGY_SURFACES,
+  },
+  {
+    id: "m7-no-recommendations",
+    capabilityId: "observe-authority-presence",
+    statement:
+      "An Authority Presence measurement reports observed presence. It does not produce recommendations, automatic prioritisation, return-on-investment estimates, or guarantees of ranking or citation.",
+    evidenceRefs: ["homepage-approved-copy", "public-product-refusals"],
+    allowedSurfaces: METHODOLOGY_SURFACES,
+  },
+  {
+    id: "m8-measurement-is-not-verification",
+    capabilityId: "observe-authority-presence",
+    statement:
+      "An Authority Presence measurement reports what answer engines say about a brand. It does not establish why an engine cited a brand, and it does not verify whether the statements inside an answer are true.",
+    evidenceRefs: ["homepage-approved-copy", "public-product-refusals"],
+    allowedSurfaces: METHODOLOGY_SURFACES,
   },
 ];
 
