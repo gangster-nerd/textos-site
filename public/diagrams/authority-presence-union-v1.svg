@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" role="img"
+     aria-labelledby="apu1-title apu1-desc" font-family="system-ui, sans-serif">
+  <title id="apu1-title">Total Authority Presence is the union of direct and indirect presence</title>
+  <desc id="apu1-desc">Two overlapping circles. The left circle is Direct Share of Model, the right circle is Indirect Mention Share, which counts observations where the brand is named regardless of citation. They overlap in the middle: observations where the brand is both cited as a source and named in the answer. Total Authority Presence is the whole shaded area covered by either circle, counted once. The overlap is not counted twice, so Total is never the sum of the two shares.</desc>
+
+  <rect width="760" height="380" fill="#ffffff"/>
+  <text x="380" y="34" font-size="16" font-weight="600" fill="#1c2430" text-anchor="middle">Total Authority Presence = Direct ∪ Indirect</text>
+
+  <!-- Union highlighted first, so the eye reads one single region -->
+  <g>
+    <circle cx="300" cy="200" r="118" fill="#3b6fd4" fill-opacity="0.16" stroke="#3b6fd4" stroke-width="2"/>
+    <circle cx="460" cy="200" r="118" fill="#3b6fd4" fill-opacity="0.16" stroke="#6b7686" stroke-width="2" stroke-dasharray="6 4"/>
+  </g>
+
+  <text x="238" y="196" font-size="14" font-weight="600" fill="#1c2430" text-anchor="middle">Direct</text>
+  <text x="238" y="216" font-size="12" fill="#4a5361" text-anchor="middle">cited as a source</text>
+
+  <text x="524" y="196" font-size="14" font-weight="600" fill="#1c2430" text-anchor="middle">Indirect</text>
+  <text x="524" y="216" font-size="12" fill="#4a5361" text-anchor="middle">named in the answer</text>
+
+  <text x="380" y="192" font-size="12" font-weight="600" fill="#1c2430" text-anchor="middle">both</text>
+  <text x="380" y="210" font-size="11" fill="#4a5361" text-anchor="middle">counted</text>
+  <text x="380" y="224" font-size="11" fill="#4a5361" text-anchor="middle">once</text>
+
+  <!-- Explicit refusal of the additive reading -->
+  <text x="380" y="352" font-size="13" fill="#8a2f2f" text-anchor="middle">An observation in the overlap belongs to Total once — never twice.</text>
+</svg>

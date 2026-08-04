@@ -1,0 +1,337 @@
+// Tests S3 — cluster public de méthodologie.
+//
+// Deux natures de vérification, à ne pas confondre : les contrats de REGISTRE (claims, capacités,
+// visuels) et la DOCTRINE telle qu'elle est réellement écrite dans les pages. La seconde est la plus
+// utile : un registre conforme n'empêche pas une phrase de contredire la méthode.
+
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
+import { describe, expect, test } from "vitest";
+
+import { CAPABILITY_STATUS, isMarketable, type Status } from "@/lib/capability-registry";
+import { CLAIMS, findClaim } from "@/lib/claims-registry";
+import { loadCollection, loadDocument } from "@/lib/content/content-loader";
+import { getVisual } from "@/lib/visuals/visual-registry";
+
+const ROOT = process.cwd();
+const SLUGS = [
+  "authority-presence",
+  "direct-indirect-total",
+  "not-observable-is-not-zero",
+  "measurement-quality-ledger",
+] as const;
+const METHODOLOGY_CLAIM_IDS = [
+  "m1-observation-unit",
+  "m2-direct-share-of-model",
+  "m3-indirect-mention-share",
+  "m4-total-is-a-union",
+  "m5-not-observable-is-not-zero",
+  "m6-quality-ledger-contextualises",
+] as const;
+
+const docs = () => loadCollection("methodology");
+const body = (slug: string) => loadDocument("methodology", slug).body;
+
+describe("claims et capacités", () => {
+  test("les quatre pages chargent et passent les gates", () => {
+    expect(docs()).toHaveLength(4);
+    for (const slug of SLUGS) expect(() => loadDocument("methodology", slug)).not.toThrow();
+  });
+
+  test("chaque claim méthodologique existe et porte une capacité RÉELLE du registre", () => {
+    for (const id of METHODOLOGY_CLAIM_IDS) {
+      const claim = findClaim(id);
+      expect(claim, `${id} introuvable`).toBeDefined();
+      expect(claim!.capabilityId, `${id} sans capacité`).not.toBeNull();
+      const status = CAPABILITY_STATUS[claim!.capabilityId as keyof typeof CAPABILITY_STATUS];
+      expect(status, `${id} → capacité inconnue « ${claim!.capabilityId} »`).toBeDefined();
+    }
+  });
+
+  test("chaque capacité utilisée est public_marketable", () => {
+    for (const doc of docs()) {
+      for (const capId of doc.frontmatter.capabilityIds) {
+        const status = CAPABILITY_STATUS[capId as keyof typeof CAPABILITY_STATUS] as Status;
+        expect(isMarketable(status), `${capId} n'est pas public_marketable (${status})`).toBe(true);
+      }
+    }
+  });
+
+  test("aucune capacité planned, wip, unsupported ou forbidden n'est publiée", () => {
+    const forbidden = ["opportunity-brief", "truth-check", "repos-intersection", "authority-score", "claim-evidence-layer"];
+    for (const doc of docs()) {
+      for (const capId of doc.frontmatter.capabilityIds) {
+        expect(forbidden, `${capId} ne doit pas être publiée`).not.toContain(capId);
+      }
+    }
+  });
+
+  test("chaque claim est autorisé sur la surface product_article", () => {
+    for (const doc of docs()) {
+      for (const id of doc.frontmatter.claimIds) {
+        expect(findClaim(id)!.allowedSurfaces, `${id} interdit sur product_article`).toContain(
+          "product_article"
+        );
+      }
+    }
+  });
+
+  test("aucun claim sales_copy de S2A n'est utilisé par les articles", () => {
+    const sales = CLAIMS.filter((c) => c.allowedSurfaces.includes("sales_copy")).map((c) => c.id);
+    expect(sales.length).toBeGreaterThan(0);
+    for (const doc of docs()) {
+      for (const id of doc.frontmatter.claimIds) {
+        expect(sales, `${id} est un claim commercial, hors article`).not.toContain(id);
+      }
+    }
+  });
+
+  test("les claims sales_copy restent limités à sales_copy", () => {
+    for (const c of CLAIMS.filter((c) => c.id.startsWith("sales-"))) {
+      expect(c.allowedSurfaces).toEqual(["sales_copy"]);
+    }
+  });
+
+  test("HP1 et HP2 restent inchangés — capabilityId null, hors sales_copy", () => {
+    for (const id of ["hp1-measurement-doctrine", "hp2-metric-integrity"]) {
+      const c = findClaim(id)!;
+      expect(c.capabilityId).toBeNull();
+      expect(c.allowedSurfaces).not.toContain("sales_copy");
+    }
+  });
+});
+
+describe("doctrine — telle qu'écrite dans les pages", () => {
+  test("la formule d'union est présente et explicite", () => {
+    const pillar = body("authority-presence");
+    const dit = body("direct-indirect-total");
+    expect(pillar.toLowerCase()).toContain("union");
+    expect(dit.toLowerCase()).toContain("union of direct and indirect");
+    expect(dit).toMatch(/never (their|the) arithmetic sum|never their sum/i);
+  });
+
+  test("aucune formule additive Total = Direct + Indirect n'est affirmée", () => {
+    for (const slug of SLUGS) {
+      const text = body(slug);
+      // On cherche une AFFIRMATION additive. Les mentions de refus (« 4 + 5 − 2 », « the arithmetic
+      // sum would give ») sont légitimes et doivent rester possibles.
+      expect(text, `${slug} : formule additive affirmée`).not.toMatch(
+        /Total\s+(Authority\s+Presence\s+)?(is|=)\s+Direct\s*\+/i
+      );
+      expect(text, `${slug} : addition des deux parts présentée comme valide`).not.toMatch(
+        /add(ing)?\s+the\s+two\s+shares\s+(gives|is|yields)\s+Total/i
+      );
+    }
+  });
+
+  test("l'exemple chiffré du chevauchement est arithmétiquement juste", () => {
+    const text = body("direct-indirect-total");
+    // 4 directes + 5 indirectes − 2 en chevauchement = 7 observations distinctes sur 10 → 70 %.
+    expect(text).toContain("4 + 5 − 2 = 7");
+    expect(text).toContain("70%");
+    expect(text).toContain("90%");
+    expect(text).toMatch(/exceed 100%/);
+  });
+
+  test("« not observable » n'est jamais assimilé à zéro", () => {
+    const text = body("not-observable-is-not-zero");
+    expect(text.toLowerCase()).toContain("never");
+    expect(text).toMatch(/not observable/i);
+    // Les quatre états sont nommés séparément.
+    for (const state of ["Observed positive", "Observed zero", "Not observable", "Incomplete observation"]) {
+      expect(text, `état manquant : ${state}`).toContain(state);
+    }
+    // Aucune page ne doit présenter une absence comme une valeur nulle.
+    for (const slug of SLUGS) {
+      expect(body(slug), `${slug}`).not.toMatch(
+        /not observable\s+(is|means|=)\s+(a\s+)?zero|treated as zero|counted as zero/i
+      );
+    }
+  });
+
+  test("« Authority Score » n'apparaît que comme REFUS, jamais comme nom du produit", () => {
+    for (const slug of SLUGS) {
+      const text = body(slug);
+      for (const m of text.matchAll(/[^.]*Authority Score[^.]*\./g)) {
+        const sentence = m[0];
+        expect(
+          /\bno\b|\bnot\b|\bnever\b|\?$/i.test(sentence.trim()),
+          `${slug} : « Authority Score » hors contexte de refus → ${sentence.trim()}`
+        ).toBe(true);
+      }
+      // Jamais attribué au produit ni au lecteur.
+      expect(text).not.toMatch(/(TextOS's|your|the)\s+Authority Score\s+(is|shows|rises)/i);
+    }
+  });
+
+  test("les refus de recommandation, ROI, causalité et garanties sont maintenus", () => {
+    const pillar = body("authority-presence");
+    expect(pillar).toMatch(/no recommendations/i);
+    expect(pillar).toMatch(/return-on-investment|ROI/i);
+    expect(pillar).toMatch(/no guarantee of ranking/i);
+    expect(pillar).toMatch(/presence, not causation/i);
+    for (const slug of SLUGS) {
+      const text = body(slug);
+      expect(text, `${slug}`).not.toMatch(/we guarantee|guaranteed (ranking|citation|results)/i);
+      expect(text, `${slug}`).not.toMatch(/Opportunity Brief/i);
+    }
+  });
+
+  test("le panel versionné et l'unité d'observation sont énoncés", () => {
+    const pillar = body("authority-presence");
+    expect(pillar).toMatch(/versioned query panel/i);
+    expect(pillar).toMatch(/one engine answer at a time|unit of measurement/i);
+  });
+});
+
+describe("passages autonomes (GEO)", () => {
+  const QUESTIONS: Array<[string, string]> = [
+    ["authority-presence", "## What is Authority Presence?"],
+    ["direct-indirect-total", "## What is Direct Share of Model?"],
+    ["direct-indirect-total", "## What is Indirect Mention Share?"],
+    ["direct-indirect-total", "## What is Total Authority Presence?"],
+    ["direct-indirect-total", "## Why is Total not Direct plus Indirect?"],
+    ["not-observable-is-not-zero", "## What does not observable mean?"],
+    ["authority-presence", "## Is TextOS an Authority Score?"],
+    ["measurement-quality-ledger", "## What does the Measurement Quality Ledger show?"],
+  ];
+
+  test.each(QUESTIONS)("%s porte la section « %s »", (slug, heading) => {
+    expect(body(slug)).toContain(heading);
+  });
+
+  test("chaque définition nomme explicitement son sujet dans son premier paragraphe", () => {
+    const expectations: Array<[string, string, string]> = [
+      ["direct-indirect-total", "## What is Direct Share of Model?", "Direct Share of Model"],
+      ["direct-indirect-total", "## What is Indirect Mention Share?", "Indirect Mention Share"],
+      ["direct-indirect-total", "## What is Total Authority Presence?", "Total Authority Presence"],
+      ["not-observable-is-not-zero", "## What does not observable mean?", "Not observable"],
+      ["authority-presence", "## What is Authority Presence?", "Authority Presence"],
+    ];
+    for (const [slug, heading, subject] of expectations) {
+      const text = body(slug);
+      const first = text.slice(text.indexOf(heading) + heading.length).trim().split("\n\n")[0];
+      expect(first.toLowerCase(), `${heading} ne nomme pas « ${subject} »`).toContain(
+        subject.toLowerCase()
+      );
+      // Pas de renvoi opaque en ouverture de définition.
+      expect(first, `${heading} renvoie ailleurs`).not.toMatch(/as (explained|described) above|see above/i);
+    }
+  });
+});
+
+describe("visuels", () => {
+  test("les deux visuels sont enregistrés, approuvés et présents sur le disque", () => {
+    for (const id of ["authority-presence-union-v1", "observability-states-v1"]) {
+      const v = getVisual(id);
+      expect(v, `${id} absent du registre`).toBeDefined();
+      expect(v!.status).toBe("approved");
+      expect(v!.alt.length).toBeGreaterThan(40);
+      expect(v!.caption.length).toBeGreaterThan(20);
+      const svg = readFileSync(path.join(ROOT, "public", v!.src), "utf8");
+      expect(svg).toMatch(/<title[^>]*>[^<]+<\/title>/);
+      expect(svg).toMatch(/<desc[^>]*>[^<]+<\/desc>/);
+    }
+  });
+
+  test("les claims de chaque visuel sont déclarés par la page qui l'affiche", () => {
+    for (const doc of docs()) {
+      for (const visualId of doc.frontmatter.visualIds ?? []) {
+        for (const claimId of getVisual(visualId)!.claimIds) {
+          expect(doc.frontmatter.claimIds, `${doc.slug} : ${claimId} du visuel non déclaré`).toContain(
+            claimId
+          );
+        }
+      }
+    }
+  });
+
+  test("le visuel d'union rend la lecture additive impossible", () => {
+    const svg = readFileSync(
+      path.join(ROOT, "public", "diagrams", "authority-presence-union-v1.svg"),
+      "utf8"
+    );
+    expect(svg).toContain("∪");
+    expect(svg).toMatch(/counted once|never twice/i);
+    expect(svg).not.toMatch(/Direct \+ Indirect/);
+  });
+
+  test("le visuel d'observabilité ne représente pas « not observable » par un zéro", () => {
+    const svg = readFileSync(
+      path.join(ROOT, "public", "diagrams", "observability-states-v1.svg"),
+      "utf8"
+    );
+    for (const state of ["observed", "positive", "zero", "not", "observable", "incomplete"]) {
+      expect(svg.toLowerCase()).toContain(state);
+    }
+    // Le desc doit expliciter que « not observable » n'est pas une barre à zéro.
+    expect(svg).toMatch(/not a bar at all|no baseline/i);
+  });
+});
+
+describe("maillage interne", () => {
+  test("la page pilier pointe vers les trois pages spécialisées", () => {
+    const pillar = body("authority-presence");
+    for (const slug of SLUGS.filter((s) => s !== "authority-presence")) {
+      expect(pillar, `pilier → ${slug} manquant`).toContain(`/methodology/${slug}`);
+    }
+  });
+
+  test("chaque page spécialisée pointe vers le pilier et vers une autre page méthodologique", () => {
+    for (const slug of SLUGS.filter((s) => s !== "authority-presence")) {
+      const text = body(slug);
+      expect(text, `${slug} → pilier`).toContain("/methodology/authority-presence");
+      const others = SLUGS.filter((s) => s !== slug && s !== "authority-presence");
+      expect(
+        others.some((o) => text.includes(`/methodology/${o}`)),
+        `${slug} ne pointe vers aucune autre page spécialisée`
+      ).toBe(true);
+    }
+  });
+
+  test("le pilier relie observation et vérification via la FAQ existante", () => {
+    expect(body("authority-presence")).toContain(
+      "/faq/does-textos-automatically-verify-claims"
+    );
+  });
+
+  test("tous les liens internes visent une route réelle", () => {
+    const known = new Set([
+      "/",
+      "/faq/does-textos-automatically-verify-claims",
+      ...SLUGS.map((s) => `/methodology/${s}`),
+    ]);
+    for (const slug of SLUGS) {
+      for (const m of body(slug).matchAll(/\]\((\/[^)#]*)\)/g)) {
+        expect(known, `${slug} : lien inconnu ${m[1]}`).toContain(m[1]);
+      }
+    }
+  });
+});
+
+describe("CTA et frontmatter", () => {
+  test("les quatre pages déclarent measurement_request et le cluster fermé", () => {
+    for (const doc of docs()) {
+      expect(doc.frontmatter.ctaVariant).toBe("measurement_request");
+      expect(doc.frontmatter.clusterId).toBe("measurement-methodology");
+      expect(doc.frontmatter.indexingPolicy).toBe("noindex");
+      expect(doc.frontmatter.contentType).toBe("product_article");
+    }
+  });
+
+  test("aucune copy de CTA n'est écrite dans le Markdown", () => {
+    for (const slug of SLUGS) {
+      const text = body(slug);
+      for (const copy of ["See your brand measured", "Request a measurement", "Submit measurement request"]) {
+        expect(text, `${slug} contient de la copy CTA`).not.toContain(copy);
+      }
+    }
+  });
+
+  test("un seul H1 par page — les titres de corps commencent à H2", () => {
+    for (const slug of SLUGS) {
+      expect(body(slug)).not.toMatch(/^# /m);
+    }
+  });
+});
