@@ -4,6 +4,11 @@ on: [push, pull_request]
 jobs:
   build-validate:
     runs-on: ubuntu-latest
+    # Le CI valide le MÊME mode de conversion que l'origine technique. Sans cette déclaration, le
+    # build tomberait sur le défaut `off` — aucun CTA, aucun formulaire — et les assertions portant
+    # sur le parcours de conversion passeraient à côté de leur objet.
+    env:
+      CONVERSION_MODE: demo
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
