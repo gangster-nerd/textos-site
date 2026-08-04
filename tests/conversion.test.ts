@@ -341,26 +341,37 @@ describe("séparation éditorial / commercial (arbitrage S1)", () => {
   });
 });
 
-// PRÉREQUIS S2, documenté ici pour qu'il échoue bruyamment le jour où on l'oublie.
-//
-// Aucun claim du registre S0 n'est autorisé sur `sales_copy`, et hp1/hp2 portent capabilityId null.
-// Donc measurement_request, tel quel, ne peut PAS devenir approved : le gate le rejettera. Passer
-// le CTA en approved exigera d'abord des claims commerciaux propres, rattachés à une des cinq
-// capacités publiques et explicitement autorisés sur sales_copy. Rien n'est créé en S1.
-describe("prérequis S2 — claims sales_copy manquants", () => {
-  test("aucun claim du registre n'est aujourd'hui autorisé sur sales_copy", () => {
+// S2.0A — les claims commerciaux EXISTENT désormais. Ce bloc a remplacé le test « prérequis S2 »
+// de S1, qui asserait leur absence : il a rougi le jour où on l'a satisfait, exactement comme
+// prévu. Il garde maintenant l'invariant inverse — la surface sales_copy est peuplée, gouvernée,
+// et ce qui bloque encore le CTA n'est plus la matière mais la LIVRAISON (endpoint, mentions).
+describe("S2.0A — surface sales_copy peuplée et gouvernée", () => {
+  test("des claims commerciaux existent, tous rattachés à une capacité", () => {
     const onSales = CLAIMS.filter((c) => c.allowedSurfaces.includes("sales_copy"));
-    expect(onSales).toEqual([]);
+    expect(onSales.length).toBeGreaterThan(0);
+    for (const c of onSales) {
+      expect(c.capabilityId, `${c.id} sans capacité`).not.toBeNull();
+    }
   });
 
-  test("measurement_request, passé approved en l'état, serait rejeté par le gate", () => {
+  test("aucun claim doctrinal (capabilityId null) n'a été ouvert à sales_copy", () => {
+    const doctrinal = CLAIMS.filter((c) => c.capabilityId === null);
+    expect(doctrinal.length).toBeGreaterThan(0);
+    for (const c of doctrinal) {
+      expect(c.allowedSurfaces, `${c.id} ne doit pas atteindre sales_copy`).not.toContain(
+        "sales_copy"
+      );
+    }
+  });
+
+  test("measurement_request ne viole plus aucune règle de claims", () => {
     const real = getCtaVariant("measurement_request")!;
-    const problems = ctaViolations(
-      { ...real, status: "approved", destination: "/request" } as never,
-      "faq_entry"
-    );
-    expect(problems.length).toBeGreaterThan(0);
-    expect(problems.join(" ")).toMatch(/sales_copy|capabilityId null/);
+    const problems = ctaViolations({ ...real, status: "approved" }, "faq_entry");
+    expect(problems).toEqual([]);
+  });
+
+  test("il reste néanmoins disabled — la livraison n'est pas prouvée", () => {
+    expect(getCtaVariant("measurement_request")!.status).toBe("disabled");
   });
 });
 

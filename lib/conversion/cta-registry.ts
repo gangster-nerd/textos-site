@@ -74,11 +74,19 @@ const RAW_CTA_VARIANTS = {
     status: "disabled",
     requiredCapabilities: ["observe-authority-presence"],
     allowedContentTypes: ["faq_entry", "product_article"],
-    destination: null,
+    // Destination INTERNE et gouvernée : la page de formulaire vit dans ce repo, pas chez le
+    // sous-traitant. Le statut reste `disabled` — le passage à `approved` attend le domaine, le
+    // nom public et le SIRET (mentions légales publiables). L'irréversible ne précède pas le
+    // réversible : tout est éprouvable ici sans rien publier de définitif.
+    destination: "/request-measurement",
     title: "See your brand measured",
     body: "Request an authority-presence measurement on a versioned query panel for your brand.",
     primaryLabel: "Request a measurement",
-    claimIds: ["hp1-measurement-doctrine"],
+    claimIds: [
+      "sales-authority-presence-measurement",
+      "sales-versioned-authority-measurement",
+      "sales-authority-presence-boundaries",
+    ],
     version: 1,
   },
   claim_lookup: {

@@ -106,6 +106,52 @@ export function ctaViolations(v: CtaVariant, contentType: ContentTypeName): stri
 }
 
 /**
+ * Contexte de LIVRAISON d'un CTA — ce qui doit exister réellement pour qu'une variante puisse être
+ * approuvée. Injecté plutôt que lu ici : `ctaViolations` et ses voisines restent pures et
+ * testables, la lecture du filesystem et de l'environnement reste au bord (`runGates`).
+ */
+export interface CtaDeliveryContext {
+  /** La destination interne correspond-elle à une route réellement exportée ? */
+  routeExists: (path: string) => boolean;
+  /** L'endpoint du sous-traitant est-il configuré ? Sans lui, aucune soumission n'aboutit. */
+  endpointConfigured: boolean;
+  /** Les mentions légales sont-elles publiées ? Bloquant tant que l'identité légale n'est pas tranchée. */
+  legalNoticePublished: boolean;
+}
+
+/**
+ * Préconditions de LIVRAISON (S2.6). Une destination interne ne suffit pas : la page doit exister,
+ * le formulaire doit pouvoir aboutir, et la notice doit être publiée. Sans ces contrôles, un CTA
+ * `approved` pourrait pointer vers une 404, poster dans le vide, ou collecter des données sans
+ * information préalable — trois façons d'être en faute sans qu'aucun test ne s'en aperçoive.
+ */
+export function ctaDeliveryViolations(
+  v: CtaVariant,
+  ctx: CtaDeliveryContext
+): string[] {
+  const problems: string[] = [];
+  if (v.destination === null) return problems; // déjà signalé par `ctaViolations`
+
+  // Destination EXTERNE : hors périmètre gouverné. On refuse — le parcours éditorial ne se délègue
+  // pas au fournisseur (il ne reçoit que la soumission).
+  if (!v.destination.startsWith("/")) {
+    problems.push(`pointe vers une destination externe (${v.destination})`);
+    return problems;
+  }
+
+  if (!ctx.routeExists(v.destination)) {
+    problems.push(`pointe vers ${v.destination}, qui n'est pas une route exportée`);
+  }
+  if (!ctx.endpointConfigured) {
+    problems.push("aucun endpoint de réception configuré — le formulaire n'aboutirait nulle part");
+  }
+  if (!ctx.legalNoticePublished) {
+    problems.push("mentions légales non publiées — aucune collecte sans information préalable");
+  }
+  return problems;
+}
+
+/**
  * Échec BRUYANT au build pour une variante `approved` mal configurée. Le silence serait un piège :
  * un CTA approuvé qui ne rend rien sans explication est plus coûteux à diagnostiquer qu'un build
  * rouge. Ne dit rien des variantes `disabled`/`retired`/`none` — leur non-rendu est voulu.
