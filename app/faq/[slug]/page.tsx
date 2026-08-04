@@ -92,6 +92,8 @@ export default async function Page({
             pas d'ancre morte ; le libellé décrit l'entité de destination. */}
         <nav aria-label="Related">
           <Link href="/">how TextOS measures authority presence</Link>
+          {" · "}
+          <Link href="/methodology/authority-presence">How Authority Presence is measured</Link>
         </nav>
       </main>
     </>

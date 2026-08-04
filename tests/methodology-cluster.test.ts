@@ -335,3 +335,82 @@ describe("CTA et frontmatter", () => {
     }
   });
 });
+
+// ── Découvrabilité : un cluster maillé seulement depuis lui-même reste introuvable. ───────────
+describe("maillage entrant vers la page pilier", () => {
+  const HOMEPAGE = path.join(ROOT, "app", "page.tsx");
+  const FAQ_ROUTE = path.join(ROOT, "app", "faq", "[slug]", "page.tsx");
+  const PILLAR = "/methodology/authority-presence";
+
+  test("la homepage pointe vers la page pilier", () => {
+    const src = readFileSync(HOMEPAGE, "utf8");
+    expect(src).toContain(PILLAR);
+    expect(src).toContain("Explore the Authority Presence methodology");
+  });
+
+  test("la FAQ pointe vers la page pilier depuis son bloc de maillage", () => {
+    const src = readFileSync(FAQ_ROUTE, "utf8");
+    expect(src).toContain(PILLAR);
+    expect(src).toContain("How Authority Presence is measured");
+    // Le lien vit dans le bloc éditorial final, pas ailleurs.
+    const nav = src.slice(src.indexOf('aria-label="Related"'));
+    expect(nav).toContain(PILLAR);
+  });
+
+  test("la cible du maillage est une route réellement exportée", () => {
+    expect(loadDocument("methodology", "authority-presence").path).toBe(PILLAR);
+  });
+
+  test("le maillage n'introduit aucun claim ni capacité", () => {
+    // Les liens sont éditoriaux : ils décrivent une destination, ils ne promettent rien. Aucun
+    // identifiant de claim ou de capacité ne doit apparaître dans les deux fichiers de route.
+    for (const file of [HOMEPAGE, FAQ_ROUTE]) {
+      const src = readFileSync(file, "utf8");
+      for (const forbidden of ["sales-authority", "m7-no-recommendations", "sales_copy"]) {
+        expect(src, `${file} : ${forbidden}`).not.toContain(forbidden);
+      }
+    }
+  });
+
+  test("la homepage ne porte pas de second CTA commercial", () => {
+    const src = readFileSync(HOMEPAGE, "utf8");
+    expect(src).not.toContain("ContentCta");
+    for (const copy of ["See your brand measured", "Request a measurement"]) {
+      expect(src, `copy CTA sur la homepage : ${copy}`).not.toContain(copy);
+    }
+  });
+});
+
+// ── Lisibilité mobile des visuels : invariant, pas vérification humaine. ──────────────────────
+//
+// Un SVG techniquement responsive dont les mots deviennent illisibles à 375 px ne remplit pas son
+// rôle. `main` fait 46rem avec 1.5rem de padding : à 375 px de viewport, le contenu dispose de
+// 327 px. La taille rendue d'un texte vaut donc font-size × (327 / largeur du viewBox).
+describe("lisibilité mobile des visuels du cluster", () => {
+  const MOBILE_CONTENT_WIDTH = 327;
+  const MIN_RENDERED_PX = 10;
+
+  test.each(["authority-presence-union-v1", "observability-states-v1"])(
+    "%s reste lisible à 375 px",
+    (id) => {
+      const svg = readFileSync(path.join(ROOT, "public", getVisual(id)!.src), "utf8");
+      const viewBoxWidth = Number(/viewBox="0 0 (\d+)/.exec(svg)![1]);
+      const sizes = [...svg.matchAll(/font-size="(\d+)"/g)].map((m) => Number(m[1]));
+      expect(sizes.length).toBeGreaterThan(0);
+      const scale = MOBILE_CONTENT_WIDTH / viewBoxWidth;
+      const smallest = Math.min(...sizes) * scale;
+      expect(
+        smallest,
+        `${id} : plus petit texte rendu à ${smallest.toFixed(1)} px (viewBox ${viewBoxWidth}, échelle ${scale.toFixed(2)})`
+      ).toBeGreaterThanOrEqual(MIN_RENDERED_PX);
+    }
+  );
+
+  test("aucun visuel du cluster n'est déformé par une transformation non uniforme", () => {
+    for (const id of ["authority-presence-union-v1", "observability-states-v1"]) {
+      const svg = readFileSync(path.join(ROOT, "public", getVisual(id)!.src), "utf8");
+      // scale(0.5 1) écraserait le texte horizontalement — illisible autrement.
+      expect(svg, `${id}`).not.toMatch(/scale\(\s*[\d.]+\s+[\d.]+\s*\)/);
+    }
+  });
+});

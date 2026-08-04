@@ -40,7 +40,18 @@ export default function Home() {
         never as zero.
       </div>
 
-      {/* Maillage interne : collection → lien → page (tranche verticale S0). */}
+      {/* Maillage interne : collection → lien → page (tranche verticale S0), puis entrée vers le
+          cluster de méthodologie (S3). Liens ÉDITORIAUX décrivant leur destination — ni hero, ni
+          second CTA commercial. Aucun claim nouveau : ils ne promettent rien, ils orientent. */}
+      <p>
+        <Link href="/methodology/authority-presence">
+          Explore the Authority Presence methodology &rarr;
+        </Link>
+        <br />
+        <span className="muted">
+          See how Direct, Indirect, Total, observability and measurement quality are defined.
+        </span>
+      </p>
       <p>
         <Link href="/faq">Questions about how TextOS measures &rarr;</Link>
       </p>

@@ -1,38 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 420" role="img"
      aria-labelledby="obs1-title obs1-desc" font-family="system-ui, sans-serif">
   <title id="obs1-title">Four distinct observation states, of which not observable is not a zero</title>
-  <desc id="obs1-desc">Four separate states shown side by side. Observed positive is a filled bar. Observed zero is an empty bar with a baseline, meaning the engine answered and the brand was absent. Not observable is not a bar at all: it is a dashed empty frame with no baseline, meaning no measurement exists. Incomplete observation is a partial dashed frame, meaning too few observations to report. Observed zero and not observable are never drawn the same way.</desc>
+  <desc id="obs1-desc">Four separate states shown in a two by two grid. Observed positive is a filled bar on a baseline. Observed zero is an empty bar on a baseline, meaning the engine answered and the brand was absent. Not observable is not a bar at all: it is a dashed empty frame with a dash inside and no baseline, meaning no measurement exists. Incomplete observation is a partially filled dashed frame, meaning too few observations to report. Observed zero and not observable are never drawn the same way.</desc>
 
-  <rect width="760" height="300" fill="#ffffff"/>
-  <text x="380" y="32" font-size="16" font-weight="600" fill="#1c2430" text-anchor="middle">Four states, never collapsed into one number</text>
+  <!-- Grille 2×2 plutôt que quatre colonnes : à 327 px de large, quatre colonnes rendraient
+       les libellés illisibles. L'ordre de lecture reste positive → zero → not observable → incomplete. -->
+  <rect width="360" height="420" fill="#ffffff"/>
+  <text x="180" y="26" font-size="14" font-weight="600" fill="#1c2430" text-anchor="middle">Four states, never collapsed into one</text>
 
-  <!-- observed positive : a real, filled measurement -->
-  <rect x="60" y="120" width="90" height="100" fill="#3b6fd4" stroke="#3b6fd4" stroke-width="2"/>
-  <line x1="52" y1="220" x2="158" y2="220" stroke="#1c2430" stroke-width="2"/>
-  <text x="105" y="246" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">observed</text>
-  <text x="105" y="262" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">positive</text>
-  <text x="105" y="282" font-size="11" fill="#4a5361" text-anchor="middle">a value was measured</text>
+  <!-- observed positive : mesure réelle, remplie, sur une ligne de base -->
+  <rect x="40" y="56" width="60" height="72" fill="#3b6fd4" stroke="#3b6fd4" stroke-width="2"/>
+  <line x1="32" y1="128" x2="108" y2="128" stroke="#1c2430" stroke-width="2"/>
+  <text x="70" y="150" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">observed</text>
+  <text x="70" y="166" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">positive</text>
+  <text x="70" y="184" font-size="12" fill="#4a5361" text-anchor="middle">a value was</text>
+  <text x="70" y="198" font-size="12" fill="#4a5361" text-anchor="middle">measured</text>
 
-  <!-- observed zero : a real measurement whose value is zero. Baseline present. -->
-  <rect x="240" y="120" width="90" height="100" fill="none" stroke="#3b6fd4" stroke-width="2"/>
-  <line x1="232" y1="220" x2="338" y2="220" stroke="#1c2430" stroke-width="2"/>
-  <text x="285" y="246" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">observed</text>
-  <text x="285" y="262" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">zero</text>
-  <text x="285" y="282" font-size="11" fill="#4a5361" text-anchor="middle">measured, and absent</text>
+  <!-- observed zero : mesure réelle valant zéro. LIGNE DE BASE présente. -->
+  <rect x="250" y="56" width="60" height="72" fill="none" stroke="#3b6fd4" stroke-width="2"/>
+  <line x1="242" y1="128" x2="318" y2="128" stroke="#1c2430" stroke-width="2"/>
+  <text x="280" y="150" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">observed</text>
+  <text x="280" y="166" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">zero</text>
+  <text x="280" y="184" font-size="12" fill="#4a5361" text-anchor="middle">measured,</text>
+  <text x="280" y="198" font-size="12" fill="#4a5361" text-anchor="middle">and absent</text>
 
-  <!-- not observable : NO bar, NO baseline. Deliberately not a zero-height bar. -->
-  <rect x="420" y="120" width="90" height="100" fill="none" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
-  <text x="465" y="176" font-size="22" fill="#9aa3b2" text-anchor="middle">—</text>
-  <text x="465" y="246" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">not</text>
-  <text x="465" y="262" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">observable</text>
-  <text x="465" y="282" font-size="11" fill="#4a5361" text-anchor="middle">no measurement exists</text>
+  <!-- not observable : NI barre NI ligne de base. Jamais une barre de hauteur zéro. -->
+  <rect x="40" y="238" width="60" height="72" fill="none" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="70" y="282" font-size="20" fill="#9aa3b2" text-anchor="middle">—</text>
+  <text x="70" y="332" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">not</text>
+  <text x="70" y="348" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">observable</text>
+  <text x="70" y="366" font-size="12" fill="#4a5361" text-anchor="middle">no measurement</text>
+  <text x="70" y="380" font-size="12" fill="#4a5361" text-anchor="middle">exists</text>
 
-  <!-- incomplete : partial support, reported as such -->
-  <rect x="600" y="120" width="90" height="100" fill="none" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
-  <rect x="600" y="180" width="90" height="40" fill="#9aa3b2" fill-opacity="0.25"/>
-  <text x="645" y="246" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">incomplete</text>
-  <text x="645" y="262" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">observation</text>
-  <text x="645" y="282" font-size="11" fill="#4a5361" text-anchor="middle">too little support</text>
+  <!-- incomplete : support partiel, déclaré comme tel -->
+  <rect x="250" y="238" width="60" height="72" fill="none" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+  <rect x="250" y="282" width="60" height="28" fill="#9aa3b2" fill-opacity="0.25"/>
+  <text x="280" y="332" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">incomplete</text>
+  <text x="280" y="348" font-size="13" font-weight="600" fill="#1c2430" text-anchor="middle">observation</text>
+  <text x="280" y="366" font-size="12" fill="#4a5361" text-anchor="middle">too little</text>
+  <text x="280" y="380" font-size="12" fill="#4a5361" text-anchor="middle">support</text>
 
-  <text x="380" y="76" font-size="12" fill="#8a2f2f" text-anchor="middle">« not observable » has no baseline and no bar: it is an absence of measurement, not a value of zero.</text>
+  <text x="180" y="222" font-size="12" fill="#8a2f2f" text-anchor="middle">no bar, no baseline: an absence, not a zero</text>
 </svg>
