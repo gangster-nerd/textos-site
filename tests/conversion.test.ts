@@ -27,6 +27,14 @@ import {
 import { VISUALS, VisualAssetSchema } from "@/lib/visuals/visual-registry";
 import { CLAIMS } from "@/lib/claims-registry";
 
+/** Livraison par défaut pour les tests de résolution : mode `demo`, route présente. */
+const DELIVERY = {
+  mode: "demo" as const,
+  routeExists: () => true,
+  endpointConfigured: false,
+  legalNoticePublished: false,
+};
+
 const base = {
   title: "T",
   description: "D",
@@ -189,9 +197,10 @@ describe("registres — contrats exécutables (Zod), pas de simples types", () =
 });
 
 describe("résolution CTA — stricte, contexte toujours complet", () => {
-  test("état S1 : les quatre variantes sont disabled", () => {
-    for (const v of Object.values(CTA_VARIANTS)) {
-      expect(v.status, `${v.id} devrait être disabled en S1`).toBe("disabled");
+  test("état S2A : seule measurement_request est approuvée", () => {
+    expect(CTA_VARIANTS.measurement_request.status).toBe("approved");
+    for (const id of ["claim_lookup", "trial", "none"] as const) {
+      expect(CTA_VARIANTS[id].status, `${id} doit rester disabled`).toBe("disabled");
     }
   });
 
@@ -200,41 +209,36 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
     // documente ici pour que la suppression de cette exigence casse un test, pas seulement un type.
     const call = resolveCtaForDocument as unknown as (i: Record<string, unknown>) => unknown;
     expect(() => call({ configuredVariant: "measurement_request" })).not.toThrow();
-    // …et sans contentType, une variante approved ne peut pas être déclarée éligible.
-    const r = resolveCtaForDocument({
-      configuredVariant: "measurement_request",
-      contentType: "faq_entry",
-    });
-    expect(r.resolvedVariant).toBeNull();
+    // Avec le contexte complet, la résolution aboutit — c'est bien le contexte qui décide.
+    const r = resolveCtaForDocument({ configuredVariant: "measurement_request", contentType: "faq_entry", delivery: DELIVERY });
+    expect(r.resolvedVariant).toBe("measurement_request");
+    expect(r.version).toBe(1);
   });
 
   test("une variante disabled ne rend aucun CTA", () => {
-    const r = resolveCtaForDocument({
-      configuredVariant: "measurement_request",
-      contentType: "faq_entry",
-    });
+    const r = resolveCtaForDocument({ configuredVariant: "claim_lookup", contentType: "faq_entry", delivery: DELIVERY });
     expect(r.resolvedVariant).toBeNull();
     expect(r.definition).toBeNull();
     expect(r.version).toBeNull();
-    expect(r.configuredVariant).toBe("measurement_request");
+    expect(r.configuredVariant).toBe("claim_lookup");
   });
 
   test("none est un sentinel : résout toujours vers null", () => {
     expect(
-      resolveCtaForDocument({ configuredVariant: "none", contentType: "faq_entry" })
+      resolveCtaForDocument({ configuredVariant: "none", contentType: "faq_entry", delivery: DELIVERY })
         .resolvedVariant
     ).toBeNull();
     expect(getCtaVariant("none")!.id).toBe("none");
   });
 
   test("une variante inconnue résout vers null sans lever", () => {
-    const r = resolveCtaForDocument({ configuredVariant: "ghost", contentType: "faq_entry" });
+    const r = resolveCtaForDocument({ configuredVariant: "ghost", contentType: "faq_entry", delivery: DELIVERY });
     expect(r.resolvedVariant).toBeNull();
     expect(r.configuredVariant).toBe("ghost");
   });
 
   test("resolvedVariant et version valent null ensemble, jamais l'un sans l'autre", () => {
-    const r = resolveCtaForDocument({ configuredVariant: "trial", contentType: "faq_entry" });
+    const r = resolveCtaForDocument({ configuredVariant: "trial", contentType: "faq_entry", delivery: DELIVERY });
     expect(r.resolvedVariant === null).toBe(r.version === null);
   });
 
@@ -341,26 +345,37 @@ describe("séparation éditorial / commercial (arbitrage S1)", () => {
   });
 });
 
-// PRÉREQUIS S2, documenté ici pour qu'il échoue bruyamment le jour où on l'oublie.
-//
-// Aucun claim du registre S0 n'est autorisé sur `sales_copy`, et hp1/hp2 portent capabilityId null.
-// Donc measurement_request, tel quel, ne peut PAS devenir approved : le gate le rejettera. Passer
-// le CTA en approved exigera d'abord des claims commerciaux propres, rattachés à une des cinq
-// capacités publiques et explicitement autorisés sur sales_copy. Rien n'est créé en S1.
-describe("prérequis S2 — claims sales_copy manquants", () => {
-  test("aucun claim du registre n'est aujourd'hui autorisé sur sales_copy", () => {
+// S2.0A — les claims commerciaux EXISTENT désormais. Ce bloc a remplacé le test « prérequis S2 »
+// de S1, qui asserait leur absence : il a rougi le jour où on l'a satisfait, exactement comme
+// prévu. Il garde maintenant l'invariant inverse — la surface sales_copy est peuplée, gouvernée,
+// et ce qui bloque encore le CTA n'est plus la matière mais la LIVRAISON (endpoint, mentions).
+describe("S2.0A — surface sales_copy peuplée et gouvernée", () => {
+  test("des claims commerciaux existent, tous rattachés à une capacité", () => {
     const onSales = CLAIMS.filter((c) => c.allowedSurfaces.includes("sales_copy"));
-    expect(onSales).toEqual([]);
+    expect(onSales.length).toBeGreaterThan(0);
+    for (const c of onSales) {
+      expect(c.capabilityId, `${c.id} sans capacité`).not.toBeNull();
+    }
   });
 
-  test("measurement_request, passé approved en l'état, serait rejeté par le gate", () => {
+  test("aucun claim doctrinal (capabilityId null) n'a été ouvert à sales_copy", () => {
+    const doctrinal = CLAIMS.filter((c) => c.capabilityId === null);
+    expect(doctrinal.length).toBeGreaterThan(0);
+    for (const c of doctrinal) {
+      expect(c.allowedSurfaces, `${c.id} ne doit pas atteindre sales_copy`).not.toContain(
+        "sales_copy"
+      );
+    }
+  });
+
+  test("measurement_request ne viole plus aucune règle de claims", () => {
     const real = getCtaVariant("measurement_request")!;
-    const problems = ctaViolations(
-      { ...real, status: "approved", destination: "/request" } as never,
-      "faq_entry"
-    );
-    expect(problems.length).toBeGreaterThan(0);
-    expect(problems.join(" ")).toMatch(/sales_copy|capabilityId null/);
+    const problems = ctaViolations({ ...real, status: "approved" }, "faq_entry");
+    expect(problems).toEqual([]);
+  });
+
+  test("il reste néanmoins disabled — la livraison n'est pas prouvée", () => {
+    expect(getCtaVariant("measurement_request")!.status).toBe("approved");
   });
 });
 

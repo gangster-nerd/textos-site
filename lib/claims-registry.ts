@@ -16,6 +16,10 @@ export type Claim = {
 };
 
 const S8_SURFACES: Surface[] = ["developer_note", "changelog", "faq"];
+// Surface COMMERCIALE, et elle SEULE. Ces claims dérivent de la copy homepage, mais ça ne justifie
+// pas de les ouvrir aux surfaces éditoriales : HP1/HP2 continuent de gouverner la doctrine publique,
+// ces claims-ci gouvernent uniquement la proposition commerciale. Deux registres de discours.
+const SALES_ONLY: Surface[] = ["sales_copy"];
 const DOCTRINE_SURFACES: Surface[] = [
   "developer_note",
   "changelog",
@@ -66,6 +70,44 @@ export const CLAIMS: readonly Claim[] = [
       "Direct, Indirect and Total are separate measures. Total Authority Presence is the union of direct and indirect presence, never their sum. A signal that is not observable is reported as not observable, never zero.",
     evidenceRefs: ["homepage"],
     allowedSurfaces: DOCTRINE_SURFACES,
+  },
+
+  // --- Claims COMMERCIAUX (S2.0A) — surface sales_copy ---
+  //
+  // Rattachés à `observe-authority-presence` (libellé public : « Authority Presence measurement »),
+  // seule capacité que le CTA `measurement_request` engage. Les quatre autres capacités publiques
+  // auront leurs propres claims commerciaux en S3, quand les pages de méthodologie fourniront leur
+  // formulation exacte — on n'invente pas aujourd'hui des descriptions non approuvées.
+  //
+  // HP1/HP2 restent hors de cet ensemble : `capabilityId: null` les rend inutilisables pour un CTA
+  // (le gate exige que chaque claim appartienne aux requiredCapabilities). Doctrine éditoriale
+  // d'un côté, proposition commerciale de l'autre — on ne leur attribue pas une capacité pour
+  // contourner le gate, et on ne relâche pas le gate.
+  {
+    id: "sales-authority-presence-measurement",
+    capabilityId: "observe-authority-presence",
+    statement: "TextOS measures how AI answer engines cite your brand.",
+    evidenceRefs: ["homepage-approved-copy"],
+    allowedSurfaces: SALES_ONLY,
+  },
+  {
+    id: "sales-versioned-authority-measurement",
+    capabilityId: "observe-authority-presence",
+    statement:
+      "TextOS measures a brand's authority presence reproducibly, on a versioned query panel, with dispersion and completeness.",
+    evidenceRefs: ["homepage-approved-copy"],
+    allowedSurfaces: SALES_ONLY,
+  },
+  {
+    // RATIFIÉ PAR LE PO (2026-08-04) dans cette formulation exacte. « current » empêche d'en faire
+    // une vérité éternelle sur le produit ; « does not include » décrit l'offre actuelle sans
+    // suggérer que TextOS ne pourra jamais proposer d'autres couches.
+    id: "sales-authority-presence-boundaries",
+    capabilityId: "observe-authority-presence",
+    statement:
+      "TextOS's current Authority Presence measurement is not a score and does not include recommendations, ROI estimates, or guarantees of ranking or AI citation.",
+    evidenceRefs: ["homepage-approved-copy", "public-product-refusals"],
+    allowedSurfaces: SALES_ONLY,
   },
 ];
 

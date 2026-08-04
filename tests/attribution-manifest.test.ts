@@ -14,6 +14,7 @@ import {
   toManifestEntries,
 } from "@/lib/content/attribution-manifest";
 import { loadDocument, type ResolvedDocument } from "@/lib/content/content-loader";
+import { conversionConfig } from "@/lib/conversion/conversion-config";
 
 const ROOT = process.cwd();
 const FAQ_SLUG = "does-textos-automatically-verify-claims";
@@ -28,13 +29,21 @@ describe("périmètre du manifeste", () => {
     }
   });
 
-  test("contient l'entrée FAQ avec resolvedCtaVariant = null en S1", () => {
+  test("contient l'entrée FAQ, avec le CTA réellement résolu pour le mode courant", () => {
     const { entries } = buildManifest(ROOT);
     const faq = entries.find((e) => e.id === `faq:${FAQ_SLUG}`);
     expect(faq).toBeDefined();
     expect(faq?.configuredCtaVariant).toBe("measurement_request");
-    expect(faq?.resolvedCtaVariant).toBeNull();
-    expect(faq?.ctaVersion).toBeNull();
+    // Le manifeste décrit ce qui est RENDU, donc il dépend du mode de livraison — et il doit en
+    // dépendre de la même façon que les pages. En `off` rien n'est rendu ; en `demo`/`live` le CTA
+    // l'est. Coder `null` en dur ferait échouer le CI dès qu'il valide le vrai mode.
+    if (conversionConfig.isOff) {
+      expect(faq?.resolvedCtaVariant).toBeNull();
+      expect(faq?.ctaVersion).toBeNull();
+    } else {
+      expect(faq?.resolvedCtaVariant).toBe("measurement_request");
+      expect(faq?.ctaVersion).toBe(1);
+    }
     expect(faq?.clusterId).toBe("measurement-trust");
     expect(faq?.contentType).toBe("faq_entry");
     expect(faq?.path).toBe(`/faq/${FAQ_SLUG}`);

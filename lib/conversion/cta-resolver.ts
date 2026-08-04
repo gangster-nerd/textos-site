@@ -20,6 +20,7 @@
 import { CAPABILITY_STATUS, isMarketable, type Status } from "@/lib/capability-registry";
 import { findClaim } from "@/lib/claims-registry";
 import type { ContentTypeName } from "@/lib/content/content-types";
+import type { ConversionMode } from "./conversion-config";
 import { getCtaVariant, type CtaVariant, type CtaVariantId } from "./cta-registry";
 
 /** Surface commerciale des claims portés par un CTA. Distincte des surfaces éditoriales. */
@@ -40,6 +41,8 @@ export interface ResolveCtaForDocumentInput {
   configuredVariant: string;
   /** REQUIS. Le contexte n'est jamais optionnel : sans lui, pas de décision. */
   contentType: ContentTypeName;
+  /** REQUIS. Une variante approuvée éditorialement n'est rendue que si elle est LIVRABLE. */
+  delivery: CtaDeliveryContext;
 }
 
 const NOT_RESOLVED = (configuredVariant: string): CtaResolution => ({
@@ -106,6 +109,64 @@ export function ctaViolations(v: CtaVariant, contentType: ContentTypeName): stri
 }
 
 /**
+ * Contexte de LIVRAISON d'un CTA — ce qui doit exister réellement pour qu'une variante puisse être
+ * approuvée. Injecté plutôt que lu ici : `ctaViolations` et ses voisines restent pures et
+ * testables, la lecture du filesystem et de l'environnement reste au bord (`runGates`).
+ */
+export interface CtaDeliveryContext {
+  /** Mode de conversion — gouverne la livraison, pas la copy. */
+  mode: ConversionMode;
+  /** La destination interne correspond-elle à une route réellement exportée ? */
+  routeExists: (path: string) => boolean;
+  /** L'endpoint du sous-traitant est-il configuré ? Exigé en `live` seulement. */
+  endpointConfigured: boolean;
+  /** Les mentions légales sont-elles publiées ? Exigé en `live` seulement. */
+  legalNoticePublished: boolean;
+}
+
+/**
+ * Préconditions de LIVRAISON (S2.6). Une destination interne ne suffit pas : la page doit exister,
+ * le formulaire doit pouvoir aboutir, et la notice doit être publiée. Sans ces contrôles, un CTA
+ * `approved` pourrait pointer vers une 404, poster dans le vide, ou collecter des données sans
+ * information préalable — trois façons d'être en faute sans qu'aucun test ne s'en aperçoive.
+ */
+export function ctaDeliveryViolations(
+  v: CtaVariant,
+  ctx: CtaDeliveryContext
+): string[] {
+  const problems: string[] = [];
+
+  // Mode `off` : rien n'est livrable, donc rien n'est rendu. Ce n'est pas une faute de config —
+  // c'est un retrait volontaire (développement incomplet, incident fournisseur).
+  if (ctx.mode === "off") return ["mode de conversion « off »"];
+
+  if (v.destination === null) return problems; // déjà signalé par `ctaViolations`
+
+  // Destination EXTERNE : hors périmètre gouverné. On refuse — le parcours éditorial ne se délègue
+  // pas au fournisseur (il ne reçoit que la soumission).
+  if (!v.destination.startsWith("/")) {
+    problems.push(`pointe vers une destination externe (${v.destination})`);
+    return problems;
+  }
+
+  if (!ctx.routeExists(v.destination)) {
+    problems.push(`pointe vers ${v.destination}, qui n'est pas une route exportée`);
+  }
+  // En `demo`, RIEN n'est transmis ni stocké : ni endpoint ni mentions légales ne sont requis, et
+  // le parcours doit être intégralement praticable. C'est tout l'objet du mode — montrer la
+  // production, pas une version amputée.
+  if (ctx.mode === "live") {
+    if (!ctx.endpointConfigured) {
+      problems.push("aucun endpoint de réception configuré — le formulaire n'aboutirait nulle part");
+    }
+    if (!ctx.legalNoticePublished) {
+      problems.push("mentions légales non publiées — aucune collecte sans information préalable");
+    }
+  }
+  return problems;
+}
+
+/**
  * Échec BRUYANT au build pour une variante `approved` mal configurée. Le silence serait un piège :
  * un CTA approuvé qui ne rend rien sans explication est plus coûteux à diagnostiquer qu'un build
  * rouge. Ne dit rien des variantes `disabled`/`retired`/`none` — leur non-rendu est voulu.
@@ -123,7 +184,7 @@ export function assertCtaPublishable(v: CtaVariant, contentType: ContentTypeName
  * (Le refus bruyant, quand il est justifié, est le rôle de `assertCtaPublishable` via `runGates`.)
  */
 export function resolveCtaForDocument(input: ResolveCtaForDocumentInput): CtaResolution {
-  const { configuredVariant, contentType } = input;
+  const { configuredVariant, contentType, delivery } = input;
   const definition = getCtaVariant(configuredVariant);
 
   if (!definition) return NOT_RESOLVED(configuredVariant);
@@ -134,6 +195,10 @@ export function resolveCtaForDocument(input: ResolveCtaForDocumentInput): CtaRes
 
   if (definition.status !== "approved") return NOT_RESOLVED(configuredVariant);
   if (ctaViolations(definition, contentType).length > 0) {
+    return NOT_RESOLVED(configuredVariant);
+  }
+  // Approbation éditoriale ET livraison opérationnelle. Les deux, jamais l'une pour l'autre.
+  if (ctaDeliveryViolations(definition, delivery).length > 0) {
     return NOT_RESOLVED(configuredVariant);
   }
 

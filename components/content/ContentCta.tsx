@@ -22,9 +22,16 @@ export function ContentCta({ variant, contentId, position }: ContentCtaProps) {
   if (variant === null) return null;
 
   const definition = getCtaVariant(variant);
-  // Rétrécissement de type, pas un second gate : une variante résolue a nécessairement une
-  // destination (garantie par `ctaViolations`). Cette branche est inatteignable en pratique.
-  if (!definition || definition.destination === null) return null;
+  if (!definition) return null;
+
+  // Dernière ligne de défense du contrat du composant : il ne rend QUE ce qui a été résolu. Tant
+  // que la variante n'est pas `approved`, aucun rendu — même si un appelant lui passait par erreur
+  // la variante brute du frontmatter au lieu de `resolvedVariant`.
+  //
+  // Ce n'est pas un gate parallèle : aucune logique de capacité, de contentType ni de claims ici.
+  // C'est le statut de la variante elle-même, et il est devenu nécessaire dès lors qu'un CTA porte
+  // une destination réelle — l'absence de destination ne fait plus filet de sécurité.
+  if (definition.status !== "approved" || definition.destination === null) return null;
 
   return (
     <aside
