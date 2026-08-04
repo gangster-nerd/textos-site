@@ -14,23 +14,31 @@ describe("ContentCta — rendu d'une décision déjà prise", () => {
     expect(ContentCta({ variant: null, contentId: "faq:x", position: "end" })).toBeNull();
   });
 
-  test("ne peut pas rendre une variante configurée mais NON résolue", () => {
-    // `measurement_request` est ce que le frontmatter déclare. Si quelqu'un le passait directement
-    // au composant (au lieu de `resolvedVariant`), rien ne doit sortir : la variante est disabled
-    // et sans destination. Le composant n'a aucun moyen de « rattraper » une décision non prise.
-    expect(getCtaVariant("measurement_request")!.status).toBe("disabled");
+  test("ne peut pas rendre une variante NON approuvée, même passée directement", () => {
+    // `claim_lookup` est disabled. Si quelqu'un le passait au composant au lieu de
+    // `resolvedVariant`, rien ne doit sortir : le composant n'a aucun moyen de « rattraper » une
+    // décision non prise. C'est la défense en profondeur, le gate restant l'autorité.
+    expect(getCtaVariant("claim_lookup")!.status).toBe("disabled");
     expect(
-      ContentCta({ variant: "measurement_request", contentId: "faq:x", position: "end" })
+      ContentCta({ variant: "claim_lookup", contentId: "faq:x", position: "end" })
     ).toBeNull();
   });
 
-  test("aucune variante du registre S1 ne produit de rendu", () => {
-    for (const id of ["measurement_request", "claim_lookup", "trial", "none"] as const) {
+  test("aucune variante non approuvée ne produit de rendu", () => {
+    for (const id of ["claim_lookup", "trial", "none"] as const) {
       expect(
         ContentCta({ variant: id, contentId: "faq:x", position: "end" }),
-        `${id} ne doit rien rendre en S1`
+        `${id} ne doit rien rendre`
       ).toBeNull();
     }
+  });
+
+  test("la variante approuvée, elle, rend sa copy de registre", () => {
+    // C'est l'objet du mode démo : le parcours de conversion est visible, identique à la production.
+    expect(getCtaVariant("measurement_request")!.status).toBe("approved");
+    expect(
+      ContentCta({ variant: "measurement_request", contentId: "faq:x", position: "end" })
+    ).not.toBeNull();
   });
 
   test("les deux positions sont acceptées et n'influencent pas la décision", () => {

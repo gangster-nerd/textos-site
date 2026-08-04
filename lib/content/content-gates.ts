@@ -1,7 +1,12 @@
 import { CAPABILITY_STATUS, type Status } from "@/lib/capability-registry";
 import { findClaim, type Surface } from "@/lib/claims-registry";
 import { getCluster } from "@/lib/content/content-cluster-registry";
+import { existsSync } from "node:fs";
+import path from "node:path";
+
+import { conversionConfig } from "@/lib/conversion/conversion-config";
 import { getCtaVariant } from "@/lib/conversion/cta-registry";
+import type { CtaDeliveryContext } from "@/lib/conversion/cta-resolver";
 import {
   assertCtaPublishable,
   resolveCtaForDocument,
@@ -39,6 +44,18 @@ const MATURITY_LABEL: Partial<Record<Status, string>> = {
 };
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+/**
+ * Contexte de livraison réel — le seul endroit qui touche l'environnement et le filesystem. Les
+ * règles, elles, restent pures dans `cta-resolver`.
+ */
+const deliveryContext: CtaDeliveryContext = {
+  mode: conversionConfig.mode,
+  routeExists: (route) =>
+    existsSync(path.join(process.cwd(), "app", ...route.split("/").filter(Boolean), "page.tsx")),
+  endpointConfigured: conversionConfig.formEndpoint !== null,
+  legalNoticePublished: conversionConfig.legalNoticePublished,
+};
 
 export function runGates(fm: ContentFrontmatter, slug: string) {
   if (!SLUG.test(slug)) {
@@ -99,6 +116,7 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
   const ctaResolution: CtaResolution = resolveCtaForDocument({
     configuredVariant: fm.ctaVariant,
     contentType: fm.contentType,
+    delivery: deliveryContext,
   });
 
   // Visuels : chaque id doit exister, être approved, couvrir ce contentType — et ne PAS introduire

@@ -62,7 +62,8 @@ export type CtaVariant = z.infer<typeof CtaVariantSchema>;
 
 export const CtaRegistrySchema = z.record(z.enum(CTA_VARIANT_IDS), CtaVariantSchema);
 
-// État initial S1 : TOUTES les variantes sont `disabled` — aucune destination n'existe encore.
+// `measurement_request` est approuvée (S2A) ; `claim_lookup` et `trial` restent `disabled` — aucune
+// destination, aucune copy commerciale ratifiée.
 //
 // `none` est le sentinel « pas de CTA ». Il est `disabled` comme les autres, et non `approved`
 // avec une exemption : un statut `approved` sans destination serait une incohérence que le gate
@@ -71,13 +72,14 @@ export const CtaRegistrySchema = z.record(z.enum(CTA_VARIANT_IDS), CtaVariantSch
 const RAW_CTA_VARIANTS = {
   measurement_request: {
     id: "measurement_request",
-    status: "disabled",
+    // APPROUVÉ éditorialement : la définition, la copy, les claims et la destination interne sont
+    // ratifiés. Ce statut ne dit RIEN du fournisseur — la livraison est gouvernée par
+    // `conversion-config.ts`. En mode `demo`, le parcours est complet et la soumission simulée.
+    status: "approved",
     requiredCapabilities: ["observe-authority-presence"],
     allowedContentTypes: ["faq_entry", "product_article"],
     // Destination INTERNE et gouvernée : la page de formulaire vit dans ce repo, pas chez le
-    // sous-traitant. Le statut reste `disabled` — le passage à `approved` attend le domaine, le
-    // nom public et le SIRET (mentions légales publiables). L'irréversible ne précède pas le
-    // réversible : tout est éprouvable ici sans rien publier de définitif.
+    // sous-traitant.
     destination: "/request-measurement",
     title: "See your brand measured",
     body: "Request an authority-presence measurement on a versioned query panel for your brand.",

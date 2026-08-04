@@ -41,11 +41,51 @@ describe("fichier SVG source (toujours vérifiable)", () => {
 describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () => {
   const html = () => readFileSync(FAQ_HTML, "utf8");
 
-  test("aucun CTA rendu en S1 (toutes les variantes sont disabled)", () => {
-    expect(html()).not.toContain("content-cta");
-    expect(html()).not.toContain("data-cta-variant");
-    // Ni bouton grisé, ni promesse différée : le CTA est absent, pas désactivé.
-    expect(html()).not.toMatch(/coming soon/i);
+  test("le CTA de mesure est rendu une seule fois, avec son attribution", () => {
+    const out = html();
+    // Une seule occurrence DANS LE DOM. La seconde chaîne du fichier appartient au payload RSC
+    // sérialisé par Next — même bloc, pas un second rendu.
+    expect(out.match(/class="content-cta"/g) ?? []).toHaveLength(1);
+    expect(out).toContain('data-cta-variant="measurement_request"');
+    expect(out).toContain('data-cta-version="1"');
+    expect(out).toContain('data-content-id="faq:does-textos-automatically-verify-claims"');
+    expect(out).toContain('data-cta-position="end"');
+  });
+
+  test("le CTA vient APRÈS le corps, jamais juste après le short answer", () => {
+    const out = html();
+    const shortAnswer = out.indexOf("Short answer");
+    const visual = out.indexOf("data-visual-id");
+    const cta = out.indexOf('class="content-cta"');
+    expect(shortAnswer).toBeGreaterThan(-1);
+    expect(visual).toBeGreaterThan(shortAnswer);
+    expect(cta).toBeGreaterThan(visual);
+  });
+
+  test("le bloc CTA ne contient aucune promesse excessive", () => {
+    // Portée volontairement RESTREINTE au bloc de conversion : « automatically » est le sujet même
+    // de cette FAQ (« Does TextOS automatically verify claims? »). Interdire le mot sur toute la
+    // page confondrait le propos éditorial avec une promesse commerciale.
+    const out = html();
+    const start = out.indexOf('class="content-cta"');
+    expect(start).toBeGreaterThan(-1);
+    // TEXTE VISIBLE seulement : les attributs portent `data-content-id`, dérivé du slug — lequel
+    // contient « automatically ». Un identifiant technique n'est pas une promesse.
+    const cta = out
+      .slice(start, out.indexOf("</aside>", start))
+      .replace(/<[^>]*>/g, " ")
+      .replace(/^[^>]*>/, "")
+      .toLowerCase();
+    for (const forbidden of ["coming soon", "guaranteed", "automatically", "free trial", "instant"]) {
+      expect(cta, `ne doit pas apparaître dans le CTA : ${forbidden}`).not.toContain(forbidden);
+    }
+  });
+
+  test("aucun identifiant interne n'est exposé dans l'export", () => {
+    const out = html().toLowerCase();
+    for (const internal of ["sales_copy", "sales-authority", "observe-authority-presence", "capabilityid"]) {
+      expect(out, `identifiant interne exposé : ${internal}`).not.toContain(internal);
+    }
   });
 
   test("le visuel est rendu avec un alt et une figcaption", () => {
@@ -56,14 +96,31 @@ describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () =
     expect(out).toMatch(/<figcaption>[^<]+<\/figcaption>/);
   });
 
-  test("le manifeste d'attribution existe et pointe la route réelle", () => {
+  test("le manifeste reflète le CTA réellement rendu", () => {
     const manifest = JSON.parse(
       readFileSync(path.join(OUT, "content-attribution-manifest.json"), "utf8")
     );
-    const faq = manifest.entries.find(
-      (e: { id: string }) => e.id === `faq:${FAQ_SLUG}`
-    );
-    expect(faq.resolvedCtaVariant).toBeNull();
+    const faq = manifest.entries.find((e: { id: string }) => e.id === `faq:${FAQ_SLUG}`);
+    expect(faq.configuredCtaVariant).toBe("measurement_request");
+    expect(faq.resolvedCtaVariant).toBe("measurement_request");
+    expect(faq.ctaVersion).toBe(1);
     expect(existsSync(path.join(OUT, "faq", `${FAQ_SLUG}.html`))).toBe(true);
+  });
+
+  test("le parcours de conversion est complet dans l'export", () => {
+    const form = readFileSync(path.join(OUT, "request-measurement.html"), "utf8");
+    const received = readFileSync(
+      path.join(OUT, "request-measurement", "received.html"),
+      "utf8"
+    );
+    // Formulaire complet, en mode démo, sans action externe.
+    expect(form).toContain('data-conversion-mode="demo"');
+    expect(form).toContain("What questions do your buyers ask?");
+    expect(form).toContain("Do not include confidential");
+    expect(form).not.toMatch(/action="https?:/);
+    // Disclosure de démonstration, et confirmation gouvernée inchangée.
+    expect(form).toContain("Demo environment");
+    expect(received).toContain("Request received.");
+    expect(received).toContain("not an acceptance, a commitment to respond, or delivery");
   });
 });
