@@ -12,6 +12,8 @@ import path from "node:path";
 
 import { describe, expect, test } from "vitest";
 
+import { conversionConfig } from "@/lib/conversion/conversion-config";
+
 const ROOT = process.cwd();
 const OUT = path.join(ROOT, "out");
 const FAQ_SLUG = "does-textos-automatically-verify-claims";
@@ -41,7 +43,11 @@ describe("fichier SVG source (toujours vérifiable)", () => {
 describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () => {
   const html = () => readFileSync(FAQ_HTML, "utf8");
 
-  test("le CTA de mesure est rendu une seule fois, avec son attribution", () => {
+  // Les deux contrats de mode, éprouvés sur l'export réel. `off` et `demo` ne promettent pas la
+  // même chose : les asserter séparément est le seul moyen de prouver les deux.
+  const DEMO = !conversionConfig.isOff;
+
+  test.runIf(DEMO)("mode demo : le CTA est rendu une seule fois, avec son attribution", () => {
     const out = html();
     // Une seule occurrence DANS LE DOM. La seconde chaîne du fichier appartient au payload RSC
     // sérialisé par Next — même bloc, pas un second rendu.
@@ -52,7 +58,7 @@ describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () =
     expect(out).toContain('data-cta-position="end"');
   });
 
-  test("le CTA vient APRÈS le corps, jamais juste après le short answer", () => {
+  test.runIf(DEMO)("mode demo : le CTA vient APRÈS le corps, jamais après le short answer", () => {
     const out = html();
     const shortAnswer = out.indexOf("Short answer");
     const visual = out.indexOf("data-visual-id");
@@ -62,10 +68,7 @@ describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () =
     expect(cta).toBeGreaterThan(visual);
   });
 
-  test("le bloc CTA ne contient aucune promesse excessive", () => {
-    // Portée volontairement RESTREINTE au bloc de conversion : « automatically » est le sujet même
-    // de cette FAQ (« Does TextOS automatically verify claims? »). Interdire le mot sur toute la
-    // page confondrait le propos éditorial avec une promesse commerciale.
+  test.runIf(DEMO)("mode demo : le bloc CTA ne contient aucune promesse excessive", () => {
     const out = html();
     const start = out.indexOf('class="content-cta"');
     expect(start).toBeGreaterThan(-1);
@@ -79,6 +82,13 @@ describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () =
     for (const forbidden of ["coming soon", "guaranteed", "automatically", "free trial", "instant"]) {
       expect(cta, `ne doit pas apparaître dans le CTA : ${forbidden}`).not.toContain(forbidden);
     }
+  });
+
+  test.runIf(conversionConfig.isOff)("mode off : aucun CTA, aucun formulaire actif", () => {
+    expect(html()).not.toContain("content-cta");
+    const form = readFileSync(path.join(OUT, "request-measurement.html"), "utf8");
+    expect(form).toContain('data-form-state="unavailable"');
+    expect(form).not.toContain("<form");
   });
 
   test("aucun identifiant interne n'est exposé dans l'export", () => {
@@ -96,18 +106,23 @@ describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () =
     expect(out).toMatch(/<figcaption>[^<]+<\/figcaption>/);
   });
 
-  test("le manifeste reflète le CTA réellement rendu", () => {
+  test("le manifeste reflète le CTA réellement rendu, selon le mode", () => {
     const manifest = JSON.parse(
       readFileSync(path.join(OUT, "content-attribution-manifest.json"), "utf8")
     );
     const faq = manifest.entries.find((e: { id: string }) => e.id === `faq:${FAQ_SLUG}`);
     expect(faq.configuredCtaVariant).toBe("measurement_request");
-    expect(faq.resolvedCtaVariant).toBe("measurement_request");
-    expect(faq.ctaVersion).toBe(1);
+    if (conversionConfig.isOff) {
+      expect(faq.resolvedCtaVariant).toBeNull();
+      expect(faq.ctaVersion).toBeNull();
+    } else {
+      expect(faq.resolvedCtaVariant).toBe("measurement_request");
+      expect(faq.ctaVersion).toBe(1);
+    }
     expect(existsSync(path.join(OUT, "faq", `${FAQ_SLUG}.html`))).toBe(true);
   });
 
-  test("le parcours de conversion est complet dans l'export", () => {
+  test.runIf(DEMO)("mode demo : le parcours de conversion est complet dans l'export", () => {
     const form = readFileSync(path.join(OUT, "request-measurement.html"), "utf8");
     const received = readFileSync(
       path.join(OUT, "request-measurement", "received.html"),

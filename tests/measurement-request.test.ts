@@ -6,7 +6,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
-import { describe, expect, test } from "vitest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 
 import { findClaim } from "@/lib/claims-registry";
 import { getCtaVariant } from "@/lib/conversion/cta-registry";
@@ -248,5 +248,70 @@ describe("la copy ne peut pas venir d'ailleurs que du repo", () => {
     const src = readFileSync(receivedPage, "utf8");
     expect(src).toContain("confirmation.body");
     expect(src).not.toMatch(/isDemo\s*\?[^:]*confirmation/);
+  });
+});
+
+// ── Invariant : le mode vient du BUILD, jamais de l'URL. ──────────────────────────────────────
+//
+// `?mode=demo` est une trace de navigation. S'il décidait de la copy, une production réelle
+// pourrait afficher « aucune information n'a été transmise » sur simple modification de l'URL, et
+// une démo pourrait masquer son disclosure en falsifiant `?mode=live`.
+describe("le disclosure de démonstration ne dépend jamais du paramètre d'URL", () => {
+  const ENV = { ...process.env };
+
+  async function renderNotice(mode: string | undefined) {
+    vi.resetModules();
+    if (mode === undefined) delete process.env.CONVERSION_MODE;
+    else process.env.CONVERSION_MODE = mode;
+    if (mode === "live") {
+      // Le mode live exige ses six variables — le garde-fou de `conversion-config` lève sinon.
+      // C'est précisément ce qu'on veut : ici on éprouve le disclosure, pas le garde-fou.
+      Object.assign(process.env, {
+        MEASUREMENT_FORM_ENDPOINT: "https://provider.test/f/x",
+        LEGAL_CONTROLLER_NAME: "Nom légal",
+        LEGAL_CONTROLLER_ADDRESS: "Adresse professionnelle",
+        PRIVACY_CONTACT_EMAIL: "droits@example.test",
+        DATA_RETENTION_PERIOD: "12 months after the last contact",
+        FORM_PROVIDER_NAME: "Sous-traitant",
+      });
+    }
+    const { DemoSubmissionNotice } = await import(
+      "@/components/conversion/DemoSubmissionNotice"
+    );
+    const { DemoDisclosure } = await import("@/components/conversion/DemoDisclosure");
+    return { notice: DemoSubmissionNotice(), banner: DemoDisclosure() };
+  }
+
+  afterEach(() => {
+    process.env = { ...ENV };
+    vi.resetModules();
+  });
+
+  test("build demo, aucun paramètre → disclosure visible", async () => {
+    const { notice, banner } = await renderNotice("demo");
+    expect(notice).not.toBeNull();
+    expect(banner).not.toBeNull();
+  });
+
+  test("build live, ?mode=demo falsifié → AUCUN disclosure", async () => {
+    // Le paramètre n'est même pas lu : le composant ne consulte pas l'URL.
+    const { notice, banner } = await renderNotice("live");
+    expect(notice).toBeNull();
+    expect(banner).toBeNull();
+  });
+
+  test("build off → aucun disclosure de démonstration", async () => {
+    const { notice, banner } = await renderNotice("off");
+    expect(notice).toBeNull();
+    expect(banner).toBeNull();
+  });
+
+  test("les composants ne lisent jamais searchParams", () => {
+    for (const f of ["DemoSubmissionNotice.tsx", "DemoDisclosure.tsx"]) {
+      const src = readFileSync(path.join(ROOT, "components", "conversion", f), "utf8");
+      expect(src, `${f} ne doit pas lire l'URL`).not.toContain("useSearchParams");
+      expect(src).not.toContain("searchParams");
+      expect(src).toContain("conversionConfig");
+    }
   });
 });

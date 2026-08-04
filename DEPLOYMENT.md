@@ -80,6 +80,29 @@ Requiert que **l'exposition automatique des variables système** soit active dan
 projet Vercel (`autoExposeSystemEnvs`), sans quoi `VERCEL_URL` est absente et l'on retombe sur
 localhost — dégradé, jamais dangereux, puisque localhost est provisoire.
 
+## Mode de conversion par environnement
+
+| Environnement | Aujourd'hui | Après S2B / D0B |
+|---|---|---|
+| Development | `demo` | `demo` |
+| Preview | `demo` | `demo` |
+| Production | `demo` | `live` |
+
+**Seule la Production pourra devenir `live`.** Les previews restent sans collecte réelle, même après
+le lancement public : une branche en cours de revue n'a aucune raison de recevoir de vraies demandes.
+
+Le passage à `live` est une **configuration**, pas une modification de copy. Il exige
+`CONVERSION_MODE=live` plus les six variables juridiques et l'endpoint du sous-traitant — leur
+absence fait échouer le build. Aucun Markdown, aucune phrase publique, aucun composant ne change :
+seules les deux mentions de démonstration disparaissent.
+
+Le mode vient TOUJOURS du build. `?mode=demo` sur la page de confirmation est une trace de
+navigation, jamais une autorité : si un paramètre d'URL décidait de la copy, une production réelle
+pourrait afficher « aucune information n'a été transmise » sur simple modification de l'adresse.
+
+La CI exécute les **deux** contrats (`off` et `demo`) par matrice — ils ne promettent pas la même
+chose, et un seul ne prouverait que la moitié.
+
 ## Provenance des déploiements
 
 L'intégration Git Vercel est active : un push sur une branche produit un **Preview Deployment**, un

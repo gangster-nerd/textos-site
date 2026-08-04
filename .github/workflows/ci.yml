@@ -4,11 +4,25 @@ on: [push, pull_request]
 jobs:
   build-validate:
     runs-on: ubuntu-latest
-    # Le CI valide le MÊME mode de conversion que l'origine technique. Sans cette déclaration, le
-    # build tomberait sur le défaut `off` — aucun CTA, aucun formulaire — et les assertions portant
-    # sur le parcours de conversion passeraient à côté de leur objet.
+
+    # Les DEUX contrats de mode sont exécutés, pas seulement celui de l'origine technique.
+    #
+    # Ils ne disent pas la même chose : `off` promet qu'aucun CTA ni formulaire actif n'existe et
+    # que le manifeste résout à null ; `demo` promet le parcours complet, la version renseignée et
+    # l'absence de toute action externe. Un seul des deux ne prouverait que la moitié.
+    #
+    # C'est la leçon des deux échecs CI de S2A transformée en invariant : le vert local ne
+    # reproduisait pas le CI, et un test codait un mode en dur. La matrice retire cette
+    # vérification des mains du développeur.
+    strategy:
+      fail-fast: false
+      matrix:
+        # Guillemets OBLIGATOIRES : en YAML, `off` non quoté est le booléen false.
+        conversion_mode: ["off", "demo"]
+
     env:
-      CONVERSION_MODE: demo
+      CONVERSION_MODE: ${{ matrix.conversion_mode }}
+
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -25,9 +39,9 @@ jobs:
 
       - run: pnpm build
 
-      # Assertions portant sur l'export lui-même : absence de CTA dans out/, visuel rendu avec alt
-      # et figcaption, manifeste d'attribution. Elles se sautent d'elles-mêmes quand out/ n'existe
-      # pas encore — les relancer ICI est la seule façon de garantir qu'elles s'exécutent vraiment.
+      # Assertions portant sur l'export lui-même : absence ou présence du CTA selon le mode, visuel
+      # avec alt et figcaption, manifeste d'attribution. Elles se sautent d'elles-mêmes quand out/
+      # n'existe pas encore — les relancer ICI est la seule façon de garantir qu'elles s'exécutent.
       - run: pnpm exec vitest run tests/exported-html.test.ts
 
       - run: pnpm validate:jsonld
