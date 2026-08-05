@@ -10,7 +10,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "validate:jsonld": "node scripts/validate-jsonld.mjs"
+    "validate:jsonld": "node scripts/validate-jsonld.mjs",
+    "verify:product-manifest": "tsx scripts/verify-product-manifest.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

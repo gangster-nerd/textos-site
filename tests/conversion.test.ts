@@ -44,7 +44,8 @@ const base = {
   indexingPolicy: "noindex" as const,
   publishedAt: "2026-07-31",
   updatedAt: "2026-07-31",
-  sourceCommit: "1178684",
+  productSnapshotSha: "4d37616453f5d0fed24a8054314d49651e33af6b",
+  evidenceRefs: ["claim-evidence-layer:answer-evidence-capture-v1"],
   capabilityIds: ["claim-evidence-layer"],
   claimIds: ["s8-answer-evidence-capture"],
   clusterId: "measurement-trust",
@@ -115,8 +116,17 @@ describe("gates — appartenance aux registres", () => {
     expect(() => runGates(fm, "slug-ok")).toThrow(/Visuel inconnu/);
   });
 
-  test("visuel autorisé sur un autre contentType → échec", () => {
-    // epistemic-layers-v1 n'est autorisé que sur faq_entry.
+  // NOTE DE COUVERTURE (C0A-SITE). Ce test éprouvait la restriction de contentType du VISUEL en
+  // plaçant `epistemic-layers-v1` sur un `developer_note`. Avec le passage à deux axes, ce scénario
+  // n'atteint plus le gate de visuel : `claim-evidence-layer` ne revendique que la surface `faq`,
+  // donc le gate de capacité tire en premier.
+  //
+  // La branche `allowedContentTypes` du gate de visuel n'est pas morte — elle se déclenchera pour un
+  // visuel dont la capacité revendique plusieurs surfaces. Elle est SUBSUMÉE pour le seul asset
+  // existant aujourd'hui. Réécrire l'assertion pour la faire passer aurait masqué ce changement ;
+  // on assert donc ce qui se produit réellement, et les autres branches du gate de visuel (visuel
+  // inconnu, claim clandestin) restent couvertes par les tests voisins.
+  test("capacité restreinte à la FAQ : le gate de capacité précède celui du visuel", () => {
     const fm = ContentFrontmatterSchema.parse({
       ...base,
       contentType: "developer_note",
@@ -129,7 +139,9 @@ describe("gates — appartenance aux registres", () => {
       ],
       ctaVariant: "claim_lookup",
     });
-    expect(() => runGates(fm, "slug-ok")).toThrow(/non autorisé sur le contentType/);
+    expect(() => runGates(fm, "slug-ok")).toThrow(
+      /Surface "developer_note" non revendiquée pour claim-evidence-layer/
+    );
   });
 
   test("visuel portant un claim hors du document → échec (pas de claim clandestin)", () => {

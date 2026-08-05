@@ -1,4 +1,4 @@
-import { CAPABILITY_STATUS, type Status } from "@/lib/capability-registry";
+import { findCapability, type CapabilityDeclaration } from "@/lib/capability-registry";
 import { findClaim, type Surface } from "@/lib/claims-registry";
 import { getCluster } from "@/lib/content/content-cluster-registry";
 import { existsSync } from "node:fs";
@@ -22,21 +22,14 @@ const SURFACE_BY_CONTENT_TYPE: Record<ContentFrontmatter["contentType"], Surface
   product_article: "product_article",
 };
 
-// Record<Status, …> complet : les 9 statuts du registre (capability-registry.ts).
-// Verrou : seul public_marketable atteint homepage / product_article.
-const ALLOWED_SURFACES: Record<Status, readonly Surface[]> = {
-  public_marketable: ["developer_note", "changelog", "faq", "product_article", "homepage"],
-  implemented: ["developer_note", "changelog", "faq"],
-  wip_committed_tested: ["developer_note", "changelog", "faq"],
-  implemented_schema_only: ["developer_note"],
-  planned: [],
-  candidate: [],
-  risky: [],
-  unsupported: [],
-  forbidden: [],
-};
+// Plus de table `Record<Status, Surface[]>` : l'autorisation ne se déduit plus d'un statut, elle
+// se lit sur la capacité elle-même (`claimedSurfaces`). Un statut ne peut pas savoir qu'une capacité
+// donnée n'a le droit d'apparaître qu'en FAQ — seule la capacité le sait.
+//
+// Le vérificateur de dérive garantit par ailleurs `claimedSurfaces ⊆ allowedSurfaces` du produit :
+// ce gate est donc l'intersection effective des deux déclarations.
 
-const MATURITY_LABEL: Partial<Record<Status, string>> = {
+const MATURITY_LABEL: Partial<Record<NonNullable<CapabilityDeclaration["implementationStatus"]>, string>> = {
   implemented: "Implemented — available in the product, not yet a marketed capability.",
   wip_committed_tested:
     "Technical foundation — committed and tested, not yet a public capability.",
@@ -63,17 +56,19 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
   }
 
   const capabilities = fm.capabilityIds.map((id) => {
-    const status = CAPABILITY_STATUS[id as keyof typeof CAPABILITY_STATUS];
-    if (!status) throw new Error(`Capacité inconnue du registre : ${id}`);
-    return { id, status: status as Status };
+    const declaration = findCapability(id);
+    if (!declaration) throw new Error(`Capacité inconnue du registre : ${id}`);
+    return { id, declaration };
   });
 
   const surface = SURFACE_BY_CONTENT_TYPE[fm.contentType];
 
   for (const cap of capabilities) {
-    if (!ALLOWED_SURFACES[cap.status].includes(surface)) {
+    if (!cap.declaration.claimedSurfaces.includes(surface)) {
       throw new Error(
-        `Surface "${surface}" interdite pour ${cap.id} (statut ${cap.status}).`
+        `Surface "${surface}" non revendiquée pour ${cap.id} (publication ${cap.declaration.publicationStatus}, surfaces : ${
+          cap.declaration.claimedSurfaces.join(", ") || "aucune"
+        }).`
       );
     }
   }
@@ -152,7 +147,11 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
   const maturityLabels = [
     ...new Set(
       capabilities
-        .map((cap) => MATURITY_LABEL[cap.status])
+        .map((cap) =>
+          cap.declaration.implementationStatus
+            ? MATURITY_LABEL[cap.declaration.implementationStatus]
+            : undefined
+        )
         .filter((label): label is string => Boolean(label))
     ),
   ];

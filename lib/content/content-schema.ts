@@ -29,7 +29,18 @@ export const ContentFrontmatterSchema = z
 
     publishedAt: IsoDate,
     updatedAt: IsoDate,
-    sourceCommit: z.string().min(7),
+    // PROVENANCE. `sourceCommit: z.string().min(7)` a été remplacé : sept caractères quelconques
+    // avaient l'apparence d'une provenance sans en être une, et le champ portait déjà deux
+    // sémantiques incompatibles dans le contenu rédigé (SHA du dépôt produit ici, SHA du dépôt du
+    // SITE là). Un commit unique ne peut d'ailleurs pas prouver les deux à quatre capacités qu'une
+    // page invoque — d'où des références de preuve multiples.
+    productSnapshotSha: z
+      .string()
+      .regex(/^[0-9a-f]{40}$/, "SHA produit complet attendu (40 hex)"),
+    // `capabilityId:bundleId` — résolus contre le manifeste produit épinglé par les gates.
+    evidenceRefs: z
+      .array(z.string().regex(/^[a-z0-9-]+:[a-z0-9-]+$/, 'format attendu "capacite:bundle"'))
+      .min(1),
 
     capabilityIds: z.array(z.string().min(1)).min(1),
     claimIds: z.array(z.string().min(1)).min(1),

@@ -45,3 +45,11 @@ jobs:
       - run: pnpm exec vitest run tests/exported-html.test.ts
 
       - run: pnpm validate:jsonld
+
+      # Confronte le registre éditorial au manifeste produit épinglé et résout la provenance de
+      # chaque document. Échoue si le site est plus permissif que le produit, ou si une référence de
+      # preuve ne se résout pas ; imprime sans bloquer les écarts qui appellent une décision.
+      #
+      # Hors matrice de mode : la dérive de déclarations ne dépend pas de CONVERSION_MODE.
+      - run: pnpm verify:product-manifest
+        if: matrix.conversion_mode == 'demo'

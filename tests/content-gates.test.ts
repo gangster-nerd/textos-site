@@ -11,7 +11,8 @@ const base = {
   indexingPolicy: "noindex" as const,
   publishedAt: "2026-07-31",
   updatedAt: "2026-07-31",
-  sourceCommit: "1178684",
+  productSnapshotSha: "4d37616453f5d0fed24a8054314d49651e33af6b",
+  evidenceRefs: ["claim-evidence-layer:answer-evidence-capture-v1"],
   capabilityIds: ["claim-evidence-layer"],
   claimIds: ["s8-answer-evidence-capture"],
   // Taxonomie + conversion, requis depuis S1 (validés contre leurs registres par les gates).
@@ -83,12 +84,12 @@ describe("content gates", () => {
     expect(() => runGates(fm, "slug-ok")).toThrow(/Claim inconnu/);
   });
 
-  test("surface interdite pour une capacité wip", () => {
+  test("surface non revendiquée pour une capacité candidate", () => {
     const fm = ContentFrontmatterSchema.parse({
       ...base,
       contentType: "product_article",
     });
-    expect(() => runGates(fm, "slug-ok")).toThrow(/interdite/);
+    expect(() => runGates(fm, "slug-ok")).toThrow(/non revendiquée/);
   });
 
   test("slug avec traversée de chemin rejeté", () => {
