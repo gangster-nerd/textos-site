@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 2,
+  "statusVocabularyVersion": 3,
+  "productRepository": "textos-v0",
+  "snapshotCommit": "4d37616453f5d0fed24a8054314d49651e33af6b",
+  "snapshotCommittedAt": "2026-08-05",
+  "coverage": {
+    "kind": "partial",
+    "note": "Périmètre limité aux 10 entités de la baseline du 2026-08-04. Hors périmètre à ce snapshot : (1) deriveOpportunityEconomics — ADR-018, src/server/textos/decide/opportunity-economics.ts ; (2) deriveInterventionSet / MVIS — ADR-018 §7, src/server/textos/decide/intervention-set.ts ; (3) profils de claims et rôle owned_product. Par ailleurs, l'extraction de claims a évolué en S8.1 (claims-det-2b@0.2) postérieurement aux commits de preuve déclarés pour claim-evidence-layer : ses bundles décrivent la fondation S8, pas le comportement courant. Ces écarts sont des décisions non prises, pas des oublis — traités en C0B."
+  },
+  "entities": [
+    {
+      "id": "authority-score",
+      "kind": "prohibited_concept",
+      "implementationStatus": null,
+      "publicationStatus": "forbidden",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [],
+      "prohibitedClaims": [
+        "authority score",
+        "a single number that measures authority"
+      ],
+      "knownLimits": [
+        "Concept refusé : agréger l'autorité en un score unique masque la composition de la mesure."
+      ]
+    },
+    {
+      "id": "claim-evidence-layer",
+      "kind": "capability",
+      "implementationStatus": "wip_committed_tested",
+      "publicationStatus": "candidate",
+      "allowedSurfaces": [
+        "faq"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "answer-evidence-capture-v1",
+          "commits": [
+            "1178684f78c4d6841f4e042527cc893c42d37254"
+          ],
+          "paths": [
+            "src/server/textos/observe/answer-evidence.ts"
+          ],
+          "tests": [
+            "src/server/textos/observe/answer-evidence.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-012-claim-evidence-layer.md"
+          ]
+        },
+        {
+          "id": "deterministic-claim-extraction-v1",
+          "commits": [
+            "1178684f78c4d6841f4e042527cc893c42d37254"
+          ],
+          "paths": [
+            "src/server/textos/observe/claims.ts",
+            "src/server/textos/observe/claims-reader.ts"
+          ],
+          "tests": [
+            "src/server/textos/observe/claims.test.ts",
+            "src/server/textos/observe/claims-reader.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-012-claim-evidence-layer.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "automatically verifies claims",
+        "fact-checking",
+        "generally available",
+        "decides whether a claim is true"
+      ],
+      "knownLimits": [
+        "Capture et extraction déterministe uniquement — aucune vérification de véracité.",
+        "Fondation technique commitée et testée, pas une capacité produit généralement disponible."
+      ]
+    },
+    {
+      "id": "direct-share-of-model",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_marketable",
+      "allowedSurfaces": [
+        "homepage",
+        "faq",
+        "product_article"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "direct-share-measurement-v1",
+          "commits": [
+            "860eee4ac67060e98455441d986c47156d97bfbd"
+          ],
+          "paths": [
+            "src/server/textos/observe/authority-presence.ts"
+          ],
+          "tests": [
+            "src/server/textos/observe/authority-presence.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-011-authority-presence-estimation.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "share of voice across all AI assistants"
+      ],
+      "knownLimits": [
+        "Estimation adossée au panel de requêtes du run, variance non nulle."
+      ]
+    },
+    {
+      "id": "indirect-mention-share",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_marketable",
+      "allowedSurfaces": [
+        "homepage",
+        "faq",
+        "product_article"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "indirect-mention-measurement-v1",
+          "commits": [
+            "860eee4ac67060e98455441d986c47156d97bfbd"
+          ],
+          "paths": [
+            "src/server/textos/observe/authority-presence.ts"
+          ],
+          "tests": [
+            "src/server/textos/observe/authority-presence.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-011-authority-presence-estimation.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "detects every mention of the brand"
+      ],
+      "knownLimits": [
+        "Dépend de la résolution d'entités : une mention non résolue n'est pas comptée."
+      ]
+    },
+    {
+      "id": "observe-authority-presence",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_marketable",
+      "allowedSurfaces": [
+        "homepage",
+        "faq",
+        "product_article",
+        "sales_copy"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "authority-presence-observation-v1",
+          "commits": [
+            "860eee4ac67060e98455441d986c47156d97bfbd"
+          ],
+          "paths": [
+            "src/server/textos/observe/authority-presence.ts",
+            "src/server/textos/observe/authority-presence-reader.ts"
+          ],
+          "tests": [
+            "src/server/textos/observe/authority-presence.test.ts",
+            "src/server/textos/observe/authority-presence-reader.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-011-authority-presence-estimation.md"
+          ]
+        },
+        {
+          "id": "observe-run-orchestration-v1",
+          "commits": [
+            "860eee4ac67060e98455441d986c47156d97bfbd"
+          ],
+          "paths": [
+            "src/server/textos/observe/orchestrator.ts"
+          ],
+          "tests": [
+            "src/server/textos/observe/orchestrator.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-009-observe-orchestration.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "measures every answer a model can produce",
+        "tracks brand visibility in real time"
+      ],
+      "knownLimits": [
+        "La mesure porte sur un panel de requêtes figé, pas sur l'espace des questions possibles.",
+        "Une absence d'observation n'est pas une absence de présence."
+      ]
+    },
+    {
+      "id": "opportunity-brief",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "opportunity-judgement-v1",
+          "commits": [
+            "6fa7b4f7df83694ddce682339cee01fcd956723c"
+          ],
+          "paths": [
+            "src/server/textos/decide/opportunity-brief.ts",
+            "src/server/textos/decide/opportunity-brief-repository.ts"
+          ],
+          "tests": [
+            "src/server/textos/decide/opportunity-brief.test.ts",
+            "src/server/textos/decide/opportunity-brief-repository.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-014-opportunity-brief.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "automatically prioritizes actions",
+        "generally available",
+        "tells you what content to write"
+      ],
+      "knownLimits": [
+        "Fixture-first : jugement déterministe sur des observations, pas un moteur de recommandation."
+      ]
+    },
+    {
+      "id": "quality-ledger",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_marketable",
+      "allowedSurfaces": [
+        "homepage",
+        "faq",
+        "product_article"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "quality-ledger-rates-v1",
+          "commits": [
+            "9efeb595363bad3f5d9943c53d47cbfd81304b96"
+          ],
+          "paths": [
+            "src/server/textos/observe/quality-ledger.ts",
+            "src/server/textos/observe/quality.ts"
+          ],
+          "tests": [
+            "src/server/textos/observe/quality-ledger.test.ts",
+            "src/server/textos/observe/quality.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-010-measurement-quality-ledger.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "guarantees measurement accuracy"
+      ],
+      "knownLimits": [
+        "Le registre expose des taux de qualité du run ; il ne corrige pas la mesure."
+      ]
+    },
+    {
+      "id": "repos-intersection",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "repos-intersection-v1",
+          "commits": [
+            "5fe09a31420e0bba58b9cc8799cc79f7ad527312"
+          ],
+          "paths": [
+            "src/server/textos/premium/repos-intersection.ts",
+            "src/server/textos/premium/repos-repository.ts",
+            "src/server/textos/db/schema/premium/repos-intersection.ts"
+          ],
+          "tests": [
+            "src/server/textos/premium/repos-intersection.test.ts",
+            "src/server/textos/premium/repos-repository.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-017-repos-intersection.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "generally available",
+        "predicts revenue impact"
+      ],
+      "knownLimits": [
+        "Première couche premium, fixture-first."
+      ]
+    },
+    {
+      "id": "total-authority-presence",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_marketable",
+      "allowedSurfaces": [
+        "homepage",
+        "faq",
+        "product_article"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "total-presence-composition-v1",
+          "commits": [
+            "860eee4ac67060e98455441d986c47156d97bfbd"
+          ],
+          "paths": [
+            "src/server/textos/observe/authority-presence.ts"
+          ],
+          "tests": [
+            "src/server/textos/observe/authority-presence.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-011-authority-presence-estimation.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "a single authority score"
+      ],
+      "knownLimits": [
+        "Composition de deux mesures distinctes ; ce n'est pas un score unifié."
+      ]
+    },
+    {
+      "id": "truth-check",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-08-04-initial-capability-publication-baseline.md",
+        "recordedAt": "2026-08-04"
+      },
+      "evidence": [
+        {
+          "id": "graduated-publication-v1",
+          "commits": [
+            "4cec050c953f3d1a59fe1ee9eb2095f45b807cf4",
+            "eecf8fe4dc222c175d1efaa0ac359f91ee7862f4"
+          ],
+          "paths": [
+            "src/server/textos/act/publication.ts",
+            "src/server/textos/act/publication-repository.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/publication.test.ts",
+            "src/server/textos/act/publication-repository.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-016-graduated-publication.md"
+          ]
+        },
+        {
+          "id": "truthcheck-generation-v1",
+          "commits": [
+            "2dbf4fd0002592bac778dec726ee20fd106458c8",
+            "f63c89ba827cfc70b8400a8e29e2c7ec040be7ce"
+          ],
+          "paths": [
+            "src/server/textos/act/generation.ts",
+            "src/server/textos/act/generation-repository.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/generation.test.ts",
+            "src/server/textos/act/generation-repository.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-015-truthcheck-and-generation.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "automatically verifies claims",
+        "guarantees factual accuracy",
+        "generally available",
+        "publishes verified content without human review"
+      ],
+      "knownLimits": [
+        "Le truthcheck conditionne la génération ; il ne prononce pas de verdict de vérité.",
+        "La publication est graduée et suppose une validation humaine."
+      ]
+    }
+  ]
+}

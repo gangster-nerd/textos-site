@@ -17,7 +17,7 @@
 // article peut donc porter un CTA de mesure sans revendiquer les capacités vendues — sans quoi il
 // faudrait polluer son frontmatter avec des capacités dont il ne parle pas.
 
-import { CAPABILITY_STATUS, isMarketable, type Status } from "@/lib/capability-registry";
+import { findCapability, isMarketable } from "@/lib/capability-registry";
 import { findClaim } from "@/lib/claims-registry";
 import type { ContentTypeName } from "@/lib/content/content-types";
 import type { ConversionMode } from "./conversion-config";
@@ -75,13 +75,13 @@ export function ctaViolations(v: CtaVariant, contentType: ContentTypeName): stri
   // Adosser un CTA à une capacité non commercialisable serait un overclaim (même doctrine que le
   // verrou featureList de l'entity-graph). Aucun rapport avec les capabilityIds de l'article.
   for (const capId of v.requiredCapabilities) {
-    const status = CAPABILITY_STATUS[capId as keyof typeof CAPABILITY_STATUS] as
-      | Status
-      | undefined;
-    if (!status) {
+    const capability = findCapability(capId);
+    if (!capability) {
       problems.push(`requiert une capacité inconnue : ${capId}`);
-    } else if (!isMarketable(status)) {
-      problems.push(`requiert ${capId} (statut ${status}, non public_marketable)`);
+    } else if (!isMarketable(capability)) {
+      problems.push(
+        `requiert ${capId} (publication ${capability.publicationStatus}, non public_marketable)`
+      );
     }
   }
 

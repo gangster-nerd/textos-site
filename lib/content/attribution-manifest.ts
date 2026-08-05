@@ -18,7 +18,8 @@ export interface ManifestEntry {
   configuredCtaVariant: string;
   resolvedCtaVariant: string | null;
   ctaVersion: number | null;
-  sourceCommit: string;
+  productSnapshotSha: string;
+  evidenceRefs: string[];
 }
 
 /**
@@ -54,7 +55,8 @@ export function toManifestEntries(docs: readonly ResolvedDocument[]): ManifestEn
       configuredCtaVariant: doc.ctaResolution.configuredVariant,
       resolvedCtaVariant: doc.ctaResolution.resolvedVariant,
       ctaVersion: doc.ctaResolution.version,
-      sourceCommit: doc.frontmatter.sourceCommit,
+      productSnapshotSha: doc.frontmatter.productSnapshotSha,
+      evidenceRefs: [...doc.frontmatter.evidenceRefs],
     }))
     .sort((a, b) => a.id.localeCompare(b.id));
 }
