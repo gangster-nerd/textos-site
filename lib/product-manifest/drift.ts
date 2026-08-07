@@ -30,7 +30,9 @@ export type FindingKind =
   | "site_ahead_implementation"
   | "site_publication_more_permissive"
   | "capability_absent_from_manifest"
+  | "entity_kind_divergence"
   | "product_ahead_implementation"
+  | "site_more_restrictive_publication"
   | "site_more_restrictive_surfaces"
   | "publication_kind_divergence"
   | "untraced_publication_decision"
@@ -50,7 +52,12 @@ const SEVERITY: Record<FindingKind, Finding["severity"]> = {
   site_ahead_implementation: "blocking",
   site_publication_more_permissive: "blocking",
   capability_absent_from_manifest: "blocking",
+  // Incompatibilité ONTOLOGIQUE, pas écart de statut : un côté tient l'entité pour une capacité,
+  // l'autre pour un concept refusé. Aucune comparaison de statut ou de surface n'a de sens tant que
+  // les deux ne parlent pas de la même nature de chose.
+  entity_kind_divergence: "blocking",
   product_ahead_implementation: "report",
+  site_more_restrictive_publication: "report",
   site_more_restrictive_surfaces: "report",
   publication_kind_divergence: "report",
   untraced_publication_decision: "report",
@@ -95,9 +102,11 @@ function comparePublication(
   }
 
   if (productPub === "public_marketable") {
+    // Écart de PUBLICATION. L'étiqueter `product_ahead_implementation` mélangerait les deux axes que
+    // tout ce dispositif sépare : le code n'a pas bougé, seule la politique diffère.
     findings.push(
       finding(
-        "product_ahead_implementation",
+        "site_more_restrictive_publication",
         capabilityId,
         `publication:${sitePub}`,
         `publication:${productPub}`,
@@ -124,6 +133,21 @@ function compareOne(
   site: CapabilityDeclaration,
   product: ProductManifest["entities"][number]
 ): Finding[] {
+  // La nature de l'entité se compare AVANT ses statuts, et court-circuite le reste : comparer les
+  // surfaces d'une « capacité » à celles d'un « concept prohibé » produirait des écarts dérivés qui
+  // masqueraient la seule incompatibilité qui compte.
+  if (site.kind !== product.kind) {
+    return [
+      finding(
+        "entity_kind_divergence",
+        capabilityId,
+        `kind:${site.kind}`,
+        `kind:${product.kind}`,
+        `Nature d'entité incompatible : le site la traite comme "${site.kind}", le produit comme "${product.kind}".`
+      ),
+    ];
+  }
+
   const findings: Finding[] = [...comparePublication(capabilityId, site, product)];
 
   // ── Surfaces : l'inclusion est la règle d'autorisation ───────────────────────────────────────
@@ -183,17 +207,9 @@ function compareOne(
         )
       );
     }
-  } else if (site.implementationStatus !== product.implementationStatus) {
-    findings.push(
-      finding(
-        "publication_kind_divergence",
-        capabilityId,
-        `implementation:${site.implementationStatus ?? "null"}`,
-        `implementation:${product.implementationStatus ?? "null"}`,
-        `Nature d'entité divergente : l'un des deux côtés traite cette entité comme un concept prohibé, l'autre non.`
-      )
-    );
   }
+  // Pas de branche « l'un des deux est null » : les deux `kind` étant égaux à ce stade, les deux
+  // `implementationStatus` sont simultanément nuls (concept prohibé) ou simultanément renseignés.
 
   if (product.publicationDecision.decidedIn === null) {
     findings.push(

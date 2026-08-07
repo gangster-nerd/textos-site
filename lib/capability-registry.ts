@@ -19,11 +19,19 @@
 
 import type {
   ImplementationStatus,
+  ManifestEntityKind,
   PublicSurface,
   PublicationStatus,
 } from "@/lib/product-manifest/status-axes";
 
 export interface CapabilityDeclaration {
+  /**
+   * Nature de l'entité, DÉCLARÉE et non déduite. Inférer « concept prohibé » de
+   * `implementationStatus === null` confondrait une absence de sens avec une absence de valeur, et
+   * empêcherait de détecter qu'un côté traite une entité comme capacité et l'autre comme concept
+   * refusé — une incompatibilité ontologique, pas un simple écart de statut.
+   */
+  kind: ManifestEntityKind;
   /** `null` pour un concept prohibé : une absence de sens, pas une valeur manquante. */
   implementationStatus: ImplementationStatus | null;
   publicationStatus: PublicationStatus;
@@ -40,6 +48,7 @@ const EXPLANATORY = ["homepage", "faq", "product_article"] as const;
 
 const DECLARATIONS = {
   "observe-authority-presence": {
+    kind: "capability",
     implementationStatus: "implemented",
     publicationStatus: "public_marketable",
     // Seule capacité atteignant la copy commerciale : c'est celle que la copy nomme.
@@ -47,30 +56,35 @@ const DECLARATIONS = {
     label: "Authority Presence measurement",
   },
   "direct-share-of-model": {
+    kind: "capability",
     implementationStatus: "implemented",
     publicationStatus: "public_marketable",
     claimedSurfaces: EXPLANATORY,
     label: "Direct Share of Model",
   },
   "indirect-mention-share": {
+    kind: "capability",
     implementationStatus: "implemented",
     publicationStatus: "public_marketable",
     claimedSurfaces: EXPLANATORY,
     label: "Indirect Mention Share",
   },
   "total-authority-presence": {
+    kind: "capability",
     implementationStatus: "implemented",
     publicationStatus: "public_marketable",
     claimedSurfaces: EXPLANATORY,
     label: "Total Authority Presence",
   },
   "quality-ledger": {
+    kind: "capability",
     implementationStatus: "implemented",
     publicationStatus: "public_marketable",
     claimedSurfaces: EXPLANATORY,
     label: "Measurement quality ledger",
   },
   "claim-evidence-layer": {
+    kind: "capability",
     implementationStatus: "wip_committed_tested",
     publicationStatus: "candidate",
     // FAQ seulement : la seule chose publiable est la délimitation de ce que la couche fait.
@@ -81,21 +95,25 @@ const DECLARATIONS = {
   // ce qui n'est pas la même chose qu'une interdiction. L'écart entre les deux axes est VOULU et ne
   // doit pas se lire comme une dette de mise à jour.
   "opportunity-brief": {
+    kind: "capability",
     implementationStatus: "implemented",
     publicationStatus: "internal_only",
     claimedSurfaces: [],
   },
   "truth-check": {
+    kind: "capability",
     implementationStatus: "implemented",
     publicationStatus: "internal_only",
     claimedSurfaces: [],
   },
   "repos-intersection": {
+    kind: "capability",
     implementationStatus: "implemented",
     publicationStatus: "internal_only",
     claimedSurfaces: [],
   },
   "authority-score": {
+    kind: "prohibited_concept",
     implementationStatus: null,
     publicationStatus: "forbidden",
     claimedSurfaces: [],
@@ -122,13 +140,39 @@ export function findCapability(id: string): CapabilityDeclaration | undefined {
 /**
  * Verrou central (spec §0.2) : la marketabilité n'est jamais dérivée d'un état de build. Elle se lit
  * sur l'axe éditorial, et sur lui seul.
+ *
+ * ATTENTION — insuffisant à lui seul. `public_marketable` dit qu'une capacité PEUT être
+ * commercialisée ; il ne dit pas OÙ. Une capacité `public_marketable` restreinte à la FAQ n'a rien
+ * à faire en homepage ni dans un CTA. Toute voie de publication doit donc passer par
+ * `isMarketableOn` ou `allowsSurface`, jamais par ce prédicat seul.
  */
 export const isMarketable = (declaration: CapabilityDeclaration): boolean =>
   declaration.publicationStatus === "public_marketable";
 
-/** featureList = uniquement public_marketable (verrou entity-graph §3 / schema-map §4). */
+/** La capacité revendique-t-elle cette surface ? Seule règle d'autorisation éditoriale. */
+export const allowsSurface = (
+  declaration: CapabilityDeclaration,
+  surface: PublicSurface
+): boolean => declaration.claimedSurfaces.includes(surface);
+
+/**
+ * Commercialisable SUR CETTE SURFACE — les deux conditions, jamais une seule.
+ *
+ * C'est ce qui manquait : le modèle de surfaces ne gouvernait que les gates de contenu, tandis que
+ * la homepage, `featureList` et les CTA continuaient de ne lire que le statut. Une capacité
+ * `public_marketable` limitée à la FAQ serait apparue en homepage et aurait pu porter un CTA.
+ */
+export const isMarketableOn = (
+  declaration: CapabilityDeclaration,
+  surface: PublicSurface
+): boolean => isMarketable(declaration) && allowsSurface(declaration, surface);
+
+/**
+ * featureList = commercialisable ET revendiqué EN HOMEPAGE (verrou entity-graph §3 / schema-map §4).
+ * La surface est explicite : c'est elle que le JSON-LD de la homepage expose.
+ */
 export const FEATURE_LIST: string[] = ALL_IDS.filter((id) =>
-  isMarketable(CAPABILITY_REGISTRY[id])
+  isMarketableOn(CAPABILITY_REGISTRY[id], "homepage")
 ).map((id) => CAPABILITY_REGISTRY[id].label ?? id);
 
 // Assertions de garde, au chargement du module (spec §4).

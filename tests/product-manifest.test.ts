@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  allowsSurface,
   CAPABILITY_REGISTRY,
   FEATURE_LIST,
   findCapability,
   isMarketable,
+  isMarketableOn,
   type CapabilityDeclaration,
 } from "@/lib/capability-registry";
 import { blocking, compareDeclarations, reported } from "@/lib/product-manifest/drift";
@@ -44,6 +46,7 @@ const manifestOf = (entities: ManifestEntity[]): ProductManifest => ({
 });
 
 const site = (overrides: Partial<CapabilityDeclaration> = {}): CapabilityDeclaration => ({
+  kind: "capability",
   implementationStatus: "implemented",
   publicationStatus: "internal_only",
   claimedSurfaces: [],
@@ -274,5 +277,100 @@ describe("état réel du dépôt", () => {
 
     expect(isProven(check)).toBe(true);
     expect(check.prohibitedClaims).toContain("automatically verifies claims");
+  });
+});
+
+describe("les surfaces gouvernent TOUTES les voies de publication", () => {
+  const faqOnly = site({
+    publicationStatus: "public_marketable",
+    claimedSurfaces: ["faq"],
+    label: "FAQ only",
+  });
+
+  it("une capacité public_marketable limitée à la FAQ n'atteint ni homepage ni featureList", () => {
+    // Le trou que ces helpers ferment : `public_marketable` dit qu'une capacité PEUT être
+    // commercialisée, jamais OÙ. La homepage et featureList ne lisaient que le statut.
+    expect(isMarketable(faqOnly)).toBe(true);
+    expect(isMarketableOn(faqOnly, "homepage")).toBe(false);
+    expect(allowsSurface(faqOnly, "homepage")).toBe(false);
+  });
+
+  it("une capacité public_marketable sans sales_copy ne peut pas adosser un CTA", () => {
+    expect(isMarketableOn(faqOnly, "sales_copy")).toBe(false);
+  });
+
+  it("observe-authority-presence reste commercialisable sur sales_copy", () => {
+    const observe = findCapability("observe-authority-presence")!;
+    expect(isMarketableOn(observe, "sales_copy")).toBe(true);
+    expect(isMarketableOn(observe, "homepage")).toBe(true);
+  });
+
+  it("featureList n'expose que des capacités revendiquées en homepage", () => {
+    for (const [, declaration] of Object.entries(CAPABILITY_REGISTRY)) {
+      if (FEATURE_LIST.includes(declaration.label ?? "")) {
+        expect(allowsSurface(declaration, "homepage")).toBe(true);
+      }
+    }
+  });
+});
+
+describe("taxonomie des findings", () => {
+  it("un écart de publication n'est jamais étiqueté comme un écart d'implémentation", () => {
+    const findings = compareDeclarations(
+      { "example-capability": site({ publicationStatus: "candidate", claimedSurfaces: ["faq"] }) },
+      manifestOf([entity({ publicationStatus: "public_marketable", allowedSurfaces: ["faq"] })])
+    );
+
+    const kinds = findings.map((f) => f.kind);
+    expect(kinds).toContain("site_more_restrictive_publication");
+    expect(kinds).not.toContain("product_ahead_implementation");
+    expect(blocking(findings)).toEqual([]);
+  });
+
+  it("BLOQUE quand le produit dit concept prohibé et le site capacité", () => {
+    const findings = compareDeclarations(
+      { "example-capability": site() },
+      manifestOf([
+        entity({
+          kind: "prohibited_concept",
+          implementationStatus: null,
+          publicationStatus: "forbidden",
+        }),
+      ])
+    );
+
+    expect(blocking(findings).map((f) => f.kind)).toEqual(["entity_kind_divergence"]);
+  });
+
+  it("BLOQUE dans l'autre sens aussi", () => {
+    const findings = compareDeclarations(
+      {
+        "example-capability": site({
+          kind: "prohibited_concept",
+          implementationStatus: null,
+          publicationStatus: "forbidden",
+        }),
+      },
+      manifestOf([entity()])
+    );
+
+    expect(blocking(findings).map((f) => f.kind)).toEqual(["entity_kind_divergence"]);
+  });
+
+  it("une divergence de nature court-circuite les comparaisons dérivées", () => {
+    // Comparer les surfaces d'une « capacité » à celles d'un « concept prohibé » produirait des
+    // écarts secondaires qui noieraient la seule incompatibilité qui compte.
+    const findings = compareDeclarations(
+      { "example-capability": site({ claimedSurfaces: [] }) },
+      manifestOf([
+        entity({
+          kind: "prohibited_concept",
+          implementationStatus: null,
+          publicationStatus: "forbidden",
+        }),
+      ])
+    );
+
+    expect(findings).toHaveLength(1);
   });
 });
