@@ -38,3 +38,11 @@ footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
+
+/* Les sources sont citées par leur URL complète — c'est délibéré : une référence vérifiable se lit
+   en entier. Mais une URL est un mot insécable, et `overflow-wrap: normal` la laisse déborder du
+   viewport : sur la FAQ, la source NIST mesurait 421 px dans un écran de 320, provoquant un scroll
+   horizontal sur toute la page.
+   `anywhere` plutôt que `break-word` : seul le premier autorise la coupure à calculer la largeur
+   minimale intrinsèque du conteneur, ce qui empêche l'URL d'imposer sa largeur au bloc parent. */
+a { overflow-wrap: anywhere; }

@@ -7,7 +7,7 @@
 // vitest AVANT le build. Un `skipped` n'est pas une preuve — le rapport de sprint doit montrer la
 // passe POST-BUILD, où ces tests s'exécutent vraiment.
 
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { describe, expect, test } from "vitest";
@@ -19,6 +19,28 @@ const OUT = path.join(ROOT, "out");
 const FAQ_SLUG = "does-textos-automatically-verify-claims";
 const FAQ_HTML = path.join(OUT, "faq", `${FAQ_SLUG}.html`);
 const SVG = path.join(ROOT, "public", "diagrams", "epistemic-layers-v1.svg");
+
+// Verrou de non-régression MOBILE. Les sources sont citées par leur URL complète — délibérément,
+// une référence vérifiable se lit en entier. Mais une URL est un mot insécable : sans autorisation
+// de coupure, la source NIST de la FAQ mesurait 421 px dans un écran de 320 et provoquait un scroll
+// horizontal sur toute la page. Constaté en mesurant l'export réel, pas en le supposant.
+//
+// La règle vit dans la feuille globale ; ce test vérifie qu'elle SURVIT au build, car c'est le CSS
+// émis qui protège les pages, pas le fichier source.
+describe("coupure des URL citées (régression mobile)", () => {
+  test("le CSS exporté autorise la coupure des liens", () => {
+    const cssDir = path.join(OUT, "_next", "static", "css");
+    if (!existsSync(cssDir)) return;
+
+    const bundles = readdirSync(cssDir).filter((f) => f.endsWith(".css"));
+    expect(bundles.length).toBeGreaterThan(0);
+
+    const css = bundles.map((f) => readFileSync(path.join(cssDir, f), "utf8")).join("\n");
+    // `anywhere`, pas `break-word` : seul le premier entre dans le calcul de largeur minimale
+    // intrinsèque, donc empêche l'URL d'imposer sa largeur au bloc parent.
+    expect(css).toMatch(/overflow-wrap:\s*anywhere/);
+  });
+});
 
 describe("fichier SVG source (toujours vérifiable)", () => {
   test("contient <title> et <desc> non vides", () => {

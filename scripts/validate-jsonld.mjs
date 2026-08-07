@@ -85,35 +85,61 @@ console.log(`✅ homepage : ${homeNodes.length} nœuds JSON-LD [${homeTypes}]`);
 console.log(`✅ homepage : featureList (${features.length}) ⊆ public_marketable`);
 
 // ---------------------------------------------------------------------------
-// 2. Pages FAQ — Article honnête, SANS SoftwareApplication ni featureList.
+// 2. Pages de CONTENU — Article honnête, SANS SoftwareApplication ni featureList.
 //    Interdits explicites B8 : une capacité wip_committed_tested ne doit jamais
 //    apparaître dans le balisage d'une application. La liste FORBIDDEN marketing
 //    n'est PAS appliquée ici : le rôle de la FAQ est précisément d'énoncer la
 //    limite ("does not verify claims"), formulation légitime sur cette surface.
 // ---------------------------------------------------------------------------
-const FAQ_DIR = "out/faq";
-let faqFiles = [];
-try {
-  faqFiles = readdirSync(FAQ_DIR).filter((f) => f.endsWith(".html"));
-} catch {
-  faqFiles = [];
-}
+// DÉCOUVERTE, et non liste en dur. `out/faq` était codé ici : le cluster méthodologie exportait
+// donc quatre pages porteuses de JSON-LD que RIEN ne validait. Une collection ajoutée doit être
+// couverte par construction, sans qu'on ait à s'en souvenir — sinon la validation ne protège que ce
+// qu'on a pensé à lui donner.
+//
+// Le critère est le même que celui du manifeste d'attribution : une collection est validée si sa
+// route dynamique existe et qu'elle a produit du HTML.
+const contentDirs = (() => {
+  let collections = [];
+  try {
+    collections = readdirSync("content", { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .map((e) => e.name)
+      .sort();
+  } catch {
+    return [];
+  }
+  return collections
+    .map((name) => ({ name, dir: path.join("out", name) }))
+    .filter(({ dir }) => {
+      try {
+        return readdirSync(dir).some((f) => f.endsWith(".html"));
+      } catch {
+        return false;
+      }
+    });
+})();
 
-if (faqFiles.length === 0) {
-  console.log("ℹ️  aucune page FAQ détaillée dans out/faq/ (rien à valider).");
+const contentFiles = contentDirs.flatMap(({ name, dir }) =>
+  readdirSync(dir)
+    .filter((f) => f.endsWith(".html"))
+    .sort()
+    .map((file) => ({ collection: name, file, p: path.join(dir, file) }))
+);
+
+if (contentFiles.length === 0) {
+  console.log("ℹ️  aucune page de contenu exportée (rien à valider).");
 } else {
-  for (const file of faqFiles) {
-    const p = path.join(FAQ_DIR, file);
+  for (const { collection, file, p } of contentFiles) {
     const nodes = readNodes(p);
 
     const article = nodes.find((n) => n["@type"] === "Article");
     if (!article) fail(`nœud Article absent (${p})`);
 
     if (nodes.some((n) => n["@type"] === "SoftwareApplication")) {
-      fail(`SoftwareApplication interdit sur une page FAQ (${p})`);
+      fail(`SoftwareApplication interdit sur une page de contenu (${p})`);
     }
     if (nodes.some((n) => "featureList" in n)) {
-      fail(`featureList interdit sur une page FAQ (${p})`);
+      fail(`featureList interdit sur une page de contenu (${p})`);
     }
     if (!article.headline) fail(`Article sans headline (${p})`);
 
@@ -128,7 +154,7 @@ if (faqFiles.length === 0) {
       }
     }
 
-    console.log(`✅ ${file} : Article valide, sans SoftwareApplication ni featureList`);
+    console.log(`✅ ${collection}/${file} : Article valide, sans SoftwareApplication ni featureList`);
   }
 }
 
