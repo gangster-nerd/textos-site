@@ -9,7 +9,7 @@ import path from "node:path";
 
 import { describe, expect, test } from "vitest";
 
-import { CAPABILITY_STATUS, isMarketable, type Status } from "@/lib/capability-registry";
+import { findCapability, isMarketable } from "@/lib/capability-registry";
 import { CLAIMS, findClaim } from "@/lib/claims-registry";
 import { loadCollection, loadDocument } from "@/lib/content/content-loader";
 import { getVisual } from "@/lib/visuals/visual-registry";
@@ -44,21 +44,28 @@ describe("claims et capacités", () => {
       const claim = findClaim(id);
       expect(claim, `${id} introuvable`).toBeDefined();
       expect(claim!.capabilityId, `${id} sans capacité`).not.toBeNull();
-      const status = CAPABILITY_STATUS[claim!.capabilityId as keyof typeof CAPABILITY_STATUS];
-      expect(status, `${id} → capacité inconnue « ${claim!.capabilityId} »`).toBeDefined();
+      const capability = findCapability(claim!.capabilityId as string);
+      expect(capability, `${id} → capacité inconnue « ${claim!.capabilityId} »`).toBeDefined();
     }
   });
 
   test("chaque capacité utilisée est public_marketable", () => {
     for (const doc of docs()) {
       for (const capId of doc.frontmatter.capabilityIds) {
-        const status = CAPABILITY_STATUS[capId as keyof typeof CAPABILITY_STATUS] as Status;
-        expect(isMarketable(status), `${capId} n'est pas public_marketable (${status})`).toBe(true);
+        const capability = findCapability(capId);
+        expect(capability, `${capId} inconnue du registre`).toBeDefined();
+        expect(
+          isMarketable(capability!),
+          `${capId} n'est pas public_marketable (${capability!.publicationStatus})`
+        ).toBe(true);
       }
     }
   });
 
-  test("aucune capacité planned, wip, unsupported ou forbidden n'est publiée", () => {
+  // Verrou de liste NOIRE, complémentaire du test de marketabilité ci-dessus : il nomme les
+  // capacités qui ne doivent jamais atteindre un article produit, indépendamment de leur statut du
+  // moment. Un changement de statut ne doit pas suffire à les y faire entrer.
+  test("aucune capacité non commercialisable n'est publiée sur cette surface", () => {
     const forbidden = ["opportunity-brief", "truth-check", "repos-intersection", "authority-score", "claim-evidence-layer"];
     for (const doc of docs()) {
       for (const capId of doc.frontmatter.capabilityIds) {

@@ -7,7 +7,11 @@ editorialStatus: published
 indexingPolicy: noindex
 publishedAt: "2026-08-04"
 updatedAt: "2026-08-04"
-sourceCommit: "075a1c7"
+productSnapshotSha: "4d37616453f5d0fed24a8054314d49651e33af6b"
+evidenceRefs:
+  - "quality-ledger:quality-ledger-rates-v1"
+  - "observe-authority-presence:observe-run-orchestration-v1"
+  - "indirect-mention-share:indirect-mention-measurement-v1"
 clusterId: measurement-methodology
 ctaVariant: measurement_request
 capabilityIds:
