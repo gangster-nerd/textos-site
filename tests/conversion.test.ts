@@ -254,8 +254,10 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
     expect(r.resolvedVariant === null).toBe(r.version === null);
   });
 
-  test("approved + requiredCapability non public_marketable → échec bruyant", () => {
-    // claim-evidence-layer est wip_committed_tested dans le registre de capacités.
+  test("approved + requiredCapability non commercialisable sur sales_copy → échec bruyant", () => {
+    // claim-evidence-layer est `candidate` et ne revendique que la surface `faq`. Le refus porte
+    // désormais sur le COUPLE statut × surface : une capacité commercialisable ailleurs mais non
+    // revendiquée sur sales_copy ne peut pas davantage adosser une proposition commerciale.
     expect(() =>
       assertCtaPublishable(
         approvedFixture({
@@ -264,7 +266,7 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
         }) as never,
         "faq_entry"
       )
-    ).toThrow(/non public_marketable/);
+    ).toThrow(/non commercialisable sur sales_copy/);
   });
 
   test("approved + capacité inconnue → échec bruyant", () => {

@@ -12,6 +12,21 @@
 // AUCUN ACCÈS AU DÉPÔT PRODUIT. Ce module lit deux fichiers de CE dépôt : la copie épinglée et son
 // checksum. La copie provient de l'artefact émis par le run `push` sur `main` du produit — jamais
 // d'un run de pull request, dont le `snapshotCommit` désigne un commit de fusion éphémère.
+//
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// CE QUE LE CHECKSUM PROUVE, ET CE QU'IL NE PROUVE PAS
+//
+// The checksum detects byte-level divergence between the pinned manifest and its pinned checksum.
+// The source workflow run and artifact are recorded separately as import provenance.
+//
+// Il attrape une altération accidentelle du seul JSON, une fusion ayant modifié les octets, un
+// fichier tronqué. Il NE prouve PAS cryptographiquement l'origine : le manifeste et son `.sha256`
+// sont commités ensemble et peuvent donc être modifiés ensemble. Le run et l'artefact d'origine
+// sont consignés dans `product-manifest/IMPORT.md`, qui est une trace de revue, pas une preuve.
+//
+// Un niveau plus fort — téléchargement de l'artefact par la CI du site et vérification de son digest
+// GitHub ou d'une attestation — reste possible ; il n'est pas revendiqué ici.
+// ─────────────────────────────────────────────────────────────────────────────────────────────
 
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
@@ -146,9 +161,8 @@ const PINNED_CHECKSUM_PATH = `${PINNED_MANIFEST_PATH}.sha256`;
  * Lit, vérifie le checksum, puis valide. Lève avec un message lisible : un manifeste invalide n'a
  * pas de mode dégradé — tout gate qui s'appuierait dessus deviendrait faux.
  *
- * Le checksum n'est pas une redondance du contrôle de version de git : il prouve que la copie
- * épinglée est EXACTEMENT l'octet émis par la CI produit, et non un fichier réécrit à la main,
- * fusionné de travers, ou recopié depuis un autre run.
+ * Portée exacte du checksum : divergence d'octets entre la copie épinglée et le checksum épinglé.
+ * Voir l'encadré en tête de fichier.
  */
 export function loadPinnedManifest(root: string): ProductManifest {
   const file = path.join(root, PINNED_MANIFEST_PATH);
@@ -170,9 +184,9 @@ export function loadPinnedManifest(root: string): ProductManifest {
   const actual = createHash("sha256").update(serialized).digest("hex");
   if (actual !== expected) {
     throw new Error(
-      `Le manifeste épinglé ne correspond pas à son checksum.\n` +
+      `Le manifeste épinglé ne correspond pas au checksum épinglé.\n` +
         `  attendu ${expected}\n  obtenu  ${actual}\n` +
-        `  La copie a été modifiée après émission — la réimporter depuis l'artefact du run push/main.`
+        `  Réimporter ENSEMBLE le manifeste et son checksum depuis l'artefact push/main sélectionné.`
     );
   }
 

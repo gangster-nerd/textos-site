@@ -17,7 +17,7 @@
 // article peut donc porter un CTA de mesure sans revendiquer les capacités vendues — sans quoi il
 // faudrait polluer son frontmatter avec des capacités dont il ne parle pas.
 
-import { findCapability, isMarketable } from "@/lib/capability-registry";
+import { findCapability, isMarketableOn } from "@/lib/capability-registry";
 import { findClaim } from "@/lib/claims-registry";
 import type { ContentTypeName } from "@/lib/content/content-types";
 import type { ConversionMode } from "./conversion-config";
@@ -78,9 +78,13 @@ export function ctaViolations(v: CtaVariant, contentType: ContentTypeName): stri
     const capability = findCapability(capId);
     if (!capability) {
       problems.push(`requiert une capacité inconnue : ${capId}`);
-    } else if (!isMarketable(capability)) {
+    } else if (!isMarketableOn(capability, "sales_copy")) {
+      // La surface compte autant que le statut : une capacité commercialisable ailleurs mais non
+      // revendiquée sur `sales_copy` ne peut pas adosser une proposition commerciale.
       problems.push(
-        `requiert ${capId} (publication ${capability.publicationStatus}, non public_marketable)`
+        `requiert ${capId} (publication ${capability.publicationStatus}, surfaces : ${
+          capability.claimedSurfaces.join(", ") || "aucune"
+        }) — non commercialisable sur sales_copy`
       );
     }
   }

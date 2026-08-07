@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { buildHomepageJsonLd } from "@/lib/entity-graph";
-import { CAPABILITY_REGISTRY, isMarketable, type CapabilityId } from "@/lib/capability-registry";
+import { CAPABILITY_REGISTRY, isMarketableOn, type CapabilityId } from "@/lib/capability-registry";
 
 // Homepage : surface "homepage" (page-map.spec.md §1) → uniquement public_marketable (§3).
 export default function Home() {
   const jsonLd = buildHomepageJsonLd();
 
   const measures = (Object.keys(CAPABILITY_REGISTRY) as CapabilityId[])
-    .filter((id) => isMarketable(CAPABILITY_REGISTRY[id]))
+    .filter((id) => isMarketableOn(CAPABILITY_REGISTRY[id], "homepage"))
     .map((id) => CAPABILITY_REGISTRY[id].label as string);
 
   return (

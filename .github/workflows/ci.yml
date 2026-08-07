@@ -46,10 +46,32 @@ jobs:
 
       - run: pnpm validate:jsonld
 
+  # JOB INDÉPENDANT, et non une branche de la matrice.
+  #
+  # Il l'était : `if: matrix.conversion_mode == 'demo'`. Cela évitait bien une exécution en double —
+  # la dérive de déclarations ne dépend pas du mode de conversion — mais accrochait un gate de
+  # gouvernance à une valeur de matrice. Supprimer ou renommer le mode `demo` l'aurait fait
+  # disparaître SANS BRUIT : la CI serait restée verte en ayant cessé de vérifier que le site ne
+  # dépasse pas le produit.
+  #
+  # Un job séparé rend cette disparition impossible à obtenir par accident, et le test structurel
+  # `tests/ci-contract.test.ts` verrouille sa présence dans ce fichier.
+  product-truth:
+    name: product truth (dérive & provenance)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
       # Confronte le registre éditorial au manifeste produit épinglé et résout la provenance de
       # chaque document. Échoue si le site est plus permissif que le produit, ou si une référence de
       # preuve ne se résout pas ; imprime sans bloquer les écarts qui appellent une décision.
       #
-      # Hors matrice de mode : la dérive de déclarations ne dépend pas de CONVERSION_MODE.
+      # Aucun build préalable : le vérificateur lit le contenu par le même loader que les pages.
       - run: pnpm verify:product-manifest
-        if: matrix.conversion_mode == 'demo'

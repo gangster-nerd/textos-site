@@ -1,4 +1,4 @@
-import { findCapability, type CapabilityDeclaration } from "@/lib/capability-registry";
+import { allowsSurface, findCapability, type CapabilityDeclaration } from "@/lib/capability-registry";
 import { findClaim, type Surface } from "@/lib/claims-registry";
 import { getCluster } from "@/lib/content/content-cluster-registry";
 import { existsSync } from "node:fs";
@@ -64,7 +64,7 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
   const surface = SURFACE_BY_CONTENT_TYPE[fm.contentType];
 
   for (const cap of capabilities) {
-    if (!cap.declaration.claimedSurfaces.includes(surface)) {
+    if (!allowsSurface(cap.declaration, surface)) {
       throw new Error(
         `Surface "${surface}" non revendiquée pour ${cap.id} (publication ${cap.declaration.publicationStatus}, surfaces : ${
           cap.declaration.claimedSurfaces.join(", ") || "aucune"
