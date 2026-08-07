@@ -9,7 +9,7 @@ import path from "node:path";
 
 import { describe, expect, test } from "vitest";
 
-import { findCapability, isMarketable } from "@/lib/capability-registry";
+import { findCapability, isMarketableOn } from "@/lib/capability-registry";
 import { CLAIMS, findClaim } from "@/lib/claims-registry";
 import { loadCollection, loadDocument } from "@/lib/content/content-loader";
 import { getVisual } from "@/lib/visuals/visual-registry";
@@ -49,14 +49,17 @@ describe("claims et capacités", () => {
     }
   });
 
-  test("chaque capacité utilisée est public_marketable", () => {
+  // La surface est explicite : ces pages sont des `product_article`. Asserter `isMarketable` seul
+  // laisserait passer une capacité commercialisable ailleurs mais non revendiquée ICI — exactement
+  // le trou que les helpers de surface ferment.
+  test("chaque capacité utilisée est commercialisable SUR product_article", () => {
     for (const doc of docs()) {
       for (const capId of doc.frontmatter.capabilityIds) {
         const capability = findCapability(capId);
         expect(capability, `${capId} inconnue du registre`).toBeDefined();
         expect(
-          isMarketable(capability!),
-          `${capId} n'est pas public_marketable (${capability!.publicationStatus})`
+          isMarketableOn(capability!, "product_article"),
+          `${capId} non commercialisable sur product_article (publication ${capability!.publicationStatus}, surfaces : ${capability!.claimedSurfaces.join(", ") || "aucune"})`
         ).toBe(true);
       }
     }
