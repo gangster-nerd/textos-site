@@ -7,7 +7,7 @@ editorialStatus: published
 indexingPolicy: noindex
 publishedAt: "2026-08-04"
 updatedAt: "2026-08-04"
-productSnapshotSha: "4d37616453f5d0fed24a8054314d49651e33af6b"
+productSnapshotSha: "d1b8b50552e1b42768a6bd0c0515675e139780d3"
 evidenceRefs:
   - "direct-share-of-model:direct-share-measurement-v1"
   - "indirect-mention-share:indirect-mention-measurement-v1"

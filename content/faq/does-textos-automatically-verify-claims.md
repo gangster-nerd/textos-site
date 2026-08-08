@@ -7,7 +7,7 @@ editorialStatus: published
 indexingPolicy: noindex
 publishedAt: "2026-07-31"
 updatedAt: "2026-07-31"
-productSnapshotSha: "4d37616453f5d0fed24a8054314d49651e33af6b"
+productSnapshotSha: "d1b8b50552e1b42768a6bd0c0515675e139780d3"
 evidenceRefs:
   - "claim-evidence-layer:answer-evidence-capture-v1"
   - "claim-evidence-layer:deterministic-claim-extraction-v1"
