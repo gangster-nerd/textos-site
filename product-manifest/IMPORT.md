@@ -14,11 +14,12 @@ cryptographique : le manifeste, son `.sha256` et ce document sont commités ense
 |---|---|
 | Dépôt source | `gangster-nerd/textos-v0` |
 | Événement | `push` sur `main` |
-| Run | [`30999228482`](https://github.com/gangster-nerd/textos-v0/actions/runs/30999228482) |
-| Artefact | `textos-v0-capability-manifest-4d37616453f5d0fed24a8054314d49651e33af6b` |
-| `snapshotCommit` | `4d37616453f5d0fed24a8054314d49651e33af6b` |
-| SHA-256 | `02c2872395d988125e95c613f11b8ca4992c0330c3ac49e4f4729d0a49126557` |
-| Importé le | 2026-08-05 |
+| Run | [`31245044134`](https://github.com/gangster-nerd/textos-v0/actions/runs/31245044134) |
+| Artefact | `textos-v0-capability-manifest-d1b8b50552e1b42768a6bd0c0515675e139780d3` |
+| `snapshotCommit` | `d1b8b50552e1b42768a6bd0c0515675e139780d3` |
+| SHA-256 | `4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251` |
+| Importé le | 2026-08-08 |
+| Entités | 16 |
 
 ## Procédure de réimport
 
