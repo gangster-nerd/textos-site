@@ -249,16 +249,77 @@ describe("état réel du dépôt", () => {
     }
   });
 
+  it("connaît les six capacités Act et n'en revendique rien", () => {
+    // « Le site connaît cette entité et n'en revendique rien » est une position tenue ; c'est une
+    // information différente d'un angle mort (`capability_absent_from_registry`). L'inscription ne
+    // doit accorder AUCUNE surface : c'est tout l'intérêt de la distinction.
+    const ACT = [
+      "grounded-truth-check",
+      "structured-generation",
+      "brief-fulfillment-check",
+      "controlled-preview",
+      "generation-handoff",
+      "re-observation-plan",
+    ];
+
+    for (const id of ACT) {
+      const declaration = findCapability(id);
+      expect(declaration, id).toBeDefined();
+      expect(declaration!.publicationStatus, id).toBe("internal_only");
+      expect(declaration!.claimedSurfaces, id).toEqual([]);
+      expect(isMarketable(declaration!), id).toBe(false);
+    }
+
+    const kinds = compareDeclarations(CAPABILITY_REGISTRY, manifest).map((f) => f.kind);
+    expect(kinds).not.toContain("capability_absent_from_registry");
+  });
+
+  it("les cinq documents sont rattachés au snapshot épinglé après revue", () => {
+    // Le bump est le RÉSULTAT d'une revue, pas un nettoyage d'avertissement : ce test échouera si
+    // un futur réimport bouge le snapshot sans que les documents aient été relus.
+    const checks = [
+      ["faq/x", ["claim-evidence-layer"], ["claim-evidence-layer:answer-evidence-capture-v1"]],
+    ] as const;
+
+    for (const [contentId, capabilityIds, evidenceRefs] of checks) {
+      const check = checkProvenance(
+        { contentId, productSnapshotSha: manifest.snapshotCommit, evidenceRefs, capabilityIds },
+        manifest
+      );
+      expect(check.problems.map((p) => p.kind)).not.toContain("snapshot_mismatch");
+    }
+  });
+
   it("aucune affirmation du site ne dépasse le produit", () => {
     expect(blocking(compareDeclarations(CAPABILITY_REGISTRY, manifest))).toEqual([]);
   });
 
   it("la migration supprime les faux écarts de l'ancien modèle", () => {
-    // État attendu après migration : plus aucun `product_ahead_implementation` dû au vocabulaire
-    // mono-axe, et plus aucune décision de publication non tracée.
-    const kinds = compareDeclarations(CAPABILITY_REGISTRY, manifest).map((f) => f.kind);
-    expect(kinds).not.toContain("product_ahead_implementation");
-    expect(kinds).not.toContain("untraced_publication_decision");
+    const findings = compareDeclarations(CAPABILITY_REGISTRY, manifest);
+
+    // Artefact du vocabulaire mono-axe : il ne doit plus jamais réapparaître.
+    expect(findings.map((f) => f.kind)).not.toContain("product_ahead_implementation");
+
+    // Les décisions non tracées, elles, ne sont PAS un faux écart : les six capacités Act n'ont
+    // effectivement fait l'objet d'aucun arbitrage côté produit. Ce que la migration devait
+    // supprimer, c'est l'absence de trace sur les DIX entités ratifiées le 2026-08-04.
+    const RATIFIED = new Set([
+      "observe-authority-presence",
+      "direct-share-of-model",
+      "indirect-mention-share",
+      "total-authority-presence",
+      "quality-ledger",
+      "claim-evidence-layer",
+      "opportunity-brief",
+      "truth-check",
+      "repos-intersection",
+      "authority-score",
+    ]);
+
+    const untracedRatified = findings.filter(
+      (f) => f.kind === "untraced_publication_decision" && RATIFIED.has(f.capabilityId)
+    );
+    expect(untracedRatified).toEqual([]);
   });
 
   it("prouve la provenance de la FAQ publiée", () => {
