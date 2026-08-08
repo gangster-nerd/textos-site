@@ -57,18 +57,24 @@ export default async function Page({
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <main>
-        <article>
-          <h1>{doc.frontmatter.title}</h1>
+        <article className="doc">
+          <header className="doc__head">
+            <p className="kicker">FAQ</p>
+            <h1>{doc.frontmatter.title}</h1>
+            {doc.maturityLabels.map((label) => (
+              /* Étiquette de maturité : elle relativise TOUT ce qui suit, donc elle se lit avant
+                 le contenu, pas en note de bas de page. */
+              <p key={label} className="doc__status" role="note">
+                <span className="data-label">Status</span> {label}
+              </p>
+            ))}
+          </header>
 
-          {doc.maturityLabels.map((label) => (
-            <p key={label} role="note">
-              <strong>Status:</strong> {label}
-            </p>
-          ))}
-
-          <section>
-            <h2>Short answer</h2>
-            <p>{doc.frontmatter.shortAnswer.body}</p>
+          <section className="doc__short" aria-labelledby="short-answer">
+            <h2 id="short-answer" className="data-label">
+              Short answer
+            </h2>
+            <p className="lede">{doc.frontmatter.shortAnswer.body}</p>
           </section>
 
           {doc.frontmatter.visualIds?.map((visualId) => (
@@ -90,10 +96,16 @@ export default async function Page({
         {/* Parcours 2 du maillage : FAQ → doctrine de mesure (homepage).
             Ancre vers la racine seulement — aucun fragment #… relevé, on ne crée
             pas d'ancre morte ; le libellé décrit l'entité de destination. */}
-        <nav aria-label="Related">
-          <Link href="/">how TextOS measures authority presence</Link>
-          {" · "}
-          <Link href="/methodology/authority-presence">How Authority Presence is measured</Link>
+        <nav className="doc__siblings" aria-label="Related">
+          <p className="data-label">Related</p>
+          <ul>
+            <li>
+              <Link href="/">how TextOS measures authority presence</Link>
+            </li>
+            <li>
+              <Link href="/methodology/authority-presence">How Authority Presence is measured</Link>
+            </li>
+          </ul>
         </nav>
       </main>
     </>
