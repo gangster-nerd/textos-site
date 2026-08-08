@@ -1,9 +1,71 @@
+/* ════════════════════════════════════════════════════════════════════════════════════════════
+   PUBLIC SURFACE TOKENS — propres à ce dépôt.
+
+   Ce ne sont PAS des « product UI tokens ». `textos-v0` ne contient aucune UI ni aucune source de
+   design (audit : docs/design/public-surface-baseline.md). Ces valeurs sont donc des décisions de
+   surface publique, prises ici, et elles ne contraignent pas la future UI de l'application.
+
+   Ancrage factuel conservé : les cinq couleurs d'origine du site. Les ajouts ci-dessous étendent
+   ce socle sans le renier — surfaces, échelle typographique, rythme, géométrie de panneau.
+   ════════════════════════════════════════════════════════════════════════════════════════════ */
+
 :root {
+  /* ── Fonds et texte ───────────────────────────────────────────────────────────────────────
+     `--surface` est le seul niveau ajouté. Une élévation suffit à distinguer un panneau de
+     mesure du texte courant ; au-delà, on empile des boîtes sans fonction. */
   --bg: #0b0c0e;
+  --surface: #101216;
   --fg: #e9eaec;
+  --fg-strong: #f7f8f9;
   --muted: #9aa0a6;
   --line: #23262b;
+  --line-strong: #2f333a;
+
+  /* Accent unique, froid. Pas de seconde couleur d'accent : une surface de mesure n'a qu'une
+     hiérarchie, et une seconde teinte inviterait à colorer des valeurs — donc à leur prêter un
+     jugement que la mesure ne porte pas. */
   --accent: #7cc4ff;
+  --accent-dim: #4d7fa6;
+
+  /* ── Typographie ──────────────────────────────────────────────────────────────────────────
+     Pile système pour la prose. Pile monospace pour les CHIFFRES uniquement : une mesure se lit
+     en colonnes, et les chiffres tabulaires alignent les unités. C'est fonctionnel, pas décoratif. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.4rem;
+
+  /* ── Rythme ───────────────────────────────────────────────────────────────────────────────
+     Échelle courte et régulière. Huit valeurs suffisent ; en ajouter revient à ne plus choisir. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ── Géométrie ────────────────────────────────────────────────────────────────────────────
+     Rayons faibles : un instrument de mesure n'a pas de coins doux. Aucune ombre — l'élévation
+     passe par le fond et la bordure, ce qui reste lisible en contraste élevé. */
+  --radius-sm: 4px;
+  --radius: 8px;
+
+  --measure: 46rem;  /* prose : largeur de lecture, inchangée */
+  --wide: 64rem;     /* sections d'accueil portant un panneau de mesure */
+
+  --panel-pad: var(--space-6);
+  --row-pad: var(--space-3);
+
+  --focus: 2px solid var(--accent);
+  --focus-offset: 2px;
 }
 
 * { box-sizing: border-box; }
@@ -13,30 +75,107 @@ html, body { margin: 0; padding: 0; }
 body {
   background: var(--bg);
   color: var(--fg);
-  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font: var(--text-base)/1.6 var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-main { max-width: 46rem; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+/* Focus visible partout, jamais retiré : c'est la seule façon de naviguer au clavier. */
+:focus-visible {
+  outline: var(--focus);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-sm);
+}
 
-.kicker { color: var(--accent); font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.8rem; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
-h1 { font-size: 2.6rem; line-height: 1.1; margin: 0.4rem 0 1rem; }
+/* Masqué à l'œil, lu par les technologies d'assistance. `clip-path` plutôt que `display:none`,
+   qui retirerait l'élément de l'arbre d'accessibilité. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
 
-.lede { font-size: 1.2rem; color: var(--fg); }
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: calc(-1 * var(--space-16));
+  z-index: 10;
+  background: var(--surface);
+  border: 1px solid var(--accent-dim);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+.skip-link:focus { top: var(--space-2); }
+
+/* ── Structure de page ──────────────────────────────────────────────────────────────────────── */
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6) var(--space-16);
+}
+
+main.wide { max-width: var(--wide); }
+
+/* ── Typographie de contenu ─────────────────────────────────────────────────────────────────── */
+
+h1 {
+  font-size: var(--text-3xl);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--fg-strong);
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+h2 {
+  font-size: var(--text-xl);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--fg-strong);
+  margin: var(--space-12) 0 var(--space-3);
+}
+
+h3 {
+  font-size: var(--text-base);
+  color: var(--fg-strong);
+  margin: var(--space-8) 0 var(--space-2);
+}
+
+p { margin: 0 0 var(--space-4); }
+
+.kicker {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+  margin: 0;
+}
+
+.lede {
+  font-size: var(--text-lg);
+  line-height: 1.55;
+  color: var(--fg);
+  max-width: 42rem;
+}
 
 .muted { color: var(--muted); }
 
-h2 { font-size: 1.15rem; margin: 2.5rem 0 0.75rem; }
-
-ul.measures { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
-ul.measures li { padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
-
-.note { margin-top: 2.5rem; padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); font-size: 0.95rem; }
-
-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-
-a { color: var(--accent); text-decoration: none; }
+a { color: var(--accent); text-decoration: none; overflow-wrap: anywhere; }
 a:hover { text-decoration: underline; }
 
 /* Les sources sont citées par leur URL complète — c'est délibéré : une référence vérifiable se lit
@@ -45,4 +184,333 @@ a:hover { text-decoration: underline; }
    horizontal sur toute la page.
    `anywhere` plutôt que `break-word` : seul le premier autorise la coupure à calculer la largeur
    minimale intrinsèque du conteneur, ce qui empêche l'URL d'imposer sa largeur au bloc parent. */
-a { overflow-wrap: anywhere; }
+
+/* ── En-tête public ─────────────────────────────────────────────────────────────────────────── */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.site-header__inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.site-header__mark {
+  font-weight: 600;
+  color: var(--fg-strong);
+  letter-spacing: -0.01em;
+}
+.site-header__mark:hover { text-decoration: none; }
+
+.site-header__nav {
+  display: flex;
+  gap: var(--space-6);
+  margin-left: auto;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+}
+
+.site-header__nav a { color: var(--muted); }
+.site-header__nav a:hover { color: var(--fg); text-decoration: none; }
+
+/* ── Hiérarchie des étiquettes de données ───────────────────────────────────────────────────── */
+
+.data-label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.data-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-base);
+  color: var(--fg-strong);
+}
+
+.data-value--lg { font-size: var(--text-2xl); letter-spacing: -0.02em; }
+
+/* ── Panneau de mesure ──────────────────────────────────────────────────────────────────────── */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.panel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--panel-pad);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.panel__title { font-size: var(--text-base); color: var(--fg-strong); font-weight: 600; margin: 0; }
+
+/* Étiquette d'exemple : elle doit se voir sans être décorative. Bordure pleine, casse haute, et
+   surtout un `title` explicite — un lecteur d'écran doit l'entendre avant les chiffres. */
+.panel__badge {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+  white-space: nowrap;
+}
+
+.panel__body { padding: var(--panel-pad); }
+
+.panel__note {
+  padding: var(--row-pad) var(--panel-pad) var(--panel-pad);
+  color: var(--muted);
+  font-size: var(--text-sm);
+  border-top: 1px solid var(--line);
+}
+
+/* Grille de métriques : `auto-fit` plutôt qu'un nombre de colonnes figé — la même règle sert de
+   375 px à 1440 px, sans media query et sans risque de débordement. */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+}
+
+.metric { margin: 0; }
+.metric dt { margin: 0 0 var(--space-1); }
+.metric dd { margin: 0; }
+
+/* Lignes de mesure annotées. `table-layout` fixe + `overflow-x` sur le conteneur : une table de
+   mesure ne doit jamais élargir la page — c'est elle qui défile, pas le document. */
+.rows-scroll { overflow-x: auto; }
+
+table.rows {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+table.rows th,
+table.rows td {
+  text-align: left;
+  padding: var(--row-pad) var(--space-3);
+  border-bottom: 1px solid var(--line);
+  vertical-align: baseline;
+}
+
+table.rows th {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+table.rows td.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-strong);
+  text-align: right;
+  white-space: nowrap;
+}
+
+table.rows tr:last-child td { border-bottom: none; }
+
+/* État non observable : jamais rendu comme un zéro, ni par la valeur ni par le style. */
+.not-observable {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+/* ── Blocs éditoriaux ───────────────────────────────────────────────────────────────────────── */
+
+.note {
+  margin: var(--space-8) 0 0;
+  padding: var(--space-4) var(--space-6);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent-dim);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.note strong { color: var(--fg); }
+
+ul.measures { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+ul.measures li {
+  padding: var(--row-pad) 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+}
+
+/* Cartes de section : encadrent une fonction (un lien de navigation documenté), jamais un
+   ornement. Sans contenu propre, elles ne seraient qu'une boîte. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-6);
+  background: var(--surface);
+}
+
+.card h3 { margin: 0 0 var(--space-2); font-size: var(--text-base); }
+.card p { margin: 0; font-size: var(--text-sm); color: var(--muted); }
+
+/* ── Pied de page ───────────────────────────────────────────────────────────────────────────── */
+
+footer {
+  margin-top: var(--space-16);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--text-sm);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* ── Contenu Markdown des pages de documentation ────────────────────────────────────────────── */
+
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  margin: var(--space-4) 0;
+}
+
+article th, article td {
+  text-align: left;
+  padding: var(--row-pad) var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+article th {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+article blockquote {
+  margin: var(--space-4) 0;
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--line-strong);
+  color: var(--muted);
+}
+
+article code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1px 4px;
+}
+
+article ul, article ol { padding-left: var(--space-6); }
+article li { margin-bottom: var(--space-2); }
+
+/* Les tables Markdown peuvent être larges : c'est le conteneur qui défile, jamais la page. */
+article { overflow-wrap: break-word; }
+
+/* ── Accueil ────────────────────────────────────────────────────────────────────────────────── */
+
+.hero { max-width: 46rem; }
+
+.hero__panel { margin: var(--space-8) 0 var(--space-12); }
+
+/* ── Pages de documentation (méthodologie, FAQ) ─────────────────────────────────────────────── */
+
+.doc__head { margin-bottom: var(--space-8); }
+
+/* L'étiquette de maturité relativise tout ce qui suit : elle se lit AVANT le contenu, encadrée,
+   pas en note discrète que le regard saute. */
+.doc__status {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  background: var(--surface);
+}
+
+/* La réponse courte est la promesse gouvernée de la page : encadrée, pas noyée dans le flux. */
+.doc__short {
+  border-left: 2px solid var(--accent-dim);
+  padding: var(--space-1) 0 var(--space-1) var(--space-6);
+  margin: 0 0 var(--space-12);
+}
+
+.doc__short h2 { margin: 0 0 var(--space-2); }
+.doc__short .lede { margin: 0; }
+
+.doc__siblings {
+  margin-top: var(--space-16);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  font-size: var(--text-sm);
+}
+
+.doc__siblings ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 var(--space-4);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.doc__siblings [aria-current="page"] { color: var(--fg-strong); }
+
+/* Densité resserrée sur petit écran. Mesuré : à 375 px, la table de mesure réclamait 285 px pour
+   un conteneur de 245 — la colonne « share of observed » sortait du champ, or c'est elle qui porte
+   la démonstration (union ≠ somme). On réduit le rembourrage et la graisse plutôt que de masquer
+   une colonne : une mesure amputée sur mobile serait une mesure différente. */
+@media (max-width: 40rem) {
+  /* `table-layout: fixed` plutôt qu'un énième ajustement de rembourrage : en `auto`, la table
+     suit la largeur MINIMALE de son contenu et peut donc dépasser son conteneur quoi qu'on fasse.
+     En `fixed`, elle respecte 100% et répartit — la colonne de mesure absorbe le reste et passe à
+     la ligne. Les colonnes chiffrées reçoivent une largeur explicite : elles ne se coupent pas. */
+  table.rows { font-size: var(--text-xs); table-layout: fixed; }
+  table.rows th:nth-child(2),
+  table.rows th:nth-child(3) { width: 4.25rem; }
+  /* 6px horizontal : valeur mesurée, pas choisie à l'oeil. À 8px la colonne de partage sortait
+     encore de 16px ; à 6px la table tient dans son conteneur sans qu'aucune colonne ne soit
+     masquée. */
+  table.rows th,
+  table.rows td { padding: var(--space-2) 6px; }
+  .panel__head,
+  .panel__body { padding: var(--space-4); }
+  .panel__note { padding: var(--space-3) var(--space-4) var(--space-4); }
+}

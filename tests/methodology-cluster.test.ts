@@ -4,7 +4,7 @@
 // visuels) et la DOCTRINE telle qu'elle est réellement écrite dans les pages. La seconde est la plus
 // utile : un registre conforme n'empêche pas une phrase de contredire la méthode.
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { describe, expect, test } from "vitest";
@@ -352,10 +352,29 @@ describe("maillage entrant vers la page pilier", () => {
   const FAQ_ROUTE = path.join(ROOT, "app", "faq", "[slug]", "page.tsx");
   const PILLAR = "/methodology/authority-presence";
 
-  test("la homepage pointe vers la page pilier", () => {
+  // La homepage construit désormais ses liens de méthodologie DEPUIS les documents publiés, pour
+  // ne pas maintenir une seconde vérité sur ses propres titres. Chercher une chaîne littérale dans
+  // le source ne prouverait donc plus rien : le lien peut exister sans que le libellé y figure, et
+  // le libellé pourrait y figurer sans que la page soit rendue.
+  //
+  // On vérifie ce qui compte réellement pour la découvrabilité : le HTML EXPORTÉ contient un lien
+  // vers la page pilier. `skipIf` pour la même raison que les autres tests d'export — la séquence
+  // de vérification lance vitest avant le build.
+  const HOMEPAGE_HTML = path.join(ROOT, "out", "index.html");
+
+  test.skipIf(!existsSync(HOMEPAGE_HTML))(
+    "la homepage exportée pointe vers la page pilier",
+    () => {
+      const html = readFileSync(HOMEPAGE_HTML, "utf8");
+      expect(html).toMatch(new RegExp(`href="${PILLAR}"`));
+    }
+  );
+
+  test("la homepage lit ses liens de méthodologie depuis la collection", () => {
+    // Verrou de non-régression : si quelqu'un revient à une liste en dur, le site porterait deux
+    // vérités sur ses propres titres et l'une dériverait au premier changement.
     const src = readFileSync(HOMEPAGE, "utf8");
-    expect(src).toContain(PILLAR);
-    expect(src).toContain("Explore the Authority Presence methodology");
+    expect(src).toContain('loadCollection("methodology")');
   });
 
   test("la FAQ pointe vers la page pilier depuis son bloc de maillage", () => {
