@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "statusVocabularyVersion": 3,
   "productRepository": "textos-v0",
-  "snapshotCommit": "4d37616453f5d0fed24a8054314d49651e33af6b",
-  "snapshotCommittedAt": "2026-08-05",
+  "snapshotCommit": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
+  "snapshotCommittedAt": "2026-08-08",
   "coverage": {
     "kind": "partial",
-    "note": "Périmètre limité aux 10 entités de la baseline du 2026-08-04. Hors périmètre à ce snapshot : (1) deriveOpportunityEconomics — ADR-018, src/server/textos/decide/opportunity-economics.ts ; (2) deriveInterventionSet / MVIS — ADR-018 §7, src/server/textos/decide/intervention-set.ts ; (3) profils de claims et rôle owned_product. Par ailleurs, l'extraction de claims a évolué en S8.1 (claims-det-2b@0.2) postérieurement aux commits de preuve déclarés pour claim-evidence-layer : ses bundles décrivent la fondation S8, pas le comportement courant. Ces écarts sont des décisions non prises, pas des oublis — traités en C0B."
+    "note": "16 entités déclarées. Le pipeline Act est désormais couvert (grounded-truth-check, structured-generation, brief-fulfillment-check, controlled-preview, generation-handoff, re-observation-plan), et les preuves de claim-evidence-layer et truth-check ont été rafraîchies : leurs bundles décrivent le comportement courant. RESTENT HORS PÉRIMÈTRE à ce snapshot : (1) deriveOpportunityEconomics — ADR-018, src/server/textos/decide/opportunity-economics.ts ; (2) deriveInterventionSet / MVIS — ADR-018 §7, src/server/textos/decide/intervention-set.ts ; (3) profils de claims et rôle owned_product ; (4) restitution des quatre dimensions d'autorité (readers). Ces absences sont des décisions non prises, pas des oublis. AVERTISSEMENT : aucune des six capacités Act n'est gouvernée par un ADR — ni ADR-015 ni ADR-016 ne les mentionnent. Le garde de tests interdit `public_marketable` sans ADR, donc aucune ne peut être commercialisée avant d'avoir le sien."
   },
   "entities": [
     {
@@ -26,6 +26,39 @@
       ],
       "knownLimits": [
         "Concept refusé : agréger l'autorité en un score unique masque la composition de la mesure."
+      ]
+    },
+    {
+      "id": "brief-fulfillment-check",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "brief-fulfillment-v1",
+          "commits": [
+            "25b4c04658ef9764c027865a4b917cb923125193"
+          ],
+          "paths": [
+            "src/server/textos/act/brief-fulfillment.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/brief-fulfillment.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "guarantees the content is useful",
+        "generally available"
+      ],
+      "knownLimits": [
+        "Distinct du TruthCheck : mesure si le brouillon répond au brief, pas s'il dit vrai."
       ]
     },
     {
@@ -59,7 +92,8 @@
         {
           "id": "deterministic-claim-extraction-v1",
           "commits": [
-            "1178684f78c4d6841f4e042527cc893c42d37254"
+            "1178684f78c4d6841f4e042527cc893c42d37254",
+            "1dbea6973b0b1a7700b248e5af5950a8b6f4a439"
           ],
           "paths": [
             "src/server/textos/observe/claims.ts",
@@ -83,6 +117,43 @@
       "knownLimits": [
         "Capture et extraction déterministe uniquement — aucune vérification de véracité.",
         "Fondation technique commitée et testée, pas une capacité produit généralement disponible."
+      ]
+    },
+    {
+      "id": "controlled-preview",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "internal-preview-v1",
+          "commits": [
+            "cbe25796510ba1bdf5bc3cf43f421401013ac1c1",
+            "865924aaf1c14ffaa8903c246cdd13272f518559",
+            "25b4c04658ef9764c027865a4b917cb923125193"
+          ],
+          "paths": [
+            "src/server/textos/act/preview.ts",
+            "src/server/textos/act/preview-repository.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/preview.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "publishes content",
+        "generally available",
+        "live preview for your audience"
+      ],
+      "knownLimits": [
+        "Aperçu INTERNE, noindex : l'état `preview` est distinct de `published`, et publishedUrl reste nul."
       ]
     },
     {
@@ -121,6 +192,90 @@
       ],
       "knownLimits": [
         "Estimation adossée au panel de requêtes du run, variance non nulle."
+      ]
+    },
+    {
+      "id": "generation-handoff",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "handoff-integrity-v1",
+          "commits": [
+            "5b1dba979f964b330550562b457a6ebd1cae0740",
+            "865924aaf1c14ffaa8903c246cdd13272f518559"
+          ],
+          "paths": [
+            "src/server/textos/act/generation-handoff.ts",
+            "src/server/textos/act/content-hash.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/generation-handoff.test.ts",
+            "src/server/textos/act/structured-handoff.test.ts",
+            "src/server/textos/act/content-hash.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "generally available"
+      ],
+      "knownLimits": [
+        "Transporte un brouillon et ses empreintes entre génération et aperçu ; ne garantit rien sur le contenu lui-même."
+      ]
+    },
+    {
+      "id": "grounded-truth-check",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "grounded-verification-v1",
+          "commits": [
+            "a944097c401d066154719c2a09c882a9cc970e54"
+          ],
+          "paths": [
+            "src/server/textos/act/grounded-truth-check.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/grounded-truth-check.test.ts"
+          ],
+          "adrs": []
+        },
+        {
+          "id": "public-evidence-corpus-v1",
+          "commits": [
+            "a944097c401d066154719c2a09c882a9cc970e54",
+            "e6b20ec153fb1472bb8591d4fd9434c278529c52"
+          ],
+          "paths": [
+            "src/server/textos/act/evidence-corpus.ts"
+          ],
+          "tests": [],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "automatically verifies claims",
+        "fact-checking",
+        "generally available",
+        "guarantees the content is true"
+      ],
+      "knownLimits": [
+        "Vérifie qu'une affirmation est adossée au corpus de preuves fourni ; ne juge pas la véracité du corpus.",
+        "Strict par construction : une affirmation non adossée est refusée, pas corrigée."
       ]
     },
     {
@@ -298,6 +453,41 @@
       ]
     },
     {
+      "id": "re-observation-plan",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "reobservation-plan-v1",
+          "commits": [
+            "7ac42fb6675e2a4fdded8bcb4224b21cc3d1f26a"
+          ],
+          "paths": [
+            "src/server/textos/act/re-observation.ts",
+            "src/server/textos/act/re-observation-repository.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/re-observation.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "proves your content worked",
+        "measures ROI",
+        "generally available"
+      ],
+      "knownLimits": [
+        "Fige une baseline et un plan de re-mesure ; il ne démontre aucun effet par lui-même."
+      ]
+    },
+    {
       "id": "repos-intersection",
       "kind": "capability",
       "implementationStatus": "implemented",
@@ -333,6 +523,44 @@
       ],
       "knownLimits": [
         "Première couche premium, fixture-first."
+      ]
+    },
+    {
+      "id": "structured-generation",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "structured-draft-pipeline-v1",
+          "commits": [
+            "a944097c401d066154719c2a09c882a9cc970e54",
+            "1a32727659c37d6991218e7ff2251691a5bc293a"
+          ],
+          "paths": [
+            "src/server/textos/act/structured-generation.ts",
+            "src/server/textos/act/structured-content-draft.ts",
+            "src/server/textos/act/generation-structured-repository.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/structured-generation.test.ts",
+            "src/server/textos/act/generation-structured-repository.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "writes your content for you",
+        "generally available",
+        "publishes generated content"
+      ],
+      "knownLimits": [
+        "Produit un brouillon structuré adossé à des preuves ; il n'est jamais publié par cette couche."
       ]
     },
     {
@@ -406,7 +634,9 @@
           "id": "truthcheck-generation-v1",
           "commits": [
             "2dbf4fd0002592bac778dec726ee20fd106458c8",
-            "f63c89ba827cfc70b8400a8e29e2c7ec040be7ce"
+            "f63c89ba827cfc70b8400a8e29e2c7ec040be7ce",
+            "bf2d748db834802c781bd0d1aa97ec4c248f70a8",
+            "a944097c401d066154719c2a09c882a9cc970e54"
           ],
           "paths": [
             "src/server/textos/act/generation.ts",
