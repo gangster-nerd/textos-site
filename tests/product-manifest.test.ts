@@ -17,6 +17,8 @@ import {
   type ProductManifest,
 } from "@/lib/product-manifest/manifest-schema";
 import { blockingProblems, checkProvenance, isProven } from "@/lib/product-manifest/provenance";
+import { routedCollections } from "@/lib/content/attribution-manifest";
+import { loadCollection } from "@/lib/content/content-loader";
 
 const SHA = "4d37616453f5d0fed24a8054314d49651e33af6b";
 
@@ -274,19 +276,39 @@ describe("état réel du dépôt", () => {
     expect(kinds).not.toContain("capability_absent_from_registry");
   });
 
-  it("les cinq documents sont rattachés au snapshot épinglé après revue", () => {
-    // Le bump est le RÉSULTAT d'une revue, pas un nettoyage d'avertissement : ce test échouera si
-    // un futur réimport bouge le snapshot sans que les documents aient été relus.
-    const checks = [
-      ["faq/x", ["claim-evidence-layer"], ["claim-evidence-layer:answer-evidence-capture-v1"]],
-    ] as const;
+  it("les cinq documents RÉELS portent le snapshot épinglé et résolvent leur provenance", () => {
+    // Version précédente : elle fabriquait `productSnapshotSha: manifest.snapshotCommit`, donc ne
+    // pouvait par construction jamais produire de mismatch. Elle ne lisait aucun fichier réel et
+    // prouvait exactement rien — tout en prétendant verrouiller la décision éditoriale.
+    //
+    // Ici les documents sont chargés par le MÊME pipeline que les pages, et ce sont leurs valeurs
+    // de frontmatter qui entrent dans la vérification. Un futur réimport qui bougerait le snapshot
+    // sans relire les contenus fera donc réellement rougir ce test.
+    const docs = routedCollections(process.cwd()).flatMap((collection) =>
+      loadCollection(collection)
+    );
 
-    for (const [contentId, capabilityIds, evidenceRefs] of checks) {
+    expect(docs).toHaveLength(5);
+
+    for (const doc of docs) {
+      const { productSnapshotSha, evidenceRefs, capabilityIds } = doc.frontmatter;
+
+      expect(productSnapshotSha, `${doc.contentId} : snapshot du frontmatter`).toBe(
+        manifest.snapshotCommit
+      );
+
       const check = checkProvenance(
-        { contentId, productSnapshotSha: manifest.snapshotCommit, evidenceRefs, capabilityIds },
+        { contentId: doc.contentId, productSnapshotSha, evidenceRefs, capabilityIds },
         manifest
       );
-      expect(check.problems.map((p) => p.kind)).not.toContain("snapshot_mismatch");
+
+      expect(blockingProblems(check), doc.contentId).toEqual([]);
+      expect(check.problems.map((p) => p.kind), doc.contentId).not.toContain("snapshot_mismatch");
+      // Chaque capacité invoquée doit être adossée à au moins une preuve : c'est ce que
+      // `capability_without_evidence` garantit, et il figure parmi les problèmes bloquants.
+      expect(evidenceRefs.length, `${doc.contentId} : références de preuve`).toBeGreaterThanOrEqual(
+        capabilityIds.length
+      );
     }
   });
 
