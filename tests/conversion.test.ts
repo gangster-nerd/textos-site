@@ -20,9 +20,11 @@ import {
   getCtaVariant,
 } from "@/lib/conversion/cta-registry";
 import {
+  assertConfiguredCtaPublishable,
   assertCtaPublishable,
   ctaViolations,
   resolveCtaForDocument,
+  resolveCtaForSurface,
 } from "@/lib/conversion/cta-resolver";
 import { VISUALS, VisualAssetSchema } from "@/lib/visuals/visual-registry";
 import { CLAIMS } from "@/lib/claims-registry";
@@ -291,6 +293,54 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
         "faq"
       )
     ).toThrow(/non autorisée sur la surface/);
+  });
+
+  test("intention inconnue → échec bruyant, pas un null silencieux", () => {
+    expect(() =>
+      assertConfiguredCtaPublishable({ configuredVariant: "ghost", surface: "homepage" })
+    ).toThrow(/CTA inconnue du registre/);
+  });
+
+  test("le gate éditorial de la homepage est celui des documents", () => {
+    // FALSIFICATION du défaut que ce helper ferme : une variante approuvée mais non autorisée sur
+    // `homepage` doit faire ÉCHOUER le build, et non disparaître via un `resolvedVariant: null` que
+    // rien ne distinguerait d'un mode `off` légitime.
+    const withoutHomepage = approvedFixture({
+      allowedSurfaces: ["faq", "product_article"],
+      claimIds: [],
+    });
+
+    expect(() => assertCtaPublishable(withoutHomepage as never, "homepage")).toThrow(
+      /non autorisée sur la surface homepage/
+    );
+
+    // …alors que la seule résolution serait muette.
+    expect(
+      resolveCtaForSurface({
+        configuredVariant: "measurement_request",
+        surface: "pricing",
+        delivery: DELIVERY,
+      }).resolvedVariant
+    ).toBeNull();
+  });
+
+  test("le gate éditorial passe même quand la livraison refuse", () => {
+    // Les deux décisions restent distinctes : en mode `off`, l'assertion passe et la résolution
+    // vaut quand même null. Un CTA absent n'est alors pas une erreur.
+    expect(() =>
+      assertConfiguredCtaPublishable({
+        configuredVariant: "measurement_request",
+        surface: "homepage",
+      })
+    ).not.toThrow();
+
+    expect(
+      resolveCtaForSurface({
+        configuredVariant: "measurement_request",
+        surface: "homepage",
+        delivery: { ...DELIVERY, mode: "off" },
+      }).resolvedVariant
+    ).toBeNull();
   });
 
   test("la homepage est une surface comme une autre — aucune exemption", () => {

@@ -2,9 +2,8 @@ import { allowsSurface, findCapability, type CapabilityDeclaration } from "@/lib
 import { findClaim, type Surface } from "@/lib/claims-registry";
 import { getCluster } from "@/lib/content/content-cluster-registry";
 
-import { getCtaVariant } from "@/lib/conversion/cta-registry";
 import {
-  assertCtaPublishable,
+  assertConfiguredCtaPublishable,
   resolveCtaForDocument,
   type CtaResolution,
 } from "@/lib/conversion/cta-resolver";
@@ -82,9 +81,7 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
   // des fonctions distinctes — l'article gouverne ses affirmations éditoriales, le CTA gouverne une
   // surface commerciale prouvée par ses propres claims. Exiger l'inclusion forcerait un article à
   // revendiquer des capacités dont il ne parle pas pour pouvoir porter son propre CTA.
-  const ctaVariant = getCtaVariant(fm.ctaVariant);
-  if (!ctaVariant) throw new Error(`CTA inconnue du registre : ${fm.ctaVariant}`);
-  assertCtaPublishable(ctaVariant, surface);
+  assertConfiguredCtaPublishable({ configuredVariant: fm.ctaVariant, surface });
 
   // Résolution STRICTE : c'est elle qui fait autorité, et la seule que le rendu consommera.
   const ctaResolution: CtaResolution = resolveCtaForDocument({

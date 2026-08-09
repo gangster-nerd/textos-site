@@ -1,16 +1,17 @@
-// Littéraux avant type : les registres qui valident au runtime (CTA) ont besoin du tableau, pas
-// seulement de l'union. Le type en est dérivé — une seule source, aucune recopie à faire diverger.
-export const SURFACES = [
-  "developer_note",
-  "changelog",
-  "faq",
-  "product_article",
-  "homepage",
-  "pricing",
-  "sales_copy",
-] as const;
+// SOURCE UNIQUE du vocabulaire de surfaces, réexportée depuis `status-axes`.
+//
+// Les littéraux existaient en DEUX exemplaires identiques : ici et dans `product-manifest/
+// status-axes.ts`. Deux listes que rien n'empêchait de diverger — et une divergence y aurait été
+// particulièrement sournoise, puisque `status-axes` porte le vocabulaire confronté au manifeste
+// produit : une surface ajoutée d'un seul côté aurait fait accepter au site une valeur que le
+// produit ignore, ou l'inverse.
+//
+// La réexportation garde `claims-registry` comme point d'entrée naturel pour tout ce qui touche aux
+// claims, sans en faire une seconde définition.
+import { PUBLIC_SURFACES, type PublicSurface } from "@/lib/product-manifest/status-axes";
 
-export type Surface = (typeof SURFACES)[number];
+export const SURFACES = PUBLIC_SURFACES;
+export type Surface = PublicSurface;
 
 export type Claim = {
   id: string;
