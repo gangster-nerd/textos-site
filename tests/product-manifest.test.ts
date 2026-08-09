@@ -17,6 +17,8 @@ import {
   type ProductManifest,
 } from "@/lib/product-manifest/manifest-schema";
 import { blockingProblems, checkProvenance, isProven } from "@/lib/product-manifest/provenance";
+import { PUBLIC_SURFACES } from "@/lib/product-manifest/status-axes";
+import { SURFACES } from "@/lib/claims-registry";
 import { routedCollections } from "@/lib/content/attribution-manifest";
 import { loadCollection } from "@/lib/content/content-loader";
 
@@ -455,5 +457,25 @@ describe("taxonomie des findings", () => {
     );
 
     expect(findings).toHaveLength(1);
+  });
+});
+
+describe("vocabulaire de surfaces — une seule source", () => {
+  it("claims-registry ne redéfinit pas les surfaces, il les réexporte", () => {
+    // Les littéraux existaient en deux exemplaires identiques. Une divergence y aurait été sournoise :
+    // `status-axes` porte le vocabulaire confronté au manifeste produit, donc une surface ajoutée
+    // d'un seul côté aurait fait accepter au site une valeur que le produit ignore — ou l'inverse.
+    //
+    // L'identité de RÉFÉRENCE est ce qui le prouve : deux tableaux au contenu égal passeraient un
+    // `toEqual`, mais seul le même objet garantit qu'il n'existe pas de copie.
+    expect(SURFACES).toBe(PUBLIC_SURFACES);
+  });
+
+  it("toute surface revendiquée par le registre existe dans ce vocabulaire", () => {
+    for (const [id, declaration] of Object.entries(CAPABILITY_REGISTRY)) {
+      for (const surface of declaration.claimedSurfaces) {
+        expect(PUBLIC_SURFACES, `${id} : ${surface}`).toContain(surface);
+      }
+    }
   });
 });

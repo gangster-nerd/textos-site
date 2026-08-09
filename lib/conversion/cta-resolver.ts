@@ -25,7 +25,19 @@ import type { ContentTypeName } from "@/lib/content/content-types";
 import type { ConversionMode } from "./conversion-config";
 import { getCtaVariant, type CtaVariant, type CtaVariantId } from "./cta-registry";
 
-/** Surface commerciale des claims portés par un CTA. Distincte des surfaces éditoriales. */
+/**
+ * DEUX NOTIONS DE SURFACE, à ne pas confondre — elles répondent à deux questions différentes :
+ *
+ *   `allowedSurfaces` (registre CTA)  → surfaces de PLACEMENT : OÙ la proposition peut apparaître.
+ *                                        Aujourd'hui `homepage`, `faq`, `product_article`.
+ *
+ *   `SALES_SURFACE` (ci-dessous)      → surface des CLAIMS commerciaux du CTA : sous quel régime
+ *                                        ses affirmations sont gouvernées. Toujours `sales_copy`,
+ *                                        quel que soit l'endroit où le CTA est placé.
+ *
+ * Un CTA placé en FAQ porte donc des claims jugés sur `sales_copy`, pas sur `faq` : c'est une
+ * proposition commerciale, où qu'elle se trouve. Les deux ne varient jamais ensemble.
+ */
 const SALES_SURFACE = "sales_copy" as const;
 
 export interface CtaResolution {
@@ -183,6 +195,29 @@ export function assertCtaPublishable(v: CtaVariant, surface: Surface): void {
   if (problems.length > 0) {
     throw new Error(`CTA "${v.id}" est approved mais ${problems.join(" ; ")}.`);
   }
+}
+
+/**
+ * Gate ÉDITORIAL d'une intention de CTA, depuis son identifiant.
+ *
+ * Existe pour que la homepage suive exactement le même chemin que les documents. Sans lui, elle
+ * n'appelait que le resolver — qui, lui, retourne `null` sur une violation éditoriale. Une variante
+ * approuvée mais non autorisée sur `homepage` y aurait donc simplement disparu, en silence, au lieu
+ * de rougir au build. Un CTA absent sans explication est plus coûteux à diagnostiquer qu'un build
+ * rouge, et c'est précisément ce que `assertCtaPublishable` existe pour éviter côté documents.
+ *
+ * Il ne dit RIEN de la livraison : le gate éditorial et la décision de livraison restent distincts.
+ * En mode `off`, cette assertion passe et la résolution vaut quand même `null`.
+ */
+export function assertConfiguredCtaPublishable(input: {
+  configuredVariant: string;
+  surface: Surface;
+}): void {
+  const definition = getCtaVariant(input.configuredVariant);
+  if (!definition) {
+    throw new Error(`CTA inconnue du registre : ${input.configuredVariant}`);
+  }
+  assertCtaPublishable(definition, input.surface);
 }
 
 /**

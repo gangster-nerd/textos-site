@@ -4,7 +4,10 @@ import { CAPABILITY_REGISTRY, isMarketableOn, type CapabilityId } from "@/lib/ca
 import { loadCollection } from "@/lib/content/content-loader";
 import { ExampleMeasurement } from "@/components/product/ExampleMeasurement";
 import { ContentCta } from "@/components/content/ContentCta";
-import { resolveCtaForSurface } from "@/lib/conversion/cta-resolver";
+import {
+  assertConfiguredCtaPublishable,
+  resolveCtaForSurface,
+} from "@/lib/conversion/cta-resolver";
 import { deliveryContext } from "@/lib/conversion/delivery-context";
 
 // Homepage : surface "homepage" (page-map.spec.md §1) → uniquement public_marketable (§3).
@@ -38,8 +41,18 @@ export default function Home() {
       description: doc.frontmatter.description,
     }));
 
+  // MÊME CHEMIN QUE LES DOCUMENTS : gate éditorial d'abord, résolution ensuite. Sans l'assertion,
+  // une variante approuvée mais non autorisée sur cette surface disparaîtrait EN SILENCE — le
+  // resolver rend `null` sur une violation éditoriale, et rien ne distinguerait ce cas d'un mode
+  // `off` légitime. Le build doit rougir.
+  //
+  // Les deux décisions restent distinctes : en mode `off`, l'assertion passe et la résolution vaut
+  // quand même `null`. Aucun CTA n'est rendu, et ce n'est pas une erreur.
+  const CTA_INTENT = "measurement_request";
+  assertConfiguredCtaPublishable({ configuredVariant: CTA_INTENT, surface: "homepage" });
+
   const cta = resolveCtaForSurface({
-    configuredVariant: "measurement_request",
+    configuredVariant: CTA_INTENT,
     surface: "homepage",
     delivery: deliveryContext(),
   });
