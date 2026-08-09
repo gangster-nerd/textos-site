@@ -1,11 +1,16 @@
-export type Surface =
-  | "developer_note"
-  | "changelog"
-  | "faq"
-  | "product_article"
-  | "homepage"
-  | "pricing"
-  | "sales_copy";
+// Littéraux avant type : les registres qui valident au runtime (CTA) ont besoin du tableau, pas
+// seulement de l'union. Le type en est dérivé — une seule source, aucune recopie à faire diverger.
+export const SURFACES = [
+  "developer_note",
+  "changelog",
+  "faq",
+  "product_article",
+  "homepage",
+  "pricing",
+  "sales_copy",
+] as const;
+
+export type Surface = (typeof SURFACES)[number];
 
 export type Claim = {
   id: string;

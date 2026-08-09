@@ -60,7 +60,7 @@ const approvedFixture = (over: Record<string, unknown> = {}) => ({
   id: "trial",
   status: "approved",
   requiredCapabilities: [],
-  allowedContentTypes: ["faq_entry"],
+  allowedSurfaces: ["faq"],
   destination: "/request",
   title: "Start",
   body: "Body",
@@ -264,7 +264,7 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
           requiredCapabilities: ["claim-evidence-layer"],
           claimIds: [],
         }) as never,
-        "faq_entry"
+        "faq"
       )
     ).toThrow(/non commercialisable sur sales_copy/);
   });
@@ -273,24 +273,35 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
     expect(() =>
       assertCtaPublishable(
         approvedFixture({ requiredCapabilities: ["ghost-capability"], claimIds: [] }) as never,
-        "faq_entry"
+        "faq"
       )
     ).toThrow(/capacité inconnue/);
   });
 
   test("approved sans destination → échec bruyant", () => {
     expect(() =>
-      assertCtaPublishable(approvedFixture({ destination: null, claimIds: [] }) as never, "faq_entry")
+      assertCtaPublishable(approvedFixture({ destination: null, claimIds: [] }) as never, "faq")
     ).toThrow(/sans destination/);
   });
 
-  test("approved sur un contentType non autorisé → échec bruyant", () => {
+  test("approved sur une surface non autorisée → échec bruyant", () => {
     expect(() =>
       assertCtaPublishable(
-        approvedFixture({ allowedContentTypes: ["product_article"], claimIds: [] }) as never,
-        "faq_entry"
+        approvedFixture({ allowedSurfaces: ["product_article"], claimIds: [] }) as never,
+        "faq"
       )
-    ).toThrow(/non autorisée sur le contentType/);
+    ).toThrow(/non autorisée sur la surface/);
+  });
+
+  test("la homepage est une surface comme une autre — aucune exemption", () => {
+    // Le registre l'exprime désormais, mais la règle ne se relâche pas pour autant : une variante
+    // qui ne revendique pas `homepage` y est refusée exactement comme ailleurs.
+    expect(() =>
+      assertCtaPublishable(
+        approvedFixture({ allowedSurfaces: ["faq"], claimIds: [] }) as never,
+        "homepage"
+      )
+    ).toThrow(/non autorisée sur la surface homepage/);
   });
 
   test("un claim CTA hors requiredCapabilities est rejeté", () => {
@@ -300,7 +311,7 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
         requiredCapabilities: ["observe-authority-presence"],
         claimIds: ["s8-answer-evidence-capture"],
       }) as never,
-      "faq_entry"
+      "faq"
     );
     expect(problems.join(" ")).toMatch(/hors des requiredCapabilities/);
   });
@@ -311,7 +322,7 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
         requiredCapabilities: ["observe-authority-presence"],
         claimIds: ["hp1-measurement-doctrine"],
       }) as never,
-      "faq_entry"
+      "faq"
     );
     expect(problems.join(" ")).toMatch(/capabilityId null/);
   });
@@ -322,7 +333,7 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
         requiredCapabilities: ["claim-evidence-layer"],
         claimIds: ["s8-answer-evidence-capture"],
       }) as never,
-      "faq_entry"
+      "faq"
     );
     expect(problems.join(" ")).toMatch(/non autorisé sur la surface sales_copy/);
   });
@@ -340,7 +351,7 @@ describe("séparation éditorial / commercial (arbitrage S1)", () => {
         requiredCapabilities: ["observe-authority-presence"],
         claimIds: [],
       }) as never,
-      "faq_entry"
+      "faq"
     );
     expect(problems).toEqual([]);
     // …et le gate complet laisse passer le document, dont le CTA reste disabled en S1.
@@ -353,7 +364,7 @@ describe("séparation éditorial / commercial (arbitrage S1)", () => {
         requiredCapabilities: ["observe-authority-presence", "quality-ledger"],
         claimIds: [],
       }) as never,
-      "faq_entry"
+      "faq"
     );
     expect(problems.join(" ")).not.toMatch(/capabilityIds du document/);
   });
@@ -384,7 +395,7 @@ describe("S2.0A — surface sales_copy peuplée et gouvernée", () => {
 
   test("measurement_request ne viole plus aucune règle de claims", () => {
     const real = getCtaVariant("measurement_request")!;
-    const problems = ctaViolations({ ...real, status: "approved" }, "faq_entry");
+    const problems = ctaViolations({ ...real, status: "approved" }, "faq");
     expect(problems).toEqual([]);
   });
 

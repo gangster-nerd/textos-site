@@ -18,6 +18,8 @@
 // faudrait polluer son frontmatter avec des capacités dont il ne parle pas.
 
 import { findCapability, isMarketableOn } from "@/lib/capability-registry";
+import type { Surface } from "@/lib/claims-registry";
+import { SURFACE_BY_CONTENT_TYPE } from "@/lib/content/content-types";
 import { findClaim } from "@/lib/claims-registry";
 import type { ContentTypeName } from "@/lib/content/content-types";
 import type { ConversionMode } from "./conversion-config";
@@ -58,7 +60,7 @@ const NOT_RESOLVED = (configuredVariant: string): CtaResolution => ({
  * Deux consommateurs, un seul jeu de règles : `assertCtaPublishable` les transforme en échec de
  * build, `resolveCtaForDocument` en `null`. Aucune règle n'est réécrite d'un côté ou de l'autre.
  */
-export function ctaViolations(v: CtaVariant, contentType: ContentTypeName): string[] {
+export function ctaViolations(v: CtaVariant, surface: Surface): string[] {
   const problems: string[] = [];
 
   // Destination réelle : un CTA approuvé sans URL serait un lien mort.
@@ -66,9 +68,9 @@ export function ctaViolations(v: CtaVariant, contentType: ContentTypeName): stri
     problems.push(`approved sans destination — aucune URL réelle n'existe`);
   }
 
-  // Surface : le contentType doit être couvert par la variante.
-  if (!v.allowedContentTypes.includes(contentType)) {
-    problems.push(`non autorisée sur le contentType ${contentType}`);
+  // Surface : elle doit être couverte par la variante.
+  if (!v.allowedSurfaces.includes(surface)) {
+    problems.push(`non autorisée sur la surface ${surface}`);
   }
 
   // Capacités de la PROPOSITION COMMERCIALE : connues et globalement public_marketable.
@@ -175,9 +177,9 @@ export function ctaDeliveryViolations(
  * un CTA approuvé qui ne rend rien sans explication est plus coûteux à diagnostiquer qu'un build
  * rouge. Ne dit rien des variantes `disabled`/`retired`/`none` — leur non-rendu est voulu.
  */
-export function assertCtaPublishable(v: CtaVariant, contentType: ContentTypeName): void {
+export function assertCtaPublishable(v: CtaVariant, surface: Surface): void {
   if (v.status !== "approved") return;
-  const problems = ctaViolations(v, contentType);
+  const problems = ctaViolations(v, surface);
   if (problems.length > 0) {
     throw new Error(`CTA "${v.id}" est approved mais ${problems.join(" ; ")}.`);
   }
@@ -189,6 +191,32 @@ export function assertCtaPublishable(v: CtaVariant, contentType: ContentTypeName
  */
 export function resolveCtaForDocument(input: ResolveCtaForDocumentInput): CtaResolution {
   const { configuredVariant, contentType, delivery } = input;
+  // Un document connaît son contentType, pas sa surface : la traduction se fait ICI, une fois, et
+  // les appelants documentaires n'ont rien à changer.
+  return resolveCtaForSurface({
+    configuredVariant,
+    surface: SURFACE_BY_CONTENT_TYPE[contentType],
+    delivery,
+  });
+}
+
+export interface ResolveCtaForSurfaceInput {
+  configuredVariant: string;
+  /** REQUISE. Le contexte n'est jamais optionnel : sans lui, pas de décision. */
+  surface: Surface;
+  /** REQUIS. Une variante approuvée éditorialement n'est rendue que si elle est LIVRABLE. */
+  delivery: CtaDeliveryContext;
+}
+
+/**
+ * Résolution par SURFACE — la forme générale.
+ *
+ * Elle existe parce que toutes les surfaces ne sont pas des documents : la page d'accueil porte une
+ * proposition commerciale sans avoir ni frontmatter ni contentType. Elle applique exactement les
+ * mêmes règles ; il n'y a pas de chemin allégé pour la homepage.
+ */
+export function resolveCtaForSurface(input: ResolveCtaForSurfaceInput): CtaResolution {
+  const { configuredVariant, surface, delivery } = input;
   const definition = getCtaVariant(configuredVariant);
 
   if (!definition) return NOT_RESOLVED(configuredVariant);
@@ -198,7 +226,7 @@ export function resolveCtaForDocument(input: ResolveCtaForDocumentInput): CtaRes
   if (definition.id === "none") return NOT_RESOLVED(configuredVariant);
 
   if (definition.status !== "approved") return NOT_RESOLVED(configuredVariant);
-  if (ctaViolations(definition, contentType).length > 0) {
+  if (ctaViolations(definition, surface).length > 0) {
     return NOT_RESOLVED(configuredVariant);
   }
   // Approbation éditoriale ET livraison opérationnelle. Les deux, jamais l'une pour l'autre.

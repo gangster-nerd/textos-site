@@ -401,12 +401,29 @@ describe("maillage entrant vers la page pilier", () => {
     }
   });
 
-  test("la homepage ne porte pas de second CTA commercial", () => {
+  // DÉCISION INVERSÉE (S4) : la homepage porte désormais le CTA du registre, `homepage` ayant été
+  // ajouté aux surfaces autorisées de `measurement_request`. Interdire `ContentCta` n'a donc plus
+  // de sens — mais l'invariant qu'il protégeait, lui, reste entier : la page ne doit pas porter de
+  // SECOND CTA, ni une proposition commerciale écrite en dur qui court-circuiterait le resolver.
+  test("la homepage porte au plus un CTA, et il vient du resolver", () => {
     const src = readFileSync(HOMEPAGE, "utf8");
-    expect(src).not.toContain("ContentCta");
+
+    // Un seul point de rendu.
+    expect(src.match(/<ContentCta/g) ?? []).toHaveLength(1);
+
+    // Il rend une variante RÉSOLUE, jamais celle demandée.
+    expect(src).toContain("resolveCtaForSurface");
+    expect(src).toContain("cta.resolvedVariant");
+
+    // Aucune copy commerciale en dur : elle appartient au registre, qui la gouverne avec ses
+    // claims. Une phrase écrite ici échapperait à ce contrôle.
     for (const copy of ["See your brand measured", "Request a measurement"]) {
-      expect(src, `copy CTA sur la homepage : ${copy}`).not.toContain(copy);
+      expect(src, `copy CTA écrite en dur sur la homepage : ${copy}`).not.toContain(copy);
     }
+
+    // Et aucun lien direct vers la destination : il contournerait le resolver et apparaîtrait même
+    // en mode `off`, où aucun CTA ne doit exister.
+    expect(src).not.toContain('href="/request-measurement"');
   });
 });
 

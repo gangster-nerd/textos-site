@@ -1,26 +1,17 @@
 import { allowsSurface, findCapability, type CapabilityDeclaration } from "@/lib/capability-registry";
 import { findClaim, type Surface } from "@/lib/claims-registry";
 import { getCluster } from "@/lib/content/content-cluster-registry";
-import { existsSync } from "node:fs";
-import path from "node:path";
 
-import { conversionConfig } from "@/lib/conversion/conversion-config";
 import { getCtaVariant } from "@/lib/conversion/cta-registry";
-import type { CtaDeliveryContext } from "@/lib/conversion/cta-resolver";
 import {
   assertCtaPublishable,
   resolveCtaForDocument,
   type CtaResolution,
 } from "@/lib/conversion/cta-resolver";
+import { deliveryContext } from "@/lib/conversion/delivery-context";
 import { getVisual } from "@/lib/visuals/visual-registry";
+import { SURFACE_BY_CONTENT_TYPE } from "./content-types";
 import type { ContentFrontmatter } from "./content-schema";
-
-const SURFACE_BY_CONTENT_TYPE: Record<ContentFrontmatter["contentType"], Surface> = {
-  developer_note: "developer_note",
-  changelog_entry: "changelog",
-  faq_entry: "faq",
-  product_article: "product_article",
-};
 
 // Plus de table `Record<Status, Surface[]>` : l'autorisation ne se déduit plus d'un statut, elle
 // se lit sur la capacité elle-même (`claimedSurfaces`). Un statut ne peut pas savoir qu'une capacité
@@ -37,18 +28,6 @@ const MATURITY_LABEL: Partial<Record<NonNullable<CapabilityDeclaration["implemen
 };
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-
-/**
- * Contexte de livraison réel — le seul endroit qui touche l'environnement et le filesystem. Les
- * règles, elles, restent pures dans `cta-resolver`.
- */
-const deliveryContext: CtaDeliveryContext = {
-  mode: conversionConfig.mode,
-  routeExists: (route) =>
-    existsSync(path.join(process.cwd(), "app", ...route.split("/").filter(Boolean), "page.tsx")),
-  endpointConfigured: conversionConfig.formEndpoint !== null,
-  legalNoticePublished: conversionConfig.legalNoticePublished,
-};
 
 export function runGates(fm: ContentFrontmatter, slug: string) {
   if (!SLUG.test(slug)) {
@@ -105,13 +84,13 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
   // revendiquer des capacités dont il ne parle pas pour pouvoir porter son propre CTA.
   const ctaVariant = getCtaVariant(fm.ctaVariant);
   if (!ctaVariant) throw new Error(`CTA inconnue du registre : ${fm.ctaVariant}`);
-  assertCtaPublishable(ctaVariant, fm.contentType);
+  assertCtaPublishable(ctaVariant, surface);
 
   // Résolution STRICTE : c'est elle qui fait autorité, et la seule que le rendu consommera.
   const ctaResolution: CtaResolution = resolveCtaForDocument({
     configuredVariant: fm.ctaVariant,
     contentType: fm.contentType,
-    delivery: deliveryContext,
+    delivery: deliveryContext(),
   });
 
   // Visuels : chaque id doit exister, être approved, couvrir ce contentType — et ne PAS introduire
