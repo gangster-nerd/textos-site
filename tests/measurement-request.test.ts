@@ -63,7 +63,7 @@ describe("claims commerciaux (S2.0A)", () => {
   test("un claim hors sales_copy dans un CTA est rejeté", () => {
     const problems = ctaViolations(
       { ...CTA, claimIds: ["s8-answer-evidence-capture"] },
-      "faq_entry"
+      "faq"
     );
     expect(problems.join(" ")).toMatch(/non autorisé sur la surface sales_copy/);
   });
@@ -75,13 +75,13 @@ describe("claims commerciaux (S2.0A)", () => {
         requiredCapabilities: ["quality-ledger"],
         claimIds: ["sales-authority-presence-measurement"],
       },
-      "faq_entry"
+      "faq"
     );
     expect(problems.join(" ")).toMatch(/hors des requiredCapabilities/);
   });
 
   test("la configuration réelle du CTA ne viole plus aucune règle de claims", () => {
-    const problems = ctaViolations(CTA, "faq_entry");
+    const problems = ctaViolations(CTA, "faq");
     expect(problems).toEqual([]);
   });
 });

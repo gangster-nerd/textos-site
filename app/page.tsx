@@ -3,6 +3,9 @@ import { buildHomepageJsonLd } from "@/lib/entity-graph";
 import { CAPABILITY_REGISTRY, isMarketableOn, type CapabilityId } from "@/lib/capability-registry";
 import { loadCollection } from "@/lib/content/content-loader";
 import { ExampleMeasurement } from "@/components/product/ExampleMeasurement";
+import { ContentCta } from "@/components/content/ContentCta";
+import { resolveCtaForSurface } from "@/lib/conversion/cta-resolver";
+import { deliveryContext } from "@/lib/conversion/delivery-context";
 
 // Homepage : surface "homepage" (page-map.spec.md §1) → uniquement public_marketable (§3).
 //
@@ -10,11 +13,14 @@ import { ExampleMeasurement } from "@/components/product/ExampleMeasurement";
 // d'abord CE QUI EST MESURÉ, et seulement ensuite ce qu'on en dit. Une suite de cartes de
 // fonctionnalités suivie d'un bouton dirait l'inverse : que la promesse précède l'instrument.
 //
-// AUCUN CTA COMMERCIAL ICI. `measurement_request` n'autorise que `faq_entry` et `product_article` ;
-// la page d'accueil n'est pas un document de contenu et n'a donc pas de variante résolue. En
-// afficher une reviendrait à court-circuiter le resolver — un gate sémantique ne se contourne pas
-// pour des raisons de mise en page. Les liens ci-dessous sont ÉDITORIAUX : ils orientent, ils ne
-// promettent rien.
+// LE CTA PASSE PAR LE RESOLVER, comme sur n'importe quelle page de contenu. Le registre exprime
+// désormais `homepage` parmi les surfaces autorisées de `measurement_request` — mais la page ne
+// décide rien : elle demande une variante et rend la décision. Les règles restent celles du
+// resolver (capacité commercialisable sur la surface commerciale, claims autorisés, destination
+// réelle, livraison vérifiée), et en mode `off` la résolution vaut `null` : aucun CTA n'est rendu.
+//
+// Aucun identifiant de claim ni de capacité n'apparaît ici : ce fichier ne nomme rien du registre,
+// il l'interroge. Un test le verrouille.
 export default function Home() {
   const jsonLd = buildHomepageJsonLd();
 
@@ -31,6 +37,12 @@ export default function Home() {
       title: doc.frontmatter.title,
       description: doc.frontmatter.description,
     }));
+
+  const cta = resolveCtaForSurface({
+    configuredVariant: "measurement_request",
+    surface: "homepage",
+    delivery: deliveryContext(),
+  });
 
   return (
     <main className="wide">
@@ -107,6 +119,9 @@ export default function Home() {
         declared capability and to the evidence behind it. Nothing here describes a feature that is
         not measured.
       </div>
+
+      {/* Variante RÉSOLUE, jamais celle demandée : la page rend une décision, elle ne la prend pas. */}
+      <ContentCta variant={cta.resolvedVariant} contentId="homepage" position="end" />
 
       <p style={{ marginTop: "var(--space-8)" }}>
         <Link href="/faq">Questions about how TextOS measures &rarr;</Link>

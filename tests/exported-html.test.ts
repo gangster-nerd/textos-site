@@ -27,6 +27,35 @@ const SVG = path.join(ROOT, "public", "diagrams", "epistemic-layers-v1.svg");
 //
 // La règle vit dans la feuille globale ; ce test vérifie qu'elle SURVIT au build, car c'est le CSS
 // émis qui protège les pages, pas le fichier source.
+// Le garde-fou décisif porte sur la SORTIE, pas sur le source : c'est le HTML livré qui décide de
+// ce qu'un visiteur voit. Un jour où le resolver serait contourné, le source pourrait rester
+// convaincant pendant que la page rend un CTA en mode `off`.
+describe("CTA de la page d'accueil (post-build)", () => {
+  const HOME_HTML = path.join(OUT, "index.html");
+
+  test.skipIf(!existsSync(HOME_HTML))(
+    "mode demo : exactement un CTA, résolu depuis le registre",
+    () => {
+      if (conversionConfig.mode !== "demo") return;
+      const html = readFileSync(HOME_HTML, "utf8");
+
+      expect(html.match(/class="content-cta"/g) ?? []).toHaveLength(1);
+      expect(html).toContain('data-cta-variant="measurement_request"');
+      expect(html).toContain('data-content-id="homepage"');
+    }
+  );
+
+  test.skipIf(!existsSync(HOME_HTML))("mode off : aucun CTA sur la page d'accueil", () => {
+    if (conversionConfig.mode !== "off") return;
+    const html = readFileSync(HOME_HTML, "utf8");
+
+    expect(html).not.toContain('class="content-cta"');
+    // Ni le CTA, ni un lien nu vers sa destination : les deux seraient une proposition rendue là
+    // où le mode dit qu'il n'y en a aucune.
+    expect(html).not.toContain('href="/request-measurement"');
+  });
+});
+
 describe("coupure des URL citées (régression mobile)", () => {
   test("le CSS exporté autorise la coupure des liens", () => {
     const cssDir = path.join(OUT, "_next", "static", "css");

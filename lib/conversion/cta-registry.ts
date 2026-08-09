@@ -9,7 +9,7 @@
 
 import { z } from "zod";
 
-import { CONTENT_TYPES } from "@/lib/content/content-types";
+import { SURFACES } from "@/lib/claims-registry";
 
 export const CTA_VARIANT_IDS = [
   "measurement_request",
@@ -26,7 +26,12 @@ export const CtaVariantSchema = z
     id: z.enum(CTA_VARIANT_IDS),
     status: z.enum(["approved", "disabled", "retired"]),
     requiredCapabilities: z.array(z.string().min(1)),
-    allowedContentTypes: z.array(z.enum(CONTENT_TYPES)).min(1),
+    // SURFACES, et non contentTypes. Un CTA gouverne où une PROPOSITION COMMERCIALE peut
+    // apparaître ; « où » est une surface, pas un type de document. Le registre de claims, le
+    // registre de capacités et le manifeste produit parlent déjà ce vocabulaire — le CTA était le
+    // seul à en employer un autre, et cette exception rendait la homepage inexprimable : elle n'est
+    // pas un type de contenu, alors qu'elle est bien une surface.
+    allowedSurfaces: z.array(z.enum(SURFACES)).min(1),
     destination: z.string().min(1).nullable(),
     title: z.string(),
     body: z.string(),
@@ -77,7 +82,10 @@ const RAW_CTA_VARIANTS = {
     // `conversion-config.ts`. En mode `demo`, le parcours est complet et la soumission simulée.
     status: "approved",
     requiredCapabilities: ["observe-authority-presence"],
-    allowedContentTypes: ["faq_entry", "product_article"],
+    // `homepage` ajoutée : la page d'accueil porte désormais la même proposition, sous les mêmes
+    // règles — capacité commercialisable sur la surface commerciale, claims autorisés, destination
+    // réelle, livraison vérifiée. Aucune exemption, aucun chemin allégé.
+    allowedSurfaces: ["homepage", "faq", "product_article"],
     // Destination INTERNE et gouvernée : la page de formulaire vit dans ce repo, pas chez le
     // sous-traitant.
     destination: "/request-measurement",
@@ -95,7 +103,7 @@ const RAW_CTA_VARIANTS = {
     id: "claim_lookup",
     status: "disabled",
     requiredCapabilities: ["claim-evidence-layer"],
-    allowedContentTypes: ["faq_entry", "developer_note"],
+    allowedSurfaces: ["faq", "developer_note"],
     destination: null,
     title: "Inspect Answer Evidence",
     body: "Look up captured Answer Evidence and the claims extracted from it.",
@@ -107,7 +115,7 @@ const RAW_CTA_VARIANTS = {
     id: "trial",
     status: "disabled",
     requiredCapabilities: [],
-    allowedContentTypes: ["faq_entry", "product_article"],
+    allowedSurfaces: ["faq", "product_article"],
     destination: null,
     title: "Start with TextOS",
     body: "Begin measuring authority presence for your brand.",
@@ -119,7 +127,7 @@ const RAW_CTA_VARIANTS = {
     id: "none",
     status: "disabled",
     requiredCapabilities: [],
-    allowedContentTypes: [...CONTENT_TYPES],
+    allowedSurfaces: [...SURFACES],
     destination: null,
     title: "",
     body: "",
