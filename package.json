@@ -14,6 +14,7 @@
     "verify:product-manifest": "tsx scripts/verify-product-manifest.ts"
   },
   "dependencies": {
+    "geist": "^1.7.2",
     "gray-matter": "^4.0.3",
     "next": "^15.1.6",
     "react": "^19.0.0",

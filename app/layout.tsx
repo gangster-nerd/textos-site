@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { siteConfig } from "@/lib/config/site";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import "./globals.css";
@@ -28,9 +30,18 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Geist — paquet npm `geist`, PAS `next/font/google` (amendement DESIGN-1 du produit, repris ici
+ * comme partie du contrat visuel : textos-v0 @ 2f86435, design/principles.md).
+ *
+ * Les deux classes injectent `--font-geist-sans` / `--font-geist-mono` sur <html>. `app/globals.css`
+ * les consomme via `--font-sans` / `--font-mono` — résolution à l'usage, indépendante de l'ordre de
+ * déclaration. Polices AUTO-HÉBERGÉES : aucune requête vers un tiers, ce qui est une condition de
+ * l'export statique et du refus de dépendance externe sur une surface publique.
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         {/* Lien d'évitement : premier élément focusable, il permet d'atteindre le contenu sans
             traverser la navigation au clavier. Visible seulement au focus. */}

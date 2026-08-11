@@ -1,18 +1,47 @@
 /* ════════════════════════════════════════════════════════════════════════════════════════════
-   PUBLIC SURFACE TOKENS — propres à ce dépôt.
+   SURFACE PUBLIQUE — contrat visuel.
 
-   Ce ne sont PAS des « product UI tokens ». `textos-v0` ne contient aucune UI ni aucune source de
-   design (audit : docs/design/public-surface-baseline.md). Ces valeurs sont donc des décisions de
-   surface publique, prises ici, et elles ne contraignent pas la future UI de l'application.
+   CE FICHIER A CHANGÉ DE STATUT (S4.1). Il ne s'agit plus de tokens « propres à ce dépôt faute de
+   source produit » : `textos-v0` porte désormais une UI et une source de design réelles
+   (DESIGN-0/DESIGN-1). Ce qui est repris, ce qui est repris sous condition et ce qui est
+   explicitement EXCLU est établi dans docs/design/public-surface-baseline.md.
 
-   Ancrage factuel conservé : les cinq couleurs d'origine du site. Les ajouts ci-dessous étendent
-   ce socle sans le renier — surfaces, échelle typographique, rythme, géométrie de panneau.
+   Source du contrat repris ici — `designSnapshotSha` :
+     textos-v0 @ 2f86435e9c7d77bded39021a542937ad6b3382fc — design/tokens.css, design/principles.md
+
+   NE PAS confondre avec `snapshotCommit` (d1b8b505…, product-manifest/) : celui-ci gouverne les
+   CAPACITÉS et leur droit de publication. Le SHA de design gouverne le CONTRAT VISUEL. L'existence
+   d'une UI produit n'accorde aucun droit de publication à ce qu'elle affiche.
+
+   ── CE QUI EST REPRIS ────────────────────────────────────────────────────────────────────────
+   Le NOM et le SENS des alias sémantiques de couleur, la doctrine de tonalité, la famille de
+   police (Geist), les graisses, les interlignes, les rayons (2/4/6) et le filet (1px).
+
+   ── CE QUI DIVERGE VOLONTAIREMENT ────────────────────────────────────────────────────────────
+   Les VALEURS de couleur. Le produit est aujourd'hui explicitement clair et diffère son mode
+   sombre (design/tokens.css : « Mode sombre différé — aucune palette sombre n'est définie ici »).
+   Le site public est sombre. Copier les valeurs claires rendrait le site clair ; inventer des
+   valeurs sombres « produit » prendrait à sa place une décision qu'il a différée. Les valeurs
+   sombres déjà ratifiées du site restent donc la source de résolution publique.
+
+       contrat sémantique         → CONVERGÉ
+       valeurs de couleur résolues → DIVERGENT, sciemment
+
+   ── CE QUI EST EXCLU ─────────────────────────────────────────────────────────────────────────
+   L'espacement (collision de noms documentée §Rythme), les ombres, le motion, les primitives de
+   palette non utilisées, les hauteurs de contrôle.
+
+   ── RÈGLE DE COUPLAGE TYPOGRAPHIQUE ──────────────────────────────────────────────────────────
+   Une surface adopte l'échelle de tailles ET les interlignes de la MÊME origine. Jamais une taille
+   d'instrument avec un interligne éditorial.
+     · prose publique       → échelle éditoriale du site (--text-*), interlignes du site
+     · surfaces instrument  → échelle produit (--font-size-*), interlignes produit
    ════════════════════════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Fonds et texte ───────────────────────────────────────────────────────────────────────
-     `--surface` est le seul niveau ajouté. Une élévation suffit à distinguer un panneau de
-     mesure du texte courant ; au-delà, on empile des boîtes sans fonction. */
+  /* ── 1. PRIMITIVES DE SURFACE PUBLIQUE ─────────────────────────────────────────────────────
+     Couche brute, sombre, propre au site. Comme dans le produit, une règle CSS ne référence
+     JAMAIS une primitive directement : elle passe par un alias sémantique (§2). */
   --bg: #0b0c0e;
   --surface: #101216;
   --fg: #e9eaec;
@@ -27,12 +56,77 @@
   --accent: #7cc4ff;
   --accent-dim: #4d7fa6;
 
-  /* ── Typographie ──────────────────────────────────────────────────────────────────────────
-     Pile système pour la prose. Pile monospace pour les CHIFFRES uniquement : une mesure se lit
-     en colonnes, et les chiffres tabulaires alignent les unités. C'est fonctionnel, pas décoratif. */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  /* ── 2. CONTRAT SÉMANTIQUE DE COULEUR ──────────────────────────────────────────────────────
+     Noms et sens repris de textos-v0 @ designSnapshotSha. Les valeurs à droite sont celles du
+     site sombre — c'est la divergence gouvernée annoncée en tête de fichier.
 
+     Doctrine de tonalité, reprise telle quelle :
+
+         neutre → structure, information, ABSENCE OBSERVÉE, réconcilié, vérifié
+         ambre  → réconciliation EN ATTENTE (état de notre connaissance, pas une erreur)
+         rouge  → ÉCHEC RÉEL uniquement
+         bleu   → sélection / interaction
+
+     Conséquence directe, déjà tenue par le site : `not_available`, `signal_unavailable`,
+     `insufficient_evidence`, `method_limited`, `abstained` sont des constats de mesure. Ils se
+     rendent en NEUTRE — jamais en ambre, jamais en rouge, jamais comme un zéro. */
+  --color-text-primary: var(--fg-strong);
+  --color-text-secondary: var(--fg);
+  --color-text-muted: var(--muted);
+
+  --color-border-default: var(--line);
+  --color-border-emphasis: var(--line-strong);
+
+  /* Le produit résout `bg-surface` en blanc (base) et `bg-subtle` en gris très clair (distingué).
+     En sombre, la relation se conserve mais s'inverse en luminance : `subtle` s'ÉLOIGNE du fond en
+     s'éclaircissant. C'est le SENS qui converge — « fond de base » / « fond distingué du base » —
+     pas la direction de la valeur. */
+  --color-bg-surface: var(--bg);
+  --color-bg-subtle: var(--surface);
+
+  /* Alias PARALLÈLES, jamais chaînés entre eux (règle explicite du produit) : les trois partagent
+     aujourd'hui la même primitive, mais changer l'apparence d'une sélection ne doit pas changer
+     tous les boutons, ni ajuster le focus ring pour l'accessibilité toucher aux boutons. */
+  --color-interactive-selected: var(--accent);
+  --color-action-primary: var(--accent);
+  --color-focus-ring: var(--accent);
+
+  /* --color-status-pending / --color-status-failure : NOMS RATIFIÉS, VALEURS NON RÉSOLUES.
+     Le contrat produit les définit en ambre et rouge CLAIRS (amber-600/red-600 sur amber-100/
+     red-100). Aucune valeur sombre n'existe : le produit diffère son mode sombre, et le site n'a
+     jamais eu ni ambre ni rouge. Les déclarer ici obligerait à INVENTER la palette sombre du
+     produit — exactement ce que l'arbitrage interdit.
+     Elles sont donc déclarées ABSENTES, pas fausses. Toute surface publique qui aurait besoin d'un
+     état `pending` ou `failure` doit d'abord faire ratifier ces deux valeurs ; en attendant, aucune
+     surface publique n'en rend. */
+
+  /* Rôles NON COUVERTS par le contrat produit — propres à la surface éditoriale publique (le
+     produit n'a ni lien de prose, ni kicker, ni filet d'appel). Site-owned, assumé comme tel. */
+  --color-editorial-link: var(--accent);
+  --color-editorial-rule: var(--accent-dim);
+
+  /* ── 3. TYPOGRAPHIE ────────────────────────────────────────────────────────────────────────
+     Geist (paquet npm `geist`, PAS next/font/google) — amendement DESIGN-1. `--font-geist-sans` /
+     `--font-geist-mono` sont injectées sur <html> par app/layout.tsx et résolues ici au point
+     d'usage. Le produit préfixe ses noms en `--textos-font-*` pour éviter une référence circulaire
+     dans son pont Tailwind ; ce dépôt n'a pas de Tailwind, donc pas de pont, donc pas de collision
+     à éviter. */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Interlignes de l'instrument (repris). L'interligne de prose reste éditorial : il est couplé à
+     l'échelle éditoriale, retenue elle aussi (cf. règle de couplage en tête de fichier). */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-prose: 1.6;
+
+  /* Échelle ÉDITORIALE — celle du site, inchangée. Le produit fixe son corps de texte à 14px pour
+     un « instrument dense, pas une vitrine ». Appliquer 14px à la prose publique appliquerait à un
+     texte de lecture une décision prise pour un tableau de mesure. */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -41,8 +135,24 @@
   --text-2xl: 1.75rem;
   --text-3xl: 2.4rem;
 
-  /* ── Rythme ───────────────────────────────────────────────────────────────────────────────
-     Échelle courte et régulière. Huit valeurs suffisent ; en ajouter revient à ne plus choisir. */
+  /* Échelle INSTRUMENT — reprise du produit, REPRISE SOUS CONDITION : réservée aux surfaces qui
+     montrent une mesure (panneau, table de mesure, étiquettes et valeurs de donnée). Jamais la
+     prose, jamais un titre de page. */
+  --font-size-micro: 0.6875rem; /* 11px — labels, badges, en-têtes de table */
+  --font-size-sm: 0.8125rem;    /* 13px — texte secondaire, légendes, table dense */
+  --font-size-base: 0.875rem;   /* 14px — corps d'instrument */
+  --font-size-lg: 1.125rem;     /* 18px — titres de section, valeurs de métrique */
+  --font-size-xl: 1.5rem;       /* 24px — rare */
+
+  /* ── 4. RYTHME — EXCLU DE LA CONVERGENCE ───────────────────────────────────────────────────
+     COLLISION DE NOMS entre les deux dépôts, aux MÊMES noms et à des valeurs DIFFÉRENTES :
+
+         produit : --space-1 = 2px   --space-2 = 4px   --space-3 = 8px   --space-4 = 12px
+         site    : --space-1 = 4px   --space-2 = 8px   --space-3 = 12px  --space-4 = 16px
+
+     Reprendre ces noms reflowerait silencieusement toute la mise en page publique sous couvert de
+     « convergence de tokens ». L'échelle du site reste donc intacte et hors contrat. Le jour où
+     les deux devront converger, ce sera une décision d'espacement explicite, pas un import. */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -52,19 +162,24 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
-  /* ── Géométrie ────────────────────────────────────────────────────────────────────────────
-     Rayons faibles : un instrument de mesure n'a pas de coins doux. Aucune ombre — l'élévation
-     passe par le fond et la bordure, ce qui reste lisible en contraste élevé. */
-  --radius-sm: 4px;
-  --radius: 8px;
+  /* ── 5. GÉOMÉTRIE ──────────────────────────────────────────────────────────────────────────
+     Rayons 2/4/6 et filet 1px repris du produit : « un instrument ne s'arrondit pas comme un
+     produit grand public », « hairlines plutôt que cartes ». Le site tenait déjà 4/8 — il resserre.
+     Aucune ombre : ni ici, ni dans le produit, où l'unique ombre sert des overlays (drawer,
+     popover) qui n'existent pas sur une surface publique statique. */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
 
-  --measure: 46rem;  /* prose : largeur de lecture, inchangée */
+  --border-width-hairline: 1px;
+
+  --measure: 46rem;  /* prose : largeur de lecture */
   --wide: 64rem;     /* sections d'accueil portant un panneau de mesure */
 
   --panel-pad: var(--space-6);
   --row-pad: var(--space-3);
 
-  --focus: 2px solid var(--accent);
+  --focus: 2px solid var(--color-focus-ring);
   --focus-offset: 2px;
 }
 
@@ -73,9 +188,9 @@
 html, body { margin: 0; padding: 0; }
 
 body {
-  background: var(--bg);
-  color: var(--fg);
-  font: var(--text-base)/1.6 var(--font-sans);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font: var(--text-base)/var(--line-height-prose) var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -113,8 +228,8 @@ body {
   left: var(--space-2);
   top: calc(-1 * var(--space-16));
   z-index: 10;
-  background: var(--surface);
-  border: 1px solid var(--accent-dim);
+  background: var(--color-bg-subtle);
+  border: var(--border-width-hairline) solid var(--color-editorial-rule);
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-4);
   font-size: var(--text-sm);
@@ -131,35 +246,35 @@ main {
 
 main.wide { max-width: var(--wide); }
 
-/* ── Typographie de contenu ─────────────────────────────────────────────────────────────────── */
+/* ── Typographie de contenu — ÉCHELLE ÉDITORIALE ────────────────────────────────────────────── */
 
 h1 {
   font-size: var(--text-3xl);
   line-height: 1.1;
   letter-spacing: -0.015em;
-  color: var(--fg-strong);
+  color: var(--color-text-primary);
   margin: var(--space-2) 0 var(--space-4);
 }
 
 h2 {
   font-size: var(--text-xl);
-  line-height: 1.25;
+  line-height: var(--line-height-tight);
   letter-spacing: -0.01em;
-  color: var(--fg-strong);
+  color: var(--color-text-primary);
   margin: var(--space-12) 0 var(--space-3);
 }
 
 h3 {
   font-size: var(--text-base);
-  color: var(--fg-strong);
+  color: var(--color-text-primary);
   margin: var(--space-8) 0 var(--space-2);
 }
 
 p { margin: 0 0 var(--space-4); }
 
 .kicker {
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--color-editorial-link);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: var(--text-xs);
@@ -169,13 +284,13 @@ p { margin: 0 0 var(--space-4); }
 .lede {
   font-size: var(--text-lg);
   line-height: 1.55;
-  color: var(--fg);
+  color: var(--color-text-secondary);
   max-width: 42rem;
 }
 
-.muted { color: var(--muted); }
+.muted { color: var(--color-text-muted); }
 
-a { color: var(--accent); text-decoration: none; overflow-wrap: anywhere; }
+a { color: var(--color-editorial-link); text-decoration: none; overflow-wrap: anywhere; }
 a:hover { text-decoration: underline; }
 
 /* Les sources sont citées par leur URL complète — c'est délibéré : une référence vérifiable se lit
@@ -188,8 +303,8 @@ a:hover { text-decoration: underline; }
 /* ── En-tête public ─────────────────────────────────────────────────────────────────────────── */
 
 .site-header {
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
+  border-bottom: var(--border-width-hairline) solid var(--color-border-default);
+  background: var(--color-bg-surface);
 }
 
 .site-header__inner {
@@ -203,8 +318,8 @@ a:hover { text-decoration: underline; }
 }
 
 .site-header__mark {
-  font-weight: 600;
-  color: var(--fg-strong);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
   letter-spacing: -0.01em;
 }
 .site-header__mark:hover { text-decoration: none; }
@@ -218,33 +333,43 @@ a:hover { text-decoration: underline; }
   font-size: var(--text-sm);
 }
 
-.site-header__nav a { color: var(--muted); }
-.site-header__nav a:hover { color: var(--fg); text-decoration: none; }
+.site-header__nav a { color: var(--color-text-muted); }
+.site-header__nav a:hover { color: var(--color-text-secondary); text-decoration: none; }
+
+/* ══ SURFACES INSTRUMENT ═════════════════════════════════════════════════════════════════════
+   À partir d'ici et jusqu'aux blocs éditoriaux : échelle produit (--font-size-*) et interlignes
+   produit. Ce sont les surfaces qui montrent une MESURE, pas celles qui la racontent.
+   ═══════════════════════════════════════════════════════════════════════════════════════════ */
 
 /* ── Hiérarchie des étiquettes de données ───────────────────────────────────────────────────── */
 
 .data-label {
-  font-size: var(--text-xs);
+  font-size: var(--font-size-micro);
+  line-height: var(--line-height-normal);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
+/* Mono pour les CHIFFRES uniquement : une mesure se lit en colonnes, et les chiffres tabulaires
+   alignent les unités. Doctrine reprise du produit — le mono est un signal (« donnée exacte »),
+   jamais un ornement, jamais de la prose. */
 .data-value {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  font-size: var(--text-base);
-  color: var(--fg-strong);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
 }
 
-.data-value--lg { font-size: var(--text-2xl); letter-spacing: -0.02em; }
+.data-value--lg { font-size: var(--font-size-xl); letter-spacing: -0.02em; }
 
 /* ── Panneau de mesure ──────────────────────────────────────────────────────────────────────── */
 
 .panel {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  background: var(--color-bg-subtle);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
@@ -254,20 +379,26 @@ a:hover { text-decoration: underline; }
   justify-content: space-between;
   gap: var(--space-3);
   padding: var(--panel-pad);
-  border-bottom: 1px solid var(--line);
+  border-bottom: var(--border-width-hairline) solid var(--color-border-default);
   flex-wrap: wrap;
 }
 
-.panel__title { font-size: var(--text-base); color: var(--fg-strong); font-weight: 600; margin: 0; }
+.panel__title {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
 
 /* Étiquette d'exemple : elle doit se voir sans être décorative. Bordure pleine, casse haute, et
    surtout un `title` explicite — un lecteur d'écran doit l'entendre avant les chiffres. */
 .panel__badge {
-  font-size: var(--text-xs);
+  font-size: var(--font-size-micro);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--accent);
-  border: 1px solid var(--accent-dim);
+  color: var(--color-editorial-link);
+  border: var(--border-width-hairline) solid var(--color-editorial-rule);
   border-radius: var(--radius-sm);
   padding: 2px var(--space-2);
   white-space: nowrap;
@@ -277,9 +408,10 @@ a:hover { text-decoration: underline; }
 
 .panel__note {
   padding: var(--row-pad) var(--panel-pad) var(--panel-pad);
-  color: var(--muted);
-  font-size: var(--text-sm);
-  border-top: 1px solid var(--line);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  border-top: var(--border-width-hairline) solid var(--color-border-default);
 }
 
 /* Grille de métriques : `auto-fit` plutôt qu'un nombre de colonnes figé — la même règle sert de
@@ -302,60 +434,69 @@ a:hover { text-decoration: underline; }
 table.rows {
   width: 100%;
   border-collapse: collapse;
-  font-size: var(--text-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
 }
 
 table.rows th,
 table.rows td {
   text-align: left;
   padding: var(--row-pad) var(--space-3);
-  border-bottom: 1px solid var(--line);
+  border-bottom: var(--border-width-hairline) solid var(--color-border-default);
   vertical-align: baseline;
 }
 
 table.rows th {
-  font-size: var(--text-xs);
+  font-size: var(--font-size-micro);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 500;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
 }
 
 table.rows td.num {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  color: var(--fg-strong);
+  color: var(--color-text-primary);
   text-align: right;
   white-space: nowrap;
 }
 
 table.rows tr:last-child td { border-bottom: none; }
 
-/* État non observable : jamais rendu comme un zéro, ni par la valeur ni par le style. */
+/* État non observable : jamais rendu comme un zéro, ni par la valeur ni par le style. NEUTRE, au
+   titre de la doctrine de tonalité — une absence OBSERVÉE n'est pas un échec. */
 .not-observable {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--font-size-sm);
 }
+
+/* ══ FIN DES SURFACES INSTRUMENT ═════════════════════════════════════════════════════════════ */
 
 /* ── Blocs éditoriaux ───────────────────────────────────────────────────────────────────────── */
 
 .note {
   margin: var(--space-8) 0 0;
   padding: var(--space-4) var(--space-6);
-  border: 1px solid var(--line);
-  border-left: 2px solid var(--accent-dim);
-  border-radius: var(--radius);
-  color: var(--muted);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-left: 2px solid var(--color-editorial-rule);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
   font-size: var(--text-sm);
 }
 
-.note strong { color: var(--fg); }
+.note strong { color: var(--color-text-secondary); }
 
-ul.measures { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+ul.measures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: var(--border-width-hairline) solid var(--color-border-default);
+}
 ul.measures li {
   padding: var(--row-pad) 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: var(--border-width-hairline) solid var(--color-border-default);
   display: flex;
   gap: var(--space-3);
   align-items: baseline;
@@ -373,22 +514,22 @@ ul.measures li {
 }
 
 .card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-lg);
   padding: var(--space-4) var(--space-6);
-  background: var(--surface);
+  background: var(--color-bg-subtle);
 }
 
 .card h3 { margin: 0 0 var(--space-2); font-size: var(--text-base); }
-.card p { margin: 0; font-size: var(--text-sm); color: var(--muted); }
+.card p { margin: 0; font-size: var(--text-sm); color: var(--color-text-muted); }
 
 /* ── Pied de page ───────────────────────────────────────────────────────────────────────────── */
 
 footer {
   margin-top: var(--space-16);
   padding-top: var(--space-6);
-  border-top: 1px solid var(--line);
-  color: var(--muted);
+  border-top: var(--border-width-hairline) solid var(--color-border-default);
+  color: var(--color-text-muted);
   font-size: var(--text-sm);
   display: flex;
   justify-content: space-between;
@@ -398,6 +539,8 @@ footer {
 
 /* ── Contenu Markdown des pages de documentation ────────────────────────────────────────────── */
 
+/* Les tables de ces pages appartiennent à la PROSE (elles argumentent), pas à l'instrument (il
+   mesure). Elles gardent donc l'échelle éditoriale : la reprise conditionnelle ne s'y étend pas. */
 article table {
   width: 100%;
   border-collapse: collapse;
@@ -408,29 +551,29 @@ article table {
 article th, article td {
   text-align: left;
   padding: var(--row-pad) var(--space-3);
-  border-bottom: 1px solid var(--line);
+  border-bottom: var(--border-width-hairline) solid var(--color-border-default);
 }
 
 article th {
   font-size: var(--text-xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 500;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
 }
 
 article blockquote {
   margin: var(--space-4) 0;
   padding-left: var(--space-4);
-  border-left: 2px solid var(--line-strong);
-  color: var(--muted);
+  border-left: 2px solid var(--color-border-emphasis);
+  color: var(--color-text-muted);
 }
 
 article code {
   font-family: var(--font-mono);
   font-size: 0.9em;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background: var(--color-bg-subtle);
+  border: var(--border-width-hairline) solid var(--color-border-default);
   border-radius: var(--radius-sm);
   padding: 1px 4px;
 }
@@ -457,18 +600,18 @@ article { overflow-wrap: break-word; }
   display: inline-flex;
   align-items: baseline;
   gap: var(--space-2);
-  border: 1px solid var(--line);
+  border: var(--border-width-hairline) solid var(--color-border-default);
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-3);
   margin: 0;
   font-size: var(--text-sm);
-  color: var(--muted);
-  background: var(--surface);
+  color: var(--color-text-muted);
+  background: var(--color-bg-subtle);
 }
 
 /* La réponse courte est la promesse gouvernée de la page : encadrée, pas noyée dans le flux. */
 .doc__short {
-  border-left: 2px solid var(--accent-dim);
+  border-left: 2px solid var(--color-editorial-rule);
   padding: var(--space-1) 0 var(--space-1) var(--space-6);
   margin: 0 0 var(--space-12);
 }
@@ -479,7 +622,7 @@ article { overflow-wrap: break-word; }
 .doc__siblings {
   margin-top: var(--space-16);
   padding-top: var(--space-6);
-  border-top: 1px solid var(--line);
+  border-top: var(--border-width-hairline) solid var(--color-border-default);
   font-size: var(--text-sm);
 }
 
@@ -491,7 +634,7 @@ article { overflow-wrap: break-word; }
   gap: var(--space-2);
 }
 
-.doc__siblings [aria-current="page"] { color: var(--fg-strong); }
+.doc__siblings [aria-current="page"] { color: var(--color-text-primary); }
 
 /* Densité resserrée sur petit écran. Mesuré : à 375 px, la table de mesure réclamait 285 px pour
    un conteneur de 245 — la colonne « share of observed » sortait du champ, or c'est elle qui porte
@@ -502,7 +645,7 @@ article { overflow-wrap: break-word; }
      suit la largeur MINIMALE de son contenu et peut donc dépasser son conteneur quoi qu'on fasse.
      En `fixed`, elle respecte 100% et répartit — la colonne de mesure absorbe le reste et passe à
      la ligne. Les colonnes chiffrées reçoivent une largeur explicite : elles ne se coupent pas. */
-  table.rows { font-size: var(--text-xs); table-layout: fixed; }
+  table.rows { font-size: var(--font-size-micro); table-layout: fixed; }
   table.rows th:nth-child(2),
   table.rows th:nth-child(3) { width: 4.25rem; }
   /* 6px horizontal : valeur mesurée, pas choisie à l'oeil. À 8px la colonne de partage sortait
