@@ -159,7 +159,45 @@ publique** sous l'étiquette « convergence de tokens ». Le diff aurait l'air d
 serait une refonte. L'échelle du site reste donc intacte et hors contrat. Le jour où les deux
 devront converger, ce sera une décision d'espacement explicite, argumentée, pas un import.
 
-## 6. Ce qui reste ouvert
+## 6. Localisation produit → surface publique
+
+Le produit rend ses statuts et ses genres de citation **en français** ; la surface publique est
+anglaise. Traduire au fil du JSX produirait autant de traductions que de composants, et la première
+divergence serait invisible. Le tableau est donc enregistré **ici**, et implémenté en un seul
+endroit : `lib/product-proof/public-vocabulary.ts`.
+
+### Consommés par la surface publique actuelle
+
+| Produit (`textos-v0 @ 2f86435`) | Public | Objet |
+|---|---|---|
+| `ok` → « OK » | **OK** | statut d'observation |
+| `no_citations` → « Sans citation » | **No citation** | statut d'observation |
+| `no_answer_surface` → « Surface non déclenchée » | **Answer surface not triggered** | statut d'observation |
+| `direct` → « Source directe » | **Direct source** | genre de citation |
+| `indirect_mention` → « Mention indirecte » | **Indirect mention** | genre de citation |
+| « Réponse non capturée » | **Answer not captured** | état de réponse |
+
+### Enregistrés, non consommés
+
+| Produit | Public (proposé) | Pourquoi il dort |
+|---|---|---|
+| `skipped` → « Ignorée » | Skipped | neutre et rendable, mais absent de la fixture actuelle |
+| `unknown` → « Indéterminé » | Undetermined | arbitrage ouvert : **Undetermined** vs **Unknown**, à trancher quand une citation de ce genre sera rendue |
+| `rate_limited` → « Limité » | Rate limited | **non rendable** — exige la tonalité ambre, valeur sombre non ratifiée (§7) |
+| `timeout` → « Délai dépassé » | Timeout | idem ambre |
+| `provider_empty_response` → « Réponse provider vide » | Empty provider response | **non rendable** — exige le rouge, valeur sombre non ratifiée |
+| `provider_error` → « Échec provider » | Provider error | idem rouge |
+
+Deux précautions de vocabulaire, à ne pas laisser se dissoudre :
+
+- **`no_citations` ≠ non observable.** Le premier dit qu'une réponse *a été capturée* et ne cite
+  rien ; le second dit qu'une dimension n'était pas mesurable. Aucun libellé public ne doit
+  rapprocher les deux. Un test verrouille cette séparation.
+- **« Direct source » ≠ « Direct Share of Model ».** Le premier qualifie une *citation*, le second
+  nomme une *mesure*. L'adjacence des mots est un piège : les fusionner ferait croire qu'une
+  citation directe est une part de marché.
+
+## 7. Ce qui reste ouvert
 
 - **`status-pending` / `status-failure` : noms ratifiés, valeurs non résolues.** Le produit les
   définit en ambre et rouge clairs. Aucune valeur sombre n'existe — ni côté produit (mode sombre
@@ -175,7 +213,7 @@ devront converger, ce sera une décision d'espacement explicite, argumentée, pa
   tels (`--color-editorial-*`), jamais présentés comme repris.
 - **Rafraîchissement du manifeste de capacités.** Hors périmètre S4.1 (§1).
 
-## 7. Contraintes tenues
+## 8. Contraintes tenues
 
 - Aucune dépendance de build vers `textos-v0` ; aucun package partagé. `geist` est un paquet npm
   public, installé indépendamment par les deux dépôts.

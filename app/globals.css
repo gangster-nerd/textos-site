@@ -472,6 +472,206 @@ table.rows tr:last-child td { border-bottom: none; }
   font-size: var(--font-size-sm);
 }
 
+/* ── Product Proof — de quoi une mesure est faite ────────────────────────────────────────────
+   Même famille visuelle que le panneau de mesure : ce sont deux vues du même instrument. Aucune
+   couleur d'état n'est employée — la surface ne rend que des statuts de tonalité neutre, ce qui
+   est précisément ce qui la rend représentable sans les valeurs ambre/rouge non ratifiées. */
+
+.proof__lede {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 44rem;
+}
+
+/* Abrègement VISUEL de la réponse, jamais une troncature de donnée : le texte complet reste dans
+   le DOM et l'Evidence le rend à l'identique. Même choix que le produit (line-clamp CSS). */
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+table.observations { table-layout: fixed; }
+
+table.observations th,
+table.observations td { vertical-align: top; }
+
+table.observations .observations__query { font-weight: var(--font-weight-regular); }
+table.observations th.observations__query { color: var(--color-text-secondary); text-transform: none; letter-spacing: normal; font-size: var(--font-size-sm); }
+table.observations .observations__status,
+table.observations .observations__evidence { color: var(--color-text-secondary); }
+
+table.observations thead th:nth-child(1) { width: 27%; }
+table.observations thead th:nth-child(2) { width: 17%; }
+table.observations thead th:nth-child(3) { width: 33%; }
+/* L'en-tête de la colonne chiffrée s'aligne sur ses valeurs. Un intitulé à gauche au-dessus de
+   nombres à droite détache visuellement la colonne de son nom. */
+table.observations thead th:nth-child(4) { width: 8%; text-align: right; }
+table.observations thead th:nth-child(5) { width: 15%; }
+
+/* Empilement dédié en petit écran. Cinq colonnes dont deux de prose ne tiennent pas dans 245 px :
+   les compresser reproduirait le défaut du panneau Authority Presence, où l'en-tête de colonne
+   finissait coupé. Le point de rupture est plus haut que les 40rem du site — c'est le nombre de
+   colonnes qui le commande, pas la largeur du texte.
+
+   Les rôles ARIA sont posés dans le JSX : sans eux, `display: block` retirerait la sémantique de
+   tableau aux technologies d'assistance. L'en-tête reste dans l'arbre d'accessibilité (masqué à
+   l'œil seulement) et chaque cellule porte son étiquette visible via `data-label`. */
+@media (max-width: 44rem) {
+  table.observations,
+  table.observations tbody,
+  table.observations tr,
+  table.observations th,
+  table.observations td { display: block; width: auto; }
+
+  table.observations thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  table.observations tbody tr {
+    padding: var(--space-4) 0;
+    border-bottom: var(--border-width-hairline) solid var(--color-border-default);
+  }
+  table.observations tbody tr:last-child { border-bottom: none; }
+
+  table.observations tbody th,
+  table.observations tbody td {
+    border-bottom: none;
+    padding: var(--space-1) var(--space-4);
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+    text-align: left;
+  }
+
+  table.observations tbody th::before,
+  table.observations tbody td::before {
+    content: attr(data-label);
+    /* Famille explicite : la cellule chiffrée est en mono, et son étiquette en héritait — « CIT. »
+       s'affichait dans une autre police que « STATUS » ou « ANSWER ». Le mono signale une donnée
+       mécanique, jamais le nom d'un champ. */
+    font-family: var(--font-sans);
+    font-size: var(--font-size-micro);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  /* La requête porte la ligne : elle reste au-dessus des attributs, sans étiquette redondante. */
+  table.observations tbody th.observations__query {
+    display: block;
+    padding-bottom: var(--space-2);
+    font-size: var(--font-size-base);
+  }
+  table.observations tbody th.observations__query::before { content: none; }
+
+  table.observations tbody td.num { text-align: left; }
+}
+
+/* ── Evidence — couche Observe uniquement ────────────────────────────────────────────────────── */
+
+.proof__evidence { border-top: var(--border-width-hairline) solid var(--color-border-default); }
+
+.evidence__title {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-4);
+}
+
+.evidence__query {
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.evidence__section { margin-top: var(--space-4); }
+.evidence__section:first-of-type { margin-top: 0; }
+
+/* `h5` porte `.data-label` : l'échelle micro donne la hiérarchie, le titre n'a pas besoin de corps. */
+.evidence__section .data-label {
+  display: block;
+  margin: 0 0 var(--space-2);
+  font-weight: var(--font-weight-medium);
+}
+
+.evidence__answer {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  max-width: 44rem;
+}
+
+.citations { list-style: none; margin: 0; padding: 0; }
+
+.citation {
+  padding: var(--space-3) 0;
+  border-bottom: var(--border-width-hairline) solid var(--color-border-default);
+}
+.citation:first-child { padding-top: 0; }
+.citation:last-child { border-bottom: none; padding-bottom: 0; }
+
+.citation__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  margin: 0 0 var(--space-1);
+}
+
+.citation__kind { font-size: var(--font-size-micro); color: var(--color-text-muted); }
+
+/* Domaine en mono : donnée mécanique exacte, pas de la prose. Jamais un lien — `.example` est
+   réservé à la documentation et n'est joignable par personne. */
+.citation__source {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-micro);
+  color: var(--color-text-primary);
+  overflow-wrap: anywhere;
+}
+
+.citation__snippet {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  max-width: 44rem;
+}
+
+.provenance__rows { margin: 0; }
+
+.provenance__row {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: var(--space-3);
+  padding: 2px 0;
+}
+
+.provenance__row dt { font-size: var(--font-size-micro); color: var(--color-text-muted); }
+
+.provenance__row dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-micro);
+  color: var(--color-text-primary);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 44rem) {
+  .provenance__row { grid-template-columns: 1fr; gap: 0; padding: var(--space-1) 0; }
+}
+
 /* ══ FIN DES SURFACES INSTRUMENT ═════════════════════════════════════════════════════════════ */
 
 /* ── Blocs éditoriaux ───────────────────────────────────────────────────────────────────────── */

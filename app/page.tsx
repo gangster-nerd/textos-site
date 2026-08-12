@@ -3,6 +3,7 @@ import { buildHomepageJsonLd } from "@/lib/entity-graph";
 import { CAPABILITY_REGISTRY, isMarketableOn, type CapabilityId } from "@/lib/capability-registry";
 import { loadCollection } from "@/lib/content/content-loader";
 import { ExampleMeasurement } from "@/components/product/ExampleMeasurement";
+import { ProductProof } from "@/components/product/ProductProof";
 import { ContentCta } from "@/components/content/ContentCta";
 import {
   assertConfiguredCtaPublishable,
@@ -105,6 +106,21 @@ export default function Home() {
         </li>
       </ul>
 
+      {/* PRODUCT PROOF — inséré ICI, au moment précis où le visiteur vient de comprendre ce que la
+          mesure dit, et où la question suivante devient « sur quoi repose-t-elle ? ». Le mettre en
+          fin de page l'aurait transformé en annexe technique ; le mettre avant « How to read it »
+          aurait montré la matière avant d'avoir donné la grille de lecture. */}
+      <h2>What a measurement is made of</h2>
+      <p>
+        The panel above reports three measures. Underneath them are individual observations &mdash;
+        one answer at a time, each kept with the sources it cited and the instrument that produced
+        it. That is what makes a measure re-examinable rather than merely reported.
+      </p>
+
+      <section className="hero__panel" aria-label="What an observation is made of">
+        <ProductProof />
+      </section>
+
       <h2>What TextOS measures today</h2>
       <ul className="measures">
         {measures.map((label) => (
@@ -140,11 +156,14 @@ export default function Home() {
         <Link href="/faq">Questions about how TextOS measures &rarr;</Link>
       </p>
 
+      {/* AUCUN ÉLÉMENT DE CONNEXION. « Se connecter (bientôt) » a été retiré : il était en français
+          sur un site anglais, il ne passait par aucun registre, et surtout il annonçait un accès
+          qui n'existe pas — ni login, ni authentification, ni destination produit. C'est
+          exactement le faux chrome applicatif que la règle « app-shaped, not app-fake » interdit.
+          Rien ne le remplace : ni « Log in », ni « Coming soon », ni « Open TextOS ». Un accès
+          s'affiche le jour où il existe. */}
       <footer>
         <span>Product in active development. This site publishes only what is measured and validated.</span>
-        {/* Lien de connexion retiré : le domaine app.textos.io n'est pas contrôlé.
-            À rétablir une fois le domaine produit tranché (décision produit distincte). */}
-        <span aria-disabled="true">Se connecter (bientôt)</span>
       </footer>
     </main>
   );
