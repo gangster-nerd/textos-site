@@ -12,6 +12,7 @@
     "customerDeliverableNow": true,
     "disclosureAuthority": "NONE",
     "effectivePublicMaturity": "PRIVATE",
+    "evidenceSupportedAt": "both",
     "implementationEvidence": [
       "src/server/textos/act/providers/wordpress/index.ts",
       "src/server/textos/act/publication.ts",
@@ -39,7 +40,7 @@
       "none"
     ],
     "allowedWording": [],
-    "blockingReason": "Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_EARLY_ACCESS) est clampée.",
+    "blockingReason": "Capacité présente uniquement à la ref CANDIDATE R2, absente à la ref AUTHORITATIVE_MAIN — non-autoritative.",
     "capabilityId": "native-composition-gutenberg",
     "clamped": true,
     "currentImplementationStatus": null,
@@ -47,6 +48,7 @@
     "customerDeliverableNow": false,
     "disclosureAuthority": "NONE",
     "effectivePublicMaturity": "PRIVATE",
+    "evidenceSupportedAt": "candidate",
     "implementationEvidence": [
       "src/server/textos/act/native-composition/gutenberg-serializer.ts",
       "src/server/textos/act/native-composition/gutenberg-vocabulary.ts",
@@ -60,11 +62,11 @@
       "supports every WordPress theme"
     ],
     "promotionRequired": true,
-    "requestedManifestChange": "entity native-composition-gutenberg publicationStatus ← candidate (le vocabulaire manifeste v2 n'a pas encore d'état beta/early_access ; à trancher par T0)",
+    "requestedManifestChange": null,
     "requestedPublicMaturity": "PUBLIC_EARLY_ACCESS",
-    "requiredNextAction": "Ajouter l'entité \"native-composition-gutenberg\" au manifeste produit (capability-declaration.ts) et réémettre un artefact push/main. Puis ré-import via product-manifest/IMPORT.md.",
+    "requiredNextAction": "Intégrer la capacité R2 dans product main autoritatif puis émettre un manifeste. Ré-import via IMPORT.md avant de relancer content:sync.",
     "requiredOwner": "T0",
-    "route": "PRODUCT_MANIFEST_ENTRY_REQUIRED",
+    "route": "PRODUCT_MAIN_REQUIRED",
     "sourceProductRef": "a0efa146a8691938b624c156d99f4663f6f92218",
     "storyKind": "PRODUCT_CAPABILITY"
   },
@@ -81,6 +83,7 @@
     "customerDeliverableNow": false,
     "disclosureAuthority": "NONE",
     "effectivePublicMaturity": "PRIVATE",
+    "evidenceSupportedAt": "both",
     "implementationEvidence": [
       "src/server/textos/act/asset-spec/*",
       "ADR-021",
@@ -116,6 +119,7 @@
     "customerDeliverableNow": false,
     "disclosureAuthority": "NONE",
     "effectivePublicMaturity": "PRIVATE",
+    "evidenceSupportedAt": "both",
     "implementationEvidence": [
       "src/server/textos/act/geo-writer/*",
       "2026-08-24-geo-writer-1 change entry"
@@ -150,12 +154,13 @@
     "customerDeliverableNow": false,
     "disclosureAuthority": "NONE",
     "effectivePublicMaturity": "PRIVATE",
+    "evidenceSupportedAt": "both",
     "implementationEvidence": [
       "src/server/textos/observe/owned-surface-design/*",
       "ADR-021"
     ],
     "manifestCeiling": "PRIVATE",
-    "manualEngineeringRequired": true,
+    "manualEngineeringRequired": false,
     "prohibitedWording": [
       "renders your site",
       "modifies your site"
@@ -182,12 +187,13 @@
     "customerDeliverableNow": false,
     "disclosureAuthority": "NONE",
     "effectivePublicMaturity": "PRIVATE",
+    "evidenceSupportedAt": "both",
     "implementationEvidence": [
       "src/server/textos/query-intelligence/*",
       "coverage.test.ts declaration_debt"
     ],
     "manifestCeiling": "PRIVATE",
-    "manualEngineeringRequired": false,
+    "manualEngineeringRequired": true,
     "prohibitedWording": [
       "available",
       "beta",
@@ -216,6 +222,7 @@
     "customerDeliverableNow": false,
     "disclosureAuthority": "NONE",
     "effectivePublicMaturity": "PRIVATE",
+    "evidenceSupportedAt": "both",
     "implementationEvidence": [
       "src/server/textos/decide/opportunity-brief.ts",
       "ADR-014"
@@ -248,6 +255,7 @@
     "customerDeliverableNow": false,
     "disclosureAuthority": "NONE",
     "effectivePublicMaturity": "PRIVATE",
+    "evidenceSupportedAt": "both",
     "implementationEvidence": [
       "src/server/textos/premium/repos-intersection.ts",
       "ADR-017"
@@ -287,13 +295,14 @@
     "customerDeliverableNow": false,
     "disclosureAuthority": "CPO_DISCLOSURE_APPROVED",
     "effectivePublicMaturity": "INTERNAL_LABS",
+    "evidenceSupportedAt": "neither",
     "implementationEvidence": [
       "textos-site: lib/commit-to-content/*",
       "textos-site: scripts/content-{sync,verify,status}.ts",
       "textos-site: docs/commit-to-content-v1.md"
     ],
     "manifestCeiling": "PRIVATE",
-    "manualEngineeringRequired": true,
+    "manualEngineeringRequired": false,
     "prohibitedWording": [
       "available",
       "customer feature",

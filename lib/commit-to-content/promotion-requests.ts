@@ -1,21 +1,22 @@
-// Requêtes de promotion opérationnelles — pour CHAQUE déclaration éditoriale, produire une
-// demande machine + humaine listant précisément qui doit décider quoi pour lever le clamp.
+// Requêtes de promotion opérationnelles — CTC-6 (route dépend de la ref cible + evidence
+// vérifiée au SHA, customerDeliverableNow explicite, EVIDENCE_INSUFFICIENT réellement
+// atteignable).
 
 import type { ProductManifest } from "@/lib/product-manifest/manifest-schema";
 
+import { summarizeEvidence, type EvidenceSummary } from "./evidence";
 import { MATURITY_DECLARATIONS } from "./maturity-declarations";
 import type { MaturityDeclaration } from "./maturity-declarations";
 import {
   MATURITY_COPY_CONTRACT,
   effectiveMaturityWithAuthority,
   manifestCeiling,
-  reconcileMaturity,
 } from "./maturity";
-import type {
-  DisclosureAuthority,
-  PublicMaturity,
-  StoryKind,
-} from "./maturity";
+import type { DisclosureAuthority, PublicMaturity, StoryKind } from "./maturity";
+import {
+  AUTHORITATIVE_MAIN_SHA,
+  R2_CANDIDATE_SHA,
+} from "./resolve-product-ref";
 import type { ProductSourceRef } from "./types";
 
 export const PROMOTION_ROUTES = [
@@ -32,6 +33,7 @@ export interface PromotionRequest {
   storyKind: StoryKind;
   sourceProductRef: string;
   implementationEvidence: readonly string[];
+  evidenceSupportedAt: EvidenceSummary["supportedAt"]; // authoritative | candidate | both | neither
   currentImplementationStatus: string | null;
   currentPublicationStatus: string | null;
   requestedPublicMaturity: PublicMaturity;
@@ -41,7 +43,7 @@ export interface PromotionRequest {
   clamped: boolean;
   promotionRequired: boolean;
   requestedManifestChange: string | null;
-  customerDeliverableNow: boolean;
+  customerDeliverableNow: boolean; // désormais EXPLICITE (declaration.customerDeliverableNow)
   manualEngineeringRequired: boolean;
   allowedWording: readonly string[];
   prohibitedWording: readonly string[];
@@ -77,15 +79,31 @@ function buildOne(args: {
   });
   const contract = MATURITY_COPY_CONTRACT[effective];
 
-  const route = classifyRoute({ decl, entity, ceiling, effective });
+  // Evidence vérifiée aux DEUX refs whitelistées — la route ne peut pas dépendre du seul SHA
+  // demandé (un même bundle produit des routes différentes selon qu'on run sync contre R2 ou
+  // main).
+  const evidence = decl.storyKind === "COMPANY_TECHNOLOGY"
+    ? ({
+        hasPathOrGlobEvidence: false,
+        supportedAt: "neither" as const,
+        resolutions: { authoritative: [], candidate: [] },
+      })
+    : summarizeEvidence({
+        evidenceRefs: decl.evidenceRefs,
+        authoritativeSha: AUTHORITATIVE_MAIN_SHA,
+        candidateSha: R2_CANDIDATE_SHA,
+      });
+
+  const route = classifyRoute({ decl, entity, evidence });
   const { requiredOwner, requiredNextAction, requestedManifestChange, blockingReason } =
-    resolveOwnerAction({ decl, route, ceiling, effective });
+    resolveOwnerAction({ decl, route });
 
   return {
     capabilityId: decl.capabilityId,
     storyKind: decl.storyKind,
     sourceProductRef: args.targetRef.sha,
     implementationEvidence: decl.evidenceRefs,
+    evidenceSupportedAt: evidence.supportedAt,
     currentImplementationStatus: entity?.implementationStatus ?? null,
     currentPublicationStatus: entity?.publicationStatus ?? null,
     requestedPublicMaturity: decl.proposedMaturity,
@@ -95,8 +113,8 @@ function buildOne(args: {
     clamped: wasClamped,
     promotionRequired: wasClamped,
     requestedManifestChange,
-    customerDeliverableNow: inferCustomerDeliverable(decl),
-    manualEngineeringRequired: inferManualEngineering(decl),
+    customerDeliverableNow: decl.customerDeliverableNow,
+    manualEngineeringRequired: decl.manualEngineeringRequired,
     allowedWording: contract.mayImply,
     prohibitedWording: decl.prohibitedWording,
     allowedCtas: contract.ctaAllowed,
@@ -109,35 +127,49 @@ function buildOne(args: {
 
 function classifyRoute(args: {
   decl: MaturityDeclaration;
-  entity: ReturnType<ProductManifest["entities"]["find"]> | undefined;
-  ceiling: PublicMaturity;
-  effective: PublicMaturity;
+  entity: ProductManifest["entities"][number] | undefined;
+  evidence: EvidenceSummary;
 }): PromotionRoute {
-  // COMPANY_TECHNOLOGY approuvée = pas de promotion produit requise.
+  // COMPANY_TECHNOLOGY approuvée = pas de promotion produit requise (histoire d'entreprise
+  // gouvernée par la décision CPO, pas par le manifeste produit).
   if (
     args.decl.storyKind === "COMPANY_TECHNOLOGY" &&
     args.decl.disclosureAuthority === "CPO_DISCLOSURE_APPROVED"
   ) {
     return "NO_PROMOTION_REQUIRED";
   }
-  // Pas de trace d'implémentation solide → preuve insuffisante.
-  if (args.decl.evidenceRefs.length === 0) return "EVIDENCE_INSUFFICIENT";
-  // Absent du manifeste = entrée manquante.
+  // PRODUCT_CAPABILITY sans AUCUNE preuve path/glob résolvable à l'une des refs whitelistées.
+  if (
+    args.decl.storyKind === "PRODUCT_CAPABILITY" &&
+    !args.evidence.hasPathOrGlobEvidence
+  ) {
+    return "EVIDENCE_INSUFFICIENT";
+  }
+  if (
+    args.decl.storyKind === "PRODUCT_CAPABILITY" &&
+    args.evidence.supportedAt === "neither"
+  ) {
+    return "EVIDENCE_INSUFFICIENT";
+  }
+  // Evidence présente à R2 seulement, absente de main autoritatif → PRODUCT_MAIN_REQUIRED.
+  // (Gutenberg est exactement ce cas : le vocabulaire natif vit dans R2 uniquement à ce
+  // cycle.)
+  if (args.evidence.supportedAt === "candidate") {
+    return "PRODUCT_MAIN_REQUIRED";
+  }
+  // Sinon (supportedAt = authoritative OR both) : la capacité EXISTE au SHA autoritatif. Le
+  // clamp restant vient donc soit d'une entrée manifeste manquante, soit d'un
+  // publicationStatus insuffisant.
   if (!args.entity) return "PRODUCT_MANIFEST_ENTRY_REQUIRED";
-  // Présent mais internal_only + PRODUCT_CAPABILITY sans autorité CPO = approbation CPO
-  // requise (ou promotion produit du publicationStatus).
   if (args.entity.publicationStatus === "internal_only") {
     return "CPO_DISCLOSURE_APPROVAL_REQUIRED";
   }
-  // Cas résiduel — la ceiling manifeste couvre déjà.
   return "NO_PROMOTION_REQUIRED";
 }
 
 function resolveOwnerAction(args: {
   decl: MaturityDeclaration;
   route: PromotionRoute;
-  ceiling: PublicMaturity;
-  effective: PublicMaturity;
 }): {
   requiredOwner: PromotionRequest["requiredOwner"];
   requiredNextAction: string;
@@ -156,9 +188,10 @@ function resolveOwnerAction(args: {
       return {
         requiredOwner: "PO",
         requiredNextAction:
-          "Documenter la preuve d'implémentation (paths, commits, ADR) avant toute promotion.",
+          "Documenter la preuve d'implémentation via des chemins vérifiables au SHA source (path ou glob src/…). ADR seuls ne suffisent pas.",
         requestedManifestChange: null,
-        blockingReason: "Aucune preuve d'implémentation attachée à la déclaration éditoriale.",
+        blockingReason:
+          "Aucune preuve path/glob résolvable au SHA autoritatif ni au SHA candidat R2.",
       };
     case "PRODUCT_MANIFEST_ENTRY_REQUIRED":
       return {
@@ -178,9 +211,11 @@ function resolveOwnerAction(args: {
     case "PRODUCT_MAIN_REQUIRED":
       return {
         requiredOwner: "T0",
-        requiredNextAction: "Intégrer la capacité R2 dans product main, puis relancer content:sync.",
+        requiredNextAction:
+          "Intégrer la capacité R2 dans product main autoritatif puis émettre un manifeste. Ré-import via IMPORT.md avant de relancer content:sync.",
         requestedManifestChange: null,
-        blockingReason: "Capacité présente uniquement dans la ref CANDIDATE R2 — non-autoritative.",
+        blockingReason:
+          "Capacité présente uniquement à la ref CANDIDATE R2, absente à la ref AUTHORITATIVE_MAIN — non-autoritative.",
       };
   }
 }
@@ -199,16 +234,4 @@ function suggestManifestStatus(m: PublicMaturity): string {
     default:
       return "n/a";
   }
-}
-
-function inferCustomerDeliverable(decl: MaturityDeclaration): boolean {
-  return decl.proposedMaturity === "PUBLIC_GA" || decl.proposedMaturity === "PUBLIC_BETA";
-}
-
-function inferManualEngineering(decl: MaturityDeclaration): boolean {
-  return (
-    decl.proposedMaturity === "PUBLIC_BETA" ||
-    decl.proposedMaturity === "PUBLIC_EARLY_ACCESS" ||
-    decl.proposedMaturity === "INTERNAL_LABS"
-  );
 }

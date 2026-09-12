@@ -9,11 +9,18 @@
       "status": "green"
     },
     "maturityGate": {
-      "detail": "9 déclarations éditoriales conformes au contrat de copy et au plafond manifeste.",
+      "detail": "Évaluées: 1 (commit-to-content). Quarantaine (proposition stockée, non publiable): 8 (wordpress-publication, native-composition-gutenberg, asset-spec, geo-writer, owned-surface-design, query-intelligence, opportunity-brief, repos-intersection).",
       "status": "green"
     },
     "selfServeCtaGate": {
-      "detail": "3 capacité(s) self-serve reste(nt) internal_only (truth-check, grounded-truth-check, structured-generation). Le pipeline ne propose PAS d'activation publique.",
+      "activationProposed": false,
+      "detail": "Aucune activation self-serve n'est proposée. Capacités absentes/insuffisantes : self-serve-onboarding (absent du manifeste), authenticated-product-entry (absent du manifeste), ui-measurement-launch (absent du manifeste).",
+      "eligible": false,
+      "missingCapabilities": [
+        "self-serve-onboarding (absent du manifeste)",
+        "authenticated-product-entry (absent du manifeste)",
+        "ui-measurement-launch (absent du manifeste)"
+      ],
       "status": "green"
     },
     "truthLevelGate": {

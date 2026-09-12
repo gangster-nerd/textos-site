@@ -2,70 +2,33 @@
 surface: product_proof
 truthLevel: AUTHORITATIVE_MAIN
 sourceProductRef: a0efa146a8691938b624c156d99f4663f6f92218
-classification: COPY_CLARIFICATION
+classification: NO_CHANGE
 basisCapabilities:
   - observe-authority-presence
-  - direct-share-of-model
-  - indirect-mention-share
-  - total-authority-presence
-  - quality-ledger
+basisClaimIds:
+  - sales-authority-presence-boundaries
 disclosureAuthority: IMPLICIT_MANIFEST_MARKETABLE
 proposedPublishability: REQUIRES_HUMAN_REVIEW
+language: en
+humanReviewRequired: true
 mentionsCommitToContent: false
 ---
 
-# Product Proof — editorial candidate
+# ProductProof — editorial candidate (NO_CHANGE)
 
-**Classification** : `COPY_CLARIFICATION`. Tighten legends et micro-copy pour rester alignée
-sur le vocabulaire réel du produit ; aucune nouvelle capacité, aucune valeur fabriquée.
+**Classification**: `NO_CHANGE`. Reassessed after CTC-6 CTO review.
 
-## Titres de section proposés
+## Assessment
 
-1. **De quoi une mesure est faite** — panel versionné + fenêtre d'observation + panel de
-   requêtes.
-2. **Composition** — Direct Share of Model, Indirect Mention Share, Total Authority Presence
-   présentés séparément.
-3. **Quality Ledger** — ce qui a été observé, ce qui n'a pas été observé, ce qu'on ne peut
-   pas dire.
+The existing `components/product/ProductProof` deliberately explains observations, evidence
+and provenance. The Direct / Indirect / Total interpretation belongs to the preceding
+measurement panel and to the methodology cluster, not to ProductProof.
 
-## Micro-copy proposée (figures documentaires uniquement)
+## Decision
 
-### Under Direct Share of Model
+No change to ProductProof at product SHA `a0efa146`. The current component:
+- names only the `sales-authority-presence-boundaries` claim,
+- keeps figures visually marked as illustrative,
+- exposes provenance without simulated values.
 
-> Proportion des réponses où votre marque apparaît en réponse directe à la requête, sur le
-> panel versionné et la fenêtre d'observation retenus.
-
-### Under Indirect Mention Share
-
-> Proportion des réponses où votre marque est mentionnée par un tiers cité dans la réponse.
-> Distinct de Direct : jamais additionné, jamais mélangé.
-
-### Under Total Authority Presence
-
-> Composition documentaire de Direct + Indirect selon la règle publiée. Une valeur composite
-> n'a de sens qu'accompagnée de ses deux composants.
-
-### Under Quality Ledger
-
-> Toute mesure a des limites. Le ledger dit : combien de réponses ont été collectées, combien
-> ont échoué, quelles requêtes du panel n'ont pas produit d'observation. Une non-observation
-> n'est jamais un zéro.
-
-## Contrat visuel (rappels)
-
-- Toutes les valeurs affichées restent visuellement documentaires (marquage explicite).
-- Aucun run id fabriqué, aucun id client, aucune source simulée présentée comme réelle.
-- Les figures conservent leur légende "example / illustrative" en clair.
-
-## Termes bannis
-
-- "real customer result"
-- "live data"
-- "measured X% for brand Y" — sauf provenance publique attestée
-- "predicts your share of voice" (l'observation n'est pas une prédiction)
-
-## Base de décision
-
-Le grammaire produit R2 (`3cfae583`) introduit des read-models internes (MeasurementsViewModel
-S-B, AuthorityPresenceDisplay S-C) mais AUCUN de ces artefacts n'entre dans le manifeste
-autoritatif. Cette copy reste donc strictement dans la grammaire déjà publique.
+No genuine evidence/provenance clarification improves the existing component at this SHA.

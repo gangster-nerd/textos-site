@@ -2,74 +2,43 @@
 surface: homepage
 truthLevel: AUTHORITATIVE_MAIN
 sourceProductRef: a0efa146a8691938b624c156d99f4663f6f92218
-classification: NARRATIVE_DRIFT
+classification: NO_CHANGE
 basisCapabilities:
   - observe-authority-presence
-  - direct-share-of-model
-  - indirect-mention-share
-  - total-authority-presence
-  - quality-ledger
+basisClaimIds:
+  - sales-authority-presence-measurement
+  - sales-versioned-authority-measurement
+  - sales-authority-presence-boundaries
 disclosureAuthority: IMPLICIT_MANIFEST_MARKETABLE
 proposedPublishability: REQUIRES_HUMAN_REVIEW
+language: en
+humanReviewRequired: true
 mentionsCommitToContent: false
 ---
 
-# Homepage — editorial candidate
+# Homepage — editorial candidate (NO_CHANGE)
 
-**Classification** : `NARRATIVE_DRIFT`. Aucune nouvelle capacité GA ; l'arc narratif est
-resserré autour des cinq capacités déjà `public_marketable` du manifeste épinglé.
+**Classification**: `NO_CHANGE`. Reassessed after CTC-6 CTO review.
 
-## Proposition d'arc
+## Assessment
 
-1. **Problème** — L'autorité de votre marque dans les réponses des modèles n'est pas mesurée.
-2. **Mesure** — TextOS observe un panel de requêtes versionné et compose l'autorité en trois
-   objets qui restent lisibles : Direct Share of Model, Indirect Mention Share, Total
-   Authority Presence.
-3. **Preuve** — Chaque mesure porte son Quality Ledger : ce qui a été observé, ce qui manque,
-   ce que la mesure ne peut pas dire.
-4. **Action** — La voie disponible aujourd'hui est une mesure assistée sur demande. TextOS ne
-   revendique aucun raccourci automatique.
-5. **Conversion** — Un seul CTA public : `measurement_request` → `/request-measurement`.
+The current `app/page.tsx` hero and copy are already precise, product-led and English,
+grounded in three ratified sales claims:
 
-## Copy proposée
+- `sales-authority-presence-measurement` — "TextOS measures how AI answer engines cite your brand."
+- `sales-versioned-authority-measurement` — "TextOS measures a brand's authority presence
+  reproducibly, on a versioned query panel, with dispersion and completeness."
+- `sales-authority-presence-boundaries` — "TextOS's current Authority Presence measurement is
+  not a score and does not include recommendations, ROI estimates, or guarantees of ranking or
+  AI citation."
 
-### Hero
+The pipeline previously proposed a defensive replacement. That replacement was **weaker** than
+the current homepage: it used defensive framing where the existing kicker+lede is a positive
+product statement backed by three PO-ratified claims. Replacing precise English copy with
+defensive prose would be a regression.
 
-> **Voyez ce que les modèles disent de vous.**
-> TextOS mesure la présence d'autorité de votre marque dans les réponses des LLM, sur un panel
-> de requêtes versionné et une composition Direct + Indirect + Total.
+## Decision
 
-### Sub-hero
-
-> Aucune promesse de couverture universelle. Aucune valeur simulée présentée comme réelle.
-> Chaque mesure porte son ledger : ce qu'on a vu, ce qu'on n'a pas vu, ce qu'on ne peut pas
-> dire.
-
-### Trois blocs "how it works"
-
-1. **Panel versionné** — Vous définissez la surface de requêtes ; TextOS versionne la liste
-   pour que deux mesures soient comparables.
-2. **Composition en trois objets** — Direct Share of Model, Indirect Mention Share, Total
-   Authority Presence — jamais mélangés, jamais additionnés hors garde.
-3. **Quality Ledger** — Chaque mesure porte les limites de son observation : pas de valeur
-   sortie d'un modèle sans provenance.
-
-### CTA (unchanged)
-
-- `measurement_request` — "Request a measurement" → `/request-measurement`
-
-## Termes bannis (rappel copy-safety)
-
-- "detects every mention of the brand"
-- "guarantees measurement accuracy"
-- "measures every answer a model can produce"
-- "tracks brand visibility in real time"
-- toute mention d'un CTA self-serve, "trial", "sign up", "start now"
-- toute mention de la pipeline interne d'ingénierie éditoriale (surface homepage réservée au produit)
-
-## Base de décision
-
-Le manifeste produit épinglé (`d1b8b50`) est byte-identique au product main
-(`a0efa146`) : aucune promotion de capacité n'a eu lieu. Cette copy ne fait donc que
-resserrer l'arc autour de ce qui est déjà `public_marketable`. Elle ne propose PAS de nouvelle
-capacité, PAS de nouveau CTA, PAS d'activation self-serve.
+No change is proposed. The homepage remains as it is at `fd40aca`. This candidate records
+that the pipeline reassessed the surface at product SHA `a0efa146` and chose not to
+manufacture a change where none is warranted.

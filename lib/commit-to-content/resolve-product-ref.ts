@@ -25,8 +25,12 @@ import type { ProductSourceRef, TruthLevel } from "./types";
 
 const DECLARATION_PATH = "src/manifest/capability-declaration.ts";
 
-const AUTHORITATIVE_MAIN_SHA = "a0efa146a8691938b624c156d99f4663f6f92218";
-const R2_CANDIDATE_SHA = "3cfae5830fed3f10fd35ed77e699a183162b6cbe";
+// WHITELIST DU CYCLE COURANT. Corriger explicitement CES DEUX CONSTANTES pour promouvoir
+// une nouvelle ref autoritative. Toute ref hors whitelist échoue en UNRECOGNIZED_SOURCE_REF
+// (fail-closed) — même si la déclaration de capacité y est byte-identique au manifeste
+// épinglé.
+export const AUTHORITATIVE_MAIN_SHA = "a0efa146a8691938b624c156d99f4663f6f92218";
+export const R2_CANDIDATE_SHA = "3cfae5830fed3f10fd35ed77e699a183162b6cbe";
 
 function productRepoPath(): string {
   const fromEnv = process.env.TEXTOS_PRODUCT_REPO;
@@ -43,11 +47,12 @@ function productRepoPath(): string {
 }
 
 function resolveTruthLevel(sha: string): TruthLevel {
+  if (sha === AUTHORITATIVE_MAIN_SHA) return "AUTHORITATIVE_MAIN";
   if (sha === R2_CANDIDATE_SHA) return "CANDIDATE";
-  // Toute ref différente du candidat R2 connu est considérée AUTHORITATIVE_MAIN par défaut.
-  // Le pipeline vérifie ensuite via `matchesPinnedManifest` que la déclaration correspond au
-  // manifeste épinglé — c'est la vraie protection.
-  return "AUTHORITATIVE_MAIN";
+  // FAIL CLOSED. Correction P0 CTC-6 : `matchesPinnedManifest` prouve que la déclaration
+  // n'a pas divergé, PAS que la ref est autorisée. Byte-identique à l'épingle ne fait pas de
+  // n'importe quelle branche une vérité produit.
+  return "UNRECOGNIZED_SOURCE_REF";
 }
 
 function readSourceAt(repo: string, sha: string, filePath: string): string {

@@ -12,6 +12,9 @@
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
 
+import { verifyEditorialCandidates } from "@/lib/commit-to-content/editorial-verifier";
+import { selfServeCtaGate } from "@/lib/commit-to-content/publishability";
+import { loadPinnedManifest } from "@/lib/product-manifest/manifest-schema";
 import type { ContentBundle } from "@/lib/commit-to-content/types";
 
 function siteRoot(): string {
@@ -84,6 +87,19 @@ function main() {
           `${name}: promotion "${p.capabilityId}" non-clampée mais route=${p.route}.`,
         );
       }
+    }
+    // Gouvernance éditoriale : hash + existence + provenance + basis + termes bannis.
+    const selfServeEligible = selfServeCtaGate({
+      manifest: loadPinnedManifest(root),
+      activationProposed: false,
+    }).eligible;
+    const editorialFailures = verifyEditorialCandidates({
+      bundleDir: dir,
+      editorialCandidates: bundle.editorialCandidates ?? [],
+      selfServeEligible,
+    });
+    for (const f of editorialFailures) {
+      failures.push(`${name}: editorial ${f.editorial ?? "?"} — ${f.message}`);
     }
   }
 

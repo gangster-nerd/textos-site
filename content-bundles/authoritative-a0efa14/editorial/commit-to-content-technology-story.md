@@ -1,65 +1,73 @@
 ---
-surface: labs (editorial target — NOT a public route)
+surface: labs
 truthLevel: AUTHORITATIVE_MAIN
 sourceProductRef: a0efa146a8691938b624c156d99f4663f6f92218
 classification: LABS_MATURITY_CHANGE
 capabilityId: commit-to-content
 storyKind: COMPANY_TECHNOLOGY
 publicMaturity: INTERNAL_LABS
+basisCapabilities: []
+basisClaimIds: []
 disclosureAuthority: CPO_DISCLOSURE_APPROVED
 disclosureDecisionRef: docs/decisions/CPO-2026-09-12-commit-to-content-disclosure.md
 proposedPublishability: REQUIRES_HUMAN_REVIEW
 cta: none
 appliesToPublicRoute: false
+language: en
+humanReviewRequired: true
 ---
 
-# Commit to Content — technology story candidate
+# Commit to Content — technology story candidate (restricted)
 
-**Restricted candidate** — this candidate is authorized ONLY for a technology / methodology /
-how-we-build editorial context (e.g. an engineering blog post, a documentation appendix, a
-conference talk). It is NOT authorized for any customer-facing surface, /labs page or
+**Restricted candidate.** Authorized only for a technology / methodology / how-we-build
+editorial context. Not authorized for any customer-facing surface, no `/labs` route, no
 commercial CTA. See `docs/decisions/CPO-2026-09-12-commit-to-content-disclosure.md`.
 
-## Proposed body (restricted-disclosure)
+## Proposed body (restricted-disclosure, English)
 
 > **How we govern content changes at TextOS**
 >
-> Behind our public pages sits an internal system called Commit to Content. It reads verified
-> product development history — capability declarations, ADRs, GitHub commits — and turns
-> each governed increment into a versioned bundle of editorial candidates.
+> Behind our public pages sits an internal system we call Commit to Content. It reads
+> verified product development history — capability declarations, ADRs, GitHub commits —
+> and turns each governed increment into a versioned bundle of editorial candidates.
 >
 > Every candidate carries its provenance: which product SHA it comes from, which capability
-> declaration it relies on, which manifest snapshot backs it. Deterministic gates verify that
-> nothing on our site claims capability the product cannot back. Nothing publishes without a
-> human review.
+> declaration it relies on, which manifest snapshot backs it. Deterministic gates verify
+> that nothing on our site claims capability the product cannot back. Nothing publishes
+> without a human review.
 >
-> Commit to Content is a piece of internal tooling, not a TextOS customer feature. It happens
-> to be dogfooded across TextOS, ShortsOS and RepOS internally. We are writing about it as an
-> engineering practice, not selling it. There is no waitlist and no CTA — this is how we
-> build, not what we sell.
+> Commit to Content is a piece of internal tooling, not a TextOS customer feature. Today
+> it is implemented for TextOS and dogfooded on this site's editorial governance. We
+> intend to reuse it next for ShortsOS and RepOS; those industrializations have not yet
+> been demonstrated. We are writing about this as an engineering practice, not selling it.
+> There is no waitlist and no CTA — this is how we build, not what we sell.
 
-## Explicit disclaimers to include when published
+## Truthful cross-product state (CTC-6 correction)
 
-- Ne PAS présenter comme une capacité TextOS.
-- Ne PAS proposer de sign-up, waitlist, contact-for-access.
-- Ne PAS suggérer une disponibilité future automatique.
-- Ne PAS promettre un SLA, tarif, ou intégration.
+- **TextOS**: implemented and dogfooded (this repository).
+- **ShortsOS**: intended next industrialization — not yet demonstrated.
+- **RepOS**: intended next industrialization — not yet demonstrated.
 
-## Bounds enforced by pipeline
+Do NOT present it as already reused across the three products at the same time.
 
-- `storyKind = COMPANY_TECHNOLOGY` (schema-refused si combiné avec une maturité commerciale).
-- `publicMaturity = INTERNAL_LABS` (terminalement plafonnée).
-- `cta = none` (schema-refused si autre).
-- `disclosureAuthority = CPO_DISCLOSURE_APPROVED` avec `disclosureDecisionRef` pointant sur
-  un fichier réel du dépôt (`docs/decisions/CPO-2026-09-12-commit-to-content-disclosure.md`).
+## Disclaimers to include when published
+
+- Do NOT present as a TextOS capability.
+- Do NOT propose sign-up, waitlist, or contact-for-access.
+- Do NOT suggest future customer availability automatically.
+- Do NOT promise SLA, pricing, or integration.
+
+## Bounds enforced by the pipeline
+
+- `storyKind = COMPANY_TECHNOLOGY` (schema rejects any commercial maturity).
+- `publicMaturity = INTERNAL_LABS` (terminally capped).
+- `cta = none` (schema rejects any other value).
+- `disclosureAuthority = CPO_DISCLOSURE_APPROVED` with `disclosureDecisionRef` pointing at
+  a real file under `docs/decisions/` (validated at load).
 
 ## What this candidate does NOT do
 
-- N'ouvre PAS de route `/labs`.
-- N'ajoute PAS Commit to Content au `PUBLIC_SURFACES` du site.
-- N'annonce PAS d'accès client, ni Beta, ni Early Access.
-- N'implique PAS que ShortsOS / RepOS ont un statut public.
-
-Toute promotion commerciale exige une nouvelle décision CPO ET une requalification
-`storyKind = PRODUCT_CAPABILITY` avec gouvernance manifeste. Ce candidat sera régénéré par le
-pipeline à chaque `content:sync` — son texte est préservé (bundle.ts snapshotEditorial).
+- Does NOT open a `/labs` route.
+- Does NOT add `commit-to-content` to `PUBLIC_SURFACES`.
+- Does NOT announce customer access, Beta, or Early Access.
+- Does NOT imply ShortsOS or RepOS have public status.

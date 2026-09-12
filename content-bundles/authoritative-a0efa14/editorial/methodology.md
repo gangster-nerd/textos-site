@@ -9,47 +9,42 @@ basisCapabilities:
   - indirect-mention-share
   - total-authority-presence
   - quality-ledger
+basisClaimIds:
+  - m2-direct-share-of-model
+  - m3-indirect-mention-share
+  - m4-total-is-a-union
+  - m5-not-observable-is-not-zero
+  - m6-quality-ledger-contextualises
 disclosureAuthority: IMPLICIT_MANIFEST_MARKETABLE
 proposedPublishability: REQUIRES_HUMAN_REVIEW
+language: en
+humanReviewRequired: true
 mentionsCommitToContent: false
 ---
 
-# Methodology — editorial candidate
+# Methodology — editorial candidate (NO_CHANGE)
 
-**Classification** : `NO_CHANGE`. Documentation honnête : la couverture méthodologique
-courante est adéquate ; aucune modification n'est proposée.
+**Classification**: `NO_CHANGE`. Coverage is complete at product SHA `a0efa146`.
 
-## Couverture actuelle (inspectée)
+## Existing coverage
 
-Quatre articles methodology existent déjà et documentent chacune des capacités autoritatives :
+Four methodology articles exist:
 
-- `authority-presence` — présentation générale de la mesure.
-- `direct-indirect-total` — composition de l'autorité.
-- `measurement-quality-ledger` — le ledger de qualité.
-- `not-observable-is-not-zero` — l'absence d'observation ≠ un zéro.
+- `authority-presence`
+- `direct-indirect-total`
+- `measurement-quality-ledger`
+- `not-observable-is-not-zero`
 
-## Pourquoi NO_CHANGE
+## Why NO_CHANGE
 
-1. Le manifeste produit épinglé (`d1b8b50`) est byte-identique au product main (`a0efa146`) :
-   aucune capacité publique n'a été promue ni ajoutée.
-2. Chaque capacité autoritative est déjà couverte par un article methodology dédié.
-3. La grammaire produite par les commits R2 (S-B/S-C/S-F/S-G/QI-ACTIVATION-PA) reste
-   `internal_only` : elle ne peut pas alimenter une nouvelle article methodology publique.
-4. Introduire une modification sans base de manifeste violerait la règle : "Do not manufacture
-   a change where NO_CHANGE is supported."
+1. The pinned product manifest (`d1b8b50`) is byte-identical to product main (`a0efa146`).
+2. Each authoritative capability is already covered.
+3. R2 read-models remain `internal_only` — cannot back a public methodology article.
+4. Manufacturing a change without a manifest basis would violate CTC doctrine.
 
-## Ce qui déclencherait un update
+## What would trigger a change
 
-Une promotion produit :
+- A new capability promoted to `public_marketable`.
+- A doctrinal ADR that renders an existing article inaccurate.
 
-- une nouvelle capacité `public_marketable` au manifeste (via `gh run download` + ré-import
-  documenté dans `product-manifest/IMPORT.md`) ;
-- ou une clarification doctrinale ADR sur une capacité déjà publique qui rendrait un article
-  existant obsolète.
-
-Aucun de ces événements n'est présent à `a0efa146`.
-
-## Rappel
-
-Cette candidate honnête sert de trace : le pipeline commit-to-content est capable d'émettre
-`NO_CHANGE` avec justification, sans manufacturer du contenu pour remplir la surface.
+Neither has occurred.

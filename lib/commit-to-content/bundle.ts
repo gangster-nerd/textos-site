@@ -19,7 +19,12 @@ import type { ContentBundle } from "./types";
 import { renderSkeleton } from "./skeletons";
 
 export function bundleDir(siteRoot: string, bundle: ContentBundle): string {
-  const truth = bundle.truthLevel === "AUTHORITATIVE_MAIN" ? "authoritative" : "candidate";
+  const truth =
+    bundle.truthLevel === "AUTHORITATIVE_MAIN"
+      ? "authoritative"
+      : bundle.truthLevel === "CANDIDATE"
+        ? "candidate"
+        : "unrecognized";
   return path.join(siteRoot, "content-bundles", `${truth}-${bundle.provenance.sourceRef.shortSha}`);
 }
 

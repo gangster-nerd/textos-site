@@ -19,7 +19,8 @@ import { decidePublishability } from "./publishability";
 import { detectOpportunities } from "./opportunities";
 import { buildPromotionRequests } from "./promotion-requests";
 import { resolveProductRef, computePinnedDeclarationDigest } from "./resolve-product-ref";
-import { writeBundle } from "./bundle";
+import { scanEditorialCandidates } from "./editorial-registrar";
+import { writeBundle, bundleDir as computeBundleDir } from "./bundle";
 import type { BundleProvenance, ContentBundle, TruthLevel } from "./types";
 
 export const GENERATOR_VERSION = "commit-to-content@v1";
@@ -66,7 +67,26 @@ export function runSync(args: SyncArgs): SyncResult {
     siteHead: safeSiteHead(args.siteRoot),
   };
 
-  const truthTag = targetRef.truthLevel === "AUTHORITATIVE_MAIN" ? "authoritative" : "candidate";
+  const truthTag =
+    targetRef.truthLevel === "AUTHORITATIVE_MAIN"
+      ? "authoritative"
+      : targetRef.truthLevel === "CANDIDATE"
+        ? "candidate"
+        : "unrecognized";
+
+  // Découverte des candidats éditoriaux existants (authored par l'opérateur). Hash + frontmatter
+  // sont capturés maintenant pour rendre `content:verify` capable de détecter toute
+  // modification post-génération.
+  const provisionalBundleDir = computeBundleDir(args.siteRoot, {
+    truthLevel: targetRef.truthLevel,
+    provenance,
+  } as ContentBundle);
+  const editorialCandidates = scanEditorialCandidates({
+    bundleDir: provisionalBundleDir,
+    fallbackSourceRef: targetRef.sha,
+    fallbackTruthLevel: targetRef.truthLevel,
+  });
+
   const bundle: ContentBundle = {
     bundleId: `${truthTag}-${targetRef.shortSha}`,
     truthLevel: targetRef.truthLevel,
@@ -75,6 +95,7 @@ export function runSync(args: SyncArgs): SyncResult {
     ...decision,
     opportunities,
     promotionRequests,
+    editorialCandidates,
   };
 
   const bundlePath = writeBundle(args.siteRoot, bundle);

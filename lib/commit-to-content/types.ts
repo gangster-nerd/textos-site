@@ -20,7 +20,15 @@ import type { ProductManifest } from "@/lib/product-manifest/manifest-schema";
 import type { ContentOpportunity } from "./opportunities";
 import type { PromotionRequest } from "./promotion-requests";
 
-export const TRUTH_LEVELS = ["AUTHORITATIVE_MAIN", "CANDIDATE"] as const;
+// UNRECOGNIZED_SOURCE_REF — fail-closed pour toute ref non explicitement whitelistée par le
+// cycle courant. Un tel bundle ne peut JAMAIS atteindre PUBLIC_SAFE ni REQUIRES_HUMAN_REVIEW ;
+// il reste BLOCKED en overallStatus. C'est la correction P0 de la review CTO CTC-6 : ne
+// jamais traiter une ref arbitraire comme vérité produit par défaut.
+export const TRUTH_LEVELS = [
+  "AUTHORITATIVE_MAIN",
+  "CANDIDATE",
+  "UNRECOGNIZED_SOURCE_REF",
+] as const;
 export type TruthLevel = (typeof TRUTH_LEVELS)[number];
 
 export const PUBLISHABILITY_STATES = [
@@ -111,6 +119,33 @@ export interface ContentBundle {
   };
   opportunities: ContentOpportunity[];
   promotionRequests: PromotionRequest[];
+  editorialCandidates: EditorialCandidate[];
+}
+
+// Candidat éditorial GOUVERNÉ par le bundle : son sha256 est vérifié à `content:verify`. Toute
+// modification hors régénération casse le gate. Toute présence de fichier sous editorial/ non
+// référencée dans la liste est rejetée.
+export interface EditorialCandidate {
+  path: string; // relatif au bundle
+  sha256: string;
+  surface: string;
+  classification:
+    | "CAPABILITY_CHANGE"
+    | "PRODUCT_KNOWLEDGE_DELTA"
+    | "MARKETING_OPPORTUNITY_DELTA"
+    | "CONTENT_COVERAGE_GAP"
+    | "NARRATIVE_DRIFT"
+    | "COPY_CLARIFICATION"
+    | "NO_CHANGE"
+    | "LABS_MATURITY_CHANGE";
+  sourceProductRef: string;
+  truthLevel: TruthLevel;
+  basisCapabilityIds: string[];
+  basisClaimIds: string[];
+  disclosureAuthority: string;
+  proposedPublishability: PublishabilityStatus;
+  language: "en" | "fr";
+  humanReviewRequired: boolean;
 }
 
 export interface ResolvedManifestBundle {

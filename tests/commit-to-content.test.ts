@@ -58,7 +58,12 @@ describe("commit-to-content publishability invariants", () => {
     // internal_only à ne PAS activer publiquement. La formule doit citer au moins une capacité
     // interne connue.
     expect(gate.status).toBe("green");
-    expect(gate.detail.toLowerCase()).toContain("internal_only");
+    // CTC-6 : le gate ne parle plus d'internal_only ; il évalue explicitement l'éligibilité
+    // via les trois capacités requises (self-serve-onboarding, authenticated-product-entry,
+    // ui-measurement-launch). En l'absence d'activation proposée, il reste GREEN mais
+    // eligible=false.
+    expect(gate.eligible).toBe(false);
+    expect(gate.activationProposed).toBe(false);
   });
 
   it("determinisme : deux appels successifs à decidePublishability sur les mêmes entrées produisent la même décision", () => {
@@ -75,10 +80,14 @@ describe("commit-to-content publishability invariants", () => {
     const { readdirSync, readFileSync, existsSync } = await import("node:fs");
     const path = await import("node:path");
     const dir = path.join(SITE_ROOT, "content-bundles");
-    if (!existsSync(dir)) return;
-    for (const name of readdirSync(dir)) {
+    // CTC-6 : le dossier DOIT exister. Un test acceptance vacuous cacherait un manque de bundles.
+    expect(existsSync(dir)).toBe(true);
+    const bundleNames = readdirSync(dir).filter((n) =>
+      existsSync(path.join(dir, n, "bundle.json")),
+    );
+    expect(bundleNames.length).toBeGreaterThan(0);
+    for (const name of bundleNames) {
       const file = path.join(dir, name, "bundle.json");
-      if (!existsSync(file)) continue;
       const bundle = JSON.parse(readFileSync(file, "utf8"));
       if (bundle.truthLevel === "CANDIDATE") {
         expect(bundle.overallStatus).not.toBe("PUBLIC_SAFE");

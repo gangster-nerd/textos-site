@@ -11,8 +11,8 @@
 - `manifestDrift`: **green** — La ref demandée est byte-identique au manifeste épinglé.
 - `declarationIntegrity`: **green** — Digest de la déclaration source conforme à l'épinglé.
 - `truthLevelGate`: **green** — Source AUTHORITATIVE_MAIN.
-- `selfServeCtaGate`: **green** — 3 capacité(s) self-serve reste(nt) internal_only (truth-check, grounded-truth-check, structured-generation). Le pipeline ne propose PAS d'activation publique.
-- `maturityGate`: **green** — 9 déclarations éditoriales conformes au contrat de copy et au plafond manifeste.
+- `selfServeCtaGate`: **green** — Aucune activation self-serve n'est proposée. Capacités absentes/insuffisantes : self-serve-onboarding (absent du manifeste), authenticated-product-entry (absent du manifeste), ui-measurement-launch (absent du manifeste).
+- `maturityGate`: **green** — Évaluées: 1 (commit-to-content). Quarantaine (proposition stockée, non publiable): 8 (wordpress-publication, native-composition-gutenberg, asset-spec, geo-writer, owned-surface-design, query-intelligence, opportunity-brief, repos-intersection).
 
 ## Surfaces
 - `homepage` → **REQUIRES_HUMAN_REVIEW** — Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.
@@ -28,7 +28,7 @@
 
 ## Promotion requests
 - `wordpress-publication` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_BETA) est clampée.
-- `native-composition-gutenberg` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_EARLY_ACCESS) est clampée.
+- `native-composition-gutenberg` → **PRODUCT_MAIN_REQUIRED** (owner: T0) — Capacité présente uniquement à la ref CANDIDATE R2, absente à la ref AUTHORITATIVE_MAIN — non-autoritative.
 - `asset-spec` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.
 - `geo-writer` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.
 - `owned-surface-design` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.

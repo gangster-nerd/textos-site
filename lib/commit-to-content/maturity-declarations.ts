@@ -46,6 +46,9 @@ export const MaturityDeclarationSchema = z
     rationale: z.string().min(1),
     // Piste d'audit obligatoire quand disclosureAuthority = CPO_DISCLOSURE_APPROVED.
     disclosureDecisionRef: z.string().min(1).nullable(),
+    // Explicites (CTC-6 P1). Ne PAS déduire du proposedMaturity.
+    customerDeliverableNow: z.boolean(),
+    manualEngineeringRequired: z.boolean(),
   })
   .strict()
   .superRefine((d, ctx) => {
@@ -102,6 +105,8 @@ export type MaturityDeclaration = z.infer<typeof MaturityDeclarationSchema>;
 const RAW: MaturityDeclaration[] = [
   {
     capabilityId: "wordpress-publication",
+    customerDeliverableNow: true,
+    manualEngineeringRequired: true,
     storyKind: "PRODUCT_CAPABILITY",
     disclosureAuthority: "NONE", // aucune décision produit encore
     disclosureDecisionRef: null,
@@ -127,6 +132,8 @@ const RAW: MaturityDeclaration[] = [
   },
   {
     capabilityId: "native-composition-gutenberg",
+    customerDeliverableNow: false,
+    manualEngineeringRequired: true,
     storyKind: "PRODUCT_CAPABILITY",
     disclosureAuthority: "NONE",
     disclosureDecisionRef: null,
@@ -151,6 +158,8 @@ const RAW: MaturityDeclaration[] = [
   },
   {
     capabilityId: "asset-spec",
+    customerDeliverableNow: false,
+    manualEngineeringRequired: true,
     storyKind: "PRODUCT_CAPABILITY",
     disclosureAuthority: "NONE",
     disclosureDecisionRef: null,
@@ -170,6 +179,8 @@ const RAW: MaturityDeclaration[] = [
   },
   {
     capabilityId: "geo-writer",
+    customerDeliverableNow: false,
+    manualEngineeringRequired: true,
     storyKind: "PRODUCT_CAPABILITY",
     disclosureAuthority: "NONE",
     disclosureDecisionRef: null,
@@ -188,6 +199,8 @@ const RAW: MaturityDeclaration[] = [
   },
   {
     capabilityId: "owned-surface-design",
+    customerDeliverableNow: false,
+    manualEngineeringRequired: false,
     storyKind: "PRODUCT_CAPABILITY",
     disclosureAuthority: "NONE",
     disclosureDecisionRef: null,
@@ -206,6 +219,8 @@ const RAW: MaturityDeclaration[] = [
   },
   {
     capabilityId: "query-intelligence",
+    customerDeliverableNow: false,
+    manualEngineeringRequired: true,
     storyKind: "PRODUCT_CAPABILITY",
     disclosureAuthority: "NONE",
     disclosureDecisionRef: null,
@@ -225,6 +240,8 @@ const RAW: MaturityDeclaration[] = [
   },
   {
     capabilityId: "opportunity-brief",
+    customerDeliverableNow: false,
+    manualEngineeringRequired: true,
     storyKind: "PRODUCT_CAPABILITY",
     // Le manifeste dit internal_only. Le sprint CTC-5 précise EXPLICITEMENT que
     // `internal_only` n'est PAS une autorité de divulgation. Donc NONE.
@@ -246,6 +263,8 @@ const RAW: MaturityDeclaration[] = [
   },
   {
     capabilityId: "repos-intersection",
+    customerDeliverableNow: false,
+    manualEngineeringRequired: true,
     storyKind: "PRODUCT_CAPABILITY",
     disclosureAuthority: "NONE",
     disclosureDecisionRef: null,
@@ -262,6 +281,8 @@ const RAW: MaturityDeclaration[] = [
   },
   {
     capabilityId: "commit-to-content",
+    customerDeliverableNow: false,
+    manualEngineeringRequired: false,
     storyKind: "COMPANY_TECHNOLOGY",
     // SEULE déclaration avec autorité de divulgation explicite : décision CPO datée du
     // 2026-09-12 autorisant un récit Labs/how-we-build.

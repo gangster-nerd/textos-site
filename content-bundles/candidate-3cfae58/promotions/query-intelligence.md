@@ -9,7 +9,7 @@
 - **disclosureAuthority**: NONE
 - **clamped**: true
 - **customerDeliverableNow**: false
-- **manualEngineeringRequired**: false
+- **manualEngineeringRequired**: true
 - **sourceProductRef**: `3cfae5830fed3f10fd35ed77e699a183162b6cbe`
 
 ## Blocking reason

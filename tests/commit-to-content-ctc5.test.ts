@@ -6,6 +6,15 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
+// Précondition environnementale — les tests qui appellent réellement git sur le dépôt
+// produit sont skipped en CI où TEXTOS_PRODUCT_REPO n'est pas monté. Les bundles committés
+// couvrent la vérification en CI.
+const productRepoPath =
+  process.env.TEXTOS_PRODUCT_REPO && process.env.TEXTOS_PRODUCT_REPO.length > 0
+    ? process.env.TEXTOS_PRODUCT_REPO
+    : "/Users/marc/Desktop/textos";
+const PRODUCT_REPO_AVAILABLE = existsSync(path.join(productRepoPath, ".git"));
+
 import {
   MATURITY_DECLARATIONS,
   MaturityDeclarationSchema,
@@ -17,7 +26,6 @@ import {
 } from "@/lib/commit-to-content/maturity";
 import { selfServeCtaGate } from "@/lib/commit-to-content/publishability";
 import { buildPromotionRequests } from "@/lib/commit-to-content/promotion-requests";
-import { computeCapabilityDelta } from "@/lib/commit-to-content/compute-delta";
 import { loadPinnedManifest } from "@/lib/product-manifest/manifest-schema";
 import type { ProductSourceRef } from "@/lib/commit-to-content/types";
 
@@ -117,6 +125,8 @@ describe("CTC-5 — COMPANY_TECHNOLOGY est plafonnée à INTERNAL_LABS", () => {
         prohibitedWording: [],
         cta: "none",
         rationale: "test",
+        customerDeliverableNow: false,
+        manualEngineeringRequired: false,
       });
       expect(res.success, `${m} should be rejected for COMPANY_TECHNOLOGY`).toBe(false);
     }
@@ -137,6 +147,8 @@ describe("CTC-5 — COMPANY_TECHNOLOGY est plafonnée à INTERNAL_LABS", () => {
         prohibitedWording: [],
         cta,
         rationale: "test",
+        customerDeliverableNow: false,
+        manualEngineeringRequired: false,
       });
       expect(res.success, `cta=${cta} should be rejected for COMPANY_TECHNOLOGY`).toBe(false);
     }
@@ -156,6 +168,8 @@ describe("CTC-5 — COMPANY_TECHNOLOGY est plafonnée à INTERNAL_LABS", () => {
       prohibitedWording: ["available"],
       cta: "none",
       rationale: "test",
+      customerDeliverableNow: false,
+      manualEngineeringRequired: false,
     });
     expect(res.success).toBe(true);
   });
@@ -198,6 +212,8 @@ describe("CTC-5 — décision CPO durable", () => {
       prohibitedWording: [],
       cta: "none",
       rationale: "r",
+      customerDeliverableNow: false,
+      manualEngineeringRequired: false,
     });
     expect(res.success).toBe(false);
   });
@@ -217,11 +233,9 @@ describe("CTC-5 — commit-to-content n'est pas une capacité TextOS", () => {
 
   it("l'homepage éditoriale ne mentionne PAS Commit to Content", () => {
     const abs = path.join(SITE_ROOT, "content-bundles/authoritative-a0efa14/editorial/homepage.md");
-    if (!existsSync(abs)) return;
+    // CTC-6 : plus de fallback vacuous. Le fichier DOIT exister.
+    expect(existsSync(abs), `homepage editorial absent : ${abs}`).toBe(true);
     const body = readFileSync(abs, "utf8").toLowerCase();
-    // Le frontmatter peut mentionner mentionsCommitToContent: false — l'assertion porte
-    // sur l'absence dans la copy proposée réelle. On tolère la mention "commit to content"
-    // dans le frontmatter (mentionsCommitToContent: false), mais interdit dans la copy.
     const copyBody = body.split(/\n---\n/)[2] ?? body;
     expect(copyBody).not.toContain("commit to content");
   });
@@ -258,41 +272,40 @@ describe("CTC-5 — self-serve fail-closed", () => {
   });
 });
 
-describe("CTC-5 — promotion requests déterministes et complets", () => {
+describe.skipIf(!PRODUCT_REPO_AVAILABLE)("CTC-5 — promotion requests déterministes et complets", () => {
   const targetRef = refWith({ sha: "a0efa146a8691938b624c156d99f4663f6f92218", shortSha: "a0efa14" });
-  const delta = computeCapabilityDelta({ pinnedManifest, targetRef });
-  const p1 = buildPromotionRequests({ pinnedManifest, targetRef });
-  const p2 = buildPromotionRequests({ pinnedManifest, targetRef });
+  // Lazy — évite l'exécution git au IMPORT du fichier de test.
+  const build = () => buildPromotionRequests({ pinnedManifest, targetRef });
 
   it("émet une entrée par déclaration éditoriale", () => {
-    expect(p1.length).toBe(MATURITY_DECLARATIONS.length);
+    expect(build().length).toBe(MATURITY_DECLARATIONS.length);
   });
 
   it("est déterministe entre deux appels identiques", () => {
-    expect(JSON.stringify(p1)).toBe(JSON.stringify(p2));
+    expect(JSON.stringify(build())).toBe(JSON.stringify(build()));
   });
 
   it("commit-to-content a route=NO_PROMOTION_REQUIRED (approuvé CPO)", () => {
-    const p = p1.find((x) => x.capabilityId === "commit-to-content")!;
+    const p = build().find((x) => x.capabilityId === "commit-to-content")!;
     expect(p.route).toBe("NO_PROMOTION_REQUIRED");
     expect(p.clamped).toBe(false);
     expect(p.effectivePublicMaturity).toBe("INTERNAL_LABS");
   });
 
   it("opportunity-brief a route=CPO_DISCLOSURE_APPROVAL_REQUIRED (manifeste internal_only)", () => {
-    const p = p1.find((x) => x.capabilityId === "opportunity-brief")!;
+    const p = build().find((x) => x.capabilityId === "opportunity-brief")!;
     expect(p.route).toBe("CPO_DISCLOSURE_APPROVAL_REQUIRED");
     expect(p.clamped).toBe(true);
   });
 
   it("wordpress-publication a route=PRODUCT_MANIFEST_ENTRY_REQUIRED (absent manifeste)", () => {
-    const p = p1.find((x) => x.capabilityId === "wordpress-publication")!;
+    const p = build().find((x) => x.capabilityId === "wordpress-publication")!;
     expect(p.route).toBe("PRODUCT_MANIFEST_ENTRY_REQUIRED");
     expect(p.clamped).toBe(true);
   });
 
   it("chaque promotion contient tous les champs opérationnels requis", () => {
-    for (const p of p1) {
+    for (const p of build()) {
       expect(typeof p.capabilityId).toBe("string");
       expect(typeof p.storyKind).toBe("string");
       expect(typeof p.sourceProductRef).toBe("string");
@@ -319,7 +332,8 @@ describe("CTC-5 — promotion requests déterministes et complets", () => {
 describe("CTC-5 — éditoriaux et bundles préservés", () => {
   it("les fichiers editorial/ existent pour les 4 surfaces + commit-to-content", () => {
     const base = path.join(SITE_ROOT, "content-bundles/authoritative-a0efa14/editorial");
-    if (!existsSync(base)) return; // pré-run
+    // CTC-6 : les fichiers DOIVENT exister — pas de fallback vacuous.
+    expect(existsSync(base), `editorial dir absent : ${base}`).toBe(true);
     const files = readdirSync(base);
     for (const surface of ["homepage.md", "product_proof.md", "faq.md", "methodology.md"]) {
       expect(files, `manque ${surface}`).toContain(surface);
@@ -328,7 +342,7 @@ describe("CTC-5 — éditoriaux et bundles préservés", () => {
 
   it("R2 bundle reste WAITING_FOR_PRODUCT_MAIN", () => {
     const abs = path.join(SITE_ROOT, "content-bundles/candidate-3cfae58/bundle.json");
-    if (!existsSync(abs)) return;
+    expect(existsSync(abs), `bundle absent : ${abs}`).toBe(true);
     const bundle = JSON.parse(readFileSync(abs, "utf8"));
     expect(bundle.truthLevel).toBe("CANDIDATE");
     expect(bundle.overallStatus).toBe("WAITING_FOR_PRODUCT_MAIN");

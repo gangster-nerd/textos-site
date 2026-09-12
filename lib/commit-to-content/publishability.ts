@@ -15,7 +15,11 @@
 
 import type { ProductManifest } from "@/lib/product-manifest/manifest-schema";
 
-import { MATURITY_COPY_CONTRACT, manifestCeiling, reconcileMaturity } from "./maturity";
+import {
+  MATURITY_COPY_CONTRACT,
+  effectiveMaturityWithAuthority,
+  manifestCeiling,
+} from "./maturity";
 import { MATURITY_DECLARATIONS } from "./maturity-declarations";
 import type {
   CapabilityDelta,
@@ -54,11 +58,17 @@ export function decidePublishability(args: {
     truthLevelGate:
       targetRef.truthLevel === "AUTHORITATIVE_MAIN"
         ? { status: "green", detail: "Source AUTHORITATIVE_MAIN." }
-        : {
-            status: "green",
-            detail:
-              "Source CANDIDATE — bundle préparé pour déblocage futur, non publiable en l'état.",
-          },
+        : targetRef.truthLevel === "CANDIDATE"
+          ? {
+              status: "green",
+              detail:
+                "Source CANDIDATE — bundle préparé pour déblocage futur, non publiable en l'état.",
+            }
+          : {
+              status: "red",
+              detail:
+                "Source UNRECOGNIZED_SOURCE_REF — ref hors whitelist du cycle courant. Fail closed.",
+            },
     selfServeCtaGate: selfServeCtaGate(pinnedManifest),
     maturityGate: maturityGate(pinnedManifest),
   };
@@ -71,7 +81,11 @@ export function decidePublishability(args: {
   let overallStatus: PublishabilityStatus;
   let overallReason: string;
 
-  if (delta.declarationDiverged) {
+  if (targetRef.truthLevel === "UNRECOGNIZED_SOURCE_REF") {
+    overallStatus = "BLOCKED";
+    overallReason =
+      "Source ref hors whitelist du cycle courant. Le pipeline refuse fail-closed toute promotion depuis une ref non explicitement autoritative — même byte-identique à l'épingle.";
+  } else if (delta.declarationDiverged) {
     overallStatus = "BLOCKED";
     overallReason =
       "La déclaration source a divergé du manifeste épinglé. Aucun changement rédactionnel ne peut être proposé tant que le manifeste n'est pas ré-importé (procédure IMPORT.md).";
@@ -106,7 +120,10 @@ function computeSurfaceImpact(
   let status: PublishabilityStatus;
   let reason: string;
 
-  if (delta.declarationDiverged) {
+  if (targetRef.truthLevel === "UNRECOGNIZED_SOURCE_REF") {
+    status = "BLOCKED";
+    reason = "Ref hors whitelist du cycle courant — fail closed.";
+  } else if (delta.declarationDiverged) {
     status = "BLOCKED";
     reason = "Bloqué par declarationIntegrity — ré-import manifeste requis.";
   } else if (targetRef.truthLevel === "CANDIDATE") {
@@ -147,59 +164,116 @@ function affectedFilesFor(surface: ImpactSurface): string[] {
   }
 }
 
-// Invariant : aucune capacité `internal_only` du manifeste ne peut ouvrir un CTA self-serve public.
-// Ce gate ne dépend pas de la ref cible — il porte sur l'état actuel du manifeste ÉPINGLÉ, donc
-// sur la vérité autoritative en vigueur.
-export function selfServeCtaGate(manifest: ProductManifest): { status: "green" | "red"; detail: string } {
-  // Les capacités qui, si elles devenaient public_marketable, POURRAIENT justifier un CTA
-  // self-serve public. À défaut, la seule voie publique reste `measurement_request` (assisted).
-  const selfServeCandidates = ["truth-check", "grounded-truth-check", "structured-generation"];
+// Contrat réel de l'éligibilité self-serve — RÉÉCRIT en CTC-6 (P0 CTO).
+//
+// truth-check / grounded-truth-check / structured-generation NE PROUVENT PAS l'onboarding
+// self-serve. Le contrat exige les TROIS capacités suivantes, TOUTES autoritatives et
+// suffisamment publiques :
+export const SELF_SERVE_REQUIRED_CAPABILITIES = [
+  "self-serve-onboarding",
+  "authenticated-product-entry",
+  "ui-measurement-launch",
+] as const;
 
-  const violating: string[] = [];
-  for (const id of selfServeCandidates) {
-    const entity = manifest.entities.find((e) => e.id === id);
-    if (!entity) continue;
-    if (entity.publicationStatus === "public_marketable") {
-      // Cas hypothétique : si un jour cette capacité devient public_marketable, le pipeline
-      // POURRA proposer l'activation self-serve. C'est un chemin ouvert, jamais un chemin
-      // auto-emprunté.
-      // Rien à interdire ici — la marketable est déjà validée par le pipeline manifest.
-      continue;
-    }
-    if (entity.publicationStatus === "internal_only") {
-      // Pas d'infraction observée dans ce pipeline (nous ne publions pas de CTA ici). Ce gate
-      // sert de tripwire : si à l'avenir un skeleton propose activate self-serve alors que
-      // ces capacités sont internal_only, le test unitaire correspondant échouera.
-      violating.push(id);
-    }
-  }
-
-  if (violating.length > 0) {
-    return {
-      status: "green",
-      detail: `${violating.length} capacité(s) self-serve reste(nt) internal_only (${violating.join(", ")}). Le pipeline ne propose PAS d'activation publique.`,
-    };
-  }
-  return { status: "green", detail: "Aucune capacité self-serve n'est déclarée public_marketable ; assisted CTA reste seule voie publique." };
+export interface SelfServeGateInput {
+  manifest: ProductManifest;
+  // `true` quand un candidat éditorial propose activement l'activation d'un CTA self-serve.
+  // Si aucun candidat ne le propose, le gate reste GREEN avec eligible=false (fail-closed
+  // par défaut, comme mandaté par le contrat CTC-6).
+  activationProposed?: boolean;
 }
 
-// Gate maturité : chaque déclaration éditoriale doit RESTER sous le plafond manifeste après
-// réconciliation, ET n'employer aucun terme interdit par le contrat de copy de sa maturité
-// EFFECTIVE. En cas de violation, le gate passe au rouge — la déclaration doit être corrigée
-// ou retirée.
-export function maturityGate(manifest: ProductManifest): { status: "green" | "red"; detail: string } {
+export interface SelfServeGateOutput {
+  status: "green" | "red";
+  detail: string;
+  eligible: boolean;
+  activationProposed: boolean;
+  missingCapabilities: string[];
+}
+
+export function selfServeCtaGate(
+  input: ProductManifest | SelfServeGateInput,
+): SelfServeGateOutput {
+  const manifest: ProductManifest = "entities" in input ? input : input.manifest;
+  const activationProposed =
+    "entities" in input ? false : Boolean(input.activationProposed);
+
+  const missing: string[] = [];
+  for (const id of SELF_SERVE_REQUIRED_CAPABILITIES) {
+    const entity = manifest.entities.find((e) => e.id === id);
+    if (!entity) {
+      missing.push(`${id} (absent du manifeste)`);
+      continue;
+    }
+    if (entity.publicationStatus !== "public_marketable") {
+      missing.push(`${id} (publicationStatus=${entity.publicationStatus})`);
+    }
+  }
+
+  const eligible = missing.length === 0;
+
+  if (activationProposed && !eligible) {
+    return {
+      status: "red",
+      detail: `Activation self-serve proposée mais capacités requises manquantes : ${missing.join(", ")}. Fail-closed.`,
+      eligible,
+      activationProposed,
+      missingCapabilities: missing,
+    };
+  }
+  if (activationProposed && eligible) {
+    return {
+      status: "green",
+      detail:
+        "Toutes les capacités requises sont public_marketable ET une activation est proposée — éligible pour REQUIRES_HUMAN_REVIEW. Pas de PUBLIC_SAFE automatique.",
+      eligible: true,
+      activationProposed: true,
+      missingCapabilities: [],
+    };
+  }
+  // Pas d'activation proposée : fail-closed par défaut, gate reste vert (rien à contrôler).
+  return {
+    status: "green",
+    detail: eligible
+      ? "Capacités requises complètes — aucune activation self-serve n'est proposée dans les bundles courants."
+      : `Aucune activation self-serve n'est proposée. Capacités absentes/insuffisantes : ${missing.join(", ")}.`,
+    eligible,
+    activationProposed: false,
+    missingCapabilities: missing,
+  };
+}
+
+// Gate maturité — CORRIGÉ en CTC-6 (P0 CTO).
+//
+// Utilise explicitement effectiveMaturityWithAuthority : la maturité effective d'une
+// déclaration résulte de storyKind + disclosureAuthority + plafond manifeste + proposition.
+// Sans autorité de divulgation, la copy proposée est QUARANTINÉE (jamais évaluée comme
+// publiable) — mais reste stockée pour promotion request. Le gate rapporte alors PROPOSAL
+// STORED / NOT PUBLISHABLE, pas "conformes".
+export function maturityGate(manifest: ProductManifest): {
+  status: "green" | "red";
+  detail: string;
+} {
   const failures: string[] = [];
+  const evaluated: string[] = [];
+  const quarantined: string[] = [];
   for (const decl of MATURITY_DECLARATIONS) {
     const ceiling = manifestCeiling(manifest, decl.capabilityId);
-    const { effective, wasClamped } = reconcileMaturity({
+    const { effective, wasClamped } = effectiveMaturityWithAuthority({
       proposed: decl.proposedMaturity,
       ceiling,
+      authority: decl.disclosureAuthority,
+      storyKind: decl.storyKind,
     });
-    // Si la déclaration est clamped, sa publicWording n'est PAS publiée telle quelle : le
-    // consommateur utilise la copy autorisée par la maturité effective. Un clamp est un signal
-    // opérationnel (opportunity report), pas une infraction — le gate reste vert.
-    if (wasClamped) continue;
-    const contract = MATURITY_COPY_CONTRACT[decl.proposedMaturity];
+    // Quarantaine : maturité effective = PRIVATE/FORBIDDEN OU clampée. La publicWording ne
+    // sera pas rendue publiquement ; on ne l'évalue pas contre son contrat de copy proposé.
+    // Elle reste néanmoins stockée en promotion request.
+    if (wasClamped || effective === "PRIVATE" || effective === "FORBIDDEN") {
+      quarantined.push(decl.capabilityId);
+      continue;
+    }
+    evaluated.push(decl.capabilityId);
+    const contract = MATURITY_COPY_CONTRACT[effective];
     for (const forbidden of contract.mustNotImply) {
       if (decl.publicWording.toLowerCase().includes(forbidden.toLowerCase())) {
         failures.push(
@@ -218,6 +292,6 @@ export function maturityGate(manifest: ProductManifest): { status: "green" | "re
   }
   return {
     status: "green",
-    detail: `${MATURITY_DECLARATIONS.length} déclarations éditoriales conformes au contrat de copy et au plafond manifeste.`,
+    detail: `Évaluées: ${evaluated.length} (${evaluated.join(", ") || "∅"}). Quarantaine (proposition stockée, non publiable): ${quarantined.length} (${quarantined.join(", ") || "∅"}).`,
   };
 }

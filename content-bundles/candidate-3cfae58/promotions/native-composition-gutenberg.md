@@ -1,7 +1,7 @@
 # Promotion request — `native-composition-gutenberg`
 
 - **storyKind**: PRODUCT_CAPABILITY
-- **route**: **PRODUCT_MANIFEST_ENTRY_REQUIRED**
+- **route**: **PRODUCT_MAIN_REQUIRED**
 - **requiredOwner**: T0
 - **requestedPublicMaturity**: PUBLIC_EARLY_ACCESS
 - **effectivePublicMaturity**: **PRIVATE**
@@ -14,17 +14,11 @@
 
 ## Blocking reason
 
-Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_EARLY_ACCESS) est clampée.
+Capacité présente uniquement à la ref CANDIDATE R2, absente à la ref AUTHORITATIVE_MAIN — non-autoritative.
 
 ## Required next action
 
-Ajouter l'entité "native-composition-gutenberg" au manifeste produit (capability-declaration.ts) et réémettre un artefact push/main. Puis ré-import via product-manifest/IMPORT.md.
-
-## Requested manifest change
-
-```
-entity native-composition-gutenberg publicationStatus ← candidate (le vocabulaire manifeste v2 n'a pas encore d'état beta/early_access ; à trancher par T0)
-```
+Intégrer la capacité R2 dans product main autoritatif puis émettre un manifeste. Ré-import via IMPORT.md avant de relancer content:sync.
 
 ## Implementation evidence
 - `src/server/textos/act/native-composition/gutenberg-serializer.ts`
