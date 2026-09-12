@@ -68,9 +68,11 @@ export const ContentFrontmatterSchema = z
       .string()
       .regex(/^[0-9a-f]{40}$/, "SHA produit complet attendu (40 hex)"),
     // `capabilityId:bundleId` — résolus contre le manifeste produit épinglé par les gates.
-    evidenceRefs: z
-      .array(z.string().regex(/^[a-z0-9-]+:[a-z0-9-]+$/, 'format attendu "capacite:bundle"'))
-      .min(1),
+    // ≥1 requise pour toute classe éditoriale adossée à une capacité produit ; le refinement
+    // en fin de schéma laisse COMPANY_TECHNOLOGY vide (article "how we build" sans capacité).
+    evidenceRefs: z.array(
+      z.string().regex(/^[a-z0-9-]+:[a-z0-9-]+$/, 'format attendu "capacite:bundle"'),
+    ),
 
     // CTC-9-A : capabilityIds/claimIds requièrent ≥1 entrée pour toute classe éditoriale
     // adossée à une capacité produit. Le refinement en fin de schéma fait exception UNIQUEMENT
@@ -174,8 +176,8 @@ export const ContentFrontmatterSchema = z
       });
     }
     // Semantic min-1 : toutes les classes SAUF COMPANY_TECHNOLOGY doivent revendiquer au moins
-    // une capacité et un claim. COMPANY_TECHNOLOGY narre "how we build" sans revendication
-    // produit spécifique.
+    // une capacité, un claim et une preuve. COMPANY_TECHNOLOGY narre "how we build" sans
+    // capacité produit spécifique et donc sans bundle de preuve manifest.
     if (value.editorialClass !== "COMPANY_TECHNOLOGY") {
       if (value.capabilityIds.length === 0) {
         ctx.addIssue({
@@ -189,6 +191,13 @@ export const ContentFrontmatterSchema = z
           code: z.ZodIssueCode.custom,
           path: ["claimIds"],
           message: "Au moins un claim requis (COMPANY_TECHNOLOGY seul peut être vide).",
+        });
+      }
+      if (value.evidenceRefs.length === 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["evidenceRefs"],
+          message: "Au moins un evidence ref requis (COMPANY_TECHNOLOGY seul peut être vide).",
         });
       }
     }
