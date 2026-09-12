@@ -13,7 +13,18 @@ import { CLAIMS, type Claim } from "@/lib/claims-registry";
 import { CAPABILITY_REGISTRY, findCapability } from "@/lib/capability-registry";
 import type { PublicSurface } from "@/lib/product-manifest/status-axes";
 
-import type { EditorialCandidate } from "./types";
+import { COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER } from "./editorial-frontmatter";
+import { parseFrontmatterRaw } from "./editorial-registrar";
+import type { EditorialCandidate, TruthLevel } from "./types";
+
+// Surfaces canoniques attendues pour un bundle AUTHORITATIVE_MAIN — chacune doit porter au
+// moins une décision éditoriale (NO_CHANGE accepté).
+export const CANONICAL_AUTHORITATIVE_SURFACES = [
+  "homepage",
+  "product_proof",
+  "faq",
+  "methodology",
+] as const;
 
 const HOMEPAGE_FORBIDDEN_TOKENS = ["commit to content"];
 const FAQ_FORBIDDEN_TOKENS = ["commit to content"];
@@ -41,6 +52,9 @@ export interface EditorialVerifierInput {
   bundleDir: string;
   editorialCandidates: EditorialCandidate[];
   selfServeEligible: boolean;
+  siteRoot: string;
+  truthLevel: TruthLevel;
+  overallStatus: string;
 }
 
 export interface EditorialVerifierFailure {
@@ -52,6 +66,40 @@ export function verifyEditorialCandidates(
   input: EditorialVerifierInput,
 ): EditorialVerifierFailure[] {
   const failures: EditorialVerifierFailure[] = [];
+
+  // 0. Invariant CTC-7 §4 : UNRECOGNIZED_SOURCE_REF impose overallStatus=BLOCKED.
+  if (input.truthLevel === "UNRECOGNIZED_SOURCE_REF" && input.overallStatus !== "BLOCKED") {
+    failures.push({
+      editorial: null,
+      message: `truthLevel=UNRECOGNIZED_SOURCE_REF impose overallStatus=BLOCKED (obtenu ${input.overallStatus}).`,
+    });
+  }
+  // Complétude par surface pour AUTHORITATIVE_MAIN (§4).
+  if (input.truthLevel === "AUTHORITATIVE_MAIN") {
+    const seenSurfaces = new Set(input.editorialCandidates.map((c) => c.surface));
+    for (const s of CANONICAL_AUTHORITATIVE_SURFACES) {
+      if (!seenSurfaces.has(s)) {
+        failures.push({
+          editorial: null,
+          message: `AUTHORITATIVE_MAIN exige une décision éditoriale pour la surface canonique "${s}" (NO_CHANGE accepté).`,
+        });
+      }
+    }
+    // Doublons par surface canonique refusés.
+    const counts = new Map<string, number>();
+    for (const c of input.editorialCandidates) {
+      if (!(CANONICAL_AUTHORITATIVE_SURFACES as readonly string[]).includes(c.surface)) continue;
+      counts.set(c.surface, (counts.get(c.surface) ?? 0) + 1);
+    }
+    for (const [surface, count] of counts) {
+      if (count > 1) {
+        failures.push({
+          editorial: null,
+          message: `Surface canonique "${surface}" a ${count} candidats — un seul autorisé.`,
+        });
+      }
+    }
+  }
 
   // 1. Fichiers référencés existent + hash correct + frontmatter cohérent.
   const referencedPaths = new Set<string>();
@@ -71,7 +119,36 @@ export function verifyEditorialCandidates(
       });
       continue;
     }
-    const frontmatter = parseFrontmatter(contents);
+    const frontmatter = parseFrontmatterRaw(contents) as Record<string, unknown>;
+    // CTC-7 §3 : liaison canonique pour commit-to-content.
+    if (frontmatter.capabilityId === "commit-to-content") {
+      for (const [key, expected] of Object.entries(COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER)) {
+        if (frontmatter[key] !== expected) {
+          failures.push({
+            editorial: c.path,
+            message: `commit-to-content: frontmatter.${key}=${JSON.stringify(frontmatter[key])} ≠ canonical ${JSON.stringify(expected)}.`,
+          });
+        }
+      }
+      // Le fichier de décision doit exister à la racine du site.
+      const decisionAbs = path.join(
+        input.siteRoot,
+        COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER.disclosureDecisionRef,
+      );
+      if (!existsSync(decisionAbs)) {
+        failures.push({
+          editorial: c.path,
+          message: `Fichier de décision CPO introuvable : ${COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER.disclosureDecisionRef}.`,
+        });
+      }
+      // COMPANY_TECHNOLOGY ne peut JAMAIS obtenir PUBLIC_SAFE.
+      if (c.proposedPublishability === "PUBLIC_SAFE") {
+        failures.push({
+          editorial: c.path,
+          message: `COMPANY_TECHNOLOGY (commit-to-content) ne peut JAMAIS être PUBLIC_SAFE.`,
+        });
+      }
+    }
     // sourceProductRef doit matcher
     if (frontmatter.sourceProductRef && frontmatter.sourceProductRef !== c.sourceProductRef) {
       failures.push({
@@ -191,13 +268,4 @@ export function sha256Hex(input: string): string {
   return createHash("sha256").update(input).digest("hex");
 }
 
-function parseFrontmatter(contents: string): Record<string, string> {
-  const match = contents.match(/^---\n([\s\S]*?)\n---/);
-  if (!match) return {};
-  const out: Record<string, string> = {};
-  for (const line of match[1].split("\n")) {
-    const kv = line.match(/^([a-zA-Z0-9_]+)\s*:\s*(.+?)\s*$/);
-    if (kv) out[kv[1]] = kv[2].replace(/^"|"$/g, "");
-  }
-  return out;
-}
+// (parseFrontmatterRaw importé depuis editorial-registrar — parseur unique CTC-7.)

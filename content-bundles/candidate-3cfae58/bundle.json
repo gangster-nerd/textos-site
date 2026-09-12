@@ -530,11 +530,11 @@
     }
   ],
   "provenance": {
-    "generatedAt": "2026-09-12T15:15:38.217Z",
+    "generatedAt": "2026-09-12T15:47:46.408Z",
     "generatorVersion": "commit-to-content@v1",
     "pinnedManifestChecksum": "4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251",
     "pinnedManifestSha": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
-    "siteHead": "789e2db85f836fa8a5e7819cc973c82d416604c2",
+    "siteHead": "1ba4b7d1909be76c8f5d5337e3fd38a82b65781c",
     "sourceRef": {
       "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
       "matchesPinnedManifest": true,

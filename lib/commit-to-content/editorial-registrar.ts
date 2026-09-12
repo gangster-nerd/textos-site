@@ -1,33 +1,30 @@
-// Enregistrement des candidats éditoriaux présents sous editorial/.
+// Enregistrement STRICT des candidats éditoriaux — CTC-7.
 //
-// Le contenu est AUTHORED par l'opérateur (agent Claude Code local). Ce module :
-//   - scanne editorial/ ;
-//   - lit chaque fichier ;
-//   - calcule sha256 ;
-//   - parse le frontmatter pour capabilityIds, claimIds, classification, etc. ;
-//   - retourne EditorialCandidate[].
-//
-// Le résultat est intégré à bundle.json. Toute modification ultérieure des fichiers changera
-// le hash et fera échouer `content:verify` — c'est la garantie de provenance CTC-6.
+// Aucun fallback silencieux. Chaque fichier sous editorial/ doit porter un frontmatter
+// conforme à `EditorialFrontmatterSchema`. Frontmatter malformé → erreur explicite au sync.
 
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 
 import { sha256Hex } from "./editorial-verifier";
-import type {
-  EditorialCandidate,
-  PublishabilityStatus,
-  TruthLevel,
-} from "./types";
+import {
+  EditorialFrontmatterSchema,
+  type EditorialFrontmatter,
+} from "./editorial-frontmatter";
+import type { EditorialCandidate } from "./types";
+
+export interface RegistrarFailure {
+  path: string;
+  message: string;
+}
 
 export function scanEditorialCandidates(args: {
   bundleDir: string;
-  fallbackSourceRef: string;
-  fallbackTruthLevel: TruthLevel;
-}): EditorialCandidate[] {
+}): { candidates: EditorialCandidate[]; failures: RegistrarFailure[] } {
   const editorialDir = path.join(args.bundleDir, "editorial");
-  if (!existsSync(editorialDir)) return [];
-  const out: EditorialCandidate[] = [];
+  const candidates: EditorialCandidate[] = [];
+  const failures: RegistrarFailure[] = [];
+  if (!existsSync(editorialDir)) return { candidates, failures };
   const walk = (abs: string, rel: string) => {
     for (const name of readdirSync(abs).sort()) {
       const nextAbs = path.join(abs, name);
@@ -36,68 +33,84 @@ export function scanEditorialCandidates(args: {
         walk(nextAbs, nextRel);
         continue;
       }
-      if (name === "README.md") continue; // documentaire uniquement
+      if (name === "README.md") continue;
       if (!name.endsWith(".md")) continue;
       const contents = readFileSync(nextAbs, "utf8");
-      const front = parseFrontmatter(contents);
-      out.push({
+      const raw = parseFrontmatterRaw(contents);
+      const parsed = EditorialFrontmatterSchema.safeParse(raw);
+      if (!parsed.success) {
+        failures.push({
+          path: nextRel,
+          message: `Frontmatter invalide : ${parsed.error.issues
+            .map((i) => `${i.path.join(".") || "(racine)"}: ${i.message}`)
+            .join(" • ")}`,
+        });
+        continue;
+      }
+      const front: EditorialFrontmatter = parsed.data;
+      candidates.push({
         path: nextRel,
         sha256: sha256Hex(contents),
-        surface: (front.surface as string) ?? inferSurfaceFromFilename(name),
-        classification:
-          (front.classification as EditorialCandidate["classification"]) ?? "COPY_CLARIFICATION",
-        sourceProductRef: (front.sourceProductRef as string) ?? args.fallbackSourceRef,
-        truthLevel: (front.truthLevel as TruthLevel) ?? args.fallbackTruthLevel,
-        basisCapabilityIds: parseYamlList(front.basisCapabilities) ?? parseYamlList(front.basisCapabilityIds) ?? [],
-        basisClaimIds: parseYamlList(front.basisClaimIds) ?? parseYamlList(front.basisClaims) ?? [],
-        disclosureAuthority: (front.disclosureAuthority as string) ?? "IMPLICIT_MANIFEST_MARKETABLE",
-        proposedPublishability:
-          (front.proposedPublishability as PublishabilityStatus) ?? "REQUIRES_HUMAN_REVIEW",
-        language: (front.language as "en" | "fr") ?? inferLanguage(contents),
-        humanReviewRequired:
-          front.humanReviewRequired === "false" ? false : true,
+        surface: front.surface,
+        classification: front.classification,
+        sourceProductRef: front.sourceProductRef,
+        truthLevel: front.truthLevel,
+        basisCapabilityIds: front.basisCapabilities,
+        basisClaimIds: front.basisClaimIds,
+        disclosureAuthority: front.disclosureAuthority,
+        proposedPublishability: front.proposedPublishability,
+        language: front.language,
+        humanReviewRequired: front.humanReviewRequired,
       });
     }
   };
   walk(editorialDir, "editorial");
-  return out.sort((a, b) => a.path.localeCompare(b.path));
+  return {
+    candidates: candidates.sort((a, b) => a.path.localeCompare(b.path)),
+    failures,
+  };
 }
 
-function inferSurfaceFromFilename(name: string): string {
-  return name.replace(/\.md$/, "").replace(/-.*$/, "");
-}
-
-function inferLanguage(contents: string): "en" | "fr" {
-  // Heuristique : présence de mots-outils français typiques → fr, sinon en.
-  const fr = /\b(le|la|les|des|une|dans|pour|sans|avec|également|voici)\b/i.test(contents);
-  return fr ? "fr" : "en";
-}
-
-function parseFrontmatter(contents: string): Record<string, string | string[] | undefined> {
+// Parseur YAML minimaliste — scalaires, listes, booléens. Renvoie une valeur non-typée que le
+// schéma Zod validera strictement.
+export function parseFrontmatterRaw(contents: string): Record<string, unknown> {
   const match = contents.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return {};
-  const out: Record<string, string | string[]> = {};
+  const out: Record<string, unknown> = {};
   let currentKey: string | null = null;
-  const listBuf: string[] = [];
-  const lines = match[1].split("\n");
+  let listBuf: string[] = [];
   const flush = () => {
-    if (currentKey && listBuf.length > 0) {
+    if (currentKey !== null) {
       out[currentKey] = [...listBuf];
-      listBuf.length = 0;
+      listBuf = [];
+      currentKey = null;
     }
   };
-  for (const raw of lines) {
+  for (const raw of match[1].split("\n")) {
     const line = raw.replace(/\s+$/, "");
+    if (line === "") continue;
     const scalar = line.match(/^([a-zA-Z0-9_]+)\s*:\s*(.+)$/);
-    const key = line.match(/^([a-zA-Z0-9_]+)\s*:\s*$/);
+    const emptyKey = line.match(/^([a-zA-Z0-9_]+)\s*:\s*$/);
     const item = line.match(/^\s+-\s*(.+)$/);
     if (scalar) {
       flush();
-      currentKey = null;
-      out[scalar[1]] = scalar[2].replace(/^"|"$/g, "");
-    } else if (key) {
+      const raw = scalar[2].replace(/^"|"$/g, "");
+      // Reconnaissance des listes inline `[]` (empty) ou `[a, b]` (short-form). Le reste
+      // reste du scalaire coerced.
+      if (raw === "[]") {
+        out[scalar[1]] = [];
+      } else if (raw.startsWith("[") && raw.endsWith("]")) {
+        out[scalar[1]] = raw
+          .slice(1, -1)
+          .split(",")
+          .map((s) => s.trim().replace(/^"|"$/g, ""))
+          .filter((s) => s.length > 0);
+      } else {
+        out[scalar[1]] = coerce(raw);
+      }
+    } else if (emptyKey) {
       flush();
-      currentKey = key[1];
+      currentKey = emptyKey[1];
     } else if (item && currentKey) {
       listBuf.push(item[1].replace(/^"|"$/g, ""));
     }
@@ -106,7 +119,8 @@ function parseFrontmatter(contents: string): Record<string, string | string[] | 
   return out;
 }
 
-function parseYamlList(value: string | string[] | undefined): string[] | undefined {
-  if (Array.isArray(value)) return value;
-  return undefined;
+function coerce(v: string): string | boolean {
+  if (v === "true") return true;
+  if (v === "false") return false;
+  return v;
 }

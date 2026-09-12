@@ -8,6 +8,16 @@ storyKind: COMPANY_TECHNOLOGY
 publicMaturity: INTERNAL_LABS
 basisCapabilities: []
 basisClaimIds: []
+implementationEvidence:
+  - textos-site/lib/commit-to-content/sync.ts
+  - textos-site/lib/commit-to-content/publishability.ts
+  - textos-site/lib/commit-to-content/promotion-requests.ts
+  - textos-site/lib/commit-to-content/editorial-verifier.ts
+  - textos-site/lib/commit-to-content/editorial-registrar.ts
+  - textos-site/lib/commit-to-content/editorial-frontmatter.ts
+  - textos-site/scripts/content-sync.ts
+  - textos-site/scripts/content-verify.ts
+  - textos-site/scripts/content-status.ts
 disclosureAuthority: CPO_DISCLOSURE_APPROVED
 disclosureDecisionRef: docs/decisions/CPO-2026-09-12-commit-to-content-disclosure.md
 proposedPublishability: REQUIRES_HUMAN_REVIEW

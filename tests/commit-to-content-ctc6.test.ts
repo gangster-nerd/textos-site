@@ -264,6 +264,9 @@ describe("CTC-6 — editorial candidates dans le bundle + hash vérifié", () =>
       bundleDir: dir,
       editorialCandidates: bundle.editorialCandidates,
       selfServeEligible: false,
+      siteRoot: SITE_ROOT,
+      truthLevel: bundle.truthLevel,
+      overallStatus: bundle.overallStatus,
     });
     expect(failures).toEqual([]);
   });
@@ -285,6 +288,9 @@ describe("CTC-6 — mutation test : altération d'un fichier éditorial casse co
       bundleDir: dir,
       editorialCandidates: bundle.editorialCandidates,
       selfServeEligible: false,
+      siteRoot: SITE_ROOT,
+      truthLevel: bundle.truthLevel,
+      overallStatus: bundle.overallStatus,
     });
     const hashFailure = failures.find((f) => f.message.includes("Hash divergent"));
     expect(hashFailure).toBeDefined();

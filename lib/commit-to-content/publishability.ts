@@ -207,6 +207,19 @@ export function selfServeCtaGate(
     }
     if (entity.publicationStatus !== "public_marketable") {
       missing.push(`${id} (publicationStatus=${entity.publicationStatus})`);
+      continue;
+    }
+    // CTC-7 §5 : une capacité restreinte à FAQ/developer_note ne débloque PAS un CTA
+    // commercial self-serve. Elle DOIT porter une surface commerciale (homepage OU
+    // sales_copy) dans allowedSurfaces.
+    const commercialSurfaces = ["homepage", "sales_copy"] as const;
+    const hasCommercialSurface = commercialSurfaces.some((s) =>
+      (entity.allowedSurfaces as readonly string[]).includes(s),
+    );
+    if (!hasCommercialSurface) {
+      missing.push(
+        `${id} (public_marketable mais aucune surface commerciale — allowedSurfaces=${entity.allowedSurfaces.join("|")})`,
+      );
     }
   }
 

@@ -21,7 +21,7 @@ import { buildPromotionRequests } from "./promotion-requests";
 import { resolveProductRef, computePinnedDeclarationDigest } from "./resolve-product-ref";
 import { scanEditorialCandidates } from "./editorial-registrar";
 import { writeBundle, bundleDir as computeBundleDir } from "./bundle";
-import type { BundleProvenance, ContentBundle, TruthLevel } from "./types";
+import type { BundleProvenance, ContentBundle } from "./types";
 
 export const GENERATOR_VERSION = "commit-to-content@v1";
 
@@ -81,11 +81,14 @@ export function runSync(args: SyncArgs): SyncResult {
     truthLevel: targetRef.truthLevel,
     provenance,
   } as ContentBundle);
-  const editorialCandidates = scanEditorialCandidates({
-    bundleDir: provisionalBundleDir,
-    fallbackSourceRef: targetRef.sha,
-    fallbackTruthLevel: targetRef.truthLevel,
-  });
+  const scan = scanEditorialCandidates({ bundleDir: provisionalBundleDir });
+  if (scan.failures.length > 0) {
+    const detail = scan.failures.map((f) => `  - ${f.path}: ${f.message}`).join("\n");
+    throw new Error(
+      `Frontmatter éditorial invalide (CTC-7 strict) — corriger avant re-sync :\n${detail}`,
+    );
+  }
+  const editorialCandidates = scan.candidates;
 
   const bundle: ContentBundle = {
     bundleId: `${truthTag}-${targetRef.shortSha}`,
@@ -115,6 +118,7 @@ function safeSiteHead(siteRoot: string): string | null {
   }
 }
 
-export function truthLevelOfRef(sha: string, knownCandidate: string): TruthLevel {
-  return sha === knownCandidate ? "CANDIDATE" : "AUTHORITATIVE_MAIN";
-}
+// Le helper legacy `truthLevelOfRef(sha, knownCandidate)` a été RETIRÉ en CTC-7. Il
+// classifiait toute ref non-candidat comme AUTHORITATIVE_MAIN, ce qui contredit l'invariant
+// whitelist. La seule politique de truth-level est désormais `resolveTruthLevel` interne à
+// resolve-product-ref.ts (whitelist explicite + fail-closed sur UNRECOGNIZED_SOURCE_REF).

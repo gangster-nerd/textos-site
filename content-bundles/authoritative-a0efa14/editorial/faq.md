@@ -12,6 +12,7 @@ basisClaimIds:
   - m2-direct-share-of-model
   - m3-indirect-mention-share
   - m4-total-is-a-union
+  - m5-not-observable-is-not-zero
   - m6-quality-ledger-contextualises
 disclosureAuthority: IMPLICIT_MANIFEST_MARKETABLE
 proposedPublishability: REQUIRES_HUMAN_REVIEW
@@ -60,16 +61,17 @@ authoritative claims already ratified for the `faq` surface.
 
 **title**: What does the Quality Ledger tell me about a measurement?
 
-**body (proposed)**:
+**body (proposed, bound to m5 + m6)**:
 
-> Every TextOS measurement carries a Quality Ledger. It reports which queries in the panel
-> returned an observation and which ones did not. A missing observation is not treated as
-> zero — absence of evidence is not evidence of absence. Composed values acknowledge the
-> missing bucket rather than silently rounding it in.
+> Every TextOS measurement carries a Quality Ledger. Coverage, completeness, dispersion,
+> provenance and observability **contextualise** the measurement; they are not combined into the measured result.
+> A missing observation is never recorded as a measured zero: absence of evidence is not
+> evidence of absence, and the ledger surfaces which panel queries produced no observation
+> rather than silently folding them in.
 
 **bindings**:
-- `m6-quality-ledger-contextualises`
-- `m5-not-observable-is-not-zero` (implicitly reinforced)
+- `m5-not-observable-is-not-zero` (a non-observation is not a zero)
+- `m6-quality-ledger-contextualises` (the ledger contextualises, does not combine)
 
 ## Prohibited wording
 

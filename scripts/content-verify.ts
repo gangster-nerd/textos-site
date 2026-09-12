@@ -88,18 +88,36 @@ function main() {
         );
       }
     }
-    // Gouvernance éditoriale : hash + existence + provenance + basis + termes bannis.
-    const selfServeEligible = selfServeCtaGate({
-      manifest: loadPinnedManifest(root),
-      activationProposed: false,
-    }).eligible;
-    const editorialFailures = verifyEditorialCandidates({
-      bundleDir: dir,
-      editorialCandidates: bundle.editorialCandidates ?? [],
-      selfServeEligible,
-    });
-    for (const f of editorialFailures) {
-      failures.push(`${name}: editorial ${f.editorial ?? "?"} — ${f.message}`);
+    // CTC-7 §4 : editorialCandidates DOIT être présent + bien formé. Aucun fallback [].
+    if (!Array.isArray(bundle.editorialCandidates)) {
+      failures.push(
+        `${name}: bundle.editorialCandidates absent ou malformé (CTC-7 §4). Ré-exécuter content:sync après avoir corrigé les éditoriaux.`,
+      );
+    } else {
+      // CTC-7 §4 : UNRECOGNIZED_SOURCE_REF impose overallStatus=BLOCKED.
+      if (
+        bundle.truthLevel === "UNRECOGNIZED_SOURCE_REF" &&
+        bundle.overallStatus !== "BLOCKED"
+      ) {
+        failures.push(
+          `${name}: truthLevel=UNRECOGNIZED_SOURCE_REF impose overallStatus=BLOCKED (obtenu ${bundle.overallStatus}).`,
+        );
+      }
+      const selfServeEligible = selfServeCtaGate({
+        manifest: loadPinnedManifest(root),
+        activationProposed: false,
+      }).eligible;
+      const editorialFailures = verifyEditorialCandidates({
+        bundleDir: dir,
+        editorialCandidates: bundle.editorialCandidates,
+        selfServeEligible,
+        siteRoot: root,
+        truthLevel: bundle.truthLevel,
+        overallStatus: bundle.overallStatus,
+      });
+      for (const f of editorialFailures) {
+        failures.push(`${name}: editorial ${f.editorial ?? "?"} — ${f.message}`);
+      }
     }
   }
 
