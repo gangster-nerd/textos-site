@@ -1,0 +1,77 @@
+{
+  "gates": {
+    "declarationIntegrity": {
+      "detail": "Digest de la déclaration source conforme à l'épinglé.",
+      "status": "green"
+    },
+    "manifestDrift": {
+      "detail": "La ref demandée est byte-identique au manifeste épinglé.",
+      "status": "green"
+    },
+    "maturityGate": {
+      "detail": "Évaluées: 1 (commit-to-content). Quarantaine (proposition stockée, non publiable): 8 (wordpress-publication, native-composition-gutenberg, asset-spec, geo-writer, owned-surface-design, query-intelligence, opportunity-brief, repos-intersection).",
+      "status": "green"
+    },
+    "selfServeCtaGate": {
+      "activationProposed": false,
+      "detail": "Aucune activation self-serve n'est proposée. Capacités absentes/insuffisantes : self-serve-onboarding (absent du manifeste), authenticated-product-entry (absent du manifeste), ui-measurement-launch (absent du manifeste).",
+      "eligible": false,
+      "missingCapabilities": [
+        "self-serve-onboarding (absent du manifeste)",
+        "authenticated-product-entry (absent du manifeste)",
+        "ui-measurement-launch (absent du manifeste)"
+      ],
+      "status": "green"
+    },
+    "truthLevelGate": {
+      "detail": "Source AUTHORITATIVE_MAIN.",
+      "status": "green"
+    }
+  },
+  "overallReason": "Delta de capacités byte-identique au manifeste épinglé. Le bundle propose une refresh éditoriale dans les bornes déjà commercialisables ; revue PO requise avant merge.",
+  "overallStatus": "REQUIRES_HUMAN_REVIEW",
+  "surfaces": [
+    {
+      "affectedFiles": [
+        "app/page.tsx",
+        "components/site/**"
+      ],
+      "candidateSkeletonPath": "candidates/homepage.md",
+      "reason": "Refresh narrative candidate for homepage.",
+      "status": "REQUIRES_HUMAN_REVIEW",
+      "statusReason": "Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.",
+      "surface": "homepage"
+    },
+    {
+      "affectedFiles": [
+        "components/product/**",
+        "lib/product-proof/**"
+      ],
+      "candidateSkeletonPath": "candidates/product_proof.md",
+      "reason": "Refresh narrative candidate for product_proof.",
+      "status": "REQUIRES_HUMAN_REVIEW",
+      "statusReason": "Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.",
+      "surface": "product_proof"
+    },
+    {
+      "affectedFiles": [
+        "content/faq/**"
+      ],
+      "candidateSkeletonPath": "candidates/faq.md",
+      "reason": "Refresh narrative candidate for faq.",
+      "status": "REQUIRES_HUMAN_REVIEW",
+      "statusReason": "Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.",
+      "surface": "faq"
+    },
+    {
+      "affectedFiles": [
+        "content/methodology/**"
+      ],
+      "candidateSkeletonPath": "candidates/methodology.md",
+      "reason": "Refresh narrative candidate for methodology.",
+      "status": "REQUIRES_HUMAN_REVIEW",
+      "statusReason": "Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.",
+      "surface": "methodology"
+    }
+  ]
+}
