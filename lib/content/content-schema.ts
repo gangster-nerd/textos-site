@@ -72,8 +72,12 @@ export const ContentFrontmatterSchema = z
       .array(z.string().regex(/^[a-z0-9-]+:[a-z0-9-]+$/, 'format attendu "capacite:bundle"'))
       .min(1),
 
-    capabilityIds: z.array(z.string().min(1)).min(1),
-    claimIds: z.array(z.string().min(1)).min(1),
+    // CTC-9-A : capabilityIds/claimIds requièrent ≥1 entrée pour toute classe éditoriale
+    // adossée à une capacité produit. Le refinement en fin de schéma fait exception UNIQUEMENT
+    // pour COMPANY_TECHNOLOGY où l'article raconte une histoire d'ingénierie interne sans
+    // revendiquer de capacité produit spécifique.
+    capabilityIds: z.array(z.string().min(1)),
+    claimIds: z.array(z.string().min(1)),
 
     // Taxonomie + conversion. Le contenu déclare des IDENTIFIANTS ; la copy CTA,
     // les destinations et les métadonnées visuelles vivent dans leurs registres.
@@ -168,6 +172,25 @@ export const ContentFrontmatterSchema = z
         path: ["truthMode"],
         message: "CURRENT_CAPABILITY ne peut pas être PROSPECTIVE.",
       });
+    }
+    // Semantic min-1 : toutes les classes SAUF COMPANY_TECHNOLOGY doivent revendiquer au moins
+    // une capacité et un claim. COMPANY_TECHNOLOGY narre "how we build" sans revendication
+    // produit spécifique.
+    if (value.editorialClass !== "COMPANY_TECHNOLOGY") {
+      if (value.capabilityIds.length === 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["capabilityIds"],
+          message: "Au moins une capacité requise (COMPANY_TECHNOLOGY seul peut être vide).",
+        });
+      }
+      if (value.claimIds.length === 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["claimIds"],
+          message: "Au moins un claim requis (COMPANY_TECHNOLOGY seul peut être vide).",
+        });
+      }
     }
   });
 

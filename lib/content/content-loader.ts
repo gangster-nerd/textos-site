@@ -4,6 +4,8 @@ import matter from "gray-matter";
 import type { CtaResolution } from "@/lib/conversion/cta-resolver";
 import { ContentFrontmatterSchema, type ContentFrontmatter } from "./content-schema";
 import { runGates } from "./content-gates";
+import { runCopySafetyGate } from "./copy-safety";
+import { INSIGHT_COLLECTION, verifyInsightDocument } from "./insight-verifier";
 
 const ROOT = path.join(process.cwd(), "content");
 
@@ -77,7 +79,7 @@ export function loadDocument(collection: string, slug: string): ResolvedDocument
 
   const { maturityLabels, ctaResolution } = runGates(parsed.data, slug);
 
-  return {
+  const doc: ResolvedDocument = {
     slug,
     collection,
     contentId: deriveContentId(collection, slug),
@@ -87,6 +89,32 @@ export function loadDocument(collection: string, slug: string): ResolvedDocument
     maturityLabels,
     ctaResolution,
   };
+
+  // CTC-9-A path-aware enforcement pour /insights : contrat strict + copy-safety runtime.
+  // Les autres collections (methodology/faq/changelog/developer_note) conservent leur
+  // gouvernance historique via `runGates` ci-dessus.
+  if (collection === INSIGHT_COLLECTION) {
+    const insightFailures = verifyInsightDocument(doc);
+    if (insightFailures.length > 0) {
+      throw new Error(
+        `Insight verifier a rejeté ${collection}/${slug}.md :\n` +
+          insightFailures.map((f) => `  - ${f.message}`).join("\n"),
+      );
+    }
+    const copyFindings = runCopySafetyGate({
+      editorialClass: (doc.frontmatter as ContentFrontmatter & { editorialClass?: string })
+        .editorialClass,
+      body: content,
+    });
+    if (copyFindings.length > 0) {
+      throw new Error(
+        `Copy-safety runtime a rejeté ${collection}/${slug}.md :\n` +
+          copyFindings.map((f) => `  - "${f.phrase}" @${f.offset} :: ${f.snippet}`).join("\n"),
+      );
+    }
+  }
+
+  return doc;
 }
 
 export function loadCollection(collection: string): ResolvedDocument[] {
