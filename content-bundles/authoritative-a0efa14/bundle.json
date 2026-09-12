@@ -42,7 +42,7 @@
       "language": "en",
       "path": "editorial/faq.md",
       "proposedPublishability": "REQUIRES_HUMAN_REVIEW",
-      "sha256": "2f8c575005efcba4ac402d031a8008b4796a15e33dd12d1c8f345cac736d1e86",
+      "sha256": "b1de484d7db3d71d438e4fc2f698a5776116bb3d59fd83b08afd789431355b45",
       "sourceProductRef": "a0efa146a8691938b624c156d99f4663f6f92218",
       "surface": "faq",
       "truthLevel": "AUTHORITATIVE_MAIN"
@@ -634,11 +634,11 @@
     }
   ],
   "provenance": {
-    "generatedAt": "2026-09-12T15:52:10.616Z",
+    "generatedAt": "2026-09-12T16:11:53.336Z",
     "generatorVersion": "commit-to-content@v1",
     "pinnedManifestChecksum": "4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251",
     "pinnedManifestSha": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
-    "siteHead": "1ba4b7d1909be76c8f5d5337e3fd38a82b65781c",
+    "siteHead": "99e74b11b4c4e9467b6808cd958877a81670d853",
     "sourceRef": {
       "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
       "matchesPinnedManifest": true,

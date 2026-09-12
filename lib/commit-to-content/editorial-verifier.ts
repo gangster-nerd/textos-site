@@ -13,7 +13,11 @@ import { CLAIMS, type Claim } from "@/lib/claims-registry";
 import { CAPABILITY_REGISTRY, findCapability } from "@/lib/capability-registry";
 import type { PublicSurface } from "@/lib/product-manifest/status-axes";
 
-import { COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER } from "./editorial-frontmatter";
+import {
+  COMMIT_TO_CONTENT_CANONICAL_EDITORIAL_PATH,
+  COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER,
+  EditorialFrontmatterSchema,
+} from "./editorial-frontmatter";
 import { parseFrontmatterRaw } from "./editorial-registrar";
 import type { EditorialCandidate, TruthLevel } from "./types";
 
@@ -119,18 +123,31 @@ export function verifyEditorialCandidates(
       });
       continue;
     }
-    const frontmatter = parseFrontmatterRaw(contents) as Record<string, unknown>;
-    // CTC-7 §3 : liaison canonique pour commit-to-content.
-    if (frontmatter.capabilityId === "commit-to-content") {
+    const frontmatterRaw = parseFrontmatterRaw(contents) as Record<string, unknown>;
+
+    // CTC-7 §3 + CTC-8 §2 : liaison canonique pour l'histoire commit-to-content — évaluée
+    // AVANT la validation Zod pour que même un frontmatter partiellement invalide révèle
+    // ses mutations canoniques. Ancrage sur le CHEMIN canonique OU sur
+    // storyKind=COMPANY_TECHNOLOGY (jamais sur le seul `capabilityId` qui est mutable).
+    // `capabilityId` figure dans le contrat exact, empêchant toute mutation vers un autre id.
+    const isCanonicalCommitToContentPath = c.path === COMMIT_TO_CONTENT_CANONICAL_EDITORIAL_PATH;
+    const isCompanyTechnologyStory = frontmatterRaw.storyKind === "COMPANY_TECHNOLOGY";
+    if (isCanonicalCommitToContentPath || isCompanyTechnologyStory) {
       for (const [key, expected] of Object.entries(COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER)) {
-        if (frontmatter[key] !== expected) {
+        const actual = frontmatterRaw[key];
+        if (actual !== expected) {
           failures.push({
             editorial: c.path,
-            message: `commit-to-content: frontmatter.${key}=${JSON.stringify(frontmatter[key])} ≠ canonical ${JSON.stringify(expected)}.`,
+            message: `commit-to-content canonical: frontmatter.${key}=${JSON.stringify(actual)} ≠ canonical ${JSON.stringify(expected)}.`,
           });
         }
       }
-      // Le fichier de décision doit exister à la racine du site.
+      if (isCompanyTechnologyStory && c.path !== COMMIT_TO_CONTENT_CANONICAL_EDITORIAL_PATH) {
+        failures.push({
+          editorial: c.path,
+          message: `COMPANY_TECHNOLOGY editorial DOIT vivre à ${COMMIT_TO_CONTENT_CANONICAL_EDITORIAL_PATH} — chemin actuel : ${c.path}.`,
+        });
+      }
       const decisionAbs = path.join(
         input.siteRoot,
         COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER.disclosureDecisionRef,
@@ -141,7 +158,6 @@ export function verifyEditorialCandidates(
           message: `Fichier de décision CPO introuvable : ${COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER.disclosureDecisionRef}.`,
         });
       }
-      // COMPANY_TECHNOLOGY ne peut JAMAIS obtenir PUBLIC_SAFE.
       if (c.proposedPublishability === "PUBLIC_SAFE") {
         failures.push({
           editorial: c.path,
@@ -149,6 +165,21 @@ export function verifyEditorialCandidates(
         });
       }
     }
+
+    // CTC-8 §1 : validation Zod stricte au niveau verify. Un frontmatter malformé /
+    // manquant / avec un champ inconnu fait échouer content:verify indépendamment de sync.
+    const schemaParse = EditorialFrontmatterSchema.safeParse(frontmatterRaw);
+    if (!schemaParse.success) {
+      const detail = schemaParse.error.issues
+        .map((i) => `${i.path.join(".") || "(racine)"}: ${i.message}`)
+        .join(" • ");
+      failures.push({
+        editorial: c.path,
+        message: `Frontmatter éditorial non-conforme au schéma strict : ${detail}.`,
+      });
+      continue;
+    }
+    const frontmatter = schemaParse.data;
     // sourceProductRef doit matcher
     if (frontmatter.sourceProductRef && frontmatter.sourceProductRef !== c.sourceProductRef) {
       failures.push({

@@ -165,10 +165,11 @@ describe("CTC-7 — liaison canonique commit-to-content", () => {
     writeFileSync(editorialPath, original, "utf8");
   });
 
-  it("canonical constant a les 7 champs attendus", () => {
+  it("canonical constant a les 8 champs attendus (CTC-8 §2 ajoute capabilityId)", () => {
     expect(Object.keys(COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER).sort()).toEqual(
       [
         "appliesToPublicRoute",
+        "capabilityId",
         "cta",
         "disclosureAuthority",
         "disclosureDecisionRef",

@@ -113,8 +113,15 @@ export const EditorialFrontmatterSchema = BaseSchema.superRefine((d, ctx) => {
 
 export type EditorialFrontmatter = z.infer<typeof EditorialFrontmatterSchema>;
 
-// Canonique COMPANY_TECHNOLOGY pour capabilityId=commit-to-content — CTC-7 §3.
+// Canonique COMPANY_TECHNOLOGY pour l'histoire commit-to-content — CTC-7 §3 renforcé
+// en CTC-8 §2 : ancrage sur le chemin canonique du candidat OU sur `storyKind`, PAS
+// uniquement sur `capabilityId` (mutable). `capabilityId` figure explicitement dans le
+// contrat pour bloquer toute mutation vers un autre id.
+export const COMMIT_TO_CONTENT_CANONICAL_EDITORIAL_PATH =
+  "editorial/commit-to-content-technology-story.md";
+
 export const COMMIT_TO_CONTENT_CANONICAL_FRONTMATTER = {
+  capabilityId: "commit-to-content" as const,
   storyKind: "COMPANY_TECHNOLOGY" as const,
   publicMaturity: "INTERNAL_LABS" as const,
   disclosureAuthority: "CPO_DISCLOSURE_APPROVED" as const,

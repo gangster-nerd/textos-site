@@ -84,5 +84,6 @@ authoritative claims already ratified for the `faq` surface.
 
 ## Decision basis
 
-m2, m3, m4, m6 all carry `faq` in `allowedSurfaces`. The four backing capabilities are
-`public_marketable` at the pinned manifest. No promotion required to publish these entries.
+m2, m3, m4, m5 and m6 all carry `faq` in `allowedSurfaces`. The backing capabilities
+(direct-share-of-model, indirect-mention-share, total-authority-presence and quality-ledger)
+are `public_marketable` at the pinned manifest. No promotion required to publish these entries.
