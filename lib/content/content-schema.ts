@@ -15,6 +15,36 @@ export const EditorialStatusSchema = z.enum([
 
 export const IndexingPolicySchema = z.enum(["index", "noindex"]);
 
+// CTC-9 §2 — classification éditoriale de la vérité. Seul CURRENT_CAPABILITY est gouverné
+// comme une revendication de disponibilité. Les sept autres classes sont des contenus de
+// thought-leadership autorisés par la décision CMO du 2026-09-12 sous copy-safety strict.
+export const EDITORIAL_CLASSES = [
+  "CURRENT_CAPABILITY",
+  "PRODUCT_PRINCIPLE",
+  "ARCHITECTURE_DECISION",
+  "ENGINEERING_NOTE",
+  "EXPERIMENT",
+  "ROADMAP_DIRECTION",
+  "RETROSPECTIVE",
+  "COMPANY_TECHNOLOGY",
+] as const;
+export const EditorialClassSchema = z.enum(EDITORIAL_CLASSES);
+
+// Sémantique de la source produit lue.
+export const SOURCE_SEMANTICS = [
+  "ACCEPTED_ADR",
+  "IMPLEMENTATION_EVIDENCE",
+  "VERIFIED_CHANGE_RECORD",
+  "HISTORICAL_SPRINT_INTENT",
+  "ROADMAP_DIRECTION",
+  "GOVERNANCE_DECISION",
+] as const;
+export const SourceSemanticsSchema = z.enum(SOURCE_SEMANTICS);
+
+// Mode de vérité effectif d'un article.
+export const TRUTH_MODES = ["AUTHORITATIVE", "DOCUMENTARY", "PROSPECTIVE"] as const;
+export const TruthModeSchema = z.enum(TRUTH_MODES);
+
 const IsoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "format attendu YYYY-MM-DD");
 
 export const ContentFrontmatterSchema = z
@@ -63,6 +93,16 @@ export const ContentFrontmatterSchema = z
       body: z.string().min(1).max(400),
       claimIds: z.array(z.string().min(1)).min(1),
     }),
+
+    // CTC-9 additions — OPTIONNELLES pour rester rétro-compatibles avec les articles déjà
+    // publiés (implicitement CURRENT_CAPABILITY / AUTHORITATIVE). Tout article
+    // nouvellement rédigé sous /insights DOIT les déclarer.
+    editorialClass: EditorialClassSchema.optional(),
+    truthMode: TruthModeSchema.optional(),
+    sourcePaths: z.array(z.string().min(1)).optional(),
+    sourceSemantics: SourceSemanticsSchema.optional(),
+    sourceDigests: z.record(z.string().min(1), z.string().regex(/^[0-9a-f]{64}$/)).optional(),
+    disclaimer: z.string().min(1).optional(),
   })
   .strict()
   .superRefine((value, ctx) => {
@@ -89,6 +129,45 @@ export const ContentFrontmatterSchema = z
           message: `Le shortAnswer utilise ${id}, absent des claimIds du document.`,
         });
       }
+    }
+    // CTC-9 §2/§3 — contraintes croisées editorialClass × truthMode × cta × disclaimer.
+    if (value.editorialClass === "ROADMAP_DIRECTION") {
+      if (value.truthMode && value.truthMode !== "PROSPECTIVE") {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["truthMode"],
+          message: "ROADMAP_DIRECTION exige truthMode=PROSPECTIVE.",
+        });
+      }
+      if (
+        !value.disclaimer ||
+        !value.disclaimer.includes("Direction under exploration — not a delivery commitment.")
+      ) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["disclaimer"],
+          message:
+            'ROADMAP_DIRECTION exige disclaimer contenant exactement "Direction under exploration — not a delivery commitment.".',
+        });
+      }
+    }
+    if (
+      (value.editorialClass === "EXPERIMENT" ||
+        value.editorialClass === "COMPANY_TECHNOLOGY") &&
+      value.ctaVariant !== "none"
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["ctaVariant"],
+        message: `${value.editorialClass} exige ctaVariant=none.`,
+      });
+    }
+    if (value.editorialClass === "CURRENT_CAPABILITY" && value.truthMode === "PROSPECTIVE") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["truthMode"],
+        message: "CURRENT_CAPABILITY ne peut pas être PROSPECTIVE.",
+      });
     }
   });
 
