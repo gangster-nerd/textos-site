@@ -9,7 +9,8 @@ publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
-- opportunity-brief:defensible-opportunity-brief-v1
+- quality-ledger:quality-ledger-rates-v1
+- observe-authority-presence:authority-presence-observation-v1
 capabilityIds:
 - observe-authority-presence
 - quality-ledger

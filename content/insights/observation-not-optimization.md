@@ -1,52 +1,55 @@
 ---
-title: "Observation, Not Optimization"
-description: "TextOS begins by observing what answer engines do, not by optimising an SEO score. The observation itself is the product."
+title: Observation, Not Optimization
+description: TextOS begins by observing what answer engines do, not by optimising an SEO score. The observation itself is the product.
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
-publishedAt: "2026-09-12"
-updatedAt: "2026-09-12"
-productSnapshotSha: "d1b8b50552e1b42768a6bd0c0515675e139780d3"
+publishedAt: '2026-09-12'
+updatedAt: '2026-09-12'
+productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
-  - "observe-authority-presence:authority-presence-observation-v1"
-  - "observe-authority-presence:observe-run-orchestration-v1"
-  - "quality-ledger:quality-ledger-rates-v1"
-  - "direct-share-of-model:direct-share-measurement-v1"
-  - "indirect-mention-share:indirect-mention-measurement-v1"
-  - "total-authority-presence:total-presence-composition-v1"
+- observe-authority-presence:authority-presence-observation-v1
+- observe-authority-presence:observe-run-orchestration-v1
+- quality-ledger:quality-ledger-rates-v1
+- direct-share-of-model:direct-share-measurement-v1
+- indirect-mention-share:indirect-mention-measurement-v1
+- total-authority-presence:total-presence-composition-v1
 capabilityIds:
-  - observe-authority-presence
-  - quality-ledger
+- direct-share-of-model
+- indirect-mention-share
+- observe-authority-presence
+- quality-ledger
+- total-authority-presence
 claimIds:
-  - hp1-measurement-doctrine
-  - hp2-metric-integrity
-  - m1-observation-unit
-  - m5-not-observable-is-not-zero
-  - m6-quality-ledger-contextualises
-  - m7-no-recommendations
-  - m8-measurement-is-not-verification
+- hp1-measurement-doctrine
+- hp2-metric-integrity
+- m1-observation-unit
+- m5-not-observable-is-not-zero
+- m6-quality-ledger-contextualises
+- m7-no-recommendations
+- m8-measurement-is-not-verification
 clusterId: measurement-trust
 ctaVariant: none
-targetQuery: "observing answer engines versus optimising for them"
+targetQuery: observing answer engines versus optimising for them
 searchIntent: informational
 shortAnswer:
-  body: "TextOS begins by observing answer engines on a versioned query panel, one answer at a time. Observation is the product. It reports three separate measures with their measurement quality, distinguishes not observable from measured zero, and never produces optimisation scores or recommendations."
+  body: TextOS begins by observing answer engines on a versioned query panel, one answer at a time. Observation is the product. It reports three separate measures with their measurement quality, distinguishes not observable from measured zero, and never produces optimisation scores or recommendations.
   claimIds:
-    - hp1-measurement-doctrine
-    - m1-observation-unit
-    - m5-not-observable-is-not-zero
-    - m7-no-recommendations
+  - hp1-measurement-doctrine
+  - m1-observation-unit
+  - m5-not-observable-is-not-zero
+  - m7-no-recommendations
 editorialClass: PRODUCT_PRINCIPLE
 truthMode: PROSPECTIVE
 sourcePaths:
-  - docs/product/PRODUCT-VISION-TEXTOS.md
-  - docs/adr/ADR-001-observatory-architecture.md
+- docs/product/PRODUCT-VISION-TEXTOS.md
+- docs/adr/ADR-001-observatory-architecture.md
 sourceSemantics: ROADMAP_DIRECTION
 sourceDigests:
-  docs/product/PRODUCT-VISION-TEXTOS.md: "5ddb2768a0d34b06e42fc1bed3f4ab37f915e741bd2aaaf760e150fbef8e3330"
-  docs/adr/ADR-001-observatory-architecture.md: "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac"
-disclaimer: "Direction under exploration — not a delivery commitment."
+  docs/product/PRODUCT-VISION-TEXTOS.md: 5ddb2768a0d34b06e42fc1bed3f4ab37f915e741bd2aaaf760e150fbef8e3330
+  docs/adr/ADR-001-observatory-architecture.md: 7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac
+disclaimer: Direction under exploration — not a delivery commitment.
 ---
 
 > Direction under exploration — not a delivery commitment.

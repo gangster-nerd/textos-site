@@ -1,52 +1,52 @@
 ---
-title: "From Gap to Brief to Action — the TextOS North Star"
-description: "The product succeeds when a defensible opportunity brief is accepted, not when it publishes. Acceptance is where the decision is made."
+title: From Gap to Brief to Action — the TextOS North Star
+description: The product succeeds when a defensible opportunity brief is accepted, not when it publishes. Acceptance is where the decision is made.
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
-publishedAt: "2026-09-12"
-updatedAt: "2026-09-12"
-productSnapshotSha: "d1b8b50552e1b42768a6bd0c0515675e139780d3"
+publishedAt: '2026-09-12'
+updatedAt: '2026-09-12'
+productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
-  - "observe-authority-presence:authority-presence-observation-v1"
-  - "quality-ledger:quality-ledger-rates-v1"
-  - "direct-share-of-model:direct-share-measurement-v1"
-  - "indirect-mention-share:indirect-mention-measurement-v1"
-  - "total-authority-presence:total-presence-composition-v1"
+- observe-authority-presence:authority-presence-observation-v1
+- quality-ledger:quality-ledger-rates-v1
+- direct-share-of-model:direct-share-measurement-v1
+- indirect-mention-share:indirect-mention-measurement-v1
+- total-authority-presence:total-presence-composition-v1
 capabilityIds:
-  - observe-authority-presence
-  - direct-share-of-model
-  - indirect-mention-share
-  - total-authority-presence
-  - quality-ledger
+- direct-share-of-model
+- indirect-mention-share
+- observe-authority-presence
+- quality-ledger
+- total-authority-presence
 claimIds:
-  - hp1-measurement-doctrine
-  - hp2-metric-integrity
-  - m1-observation-unit
-  - m6-quality-ledger-contextualises
-  - m7-no-recommendations
-  - m8-measurement-is-not-verification
+- hp1-measurement-doctrine
+- hp2-metric-integrity
+- m1-observation-unit
+- m6-quality-ledger-contextualises
+- m7-no-recommendations
+- m8-measurement-is-not-verification
 clusterId: measurement-trust
 ctaVariant: none
-targetQuery: "textos north star opportunity brief acceptance"
+targetQuery: textos north star opportunity brief acceptance
 searchIntent: informational
 shortAnswer:
-  body: "The TextOS North Star is a defensible opportunity brief accepted by a human — not a published article. Acceptance is the decision moment: a brief is proposed only from observed evidence, contains no writing and no ROI estimate, and is judged by the person who decides to act."
+  body: 'The TextOS North Star is a defensible opportunity brief accepted by a human — not a published article. Acceptance is the decision moment: a brief is proposed only from observed evidence, contains no writing and no ROI estimate, and is judged by the person who decides to act.'
   claimIds:
-    - hp1-measurement-doctrine
-    - m1-observation-unit
-    - m7-no-recommendations
+  - hp1-measurement-doctrine
+  - m1-observation-unit
+  - m7-no-recommendations
 editorialClass: PRODUCT_PRINCIPLE
 truthMode: PROSPECTIVE
 sourcePaths:
-  - docs/product/PRODUCT-VISION-TEXTOS.md
-  - docs/adr/ADR-014-opportunity-brief.md
+- docs/product/PRODUCT-VISION-TEXTOS.md
+- docs/adr/ADR-014-opportunity-brief.md
 sourceSemantics: ROADMAP_DIRECTION
 sourceDigests:
-  docs/product/PRODUCT-VISION-TEXTOS.md: "5ddb2768a0d34b06e42fc1bed3f4ab37f915e741bd2aaaf760e150fbef8e3330"
-  docs/adr/ADR-014-opportunity-brief.md: "f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d"
-disclaimer: "Direction under exploration — not a delivery commitment."
+  docs/product/PRODUCT-VISION-TEXTOS.md: 5ddb2768a0d34b06e42fc1bed3f4ab37f915e741bd2aaaf760e150fbef8e3330
+  docs/adr/ADR-014-opportunity-brief.md: f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d
+disclaimer: Direction under exploration — not a delivery commitment.
 ---
 
 > Direction under exploration — not a delivery commitment.

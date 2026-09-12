@@ -12,6 +12,8 @@ evidenceRefs:
 - direct-share-of-model:direct-share-measurement-v1
 - indirect-mention-share:indirect-mention-measurement-v1
 - total-authority-presence:total-presence-composition-v1
+- quality-ledger:quality-ledger-rates-v1
+- observe-authority-presence:authority-presence-observation-v1
 clusterId: measurement-methodology
 ctaVariant: measurement_request
 capabilityIds:

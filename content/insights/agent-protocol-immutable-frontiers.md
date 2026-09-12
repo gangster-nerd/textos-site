@@ -8,8 +8,7 @@ indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
-evidenceRefs:
-- governance:agents-md-v1
+evidenceRefs: []
 capabilityIds: []
 claimIds:
 - hp1-measurement-doctrine
