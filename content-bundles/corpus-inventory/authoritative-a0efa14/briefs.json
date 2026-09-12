@@ -1,0 +1,834 @@
+{
+  "$schema": "https://textos.io/schemas/corpus-inventory.v1.json",
+  "generatorVersion": "corpus-inventory@v1",
+  "generatedAt": "2026-09-12T19:07:00Z",
+  "sourceProductRef": "a0efa146a8691938b624c156d99f4663f6f92218",
+  "sourceRepository": "gangster-nerd/textos-v0",
+  "authorityStatement": "Every brief below is bound to source paths read exclusively via `git show a0efa146...:<path>`. Working-tree state, unmerged branches and forks are non-authoritative.",
+  "totalBriefs": 45,
+  "duplicatesAgainstPublishedArticles": 0,
+  "redactionRequired": false,
+  "briefs": [
+    {
+      "id": "brief-01-authority-intelligence-not-ai-seo",
+      "title": "Authority Intelligence, Not AI SEO",
+      "hook": "TextOS measures and explains why answer engines cite (or ignore) your brand — filling the gap between what is visible and what to change.",
+      "editorialClass": "PRODUCT_PRINCIPLE",
+      "primaryCapabilityIds": [
+        "observe-authority-presence",
+        "opportunity-brief"
+      ],
+      "sourcePaths": [
+        "docs/product/PRODUCT-VISION-TEXTOS.md"
+      ],
+      "sourceSemantics": "ROADMAP_DIRECTION",
+      "truthMode": "PROSPECTIVE",
+      "sourceDigests": {
+        "docs/product/PRODUCT-VISION-TEXTOS.md": "5ddb2768a0d34b06e42fc1bed3f4ab37f915e741bd2aaaf760e150fbef8e3330"
+      }
+    },
+    {
+      "id": "brief-02-three-dimensions-authority-presence",
+      "title": "The Three Dimensions of Authority Presence",
+      "hook": "Authority is not a single score; TextOS reports three separate measures (Direct Share of Model, Indirect Mention Share, Total Authority Presence), each reflecting a distinct observation.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "direct-share-of-model",
+        "indirect-mention-share",
+        "total-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-011-authority-presence-estimation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-011-authority-presence-estimation.md": "a3af72d4b0405d993532fb408690d2e5d46724a7c8bfcc759fac60e566a33b82"
+      }
+    },
+    {
+      "id": "brief-03-observation-not-optimization",
+      "title": "Observation, Not Optimization",
+      "hook": "TextOS begins by observing what answer engines do, not by optimising SEO scores; the observation itself is the product.",
+      "editorialClass": "PRODUCT_PRINCIPLE",
+      "primaryCapabilityIds": [
+        "observe-authority-presence",
+        "quality-ledger"
+      ],
+      "sourcePaths": [
+        "docs/product/PRODUCT-VISION-TEXTOS.md",
+        "docs/adr/ADR-001-observatory-architecture.md"
+      ],
+      "sourceSemantics": "ROADMAP_DIRECTION",
+      "truthMode": "PROSPECTIVE",
+      "sourceDigests": {
+        "docs/product/PRODUCT-VISION-TEXTOS.md": "5ddb2768a0d34b06e42fc1bed3f4ab37f915e741bd2aaaf760e150fbef8e3330",
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac"
+      }
+    },
+    {
+      "id": "brief-04-no-affirmation-without-evidence",
+      "title": "No Affirmation Without Evidence",
+      "hook": "Every opportunity brief is grounded in real observations; TextOS never proposes an action that contradicts the evidence it has collected.",
+      "editorialClass": "PRODUCT_PRINCIPLE",
+      "primaryCapabilityIds": [
+        "truth-check",
+        "controlled-preview"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-015-truthcheck-and-generation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-015-truthcheck-and-generation.md": "863c68b4af6c66f0479649064bb9607d0039c6bf097fde7f808f7c47772732f9"
+      }
+    },
+    {
+      "id": "brief-05-north-star-brief-acceptance",
+      "title": "From Gap to Brief to Action — the TextOS North Star",
+      "hook": "The product succeeds when you accept a defensible opportunity brief, not when it publishes; acceptance is the moment of deciding to act.",
+      "editorialClass": "PRODUCT_PRINCIPLE",
+      "primaryCapabilityIds": [
+        "opportunity-brief",
+        "brief-fulfillment-check"
+      ],
+      "sourcePaths": [
+        "docs/product/PRODUCT-VISION-TEXTOS.md",
+        "docs/adr/ADR-014-opportunity-brief.md"
+      ],
+      "sourceSemantics": "ROADMAP_DIRECTION",
+      "truthMode": "PROSPECTIVE",
+      "sourceDigests": {
+        "docs/product/PRODUCT-VISION-TEXTOS.md": "5ddb2768a0d34b06e42fc1bed3f4ab37f915e741bd2aaaf760e150fbef8e3330",
+        "docs/adr/ADR-014-opportunity-brief.md": "f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d"
+      }
+    },
+    {
+      "id": "brief-06-standalone-vs-bound-to-demand",
+      "title": "Standalone vs. Bound to Demand — Two Promises",
+      "hook": "TextOS offers two distinct product shapes: authority measurement alone, or authority-gap × customer-demand intersection with RepOS.",
+      "editorialClass": "ROADMAP_DIRECTION",
+      "primaryCapabilityIds": [
+        "observe-authority-presence",
+        "opportunity-brief",
+        "repos-intersection"
+      ],
+      "sourcePaths": [
+        "docs/product/PRODUCT-VISION-TEXTOS.md",
+        "docs/adr/ADR-004-differentiation-layer.md",
+        "docs/adr/ADR-017-repos-intersection.md"
+      ],
+      "sourceSemantics": "ROADMAP_DIRECTION",
+      "truthMode": "PROSPECTIVE",
+      "disclaimer": "Direction under exploration — not a delivery commitment.",
+      "sourceDigests": {
+        "docs/product/PRODUCT-VISION-TEXTOS.md": "5ddb2768a0d34b06e42fc1bed3f4ab37f915e741bd2aaaf760e150fbef8e3330",
+        "docs/adr/ADR-004-differentiation-layer.md": "bf1a4f0f5d7ad321809a2323ed94b7e0c1078062814fed4aea0ac4fe26c2fb57",
+        "docs/adr/ADR-017-repos-intersection.md": "e4d68fe7519f9eb990e771d7ace383a37dbb1bbc344690238b2db5456b0b4f95"
+      }
+    },
+    {
+      "id": "brief-07-observatory-not-cms",
+      "title": "Why TextOS Is an Observatory, Not a CMS",
+      "hook": "TextOS stores recurrent observations, not edits; its architecture is Postgres + scheduled jobs, not transactional user-triggered writes.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "observe-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-001-observatory-architecture.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac"
+      }
+    },
+    {
+      "id": "brief-08-append-only-observation",
+      "title": "The Immutable Observation — Append-Only Measurement",
+      "hook": "Each observation is stamped with query version, method version and extraction version; a run never modifies past observations, it adds new ones.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "observe-authority-presence",
+        "quality-ledger"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-001-observatory-architecture.md",
+        "docs/adr/ADR-002-engine-provider.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac",
+        "docs/adr/ADR-002-engine-provider.md": "584e7e596258354d9b2b58cebb42e9938165d002dc88ee4deb3feb8606f391f3"
+      }
+    },
+    {
+      "id": "brief-09-eight-statuses",
+      "title": "Empty Result ≠ Error — the Eight Canonical Statuses",
+      "hook": "Observations have eight canonical statuses; `no_answer_surface` is valid-but-excluded, distinct from a citation-rate zero.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "observe-authority-presence",
+        "quality-ledger"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-001-observatory-architecture.md",
+        "docs/adr/ADR-002-engine-provider.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac",
+        "docs/adr/ADR-002-engine-provider.md": "584e7e596258354d9b2b58cebb42e9938165d002dc88ee4deb3feb8606f391f3"
+      }
+    },
+    {
+      "id": "brief-10-canonical-time-window",
+      "title": "Frozen Time Windows — Why Share of Model Uses Fixed Buckets",
+      "hook": "Share of Model is computed over frozen, canonically identified time buckets, not rolling windows — the only way to guarantee a metric doesn't shift between two views.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "observe-authority-presence",
+        "quality-ledger"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-001-observatory-architecture.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac"
+      }
+    },
+    {
+      "id": "brief-11-method-version-dimension",
+      "title": "Method Version as a Dimension — When a Parser Change Breaks a Series",
+      "hook": "Four orthogonal versions (provider, extractor, aggregation, canonicalization) are tracked; a change in any creates a marked, traceable break rather than a silent one.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "observe-authority-presence",
+        "quality-ledger"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-001-observatory-architecture.md",
+        "docs/adr/ADR-002-engine-provider.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac",
+        "docs/adr/ADR-002-engine-provider.md": "584e7e596258354d9b2b58cebb42e9938165d002dc88ee4deb3feb8606f391f3"
+      }
+    },
+    {
+      "id": "brief-12-canonicalizing-sources",
+      "title": "Canonicalising Sources — From Raw URL to Matched Entity",
+      "hook": "Every citation passes through a versioned chain: raw URL → normalized URL → canonical domain → canonical source entity → matched tracked entity.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "direct-share-of-model",
+        "indirect-mention-share"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-001-observatory-architecture.md",
+        "docs/adr/ADR-002-engine-provider.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac",
+        "docs/adr/ADR-002-engine-provider.md": "584e7e596258354d9b2b58cebb42e9938165d002dc88ee4deb3feb8606f391f3"
+      }
+    },
+    {
+      "id": "brief-13-observation-contract",
+      "title": "The Observation Contract — How Providers Talk to TextOS",
+      "hook": "`EngineProvider.observe()` receives a measurement frame and returns a normalised observation; it contains zero business logic, only access and normalisation.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "observe-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-002-engine-provider.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-002-engine-provider.md": "584e7e596258354d9b2b58cebb42e9938165d002dc88ee4deb3feb8606f391f3"
+      }
+    },
+    {
+      "id": "brief-14-quality-ledger-operational",
+      "title": "Quality Ledger — Separating Operational Health from Authority Signals",
+      "hook": "Three distinct rates (completion, eligibility, surface-trigger) prevent a bad collection day from being misread as a drop in authority.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "quality-ledger"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-001-observatory-architecture.md",
+        "docs/adr/ADR-010-measurement-quality-ledger.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac",
+        "docs/adr/ADR-010-measurement-quality-ledger.md": "cc2bb7ae7e4ed8a864ac5b4ec51dd3eb595dcb49e9919173d4eabbcdf7c40e66"
+      }
+    },
+    {
+      "id": "brief-15-claim-evidence-layer",
+      "title": "The Claim Evidence Layer — Extracting Defensible Proof",
+      "hook": "Claims are deterministically assembled from observations; each claim cites exact evidence spans; no LLM at observation time.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "claim-evidence-layer"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-012-claim-evidence-layer.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-012-claim-evidence-layer.md": "b2160f974d3a7b626b3cc275a494153e1d20f1bad7f6197a8f5d244fa33ac587"
+      }
+    },
+    {
+      "id": "brief-16-authority-gap-typing",
+      "title": "Authority Gap Typing — Claim Gap, Displacement, Absence",
+      "hook": "Gaps aren't monolithic; they are typed by root cause; each type calls a different action.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "truth-check",
+        "opportunity-brief"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-013-authority-gap-typing.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-013-authority-gap-typing.md": "ef8959d50dda10555dd0a52e6757070df66c636c24774d994bb866258a7d4ff0"
+      }
+    },
+    {
+      "id": "brief-17-variance-ready-estimation",
+      "title": "Variance-Ready Estimation — Presence, Not Precision",
+      "hook": "Authority presence is estimated with variance (mean + spread), never as a false point; the data supports your modelling and confidence intervals.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "direct-share-of-model",
+        "indirect-mention-share",
+        "total-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-011-authority-presence-estimation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-011-authority-presence-estimation.md": "a3af72d4b0405d993532fb408690d2e5d46724a7c8bfcc759fac60e566a33b82"
+      }
+    },
+    {
+      "id": "brief-18-three-measures-never-one-score",
+      "title": "Why Three Measures, Never One Score",
+      "hook": "Fusing direct citations and indirect mentions into a single 'authority score' hides the difference between 'you are cited' and 'someone cites a reference that mentions you'.",
+      "editorialClass": "PRODUCT_PRINCIPLE",
+      "primaryCapabilityIds": [
+        "direct-share-of-model",
+        "indirect-mention-share",
+        "total-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-001-observatory-architecture.md",
+        "docs/adr/ADR-011-authority-presence-estimation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-001-observatory-architecture.md": "7547b6467a494440409b2788d07e27456ceafa8d2c4f3af529e8463cdc2c0fac",
+        "docs/adr/ADR-011-authority-presence-estimation.md": "a3af72d4b0405d993532fb408690d2e5d46724a7c8bfcc759fac60e566a33b82"
+      }
+    },
+    {
+      "id": "brief-19-denominator-numerator",
+      "title": "Denominator and Numerator — the Numbers Behind Share of Model",
+      "hook": "Share of Model denominator = eligible observations (ok + no_citations); numerators = observations carrying direct or indirect citations of your brand.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "direct-share-of-model",
+        "indirect-mention-share",
+        "total-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-011-authority-presence-estimation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-011-authority-presence-estimation.md": "a3af72d4b0405d993532fb408690d2e5d46724a7c8bfcc759fac60e566a33b82"
+      }
+    },
+    {
+      "id": "brief-20-owned-surface-observation",
+      "title": "Owned-Surface Observation Contract — Seeing Your Own Site",
+      "hook": "TextOS can observe your own website structure (composition, media, links, actions, claims); each observation is versioned and integrity-checked.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "observe-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-020-owned-surface-observation-contract.md",
+        "docs/adr/ADR-021-owned-surface-design-observation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-020-owned-surface-observation-contract.md": "3c9025f5eb3668c38305c63b9f73874e3b7dbfffed2e893b17d86740212d9a7f",
+        "docs/adr/ADR-021-owned-surface-design-observation.md": "f46cdf4e8cb27eeb76a7481e4cda3f6f9803b524891baa1dd9b70bc66be6f8df"
+      }
+    },
+    {
+      "id": "brief-21-parser-stack-identity",
+      "title": "Parser Stack Identity — Versioning Site Structure Extraction",
+      "hook": "Parser + aggregation + canonicalization versions ensure owned-surface observations remain comparable over time despite method evolution.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "observe-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-021-owned-surface-design-observation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-021-owned-surface-design-observation.md": "f46cdf4e8cb27eeb76a7481e4cda3f6f9803b524891baa1dd9b70bc66be6f8df"
+      }
+    },
+    {
+      "id": "brief-22-opportunity-brief-deterministic",
+      "title": "Opportunity Brief — Deterministic Assembly from Evidence",
+      "hook": "An opportunity brief is mechanically assembled (no LLM) from a typed gap and its evidence; it templates an objective and cites proof sources, awaiting human judgment.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "opportunity-brief",
+        "brief-fulfillment-check"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-014-opportunity-brief.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-014-opportunity-brief.md": "f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d"
+      }
+    },
+    {
+      "id": "brief-23-gate-at-brief-acceptance",
+      "title": "The Gate at Brief Acceptance — Where the Product Actually Wins",
+      "hook": "A brief is born `proposed`; only human accept/reject transitions it; only accepted briefs unlock generation.",
+      "editorialClass": "PRODUCT_PRINCIPLE",
+      "primaryCapabilityIds": [
+        "opportunity-brief",
+        "brief-fulfillment-check"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-014-opportunity-brief.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-014-opportunity-brief.md": "f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d"
+      }
+    },
+    {
+      "id": "brief-24-brief-fulfillment-tracing",
+      "title": "Brief Fulfillment — Tracing Coverage of Missing Claims",
+      "hook": "Once a brief is accepted, fulfillment checking measures whether new publications actually cover the missing claims the brief identified.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "brief-fulfillment-check"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-014-opportunity-brief.md"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-014-opportunity-brief.md": "f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d"
+      }
+    },
+    {
+      "id": "brief-25-not-propose-criteria",
+      "title": "When to Not Propose — Criteria for Defensible Briefs",
+      "hook": "A gap becomes a brief only if it has observed evidence; gaps with zero competing subjects are not defensible briefs.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "opportunity-brief"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-014-opportunity-brief.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-014-opportunity-brief.md": "f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d"
+      }
+    },
+    {
+      "id": "brief-26-brief-to-decision-economics",
+      "title": "From Brief to Decision — Economics and ROI Estimation",
+      "hook": "ROI estimation is an explicit S11/S12 concern, not S10; S10 judges defensibility mechanically, humans judge commercial viability separately.",
+      "editorialClass": "ROADMAP_DIRECTION",
+      "primaryCapabilityIds": [
+        "opportunity-brief"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-014-opportunity-brief.md",
+        "docs/adr/ADR-018-authority-opportunity-economics.md"
+      ],
+      "sourceSemantics": "ROADMAP_DIRECTION",
+      "truthMode": "PROSPECTIVE",
+      "disclaimer": "Direction under exploration — not a delivery commitment.",
+      "sourceDigests": {
+        "docs/adr/ADR-014-opportunity-brief.md": "f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d",
+        "docs/adr/ADR-018-authority-opportunity-economics.md": "a72bbe02b99e7b48d4a1740f9c9dfab4b43fc0a5a362464dcedf963ed4ee2cab"
+      }
+    },
+    {
+      "id": "brief-27-demand-gap-premium",
+      "title": "Customer Demand × Authority Gap — the Premium Intersection",
+      "hook": "TextOS premium binds customer demand (from RepOS) to authority gaps; only gaps meeting real demand justify content investment.",
+      "editorialClass": "ROADMAP_DIRECTION",
+      "primaryCapabilityIds": [
+        "opportunity-brief",
+        "repos-intersection"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-004-differentiation-layer.md",
+        "docs/adr/ADR-017-repos-intersection.md"
+      ],
+      "sourceSemantics": "ROADMAP_DIRECTION",
+      "truthMode": "PROSPECTIVE",
+      "disclaimer": "Direction under exploration — not a delivery commitment.",
+      "sourceDigests": {
+        "docs/adr/ADR-004-differentiation-layer.md": "bf1a4f0f5d7ad321809a2323ed94b7e0c1078062814fed4aea0ac4fe26c2fb57",
+        "docs/adr/ADR-017-repos-intersection.md": "e4d68fe7519f9eb990e771d7ace383a37dbb1bbc344690238b2db5456b0b4f95"
+      }
+    },
+    {
+      "id": "brief-28-truthcheck-unmovable-gate",
+      "title": "TruthCheck — the Unmovable Gate",
+      "hook": "No publication, in any mode, bypasses TruthCheck; a block verdict is always final; this is the contractual baseline.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "truth-check",
+        "controlled-preview"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-015-truthcheck-and-generation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-015-truthcheck-and-generation.md": "863c68b4af6c66f0479649064bb9607d0039c6bf097fde7f808f7c47772732f9"
+      }
+    },
+    {
+      "id": "brief-29-grounded-generation",
+      "title": "Grounded Generation — Claims, Evidence, Citations",
+      "hook": "Content generation is rooted in actual claims and their proof spans; every assertion is traceable back to observation.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "generation-handoff",
+        "claim-evidence-layer"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-015-truthcheck-and-generation.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-015-truthcheck-and-generation.md": "863c68b4af6c66f0479649064bb9607d0039c6bf097fde7f808f7c47772732f9"
+      }
+    },
+    {
+      "id": "brief-30-graduated-publication",
+      "title": "Graduated Publication — Supervised → Trusted → Locked-Back",
+      "hook": "Publication moves through modes: human-supervised (default) → trusted (after N clean validations) → reverts to supervised on incident.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "controlled-preview",
+        "generation-handoff"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-016-graduated-publication.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-016-graduated-publication.md": "59cfe81ea63f94f1b14ff27eae9494511879635527b41719c3be0c82e676493b"
+      }
+    },
+    {
+      "id": "brief-31-generation-handoff",
+      "title": "Generation Handoff — From Brief to Preview",
+      "hook": "Generation explicitly hands off to preview; preview receipt integrity is checked; no silent state transitions.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "generation-handoff",
+        "controlled-preview"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-016-graduated-publication.md"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-016-graduated-publication.md": "59cfe81ea63f94f1b14ff27eae9494511879635527b41719c3be0c82e676493b"
+      }
+    },
+    {
+      "id": "brief-32-re-observation-plan",
+      "title": "Re-Observation Plan — What to Watch After Publishing",
+      "hook": "After publishing, TextOS plans follow-up observations to measure whether the publication changed the authority signals it addressed.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "re-observation-plan"
+      ],
+      "sourcePaths": [
+        "src/manifest/capability-declaration.ts"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "src/manifest/capability-declaration.ts": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae"
+      }
+    },
+    {
+      "id": "brief-33-answer-surface-capability",
+      "title": "Answer Surface Capability — One Query, Multiple Surfaces",
+      "hook": "Different answer engines have different surfaces; TextOS declares which surfaces each provider activates for each query.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "direct-share-of-model",
+        "indirect-mention-share",
+        "total-authority-presence"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-019-answer-surface-capability.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-019-answer-surface-capability.md": "690afaa660ca71b404a2d9c4041db384f4240f40b6373bb7c82af577e6f322b4"
+      }
+    },
+    {
+      "id": "brief-34-dimension-scoped-not-available",
+      "title": "Dimension-Scoped Comparability — Not Available, Never Zero",
+      "hook": "`not_available` (surface didn't trigger) is distinct from a 0% citation rate; comparisons are scoped to dimensions where the surface exists.",
+      "editorialClass": "ARCHITECTURE_DECISION",
+      "primaryCapabilityIds": [
+        "direct-share-of-model",
+        "indirect-mention-share"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-019-answer-surface-capability.md"
+      ],
+      "sourceSemantics": "ACCEPTED_ADR",
+      "truthMode": "AUTHORITATIVE",
+      "sourceDigests": {
+        "docs/adr/ADR-019-answer-surface-capability.md": "690afaa660ca71b404a2d9c4041db384f4240f40b6373bb7c82af577e6f322b4"
+      }
+    },
+    {
+      "id": "brief-35-cross-surface-matrix",
+      "title": "The Cross-Surface Matrix — Juxtaposing Citation Patterns",
+      "hook": "A read model composes observations across surfaces for the same query, showing where you are cited and where you are absent.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "direct-share-of-model",
+        "indirect-mention-share"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-019-answer-surface-capability.md"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-019-answer-surface-capability.md": "690afaa660ca71b404a2d9c4041db384f4240f40b6373bb7c82af577e6f322b4"
+      }
+    },
+    {
+      "id": "brief-36-reconciliation",
+      "title": "Reconciliation — When Surfaces Conflict",
+      "hook": "Some observations may contradict; reconciliation logic decides which to trust, leaving audit trails.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "truth-check",
+        "direct-share-of-model"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-015-truthcheck-and-generation.md"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-015-truthcheck-and-generation.md": "863c68b4af6c66f0479649064bb9607d0039c6bf097fde7f808f7c47772732f9"
+      }
+    },
+    {
+      "id": "brief-37-wordpress-honest-draft",
+      "title": "WordPress as an Integration — Honest Draft Delivery",
+      "hook": "TextOS can route drafts to WordPress without auto-publication; editors review before go-live.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "generation-handoff"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-016-graduated-publication.md"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-016-graduated-publication.md": "59cfe81ea63f94f1b14ff27eae9494511879635527b41719c3be0c82e676493b"
+      }
+    },
+    {
+      "id": "brief-38-portable-oracles",
+      "title": "Portable Opportunity Oracles — Testing Across Contexts",
+      "hook": "Opportunity briefs are assembled deterministically; the same logic can be exercised offline (portable oracle) for validation and testing.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "opportunity-brief"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-014-opportunity-brief.md"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-014-opportunity-brief.md": "f2b012b26bfe6726776bee6d038c492d1f8b1584337ddf83ee4849180a66020d"
+      }
+    },
+    {
+      "id": "brief-39-evidence-approval",
+      "title": "Evidence Approval Workflow — Gating Evidence Publication",
+      "hook": "Before evidence can be used in a brief, it is approved; scoped approval gates prevent using unapproved sources.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "claim-evidence-layer",
+        "truth-check"
+      ],
+      "sourcePaths": [
+        "docs/adr/ADR-012-claim-evidence-layer.md"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "docs/adr/ADR-012-claim-evidence-layer.md": "b2160f974d3a7b626b3cc275a494153e1d20f1bad7f6197a8f5d244fa33ac587"
+      }
+    },
+    {
+      "id": "brief-40-multi-source-merge",
+      "title": "Multi-Source Datastore Merge — Composing Cross-Channel Views",
+      "hook": "TextOS merges data from multiple sources into a unified read model for analysis.",
+      "editorialClass": "ENGINEERING_NOTE",
+      "primaryCapabilityIds": [
+        "observe-authority-presence"
+      ],
+      "sourcePaths": [
+        "src/manifest/capability-declaration.ts"
+      ],
+      "sourceSemantics": "IMPLEMENTATION_EVIDENCE",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "src/manifest/capability-declaration.ts": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae"
+      }
+    },
+    {
+      "id": "brief-41-impact-contract",
+      "title": "The Impact Contract — No Commit Without Editorial Qualification",
+      "hook": "Every commit is paired with a JSON decision declaring its editorial impact; nothing merges without one.",
+      "editorialClass": "COMPANY_TECHNOLOGY",
+      "primaryCapabilityIds": [],
+      "sourcePaths": [
+        "AGENTS.md",
+        "src/change-impact/change-impact.ts"
+      ],
+      "sourceSemantics": "GOVERNANCE_DECISION",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "AGENTS.md": "1c064671aaac52a8632eea9b7f60af0767b225f904415302d1ee420667324621",
+        "src/change-impact/change-impact.ts": "073088c6d8572dcd1b1fe020e989df015b6298bd1a8c48da293dd60b5cd17248"
+      }
+    },
+    {
+      "id": "brief-42-coverage-dispositions",
+      "title": "Coverage Dispositions — Manifest and Code Stay Synchronised",
+      "hook": "Implementation paths are covered by capability bundles, declared as new capabilities, or explicitly outside governance; no silent gaps.",
+      "editorialClass": "COMPANY_TECHNOLOGY",
+      "primaryCapabilityIds": [],
+      "sourcePaths": [
+        "src/change-impact/change-impact.ts",
+        "src/manifest/capability-declaration.ts"
+      ],
+      "sourceSemantics": "GOVERNANCE_DECISION",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "src/change-impact/change-impact.ts": "073088c6d8572dcd1b1fe020e989df015b6298bd1a8c48da293dd60b5cd17248",
+        "src/manifest/capability-declaration.ts": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae"
+      }
+    },
+    {
+      "id": "brief-43-autosufficient-sprint-prompts",
+      "title": "Autosufficient Sprint Prompts — No Conversational Memory Debt",
+      "hook": "Each sprint prompt is self-contained; it does not rely on agent memory; the repository and canonical docs are the only context.",
+      "editorialClass": "COMPANY_TECHNOLOGY",
+      "primaryCapabilityIds": [],
+      "sourcePaths": [
+        "AGENTS.md"
+      ],
+      "sourceSemantics": "GOVERNANCE_DECISION",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "AGENTS.md": "1c064671aaac52a8632eea9b7f60af0767b225f904415302d1ee420667324621"
+      }
+    },
+    {
+      "id": "brief-44-agent-protocol",
+      "title": "Agent Protocol — Immutable Frontiers and Explicit GO",
+      "hook": "Agents never modify canonical artefacts or frozen frontiers; commits require explicit human GO after review; no auto-merge.",
+      "editorialClass": "COMPANY_TECHNOLOGY",
+      "primaryCapabilityIds": [],
+      "sourcePaths": [
+        "AGENTS.md"
+      ],
+      "sourceSemantics": "GOVERNANCE_DECISION",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "AGENTS.md": "1c064671aaac52a8632eea9b7f60af0767b225f904415302d1ee420667324621"
+      }
+    },
+    {
+      "id": "brief-45-capability-declaration-evidence",
+      "title": "Capability Declaration and Evidence Bundles — Tracing Implementation",
+      "hook": "Each capability has implementation status, publication status and evidence bundles (commit SHAs); stale evidence is tracked and assumed, never hidden.",
+      "editorialClass": "COMPANY_TECHNOLOGY",
+      "primaryCapabilityIds": [],
+      "sourcePaths": [
+        "src/manifest/capability-declaration.ts"
+      ],
+      "sourceSemantics": "GOVERNANCE_DECISION",
+      "truthMode": "DOCUMENTARY",
+      "sourceDigests": {
+        "src/manifest/capability-declaration.ts": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae"
+      }
+    }
+  ]
+}
