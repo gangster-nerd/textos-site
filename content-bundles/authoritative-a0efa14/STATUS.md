@@ -26,17 +26,27 @@
 - changed: ∅
 - declarationDiverged: false
 
+## Promotion requests
+- `wordpress-publication` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_BETA) est clampée.
+- `native-composition-gutenberg` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_EARLY_ACCESS) est clampée.
+- `asset-spec` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.
+- `geo-writer` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.
+- `owned-surface-design` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.
+- `query-intelligence` → **PRODUCT_MANIFEST_ENTRY_REQUIRED** (owner: T0) — Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_ROADMAP) est clampée.
+- `opportunity-brief` → **CPO_DISCLOSURE_APPROVAL_REQUIRED** (owner: CPO) — Manifeste = internal_only. internal_only n'est PAS une autorité de divulgation.
+- `repos-intersection` → **CPO_DISCLOSURE_APPROVAL_REQUIRED** (owner: CPO) — Manifeste = internal_only. internal_only n'est PAS une autorité de divulgation.
+
 ## Opportunities
 - **CAPABILITY_DELTA** `—` → — — Aucun delta GA à cette ref. Le contenu peut néanmoins bouger via d'autres signaux.
-- **PRODUCT_KNOWLEDGE_DELTA** `wordpress-publication` → PRIVATE (clamped) — Déclaration éditoriale proposait PUBLIC_BETA mais le plafond manifeste est PRIVATE.
-- **PRODUCT_KNOWLEDGE_DELTA** `native-composition-gutenberg` → PRIVATE (clamped) — Déclaration éditoriale proposait PUBLIC_EARLY_ACCESS mais le plafond manifeste est PRIVATE.
-- **PRODUCT_KNOWLEDGE_DELTA** `asset-spec` → PRIVATE (clamped) — Déclaration éditoriale proposait INTERNAL_LABS mais le plafond manifeste est PRIVATE.
-- **PRODUCT_KNOWLEDGE_DELTA** `geo-writer` → PRIVATE (clamped) — Déclaration éditoriale proposait INTERNAL_LABS mais le plafond manifeste est PRIVATE.
-- **PRODUCT_KNOWLEDGE_DELTA** `owned-surface-design` → PRIVATE (clamped) — Déclaration éditoriale proposait INTERNAL_LABS mais le plafond manifeste est PRIVATE.
-- **PRODUCT_KNOWLEDGE_DELTA** `query-intelligence` → PRIVATE (clamped) — Déclaration éditoriale proposait PUBLIC_ROADMAP mais le plafond manifeste est PRIVATE.
-- **LABS_MATURITY_CHANGE** `opportunity-brief` → INTERNAL_LABS — Déclaration éditoriale conforme au plafond manifeste.
-- **LABS_MATURITY_CHANGE** `repos-intersection` → INTERNAL_LABS — Déclaration éditoriale conforme au plafond manifeste.
-- **PRODUCT_KNOWLEDGE_DELTA** `commit-to-content` → PRIVATE (clamped) — Déclaration éditoriale proposait INTERNAL_LABS mais le plafond manifeste est PRIVATE.
+- **PRODUCT_KNOWLEDGE_DELTA** `wordpress-publication` → PRIVATE (clamped) — Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.
+- **PRODUCT_KNOWLEDGE_DELTA** `native-composition-gutenberg` → PRIVATE (clamped) — Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.
+- **PRODUCT_KNOWLEDGE_DELTA** `asset-spec` → PRIVATE (clamped) — Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.
+- **PRODUCT_KNOWLEDGE_DELTA** `geo-writer` → PRIVATE (clamped) — Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.
+- **PRODUCT_KNOWLEDGE_DELTA** `owned-surface-design` → PRIVATE (clamped) — Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.
+- **PRODUCT_KNOWLEDGE_DELTA** `query-intelligence` → PRIVATE (clamped) — Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.
+- **PRODUCT_KNOWLEDGE_DELTA** `opportunity-brief` → PRIVATE (clamped) — Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.
+- **PRODUCT_KNOWLEDGE_DELTA** `repos-intersection` → PRIVATE (clamped) — Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.
+- **LABS_MATURITY_CHANGE** `commit-to-content` → INTERNAL_LABS — COMPANY_TECHNOLOGY story approuvée CPO — non gouvernée par le manifeste produit mais TERMINALEMENT plafonnée à INTERNAL_LABS (toute promotion commerciale exige une requalification PRODUCT_CAPABILITY).
 - **CONTENT_COVERAGE_GAP** `direct-share-of-model` → PUBLIC_GA — Capacité GA "direct-share-of-model" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.
 - **CONTENT_COVERAGE_GAP** `indirect-mention-share` → PUBLIC_GA — Capacité GA "indirect-mention-share" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.
 - **CONTENT_COVERAGE_GAP** `observe-authority-presence` → PUBLIC_GA — Capacité GA "observe-authority-presence" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.

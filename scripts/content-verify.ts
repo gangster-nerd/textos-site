@@ -72,6 +72,19 @@ function main() {
     if (anyBlocked && bundle.overallStatus === "PUBLIC_SAFE") {
       failures.push(`${name}: overallStatus=PUBLIC_SAFE alors qu'une surface est BLOCKED.`);
     }
+    // Cohérence promotion-requests : chaque entrée clampée doit avoir une route non-vide.
+    for (const p of bundle.promotionRequests) {
+      if (p.promotionRequired && p.route === "NO_PROMOTION_REQUIRED") {
+        failures.push(
+          `${name}: promotion "${p.capabilityId}" clampée mais route=NO_PROMOTION_REQUIRED.`,
+        );
+      }
+      if (!p.promotionRequired && p.route !== "NO_PROMOTION_REQUIRED") {
+        failures.push(
+          `${name}: promotion "${p.capabilityId}" non-clampée mais route=${p.route}.`,
+        );
+      }
+    }
   }
 
   if (failures.length > 0) {

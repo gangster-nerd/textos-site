@@ -18,6 +18,7 @@
 
 import type { ProductManifest } from "@/lib/product-manifest/manifest-schema";
 import type { ContentOpportunity } from "./opportunities";
+import type { PromotionRequest } from "./promotion-requests";
 
 export const TRUTH_LEVELS = ["AUTHORITATIVE_MAIN", "CANDIDATE"] as const;
 export type TruthLevel = (typeof TRUTH_LEVELS)[number];
@@ -109,6 +110,7 @@ export interface ContentBundle {
     maturityGate: { status: "green" | "red"; detail: string };
   };
   opportunities: ContentOpportunity[];
+  promotionRequests: PromotionRequest[];
 }
 
 export interface ResolvedManifestBundle {

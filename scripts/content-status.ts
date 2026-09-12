@@ -51,6 +51,16 @@ function main() {
       console.log(`  - \`${name}\`: **${g.status}** — ${g.detail}`);
     }
     console.log("");
+    const required = bundle.promotionRequests.filter((p) => p.promotionRequired);
+    if (required.length > 0) {
+      console.log(`  Promotion requests (${required.length}) :`);
+      for (const p of required) {
+        console.log(
+          `  - \`${p.capabilityId}\` → **${p.route}** (owner: ${p.requiredOwner}) — ${p.blockingReason}`,
+        );
+      }
+      console.log("");
+    }
   }
 }
 

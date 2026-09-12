@@ -12,31 +12,99 @@
 // pendant le sprint CTC-1 (voir Explore report). Zendesk / Yext / Salesforce / HubSpot ne
 // figurent PAS ici : l'audit n'a trouvé AUCUNE preuve d'implémentation. Ne pas inventer.
 
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { z } from "zod";
 
-import { PUBLIC_MATURITY } from "./maturity";
+import { DISCLOSURE_AUTHORITIES, PUBLIC_MATURITY, STORY_KINDS } from "./maturity";
+
+const COMPANY_TECHNOLOGY_ALLOWED_MATURITY = new Set<string>([
+  "INTERNAL_LABS",
+  "PRIVATE",
+  "FORBIDDEN",
+]);
+
+function siteRoot(): string {
+  // maturity-declarations.ts vit sous lib/commit-to-content/ ; racine = ../..
+  return path.resolve(path.dirname(new URL(import.meta.url).pathname), "..", "..");
+}
 
 export const MaturityDeclarationSchema = z
   .object({
-    capabilityId: z.string().min(1), // clé libre — n'a PAS besoin d'exister dans le manifeste ;
-                                     // les capacités "labs" peuvent ne pas encore y être déclarées
+    capabilityId: z.string().min(1),
     proposedMaturity: z.enum(PUBLIC_MATURITY),
+    // Troisième axe. Absence d'autorité → aucune divulgation publique quel que soit la maturité.
+    disclosureAuthority: z.enum(DISCLOSURE_AUTHORITIES),
+    // Nature du récit — gouvernance différente selon le kind.
+    storyKind: z.enum(STORY_KINDS),
     label: z.string().min(1),
     surface: z.enum(["labs", "product_proof", "faq", "roadmap"]),
-    evidenceRefs: z.array(z.string().min(1)).min(1), // commits, ADR ids, ou paths
+    evidenceRefs: z.array(z.string().min(1)).min(1),
     publicWording: z.string().min(1),
     prohibitedWording: z.array(z.string().min(1)),
     cta: z.enum(["measurement_request", "contact", "labs_signup", "none"]),
-    // Champ documentaire libre — pourquoi cette proposition tient la route.
     rationale: z.string().min(1),
+    // Piste d'audit obligatoire quand disclosureAuthority = CPO_DISCLOSURE_APPROVED.
+    disclosureDecisionRef: z.string().min(1).nullable(),
   })
-  .strict();
+  .strict()
+  .superRefine((d, ctx) => {
+    if (d.disclosureAuthority === "CPO_DISCLOSURE_APPROVED" && !d.disclosureDecisionRef) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["disclosureDecisionRef"],
+        message: "CPO_DISCLOSURE_APPROVED exige une trace de décision durable (disclosureDecisionRef).",
+      });
+    }
+    if (d.storyKind === "COMPANY_TECHNOLOGY" && d.cta !== "none") {
+      ctx.addIssue({
+        code: "custom",
+        path: ["cta"],
+        message: "Une COMPANY_TECHNOLOGY story ne peut porter aucun CTA de vente.",
+      });
+    }
+    // Plafond terminal : COMPANY_TECHNOLOGY ne peut PROPOSER que INTERNAL_LABS / PRIVATE /
+    // FORBIDDEN. Toute promotion commerciale exige une requalification PRODUCT_CAPABILITY et
+    // une gouvernance manifeste. Rejet au schéma pour empêcher toute dérive silencieuse.
+    if (
+      d.storyKind === "COMPANY_TECHNOLOGY" &&
+      !COMPANY_TECHNOLOGY_ALLOWED_MATURITY.has(d.proposedMaturity)
+    ) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["proposedMaturity"],
+        message: `COMPANY_TECHNOLOGY est terminalement plafonnée à INTERNAL_LABS ; ${d.proposedMaturity} exige une requalification storyKind=PRODUCT_CAPABILITY.`,
+      });
+    }
+    // La trace de décision CPO doit pointer un fichier réel du dépôt.
+    if (d.disclosureAuthority === "CPO_DISCLOSURE_APPROVED" && d.disclosureDecisionRef) {
+      // On accepte deux formats : soit un chemin `docs/decisions/*.md` réel, soit un
+      // identifiant textuel ; on valide UNIQUEMENT les chemins.
+      const looksLikePath = d.disclosureDecisionRef.startsWith("docs/");
+      if (looksLikePath) {
+        const abs = path.join(siteRoot(), d.disclosureDecisionRef);
+        if (!existsSync(abs)) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["disclosureDecisionRef"],
+            message: `Fichier de décision introuvable : ${d.disclosureDecisionRef}.`,
+          });
+        }
+      }
+    }
+  });
 
 export type MaturityDeclaration = z.infer<typeof MaturityDeclarationSchema>;
 
+// Défaut : PRODUCT_CAPABILITY sans autorité de divulgation explicite. Les histoires
+// technologiques d'entreprise doivent être marquées explicitement COMPANY_TECHNOLOGY +
+// CPO_DISCLOSURE_APPROVED, avec une trace de décision datée.
 const RAW: MaturityDeclaration[] = [
   {
     capabilityId: "wordpress-publication",
+    storyKind: "PRODUCT_CAPABILITY",
+    disclosureAuthority: "NONE", // aucune décision produit encore
+    disclosureDecisionRef: null,
     proposedMaturity: "PUBLIC_BETA",
     label: "WordPress publication",
     surface: "labs",
@@ -55,10 +123,13 @@ const RAW: MaturityDeclaration[] = [
     ],
     cta: "contact",
     rationale:
-      "Provider WordPress implémenté offline, receipt honnête (observed/ambiguous), test-connection + create-draft + read-status. Publication automatique NON exposée. Un client peut recevoir un draft demain avec du support manuel.",
+      "Provider WordPress implémenté offline, receipt honnête. Aucune décision produit publique encore : ni entrée manifeste, ni approbation CPO datée. Reste PRIVATE.",
   },
   {
     capabilityId: "native-composition-gutenberg",
+    storyKind: "PRODUCT_CAPABILITY",
+    disclosureAuthority: "NONE",
+    disclosureDecisionRef: null,
     proposedMaturity: "PUBLIC_EARLY_ACCESS",
     label: "Native Composition (Gutenberg V0.1)",
     surface: "labs",
@@ -76,10 +147,13 @@ const RAW: MaturityDeclaration[] = [
     ],
     cta: "labs_signup",
     rationale:
-      "Vocabulaire V0.1 stable (heading/paragraph/separator), parity tests verrouillent la sortie. Aucun API public. Early-access via ingénierie manuelle.",
+      "Vocabulaire V0.1 prouvé (parity tests). Aucune décision produit. Reste PRIVATE.",
   },
   {
     capabilityId: "asset-spec",
+    storyKind: "PRODUCT_CAPABILITY",
+    disclosureAuthority: "NONE",
+    disclosureDecisionRef: null,
     proposedMaturity: "INTERNAL_LABS",
     label: "AssetSpec — surface asset specification",
     surface: "labs",
@@ -92,11 +166,13 @@ const RAW: MaturityDeclaration[] = [
       "Internal capability: TextOS derives an owned-surface asset specification before generating any change. Not a customer-facing feature.",
     prohibitedWording: ["available", "beta", "buy", "sign up"],
     cta: "none",
-    rationale:
-      "90 tests ciblés, ADR-021, mais aucun chemin produit ne l'atteint (no_public_content). Digne d'être raconté en Labs / how-we-build, pas vendu.",
+    rationale: "90 tests ciblés. Aucune décision produit publique. Reste PRIVATE.",
   },
   {
     capabilityId: "geo-writer",
+    storyKind: "PRODUCT_CAPABILITY",
+    disclosureAuthority: "NONE",
+    disclosureDecisionRef: null,
     proposedMaturity: "INTERNAL_LABS",
     label: "GEO Writer — grounded slot-by-slot writing",
     surface: "labs",
@@ -108,11 +184,13 @@ const RAW: MaturityDeclaration[] = [
       "Internal capability: TextOS composes evidence-grounded content slot by slot. Not exposed as a customer feature.",
     prohibitedWording: ["available", "beta", "buy", "sign up"],
     cta: "none",
-    rationale:
-      "Coeur générateur prouvé (32+ tests), zéro chemin d'exécution produit. Labs uniquement.",
+    rationale: "Coeur générateur prouvé. Aucune décision produit publique. Reste PRIVATE.",
   },
   {
     capabilityId: "owned-surface-design",
+    storyKind: "PRODUCT_CAPABILITY",
+    disclosureAuthority: "NONE",
+    disclosureDecisionRef: null,
     proposedMaturity: "INTERNAL_LABS",
     label: "Owned-surface design observation",
     surface: "labs",
@@ -124,11 +202,13 @@ const RAW: MaturityDeclaration[] = [
       "Internal capability: TextOS reads the block composition of your owned surface (Gutenberg, Elementor) as observed structure — not opinion.",
     prohibitedWording: ["renders your site", "modifies your site"],
     cta: "none",
-    rationale:
-      "Primitive d'observation pure, prérequis d'AssetSpec / GeoWriter. Bonne matière Labs / how-we-build.",
+    rationale: "Primitive d'observation pure. Aucune décision produit publique. Reste PRIVATE.",
   },
   {
     capabilityId: "query-intelligence",
+    storyKind: "PRODUCT_CAPABILITY",
+    disclosureAuthority: "NONE",
+    disclosureDecisionRef: null,
     proposedMaturity: "PUBLIC_ROADMAP",
     label: "Query Intelligence — demand & buyer-intent evidence",
     surface: "roadmap",
@@ -141,10 +221,15 @@ const RAW: MaturityDeclaration[] = [
     prohibitedWording: ["available", "beta", "buy", "sign up"],
     cta: "contact",
     rationale:
-      "Cinq modules réels, tests passants, mais entité NON déclarée au manifeste (declaration_debt). Roadmap crédible, pas plus.",
+      "Cinq modules réels, tests passants, mais entité NON déclarée au manifeste (declaration_debt). Reste PRIVATE tant qu'aucune approbation.",
   },
   {
     capabilityId: "opportunity-brief",
+    storyKind: "PRODUCT_CAPABILITY",
+    // Le manifeste dit internal_only. Le sprint CTC-5 précise EXPLICITEMENT que
+    // `internal_only` n'est PAS une autorité de divulgation. Donc NONE.
+    disclosureAuthority: "NONE",
+    disclosureDecisionRef: null,
     proposedMaturity: "INTERNAL_LABS",
     label: "Opportunity Brief — fixture-first opportunity judgment",
     surface: "labs",
@@ -157,10 +242,13 @@ const RAW: MaturityDeclaration[] = [
     ],
     cta: "none",
     rationale:
-      "Implémenté mais explicitement non marketable (ADR-014 + prohibitedClaims manifeste). Labs uniquement pour éviter tout malentendu d'automatisation.",
+      "Implémenté mais internal_only (ADR-014). internal_only ≠ autorité publique — reste PRIVATE tant qu'aucune décision CPO.",
   },
   {
     capabilityId: "repos-intersection",
+    storyKind: "PRODUCT_CAPABILITY",
+    disclosureAuthority: "NONE",
+    disclosureDecisionRef: null,
     proposedMaturity: "INTERNAL_LABS",
     label: "Repos Intersection (premium foundation)",
     surface: "labs",
@@ -170,10 +258,15 @@ const RAW: MaturityDeclaration[] = [
     prohibitedWording: ["available", "beta", "buy", "sign up"],
     cta: "none",
     rationale:
-      "Fondation premium, fixture-first. Labs seulement — pas de surface publique.",
+      "Fondation premium interne. internal_only ≠ autorité publique — reste PRIVATE.",
   },
   {
     capabilityId: "commit-to-content",
+    storyKind: "COMPANY_TECHNOLOGY",
+    // SEULE déclaration avec autorité de divulgation explicite : décision CPO datée du
+    // 2026-09-12 autorisant un récit Labs/how-we-build.
+    disclosureAuthority: "CPO_DISCLOSURE_APPROVED",
+    disclosureDecisionRef: "docs/decisions/CPO-2026-09-12-commit-to-content-disclosure.md",
     proposedMaturity: "INTERNAL_LABS",
     label: "Commit to Content (this pipeline)",
     surface: "labs",
@@ -194,7 +287,7 @@ const RAW: MaturityDeclaration[] = [
     ],
     cta: "none",
     rationale:
-      "Décision CPO du 2026-09-12 : commit-to-content EST INTERNAL_LABS. Pas de promesse d'accès client. Peut être raconté en Labs / how-we-build.",
+      "COMPANY_TECHNOLOGY story approuvée CPO. Peut être racontée en surface restreinte Labs/how-we-build. N'EST PAS une capacité produit TextOS.",
   },
 ];
 

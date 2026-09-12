@@ -17,6 +17,33 @@
 
 import type { ProductManifest } from "@/lib/product-manifest/manifest-schema";
 
+// Troisième axe — AUTORITÉ DE DIVULGATION PUBLIQUE.
+//
+// Une capacité peut être MATURE et le manifeste peut permettre de la communiquer, sans que
+// TextOS ait accordé une autorisation formelle de le faire. Ce troisième axe DOIT être présent
+// et positif pour qu'un candidat éditorial atteigne PUBLIC_SAFE.
+//
+// - IMPLICIT_MANIFEST_MARKETABLE : le manifeste dit `public_marketable`. C'est l'autorité de
+//   divulgation implicite historique du site.
+// - CPO_DISCLOSURE_APPROVED : décision CPO explicite, hors manifeste (ex : COMPANY_TECHNOLOGY
+//   story). Doit être ancré sur une trace de décision datée + surface restreinte.
+// - NONE : pas d'autorité — PRIVATE par défaut.
+export const DISCLOSURE_AUTHORITIES = [
+  "IMPLICIT_MANIFEST_MARKETABLE",
+  "CPO_DISCLOSURE_APPROVED",
+  "NONE",
+] as const;
+export type DisclosureAuthority = (typeof DISCLOSURE_AUTHORITIES)[number];
+
+// Nature de l'histoire éditoriale — un candidat n'est jamais gouverné pareil selon qu'il
+// s'agit d'une capacité produit ou d'une histoire technologique d'entreprise.
+//
+// - PRODUCT_CAPABILITY : gouvernée par le manifeste textos-v0. Autorité = publicationStatus.
+// - COMPANY_TECHNOLOGY : histoire d'ingénierie / méthodologie / how-we-build. Exige une
+//   autorité de divulgation CPO explicite, CTA = none, surface restreinte.
+export const STORY_KINDS = ["PRODUCT_CAPABILITY", "COMPANY_TECHNOLOGY"] as const;
+export type StoryKind = (typeof STORY_KINDS)[number];
+
 export const PUBLIC_MATURITY = [
   "PUBLIC_GA",
   "PUBLIC_BETA",
@@ -149,6 +176,64 @@ const MATURITY_ORDER: PublicMaturity[] = [
 
 function rank(m: PublicMaturity): number {
   return MATURITY_ORDER.indexOf(m);
+}
+
+// Sur-couche autorité de divulgation : sans autorité positive, la maturité effective est
+// TOUJOURS PRIVATE, quels que soient la proposition et le plafond manifeste.
+export function effectiveMaturityWithAuthority(args: {
+  proposed: PublicMaturity;
+  ceiling: PublicMaturity;
+  authority: DisclosureAuthority;
+  storyKind: StoryKind;
+}): { effective: PublicMaturity; wasClamped: boolean; reason: string } {
+  if (args.authority === "NONE") {
+    return {
+      effective: "PRIVATE",
+      wasClamped: args.proposed !== "PRIVATE",
+      reason:
+        "Aucune autorité de divulgation (disclosureAuthority=NONE). internal_only, candidate ou implémentation ne suffisent pas.",
+    };
+  }
+  if (args.storyKind === "COMPANY_TECHNOLOGY") {
+    // Une COMPANY_TECHNOLOGY n'est PAS une capacité produit — le plafond manifeste ne
+    // s'applique pas. En contrepartie, elle est TERMINALEMENT plafonnée à INTERNAL_LABS :
+    // toute maturité publique commerciale (GA/BETA/EARLY_ACCESS/ROADMAP) exigerait une
+    // requalification en storyKind=PRODUCT_CAPABILITY et une nouvelle gouvernance manifeste.
+    const companyCap = clampToCompanyTechnology(args.proposed);
+    if (args.authority !== "CPO_DISCLOSURE_APPROVED") {
+      return {
+        effective: "PRIVATE",
+        wasClamped: true,
+        reason:
+          "COMPANY_TECHNOLOGY sans autorité CPO explicite — reste PRIVATE.",
+      };
+    }
+    return {
+      effective: companyCap,
+      wasClamped: companyCap !== args.proposed,
+      reason:
+        "COMPANY_TECHNOLOGY story approuvée CPO — non gouvernée par le manifeste produit mais TERMINALEMENT plafonnée à INTERNAL_LABS (toute promotion commerciale exige une requalification PRODUCT_CAPABILITY).",
+    };
+  }
+  // Sinon (IMPLICIT_MANIFEST_MARKETABLE, ou CPO_DISCLOSURE_APPROVED sur PRODUCT_CAPABILITY) :
+  // rejouer le plafond manifeste normalement.
+  return reconcileMaturity({ proposed: args.proposed, ceiling: args.ceiling });
+}
+
+// Plafond terminal COMPANY_TECHNOLOGY : jamais commercial. Toute proposition GA/BETA/
+// EARLY_ACCESS/ROADMAP est réduite à INTERNAL_LABS. PRIVATE et FORBIDDEN traversent tel quel.
+export function clampToCompanyTechnology(proposed: PublicMaturity): PublicMaturity {
+  switch (proposed) {
+    case "PUBLIC_GA":
+    case "PUBLIC_BETA":
+    case "PUBLIC_EARLY_ACCESS":
+    case "PUBLIC_ROADMAP":
+      return "INTERNAL_LABS";
+    case "INTERNAL_LABS":
+    case "PRIVATE":
+    case "FORBIDDEN":
+      return proposed;
+  }
 }
 
 export function reconcileMaturity(args: {

@@ -4,7 +4,7 @@
 import type { ProductManifest } from "@/lib/product-manifest/manifest-schema";
 
 import { MATURITY_DECLARATIONS } from "./maturity-declarations";
-import { manifestCeiling, reconcileMaturity } from "./maturity";
+import { effectiveMaturityWithAuthority, manifestCeiling } from "./maturity";
 import type { PublicMaturity } from "./maturity";
 import type { CapabilityDelta, ProductSourceRef } from "./types";
 
@@ -63,9 +63,11 @@ export function detectOpportunities(args: {
   // les réconcilier avec le plafond manifeste, émettre une opportunité par entrée éligible.
   for (const decl of MATURITY_DECLARATIONS) {
     const ceiling = manifestCeiling(args.pinnedManifest, decl.capabilityId);
-    const { effective, wasClamped, reason } = reconcileMaturity({
+    const { effective, wasClamped, reason } = effectiveMaturityWithAuthority({
       proposed: decl.proposedMaturity,
       ceiling,
+      authority: decl.disclosureAuthority,
+      storyKind: decl.storyKind,
     });
     const kind: OpportunityKind =
       effective === "PUBLIC_BETA"

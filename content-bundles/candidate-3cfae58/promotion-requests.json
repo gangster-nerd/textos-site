@@ -1,0 +1,314 @@
+[
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [],
+    "blockingReason": "Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_BETA) est clampée.",
+    "capabilityId": "wordpress-publication",
+    "clamped": true,
+    "currentImplementationStatus": null,
+    "currentPublicationStatus": null,
+    "customerDeliverableNow": true,
+    "disclosureAuthority": "NONE",
+    "effectivePublicMaturity": "PRIVATE",
+    "implementationEvidence": [
+      "src/server/textos/act/providers/wordpress/index.ts",
+      "src/server/textos/act/publication.ts",
+      "ADR-016 (S12 graduated publication)"
+    ],
+    "manifestCeiling": "PRIVATE",
+    "manualEngineeringRequired": true,
+    "prohibitedWording": [
+      "one-click publishing",
+      "auto-publish",
+      "GA-level reliability",
+      "production-scale SLA"
+    ],
+    "promotionRequired": true,
+    "requestedManifestChange": "entity wordpress-publication publicationStatus ← candidate (le vocabulaire manifeste v2 n'a pas encore d'état beta/early_access ; à trancher par T0)",
+    "requestedPublicMaturity": "PUBLIC_BETA",
+    "requiredNextAction": "Ajouter l'entité \"wordpress-publication\" au manifeste produit (capability-declaration.ts) et réémettre un artefact push/main. Puis ré-import via product-manifest/IMPORT.md.",
+    "requiredOwner": "T0",
+    "route": "PRODUCT_MANIFEST_ENTRY_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "PRODUCT_CAPABILITY"
+  },
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [],
+    "blockingReason": "Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_EARLY_ACCESS) est clampée.",
+    "capabilityId": "native-composition-gutenberg",
+    "clamped": true,
+    "currentImplementationStatus": null,
+    "currentPublicationStatus": null,
+    "customerDeliverableNow": false,
+    "disclosureAuthority": "NONE",
+    "effectivePublicMaturity": "PRIVATE",
+    "implementationEvidence": [
+      "src/server/textos/act/native-composition/gutenberg-serializer.ts",
+      "src/server/textos/act/native-composition/gutenberg-vocabulary.ts",
+      "gutenberg-parity tests"
+    ],
+    "manifestCeiling": "PRIVATE",
+    "manualEngineeringRequired": true,
+    "prohibitedWording": [
+      "universal composer compatibility",
+      "self-service integration",
+      "supports every WordPress theme"
+    ],
+    "promotionRequired": true,
+    "requestedManifestChange": "entity native-composition-gutenberg publicationStatus ← candidate (le vocabulaire manifeste v2 n'a pas encore d'état beta/early_access ; à trancher par T0)",
+    "requestedPublicMaturity": "PUBLIC_EARLY_ACCESS",
+    "requiredNextAction": "Ajouter l'entité \"native-composition-gutenberg\" au manifeste produit (capability-declaration.ts) et réémettre un artefact push/main. Puis ré-import via product-manifest/IMPORT.md.",
+    "requiredOwner": "T0",
+    "route": "PRODUCT_MANIFEST_ENTRY_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "PRODUCT_CAPABILITY"
+  },
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [],
+    "blockingReason": "Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.",
+    "capabilityId": "asset-spec",
+    "clamped": true,
+    "currentImplementationStatus": null,
+    "currentPublicationStatus": null,
+    "customerDeliverableNow": false,
+    "disclosureAuthority": "NONE",
+    "effectivePublicMaturity": "PRIVATE",
+    "implementationEvidence": [
+      "src/server/textos/act/asset-spec/*",
+      "ADR-021",
+      "2026-08-25-asset-spec-2 change entry"
+    ],
+    "manifestCeiling": "PRIVATE",
+    "manualEngineeringRequired": true,
+    "prohibitedWording": [
+      "available",
+      "beta",
+      "buy",
+      "sign up"
+    ],
+    "promotionRequired": true,
+    "requestedManifestChange": "entity asset-spec publicationStatus ← internal_only + autorité de divulgation CPO_DISCLOSURE_APPROVED côté site",
+    "requestedPublicMaturity": "INTERNAL_LABS",
+    "requiredNextAction": "Ajouter l'entité \"asset-spec\" au manifeste produit (capability-declaration.ts) et réémettre un artefact push/main. Puis ré-import via product-manifest/IMPORT.md.",
+    "requiredOwner": "T0",
+    "route": "PRODUCT_MANIFEST_ENTRY_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "PRODUCT_CAPABILITY"
+  },
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [],
+    "blockingReason": "Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.",
+    "capabilityId": "geo-writer",
+    "clamped": true,
+    "currentImplementationStatus": null,
+    "currentPublicationStatus": null,
+    "customerDeliverableNow": false,
+    "disclosureAuthority": "NONE",
+    "effectivePublicMaturity": "PRIVATE",
+    "implementationEvidence": [
+      "src/server/textos/act/geo-writer/*",
+      "2026-08-24-geo-writer-1 change entry"
+    ],
+    "manifestCeiling": "PRIVATE",
+    "manualEngineeringRequired": true,
+    "prohibitedWording": [
+      "available",
+      "beta",
+      "buy",
+      "sign up"
+    ],
+    "promotionRequired": true,
+    "requestedManifestChange": "entity geo-writer publicationStatus ← internal_only + autorité de divulgation CPO_DISCLOSURE_APPROVED côté site",
+    "requestedPublicMaturity": "INTERNAL_LABS",
+    "requiredNextAction": "Ajouter l'entité \"geo-writer\" au manifeste produit (capability-declaration.ts) et réémettre un artefact push/main. Puis ré-import via product-manifest/IMPORT.md.",
+    "requiredOwner": "T0",
+    "route": "PRODUCT_MANIFEST_ENTRY_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "PRODUCT_CAPABILITY"
+  },
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [],
+    "blockingReason": "Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (INTERNAL_LABS) est clampée.",
+    "capabilityId": "owned-surface-design",
+    "clamped": true,
+    "currentImplementationStatus": null,
+    "currentPublicationStatus": null,
+    "customerDeliverableNow": false,
+    "disclosureAuthority": "NONE",
+    "effectivePublicMaturity": "PRIVATE",
+    "implementationEvidence": [
+      "src/server/textos/observe/owned-surface-design/*",
+      "ADR-021"
+    ],
+    "manifestCeiling": "PRIVATE",
+    "manualEngineeringRequired": true,
+    "prohibitedWording": [
+      "renders your site",
+      "modifies your site"
+    ],
+    "promotionRequired": true,
+    "requestedManifestChange": "entity owned-surface-design publicationStatus ← internal_only + autorité de divulgation CPO_DISCLOSURE_APPROVED côté site",
+    "requestedPublicMaturity": "INTERNAL_LABS",
+    "requiredNextAction": "Ajouter l'entité \"owned-surface-design\" au manifeste produit (capability-declaration.ts) et réémettre un artefact push/main. Puis ré-import via product-manifest/IMPORT.md.",
+    "requiredOwner": "T0",
+    "route": "PRODUCT_MANIFEST_ENTRY_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "PRODUCT_CAPABILITY"
+  },
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [],
+    "blockingReason": "Capacité absente du manifeste épinglé. Le plafond est PRIVATE, la maturité proposée (PUBLIC_ROADMAP) est clampée.",
+    "capabilityId": "query-intelligence",
+    "clamped": true,
+    "currentImplementationStatus": null,
+    "currentPublicationStatus": null,
+    "customerDeliverableNow": false,
+    "disclosureAuthority": "NONE",
+    "effectivePublicMaturity": "PRIVATE",
+    "implementationEvidence": [
+      "src/server/textos/query-intelligence/*",
+      "coverage.test.ts declaration_debt"
+    ],
+    "manifestCeiling": "PRIVATE",
+    "manualEngineeringRequired": false,
+    "prohibitedWording": [
+      "available",
+      "beta",
+      "buy",
+      "sign up"
+    ],
+    "promotionRequired": true,
+    "requestedManifestChange": "entity query-intelligence publicationStatus ← candidate ou internal_only + intendedPublicState=roadmap (extension schéma)",
+    "requestedPublicMaturity": "PUBLIC_ROADMAP",
+    "requiredNextAction": "Ajouter l'entité \"query-intelligence\" au manifeste produit (capability-declaration.ts) et réémettre un artefact push/main. Puis ré-import via product-manifest/IMPORT.md.",
+    "requiredOwner": "T0",
+    "route": "PRODUCT_MANIFEST_ENTRY_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "PRODUCT_CAPABILITY"
+  },
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [],
+    "blockingReason": "Manifeste = internal_only. internal_only n'est PAS une autorité de divulgation.",
+    "capabilityId": "opportunity-brief",
+    "clamped": true,
+    "currentImplementationStatus": "implemented",
+    "currentPublicationStatus": "internal_only",
+    "customerDeliverableNow": false,
+    "disclosureAuthority": "NONE",
+    "effectivePublicMaturity": "PRIVATE",
+    "implementationEvidence": [
+      "src/server/textos/decide/opportunity-brief.ts",
+      "ADR-014"
+    ],
+    "manifestCeiling": "INTERNAL_LABS",
+    "manualEngineeringRequired": true,
+    "prohibitedWording": [
+      "automatically prioritizes actions",
+      "tells you what content to write"
+    ],
+    "promotionRequired": true,
+    "requestedManifestChange": null,
+    "requestedPublicMaturity": "INTERNAL_LABS",
+    "requiredNextAction": "Décision CPO explicite : autoriser une divulgation INTERNAL_LABS pour opportunity-brief, avec disclosureDecisionRef daté.",
+    "requiredOwner": "CPO",
+    "route": "CPO_DISCLOSURE_APPROVAL_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "PRODUCT_CAPABILITY"
+  },
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [],
+    "blockingReason": "Manifeste = internal_only. internal_only n'est PAS une autorité de divulgation.",
+    "capabilityId": "repos-intersection",
+    "clamped": true,
+    "currentImplementationStatus": "implemented",
+    "currentPublicationStatus": "internal_only",
+    "customerDeliverableNow": false,
+    "disclosureAuthority": "NONE",
+    "effectivePublicMaturity": "PRIVATE",
+    "implementationEvidence": [
+      "src/server/textos/premium/repos-intersection.ts",
+      "ADR-017"
+    ],
+    "manifestCeiling": "INTERNAL_LABS",
+    "manualEngineeringRequired": true,
+    "prohibitedWording": [
+      "available",
+      "beta",
+      "buy",
+      "sign up"
+    ],
+    "promotionRequired": true,
+    "requestedManifestChange": null,
+    "requestedPublicMaturity": "INTERNAL_LABS",
+    "requiredNextAction": "Décision CPO explicite : autoriser une divulgation INTERNAL_LABS pour repos-intersection, avec disclosureDecisionRef daté.",
+    "requiredOwner": "CPO",
+    "route": "CPO_DISCLOSURE_APPROVAL_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "PRODUCT_CAPABILITY"
+  },
+  {
+    "allowedCtas": [
+      "none"
+    ],
+    "allowedWording": [
+      "Labs",
+      "How we build",
+      "Internal system",
+      "Used to build the product"
+    ],
+    "blockingReason": "—",
+    "capabilityId": "commit-to-content",
+    "clamped": false,
+    "currentImplementationStatus": null,
+    "currentPublicationStatus": null,
+    "customerDeliverableNow": false,
+    "disclosureAuthority": "CPO_DISCLOSURE_APPROVED",
+    "effectivePublicMaturity": "INTERNAL_LABS",
+    "implementationEvidence": [
+      "textos-site: lib/commit-to-content/*",
+      "textos-site: scripts/content-{sync,verify,status}.ts",
+      "textos-site: docs/commit-to-content-v1.md"
+    ],
+    "manifestCeiling": "PRIVATE",
+    "manualEngineeringRequired": true,
+    "prohibitedWording": [
+      "available",
+      "customer feature",
+      "buy",
+      "sign up",
+      "one-click",
+      "TextOS feature"
+    ],
+    "promotionRequired": false,
+    "requestedManifestChange": null,
+    "requestedPublicMaturity": "INTERNAL_LABS",
+    "requiredNextAction": "Aucune action requise pour ce cycle.",
+    "requiredOwner": "NONE",
+    "route": "NO_PROMOTION_REQUIRED",
+    "sourceProductRef": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "storyKind": "COMPANY_TECHNOLOGY"
+  }
+]
