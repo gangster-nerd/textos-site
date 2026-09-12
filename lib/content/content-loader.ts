@@ -46,8 +46,13 @@ export function deriveContentPath(collection: string, slug: string): string {
 }
 
 export function listSlugs(collection: string): string[] {
+  const dir = path.join(ROOT, collection);
+  // Une collection routée peut légitimement être VIDE : la surface /insights doit être
+  // construite en CTC-9A même quand les articles n'existent pas encore (ils vivent dans la
+  // branche stackée CTC-9B). Retourner `[]` — pas une exception ENOENT.
+  if (!fs.existsSync(dir)) return [];
   return fs
-    .readdirSync(path.join(ROOT, collection))
+    .readdirSync(dir)
     .filter((f) => f.endsWith(".md"))
     .map((f) => f.replace(/\.md$/, ""));
 }

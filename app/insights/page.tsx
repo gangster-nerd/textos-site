@@ -67,26 +67,39 @@ export default function InsightsIndex() {
         </p>
       </header>
 
-      {orderedGroups
-        .filter((g) => (grouped.get(g)?.length ?? 0) > 0)
-        .map((group) => (
-          <section key={group} aria-labelledby={`group-${group}`}>
-            <h2 id={`group-${group}`}>{CLASS_LABEL[group] ?? group}</h2>
-            <ul>
-              {grouped.get(group)!.map((doc) => (
-                <li key={doc.slug}>
-                  <Link href={`/insights/${doc.slug}`}>{doc.frontmatter.title}</Link>
-                  <p>{doc.frontmatter.description}</p>
-                  {doc.frontmatter.editorialStatus !== "published" && (
-                    <span data-status={doc.frontmatter.editorialStatus}>
-                      {doc.frontmatter.editorialStatus}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+      {visible.length === 0 ? (
+        <section aria-labelledby="empty-state" data-empty-state="insights">
+          <h2 id="empty-state">Nothing to show yet</h2>
+          <p>
+            The insights surface is scaffolded but no article has been published against the
+            current product SHA yet. This page is honest about that state — it does not
+            invent placeholder content or fabricate a corpus. When articles land they will
+            appear grouped by editorial class (product principle, architecture decision,
+            engineering note, and so on).
+          </p>
+        </section>
+      ) : (
+        orderedGroups
+          .filter((g) => (grouped.get(g)?.length ?? 0) > 0)
+          .map((group) => (
+            <section key={group} aria-labelledby={`group-${group}`}>
+              <h2 id={`group-${group}`}>{CLASS_LABEL[group] ?? group}</h2>
+              <ul>
+                {grouped.get(group)!.map((doc) => (
+                  <li key={doc.slug}>
+                    <Link href={`/insights/${doc.slug}`}>{doc.frontmatter.title}</Link>
+                    <p>{doc.frontmatter.description}</p>
+                    {doc.frontmatter.editorialStatus !== "published" && (
+                      <span data-status={doc.frontmatter.editorialStatus}>
+                        {doc.frontmatter.editorialStatus}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+      )}
     </main>
   );
 }

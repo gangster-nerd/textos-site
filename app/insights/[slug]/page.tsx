@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -15,12 +16,18 @@ const COLLECTION = "insights";
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
+// Sentinel unique pour output:export : la config `output: "export"` (next.config.mjs) exige
+// que `generateStaticParams` retourne au moins UNE entrée. Quand la collection est vide
+// (CTC-9A avant que la vague CTC-9B ne pose ses articles), on rend une page "not_found"
+// discrète plutôt que de laisser le build échouer. Cette page n'est jamais linkée depuis
+// /insights (index) — elle est purement structurelle.
+const EMPTY_COLLECTION_SENTINEL = "__empty_collection__";
+
 export function generateStaticParams() {
-  // Preview (non-indexé) : rendre les brouillons aussi pour batch review CMO/CTO ;
-  // Production (indexable) : uniquement les publiés.
   const slugs = siteConfig.allowIndexing
     ? listPublishedSlugs(COLLECTION)
     : listSlugs(COLLECTION);
+  if (slugs.length === 0) return [{ slug: EMPTY_COLLECTION_SENTINEL }];
   return slugs.map((slug) => ({ slug }));
 }
 
@@ -30,6 +37,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === EMPTY_COLLECTION_SENTINEL) {
+    return { title: "Not found", robots: { index: false, follow: false } };
+  }
   const doc = loadDocument(COLLECTION, slug);
   return {
     title: doc.frontmatter.title,
@@ -50,6 +60,9 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (slug === EMPTY_COLLECTION_SENTINEL) {
+    notFound();
+  }
   const doc = loadDocument(COLLECTION, slug);
   const jsonLd = buildArticleJsonLd(doc, COLLECTION);
   const fm = doc.frontmatter as ContentFrontmatter & {
