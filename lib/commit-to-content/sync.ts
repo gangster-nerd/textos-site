@@ -16,6 +16,7 @@ import { loadPinnedManifest } from "@/lib/product-manifest/manifest-schema";
 
 import { computeCapabilityDelta } from "./compute-delta";
 import { decidePublishability } from "./publishability";
+import { detectOpportunities } from "./opportunities";
 import { resolveProductRef, computePinnedDeclarationDigest } from "./resolve-product-ref";
 import { writeBundle } from "./bundle";
 import type { BundleProvenance, ContentBundle, TruthLevel } from "./types";
@@ -51,6 +52,7 @@ export function runSync(args: SyncArgs): SyncResult {
 
   const delta = computeCapabilityDelta({ pinnedManifest, targetRef });
   const decision = decidePublishability({ targetRef, delta, pinnedManifest });
+  const opportunities = detectOpportunities({ pinnedManifest, targetRef, delta });
 
   const provenance: BundleProvenance = {
     sourceRepo: pinnedManifest.productRepository,
@@ -69,6 +71,7 @@ export function runSync(args: SyncArgs): SyncResult {
     provenance,
     capabilityDelta: delta,
     ...decision,
+    opportunities,
   };
 
   const bundlePath = writeBundle(args.siteRoot, bundle);

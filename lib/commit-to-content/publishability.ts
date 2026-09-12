@@ -15,6 +15,8 @@
 
 import type { ProductManifest } from "@/lib/product-manifest/manifest-schema";
 
+import { MATURITY_COPY_CONTRACT, manifestCeiling, reconcileMaturity } from "./maturity";
+import { MATURITY_DECLARATIONS } from "./maturity-declarations";
 import type {
   CapabilityDelta,
   ImpactSurface,
@@ -58,6 +60,7 @@ export function decidePublishability(args: {
               "Source CANDIDATE — bundle préparé pour déblocage futur, non publiable en l'état.",
           },
     selfServeCtaGate: selfServeCtaGate(pinnedManifest),
+    maturityGate: maturityGate(pinnedManifest),
   };
 
   const surfaceStatuses: SurfaceImpact[] = NARRATIVE_REFRESH_SURFACES.map((surface) =>
@@ -178,4 +181,43 @@ export function selfServeCtaGate(manifest: ProductManifest): { status: "green" |
     };
   }
   return { status: "green", detail: "Aucune capacité self-serve n'est déclarée public_marketable ; assisted CTA reste seule voie publique." };
+}
+
+// Gate maturité : chaque déclaration éditoriale doit RESTER sous le plafond manifeste après
+// réconciliation, ET n'employer aucun terme interdit par le contrat de copy de sa maturité
+// EFFECTIVE. En cas de violation, le gate passe au rouge — la déclaration doit être corrigée
+// ou retirée.
+export function maturityGate(manifest: ProductManifest): { status: "green" | "red"; detail: string } {
+  const failures: string[] = [];
+  for (const decl of MATURITY_DECLARATIONS) {
+    const ceiling = manifestCeiling(manifest, decl.capabilityId);
+    const { effective, wasClamped } = reconcileMaturity({
+      proposed: decl.proposedMaturity,
+      ceiling,
+    });
+    // Si la déclaration est clamped, sa publicWording n'est PAS publiée telle quelle : le
+    // consommateur utilise la copy autorisée par la maturité effective. Un clamp est un signal
+    // opérationnel (opportunity report), pas une infraction — le gate reste vert.
+    if (wasClamped) continue;
+    const contract = MATURITY_COPY_CONTRACT[decl.proposedMaturity];
+    for (const forbidden of contract.mustNotImply) {
+      if (decl.publicWording.toLowerCase().includes(forbidden.toLowerCase())) {
+        failures.push(
+          `${decl.capabilityId}: publicWording contient "${forbidden}" interdit pour ${effective}.`,
+        );
+      }
+    }
+    if (!contract.ctaAllowed.includes(decl.cta)) {
+      failures.push(
+        `${decl.capabilityId}: CTA="${decl.cta}" non autorisé pour ${effective} (${contract.ctaAllowed.join("|")}).`,
+      );
+    }
+  }
+  if (failures.length > 0) {
+    return { status: "red", detail: failures.join(" • ") };
+  }
+  return {
+    status: "green",
+    detail: `${MATURITY_DECLARATIONS.length} déclarations éditoriales conformes au contrat de copy et au plafond manifeste.`,
+  };
 }

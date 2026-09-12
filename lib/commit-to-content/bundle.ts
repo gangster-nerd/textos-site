@@ -94,6 +94,14 @@ function renderStatusMd(bundle: ContentBundle): string {
   );
   lines.push(`- declarationDiverged: ${bundle.capabilityDelta.declarationDiverged}`);
   lines.push("");
+  lines.push("## Opportunities");
+  for (const o of bundle.opportunities) {
+    const cap = o.capabilityId ?? "—";
+    const mat = o.effectiveMaturity ?? "—";
+    const clamp = o.wasClamped ? " (clamped)" : "";
+    lines.push(`- **${o.kind}** \`${cap}\` → ${mat}${clamp} — ${o.reason}`);
+  }
+  lines.push("");
   return lines.join("\n") + "\n";
 }
 

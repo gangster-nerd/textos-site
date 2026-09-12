@@ -17,6 +17,7 @@
 // un test unitaire.
 
 import type { ProductManifest } from "@/lib/product-manifest/manifest-schema";
+import type { ContentOpportunity } from "./opportunities";
 
 export const TRUTH_LEVELS = ["AUTHORITATIVE_MAIN", "CANDIDATE"] as const;
 export type TruthLevel = (typeof TRUTH_LEVELS)[number];
@@ -105,7 +106,9 @@ export interface ContentBundle {
     declarationIntegrity: { status: "green" | "red"; detail: string };
     truthLevelGate: { status: "green" | "red"; detail: string };
     selfServeCtaGate: { status: "green" | "red"; detail: string };
+    maturityGate: { status: "green" | "red"; detail: string };
   };
+  opportunities: ContentOpportunity[];
 }
 
 export interface ResolvedManifestBundle {

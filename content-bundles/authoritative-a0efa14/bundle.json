@@ -16,6 +16,10 @@
       "detail": "La ref demandée est byte-identique au manifeste épinglé.",
       "status": "green"
     },
+    "maturityGate": {
+      "detail": "9 déclarations éditoriales conformes au contrat de copy et au plafond manifeste.",
+      "status": "green"
+    },
     "selfServeCtaGate": {
       "detail": "3 capacité(s) self-serve reste(nt) internal_only (truth-check, grounded-truth-check, structured-generation). Le pipeline ne propose PAS d'activation publique.",
       "status": "green"
@@ -25,14 +29,181 @@
       "status": "green"
     }
   },
+  "opportunities": [
+    {
+      "capabilityId": null,
+      "cta": null,
+      "effectiveMaturity": null,
+      "kind": "CAPABILITY_DELTA",
+      "proposedMaturity": null,
+      "publicWording": null,
+      "reason": "Aucun delta GA à cette ref. Le contenu peut néanmoins bouger via d'autres signaux.",
+      "surface": null,
+      "wasClamped": false
+    },
+    {
+      "capabilityId": "wordpress-publication",
+      "cta": "contact",
+      "effectiveMaturity": "PRIVATE",
+      "kind": "PRODUCT_KNOWLEDGE_DELTA",
+      "proposedMaturity": "PUBLIC_BETA",
+      "publicWording": "Publish TextOS-generated drafts into your WordPress site. Available for selected design partners; contact us to activate.",
+      "reason": "Déclaration éditoriale proposait PUBLIC_BETA mais le plafond manifeste est PRIVATE.",
+      "surface": "labs",
+      "wasClamped": true
+    },
+    {
+      "capabilityId": "native-composition-gutenberg",
+      "cta": "labs_signup",
+      "effectiveMaturity": "PRIVATE",
+      "kind": "PRODUCT_KNOWLEDGE_DELTA",
+      "proposedMaturity": "PUBLIC_EARLY_ACCESS",
+      "publicWording": "Emit blocks native to your CMS composer (Gutenberg V0.1 subset). Early access with design partners; manual activation.",
+      "reason": "Déclaration éditoriale proposait PUBLIC_EARLY_ACCESS mais le plafond manifeste est PRIVATE.",
+      "surface": "labs",
+      "wasClamped": true
+    },
+    {
+      "capabilityId": "asset-spec",
+      "cta": "none",
+      "effectiveMaturity": "PRIVATE",
+      "kind": "PRODUCT_KNOWLEDGE_DELTA",
+      "proposedMaturity": "INTERNAL_LABS",
+      "publicWording": "Internal capability: TextOS derives an owned-surface asset specification before generating any change. Not a customer-facing feature.",
+      "reason": "Déclaration éditoriale proposait INTERNAL_LABS mais le plafond manifeste est PRIVATE.",
+      "surface": "labs",
+      "wasClamped": true
+    },
+    {
+      "capabilityId": "geo-writer",
+      "cta": "none",
+      "effectiveMaturity": "PRIVATE",
+      "kind": "PRODUCT_KNOWLEDGE_DELTA",
+      "proposedMaturity": "INTERNAL_LABS",
+      "publicWording": "Internal capability: TextOS composes evidence-grounded content slot by slot. Not exposed as a customer feature.",
+      "reason": "Déclaration éditoriale proposait INTERNAL_LABS mais le plafond manifeste est PRIVATE.",
+      "surface": "labs",
+      "wasClamped": true
+    },
+    {
+      "capabilityId": "owned-surface-design",
+      "cta": "none",
+      "effectiveMaturity": "PRIVATE",
+      "kind": "PRODUCT_KNOWLEDGE_DELTA",
+      "proposedMaturity": "INTERNAL_LABS",
+      "publicWording": "Internal capability: TextOS reads the block composition of your owned surface (Gutenberg, Elementor) as observed structure — not opinion.",
+      "reason": "Déclaration éditoriale proposait INTERNAL_LABS mais le plafond manifeste est PRIVATE.",
+      "surface": "labs",
+      "wasClamped": true
+    },
+    {
+      "capabilityId": "query-intelligence",
+      "cta": "contact",
+      "effectiveMaturity": "PRIVATE",
+      "kind": "PRODUCT_KNOWLEDGE_DELTA",
+      "proposedMaturity": "PUBLIC_ROADMAP",
+      "publicWording": "Planned: TextOS is preparing a public capability for demand & buyer-intent evidence on your query panel.",
+      "reason": "Déclaration éditoriale proposait PUBLIC_ROADMAP mais le plafond manifeste est PRIVATE.",
+      "surface": "roadmap",
+      "wasClamped": true
+    },
+    {
+      "capabilityId": "opportunity-brief",
+      "cta": "none",
+      "effectiveMaturity": "INTERNAL_LABS",
+      "kind": "LABS_MATURITY_CHANGE",
+      "proposedMaturity": "INTERNAL_LABS",
+      "publicWording": "Internal capability: TextOS produces opportunity briefs for human editorial judgment. Not automated action.",
+      "reason": "Déclaration éditoriale conforme au plafond manifeste.",
+      "surface": "labs",
+      "wasClamped": false
+    },
+    {
+      "capabilityId": "repos-intersection",
+      "cta": "none",
+      "effectiveMaturity": "INTERNAL_LABS",
+      "kind": "LABS_MATURITY_CHANGE",
+      "proposedMaturity": "INTERNAL_LABS",
+      "publicWording": "Internal capability: TextOS aligns evidence across multiple repositories for premium tiers.",
+      "reason": "Déclaration éditoriale conforme au plafond manifeste.",
+      "surface": "labs",
+      "wasClamped": false
+    },
+    {
+      "capabilityId": "commit-to-content",
+      "cta": "none",
+      "effectiveMaturity": "PRIVATE",
+      "kind": "PRODUCT_KNOWLEDGE_DELTA",
+      "proposedMaturity": "INTERNAL_LABS",
+      "publicWording": "How we build TextOS content: an internal system turns verified product development and GitHub history into governed marketing content. Dogfooded across TextOS, ShortsOS, RepOS.",
+      "reason": "Déclaration éditoriale proposait INTERNAL_LABS mais le plafond manifeste est PRIVATE.",
+      "surface": "labs",
+      "wasClamped": true
+    },
+    {
+      "capabilityId": "direct-share-of-model",
+      "cta": null,
+      "effectiveMaturity": "PUBLIC_GA",
+      "kind": "CONTENT_COVERAGE_GAP",
+      "proposedMaturity": "PUBLIC_GA",
+      "publicWording": null,
+      "reason": "Capacité GA \"direct-share-of-model\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
+      "surface": null,
+      "wasClamped": false
+    },
+    {
+      "capabilityId": "indirect-mention-share",
+      "cta": null,
+      "effectiveMaturity": "PUBLIC_GA",
+      "kind": "CONTENT_COVERAGE_GAP",
+      "proposedMaturity": "PUBLIC_GA",
+      "publicWording": null,
+      "reason": "Capacité GA \"indirect-mention-share\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
+      "surface": null,
+      "wasClamped": false
+    },
+    {
+      "capabilityId": "observe-authority-presence",
+      "cta": null,
+      "effectiveMaturity": "PUBLIC_GA",
+      "kind": "CONTENT_COVERAGE_GAP",
+      "proposedMaturity": "PUBLIC_GA",
+      "publicWording": null,
+      "reason": "Capacité GA \"observe-authority-presence\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
+      "surface": null,
+      "wasClamped": false
+    },
+    {
+      "capabilityId": "quality-ledger",
+      "cta": null,
+      "effectiveMaturity": "PUBLIC_GA",
+      "kind": "CONTENT_COVERAGE_GAP",
+      "proposedMaturity": "PUBLIC_GA",
+      "publicWording": null,
+      "reason": "Capacité GA \"quality-ledger\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
+      "surface": null,
+      "wasClamped": false
+    },
+    {
+      "capabilityId": "total-authority-presence",
+      "cta": null,
+      "effectiveMaturity": "PUBLIC_GA",
+      "kind": "CONTENT_COVERAGE_GAP",
+      "proposedMaturity": "PUBLIC_GA",
+      "publicWording": null,
+      "reason": "Capacité GA \"total-authority-presence\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
+      "surface": null,
+      "wasClamped": false
+    }
+  ],
   "overallReason": "Delta de capacités byte-identique au manifeste épinglé. Le bundle propose une refresh éditoriale dans les bornes déjà commercialisables ; revue PO requise avant merge.",
   "overallStatus": "REQUIRES_HUMAN_REVIEW",
   "provenance": {
-    "generatedAt": "2026-09-12T13:09:22.677Z",
+    "generatedAt": "2026-09-12T13:45:00.110Z",
     "generatorVersion": "commit-to-content@v1",
     "pinnedManifestChecksum": "4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251",
     "pinnedManifestSha": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
-    "siteHead": "ab063e76e2e012859b9e4db8cecda905366fbb1a",
+    "siteHead": "ef745024258a5a662cef1f5ca47a3dcc23f87359",
     "sourceRef": {
       "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
       "matchesPinnedManifest": true,

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-12T13:09:22.677Z",
+  "generatedAt": "2026-09-12T13:45:00.110Z",
   "generatorVersion": "commit-to-content@v1",
   "pinnedManifestChecksum": "4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251",
   "pinnedManifestSha": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
-  "siteHead": "ab063e76e2e012859b9e4db8cecda905366fbb1a",
+  "siteHead": "ef745024258a5a662cef1f5ca47a3dcc23f87359",
   "sourceRef": {
     "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
     "matchesPinnedManifest": true,
