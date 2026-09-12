@@ -1,0 +1,66 @@
+{
+  "gates": {
+    "declarationIntegrity": {
+      "detail": "Digest de la déclaration source conforme à l'épinglé.",
+      "status": "green"
+    },
+    "manifestDrift": {
+      "detail": "La ref demandée est byte-identique au manifeste épinglé.",
+      "status": "green"
+    },
+    "selfServeCtaGate": {
+      "detail": "3 capacité(s) self-serve reste(nt) internal_only (truth-check, grounded-truth-check, structured-generation). Le pipeline ne propose PAS d'activation publique.",
+      "status": "green"
+    },
+    "truthLevelGate": {
+      "detail": "Source CANDIDATE — bundle préparé pour déblocage futur, non publiable en l'état.",
+      "status": "green"
+    }
+  },
+  "overallReason": "Source CANDIDATE (R2 non intégré à main). Bundle préparé et vérifié ; publication conditionnée à l'intégration produit main.",
+  "overallStatus": "WAITING_FOR_PRODUCT_MAIN",
+  "surfaces": [
+    {
+      "affectedFiles": [
+        "app/page.tsx",
+        "components/site/**"
+      ],
+      "candidateSkeletonPath": "candidates/homepage.md",
+      "reason": "Refresh narrative candidate for homepage.",
+      "status": "WAITING_FOR_PRODUCT_MAIN",
+      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "surface": "homepage"
+    },
+    {
+      "affectedFiles": [
+        "components/product/**",
+        "lib/product-proof/**"
+      ],
+      "candidateSkeletonPath": "candidates/product_proof.md",
+      "reason": "Refresh narrative candidate for product_proof.",
+      "status": "WAITING_FOR_PRODUCT_MAIN",
+      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "surface": "product_proof"
+    },
+    {
+      "affectedFiles": [
+        "content/faq/**"
+      ],
+      "candidateSkeletonPath": "candidates/faq.md",
+      "reason": "Refresh narrative candidate for faq.",
+      "status": "WAITING_FOR_PRODUCT_MAIN",
+      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "surface": "faq"
+    },
+    {
+      "affectedFiles": [
+        "content/methodology/**"
+      ],
+      "candidateSkeletonPath": "candidates/methodology.md",
+      "reason": "Refresh narrative candidate for methodology.",
+      "status": "WAITING_FOR_PRODUCT_MAIN",
+      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "surface": "methodology"
+    }
+  ]
+}

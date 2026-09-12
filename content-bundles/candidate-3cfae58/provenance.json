@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-09-12T13:09:41.873Z",
+  "generatorVersion": "commit-to-content@v1",
+  "pinnedManifestChecksum": "4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251",
+  "pinnedManifestSha": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
+  "siteHead": "36da1c864aee110953f5f6f7e19bd18b21ec80e2",
+  "sourceRef": {
+    "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
+    "matchesPinnedManifest": true,
+    "sha": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "shortSha": "3cfae58",
+    "truthLevel": "CANDIDATE"
+  },
+  "sourceRepo": "textos-v0"
+}
