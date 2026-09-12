@@ -1,0 +1,90 @@
+{
+  "bundleId": "authoritative-a0efa14",
+  "capabilityDelta": {
+    "addedEntityIds": [],
+    "changedEntityIds": [],
+    "declarationDiverged": false,
+    "publicationStatusChanges": [],
+    "removedEntityIds": []
+  },
+  "gates": {
+    "declarationIntegrity": {
+      "detail": "Digest de la déclaration source conforme à l'épinglé.",
+      "status": "green"
+    },
+    "manifestDrift": {
+      "detail": "La ref demandée est byte-identique au manifeste épinglé.",
+      "status": "green"
+    },
+    "selfServeCtaGate": {
+      "detail": "3 capacité(s) self-serve reste(nt) internal_only (truth-check, grounded-truth-check, structured-generation). Le pipeline ne propose PAS d'activation publique.",
+      "status": "green"
+    },
+    "truthLevelGate": {
+      "detail": "Source AUTHORITATIVE_MAIN.",
+      "status": "green"
+    }
+  },
+  "overallReason": "Delta de capacités byte-identique au manifeste épinglé. Le bundle propose une refresh éditoriale dans les bornes déjà commercialisables ; revue PO requise avant merge.",
+  "overallStatus": "REQUIRES_HUMAN_REVIEW",
+  "provenance": {
+    "generatedAt": "2026-09-12T13:09:22.677Z",
+    "generatorVersion": "commit-to-content@v1",
+    "pinnedManifestChecksum": "4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251",
+    "pinnedManifestSha": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
+    "siteHead": "ab063e76e2e012859b9e4db8cecda905366fbb1a",
+    "sourceRef": {
+      "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
+      "matchesPinnedManifest": true,
+      "sha": "a0efa146a8691938b624c156d99f4663f6f92218",
+      "shortSha": "a0efa14",
+      "truthLevel": "AUTHORITATIVE_MAIN"
+    },
+    "sourceRepo": "textos-v0"
+  },
+  "surfaces": [
+    {
+      "affectedFiles": [
+        "app/page.tsx",
+        "components/site/**"
+      ],
+      "candidateSkeletonPath": "candidates/homepage.md",
+      "reason": "Refresh narrative candidate for homepage.",
+      "status": "REQUIRES_HUMAN_REVIEW",
+      "statusReason": "Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.",
+      "surface": "homepage"
+    },
+    {
+      "affectedFiles": [
+        "components/product/**",
+        "lib/product-proof/**"
+      ],
+      "candidateSkeletonPath": "candidates/product_proof.md",
+      "reason": "Refresh narrative candidate for product_proof.",
+      "status": "REQUIRES_HUMAN_REVIEW",
+      "statusReason": "Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.",
+      "surface": "product_proof"
+    },
+    {
+      "affectedFiles": [
+        "content/faq/**"
+      ],
+      "candidateSkeletonPath": "candidates/faq.md",
+      "reason": "Refresh narrative candidate for faq.",
+      "status": "REQUIRES_HUMAN_REVIEW",
+      "statusReason": "Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.",
+      "surface": "faq"
+    },
+    {
+      "affectedFiles": [
+        "content/methodology/**"
+      ],
+      "candidateSkeletonPath": "candidates/methodology.md",
+      "reason": "Refresh narrative candidate for methodology.",
+      "status": "REQUIRES_HUMAN_REVIEW",
+      "statusReason": "Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.",
+      "surface": "methodology"
+    }
+  ],
+  "truthLevel": "AUTHORITATIVE_MAIN"
+}
