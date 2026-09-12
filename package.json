@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "validate:jsonld": "node scripts/validate-jsonld.mjs",
-    "verify:product-manifest": "tsx scripts/verify-product-manifest.ts"
+    "verify:product-manifest": "tsx scripts/verify-product-manifest.ts",
+    "content:sync": "tsx scripts/content-sync.ts",
+    "content:verify": "tsx scripts/content-verify.ts",
+    "content:status": "tsx scripts/content-status.ts"
   },
   "dependencies": {
     "geist": "^1.7.2",
