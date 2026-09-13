@@ -52,15 +52,29 @@ function readNodes(htmlPath) {
     } catch (e) {
       fail(`JSON-LD non parsable (${htmlPath}): ` + e.message);
     }
-    nodes = nodes.concat(Array.isArray(parsed) ? parsed : [parsed]);
+    // Accept both flat nodes and @graph wrappers. CTC-ARTICLE-SYSTEM-1 §5 emits a
+    // { "@context", "@graph": [...] } document ; older pages emit standalone nodes.
+    // The invariant remains : every emitted node must have @type. The @context sits
+    // on the wrapper for @graph docs and on each node for flat docs.
+    const list = Array.isArray(parsed) ? parsed : [parsed];
+    for (const item of list) {
+      if (item && Array.isArray(item["@graph"])) {
+        if (!item["@context"]) fail(`@graph wrapper sans @context (${htmlPath})`);
+        nodes = nodes.concat(item["@graph"]);
+      } else {
+        nodes.push(item);
+      }
+    }
   }
 
   for (const n of nodes) {
-    if (!n["@context"]) fail(`nœud sans @context (${htmlPath}): ${JSON.stringify(n).slice(0, 80)}`);
+    // Nodes inside a @graph inherit @context from the wrapper — only check @type here.
     if (!n["@type"]) fail(`nœud sans @type (${htmlPath})`);
   }
   return nodes;
 }
+
+const ARTICLE_TYPES = new Set(["Article", "TechArticle", "BlogPosting"]);
 
 // ---------------------------------------------------------------------------
 // 1. Homepage — SoftwareApplication + featureList ⊆ public_marketable.
@@ -132,8 +146,8 @@ if (contentFiles.length === 0) {
   for (const { collection, file, p } of contentFiles) {
     const nodes = readNodes(p);
 
-    const article = nodes.find((n) => n["@type"] === "Article");
-    if (!article) fail(`nœud Article absent (${p})`);
+    const article = nodes.find((n) => ARTICLE_TYPES.has(n["@type"]));
+    if (!article) fail(`nœud Article/TechArticle/BlogPosting absent (${p})`);
 
     if (nodes.some((n) => n["@type"] === "SoftwareApplication")) {
       fail(`SoftwareApplication interdit sur une page de contenu (${p})`);

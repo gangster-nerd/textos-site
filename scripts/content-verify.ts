@@ -16,6 +16,8 @@ import { verifyEditorialCandidates } from "@/lib/commit-to-content/editorial-ver
 import { selfServeCtaGate } from "@/lib/commit-to-content/publishability";
 import { loadPinnedManifest } from "@/lib/product-manifest/manifest-schema";
 import type { ContentBundle } from "@/lib/commit-to-content/types";
+import { loadCollection } from "@/lib/content/content-loader";
+import { buildLinkGraph } from "@/lib/content/link-graph";
 
 function siteRoot(): string {
   return path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
@@ -119,6 +121,32 @@ function main() {
         failures.push(`${name}: editorial ${f.editorial ?? "?"} — ${f.message}`);
       }
     }
+  }
+
+  // ─── CTC-ARTICLE-SYSTEM-1 §7 — link-graph gates across content collections. ───────────────
+  const linkGraphDocs = [
+    ...loadCollection("faq"),
+    ...loadCollection("methodology"),
+    ...loadCollection("insights"),
+  ];
+  const graph = buildLinkGraph(linkGraphDocs);
+  for (const bl of graph.brokenLinks) {
+    if (bl.reason === "unknown-route") {
+      failures.push(`link-graph: ${bl.from} → ${bl.href} (unknown-route)`);
+    } else if (bl.reason === "target-not-published") {
+      failures.push(`link-graph: PROD ${bl.from} links to DRAFT ${bl.href}`);
+    } else if (bl.reason === "self-link") {
+      failures.push(`link-graph: ${bl.from} → ${bl.href} (self-link)`);
+    }
+  }
+  for (const slug of graph.slugDuplicates) {
+    failures.push(`link-graph: slug ${slug} appears in >1 document`);
+  }
+  for (const p of graph.canonicalDuplicates) {
+    failures.push(`link-graph: canonical path ${p} appears in >1 document`);
+  }
+  for (const id of graph.orphanPublished) {
+    failures.push(`link-graph: published article ${id} is orphan (no inbound)`);
   }
 
   if (failures.length > 0) {

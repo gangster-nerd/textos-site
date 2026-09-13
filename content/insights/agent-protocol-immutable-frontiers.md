@@ -1,12 +1,24 @@
 ---
 title: Agent Protocol — Immutable Frontiers and Explicit GO
-description: 'How we build TextOS with development agents: canonical artefacts stay under human control, frozen frontiers are never modified inside a sprint, and no commit'
+description: 'Development agents at TextOS work under a written protocol: canonical artefacts stay human-controlled, frozen frontiers hold mid-sprint, no commit without a GO.'
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds:
+- marc-p
+firstPublishedAt: null
+lastReviewedAt: '2026-09-13'
+revisionNumber: 0
+schemaType: Article
+primaryTopicId: how-we-build
+topicIds:
+- how-we-build
+audience: reader-technical
+funnelStage: awareness
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs: []
 capabilityIds: []

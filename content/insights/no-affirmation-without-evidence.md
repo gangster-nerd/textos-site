@@ -1,12 +1,25 @@
 ---
 title: No affirmation without evidence
-description: TextOS never lets a generated draft affirm something the observed evidence does not support. A deterministic TruthCheck blocks any contradiction, and no draft
+description: TextOS never lets a draft affirm what the evidence does not support. A deterministic TruthCheck blocks any contradiction, and no draft ships without proof.
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds:
+- marc-p
+firstPublishedAt: null
+lastReviewedAt: '2026-09-13'
+revisionNumber: 0
+schemaType: Article
+primaryTopicId: claim-evidence-and-truth-check
+topicIds:
+- claim-evidence-and-truth-check
+- generation-and-publication
+audience: reader-mixed
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - observe-authority-presence:authority-presence-observation-v1

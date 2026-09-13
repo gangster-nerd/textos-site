@@ -7,7 +7,8 @@ type ContentCtaProps = {
    */
   variant: CtaVariantId | null;
   contentId: string;
-  position: "inline" | "end";
+  position: "inline" | "end" | "final";
+  clusterId?: string;
 };
 
 // Primitive de conversion — RENDU SEUL.
@@ -18,7 +19,7 @@ type ContentCtaProps = {
 // le composant sur une autre route ou dans un autre template.
 //
 // Jamais de bouton grisé, jamais de « coming soon », jamais de lien mort : `null` ne rend rien.
-export function ContentCta({ variant, contentId, position }: ContentCtaProps) {
+export function ContentCta({ variant, contentId, position, clusterId }: ContentCtaProps) {
   if (variant === null) return null;
 
   const definition = getCtaVariant(variant);
@@ -37,9 +38,11 @@ export function ContentCta({ variant, contentId, position }: ContentCtaProps) {
     <aside
       className="content-cta"
       data-content-id={contentId}
+      data-cluster-id={clusterId}
       data-cta-position={position}
       data-cta-variant={definition.id}
       data-cta-version={definition.version}
+      data-cta-source="textos-site"
     >
       <p className="content-cta__title">{definition.title}</p>
       <p className="content-cta__body">{definition.body}</p>

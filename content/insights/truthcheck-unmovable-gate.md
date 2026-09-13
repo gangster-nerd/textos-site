@@ -1,12 +1,25 @@
 ---
 title: TruthCheck — the Unmovable Gate
-description: 'TruthCheck is designed as an unmovable gate: its blocking verdict is deterministic, reproducible, and never lifted by any publication mode. A language model'
+description: 'TruthCheck is an unmovable gate: its blocking verdict is deterministic, reproducible, and never lifted — a language model can only raise alerts, never blocks.'
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds:
+- marc-p
+firstPublishedAt: null
+lastReviewedAt: '2026-09-13'
+revisionNumber: 0
+schemaType: TechArticle
+primaryTopicId: claim-evidence-and-truth-check
+topicIds:
+- claim-evidence-and-truth-check
+- generation-and-publication
+audience: reader-technical
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - observe-authority-presence:observe-run-orchestration-v1

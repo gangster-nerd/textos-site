@@ -1,12 +1,25 @@
 ---
 title: The three dimensions of Authority Presence
-description: Authority Presence is not a single score. TextOS reports Direct Share of Model, Indirect Mention Share and Total Authority Presence as three separate measures
+description: Authority Presence is not one score. TextOS reports Direct Share of Model, Indirect Mention Share, and Total Authority Presence as three separate measures.
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds:
+- marc-p
+firstPublishedAt: null
+lastReviewedAt: '2026-09-13'
+revisionNumber: 0
+schemaType: TechArticle
+primaryTopicId: measurement-mechanics
+topicIds:
+- measurement-mechanics
+- authority-observation
+audience: reader-technical
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - direct-share-of-model:direct-share-measurement-v1

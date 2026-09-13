@@ -1,12 +1,25 @@
 ---
 title: From Brief to Decision — Economics as a Separate, Later Layer
-description: 'A direction under exploration: TextOS is investigating an authority-opportunity economics layer that estimates a defensible break-even threshold, never a'
+description: 'Direction under exploration: TextOS is investigating an economics layer above the Opportunity Brief reporting a break-even threshold, never predicted revenue.'
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds:
+- marc-p
+firstPublishedAt: null
+lastReviewedAt: '2026-09-13'
+revisionNumber: 0
+schemaType: Article
+primaryTopicId: opportunity-and-decision
+topicIds:
+- opportunity-and-decision
+- product-doctrine
+audience: reader-executive
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - quality-ledger:quality-ledger-rates-v1

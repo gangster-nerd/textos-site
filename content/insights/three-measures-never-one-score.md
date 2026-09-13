@@ -1,12 +1,25 @@
 ---
 title: Three measures, never one score
-description: Fusing citations and mentions into a single authority score hides the difference between being cited and being talked about. TextOS refuses the fusion by
+description: Fusing citations and mentions into one authority score hides the difference between being cited and being talked about. TextOS refuses the fusion.
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds:
+- marc-p
+firstPublishedAt: null
+lastReviewedAt: '2026-09-13'
+revisionNumber: 0
+schemaType: Article
+primaryTopicId: measurement-mechanics
+topicIds:
+- measurement-mechanics
+- product-doctrine
+audience: reader-mixed
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - direct-share-of-model:direct-share-measurement-v1

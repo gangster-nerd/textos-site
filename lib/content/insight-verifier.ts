@@ -23,10 +23,13 @@ import {
   TRUTH_MODES,
 } from "./content-schema";
 import type { ResolvedDocument } from "./content-loader";
+import { PERSON_IDS } from "./author-registry";
+import { TOPIC_IDS } from "./topic-registry";
 
 export const INSIGHT_COLLECTION = "insights";
 
 // Contrat strict : les optionnels du schéma générique redeviennent obligatoires ici.
+// CTC-ARTICLE-SYSTEM-1 étend la liste avec les champs éditoriaux publication-grade.
 export const InsightFrontmatterStrictSchema = z
   .object({
     editorialClass: z.enum(EDITORIAL_CLASSES),
@@ -37,6 +40,40 @@ export const InsightFrontmatterStrictSchema = z
       (d) => Object.keys(d).length > 0,
       "sourceDigests doit couvrir tous les sourcePaths.",
     ),
+    // CTC-ARTICLE-SYSTEM-1 §3 — champs publication-grade obligatoires pour /insights.
+    authorId: z
+      .enum(PERSON_IDS as [string, ...string[]])
+      .refine((v) => PERSON_IDS.includes(v), "authorId inconnu du registre author-registry.ts"),
+    reviewerIds: z
+      .array(z.string())
+      .refine((arr) => arr.every((v) => PERSON_IDS.includes(v)), "reviewerId inconnu")
+      .optional(),
+    primaryTopicId: z.enum(TOPIC_IDS as unknown as [string, ...string[]]),
+    topicIds: z
+      .array(z.string())
+      .min(1)
+      .refine((arr) => arr.every((v) => (TOPIC_IDS as readonly string[]).includes(v)), "topicId inconnu"),
+    audience: z.enum([
+      "reader-marketing",
+      "reader-technical",
+      "reader-executive",
+      "reader-mixed",
+    ]),
+    funnelStage: z.enum([
+      "awareness",
+      "consideration",
+      "decision",
+      "expansion",
+      "retention",
+    ]),
+    relatedContentIds: z.array(z.string()).optional(),
+    // firstPublishedAt : null tant que non publié pour de vrai. Ne pas simuler la fraîcheur.
+    firstPublishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
+    // lastReviewedAt : peut évoluer sans prétendre que l'article a été mis à jour.
+    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    revisionNumber: z.number().int().nonnegative(),
+    revisionSummary: z.string().min(1).optional(),
+    schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]),
   })
   .passthrough();
 
@@ -129,6 +166,25 @@ export function verifyInsightDocument(
     failures.push({
       slug,
       message: `${strict.editorialClass} exige ctaVariant=none (obtenu ${String(fm.ctaVariant)}).`,
+    });
+  }
+
+  // 6. primaryTopicId ∈ topicIds
+  if (!strict.topicIds.includes(strict.primaryTopicId)) {
+    failures.push({
+      slug,
+      message: `primaryTopicId "${strict.primaryTopicId}" absent de topicIds ${JSON.stringify(strict.topicIds)}.`,
+    });
+  }
+
+  // 7. Description ends with a proper terminal punctuation ; the schema enforces ≤160 chars
+  // but not sentence completeness. This gate refuses truncated descriptions (they were
+  // observed in wave-1).
+  const desc = String(fm.description ?? "");
+  if (!/[.!?»)][\s]*$/.test(desc)) {
+    failures.push({
+      slug,
+      message: `description tronquée ou sans ponctuation finale : "${desc.slice(-40)}"`,
     });
   }
 

@@ -1,12 +1,24 @@
 ---
 title: Opportunity Brief — Deterministic Assembly from Evidence
-description: 'The Opportunity Brief is designed as a deterministic, mechanically assembled artefact: no LLM in the loop, no ROI estimate, no priority score — only a'
+description: 'The Opportunity Brief is a deterministic, mechanically assembled artefact: no LLM, no ROI estimate, no priority score — only observations and citations.'
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds:
+- marc-p
+firstPublishedAt: null
+lastReviewedAt: '2026-09-13'
+revisionNumber: 0
+schemaType: TechArticle
+primaryTopicId: opportunity-and-decision
+topicIds:
+- opportunity-and-decision
+audience: reader-technical
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - observe-authority-presence:observe-run-orchestration-v1

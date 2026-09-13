@@ -13,6 +13,7 @@ import { SURFACES } from "@/lib/claims-registry";
 
 export const CTA_VARIANT_IDS = [
   "measurement_request",
+  "measurement_start",
   "claim_lookup",
   "trial",
   "none",
@@ -120,6 +121,26 @@ const RAW_CTA_VARIANTS = {
     title: "Start with TextOS",
     body: "Begin measuring authority presence for your brand.",
     primaryLabel: "Start",
+    claimIds: [],
+    version: 1,
+  },
+  // CTC-ARTICLE-SYSTEM-1 §8 — provider-agnostic self-serve CTA. Reste `disabled` tant que
+  // le manifeste produit et le gate self-serve autoritatifs ne l'autorisent pas. La
+  // destination /auth/become est INTENTIONNELLEMENT référencée mais tenue null : le contract
+  // component ne rend rien tant que status !== "approved" && destination === null.
+  measurement_start: {
+    id: "measurement_start",
+    status: "disabled",
+    requiredCapabilities: [
+      "self-serve-onboarding",
+      "authenticated-product-entry",
+      "ui-measurement-launch",
+    ],
+    allowedSurfaces: ["homepage", "faq", "product_article"],
+    destination: null,
+    title: "Measure your brand yourself",
+    body: "Start a self-serve authority-presence measurement on a versioned query panel.",
+    primaryLabel: "Measure my brand",
     claimIds: [],
     version: 1,
   },

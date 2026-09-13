@@ -109,6 +109,26 @@ export const ContentFrontmatterSchema = z
     sourceSemantics: SourceSemanticsSchema.optional(),
     sourceDigests: z.record(z.string().min(1), z.string().regex(/^[0-9a-f]{64}$/)).optional(),
     disclaimer: z.string().min(1).optional(),
+
+    // CTC-ARTICLE-SYSTEM-1 additions — obligatoires côté insight-verifier pour tout nouvel
+    // article /insights. Restent OPTIONNELS au niveau schéma pour rétrocompatibilité des
+    // articles methodology/faq legacy (qui ne les portent pas).
+    authorId: z.string().regex(/^[a-z0-9-]+$/).optional(),
+    reviewerIds: z.array(z.string().regex(/^[a-z0-9-]+$/)).optional(),
+    primaryTopicId: z.string().min(1).optional(),
+    topicIds: z.array(z.string().min(1)).optional(),
+    audience: z
+      .enum(["reader-marketing", "reader-technical", "reader-executive", "reader-mixed"])
+      .optional(),
+    funnelStage: z
+      .enum(["awareness", "consideration", "decision", "expansion", "retention"])
+      .optional(),
+    relatedContentIds: z.array(z.string().min(1)).optional(),
+    firstPublishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    revisionNumber: z.number().int().nonnegative().optional(),
+    revisionSummary: z.string().min(1).optional(),
+    schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]).optional(),
   })
   .strict()
   .superRefine((value, ctx) => {

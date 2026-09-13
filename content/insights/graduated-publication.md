@@ -7,6 +7,19 @@ editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds:
+- marc-p
+firstPublishedAt: null
+lastReviewedAt: '2026-09-13'
+revisionNumber: 0
+schemaType: TechArticle
+primaryTopicId: generation-and-publication
+topicIds:
+- generation-and-publication
+- quality-ledger-and-provenance
+audience: reader-technical
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - quality-ledger:quality-ledger-rates-v1
