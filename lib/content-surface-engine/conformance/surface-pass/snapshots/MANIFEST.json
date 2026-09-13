@@ -1,0 +1,26 @@
+[
+  {
+    "file": "article.desktop.html",
+    "sha256": "75be126a11aa63f58950e1a7a0fcdd9e80ce78be2bd18eaaacbcc91d32bd526f"
+  },
+  {
+    "file": "article.mobile400.html",
+    "sha256": "c7342292e158a8acd0a81712c7cd706194bd5082dd9e10a83ed65a155e2232fb"
+  },
+  {
+    "file": "evidence.desktop.html",
+    "sha256": "61258b50c7c1407b1cdfa30ffc5456bdbe26e9f442766ddacde766f14425343c"
+  },
+  {
+    "file": "evidence.mobile400.html",
+    "sha256": "fddb226f2c16a68ddf4d89617e0ae2e6815ed86cc39f83a1563db2ad3d8b6e97"
+  },
+  {
+    "file": "changelog.desktop.html",
+    "sha256": "e84620c552d71acfd6867fc9bb8b38246ab9fa837d60417551b1834ed237032c"
+  },
+  {
+    "file": "changelog.mobile400.html",
+    "sha256": "542257d4106437f1f4fe4a8124378ad2d0f05adc7a68ec2eb98393db91ac82c6"
+  }
+]
