@@ -1,0 +1,14 @@
+[
+  {
+    "sha": "a0efa146a8691938b624c156d99f4663f6f92218",
+    "authority": "CERTIFIED_MAIN",
+    "recordedBy": "T0",
+    "recordedAt": "2026-09-13T00:00:00Z"
+  },
+  {
+    "sha": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
+    "authority": "CERTIFIED_CANDIDATE",
+    "recordedBy": "T0",
+    "recordedAt": "2026-09-13T00:00:00Z"
+  }
+]
