@@ -1,0 +1,173 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-insight:authority-intelligence-not-ai-seo",
+    "contentType": "product_article",
+    "slug": "authority-intelligence-not-ai-seo",
+    "language": "en",
+    "title": "Authority Intelligence, Not AI SEO",
+    "description": "TextOS measures why answer engines cite or ignore a brand. It is an authority intelligence system, not an AI SEO writer."
+  },
+  "editorial": {
+    "authorIds": [
+      "textos-editorial-team"
+    ],
+    "reviewerIds": [
+      "marc-p"
+    ],
+    "primaryTopicId": "product-doctrine",
+    "topicIds": [
+      "product-doctrine",
+      "authority-observation"
+    ],
+    "audience": "reader-mixed",
+    "funnelStage": "awareness"
+  },
+  "truth": {
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1",
+    "sourceStatus": "PRODUCT_PRINCIPLE:PROSPECTIVE:draft",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "claimIds": [
+      "hp1-measurement-doctrine",
+      "hp2-metric-integrity",
+      "m1-observation-unit",
+      "m7-no-recommendations",
+      "m8-measurement-is-not-verification"
+    ],
+    "evidenceRefs": [
+      "observe-authority-presence:authority-presence-observation-v1",
+      "direct-share-of-model:direct-share-measurement-v1",
+      "indirect-mention-share:indirect-mention-measurement-v1",
+      "total-authority-presence:total-presence-composition-v1",
+      "quality-ledger:quality-ledger-rates-v1"
+    ],
+    "capabilityIds": [
+      "direct-share-of-model",
+      "indirect-mention-share",
+      "observe-authority-presence",
+      "quality-ledger",
+      "total-authority-presence"
+    ]
+  },
+  "provenance": {
+    "sourceRepository": "gangster-nerd/textos-v0",
+    "sourceEvidenceDigest": "24ab42cbaf4152ef1de6cc84dda9a0f52858d649853882f8a409d2d0fef14f0f",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "body": [
+    {
+      "id": "answer",
+      "kind": "answer",
+      "data": {
+        "text": "TextOS is an authority intelligence system, not an AI SEO tool. It measures how answer engines cite or name a brand on a versioned query panel, reports three separate measures with their measurement quality, and produces no rankings, no scores, and no optimisation recommendations."
+      }
+    },
+    {
+      "id": "h-the-category-is-wrong-before-the-tool-is-even-chosen",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The category is wrong before the tool is even chosen"
+      }
+    },
+    {
+      "id": "p-the-category-is-wrong-before-the-tool-is-even-chosen",
+      "kind": "paragraph",
+      "data": {
+        "text": "The label \"AI SEO\" carries a promise TextOS refuses to make. AI SEO tools optimise: they take a brand, a page, a topic, and return a graded output — a score to raise, a suggestion to apply, a checklist to close. That grammar was built for a search-result world in which a rank could be moved by an act. Answer engines do not work that way. They synthesise. They cite. They name. And they do all of it non-deterministically, on surfaces whose rules are not published and whose behaviour changes between two identical prompts."
+      }
+    },
+    {
+      "id": "h-measurement-not-scoring",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Measurement, not scoring"
+      }
+    },
+    {
+      "id": "p-measurement-not-scoring",
+      "kind": "paragraph",
+      "data": {
+        "text": "TextOS measures authority presence reproducibly on a versioned query panel, with dispersion and completeness. It is not a score. It is a measurement."
+      }
+    },
+    {
+      "id": "h-what-is-filled-and-what-is-not",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What is filled — and what is not"
+      }
+    },
+    {
+      "id": "p-what-is-filled-and-what-is-not",
+      "kind": "paragraph",
+      "data": {
+        "text": "The existing category has learned to answer one question well: *what is visible?* Citations, mentions, gaps against a competitive set — those are legitimate observations and tools like Profound, Peec, Otterly and Surfer's AI tracker produce them. The unresolved question is the next one: *why?* And, after that: *what should change?*"
+      }
+    },
+    {
+      "id": "h-what-textos-refuses-to-promise",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What TextOS refuses to promise"
+      }
+    },
+    {
+      "id": "p-what-textos-refuses-to-promise",
+      "kind": "paragraph",
+      "data": {
+        "text": "A short list, because promises are how categories mislead their markets:"
+      }
+    },
+    {
+      "id": "h-the-shape-of-the-promise",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The shape of the promise"
+      }
+    },
+    {
+      "id": "p-the-shape-of-the-promise",
+      "kind": "paragraph",
+      "data": {
+        "text": "The customer of an authority intelligence system is not buying articles. They are buying a defensible view of a market they cannot otherwise see: who answer engines treat as a reference on the questions their buyers ask, where their own brand sits in that landscape, and on which surfaces the picture changes. The product succeeds when a decision-maker can look at the measurement and act on it — or decide not to — with the same confidence they would give a survey whose methodology they trust."
+      }
+    },
+    {
+      "id": "h-related-reading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Related reading"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "conversionAllowed": false
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "lastReviewedAt": "2026-09-13",
+    "revisionNumber": 0
+  },
+  "seo": {
+    "indexingIntent": "noindex",
+    "canonicalPath": "/insights/authority-intelligence-not-ai-seo",
+    "schemaType": "Article",
+    "targetQuery": "authority intelligence versus ai seo",
+    "searchIntent": "informational"
+  }
+}

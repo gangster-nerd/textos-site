@@ -1,0 +1,197 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-insight:brief-to-decision-economics",
+    "contentType": "product_article",
+    "slug": "brief-to-decision-economics",
+    "language": "en",
+    "title": "From Brief to Decision — Economics as a Separate, Later Layer",
+    "description": "Direction under exploration: TextOS is investigating an economics layer above the Opportunity Brief reporting a break-even threshold, never predicted revenue."
+  },
+  "editorial": {
+    "authorIds": [
+      "textos-editorial-team"
+    ],
+    "reviewerIds": [
+      "marc-p"
+    ],
+    "primaryTopicId": "opportunity-and-decision",
+    "topicIds": [
+      "opportunity-and-decision",
+      "product-doctrine"
+    ],
+    "audience": "reader-executive",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1",
+    "sourceStatus": "ROADMAP_DIRECTION:PROSPECTIVE:draft",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "claimIds": [
+      "hp1-measurement-doctrine",
+      "hp2-metric-integrity",
+      "m5-not-observable-is-not-zero",
+      "m7-no-recommendations"
+    ],
+    "evidenceRefs": [
+      "quality-ledger:quality-ledger-rates-v1",
+      "observe-authority-presence:authority-presence-observation-v1"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
+    ]
+  },
+  "provenance": {
+    "sourceRepository": "gangster-nerd/textos-v0",
+    "sourceEvidenceDigest": "6e978e584a57e74c7a669cd0c63065a31edce6e7c3764e25a3d9ec53b4e18caf",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "body": [
+    {
+      "id": "answer",
+      "kind": "answer",
+      "data": {
+        "text": "TextOS is exploring an economics layer that would sit above the Opportunity Brief and report a break-even threshold on contribution margin — never a predicted revenue. Direction under exploration — not a delivery commitment."
+      }
+    },
+    {
+      "id": "h-the-question-the-buyer-eventually-asks",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The question the buyer eventually asks"
+      }
+    },
+    {
+      "id": "p-the-question-the-buyer-eventually-asks",
+      "kind": "paragraph",
+      "data": {
+        "text": "An authority-presence measurement can be defensible on its own. It answers what is visible, on which surface, on which panel, with what dispersion, and it refuses to answer questions it was not built for. That is enough to be trusted; it is not always enough to close a decision. Sooner or later a buyer asks the next question: *what is this absence costing me, who is capturing the attention I am not, and what is the smallest portfolio of assets that would recover the ground?* This article documents where TextOS is heading on that question. It documents an exploration, not a delivered feature."
+      }
+    },
+    {
+      "id": "h-the-decision-we-are-not-going-to-make",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The decision we are not going to make"
+      }
+    },
+    {
+      "id": "p-the-decision-we-are-not-going-to-make",
+      "kind": "paragraph",
+      "data": {
+        "text": "There is a tempting formula for lost opportunity that reads well in a slide:"
+      }
+    },
+    {
+      "id": "h-the-inversion-a-break-even-threshold-on-contribution-margin",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The inversion — a break-even threshold on contribution margin"
+      }
+    },
+    {
+      "id": "p-the-inversion-a-break-even-threshold-on-contribution-margin",
+      "kind": "paragraph",
+      "data": {
+        "text": "The direction under exploration inverts the model. Instead of asking \"how much revenue would we recover?\", it asks \"how well would the intervention have to perform to be worth doing?\". Mathematically:"
+      }
+    },
+    {
+      "id": "h-epistemic-status-and-provenance-two-axes-never-merged",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Epistemic status and provenance — two axes, never merged"
+      }
+    },
+    {
+      "id": "p-epistemic-status-and-provenance-two-axes-never-merged",
+      "kind": "paragraph",
+      "data": {
+        "text": "The exploration also formalises what many marketing dashboards fudge: every economic output carries two labels, not one. **Epistemic status** answers *how sure*. **Provenance** answers *where the data came from*. A number can be `modeled` under transparent assumptions; it can be observed inside a client system; it can be reported by the client in an oral estimate; it can be an external proxy. These are all legitimate — and they are all different. A conversion rate declared by a salesperson is not the same input as a conversion rate read from GA4, even if both are called \"conversion rate\" in the CRM."
+      }
+    },
+    {
+      "id": "h-attention-allocation-a-modeled-distribution-never-a-click-count",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Attention allocation — a modeled distribution, never a click count"
+      }
+    },
+    {
+      "id": "p-attention-allocation-a-modeled-distribution-never-a-click-count",
+      "kind": "paragraph",
+      "data": {
+        "text": "The second half of the exploration concerns *who captures the attention we are not capturing*. TextOS can produce a modelled distribution — from observable signals — of how frequently which subjects appear, with what position, how often the domain is cited directly, and how stable that distribution is across runs. That distribution is a *modeled attention allocation*, and the word \"modeled\" travels with the number. It is not, and cannot be, a count of clicks received by a competitor. Where a real click stream exists in a client system, the label upgrades. Where it does not, the label stays honest."
+      }
+    },
+    {
+      "id": "h-why-the-layer-sits-later-and-why-it-is-not-in-s8-s9",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Why the layer sits later — and why it is not in S8/S9"
+      }
+    },
+    {
+      "id": "p-why-the-layer-sits-later-and-why-it-is-not-in-s8-s9",
+      "kind": "paragraph",
+      "data": {
+        "text": "The Brief layer must remain deterministic and ROI-free. Every argument for the pipeline's honesty depends on that. If a euro figure travelled inside `judgeOpportunities`, the mechanical judgement of defensibility would immediately become a defence of the assumptions behind the number, and the entire chain from observation to brief would inherit that fragility."
+      }
+    },
+    {
+      "id": "h-what-this-article-is-not",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What this article is not"
+      }
+    },
+    {
+      "id": "p-what-this-article-is-not",
+      "kind": "paragraph",
+      "data": {
+        "text": "It is not a launch announcement. It is not a delivery commitment. Neither `opportunity-brief` nor the economics layer is publicly available today — the Brief capability is held in `internal_only`, and the economics layer sits behind two accepted architecture decisions but not yet behind a shipped surface. What is documented here is an accepted *direction* whose invariants we have decided to publish now, precisely so that the direction can be criticised before it hardens."
+      }
+    },
+    {
+      "id": "h-related-reading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Related reading"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "MEASURE_BRAND",
+    "conversionAllowed": true
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "lastReviewedAt": "2026-09-13",
+    "revisionNumber": 0
+  },
+  "seo": {
+    "indexingIntent": "noindex",
+    "canonicalPath": "/insights/brief-to-decision-economics",
+    "schemaType": "Article",
+    "targetQuery": "textos roi economics opportunity brief",
+    "searchIntent": "informational"
+  }
+}

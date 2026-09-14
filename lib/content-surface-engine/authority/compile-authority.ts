@@ -72,12 +72,26 @@ function absoluteUrl(origin: string | null, path: string | null | undefined): st
 }
 
 // A `contentType` heuristic that maps a producer's contentType string to a schema.org type.
-// The renderer never invents a type: the document's `seo.schemaType` (if provided) wins; the
-// heuristic only fills a policy-permitted default. Non-article content types get null so no
-// Article node is emitted for a changelog entry.
+//
+// AUTHORITY AUDIT (A3, phase 3): factually-justified mapping is DELIBERATELY narrow.
+//
+//   * product_article  → "Article"       — long-form editorial artefact; JSON-LD Article
+//                                          faithfully represents the shape.
+//   * every other type → null            — no automatic mapping.
+//
+// Previously `developer_note` and `faq_entry` were mapped to "Article" purely because they
+// contained text. That is not a factual justification. In particular:
+//   - `faq_entry` maps naturally to FAQPage, but FAQPage requires structured Q/A pairs the
+//     shared block vocabulary does NOT model. Emitting Article for a FAQ entry would misstate
+//     the content shape; emitting FAQPage without Q/A discriminants would be an SEO tactic.
+//     A future FAQ profile with real `faq_pair` blocks may revisit this — for now, null.
+//   - `developer_note` is a governed short-form note that neither matches Article (no
+//     headline/date guarantees) nor any other schema.org type. null is correct.
+//
+// The producer can still opt in explicitly: `document.seo.schemaType` (if provided) wins,
+// letting a policy override the heuristic when factually warranted.
 function defaultSchemaType(contentType: string): string | null {
-  if (contentType === "product_article" || contentType === "developer_note") return "Article";
-  if (contentType === "faq_entry") return "Article";
+  if (contentType === "product_article") return "Article";
   return null;
 }
 

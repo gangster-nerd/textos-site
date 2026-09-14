@@ -1,0 +1,220 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-insight:three-dimensions-authority-presence",
+    "contentType": "product_article",
+    "slug": "three-dimensions-authority-presence",
+    "language": "en",
+    "title": "The three dimensions of Authority Presence",
+    "description": "Authority Presence is not one score. TextOS reports Direct Share of Model, Indirect Mention Share, and Total Authority Presence as three separate measures."
+  },
+  "editorial": {
+    "authorIds": [
+      "textos-editorial-team"
+    ],
+    "reviewerIds": [
+      "marc-p"
+    ],
+    "primaryTopicId": "measurement-mechanics",
+    "topicIds": [
+      "measurement-mechanics",
+      "authority-observation"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1",
+    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "claimIds": [
+      "m1-observation-unit",
+      "m2-direct-share-of-model",
+      "m3-indirect-mention-share",
+      "m4-total-is-a-union",
+      "m5-not-observable-is-not-zero",
+      "hp2-metric-integrity"
+    ],
+    "evidenceRefs": [
+      "direct-share-of-model:direct-share-measurement-v1",
+      "indirect-mention-share:indirect-mention-measurement-v1",
+      "total-authority-presence:total-presence-composition-v1",
+      "quality-ledger:quality-ledger-rates-v1",
+      "observe-authority-presence:authority-presence-observation-v1"
+    ],
+    "capabilityIds": [
+      "direct-share-of-model",
+      "indirect-mention-share",
+      "observe-authority-presence",
+      "quality-ledger",
+      "total-authority-presence"
+    ]
+  },
+  "provenance": {
+    "sourceRepository": "gangster-nerd/textos-v0",
+    "sourceEvidenceDigest": "766492056e0b1f36238cc300663daeca1f0cdd84826192694fc0ca6f8d3e9fba",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "body": [
+    {
+      "id": "answer",
+      "kind": "answer",
+      "data": {
+        "text": "TextOS reports Authority Presence as three separate measures. Direct Share of Model counts observations where the tracked entity is cited as a source. Indirect Mention Share counts observations where a third-party citation names the entity. Total Authority Presence is the union of the two, counted once per observation."
+      }
+    },
+    {
+      "id": "h-an-architectural-decision-not-a-display-choice",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "An architectural decision, not a display choice"
+      }
+    },
+    {
+      "id": "p-an-architectural-decision-not-a-display-choice",
+      "kind": "paragraph",
+      "data": {
+        "text": "A dashboard that shows \"Authority: 62\" hides an architectural choice. Somewhere in the code, someone decided how to weight what the engine cited as a source against what the engine merely named in a sentence, then folded the answer into a single number. That choice is invisible to the reader, unreproducible from the outside, and unstable the day the weighting changes."
+      }
+    },
+    {
+      "id": "h-what-the-three-measures-observe",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What the three measures observe"
+      }
+    },
+    {
+      "id": "p-what-the-three-measures-observe",
+      "kind": "paragraph",
+      "data": {
+        "text": "Every measurement in TextOS starts from a single unit: one engine answer to one query, at one moment, on one surface. Each answer is kept as a separate observation, versioned by the method that produced it. On top of those observations, three questions are asked independently."
+      }
+    },
+    {
+      "id": "h-why-the-union-is-not-a-sum",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Why the union is not a sum"
+      }
+    },
+    {
+      "id": "p-why-the-union-is-not-a-sum",
+      "kind": "paragraph",
+      "data": {
+        "text": "The temptation is arithmetic. Direct Share of Model is 40%, Indirect Mention Share is 50%, therefore Authority is 90%. That number is wrong every time an observation carries both a direct citation and an indirect mention of the same entity — which is common, because an engine can plausibly link to a brand's own site and mention it in the same sentence."
+      }
+    },
+    {
+      "id": "h-why-the-measures-must-be-reported-separately",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Why the measures must be reported separately"
+      }
+    },
+    {
+      "id": "p-why-the-measures-must-be-reported-separately",
+      "kind": "paragraph",
+      "data": {
+        "text": "Fusing Direct and Indirect into a single number destroys information that no downstream reader can recover."
+      }
+    },
+    {
+      "id": "h-when-a-measure-cannot-be-observed",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "When a measure cannot be observed"
+      }
+    },
+    {
+      "id": "p-when-a-measure-cannot-be-observed",
+      "kind": "paragraph",
+      "data": {
+        "text": "Not every method can see every signal. Some engines return a list of cited sources but no snippet of the passages that used them; from such a response, direct citations can be extracted, indirect mentions cannot. ADR-011 turns that limit into an explicit output: when the method of the run does not produce the `indirect_mention` signal, Indirect Mention Share is reported as *not observable*, not as zero."
+      }
+    },
+    {
+      "id": "h-every-measure-names-its-entity",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Every measure names its entity"
+      }
+    },
+    {
+      "id": "p-every-measure-names-its-entity",
+      "kind": "paragraph",
+      "data": {
+        "text": "There is no such thing as \"the brand's Share of Model\" without an entity. Panels track multiple entities — a brand, its competitors, sometimes a category term — and every measure carries the identifier of the entity it is about. ADR-011 makes this explicit: measures are computed *per tracked entity*, never for the panel as a whole."
+      }
+    },
+    {
+      "id": "h-what-each-measure-carries-around-it",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What each measure carries around it"
+      }
+    },
+    {
+      "id": "p-what-each-measure-carries-around-it",
+      "kind": "paragraph",
+      "data": {
+        "text": "A single number is easy to compare and easy to misread. Each measure is therefore reported alongside its numerator and denominator (exposed as integers, not hidden inside the ratio), a **per-query breakdown** — three hits out of five executions of one query says something about instability, three hits across five different queries says something about coverage, and a single average would flatten the two — and a **dispersion** summary of minimum, maximum, mean and standard deviation across queries."
+      }
+    },
+    {
+      "id": "h-what-this-decision-buys",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What this decision buys"
+      }
+    },
+    {
+      "id": "p-what-this-decision-buys",
+      "kind": "paragraph",
+      "data": {
+        "text": "Three separate measures cost more to display than one. They also do three things a composite score cannot."
+      }
+    },
+    {
+      "id": "h-related-methodology",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Related methodology"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "MEASURE_BRAND",
+    "conversionAllowed": true
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "lastReviewedAt": "2026-09-13",
+    "revisionNumber": 0
+  },
+  "seo": {
+    "indexingIntent": "noindex",
+    "canonicalPath": "/insights/three-dimensions-authority-presence",
+    "schemaType": "TechArticle",
+    "targetQuery": "three measures of authority presence",
+    "searchIntent": "informational"
+  }
+}

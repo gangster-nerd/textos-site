@@ -1,0 +1,183 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-insight:graduated-publication",
+    "contentType": "product_article",
+    "slug": "graduated-publication",
+    "language": "en",
+    "title": "Graduated Publication — Supervised, Trusted, Locked-Back",
+    "description": "How TextOS publishes accepted, truth-checked drafts under a graduated trust regime — and traces effect as a descriptive delta, never a causal claim."
+  },
+  "editorial": {
+    "authorIds": [
+      "textos-editorial-team"
+    ],
+    "reviewerIds": [
+      "marc-p"
+    ],
+    "primaryTopicId": "generation-and-publication",
+    "topicIds": [
+      "generation-and-publication",
+      "quality-ledger-and-provenance"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1",
+    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "claimIds": [
+      "hp1-measurement-doctrine",
+      "hp2-metric-integrity",
+      "m5-not-observable-is-not-zero",
+      "m7-no-recommendations",
+      "m8-measurement-is-not-verification"
+    ],
+    "evidenceRefs": [
+      "quality-ledger:quality-ledger-rates-v1",
+      "observe-authority-presence:authority-presence-observation-v1"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
+    ]
+  },
+  "provenance": {
+    "sourceRepository": "gangster-nerd/textos-v0",
+    "sourceEvidenceDigest": "b991298ea90a5bc111bc188124eb5e065fd9710220d8a16f9299149568084078",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "body": [
+    {
+      "id": "answer",
+      "kind": "answer",
+      "data": {
+        "text": "Publication moves through three modes — supervised (default), trusted (after a threshold of clean validations), and locked-back (forced return on incident). Two gates never lift: acceptance to a validated brief, and truth-check. Effect is reported as a descriptive delta between runs, never as a causal claim."
+      }
+    },
+    {
+      "id": "h-publication-is-the-moment-the-system-meets-a-live-surface",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Publication is the moment the system meets a live surface"
+      }
+    },
+    {
+      "id": "p-publication-is-the-moment-the-system-meets-a-live-surface",
+      "kind": "paragraph",
+      "data": {
+        "text": "A measurement system stays honest as long as it only observes. It becomes exposed the instant it publishes. Every content pipeline that sits above answer engines eventually confronts the same question: at what point does a draft leave human hands? Content farms answer immediately, en masse, and eat their own credibility. Fully-supervised pipelines answer never, and stop scaling. TextOS answers with a third option — a **graduated publication regime** governed by an explicit machine and two gates that never lift."
+      }
+    },
+    {
+      "id": "h-three-modes-one-deterministic-machine",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Three modes, one deterministic machine"
+      }
+    },
+    {
+      "id": "p-three-modes-one-deterministic-machine",
+      "kind": "paragraph",
+      "data": {
+        "text": "Publication moves between three modes, each of which is a state in a pure, deterministic machine:"
+      }
+    },
+    {
+      "id": "h-two-gates-that-never-lift-even-in-trusted",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Two gates that never lift — even in `trusted`"
+      }
+    },
+    {
+      "id": "p-two-gates-that-never-lift-even-in-trusted",
+      "kind": "paragraph",
+      "data": {
+        "text": "Modes govern the *review* layer. They govern nothing else. Two gates operate underneath and remain in force whatever the mode says:"
+      }
+    },
+    {
+      "id": "h-effect-as-descriptive-delta-the-first-inter-run-comparison-and-only-for-effect",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Effect as descriptive delta — the first inter-run comparison, and only for effect"
+      }
+    },
+    {
+      "id": "p-effect-as-descriptive-delta-the-first-inter-run-comparison-and-only-for-effect",
+      "kind": "paragraph",
+      "data": {
+        "text": "Publication is inseparable from the question every operator asks next: *did it change anything?* Answering that question requires comparing presence measurements taken before and after — that is, comparing two runs. Elsewhere in the pipeline, inter-run comparison is explicitly forbidden: measurements from separate runs are not directly comparable because engines are non-deterministic and the same panel executed twice yields different distributions. That rule stands."
+      }
+    },
+    {
+      "id": "h-what-graduated-publication-does-not-do",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What graduated publication does not do"
+      }
+    },
+    {
+      "id": "p-what-graduated-publication-does-not-do",
+      "kind": "paragraph",
+      "data": {
+        "text": "A short list, because the boundary matters:"
+      }
+    },
+    {
+      "id": "h-why-we-are-documenting-this-now",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Why we are documenting this now"
+      }
+    },
+    {
+      "id": "p-why-we-are-documenting-this-now",
+      "kind": "paragraph",
+      "data": {
+        "text": "ADR-016 is an accepted architecture decision. The corresponding capabilities are implemented and held in `internal_only` — meaning: the engineering exists, the boundary is described, and the product does not yet expose it publicly. Documenting the decision without exposing the surface is deliberate. It lets the shape of the boundary be criticised, contested and refined before a customer-facing surface hardens around it."
+      }
+    },
+    {
+      "id": "h-related-reading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Related reading"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "MEASURE_BRAND",
+    "conversionAllowed": true
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "lastReviewedAt": "2026-09-13",
+    "revisionNumber": 0
+  },
+  "seo": {
+    "indexingIntent": "noindex",
+    "canonicalPath": "/insights/graduated-publication",
+    "schemaType": "TechArticle",
+    "targetQuery": "how does textos publish content safely",
+    "searchIntent": "informational"
+  }
+}
