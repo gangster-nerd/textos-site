@@ -286,9 +286,12 @@ describe("état réel du dépôt", () => {
     // Ici les documents sont chargés par le MÊME pipeline que les pages, et ce sont leurs valeurs
     // de frontmatter qui entrent dans la vérification. Un futur réimport qui bougerait le snapshot
     // sans relire les contenus fera donc réellement rougir ce test.
-    const docs = routedCollections(process.cwd()).flatMap((collection) =>
-      loadCollection(collection)
-    );
+    // CTC-9-A : insights est une nouvelle collection routée dont les articles restent en
+    // brouillon (batch review CMO/CTO). Le contrat de provenance porte sur ce qui est
+    // effectivement PUBLIÉ.
+    const docs = routedCollections(process.cwd())
+      .flatMap((collection) => loadCollection(collection))
+      .filter((d) => d.frontmatter.editorialStatus === "published");
 
     expect(docs).toHaveLength(5);
 
