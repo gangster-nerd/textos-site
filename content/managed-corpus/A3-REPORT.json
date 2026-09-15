@@ -1,0 +1,329 @@
+{
+  "generatedAt": "2026-09-13T00:00:00Z",
+  "inventory": {
+    "migratedAt": "2026-09-13",
+    "sourceBranch": "feat/ctc-article-system-1",
+    "entries": [
+      {
+        "slug": "agent-protocol-immutable-frontiers",
+        "path": "content/insights/agent-protocol-immutable-frontiers.md",
+        "sha256": "bd5a428e17764942973700142ff4bbbd88001452c5e6db44e9bd5a7635a9e0a8"
+      },
+      {
+        "slug": "authority-intelligence-not-ai-seo",
+        "path": "content/insights/authority-intelligence-not-ai-seo.md",
+        "sha256": "24ab42cbaf4152ef1de6cc84dda9a0f52858d649853882f8a409d2d0fef14f0f"
+      },
+      {
+        "slug": "brief-to-decision-economics",
+        "path": "content/insights/brief-to-decision-economics.md",
+        "sha256": "6e978e584a57e74c7a669cd0c63065a31edce6e7c3764e25a3d9ec53b4e18caf"
+      },
+      {
+        "slug": "graduated-publication",
+        "path": "content/insights/graduated-publication.md",
+        "sha256": "b991298ea90a5bc111bc188124eb5e065fd9710220d8a16f9299149568084078"
+      },
+      {
+        "slug": "no-affirmation-without-evidence",
+        "path": "content/insights/no-affirmation-without-evidence.md",
+        "sha256": "3366388d14655b7be195fadbce0a4db24af8ecd3eeb474e80a7d3cfeac14e057"
+      },
+      {
+        "slug": "north-star-brief-acceptance",
+        "path": "content/insights/north-star-brief-acceptance.md",
+        "sha256": "aa265a372c0add58563a5ff997e881fcd2ba2a6e860cf8892d316a26cb5883df"
+      },
+      {
+        "slug": "observation-not-optimization",
+        "path": "content/insights/observation-not-optimization.md",
+        "sha256": "fb20291e3ee678eca18b932c34f4baf0d0a11403991f736e1430a29077ca7025"
+      },
+      {
+        "slug": "observatory-not-cms",
+        "path": "content/insights/observatory-not-cms.md",
+        "sha256": "eb2a09d09eaa031b1fb6541e48e91329a340807046750131b949251c6095a712"
+      },
+      {
+        "slug": "opportunity-brief-deterministic",
+        "path": "content/insights/opportunity-brief-deterministic.md",
+        "sha256": "c0f7edcbcb4425b4d8cb8456493cb16e4a0db4aeebd3749261d7ad5561cf107b"
+      },
+      {
+        "slug": "three-dimensions-authority-presence",
+        "path": "content/insights/three-dimensions-authority-presence.md",
+        "sha256": "766492056e0b1f36238cc300663daeca1f0cdd84826192694fc0ca6f8d3e9fba"
+      },
+      {
+        "slug": "three-measures-never-one-score",
+        "path": "content/insights/three-measures-never-one-score.md",
+        "sha256": "2369d149f1a065a502ca5bb0e0fc177dff560eb835f640fc6b41de4c111c0166"
+      },
+      {
+        "slug": "truthcheck-unmovable-gate",
+        "path": "content/insights/truthcheck-unmovable-gate.md",
+        "sha256": "4fba6a980609e1c0456d36c1b71ecf2c02e23b7ea821c1a4ea61220e614fec24"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "slug": "agent-protocol-immutable-frontiers",
+      "documentId": "textos-insight:agent-protocol-immutable-frontiers",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "authority-intelligence-not-ai-seo",
+      "documentId": "textos-insight:authority-intelligence-not-ai-seo",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "brief-to-decision-economics",
+      "documentId": "textos-insight:brief-to-decision-economics",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "graduated-publication",
+      "documentId": "textos-insight:graduated-publication",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "no-affirmation-without-evidence",
+      "documentId": "textos-insight:no-affirmation-without-evidence",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "north-star-brief-acceptance",
+      "documentId": "textos-insight:north-star-brief-acceptance",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "observation-not-optimization",
+      "documentId": "textos-insight:observation-not-optimization",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "observatory-not-cms",
+      "documentId": "textos-insight:observatory-not-cms",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "opportunity-brief-deterministic",
+      "documentId": "textos-insight:opportunity-brief-deterministic",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "three-dimensions-authority-presence",
+      "documentId": "textos-insight:three-dimensions-authority-presence",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "three-measures-never-one-score",
+      "documentId": "textos-insight:three-measures-never-one-score",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    },
+    {
+      "slug": "truthcheck-unmovable-gate",
+      "documentId": "textos-insight:truthcheck-unmovable-gate",
+      "contentType": "product_article",
+      "publicationStatus": "draft",
+      "sourceAuthority": "UNCERTIFIED",
+      "contentPassPassed": true,
+      "contentPassErrors": [],
+      "surfacePassPassed": true,
+      "surfacePassReasons": [],
+      "publicationPassPassed": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable"
+      ],
+      "lifecycleState": "CURRENT",
+      "indexable": false,
+      "indexableReasons": [
+        "publication-pass-failed"
+      ],
+      "related": []
+    }
+  ],
+  "backlinkCandidates": [],
+  "summary": {
+    "total": 12,
+    "indexable": 0,
+    "noindex": 12
+  }
+}

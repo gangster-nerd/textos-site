@@ -1,0 +1,174 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-insight:north-star-brief-acceptance",
+    "contentType": "product_article",
+    "slug": "north-star-brief-acceptance",
+    "language": "en",
+    "title": "From Gap to Brief to Action — the TextOS North Star",
+    "description": "The product succeeds when a defensible opportunity brief is accepted, not when it publishes. Acceptance is where the decision is made."
+  },
+  "editorial": {
+    "authorIds": [
+      "textos-editorial-team"
+    ],
+    "reviewerIds": [
+      "marc-p"
+    ],
+    "primaryTopicId": "opportunity-and-decision",
+    "topicIds": [
+      "opportunity-and-decision",
+      "product-doctrine"
+    ],
+    "audience": "reader-executive",
+    "funnelStage": "awareness"
+  },
+  "truth": {
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1",
+    "sourceStatus": "PRODUCT_PRINCIPLE:PROSPECTIVE:draft",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "claimIds": [
+      "hp1-measurement-doctrine",
+      "hp2-metric-integrity",
+      "m1-observation-unit",
+      "m6-quality-ledger-contextualises",
+      "m7-no-recommendations",
+      "m8-measurement-is-not-verification"
+    ],
+    "evidenceRefs": [
+      "observe-authority-presence:authority-presence-observation-v1",
+      "quality-ledger:quality-ledger-rates-v1",
+      "direct-share-of-model:direct-share-measurement-v1",
+      "indirect-mention-share:indirect-mention-measurement-v1",
+      "total-authority-presence:total-presence-composition-v1"
+    ],
+    "capabilityIds": [
+      "direct-share-of-model",
+      "indirect-mention-share",
+      "observe-authority-presence",
+      "quality-ledger",
+      "total-authority-presence"
+    ]
+  },
+  "provenance": {
+    "sourceRepository": "gangster-nerd/textos-v0",
+    "sourceEvidenceDigest": "aa265a372c0add58563a5ff997e881fcd2ba2a6e860cf8892d316a26cb5883df",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "body": [
+    {
+      "id": "answer",
+      "kind": "answer",
+      "data": {
+        "text": "The TextOS North Star is a defensible opportunity brief accepted by a human — not a published article. Acceptance is the decision moment: a brief is proposed only from observed evidence, contains no writing and no ROI estimate, and is judged by the person who decides to act."
+      }
+    },
+    {
+      "id": "h-where-a-product-actually-wins",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where a product actually wins"
+      }
+    },
+    {
+      "id": "p-where-a-product-actually-wins",
+      "kind": "paragraph",
+      "data": {
+        "text": "A product's North Star is the moment at which the product must be judged. It is not the moment at which it makes noise, and it is not the moment at which its output reaches the world; it is the moment at which the product has demonstrably helped a human decide. Choosing that moment wrongly is one of the surest ways to build the wrong thing."
+      }
+    },
+    {
+      "id": "h-what-a-defensible-brief-is-and-what-it-is-not",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What a defensible brief is (and what it is not)"
+      }
+    },
+    {
+      "id": "p-what-a-defensible-brief-is-and-what-it-is-not",
+      "kind": "paragraph",
+      "data": {
+        "text": "An opportunity brief in TextOS is mechanically assembled from typed authority gaps and the observations that produced them. It is not written by a language model. It has an objective, the covered questions from the underlying query panel, a list of missing claims relative to the sources the engines cite, the third-party subjects that carry those claims, and the evidence spans that back each one. It is a **factual scaffold**, not prose."
+      }
+    },
+    {
+      "id": "h-why-acceptance-and-not-publication",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Why acceptance and not publication"
+      }
+    },
+    {
+      "id": "p-why-acceptance-and-not-publication",
+      "kind": "paragraph",
+      "data": {
+        "text": "Two temptations pull the North Star past acceptance toward publication."
+      }
+    },
+    {
+      "id": "h-the-gate-is-human-and-it-is-one-way",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The gate is human, and it is one-way"
+      }
+    },
+    {
+      "id": "p-the-gate-is-human-and-it-is-one-way",
+      "kind": "paragraph",
+      "data": {
+        "text": "The mechanics of acceptance are simple and load-bearing. A brief is born `proposed`. A human moves it to `accepted` or `rejected`. Automation never accepts. Rejection stops the chain; acceptance authorises the next step — the writing phase, which lives elsewhere and under its own rules. In current design, the transition is terminal within a run: a rejected brief does not re-open itself, and a fresh observation run produces new briefs rather than resurrecting old ones. That deliberate simplicity keeps the meaning of \"accepted\" unambiguous: a defensible brief, judged worth acting on, at a moment we can point to."
+      }
+    },
+    {
+      "id": "h-what-this-asks-of-the-product",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What this asks of the product"
+      }
+    },
+    {
+      "id": "p-what-this-asks-of-the-product",
+      "kind": "paragraph",
+      "data": {
+        "text": "Choosing acceptance as the North Star forces several constraints that would be easier to skip."
+      }
+    },
+    {
+      "id": "h-related-reading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Related reading"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "conversionAllowed": false
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "lastReviewedAt": "2026-09-13",
+    "revisionNumber": 0
+  },
+  "seo": {
+    "indexingIntent": "noindex",
+    "canonicalPath": "/insights/north-star-brief-acceptance",
+    "schemaType": "Article",
+    "targetQuery": "textos north star opportunity brief acceptance",
+    "searchIntent": "informational"
+  }
+}

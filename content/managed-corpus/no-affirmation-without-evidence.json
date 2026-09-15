@@ -1,0 +1,214 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-insight:no-affirmation-without-evidence",
+    "contentType": "product_article",
+    "slug": "no-affirmation-without-evidence",
+    "language": "en",
+    "title": "No affirmation without evidence",
+    "description": "TextOS never lets a draft affirm what the evidence does not support. A deterministic TruthCheck blocks any contradiction, and no draft ships without proof."
+  },
+  "editorial": {
+    "authorIds": [
+      "textos-editorial-team"
+    ],
+    "reviewerIds": [
+      "marc-p"
+    ],
+    "primaryTopicId": "claim-evidence-and-truth-check",
+    "topicIds": [
+      "claim-evidence-and-truth-check",
+      "generation-and-publication"
+    ],
+    "audience": "reader-mixed",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1",
+    "sourceStatus": "PRODUCT_PRINCIPLE:DOCUMENTARY:draft",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "claimIds": [
+      "m1-observation-unit",
+      "m5-not-observable-is-not-zero",
+      "m6-quality-ledger-contextualises",
+      "m7-no-recommendations",
+      "m8-measurement-is-not-verification",
+      "hp1-measurement-doctrine"
+    ],
+    "evidenceRefs": [
+      "observe-authority-presence:authority-presence-observation-v1",
+      "quality-ledger:quality-ledger-rates-v1"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
+    ]
+  },
+  "provenance": {
+    "sourceRepository": "gangster-nerd/textos-v0",
+    "sourceEvidenceDigest": "3366388d14655b7be195fadbce0a4db24af8ecd3eeb474e80a7d3cfeac14e057",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "body": [
+    {
+      "id": "answer",
+      "kind": "answer",
+      "data": {
+        "text": "TextOS treats affirmations without evidence as a defect, not a stylistic choice. A deterministic TruthCheck blocks any draft that contradicts the observed evidence, drafts exist only against an accepted brief, and signals that were not observed are reported as not observable rather than as zero."
+      }
+    },
+    {
+      "id": "h-a-principle-enforced-in-code",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "A principle enforced in code"
+      }
+    },
+    {
+      "id": "p-a-principle-enforced-in-code",
+      "kind": "paragraph",
+      "data": {
+        "text": "\"No affirmation without evidence\" is easy to write on a values page. It is harder to enforce, because the temptation to fill a page with a plausible sentence is a permanent feature of anything that generates text. TextOS treats the principle as a constraint on the pipeline, not as a stylistic preference. Two gates, both non-negotiable, decide whether a generated draft can move forward at all: it must exist against an accepted brief, and it must survive a deterministic contradiction check against the evidence that motivated the brief."
+      }
+    },
+    {
+      "id": "h-two-gates-that-do-not-lift",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Two gates that do not lift"
+      }
+    },
+    {
+      "id": "p-two-gates-that-do-not-lift",
+      "kind": "paragraph",
+      "data": {
+        "text": "The first gate is the **brief gate**. A generated draft is bound, in the schema, to the identifier of an accepted opportunity brief. The foreign key is not nullable. Generating text without such a brief is refused before any model is called. This is what ADR-015 calls the anti-content-factory rule: no orphan content, ever. A page cannot come into being because someone thought it might be interesting; it comes into being because an observation of the outside world produced a defensible reason to write it."
+      }
+    },
+    {
+      "id": "h-why-the-blocking-verdict-is-deterministic",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Why the blocking verdict is deterministic"
+      }
+    },
+    {
+      "id": "p-why-the-blocking-verdict-is-deterministic",
+      "kind": "paragraph",
+      "data": {
+        "text": "The design choice that makes the truth gate defensible is that its blocking verdict is produced by deterministic rules, not by a language model. Given the same draft and the same evidence, the check returns the same verdict. Every time."
+      }
+    },
+    {
+      "id": "h-what-affirmation-without-evidence-means-in-the-schema",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What \"affirmation without evidence\" means in the schema"
+      }
+    },
+    {
+      "id": "p-what-affirmation-without-evidence-means-in-the-schema",
+      "kind": "paragraph",
+      "data": {
+        "text": "Beyond outright contradiction, the principle covers a second failure mode that took a full end-to-end run to surface: a draft can be free of contradictions and still say nothing the brief asked for. ADR-015's addendum names this shape \"empty content certified true\" — the truth gate says `pass`, but the draft covered only one of the claims the brief required."
+      }
+    },
+    {
+      "id": "h-evidence-honesty-extends-to-measurements",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Evidence honesty extends to measurements"
+      }
+    },
+    {
+      "id": "p-evidence-honesty-extends-to-measurements",
+      "kind": "paragraph",
+      "data": {
+        "text": "The generation layer inherits a discipline that starts much earlier in the pipeline. When TextOS measures Authority Presence, it distinguishes zero from not observable. Zero is a measured result — the engine answered, the method looked for the signal, and the entity was not there. Not observable is the absence of a measurement — the method cannot see the signal on this engine, or the sample was too thin to say anything."
+      }
+    },
+    {
+      "id": "h-what-textos-deliberately-does-not-affirm",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What TextOS deliberately does not affirm"
+      }
+    },
+    {
+      "id": "p-what-textos-deliberately-does-not-affirm",
+      "kind": "paragraph",
+      "data": {
+        "text": "The principle also draws a line around what a measurement is entitled to say. Claim `m7-no-recommendations` states that an Authority Presence measurement reports observed presence and does not produce recommendations, automatic prioritisation, return-on-investment estimates, or guarantees of ranking or citation. Claim `m8-measurement-is-not-verification` adds that a measurement reports what answer engines say about a brand — it does not establish why the engine cited a brand, and it does not verify whether the statements inside an answer are true."
+      }
+    },
+    {
+      "id": "h-provenance-is-part-of-the-evidence",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Provenance is part of the evidence"
+      }
+    },
+    {
+      "id": "p-provenance-is-part-of-the-evidence",
+      "kind": "paragraph",
+      "data": {
+        "text": "A subtler dimension of the principle covers how a draft describes its own origin. ADR-015 pins the transport used to generate a draft to one of three values: a real invocation of an LLM (with the exact model identifier), a manual external import (a human wrote the passage and imported it), or a fixture replay (a static test corpus). A draft marked as coming from a live model must correspond to an actual model invocation; a helper function refuses to derive provenance from an unknown method version rather than guessing."
+      }
+    },
+    {
+      "id": "h-what-acceptance-means",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What acceptance means"
+      }
+    },
+    {
+      "id": "p-what-acceptance-means",
+      "kind": "paragraph",
+      "data": {
+        "text": "If nothing is generated without an accepted brief, the acceptance itself becomes the moment of truth. It is where a human, looking at a set of observed gaps, decides that a defensible reason to write exists. Everything downstream — the draft, the TruthCheck, the BriefFulfillment check, the controlled preview — inherits that acceptance. Nothing downstream can synthesise it after the fact."
+      }
+    },
+    {
+      "id": "h-related-methodology",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Related methodology"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "MEASURE_BRAND",
+    "conversionAllowed": true
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "lastReviewedAt": "2026-09-13",
+    "revisionNumber": 0
+  },
+  "seo": {
+    "indexingIntent": "noindex",
+    "canonicalPath": "/insights/no-affirmation-without-evidence",
+    "schemaType": "Article",
+    "targetQuery": "how does textos avoid hallucinated claims",
+    "searchIntent": "informational"
+  }
+}

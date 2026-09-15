@@ -1,0 +1,179 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-insight:agent-protocol-immutable-frontiers",
+    "contentType": "product_article",
+    "slug": "agent-protocol-immutable-frontiers",
+    "language": "en",
+    "title": "Agent Protocol — Immutable Frontiers and Explicit GO",
+    "description": "Development agents at TextOS work under a written protocol: canonical artefacts stay human-controlled, frozen frontiers hold mid-sprint, no commit without a GO."
+  },
+  "editorial": {
+    "authorIds": [
+      "textos-editorial-team"
+    ],
+    "reviewerIds": [
+      "marc-p"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness"
+  },
+  "truth": {
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1",
+    "sourceStatus": "COMPANY_TECHNOLOGY:DOCUMENTARY:draft",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "claimIds": [
+      "hp1-measurement-doctrine",
+      "hp2-metric-integrity"
+    ],
+    "evidenceRefs": [],
+    "capabilityIds": []
+  },
+  "provenance": {
+    "sourceRepository": "gangster-nerd/textos-v0",
+    "sourceEvidenceDigest": "bd5a428e17764942973700142ff4bbbd88001452c5e6db44e9bd5a7635a9e0a8",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "body": [
+    {
+      "id": "answer",
+      "kind": "answer",
+      "data": {
+        "text": "We build TextOS with development agents governed by a written protocol: agents never touch git identity or canonical artefacts on their own initiative, never modify frozen frontiers inside a sprint, and never land a commit without an explicit human GO after reading raw command output."
+      }
+    },
+    {
+      "id": "h-how-we-build-textos",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "How we build TextOS"
+      }
+    },
+    {
+      "id": "p-how-we-build-textos",
+      "kind": "paragraph",
+      "data": {
+        "text": "TextOS is built with development agents. Some of the code, some of the tests, some of the migrations pass through an agent before they pass through a human. That is not a marketing statement — it is an operational reality of a small team choosing to move quickly without hiring proportionally. Building this way is only defensible if the process itself is written down, and if the written process is strict enough that \"the agent said it was fine\" is not, ever, an acceptable answer."
+      }
+    },
+    {
+      "id": "h-three-inviolable-rules",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Three inviolable rules"
+      }
+    },
+    {
+      "id": "p-three-inviolable-rules",
+      "kind": "paragraph",
+      "data": {
+        "text": "The protocol opens with rules an agent may not break, regardless of what a task appears to require."
+      }
+    },
+    {
+      "id": "h-what-vert-does-not-prove",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What \"vert\" does not prove"
+      }
+    },
+    {
+      "id": "p-what-vert-does-not-prove",
+      "kind": "paragraph",
+      "data": {
+        "text": "Two rules at the heart of the protocol address a specific class of self-deception: the \"everything is green\" declaration."
+      }
+    },
+    {
+      "id": "h-the-sprint-sequence-a-written-protocol-not-a-habit",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The sprint sequence — a written protocol, not a habit"
+      }
+    },
+    {
+      "id": "p-the-sprint-sequence-a-written-protocol-not-a-habit",
+      "kind": "paragraph",
+      "data": {
+        "text": "Every sprint follows the same four-step sequence. It is written down precisely so that it does not degrade under time pressure."
+      }
+    },
+    {
+      "id": "h-verification-in-practice",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Verification, in practice"
+      }
+    },
+    {
+      "id": "p-verification-in-practice",
+      "kind": "paragraph",
+      "data": {
+        "text": "The protocol lists the verification commands that must be pasted every sprint. Each of them exists to detect a specific class of silent regression."
+      }
+    },
+    {
+      "id": "h-anti-content-factory-and-the-doctrine-that-closes-the-loop",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Anti-content-factory and the doctrine that closes the loop"
+      }
+    },
+    {
+      "id": "p-anti-content-factory-and-the-doctrine-that-closes-the-loop",
+      "kind": "paragraph",
+      "data": {
+        "text": "One line in the protocol reads: *no generated content is published unless it is backed by an accepted Opportunity Brief.* That line is a boundary that lives between the engineering layer and the product itself. It is why the graduated publication regime described elsewhere has two gates that never lift. It is why the Opportunity Brief layer refuses to accept a brief automatically. It is why the extraction layer does not judge truth."
+      }
+    },
+    {
+      "id": "h-when-in-doubt",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "When in doubt"
+      }
+    },
+    {
+      "id": "p-when-in-doubt",
+      "kind": "paragraph",
+      "data": {
+        "text": "The protocol closes with a rule that is more cultural than technical: an agent that is uncertain whether to follow the protocol or to satisfy a request stops and asks a human. The rule primes velocity in favour of the rule. We wrote it that way because a slow correct sprint is recoverable; an undetected boundary violation is not. The protocol is the way we scale a small team without letting the tools that help us move fast quietly rewrite the product we are building."
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "conversionAllowed": false
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "lastReviewedAt": "2026-09-13",
+    "revisionNumber": 0
+  },
+  "seo": {
+    "indexingIntent": "noindex",
+    "canonicalPath": "/insights/agent-protocol-immutable-frontiers",
+    "schemaType": "Article",
+    "targetQuery": "how textos uses development agents",
+    "searchIntent": "informational"
+  }
+}
