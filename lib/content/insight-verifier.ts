@@ -78,6 +78,13 @@ export const InsightFrontmatterStrictSchema = z
     revisionNumber: z.number().int().nonnegative(),
     revisionSummary: z.string().min(1).optional(),
     schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]),
+    // CTO §8 — image REQUIRED under /insights.
+    image: z.object({
+      src: z.string().regex(/^\/[a-z0-9/_.-]+$/),
+      alt: z.string().min(1),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+    }),
   })
   .passthrough();
 
@@ -181,6 +188,19 @@ export function verifyInsightDocument(
     });
   }
 
+  // 6bis. CTO §8 — l'asset image doit exister physiquement. Sinon la meta OG et le
+  // ImageObject JSON-LD pointeraient vers un 404, ce qui donne un objet Article dont
+  // l'image annoncée n'existe pas — pire qu'aucune image, parce que ça a l'air valide.
+  const siteRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..", "..");
+  const imgSrc = strict.image.src;
+  const imgAbsolute = path.join(siteRoot, "public", imgSrc.replace(/^\//, ""));
+  if (!existsSync(imgAbsolute)) {
+    failures.push({
+      slug,
+      message: `image.src "${imgSrc}" pointe vers un fichier absent (attendu à public${imgSrc}).`,
+    });
+  }
+
   // 7. Description ends with a proper terminal punctuation ; the schema enforces ≤160 chars
   // but not sentence completeness. This gate refuses truncated descriptions (they were
   // observed in wave-1).
@@ -190,6 +210,28 @@ export function verifyInsightDocument(
       slug,
       message: `description tronquée ou sans ponctuation finale : "${desc.slice(-40)}"`,
     });
+  }
+
+  // 7bis. CTO §6 — CTA contextuel. Un article dont le CTA résolu est autre que `none`
+  // DOIT contenir le marqueur éditorial `<!-- cta:contextual -->` dans son corps —
+  // exactement une occurrence. Sans marqueur, la position "contextual" tombe et le
+  // CTA final devient orphelin. Le marqueur est la garantie qu'un humain a choisi le
+  // point d'insertion, pas un algorithme.
+  const CTA_MARKER_TOKEN = "<!-- cta:contextual -->";
+  const resolvedCta = doc.ctaResolution?.resolvedVariant;
+  if (resolvedCta && resolvedCta !== "none") {
+    const occurrences = (doc.body.match(/<!--\s*cta:contextual\s*-->/g) ?? []).length;
+    if (occurrences === 0) {
+      failures.push({
+        slug,
+        message: `ctaResolution=${resolvedCta} exige le marqueur "${CTA_MARKER_TOKEN}" quelque part dans le corps de l'article.`,
+      });
+    } else if (occurrences > 1) {
+      failures.push({
+        slug,
+        message: `marqueur "${CTA_MARKER_TOKEN}" trouvé ${occurrences} fois — un et un seul est attendu.`,
+      });
+    }
   }
 
   // 8. CTO §1 — invariants croisés draft/published. La revue humaine, la publication et

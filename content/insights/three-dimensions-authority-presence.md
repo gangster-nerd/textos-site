@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: TechArticle
+image:
+  src: /og/insights/three-dimensions-authority-presence.svg
+  alt: The three dimensions of Authority Presence — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: measurement-mechanics
 topicIds:
 - measurement-mechanics
@@ -65,6 +70,8 @@ A dashboard that shows "Authority: 62" hides an architectural choice. Somewhere 
 TextOS makes the opposite decision. Authority Presence is expressed as three separate measures, and their separation is enforced at the estimator layer — not at the chart layer. The architecture record ADR-011 states the constraint plainly: three measures are computed, each with its own numerator, its own coverage flag, and its own dispersion. There is no composite "authority score" produced anywhere in the system, and the same document names such a score an anti-objective.
 
 This article explains what the three measures are, why they must remain separate, and what that separation buys the reader.
+
+<!-- cta:contextual -->
 
 ## What the three measures observe
 

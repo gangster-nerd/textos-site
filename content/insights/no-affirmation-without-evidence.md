@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: Article
+image:
+  src: /og/insights/no-affirmation-without-evidence.svg
+  alt: No affirmation without evidence — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: claim-evidence-and-truth-check
 topicIds:
 - claim-evidence-and-truth-check
@@ -57,6 +62,8 @@ sourceDigests:
 "No affirmation without evidence" is easy to write on a values page. It is harder to enforce, because the temptation to fill a page with a plausible sentence is a permanent feature of anything that generates text. TextOS treats the principle as a constraint on the pipeline, not as a stylistic preference. Two gates, both non-negotiable, decide whether a generated draft can move forward at all: it must exist against an accepted brief, and it must survive a deterministic contradiction check against the evidence that motivated the brief.
 
 Both gates are described in the architecture record ADR-015. Neither can be lifted — not by a reviewer, not by a "trusted" mode, not by a model that expresses high confidence. The purpose of this article is to describe what those gates are, why the blocking half is deterministic, and what happens when a signal is absent rather than negative.
+
+<!-- cta:contextual -->
 
 ## Two gates that do not lift
 

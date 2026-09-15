@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: Article
+image:
+  src: /og/insights/observation-not-optimization.svg
+  alt: Observation, Not Optimization — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: product-doctrine
 topicIds:
 - product-doctrine

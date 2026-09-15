@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: Article
+image:
+  src: /og/insights/three-measures-never-one-score.svg
+  alt: Three measures, never one score — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: measurement-mechanics
 topicIds:
 - measurement-mechanics
@@ -67,6 +72,8 @@ sourceDigests:
 Most measurement products end in a number. The dashboard headline is a score; the score is the promise; the score is what a buyer remembers. TextOS ends somewhere else, and that difference is not an oversight. It is a design decision, taken twice: once in the observatory architecture (ADR-001), and again in the authority-presence estimator (ADR-011). Both documents use the same phrase — *anti-objective* — to describe a single composite score, and both instruct the code that computes measurements to refuse the fusion at the source.
 
 This article explains what the fusion would silently do, why it would be strategically wrong even when it is technically clean, and what TextOS reports instead.
+
+<!-- cta:contextual -->
 
 ## The three questions a composite score conflates
 

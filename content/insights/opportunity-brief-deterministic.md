@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: TechArticle
+image:
+  src: /og/insights/opportunity-brief-deterministic.svg
+  alt: Opportunity Brief — Deterministic Assembly from Evidence — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: opportunity-and-decision
 topicIds:
 - opportunity-and-decision
@@ -51,6 +56,8 @@ sourceDigests:
 ## An architecture note, not an availability claim
 
 This article documents an architectural decision inside TextOS. The Opportunity Brief mechanism is implemented, but it is not, at this snapshot, a customer-facing feature: the capability registry keeps it as an internal capacity. What follows describes **how the brief is designed to be assembled** and **why the design refuses shortcuts** — not what a buyer can expect to receive today.
+
+<!-- cta:contextual -->
 
 ## The problem the brief is designed to solve
 

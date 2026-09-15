@@ -131,6 +131,17 @@ export const ContentFrontmatterSchema = z
     revisionNumber: z.number().int().nonnegative().optional(),
     revisionSummary: z.string().min(1).optional(),
     schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]).optional(),
+    // CTO §8 — governed article image (social card + JSON-LD ImageObject).
+    // Path is relative to the site root ("/og/insights/..."). Dimensions match the
+    // asset physically ; the verifier confirms the file exists on disk.
+    image: z
+      .object({
+        src: z.string().regex(/^\/[a-z0-9/_.-]+$/, "chemin racine attendu (/…)"),
+        alt: z.string().min(1),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+      })
+      .optional(),
   })
   .strict()
   .superRefine((value, ctx) => {

@@ -56,21 +56,49 @@ export async function generateMetadata({
   const fm = doc.frontmatter as ContentFrontmatter & Record<string, unknown>;
   const authorId = fm.authorId as string | undefined;
   const author = authorId ? findPerson(authorId) : undefined;
+  const image = fm.image as
+    | { src: string; alt: string; width: number; height: number }
+    | undefined;
+  const imageUrl = image
+    ? siteConfig.allowIndexing
+      ? `${siteConfig.origin}${image.src}`
+      : image.src
+    : undefined;
+  const publicPublished =
+    siteConfig.allowIndexing && doc.frontmatter.editorialStatus === "published";
   return {
     title: doc.frontmatter.title,
     description: doc.frontmatter.description,
-    ...(siteConfig.allowIndexing
+    ...(publicPublished
       ? {
           alternates: { canonical: `/${COLLECTION}/${slug}` },
           openGraph: {
             type: "article",
             title: doc.frontmatter.title,
             description: doc.frontmatter.description,
-            publishedTime: fm.firstPublishedAt as string | undefined,
-            modifiedTime: doc.frontmatter.updatedAt,
+            publishedTime: (fm.firstPublishedAt as string | undefined) ?? undefined,
+            modifiedTime:
+              (fm.lastReviewedAt as string | undefined) ??
+              (fm.firstPublishedAt as string | undefined) ??
+              undefined,
             authors: author ? [author.name] : undefined,
+            images: image
+              ? [
+                  {
+                    url: imageUrl!,
+                    width: image.width,
+                    height: image.height,
+                    alt: image.alt,
+                  },
+                ]
+              : undefined,
           },
-          twitter: { card: "summary", title: doc.frontmatter.title, description: doc.frontmatter.description },
+          twitter: {
+            card: "summary_large_image",
+            title: doc.frontmatter.title,
+            description: doc.frontmatter.description,
+            images: image ? [imageUrl!] : undefined,
+          },
         }
       : {}),
     // CTO §2 : un draft ne doit ni être indexé ni être suivi. `follow: true` sur un draft
@@ -133,19 +161,44 @@ export default async function Page({
   const revisionNumber = (fm.revisionNumber as number | undefined) ?? 0;
   const revisionSummary = fm.revisionSummary as string | undefined;
 
-  // Body Markdown → renderer with stable heading IDs.
+  // CTO §5 — ONE heading-id source of truth. `extractHeadings` already disambiguates
+  // duplicate H2 titles (`section`, `section-2`, `section-3`). We reuse ITS output
+  // instead of recomputing IDs in the Markdown renderer. A per-render counter mirrors
+  // extractHeadings's occurrence-based disambiguation so the Nth occurrence of the same
+  // slugified text gets the Nth id — exactly one DOM element per ToC fragment.
+  const h2SeenCount = new Map<string, number>();
+  const h2IdForOccurrence = (text: string): string => {
+    const base = slugifyHeading(text);
+    const seen = h2SeenCount.get(base) ?? 0;
+    h2SeenCount.set(base, seen + 1);
+    return seen === 0 ? base : `${base}-${seen + 1}`;
+  };
   const markdownComponents = {
     h2: ({ children }: { children?: React.ReactNode }) => {
       const text = String(children ?? "");
+      const id = h2IdForOccurrence(text);
       return (
-        <h2 id={slugifyHeading(text)}>
-          <a href={`#${slugifyHeading(text)}`} className="doc__heading-anchor" aria-label={`Link to ${text}`}>
+        <h2 id={id}>
+          <a href={`#${id}`} className="doc__heading-anchor" aria-label={`Link to ${text}`}>
             {children}
           </a>
         </h2>
       );
     },
   } as const;
+
+  // CTO §6 — Split the body at the contextual CTA marker. Placement is EDITORIAL, not
+  // automatic : the marker sits at the position the writer chose. If a CTA resolves but
+  // no marker exists, we do NOT render a contextual CTA (verifier warns at build time
+  // via insight-verifier).
+  const CTA_MARKER = "<!-- cta:contextual -->";
+  const markerIndex = doc.body.indexOf(CTA_MARKER);
+  const hasContextualMarker = markerIndex !== -1;
+  const bodyBeforeCta = hasContextualMarker ? doc.body.slice(0, markerIndex) : doc.body;
+  const bodyAfterCta = hasContextualMarker ? doc.body.slice(markerIndex + CTA_MARKER.length) : "";
+  const shouldRenderCta =
+    doc.ctaResolution.resolvedVariant !== null &&
+    doc.ctaResolution.resolvedVariant !== "none";
 
   return (
     <>
@@ -276,19 +329,25 @@ export default async function Page({
           )}
 
           <Markdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
-            {doc.body}
+            {bodyBeforeCta}
           </Markdown>
 
-          {/* Contextual CTA — one, positioned after the article has delivered initial value. */}
-          {doc.ctaResolution.resolvedVariant &&
-            doc.ctaResolution.resolvedVariant !== "none" && (
-              <ContentCta
-                variant={doc.ctaResolution.resolvedVariant}
-                contentId={doc.contentId}
-                position="inline"
-                clusterId={doc.frontmatter.clusterId}
-              />
-            )}
+          {/* CTO §6 — Contextual CTA rendered AT the editorial marker position, not
+              after the whole body. The writer chose the placement ; we honour it. */}
+          {shouldRenderCta && hasContextualMarker && (
+            <ContentCta
+              variant={doc.ctaResolution.resolvedVariant}
+              contentId={doc.contentId}
+              position="contextual"
+              clusterId={doc.frontmatter.clusterId}
+            />
+          )}
+
+          {hasContextualMarker && (
+            <Markdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+              {bodyAfterCta}
+            </Markdown>
+          )}
 
           <footer className="doc__provenance" aria-label="Provenance and method">
             <h2>Provenance</h2>

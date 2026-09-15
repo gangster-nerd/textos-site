@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: Article
+image:
+  src: /og/insights/north-star-brief-acceptance.svg
+  alt: From Gap to Brief to Action — the TextOS North Star — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: opportunity-and-decision
 topicIds:
 - opportunity-and-decision

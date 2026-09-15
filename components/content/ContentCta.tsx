@@ -1,5 +1,11 @@
 import { getCtaVariant, type CtaVariantId } from "@/lib/conversion/cta-registry";
 
+// CTO §6/§7 : le vocabulaire de position est limité à ce qu'un article vend réellement.
+// `header` (bandeau haut de page — non utilisé aujourd'hui mais réservé), `contextual`
+// (à l'intérieur du corps, positionné par un marqueur éditorial), `final` (après le
+// contenu lié). Le legacy `inline`/`end` a été retiré pour empêcher l'ambiguïté.
+export type CtaPosition = "header" | "contextual" | "final";
+
 type ContentCtaProps = {
   /**
    * Variante RÉSOLUE (`doc.ctaResolution.resolvedVariant`), jamais la variante brute du
@@ -7,7 +13,7 @@ type ContentCtaProps = {
    */
   variant: CtaVariantId | null;
   contentId: string;
-  position: "inline" | "end" | "final";
+  position: CtaPosition;
   clusterId?: string;
 };
 
@@ -34,6 +40,24 @@ export function ContentCta({ variant, contentId, position, clusterId }: ContentC
   // une destination réelle — l'absence de destination ne fait plus filet de sécurité.
   if (definition.status !== "approved" || definition.destination === null) return null;
 
+  // CTO §7 — Attribution de bout-en-bout. Les data-attributes DOM ne survivent pas au
+  // click : dès que le navigateur charge la destination, on ne récupère plus le contexte
+  // depuis la page source. On PROMEUT donc les 5 attributions dans l'URL cible, pour que
+  // les analytics côté destination reçoivent le contexte complet sans dépendre d'un
+  // fingerprint fragile de referer.
+  //
+  // Contrat URL : ordre stable des paramètres (URLSearchParams garantit l'insertion),
+  // clusterId omis si absent (ne pas polluer avec `clusterId=undefined`).
+  const params = new URLSearchParams();
+  params.set("source", "textos-site");
+  params.set("contentId", contentId);
+  if (clusterId) params.set("clusterId", clusterId);
+  params.set("ctaVariant", definition.id);
+  params.set("ctaVersion", String(definition.version));
+  params.set("position", position);
+  const separator = definition.destination.includes("?") ? "&" : "?";
+  const href = `${definition.destination}${separator}${params.toString()}`;
+
   return (
     <aside
       className="content-cta"
@@ -46,7 +70,7 @@ export function ContentCta({ variant, contentId, position, clusterId }: ContentC
     >
       <p className="content-cta__title">{definition.title}</p>
       <p className="content-cta__body">{definition.body}</p>
-      <a className="content-cta__action" href={definition.destination}>
+      <a className="content-cta__action" href={href}>
         {definition.primaryLabel}
       </a>
       {definition.disclaimer ? (

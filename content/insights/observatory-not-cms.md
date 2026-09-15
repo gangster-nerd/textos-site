@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: TechArticle
+image:
+  src: /og/insights/observatory-not-cms.svg
+  alt: Why TextOS Is an Observatory, Not a CMS — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: authority-observation
 topicIds:
 - authority-observation
@@ -53,6 +58,8 @@ sourceDigests:
 There is a temptation, when a product handles text and eventually helps write it, to file it under "content management". TextOS refuses that filing. Its core object is not a document a user edits, and its central operation is not a save. It is a **station of measurement** — an observatory whose first-class citizens are dated observations of what answer engines say.
 
 ADR-001 states this in a single sentence: TextOS is neither a transactional store nor a rendering factory. It is an observatory. That decision governs the schema, the orchestration, the runtime and, downstream, everything the product is willing to claim about a brand's authority presence.
+
+<!-- cta:contextual -->
 
 ## The three archetypes, and why the difference matters
 

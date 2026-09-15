@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="No affirmation without evidence — TextOS Insight">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect x="0" y="0" width="8" height="630" fill="#e5484d"/>
+  <text x="72" y="88" fill="#ffffff" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="0.02em">TextOS</text>
+  <text x="72" y="128" fill="#8a8a8a" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.08em">CLAIM EVIDENCE AND TRUTHCHECK</text>
+  <text fill="#ffffff" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="-0.01em"><tspan x="72" y="291">No affirmation without</tspan><tspan x="72" y="376">evidence</tspan></text>
+  <text x="72" y="582" fill="#8a8a8a" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" font-weight="500">Authority observatory for AI answer engines</text>
+</svg>

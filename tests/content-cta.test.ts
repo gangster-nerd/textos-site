@@ -11,7 +11,7 @@ import { getCtaVariant } from "@/lib/conversion/cta-registry";
 
 describe("ContentCta — rendu d'une décision déjà prise", () => {
   test("variant = null → rend null", () => {
-    expect(ContentCta({ variant: null, contentId: "faq:x", position: "end" })).toBeNull();
+    expect(ContentCta({ variant: null, contentId: "faq:x", position: "final" })).toBeNull();
   });
 
   test("ne peut pas rendre une variante NON approuvée, même passée directement", () => {
@@ -20,14 +20,14 @@ describe("ContentCta — rendu d'une décision déjà prise", () => {
     // décision non prise. C'est la défense en profondeur, le gate restant l'autorité.
     expect(getCtaVariant("claim_lookup")!.status).toBe("disabled");
     expect(
-      ContentCta({ variant: "claim_lookup", contentId: "faq:x", position: "end" })
+      ContentCta({ variant: "claim_lookup", contentId: "faq:x", position: "final" })
     ).toBeNull();
   });
 
   test("aucune variante non approuvée ne produit de rendu", () => {
     for (const id of ["claim_lookup", "trial", "none"] as const) {
       expect(
-        ContentCta({ variant: id, contentId: "faq:x", position: "end" }),
+        ContentCta({ variant: id, contentId: "faq:x", position: "final" }),
         `${id} ne doit rien rendre`
       ).toBeNull();
     }
@@ -37,12 +37,12 @@ describe("ContentCta — rendu d'une décision déjà prise", () => {
     // C'est l'objet du mode démo : le parcours de conversion est visible, identique à la production.
     expect(getCtaVariant("measurement_request")!.status).toBe("approved");
     expect(
-      ContentCta({ variant: "measurement_request", contentId: "faq:x", position: "end" })
+      ContentCta({ variant: "measurement_request", contentId: "faq:x", position: "final" })
     ).not.toBeNull();
   });
 
   test("les deux positions sont acceptées et n'influencent pas la décision", () => {
-    for (const position of ["inline", "end"] as const) {
+    for (const position of ["contextual", "final"] as const) {
       expect(ContentCta({ variant: null, contentId: "faq:x", position })).toBeNull();
     }
   });

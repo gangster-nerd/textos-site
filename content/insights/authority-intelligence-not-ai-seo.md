@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: Article
+image:
+  src: /og/insights/authority-intelligence-not-ai-seo.svg
+  alt: Authority Intelligence, Not AI SEO — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: product-doctrine
 topicIds:
 - product-doctrine

@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: Article
+image:
+  src: /og/insights/agent-protocol-immutable-frontiers.svg
+  alt: Agent Protocol — Immutable Frontiers and Explicit GO — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: how-we-build
 topicIds:
 - how-we-build

@@ -13,6 +13,11 @@ firstPublishedAt: null
 lastReviewedAt: null
 revisionNumber: 0
 schemaType: TechArticle
+image:
+  src: /og/insights/graduated-publication.svg
+  alt: Graduated Publication — Supervised, Trusted, Locked-Back — TextOS Insight
+  width: 1200
+  height: 630
 primaryTopicId: generation-and-publication
 topicIds:
 - generation-and-publication
@@ -56,6 +61,8 @@ sourceDigests:
 A measurement system stays honest as long as it only observes. It becomes exposed the instant it publishes. Every content pipeline that sits above answer engines eventually confronts the same question: at what point does a draft leave human hands? Content farms answer immediately, en masse, and eat their own credibility. Fully-supervised pipelines answer never, and stop scaling. TextOS answers with a third option — a **graduated publication regime** governed by an explicit machine and two gates that never lift.
 
 The regime is written in ADR-016 as an accepted architecture decision. This article documents that decision. It is not a promise of availability; both `controlled-preview` and `generation-handoff` are marked `internal_only` in the capability registry today, which means they exist as governed engineering surfaces, not as customer-facing features. What follows is the shape of the boundary we chose, not the shape of a shipped product.
+
+<!-- cta:contextual -->
 
 ## Three modes, one deterministic machine
 
