@@ -21,7 +21,6 @@ import {
   readingTimeMinutes,
   scoreRelated,
   shouldRenderToc,
-  slugifyHeading,
   type Heading,
 } from "@/lib/content/article-derivations";
 import { buildInsightArticleGraph } from "@/lib/schema-org/build-article-graph";
@@ -161,25 +160,34 @@ export default async function Page({
   const revisionNumber = (fm.revisionNumber as number | undefined) ?? 0;
   const revisionSummary = fm.revisionSummary as string | undefined;
 
-  // CTO §5 — ONE heading-id source of truth. `extractHeadings` already disambiguates
-  // duplicate H2 titles (`section`, `section-2`, `section-3`). We reuse ITS output
-  // instead of recomputing IDs in the Markdown renderer. A per-render counter mirrors
-  // extractHeadings's occurrence-based disambiguation so the Nth occurrence of the same
-  // slugified text gets the Nth id — exactly one DOM element per ToC fragment.
-  const h2SeenCount = new Map<string, number>();
-  const h2IdForOccurrence = (text: string): string => {
-    const base = slugifyHeading(text);
-    const seen = h2SeenCount.get(base) ?? 0;
-    h2SeenCount.set(base, seen + 1);
-    return seen === 0 ? base : `${base}-${seen + 1}`;
-  };
+  // CTO §5 — ONE heading-id source of truth. `extractHeadings` reads the raw Markdown
+  // source and disambiguates duplicates. The template threads its output through the
+  // Markdown renderer BY INDEX : the k-th H2 rendered receives the k-th precomputed id.
+  //
+  // Why not slugify from the React children ? Because React children can be inline
+  // elements (`<strong>trusted</strong>`), and `String(children)` on an object node
+  // yields `[object Object]` — which slugifies to `object-object` and diverges from
+  // extractHeadings's view of the Markdown source. We saw this exact divergence :
+  // ToC pointed at `#…-in-trusted`, DOM emitted `id="…-in-object-object"`, and every
+  // ToC fragment ended up orphaned.
+  //
+  // Index-threading avoids the problem entirely : the extraction reads the source
+  // once, and every H2 renders with the exact id the ToC references.
+  const h2IdQueue = headings
+    .filter((h) => h.level === 2)
+    .map((h) => ({ id: h.id, text: h.text }));
+  let h2Cursor = 0;
+  const nextH2 = () => h2IdQueue[h2Cursor++] ?? { id: "", text: "" };
   const markdownComponents = {
     h2: ({ children }: { children?: React.ReactNode }) => {
-      const text = String(children ?? "");
-      const id = h2IdForOccurrence(text);
+      const { id, text } = nextH2();
       return (
         <h2 id={id}>
-          <a href={`#${id}`} className="doc__heading-anchor" aria-label={`Link to ${text}`}>
+          <a
+            href={`#${id}`}
+            className="doc__heading-anchor"
+            aria-label={`Link to ${text}`}
+          >
             {children}
           </a>
         </h2>
