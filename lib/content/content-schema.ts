@@ -109,6 +109,39 @@ export const ContentFrontmatterSchema = z
     sourceSemantics: SourceSemanticsSchema.optional(),
     sourceDigests: z.record(z.string().min(1), z.string().regex(/^[0-9a-f]{64}$/)).optional(),
     disclaimer: z.string().min(1).optional(),
+
+    // CTC-ARTICLE-SYSTEM-1 additions — obligatoires côté insight-verifier pour tout nouvel
+    // article /insights. Restent OPTIONNELS au niveau schéma pour rétrocompatibilité des
+    // articles methodology/faq legacy (qui ne les portent pas).
+    authorId: z.string().regex(/^[a-z0-9-]+$/).optional(),
+    reviewerIds: z.array(z.string().regex(/^[a-z0-9-]+$/)).optional(),
+    primaryTopicId: z.string().min(1).optional(),
+    topicIds: z.array(z.string().min(1)).optional(),
+    audience: z
+      .enum(["reader-marketing", "reader-technical", "reader-executive", "reader-mixed"])
+      .optional(),
+    funnelStage: z
+      .enum(["awareness", "consideration", "decision", "expansion", "retention"])
+      .optional(),
+    relatedContentIds: z.array(z.string().min(1)).optional(),
+    firstPublishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+    // CTO §1 : un article draft n'a pas encore été relu — accepter null explicitement plutôt
+    // que de forcer une date d'archive de migration à passer pour une revue humaine.
+    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+    revisionNumber: z.number().int().nonnegative().optional(),
+    revisionSummary: z.string().min(1).optional(),
+    schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]).optional(),
+    // CTO §8 — governed article image (social card + JSON-LD ImageObject).
+    // Path is relative to the site root ("/og/insights/..."). Dimensions match the
+    // asset physically ; the verifier confirms the file exists on disk.
+    image: z
+      .object({
+        src: z.string().regex(/^\/[a-z0-9/_.-]+$/, "chemin racine attendu (/…)"),
+        alt: z.string().min(1),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+      })
+      .optional(),
   })
   .strict()
   .superRefine((value, ctx) => {

@@ -106,7 +106,7 @@ describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () =
     expect(out).toContain('data-cta-variant="measurement_request"');
     expect(out).toContain('data-cta-version="1"');
     expect(out).toContain('data-content-id="faq:does-textos-automatically-verify-claims"');
-    expect(out).toContain('data-cta-position="end"');
+    expect(out).toContain('data-cta-position="final"');
   });
 
   test.runIf(DEMO)("mode demo : le CTA vient APRÈS le corps, jamais après le short answer", () => {

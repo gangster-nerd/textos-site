@@ -14,7 +14,9 @@
     "verify:product-manifest": "tsx scripts/verify-product-manifest.ts",
     "content:sync": "tsx scripts/content-sync.ts",
     "content:verify": "tsx scripts/content-verify.ts",
-    "content:status": "tsx scripts/content-status.ts"
+    "content:status": "tsx scripts/content-status.ts",
+    "backlink-candidates": "tsx scripts/backlink-candidates.ts",
+    "generate:social-cards": "tsx scripts/generate-social-cards.ts"
   },
   "dependencies": {
     "geist": "^1.7.2",

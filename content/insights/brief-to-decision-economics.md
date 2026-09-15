@@ -1,12 +1,29 @@
 ---
 title: From Brief to Decision — Economics as a Separate, Later Layer
-description: 'A direction under exploration: TextOS is investigating an authority-opportunity economics layer that estimates a defensible break-even threshold, never a'
+description: 'Direction under exploration: TextOS is investigating an economics layer above the Opportunity Brief reporting a break-even threshold, never predicted revenue.'
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds: []
+firstPublishedAt: null
+lastReviewedAt: null
+revisionNumber: 0
+schemaType: Article
+image:
+  src: /og/insights/brief-to-decision-economics.svg
+  alt: From Brief to Decision — Economics as a Separate, Later Layer — TextOS Insight
+  width: 1200
+  height: 630
+primaryTopicId: opportunity-and-decision
+topicIds:
+- opportunity-and-decision
+- product-doctrine
+audience: reader-executive
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - quality-ledger:quality-ledger-rates-v1
@@ -50,6 +67,8 @@ An authority-presence measurement can be defensible on its own. It answers what 
 The Opportunity Brief layer, described in ADR-014, sits one step earlier. It judges — mechanically — which observed authority gaps qualify as *defensible opportunities* and assembles a proposed brief for each. It does no estimation. It uses no language model. It produces no ROI. A human accepts or rejects; the system never accepts on its own. The line we drew there is deliberately narrow: mechanical judgement of defensibility, factual assembly of evidence, human acceptance as the North Star.
 
 The economics layer, described in ADR-018, is a *separate* and *later* derivation. It is being explored precisely because the Brief layer refuses to answer the economic question — and refusing to answer that question forever would eventually push customers into building the estimate themselves, unaided. The exploration asks: is there a way to answer without inventing numbers? The rest of this article is what "without inventing numbers" looks like in practice.
+
+<!-- cta:contextual -->
 
 ## The decision we are not going to make
 

@@ -90,7 +90,7 @@ export default async function Page({
         <ContentCta
           variant={doc.ctaResolution.resolvedVariant}
           contentId={doc.contentId}
-          position="end"
+          position="final"
         />
 
         {/* Parcours 2 du maillage : FAQ → doctrine de mesure (homepage).

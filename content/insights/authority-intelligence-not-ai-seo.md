@@ -7,6 +7,23 @@ editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds: []
+firstPublishedAt: null
+lastReviewedAt: null
+revisionNumber: 0
+schemaType: Article
+image:
+  src: /og/insights/authority-intelligence-not-ai-seo.svg
+  alt: Authority Intelligence, Not AI SEO — TextOS Insight
+  width: 1200
+  height: 630
+primaryTopicId: product-doctrine
+topicIds:
+- product-doctrine
+- authority-observation
+audience: reader-mixed
+funnelStage: awareness
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - observe-authority-presence:authority-presence-observation-v1

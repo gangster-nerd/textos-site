@@ -1,12 +1,29 @@
 ---
 title: Three measures, never one score
-description: Fusing citations and mentions into a single authority score hides the difference between being cited and being talked about. TextOS refuses the fusion by
+description: Fusing citations and mentions into one authority score hides the difference between being cited and being talked about. TextOS refuses the fusion.
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds: []
+firstPublishedAt: null
+lastReviewedAt: null
+revisionNumber: 0
+schemaType: Article
+image:
+  src: /og/insights/three-measures-never-one-score.svg
+  alt: Three measures, never one score — TextOS Insight
+  width: 1200
+  height: 630
+primaryTopicId: measurement-mechanics
+topicIds:
+- measurement-mechanics
+- product-doctrine
+audience: reader-mixed
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - direct-share-of-model:direct-share-measurement-v1
@@ -55,6 +72,8 @@ sourceDigests:
 Most measurement products end in a number. The dashboard headline is a score; the score is the promise; the score is what a buyer remembers. TextOS ends somewhere else, and that difference is not an oversight. It is a design decision, taken twice: once in the observatory architecture (ADR-001), and again in the authority-presence estimator (ADR-011). Both documents use the same phrase — *anti-objective* — to describe a single composite score, and both instruct the code that computes measurements to refuse the fusion at the source.
 
 This article explains what the fusion would silently do, why it would be strategically wrong even when it is technically clean, and what TextOS reports instead.
+
+<!-- cta:contextual -->
 
 ## The three questions a composite score conflates
 

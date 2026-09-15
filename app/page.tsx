@@ -150,7 +150,7 @@ export default function Home() {
       </div>
 
       {/* Variante RÉSOLUE, jamais celle demandée : la page rend une décision, elle ne la prend pas. */}
-      <ContentCta variant={cta.resolvedVariant} contentId="homepage" position="end" />
+      <ContentCta variant={cta.resolvedVariant} contentId="homepage" position="final" />
 
       <p style={{ marginTop: "var(--space-8)" }}>
         <Link href="/faq">Questions about how TextOS measures &rarr;</Link>

@@ -98,7 +98,7 @@ export default async function Page({
         <ContentCta
           variant={doc.ctaResolution.resolvedVariant}
           contentId={doc.contentId}
-          position="end"
+          position="final"
         />
 
         {/* Navigation LATÉRALE du cluster : les quatre pages se lisent ensemble, et n'en offrir

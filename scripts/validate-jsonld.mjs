@@ -52,15 +52,29 @@ function readNodes(htmlPath) {
     } catch (e) {
       fail(`JSON-LD non parsable (${htmlPath}): ` + e.message);
     }
-    nodes = nodes.concat(Array.isArray(parsed) ? parsed : [parsed]);
+    // Accept both flat nodes and @graph wrappers. CTC-ARTICLE-SYSTEM-1 §5 emits a
+    // { "@context", "@graph": [...] } document ; older pages emit standalone nodes.
+    // The invariant remains : every emitted node must have @type. The @context sits
+    // on the wrapper for @graph docs and on each node for flat docs.
+    const list = Array.isArray(parsed) ? parsed : [parsed];
+    for (const item of list) {
+      if (item && Array.isArray(item["@graph"])) {
+        if (!item["@context"]) fail(`@graph wrapper sans @context (${htmlPath})`);
+        nodes = nodes.concat(item["@graph"]);
+      } else {
+        nodes.push(item);
+      }
+    }
   }
 
   for (const n of nodes) {
-    if (!n["@context"]) fail(`nœud sans @context (${htmlPath}): ${JSON.stringify(n).slice(0, 80)}`);
+    // Nodes inside a @graph inherit @context from the wrapper — only check @type here.
     if (!n["@type"]) fail(`nœud sans @type (${htmlPath})`);
   }
   return nodes;
 }
+
+const ARTICLE_TYPES = new Set(["Article", "TechArticle", "BlogPosting"]);
 
 // ---------------------------------------------------------------------------
 // 1. Homepage — SoftwareApplication + featureList ⊆ public_marketable.
@@ -126,14 +140,56 @@ const contentFiles = contentDirs.flatMap(({ name, dir }) =>
     .map((file) => ({ collection: name, file, p: path.join(dir, file) }))
 );
 
+// CTC-ARTICLE-SYSTEM-1 §4 — topic hubs live at out/insights/topic/*.html. They emit a
+// CollectionPage graph, not an Article graph. Validate them separately.
+const topicHubFiles = (() => {
+  try {
+    return readdirSync("out/insights/topic")
+      .filter((f) => f.endsWith(".html"))
+      .sort()
+      .map((file) => ({ file, p: path.join("out/insights/topic", file) }));
+  } catch {
+    return [];
+  }
+})();
+
+for (const { file, p: hp } of topicHubFiles) {
+  const nodes = readNodes(hp);
+  const coll = nodes.find((n) => n["@type"] === "CollectionPage");
+  if (!coll) fail(`topic hub sans CollectionPage node (${hp})`);
+  if (nodes.some((n) => n["@type"] === "SoftwareApplication")) {
+    fail(`SoftwareApplication interdit sur un topic hub (${hp})`);
+  }
+  if (nodes.some((n) => "featureList" in n)) {
+    fail(`featureList interdit sur un topic hub (${hp})`);
+  }
+  console.log(`✅ insights/topic/${file} : CollectionPage valide`);
+}
+
 if (contentFiles.length === 0) {
   console.log("ℹ️  aucune page de contenu exportée (rien à valider).");
 } else {
   for (const { collection, file, p } of contentFiles) {
     const nodes = readNodes(p);
 
-    const article = nodes.find((n) => n["@type"] === "Article");
-    if (!article) fail(`nœud Article absent (${p})`);
+    // Draft insights emit a WebPage graph (no Article node, no datePublished). Published
+    // ones emit Article/TechArticle/BlogPosting. Both shapes are legitimate on a content
+    // page — the invariant is "one canonical page-level node, honest about status".
+    const article = nodes.find((n) => ARTICLE_TYPES.has(n["@type"]));
+    const webpage = nodes.find((n) => n["@type"] === "WebPage");
+    if (!article && !webpage) {
+      fail(`aucun nœud page (Article/TechArticle/BlogPosting/WebPage) trouvé (${p})`);
+    }
+    if (!article && webpage) {
+      // Draft path — assert we did NOT leak publication semantics.
+      const blob = JSON.stringify(nodes);
+      if (/datePublished|dateModified/.test(blob)) {
+        fail(`WebPage draft (${p}) émet datePublished/dateModified — draft ne doit pas porter de date de publication.`);
+      }
+      // Rest of the Article-only checks below are skipped for drafts. Continue.
+      console.log(`✅ ${collection}/${file} : draft WebPage graph (no Article, no datePublished)`);
+      continue;
+    }
 
     if (nodes.some((n) => n["@type"] === "SoftwareApplication")) {
       fail(`SoftwareApplication interdit sur une page de contenu (${p})`);

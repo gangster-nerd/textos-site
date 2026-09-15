@@ -5,9 +5,25 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { siteConfig } from "@/lib/config/site";
-import { listPublishedSlugs, loadCollection, loadDocument, listSlugs } from "@/lib/content/content-loader";
+import {
+  listPublishedSlugs,
+  loadCollection,
+  loadDocument,
+  listSlugs,
+} from "@/lib/content/content-loader";
 import type { ContentFrontmatter } from "@/lib/content/content-schema";
-import { buildArticleJsonLd } from "@/lib/schema-org/build-article";
+import { findPerson } from "@/lib/content/author-registry";
+import { findTopic } from "@/lib/content/topic-registry";
+import {
+  countWords,
+  extractHeadings,
+  insightBreadcrumb,
+  readingTimeMinutes,
+  scoreRelated,
+  shouldRenderToc,
+  type Heading,
+} from "@/lib/content/article-derivations";
+import { buildInsightArticleGraph } from "@/lib/schema-org/build-article-graph";
 import { serializeJsonLd } from "@/lib/schema-org/serialize";
 import { ContentCta } from "@/components/content/ContentCta";
 
@@ -16,11 +32,6 @@ const COLLECTION = "insights";
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
-// Sentinel unique pour output:export : la config `output: "export"` (next.config.mjs) exige
-// que `generateStaticParams` retourne au moins UNE entrée. Quand la collection est vide
-// (CTC-9A avant que la vague CTC-9B ne pose ses articles), on rend une page "not_found"
-// discrète plutôt que de laisser le build échouer. Cette page n'est jamais linkée depuis
-// /insights (index) — elle est purement structurelle.
 const EMPTY_COLLECTION_SENTINEL = "__empty_collection__";
 
 export function generateStaticParams() {
@@ -41,16 +52,63 @@ export async function generateMetadata({
     return { title: "Not found", robots: { index: false, follow: false } };
   }
   const doc = loadDocument(COLLECTION, slug);
+  const fm = doc.frontmatter as ContentFrontmatter & Record<string, unknown>;
+  const authorId = fm.authorId as string | undefined;
+  const author = authorId ? findPerson(authorId) : undefined;
+  const image = fm.image as
+    | { src: string; alt: string; width: number; height: number }
+    | undefined;
+  const imageUrl = image
+    ? siteConfig.allowIndexing
+      ? `${siteConfig.origin}${image.src}`
+      : image.src
+    : undefined;
+  const publicPublished =
+    siteConfig.allowIndexing && doc.frontmatter.editorialStatus === "published";
   return {
     title: doc.frontmatter.title,
     description: doc.frontmatter.description,
-    ...(siteConfig.allowIndexing
-      ? { alternates: { canonical: `/${COLLECTION}/${slug}` } }
+    ...(publicPublished
+      ? {
+          alternates: { canonical: `/${COLLECTION}/${slug}` },
+          openGraph: {
+            type: "article",
+            title: doc.frontmatter.title,
+            description: doc.frontmatter.description,
+            publishedTime: (fm.firstPublishedAt as string | undefined) ?? undefined,
+            modifiedTime:
+              (fm.lastReviewedAt as string | undefined) ??
+              (fm.firstPublishedAt as string | undefined) ??
+              undefined,
+            authors: author ? [author.name] : undefined,
+            images: image
+              ? [
+                  {
+                    url: imageUrl!,
+                    width: image.width,
+                    height: image.height,
+                    alt: image.alt,
+                  },
+                ]
+              : undefined,
+          },
+          twitter: {
+            card: "summary_large_image",
+            title: doc.frontmatter.title,
+            description: doc.frontmatter.description,
+            images: image ? [imageUrl!] : undefined,
+          },
+        }
       : {}),
+    // CTO §2 : un draft ne doit ni être indexé ni être suivi. `follow: true` sur un draft
+    // laisserait les crawlers découvrir la page via des liens accidentels et propager son
+    // « poids » (aussi faible soit-il) vers ses cibles. Draft = pas de trace publique.
     robots:
-      doc.frontmatter.indexingPolicy === "noindex"
-        ? { index: false, follow: true }
-        : undefined,
+      doc.frontmatter.editorialStatus !== "published"
+        ? { index: false, follow: false }
+        : doc.frontmatter.indexingPolicy === "noindex"
+          ? { index: false, follow: true }
+          : undefined,
   };
 }
 
@@ -60,51 +118,202 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (slug === EMPTY_COLLECTION_SENTINEL) {
+  if (slug === EMPTY_COLLECTION_SENTINEL) notFound();
+
+  const doc = loadDocument(COLLECTION, slug);
+  // CTO §2 : ceinture-et-bretelles. `generateStaticParams` filtre déjà les drafts en
+  // Production (via `listPublishedSlugs`), donc en théorie ce chemin n'est jamais atteint
+  // pour un draft quand `allowIndexing=true`. Le garde ci-dessous est le filet : si un
+  // draft s'inscrivait au static export d'une build indexable pour quelque raison, on
+  // renvoie 404 plutôt que de servir un contenu non prêt.
+  if (siteConfig.allowIndexing && doc.frontmatter.editorialStatus !== "published") {
     notFound();
   }
-  const doc = loadDocument(COLLECTION, slug);
-  const jsonLd = buildArticleJsonLd(doc, COLLECTION);
-  const fm = doc.frontmatter as ContentFrontmatter & {
-    editorialClass?: string;
-    truthMode?: string;
-    disclaimer?: string;
-  };
+  const fm = doc.frontmatter as ContentFrontmatter & Record<string, unknown>;
 
-  const siblings = loadCollection(COLLECTION)
-    .filter((d) => d.slug !== doc.slug)
-    .slice(0, 6)
-    .map((d) => ({ href: d.path, title: d.frontmatter.title }));
+  const headings = extractHeadings(doc.body, { includeH3: false });
+  const wc = countWords(doc.body);
+  const readingTime = readingTimeMinutes(doc.body);
+  const breadcrumb = insightBreadcrumb(doc.slug, doc.frontmatter.title);
+  const showToc = shouldRenderToc(headings);
+
+  const authorId = fm.authorId as string | undefined;
+  const author = authorId ? findPerson(authorId) : undefined;
+  const reviewerIds = (fm.reviewerIds as string[] | undefined) ?? [];
+  const reviewers = reviewerIds.map(findPerson).filter(Boolean);
+
+  const primaryTopicId = fm.primaryTopicId as string | undefined;
+  const primaryTopic = primaryTopicId ? findTopic(primaryTopicId) : undefined;
+
+  const jsonLdGraph = buildInsightArticleGraph({ doc, headings });
+
+  // Related content — deterministic scoring, no arbitrary slice.
+  const allDocs = loadCollection(COLLECTION);
+  const related = scoreRelated({ target: doc, candidates: allDocs }).slice(0, 6);
+
+  // Freshness / status label.
+  const truthMode = fm.truthMode as string | undefined;
+  const editorialClass = fm.editorialClass as string | undefined;
+  const disclaimer = fm.disclaimer as string | undefined;
+  const firstPublishedAt = fm.firstPublishedAt as string | null | undefined;
+  const lastReviewedAt = fm.lastReviewedAt as string | undefined;
+  const revisionNumber = (fm.revisionNumber as number | undefined) ?? 0;
+  const revisionSummary = fm.revisionSummary as string | undefined;
+
+  // CTO §5 — ONE heading-id source of truth. `extractHeadings` reads the raw Markdown
+  // source and disambiguates duplicates. The template threads its output through the
+  // Markdown renderer BY INDEX : the k-th H2 rendered receives the k-th precomputed id.
+  //
+  // Why not slugify from the React children ? Because React children can be inline
+  // elements (`<strong>trusted</strong>`), and `String(children)` on an object node
+  // yields `[object Object]` — which slugifies to `object-object` and diverges from
+  // extractHeadings's view of the Markdown source. We saw this exact divergence :
+  // ToC pointed at `#…-in-trusted`, DOM emitted `id="…-in-object-object"`, and every
+  // ToC fragment ended up orphaned.
+  //
+  // Index-threading avoids the problem entirely : the extraction reads the source
+  // once, and every H2 renders with the exact id the ToC references.
+  const h2IdQueue = headings
+    .filter((h) => h.level === 2)
+    .map((h) => ({ id: h.id, text: h.text }));
+  let h2Cursor = 0;
+  const nextH2 = () => h2IdQueue[h2Cursor++] ?? { id: "", text: "" };
+  const markdownComponents = {
+    h2: ({ children }: { children?: React.ReactNode }) => {
+      const { id, text } = nextH2();
+      return (
+        <h2 id={id}>
+          <a
+            href={`#${id}`}
+            className="doc__heading-anchor"
+            aria-label={`Link to ${text}`}
+          >
+            {children}
+          </a>
+        </h2>
+      );
+    },
+  } as const;
+
+  // CTO §6 — Split the body at the contextual CTA marker. Placement is EDITORIAL, not
+  // automatic : the marker sits at the position the writer chose. If a CTA resolves but
+  // no marker exists, we do NOT render a contextual CTA (verifier warns at build time
+  // via insight-verifier).
+  const CTA_MARKER = "<!-- cta:contextual -->";
+  const markerIndex = doc.body.indexOf(CTA_MARKER);
+  const hasContextualMarker = markerIndex !== -1;
+  const bodyBeforeCta = hasContextualMarker ? doc.body.slice(0, markerIndex) : doc.body;
+  const bodyAfterCta = hasContextualMarker ? doc.body.slice(markerIndex + CTA_MARKER.length) : "";
+  const shouldRenderCta =
+    doc.ctaResolution.resolvedVariant !== null &&
+    doc.ctaResolution.resolvedVariant !== "none";
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLdGraph) }}
       />
-      <main>
-        <article className="doc">
+      <main className="doc">
+        {/* CTO §2 — Draft = pas public. Bandeau visible dès qu'un article n'est pas
+            `editorialStatus=published`, quelle que soit la surface qui le sert (Preview
+            ou dev local — la Production n'atteindra jamais ce chemin via
+            generateStaticParams + le garde notFound() ci-dessus). Explicite, court,
+            impossible à confondre avec du contenu de première ligne. */}
+        {doc.frontmatter.editorialStatus !== "published" && (
+          <aside
+            className="doc__draft-banner"
+            role="note"
+            aria-label="Draft banner"
+            data-role="draft-banner"
+          >
+            <strong>DRAFT · NOT PUBLIC</strong>
+            <span>
+              This article has not been published. It is served to reviewers only,
+              carries robots noindex/nofollow, and is excluded from listings, sitemap,
+              related content and topic hubs in Production.
+            </span>
+          </aside>
+        )}
+        {/* Breadcrumb */}
+        <nav className="doc__breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            {breadcrumb.map((c, i) => (
+              <li key={c.href}>
+                {i < breadcrumb.length - 1 ? (
+                  <Link href={c.href}>{c.label}</Link>
+                ) : (
+                  <span aria-current="page">{c.label}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <article>
           <header className="doc__head">
-            <p className="kicker">
-              {fm.editorialClass ? fm.editorialClass.replace(/_/g, " ").toLowerCase() : "Insights"}
-            </p>
-            <h1>{doc.frontmatter.title}</h1>
-            {fm.editorialClass === "ROADMAP_DIRECTION" && fm.disclaimer && (
-              <p className="doc__disclaimer" role="note" data-role="roadmap-disclaimer">
-                {fm.disclaimer}
+            {primaryTopic && (
+              <p className="kicker">
+                <Link href={primaryTopic.hubSlug ? `/insights/topic/${primaryTopic.hubSlug}` : "/insights"}>
+                  {primaryTopic.label}
+                </Link>
               </p>
             )}
-            {fm.editorialClass === "COMPANY_TECHNOLOGY" && (
+            <h1>{doc.frontmatter.title}</h1>
+            <p className="doc__lede">{doc.frontmatter.description}</p>
+
+            <div className="doc__meta" role="group" aria-label="Article metadata">
+              {author && (
+                <span>
+                  <span className="data-label">Author</span> {author.name}
+                </span>
+              )}
+              {reviewers.length > 0 && (
+                <span>
+                  <span className="data-label">Reviewed by</span>{" "}
+                  {reviewers.map((r) => r?.name).join(", ")}
+                </span>
+              )}
+              {firstPublishedAt && (
+                <span>
+                  <span className="data-label">First published</span> {firstPublishedAt}
+                </span>
+              )}
+              <span>
+                <span className="data-label">Last updated</span> {doc.frontmatter.updatedAt}
+              </span>
+              {lastReviewedAt && lastReviewedAt !== doc.frontmatter.updatedAt && (
+                <span>
+                  <span className="data-label">Last reviewed</span> {lastReviewedAt}
+                </span>
+              )}
+              <span>
+                <span className="data-label">Reading time</span> {readingTime} min · {wc.toLocaleString()} words
+              </span>
+              {editorialClass && (
+                <span data-editorial-class={editorialClass}>
+                  <span className="data-label">Editorial class</span>{" "}
+                  {editorialClass.replace(/_/g, " ").toLowerCase()}
+                </span>
+              )}
+              {truthMode && (
+                <span data-truth-mode={truthMode}>
+                  <span className="data-label">Truth mode</span> {truthMode.toLowerCase()}
+                </span>
+              )}
+            </div>
+
+            {editorialClass === "ROADMAP_DIRECTION" && disclaimer && (
+              <p className="doc__disclaimer" role="note" data-role="roadmap-disclaimer">
+                {disclaimer}
+              </p>
+            )}
+            {editorialClass === "COMPANY_TECHNOLOGY" && (
               <p className="doc__status" role="note" data-role="company-technology">
                 <span className="data-label">How we build</span> This is an internal engineering
                 narrative, not a customer feature.
               </p>
             )}
-            {doc.maturityLabels.map((label) => (
-              <p key={label} className="doc__status" role="note">
-                <span className="data-label">Status</span> {label}
-              </p>
-            ))}
           </header>
 
           <section className="doc__short" aria-labelledby="short-answer">
@@ -114,35 +323,90 @@ export default async function Page({
             <p className="lede">{doc.frontmatter.shortAnswer.body}</p>
           </section>
 
-          <Markdown remarkPlugins={[remarkGfm]}>{doc.body}</Markdown>
+          {showToc && (
+            <nav className="doc__toc" aria-label="Table of contents">
+              <p className="data-label">Contents</p>
+              <ol>
+                {headings.map((h) => (
+                  <li key={h.id} data-toc-level={h.level}>
+                    <a href={`#${h.id}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
 
-          <footer className="doc__provenance" aria-label="Source">
+          <Markdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+            {bodyBeforeCta}
+          </Markdown>
+
+          {/* CTO §6 — Contextual CTA rendered AT the editorial marker position, not
+              after the whole body. The writer chose the placement ; we honour it. */}
+          {shouldRenderCta && hasContextualMarker && (
+            <ContentCta
+              variant={doc.ctaResolution.resolvedVariant}
+              contentId={doc.contentId}
+              position="contextual"
+              clusterId={doc.frontmatter.clusterId}
+            />
+          )}
+
+          {hasContextualMarker && (
+            <Markdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+              {bodyAfterCta}
+            </Markdown>
+          )}
+
+          <footer className="doc__provenance" aria-label="Provenance and method">
+            <h2>Provenance</h2>
             <p>
-              Written against product SHA <code>{doc.frontmatter.productSnapshotSha}</code>
-              {fm.truthMode ? ` — truth mode: ${fm.truthMode}` : ""}
-              {fm.editorialClass ? `, editorial class: ${fm.editorialClass}` : ""}.
+              This article was written against product SHA{" "}
+              <code>{doc.frontmatter.productSnapshotSha}</code>
+              {truthMode ? ` — truth mode: ${truthMode}.` : "."}
             </p>
+            {revisionNumber > 0 && (
+              <p>
+                <span className="data-label">Revision</span> {revisionNumber}
+                {revisionSummary ? ` — ${revisionSummary}` : ""}
+              </p>
+            )}
           </footer>
+
+          {related.length > 0 && (
+            <nav className="doc__related" aria-label="Related insights">
+              <h2>Related insights</h2>
+              <ul>
+                {related.map((r) => (
+                  <li key={r.slug}>
+                    <Link href={r.href}>{r.title}</Link>
+                    <p className="data-label">{r.reasons.join(" · ")}</p>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          {/* Final CTA — same variant, different position, deliberate repetition at the end. */}
+          {doc.ctaResolution.resolvedVariant &&
+            doc.ctaResolution.resolvedVariant !== "none" && (
+              <ContentCta
+                variant={doc.ctaResolution.resolvedVariant}
+                contentId={doc.contentId}
+                position="final"
+                clusterId={doc.frontmatter.clusterId}
+              />
+            )}
+
+          {author && (
+            <section className="doc__author-card" aria-label="Author">
+              <h2>About the author</h2>
+              <p>
+                <strong>{author.name}</strong>
+                {author.role ? <> — {author.role}</> : null}
+              </p>
+            </section>
+          )}
         </article>
-
-        <ContentCta
-          variant={doc.ctaResolution.resolvedVariant}
-          contentId={doc.contentId}
-          position="end"
-        />
-
-        {siblings.length > 0 && (
-          <nav aria-label="More insights">
-            <h2>More insights</h2>
-            <ul>
-              {siblings.map((s) => (
-                <li key={s.href}>
-                  <Link href={s.href}>{s.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
       </main>
     </>
   );

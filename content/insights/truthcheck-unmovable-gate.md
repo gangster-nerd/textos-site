@@ -1,12 +1,29 @@
 ---
 title: TruthCheck — the Unmovable Gate
-description: 'TruthCheck is designed as an unmovable gate: its blocking verdict is deterministic, reproducible, and never lifted by any publication mode. A language model'
+description: 'TruthCheck is an unmovable gate: its blocking verdict is deterministic, reproducible, and never lifted — a language model can only raise alerts, never blocks.'
 contentType: product_article
 language: en
 editorialStatus: draft
 indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
+authorId: textos-editorial-team
+reviewerIds: []
+firstPublishedAt: null
+lastReviewedAt: null
+revisionNumber: 0
+schemaType: TechArticle
+image:
+  src: /og/insights/truthcheck-unmovable-gate.svg
+  alt: TruthCheck — the Unmovable Gate — TextOS Insight
+  width: 1200
+  height: 630
+primaryTopicId: claim-evidence-and-truth-check
+topicIds:
+- claim-evidence-and-truth-check
+- generation-and-publication
+audience: reader-technical
+funnelStage: consideration
 productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
 evidenceRefs:
 - observe-authority-presence:observe-run-orchestration-v1
@@ -40,6 +57,8 @@ sourceDigests:
 ## An architecture note, not an availability claim
 
 TruthCheck is an internal capability in the current capability registry. This article documents **how it is designed** and **why the gate is unmovable** — not a claim that a customer receives a certified-content service today. The point of the piece is architectural: to explain a decision that shapes what TextOS is willing to let out of itself, and why that decision is a hard invariant rather than a policy that could be softened by product mood.
+
+<!-- cta:contextual -->
 
 ## What TruthCheck is designed to do
 

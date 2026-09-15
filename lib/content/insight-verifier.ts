@@ -23,10 +23,13 @@ import {
   TRUTH_MODES,
 } from "./content-schema";
 import type { ResolvedDocument } from "./content-loader";
+import { PERSON_IDS, PERSON_ENTITY_IDS } from "./author-registry";
+import { TOPIC_IDS } from "./topic-registry";
 
 export const INSIGHT_COLLECTION = "insights";
 
 // Contrat strict : les optionnels du schéma générique redeviennent obligatoires ici.
+// CTC-ARTICLE-SYSTEM-1 étend la liste avec les champs éditoriaux publication-grade.
 export const InsightFrontmatterStrictSchema = z
   .object({
     editorialClass: z.enum(EDITORIAL_CLASSES),
@@ -37,6 +40,51 @@ export const InsightFrontmatterStrictSchema = z
       (d) => Object.keys(d).length > 0,
       "sourceDigests doit couvrir tous les sourcePaths.",
     ),
+    // CTC-ARTICLE-SYSTEM-1 §3 — champs publication-grade obligatoires pour /insights.
+    authorId: z
+      .enum(PERSON_IDS as [string, ...string[]])
+      .refine((v) => PERSON_IDS.includes(v), "authorId inconnu du registre author-registry.ts"),
+    // CTO §9 : reviewerIds ne peut contenir que des Person — un reviewer collectif
+    // masquerait le fait qu'aucun humain nommé n'a lu la draft.
+    reviewerIds: z
+      .array(z.string())
+      .refine(
+        (arr) => arr.every((v) => PERSON_ENTITY_IDS.includes(v)),
+        "reviewerId doit référencer un Person (pas une Organization) du registre.",
+      ),
+    primaryTopicId: z.enum(TOPIC_IDS as unknown as [string, ...string[]]),
+    topicIds: z
+      .array(z.string())
+      .min(1)
+      .refine((arr) => arr.every((v) => (TOPIC_IDS as readonly string[]).includes(v)), "topicId inconnu"),
+    audience: z.enum([
+      "reader-marketing",
+      "reader-technical",
+      "reader-executive",
+      "reader-mixed",
+    ]),
+    funnelStage: z.enum([
+      "awareness",
+      "consideration",
+      "decision",
+      "expansion",
+      "retention",
+    ]),
+    relatedContentIds: z.array(z.string()).optional(),
+    // firstPublishedAt : null tant que non publié pour de vrai. Ne pas simuler la fraîcheur.
+    firstPublishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
+    // CTO §1 : null tant qu'aucune revue humaine n'a eu lieu. Migration automatique ≠ revue.
+    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
+    revisionNumber: z.number().int().nonnegative(),
+    revisionSummary: z.string().min(1).optional(),
+    schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]),
+    // CTO §8 — image REQUIRED under /insights.
+    image: z.object({
+      src: z.string().regex(/^\/[a-z0-9/_.-]+$/),
+      alt: z.string().min(1),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+    }),
   })
   .passthrough();
 
@@ -130,6 +178,125 @@ export function verifyInsightDocument(
       slug,
       message: `${strict.editorialClass} exige ctaVariant=none (obtenu ${String(fm.ctaVariant)}).`,
     });
+  }
+
+  // 6. primaryTopicId ∈ topicIds
+  if (!strict.topicIds.includes(strict.primaryTopicId)) {
+    failures.push({
+      slug,
+      message: `primaryTopicId "${strict.primaryTopicId}" absent de topicIds ${JSON.stringify(strict.topicIds)}.`,
+    });
+  }
+
+  // 6bis. CTO §8 — l'asset image doit exister physiquement. Sinon la meta OG et le
+  // ImageObject JSON-LD pointeraient vers un 404, ce qui donne un objet Article dont
+  // l'image annoncée n'existe pas — pire qu'aucune image, parce que ça a l'air valide.
+  const siteRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..", "..");
+  const imgSrc = strict.image.src;
+  const imgAbsolute = path.join(siteRoot, "public", imgSrc.replace(/^\//, ""));
+  if (!existsSync(imgAbsolute)) {
+    failures.push({
+      slug,
+      message: `image.src "${imgSrc}" pointe vers un fichier absent (attendu à public${imgSrc}).`,
+    });
+  }
+
+  // 7. Description ends with a proper terminal punctuation ; the schema enforces ≤160 chars
+  // but not sentence completeness. This gate refuses truncated descriptions (they were
+  // observed in wave-1).
+  const desc = String(fm.description ?? "");
+  if (!/[.!?»)][\s]*$/.test(desc)) {
+    failures.push({
+      slug,
+      message: `description tronquée ou sans ponctuation finale : "${desc.slice(-40)}"`,
+    });
+  }
+
+  // 7bis. CTO §6 — CTA contextuel. Un article dont le CTA résolu est autre que `none`
+  // DOIT contenir le marqueur éditorial `<!-- cta:contextual -->` dans son corps —
+  // exactement une occurrence. Sans marqueur, la position "contextual" tombe et le
+  // CTA final devient orphelin. Le marqueur est la garantie qu'un humain a choisi le
+  // point d'insertion, pas un algorithme.
+  const CTA_MARKER_TOKEN = "<!-- cta:contextual -->";
+  const resolvedCta = doc.ctaResolution?.resolvedVariant;
+  if (resolvedCta && resolvedCta !== "none") {
+    const occurrences = (doc.body.match(/<!--\s*cta:contextual\s*-->/g) ?? []).length;
+    if (occurrences === 0) {
+      failures.push({
+        slug,
+        message: `ctaResolution=${resolvedCta} exige le marqueur "${CTA_MARKER_TOKEN}" quelque part dans le corps de l'article.`,
+      });
+    } else if (occurrences > 1) {
+      failures.push({
+        slug,
+        message: `marqueur "${CTA_MARKER_TOKEN}" trouvé ${occurrences} fois — un et un seul est attendu.`,
+      });
+    }
+  }
+
+  // 8. CTO §1 — invariants croisés draft/published. La revue humaine, la publication et
+  // l'indexation sont trois choses distinctes ; on refuse toute combinaison qui laisserait
+  // croire à un état intermédiaire mensonger (un draft "révisé mais non publié" via une
+  // date de review synthétique ; un publié sans reviewer nommé ; un publié dont
+  // firstPublishedAt est null).
+  const status = fm.editorialStatus as string;
+  const indexPolicy = fm.indexingPolicy as string;
+  if (status === "draft") {
+    if (strict.firstPublishedAt !== null) {
+      failures.push({
+        slug,
+        message: `draft: firstPublishedAt doit être null (obtenu ${strict.firstPublishedAt}).`,
+      });
+    }
+    if (strict.lastReviewedAt !== null) {
+      failures.push({
+        slug,
+        message: `draft: lastReviewedAt doit être null tant qu'aucune revue humaine n'a eu lieu (obtenu ${strict.lastReviewedAt}).`,
+      });
+    }
+    if (strict.revisionNumber !== 0) {
+      failures.push({
+        slug,
+        message: `draft: revisionNumber doit être 0 (obtenu ${strict.revisionNumber}).`,
+      });
+    }
+    if (indexPolicy !== "noindex") {
+      failures.push({
+        slug,
+        message: `draft: indexingPolicy doit être noindex (obtenu ${indexPolicy}).`,
+      });
+    }
+  } else if (status === "published") {
+    if (strict.firstPublishedAt === null) {
+      failures.push({
+        slug,
+        message: `published: firstPublishedAt doit être une date réelle (obtenu null).`,
+      });
+    }
+    if (!strict.reviewerIds || strict.reviewerIds.length === 0) {
+      failures.push({
+        slug,
+        message: `published: reviewerIds doit contenir au moins un reviewer humain nommé.`,
+      });
+    }
+    if (strict.lastReviewedAt === null) {
+      failures.push({
+        slug,
+        message: `published: lastReviewedAt doit être une date réelle (obtenu null).`,
+      });
+    }
+    if (strict.revisionNumber < 1) {
+      failures.push({
+        slug,
+        message: `published: revisionNumber doit être ≥ 1 (obtenu ${strict.revisionNumber}).`,
+      });
+    }
+    if (indexPolicy !== "index") {
+      failures.push({
+        slug,
+        message: `published: indexingPolicy doit être index (obtenu ${indexPolicy}).`,
+      });
+    }
   }
 
   return failures;
