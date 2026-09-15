@@ -1,4 +1,4 @@
-// CSE-2 — authority compiler.
+// A2 — authority compiler.
 //
 // Consumes ResolvedContentSurface and (optionally) a canonical site origin, producing
 // downstream metadata for the REFERENCE surface:
@@ -102,13 +102,22 @@ export function compileAuthority(input: AuthorityCompileInput): CompiledAuthorit
   const effectiveIndex =
     resolved.metadata.effectiveIndexing === "index" ? true : false;
 
+  // Pre-decide the schema type so OpenGraph type stays aligned with the same factual/policy
+  // boundary as JSON-LD. og:type="article" is emitted ONLY when this compilation actually
+  // produces a schema.org Article node; every other case falls back to og:type="website".
+  const schemaTypeCandidate = resolved.metadata.emitSchemaOrg
+    ? resolved.metadata.schemaType ?? defaultSchemaType(resolved.contentType)
+    : null;
+  const willEmitArticle = schemaTypeCandidate === "Article";
+  const ogType = willEmitArticle ? "article" : "website";
+
   const metadata: CompiledAuthority["metadata"] = {
     title: resolved.title,
     description: resolved.description,
     robots: { index: effectiveIndex, follow: true },
     canonical,
     openGraph: {
-      type: "article",
+      type: ogType,
       title: resolved.title,
       description: resolved.description,
       // Draft/noindex must not leak an absolute URL to social crawlers either.
@@ -127,8 +136,7 @@ export function compileAuthority(input: AuthorityCompileInput): CompiledAuthorit
   }
 
   const nodes: Record<string, unknown>[] = [];
-  const schemaType =
-    resolved.metadata.schemaType ?? defaultSchemaType(resolved.contentType);
+  const schemaType = schemaTypeCandidate;
 
   if (schemaType) {
     const node: Record<string, unknown> = {

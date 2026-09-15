@@ -57,7 +57,7 @@ function renderFull(resolved: ResolvedContentSurface, cta = null as ReturnType<t
   );
 }
 
-describe("CSE-2 — REFERENCE surface", () => {
+describe("A2 — REFERENCE surface", () => {
   it("(#1) renderer consumes ResolvedContentSurface, not raw markdown", () => {
     const { resolved } = compose(surfacePassArticleFixture);
     const html = renderToStaticMarkup(<RenderReferenceBody resolved={resolved} />);
@@ -316,7 +316,7 @@ describe("CSE-2 — REFERENCE surface", () => {
         expect(src.toLowerCase().includes(needle.toLowerCase()), `${rel} must not reference "${needle}"`).toBe(false);
       }
     }
-    // certified-lineage.json is untouched by CSE-2 (we asserted the file hash below).
+    // certified-lineage.json is untouched by A2 (we asserted the file hash below).
     const lineage = readFileSync(path.join(REPO_ROOT, "content/certified-lineage.json"), "utf8");
     expect(lineage).toContain("a0efa146a8691938b624c156d99f4663f6f92218");
     expect(lineage).toContain("3cfae5830fed3f10fd35ed77e699a183162b6cbe");

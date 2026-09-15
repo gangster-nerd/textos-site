@@ -1,4 +1,4 @@
-// CSE-2 — REFERENCE block renderers.
+// A2 — REFERENCE block renderers.
 //
 // Each function receives a `ResolvedBlock` and returns accessible HTML. They read ONLY
 // `block.data` (a producer-provided semantic payload). They never re-parse markdown, never

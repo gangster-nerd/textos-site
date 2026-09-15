@@ -1,4 +1,4 @@
-// CSE-2 — attribution touch persistence.
+// A2 — attribution touch persistence.
 //
 // A ProductCTA click generates an OPAQUE, high-entropy `attributionId` on the site (never
 // derived from contentId, slug, targetQuery, cluster, or user identity). The site persists a
@@ -81,26 +81,32 @@ export async function recordAttributionTouch(input: RecordTouchInput): Promise<s
   return attributionId;
 }
 
+// Strict allowlist. Any caller-supplied query parameter not in this set is rejected —
+// unknown = rejected. `aid` is added by the helper itself and is not caller-supplied. If v2
+// needs a new routing key, add it here (as a governed decision) rather than teaching the
+// helper about PII exclusions.
+export const ATTRIBUTION_CALLER_ALLOWED_PARAMS = ["intent", "source"] as const;
+export type AttributionCallerAllowedParam =
+  (typeof ATTRIBUTION_CALLER_ALLOWED_PARAMS)[number];
+
 /**
- * Append `aid=<id>` to a URL alongside the already-authorized query params passed in
- * `extraParams`. Never appends any content identity or PII: the caller must ensure
- * `extraParams` contains only authorized routing keys (typically `intent`, `source`).
+ * Append `aid=<id>` to a URL alongside the STRICT ALLOWLIST of caller-supplied routing
+ * parameters (`intent`, `source`). Every other parameter is dropped — including keys the
+ * helper has never seen. This is a positive-authorization design: unknown = rejected, so we
+ * do not have to enumerate every PII/identity-bearing key we want to block.
  */
 export function buildAttributedUrl(
   destination: string,
   attributionId: string,
   extraParams?: Record<string, string>,
 ): string {
-  // The destination may be an internal path; construct a URL relative to a placeholder base.
   const isAbsolute = /^[a-z]+:\/\//i.test(destination);
   const base = "http://cse.internal";
   const url = new URL(destination, base);
   if (extraParams) {
+    const allowed = new Set<string>(ATTRIBUTION_CALLER_ALLOWED_PARAMS);
     for (const [k, v] of Object.entries(extraParams)) {
-      // Defensive: refuse identity-bearing keys even if the caller misuses the API.
-      if (["contentId", "content_id", "slug", "target_query", "email", "user"].includes(k)) {
-        continue;
-      }
+      if (!allowed.has(k)) continue; // strict allowlist — unknown key = dropped
       url.searchParams.set(k, v);
     }
   }

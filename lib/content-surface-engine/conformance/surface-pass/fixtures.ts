@@ -1,4 +1,4 @@
-// CSE-2 — SURFACE_PASS v1 fixtures.
+// A2 — SURFACE_PASS v1 fixtures.
 //
 // Three representative fixtures cover distinct REFERENCE responsibilities:
 //   1. articleFixture    — article-like content (product_article, index=index, CTA).
@@ -20,7 +20,7 @@ const CERTIFIED_MAIN_SHA = "a0efa146a8691938b624c156d99f4663f6f92218";
 export const surfacePassArticleFixture: ContentDocument = ContentDocumentSchema.parse({
   contentSchemaVersion: CONTENT_SCHEMA_VERSION,
   identity: {
-    documentId: "cse2:article:no-affirmation-without-evidence",
+    documentId: "a2:article:no-affirmation-without-evidence",
     contentType: "product_article",
     slug: "no-affirmation-without-evidence",
     language: "en",
@@ -63,7 +63,7 @@ export const surfacePassArticleFixture: ContentDocument = ContentDocumentSchema.
     { id: "src-1", kind: "source", data: { ref: "ADR-015", title: "ADR-015 — TruthCheck & generation", href: "https://example.invalid/adr-015" } },
   ],
   relationships: {
-    relatedContentIds: ["cse2:article:three-measures-never-one-score"],
+    relatedContentIds: ["a2:article:three-measures-never-one-score"],
   },
   conversion: { ctaIntentId: "MEASURE_BRAND", conversionAllowed: true },
   lifecycle: {
@@ -85,7 +85,7 @@ export const surfacePassArticleFixture: ContentDocument = ContentDocumentSchema.
 export const surfacePassEvidenceFixture: ContentDocument = ContentDocumentSchema.parse({
   contentSchemaVersion: CONTENT_SCHEMA_VERSION,
   identity: {
-    documentId: "cse2:evidence:quality-ledger-observation",
+    documentId: "a2:evidence:quality-ledger-observation",
     contentType: "product_article",
     slug: "quality-ledger-observation",
     language: "en",
@@ -139,7 +139,7 @@ export const surfacePassEvidenceFixture: ContentDocument = ContentDocumentSchema
 export const surfacePassChangelogFixture: ContentDocument = ContentDocumentSchema.parse({
   contentSchemaVersion: CONTENT_SCHEMA_VERSION,
   identity: {
-    documentId: "cse2:changelog:2026-09-13-rates-v1",
+    documentId: "a2:changelog:2026-09-13-rates-v1",
     contentType: "changelog_entry",
     slug: "2026-09-13-rates-v1",
     language: "en",

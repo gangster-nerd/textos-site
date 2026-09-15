@@ -1,6 +1,6 @@
-// CSE-2 — inline author bridge for the reference preview.
+// A2 — inline author bridge for the reference preview.
 //
-// The mission requires `app/authors/**` may exist. In CSE-2 we only need a light seam so the
+// The mission requires `app/authors/**` may exist. In A2 we only need a light seam so the
 // managed surface can display author names for the fixtures — the full author registry
 // belongs to a future producer-side migration. This bridge is INTENTIONALLY tiny and lives
 // under content-surface-engine so nothing outside CSE depends on it.

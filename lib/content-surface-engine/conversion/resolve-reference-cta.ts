@@ -1,4 +1,4 @@
-// CSE-2 — CTA resolution for the REFERENCE surface.
+// A2 — CTA resolution for the REFERENCE surface.
 //
 // The CTA registry is the authority on which sales propositions may appear on which surface.
 // This bridge maps semantic CTA intents carried on a ContentDocument (opaque `ctaIntentId`

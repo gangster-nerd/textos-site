@@ -1,8 +1,8 @@
-// CSE-2 — site preview catalog.
+// A2 — site preview catalog.
 //
 // The three SURFACE_PASS fixtures made available at /reference-preview/[slug]. This route is
 // the smallest textos-site seam required to prove REFERENCE end-to-end. The public 12
-// articles are NOT migrated by CSE-2.
+// articles are NOT migrated by A2.
 
 import type { ContentDocument } from "../contract/content-document";
 import { surfacePassFixtures } from "../conformance/surface-pass/fixtures";

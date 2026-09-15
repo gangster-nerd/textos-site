@@ -1,4 +1,4 @@
-// CSE-2 — REFERENCE renderer errors.
+// A2 — REFERENCE renderer errors.
 
 export class UnsupportedBlockKindError extends Error {
   readonly blockId: string;

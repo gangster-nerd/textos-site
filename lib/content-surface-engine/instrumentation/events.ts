@@ -1,10 +1,10 @@
-// CSE-2 — REFERENCE-side instrumentation events.
+// A2 — REFERENCE-side instrumentation events.
 //
 // A small, first-party event stream. When live, events go to an ingestion endpoint
 // (POST /api/events, JSON body). When not live, the emitter is a deterministic no-op — same
 // signature, same return type, zero I/O — so tests and static builds behave identically.
 //
-// No external analytics providers are added by CSE-2.
+// No external analytics providers are added by A2.
 
 export type CseEvent =
   | { type: "content_viewed"; contentId: string; policyId: string; renderVersion: string }

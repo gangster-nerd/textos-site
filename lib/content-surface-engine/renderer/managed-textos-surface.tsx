@@ -1,4 +1,4 @@
-// CSE-2 — TextOS-managed reference surface.
+// A2 — TextOS-managed reference surface.
 //
 // Composes a full page fragment around the generic body renderer, using ONLY signals from
 // ResolvedContentSurface and the CSE conversion / relationships / navigation facilities.

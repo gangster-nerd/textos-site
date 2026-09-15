@@ -1,4 +1,4 @@
-// CSE-2 — deterministic HTML snapshot generator for SURFACE_PASS visual evidence.
+// A2 — deterministic HTML snapshot generator for SURFACE_PASS visual evidence.
 //
 // Produces static HTML for the three SURFACE_PASS fixtures at two viewports:
 //   - desktop (default styles)

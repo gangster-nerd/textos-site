@@ -1,4 +1,4 @@
-// CSE-2 — REFERENCE renderer entry point.
+// A2 — REFERENCE renderer entry point.
 //
 // renderVersion = "reference@1".
 //

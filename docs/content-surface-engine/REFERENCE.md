@@ -1,4 +1,4 @@
-# CSE-2 — REFERENCE surface
+# A2 — REFERENCE surface
 
 `renderVersion = reference@1` · `surfacePolicyVersion = textos-site@1`
 
@@ -11,7 +11,7 @@ ContentDocument + SurfacePolicy
             → REFERENCE renderer (reference@1)
 ```
 
-CSE-2 adds the first concrete consumer: a generic renderer, a TextOS SurfacePolicy, an
+A2 adds the first concrete consumer: a generic renderer, a TextOS SurfacePolicy, an
 authority compiler (metadata + JSON-LD), a CTA bridge to the existing registry, an
 instrumentation seam (events + AttributionTouch), and a minimal Next.js route surfacing three
 fixtures.
@@ -28,16 +28,16 @@ fixtures.
 | status presentation | inline in FAQ (`doc__status`) | `truth.publicationStatus` only | managed surface `Status` badge for non-published | ditto | **ADAPT** | badge is presentation, status is truth |
 | short answer | inline via `shortAnswer.body` frontmatter | `answer` block kind | rendered by generic block renderer | ditto | **ADAPT** | move from frontmatter into semantic block |
 | TOC | absent | out | `navigation.showTableOfContents` + managed threshold (≥3 headings) | managed surface `<nav>` | **ADAPT** | thresholds are presentation |
-| reading time | absent | out | not emitted in CSE-2 | — | **REJECT** *(core)* | derived presentation heuristic, defer |
+| reading time | absent | out | not emitted in A2 | — | **REJECT** *(core)* | derived presentation heuristic, defer |
 | body blocks | Markdown via `react-markdown` | semantic block vocabulary | policy filters visibility | generic block renderer | **ADAPT** | rebuild against semantic blocks, drop markdown parsing |
-| figures / evidence | `ContentVisual` component | `figure`/`evidence` blocks | uses generic block renderers | ditto | **ADAPT** | article-visual registry stays out of CSE-2 |
+| figures / evidence | `ContentVisual` component | `figure`/`evidence` blocks | uses generic block renderers | ditto | **ADAPT** | article-visual registry stays out of A2 |
 | CTA placement | `ContentCta` at end | `cta_slot` block + `conversion.ctaIntentId` | policy `allowCta` + slot regions | managed surface renders resolved CTA | **ADAPT** | bridge to existing registry, no core copy |
 | sources / method | absent | `source` block kind | managed surface `Sources` list | derived from `source` blocks | **ADAPT** | list is derived, not authored twice |
 | related-content placeholder | inline `<nav aria-label="Related">` | `relationships.relatedContentIds` | policy `showRelatedContent` | managed surface list | **ADAPT** | data on document, presentation in surface |
-| revision / history | `updatedAt` on frontmatter | `lifecycle.*` | not surfaced in CSE-2 UI | data attribute only | **ADAPT** | full revision UI deferred |
+| revision / history | `updatedAt` on frontmatter | `lifecycle.*` | not surfaced in A2 UI | data attribute only | **ADAPT** | full revision UI deferred |
 | JSON-LD | `buildArticleJsonLd` in `lib/schema-org/build-article.ts` | out | `metadata.emitSchemaOrg` + `schemaType` policy | authority compiler | **ADAPT** | new compiler consumes resolved surface, existing helper untouched |
 | Open Graph | in `app/layout.tsx` and `app/faq/[slug]/generateMetadata` | out | compiled from resolved surface | preview route `generateMetadata` | **ADAPT** | central compiler emits full block |
-| sitemap | `app/sitemap.ts` (FAQ only) | out | preview route NOT added to sitemap | untouched | **REJECT** *(for CSE-2)* | preview is not a public destination |
+| sitemap | `app/sitemap.ts` (FAQ only) | out | preview route NOT added to sitemap | untouched | **REJECT** *(for A2)* | preview is not a public destination |
 | instrumentation | none | out | `analytics.surfaceTag` on policy | `createEmitter`, `AttributionTouch` | **ADOPT** *(new)* | first-party ingestion only |
 
 ## Modules
@@ -67,18 +67,18 @@ fixtures.
 - `mode !== "live"` ⇒ deterministic no-op.
 - The site is a **static export** (`output: "export"` in `next.config.mjs`) so no in-app
   ingestion route is bundled. The `endpoint` value is passed to the emitter by the consumer
-  (typically a first-party edge worker or platform endpoint). CSE-2 ships the seam, not the
+  (typically a first-party edge worker or platform endpoint). A2 ships the seam, not the
   sink.
 - Product CTA click:
   1. Site generates opaque 128-bit `attributionId` (base64url).
-  2. Site persists `AttributionTouch` server-side (in-memory store in CSE-2).
+  2. Site persists `AttributionTouch` server-side (in-memory store in A2).
   3. URL appended with `aid=<id>` only, alongside authorized keys `intent`, `source`.
   4. No `contentId`, `slug`, `email`, `user`, `targetQuery`, or PII in the URL.
 - Product-side handling of `aid` is out of scope.
 
 ## SURFACE_PASS v1
 
-Certified via `tests/cse2-reference-surface.test.tsx` (17 tests):
+Certified via `tests/a2-reference-surface.test.tsx` (17 tests):
 accessible semantic structure, responsive at ~400px (via CSS media query in the snapshot
 generator), renderer determinism, unsupported-block fail-closed, metadata composition, JSON-LD
 structural validity, visible/schema parity, CTA fail-closed behavior, instrumentation no-op
@@ -89,4 +89,4 @@ Visual evidence: six HTML files under
 viewports), plus `MANIFEST.json` with sha256 of each snapshot. Open any file in a browser to
 review desktop / mobile rendering.
 
-Regenerate with: `pnpm tsx scripts/cse2-render-snapshots.ts`.
+Regenerate with: `pnpm tsx scripts/a2-render-snapshots.ts`.

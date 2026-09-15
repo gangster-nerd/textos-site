@@ -1,4 +1,4 @@
-// CSE-2 — TextOS SurfacePolicy.
+// A2 — TextOS SurfacePolicy.
 //
 // surfacePolicyVersion = "textos-site@1".
 //
