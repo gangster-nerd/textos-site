@@ -140,6 +140,32 @@ const contentFiles = contentDirs.flatMap(({ name, dir }) =>
     .map((file) => ({ collection: name, file, p: path.join(dir, file) }))
 );
 
+// CTC-ARTICLE-SYSTEM-1 §4 — topic hubs live at out/insights/topic/*.html. They emit a
+// CollectionPage graph, not an Article graph. Validate them separately.
+const topicHubFiles = (() => {
+  try {
+    return readdirSync("out/insights/topic")
+      .filter((f) => f.endsWith(".html"))
+      .sort()
+      .map((file) => ({ file, p: path.join("out/insights/topic", file) }));
+  } catch {
+    return [];
+  }
+})();
+
+for (const { file, p: hp } of topicHubFiles) {
+  const nodes = readNodes(hp);
+  const coll = nodes.find((n) => n["@type"] === "CollectionPage");
+  if (!coll) fail(`topic hub sans CollectionPage node (${hp})`);
+  if (nodes.some((n) => n["@type"] === "SoftwareApplication")) {
+    fail(`SoftwareApplication interdit sur un topic hub (${hp})`);
+  }
+  if (nodes.some((n) => "featureList" in n)) {
+    fail(`featureList interdit sur un topic hub (${hp})`);
+  }
+  console.log(`✅ insights/topic/${file} : CollectionPage valide`);
+}
+
 if (contentFiles.length === 0) {
   console.log("ℹ️  aucune page de contenu exportée (rien à valider).");
 } else {

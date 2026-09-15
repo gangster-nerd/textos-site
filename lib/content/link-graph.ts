@@ -7,6 +7,7 @@
 //     jamais de publication automatique.
 
 import type { ResolvedDocument } from "./content-loader";
+import { HUB_TOPIC_IDS, TOPICS } from "./topic-registry";
 
 export interface LinkGraphNode {
   contentId: string;
@@ -143,21 +144,38 @@ export function buildLinkGraph(docs: readonly ResolvedDocument[]): LinkGraph {
   };
 }
 
+// CTO §4 : la liste ci-dessous ne contient que des routes qui EXISTENT réellement dans
+// l'app router (fichiers `app/**/page.tsx` correspondants). Aucune route « prévue mais
+// pas encore construite » ne figure ici — un lien vers `/settings` doit rester une
+// erreur tant que `/settings` n'existe pas. Les hub-slugs de sujets ne sont plus
+// couverts par une regex ouverte : ils sont dérivés du registre au chargement du
+// module, donc `/insights/topic/nonexistent` échoue à la vérification.
 const KNOWN_APP_ROUTES = new Set([
   "/",
   "/insights",
   "/faq",
-  "/methodology",
   "/request-measurement",
   "/request-measurement/received",
-  "/demo",
 ]);
+
+// Dynamic routes that resolve via [slug] segments. `/methodology/*`, `/faq/*` and
+// `/insights/*` are matched by parent-prefix — link-graph resolves `/insights/<slug>`
+// against the actual content corpus (loaded documents) before consulting this list, so
+// only the parent prefixes for OTHER collections need to appear here.
+const KNOWN_DYNAMIC_PREFIXES = ["/methodology/"];
+
+const KNOWN_TOPIC_HUB_ROUTES = new Set(
+  HUB_TOPIC_IDS.map((id) => TOPICS[id].hubSlug)
+    .filter((s): s is string => Boolean(s))
+    .map((slug) => `/insights/topic/${slug}`),
+);
 
 function isKnownAppRoute(href: string): boolean {
   if (KNOWN_APP_ROUTES.has(href)) return true;
-  // Cluster hubs under /insights/topic/<slug> are considered known ; the sitemap
-  // generator only emits ones that resolve to a real hub.
-  if (/^\/insights\/topic\/[a-z0-9-]+$/.test(href)) return true;
+  if (KNOWN_TOPIC_HUB_ROUTES.has(href)) return true;
+  for (const prefix of KNOWN_DYNAMIC_PREFIXES) {
+    if (href.startsWith(prefix) && href.length > prefix.length) return true;
+  }
   return false;
 }
 

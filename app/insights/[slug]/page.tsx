@@ -73,10 +73,15 @@ export async function generateMetadata({
           twitter: { card: "summary", title: doc.frontmatter.title, description: doc.frontmatter.description },
         }
       : {}),
+    // CTO §2 : un draft ne doit ni être indexé ni être suivi. `follow: true` sur un draft
+    // laisserait les crawlers découvrir la page via des liens accidentels et propager son
+    // « poids » (aussi faible soit-il) vers ses cibles. Draft = pas de trace publique.
     robots:
-      doc.frontmatter.indexingPolicy === "noindex"
-        ? { index: false, follow: true }
-        : undefined,
+      doc.frontmatter.editorialStatus !== "published"
+        ? { index: false, follow: false }
+        : doc.frontmatter.indexingPolicy === "noindex"
+          ? { index: false, follow: true }
+          : undefined,
   };
 }
 
@@ -89,6 +94,14 @@ export default async function Page({
   if (slug === EMPTY_COLLECTION_SENTINEL) notFound();
 
   const doc = loadDocument(COLLECTION, slug);
+  // CTO §2 : ceinture-et-bretelles. `generateStaticParams` filtre déjà les drafts en
+  // Production (via `listPublishedSlugs`), donc en théorie ce chemin n'est jamais atteint
+  // pour un draft quand `allowIndexing=true`. Le garde ci-dessous est le filet : si un
+  // draft s'inscrivait au static export d'une build indexable pour quelque raison, on
+  // renvoie 404 plutôt que de servir un contenu non prêt.
+  if (siteConfig.allowIndexing && doc.frontmatter.editorialStatus !== "published") {
+    notFound();
+  }
   const fm = doc.frontmatter as ContentFrontmatter & Record<string, unknown>;
 
   const headings = extractHeadings(doc.body, { includeH3: false });
@@ -141,6 +154,26 @@ export default async function Page({
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLdGraph) }}
       />
       <main className="doc">
+        {/* CTO §2 — Draft = pas public. Bandeau visible dès qu'un article n'est pas
+            `editorialStatus=published`, quelle que soit la surface qui le sert (Preview
+            ou dev local — la Production n'atteindra jamais ce chemin via
+            generateStaticParams + le garde notFound() ci-dessus). Explicite, court,
+            impossible à confondre avec du contenu de première ligne. */}
+        {doc.frontmatter.editorialStatus !== "published" && (
+          <aside
+            className="doc__draft-banner"
+            role="note"
+            aria-label="Draft banner"
+            data-role="draft-banner"
+          >
+            <strong>DRAFT · NOT PUBLIC</strong>
+            <span>
+              This article has not been published. It is served to reviewers only,
+              carries robots noindex/nofollow, and is excluded from listings, sitemap,
+              related content and topic hubs in Production.
+            </span>
+          </aside>
+        )}
         {/* Breadcrumb */}
         <nav className="doc__breadcrumb" aria-label="Breadcrumb">
           <ol>
