@@ -146,8 +146,24 @@ if (contentFiles.length === 0) {
   for (const { collection, file, p } of contentFiles) {
     const nodes = readNodes(p);
 
+    // Draft insights emit a WebPage graph (no Article node, no datePublished). Published
+    // ones emit Article/TechArticle/BlogPosting. Both shapes are legitimate on a content
+    // page — the invariant is "one canonical page-level node, honest about status".
     const article = nodes.find((n) => ARTICLE_TYPES.has(n["@type"]));
-    if (!article) fail(`nœud Article/TechArticle/BlogPosting absent (${p})`);
+    const webpage = nodes.find((n) => n["@type"] === "WebPage");
+    if (!article && !webpage) {
+      fail(`aucun nœud page (Article/TechArticle/BlogPosting/WebPage) trouvé (${p})`);
+    }
+    if (!article && webpage) {
+      // Draft path — assert we did NOT leak publication semantics.
+      const blob = JSON.stringify(nodes);
+      if (/datePublished|dateModified/.test(blob)) {
+        fail(`WebPage draft (${p}) émet datePublished/dateModified — draft ne doit pas porter de date de publication.`);
+      }
+      // Rest of the Article-only checks below are skipped for drafts. Continue.
+      console.log(`✅ ${collection}/${file} : draft WebPage graph (no Article, no datePublished)`);
+      continue;
+    }
 
     if (nodes.some((n) => n["@type"] === "SoftwareApplication")) {
       fail(`SoftwareApplication interdit sur une page de contenu (${p})`);

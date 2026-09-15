@@ -8,10 +8,9 @@ indexingPolicy: noindex
 publishedAt: '2026-09-12'
 updatedAt: '2026-09-12'
 authorId: textos-editorial-team
-reviewerIds:
-- marc-p
+reviewerIds: []
 firstPublishedAt: null
-lastReviewedAt: '2026-09-13'
+lastReviewedAt: null
 revisionNumber: 0
 schemaType: TechArticle
 primaryTopicId: authority-observation

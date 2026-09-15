@@ -9,8 +9,13 @@ function mkDoc(overrides: Partial<{
   authorId: string;
   primaryTopicId: string;
   body: string;
+  editorialStatus: "draft" | "published";
+  indexingPolicy: "index" | "noindex";
+  firstPublishedAt: string | null;
+  lastReviewedAt: string | null;
 }> = {}): ResolvedDocument {
   const slug = overrides.slug ?? "sample";
+  const status = overrides.editorialStatus ?? "published";
   return {
     slug,
     collection: "insights",
@@ -22,7 +27,20 @@ function mkDoc(overrides: Partial<{
       language: "en",
       publishedAt: "2026-01-01",
       updatedAt: "2026-01-02",
-      firstPublishedAt: "2026-01-01",
+      editorialStatus: status,
+      indexingPolicy: overrides.indexingPolicy ?? (status === "published" ? "index" : "noindex"),
+      firstPublishedAt:
+        overrides.firstPublishedAt === undefined
+          ? status === "published"
+            ? "2026-01-01"
+            : null
+          : overrides.firstPublishedAt,
+      lastReviewedAt:
+        overrides.lastReviewedAt === undefined
+          ? status === "published"
+            ? "2026-01-02"
+            : null
+          : overrides.lastReviewedAt,
       schemaType: "TechArticle",
       authorId: overrides.authorId ?? "textos-editorial-team",
       primaryTopicId: overrides.primaryTopicId ?? "measurement-mechanics",
@@ -82,7 +100,7 @@ describe("buildInsightArticleGraph", () => {
     expect(article.mainEntityOfPage).toBeUndefined();
   });
 
-  it("emits Person author node when authorId resolves", () => {
+  it("emits Person author node when authorId resolves to a Person entity", () => {
     const g = buildInsightArticleGraph({
       doc: mkDoc({ authorId: "marc-p" }),
       headings: [],
@@ -91,6 +109,53 @@ describe("buildInsightArticleGraph", () => {
       (n: Record<string, unknown>) => n["@type"] === "Person",
     );
     expect(person).toBeDefined();
+  });
+
+  it("emits Organization node (not Person) when authorId resolves to an Organization entity", () => {
+    const g = buildInsightArticleGraph({
+      doc: mkDoc({ authorId: "textos-editorial-team" }),
+      headings: [],
+    });
+    // The publisher is always Organization at urn:textos:org — verify the AUTHOR entity
+    // is emitted as an Organization node with the entity-scoped URN, not as a Person.
+    const orgNodes = g["@graph"].filter(
+      (n: Record<string, unknown>) => n["@type"] === "Organization",
+    );
+    const authorOrg = orgNodes.find(
+      (n: Record<string, unknown>) => n["@id"] === "urn:textos:organization:textos-editorial-team",
+    );
+    expect(authorOrg).toBeDefined();
+    const anyPerson = g["@graph"].find(
+      (n: Record<string, unknown>) => n["@type"] === "Person",
+    );
+    expect(anyPerson).toBeUndefined();
+  });
+
+  it("emits WebPage (no Article) and no datePublished for DRAFT status", () => {
+    const g = buildInsightArticleGraph({
+      doc: mkDoc({ editorialStatus: "draft" }),
+      headings: [],
+    });
+    const article = g["@graph"].find((n: Record<string, unknown>) =>
+      ["Article", "TechArticle", "BlogPosting"].includes(n["@type"] as string),
+    );
+    expect(article).toBeUndefined();
+    const webpage = g["@graph"].find(
+      (n: Record<string, unknown>) => n["@type"] === "WebPage",
+    );
+    expect(webpage).toBeDefined();
+    const blob = JSON.stringify(g);
+    expect(blob).not.toContain("datePublished");
+    expect(blob).not.toContain("dateModified");
+  });
+
+  it("throws when a published doc lacks firstPublishedAt (no publishedAt fallback)", () => {
+    expect(() =>
+      buildInsightArticleGraph({
+        doc: mkDoc({ editorialStatus: "published", firstPublishedAt: null }),
+        headings: [],
+      }),
+    ).toThrow(/firstPublishedAt/);
   });
 
   it("breadcrumb items drop `item` when origin absent (no undefined property)", () => {

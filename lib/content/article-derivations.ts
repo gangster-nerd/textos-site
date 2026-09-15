@@ -125,10 +125,23 @@ export function scoreRelated(input: RelatedInput): RelatedCandidate[] {
   const tFunnel = tFm.funnelStage as string | undefined;
   const tRelated = new Set((tFm.relatedContentIds as string[] | undefined) ?? []);
 
+  // CTO §10 : le filtre précédent laissait passer des drafts dans un contexte public.
+  // Vrai contrat : si la cible est publiquement indexable, aucun candidat draft/noindex
+  // ne peut être proposé — même si la cible et le candidat partagent des signaux. Un
+  // article draft "invité" dans le graphe d'un article publié le rendrait indirectement
+  // découvrable via un maillage interne indexé.
+  const publicTarget =
+    t.frontmatter.editorialStatus === "published" &&
+    t.frontmatter.indexingPolicy === "index";
+
   const scored: RelatedCandidate[] = [];
   for (const c of input.candidates) {
     if (c.slug === t.slug && c.collection === t.collection) continue;
-    if (c.frontmatter.editorialStatus !== "published" && c.frontmatter.indexingPolicy === "index") {
+    if (
+      publicTarget &&
+      (c.frontmatter.editorialStatus !== "published" ||
+        c.frontmatter.indexingPolicy !== "index")
+    ) {
       continue;
     }
     const cFm = c.frontmatter as ResolvedDocument["frontmatter"] & Record<string, unknown>;

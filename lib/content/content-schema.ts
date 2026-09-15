@@ -125,7 +125,9 @@ export const ContentFrontmatterSchema = z
       .optional(),
     relatedContentIds: z.array(z.string().min(1)).optional(),
     firstPublishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
-    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    // CTO §1 : un article draft n'a pas encore été relu — accepter null explicitement plutôt
+    // que de forcer une date d'archive de migration à passer pour une revue humaine.
+    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
     revisionNumber: z.number().int().nonnegative().optional(),
     revisionSummary: z.string().min(1).optional(),
     schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]).optional(),

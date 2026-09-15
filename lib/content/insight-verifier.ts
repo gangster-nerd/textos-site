@@ -23,7 +23,7 @@ import {
   TRUTH_MODES,
 } from "./content-schema";
 import type { ResolvedDocument } from "./content-loader";
-import { PERSON_IDS } from "./author-registry";
+import { PERSON_IDS, PERSON_ENTITY_IDS } from "./author-registry";
 import { TOPIC_IDS } from "./topic-registry";
 
 export const INSIGHT_COLLECTION = "insights";
@@ -44,10 +44,14 @@ export const InsightFrontmatterStrictSchema = z
     authorId: z
       .enum(PERSON_IDS as [string, ...string[]])
       .refine((v) => PERSON_IDS.includes(v), "authorId inconnu du registre author-registry.ts"),
+    // CTO §9 : reviewerIds ne peut contenir que des Person — un reviewer collectif
+    // masquerait le fait qu'aucun humain nommé n'a lu la draft.
     reviewerIds: z
       .array(z.string())
-      .refine((arr) => arr.every((v) => PERSON_IDS.includes(v)), "reviewerId inconnu")
-      .optional(),
+      .refine(
+        (arr) => arr.every((v) => PERSON_ENTITY_IDS.includes(v)),
+        "reviewerId doit référencer un Person (pas une Organization) du registre.",
+      ),
     primaryTopicId: z.enum(TOPIC_IDS as unknown as [string, ...string[]]),
     topicIds: z
       .array(z.string())
@@ -69,8 +73,8 @@ export const InsightFrontmatterStrictSchema = z
     relatedContentIds: z.array(z.string()).optional(),
     // firstPublishedAt : null tant que non publié pour de vrai. Ne pas simuler la fraîcheur.
     firstPublishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
-    // lastReviewedAt : peut évoluer sans prétendre que l'article a été mis à jour.
-    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    // CTO §1 : null tant qu'aucune revue humaine n'a eu lieu. Migration automatique ≠ revue.
+    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
     revisionNumber: z.number().int().nonnegative(),
     revisionSummary: z.string().min(1).optional(),
     schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]),
@@ -186,6 +190,71 @@ export function verifyInsightDocument(
       slug,
       message: `description tronquée ou sans ponctuation finale : "${desc.slice(-40)}"`,
     });
+  }
+
+  // 8. CTO §1 — invariants croisés draft/published. La revue humaine, la publication et
+  // l'indexation sont trois choses distinctes ; on refuse toute combinaison qui laisserait
+  // croire à un état intermédiaire mensonger (un draft "révisé mais non publié" via une
+  // date de review synthétique ; un publié sans reviewer nommé ; un publié dont
+  // firstPublishedAt est null).
+  const status = fm.editorialStatus as string;
+  const indexPolicy = fm.indexingPolicy as string;
+  if (status === "draft") {
+    if (strict.firstPublishedAt !== null) {
+      failures.push({
+        slug,
+        message: `draft: firstPublishedAt doit être null (obtenu ${strict.firstPublishedAt}).`,
+      });
+    }
+    if (strict.lastReviewedAt !== null) {
+      failures.push({
+        slug,
+        message: `draft: lastReviewedAt doit être null tant qu'aucune revue humaine n'a eu lieu (obtenu ${strict.lastReviewedAt}).`,
+      });
+    }
+    if (strict.revisionNumber !== 0) {
+      failures.push({
+        slug,
+        message: `draft: revisionNumber doit être 0 (obtenu ${strict.revisionNumber}).`,
+      });
+    }
+    if (indexPolicy !== "noindex") {
+      failures.push({
+        slug,
+        message: `draft: indexingPolicy doit être noindex (obtenu ${indexPolicy}).`,
+      });
+    }
+  } else if (status === "published") {
+    if (strict.firstPublishedAt === null) {
+      failures.push({
+        slug,
+        message: `published: firstPublishedAt doit être une date réelle (obtenu null).`,
+      });
+    }
+    if (!strict.reviewerIds || strict.reviewerIds.length === 0) {
+      failures.push({
+        slug,
+        message: `published: reviewerIds doit contenir au moins un reviewer humain nommé.`,
+      });
+    }
+    if (strict.lastReviewedAt === null) {
+      failures.push({
+        slug,
+        message: `published: lastReviewedAt doit être une date réelle (obtenu null).`,
+      });
+    }
+    if (strict.revisionNumber < 1) {
+      failures.push({
+        slug,
+        message: `published: revisionNumber doit être ≥ 1 (obtenu ${strict.revisionNumber}).`,
+      });
+    }
+    if (indexPolicy !== "index") {
+      failures.push({
+        slug,
+        message: `published: indexingPolicy doit être index (obtenu ${indexPolicy}).`,
+      });
+    }
   }
 
   return failures;
