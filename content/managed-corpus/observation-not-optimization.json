@@ -12,9 +12,7 @@
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "product-doctrine",
     "topicIds": [
       "product-doctrine",
@@ -81,7 +79,7 @@
       "id": "p-the-instinct-we-refuse",
       "kind": "paragraph",
       "data": {
-        "text": "Faced with a moving system, a familiar reflex takes over: turn a dial. Optimisation categories — for search engines, for social feeds, for ad auctions — were built on that reflex. They collapse a complicated question (\"what is happening in this system?\") into a simpler one (\"what should I change to raise this number?\"), and they charge for the second one."
+        "text": "Faced with a moving system, a familiar reflex takes over: turn a dial. Optimisation categories \u2014 for search engines, for social feeds, for ad auctions \u2014 were built on that reflex. They collapse a complicated question (\"what is happening in this system?\") into a simpler one (\"what should I change to raise this number?\"), and they charge for the second one."
       }
     },
     {
@@ -141,7 +139,7 @@
       "id": "p-the-product-succeeds-when-the-observation-is-trusted",
       "kind": "paragraph",
       "data": {
-        "text": "There is an obvious commercial temptation in this space to skip the observatory work and go straight to the deliverable — the brief, the article, the \"AI-optimised\" page. We think that path is where the category has already been tried, and where its credibility is already thin. Building briefs on undefended observations produces exactly the content-farm dynamic that answer engines themselves increasingly refuse to reward."
+        "text": "There is an obvious commercial temptation in this space to skip the observatory work and go straight to the deliverable \u2014 the brief, the article, the \"AI-optimised\" page. We think that path is where the category has already been tried, and where its credibility is already thin. Building briefs on undefended observations produces exactly the content-farm dynamic that answer engines themselves increasingly refuse to reward."
       }
     },
     {
@@ -151,6 +149,12 @@
       "data": {
         "text": "Related reading"
       }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -163,7 +167,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

@@ -5,16 +5,14 @@
     "contentType": "product_article",
     "slug": "north-star-brief-acceptance",
     "language": "en",
-    "title": "From Gap to Brief to Action — the TextOS North Star",
+    "title": "From Gap to Brief to Action \u2014 the TextOS North Star",
     "description": "The product succeeds when a defensible opportunity brief is accepted, not when it publishes. Acceptance is where the decision is made."
   },
   "editorial": {
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "opportunity-and-decision",
     "topicIds": [
       "opportunity-and-decision",
@@ -64,7 +62,7 @@
       "id": "answer",
       "kind": "answer",
       "data": {
-        "text": "The TextOS North Star is a defensible opportunity brief accepted by a human — not a published article. Acceptance is the decision moment: a brief is proposed only from observed evidence, contains no writing and no ROI estimate, and is judged by the person who decides to act."
+        "text": "The TextOS North Star is a defensible opportunity brief accepted by a human \u2014 not a published article. Acceptance is the decision moment: a brief is proposed only from observed evidence, contains no writing and no ROI estimate, and is judged by the person who decides to act."
       }
     },
     {
@@ -124,7 +122,7 @@
       "id": "p-the-gate-is-human-and-it-is-one-way",
       "kind": "paragraph",
       "data": {
-        "text": "The mechanics of acceptance are simple and load-bearing. A brief is born `proposed`. A human moves it to `accepted` or `rejected`. Automation never accepts. Rejection stops the chain; acceptance authorises the next step — the writing phase, which lives elsewhere and under its own rules. In current design, the transition is terminal within a run: a rejected brief does not re-open itself, and a fresh observation run produces new briefs rather than resurrecting old ones. That deliberate simplicity keeps the meaning of \"accepted\" unambiguous: a defensible brief, judged worth acting on, at a moment we can point to."
+        "text": "The mechanics of acceptance are simple and load-bearing. A brief is born `proposed`. A human moves it to `accepted` or `rejected`. Automation never accepts. Rejection stops the chain; acceptance authorises the next step \u2014 the writing phase, which lives elsewhere and under its own rules. In current design, the transition is terminal within a run: a rejected brief does not re-open itself, and a fresh observation run produces new briefs rather than resurrecting old ones. That deliberate simplicity keeps the meaning of \"accepted\" unambiguous: a defensible brief, judged worth acting on, at a moment we can point to."
       }
     },
     {
@@ -149,6 +147,12 @@
       "data": {
         "text": "Related reading"
       }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -161,7 +165,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

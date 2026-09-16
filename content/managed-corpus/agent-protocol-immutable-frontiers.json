@@ -5,16 +5,14 @@
     "contentType": "product_article",
     "slug": "agent-protocol-immutable-frontiers",
     "language": "en",
-    "title": "Agent Protocol — Immutable Frontiers and Explicit GO",
+    "title": "Agent Protocol \u2014 Immutable Frontiers and Explicit GO",
     "description": "Development agents at TextOS work under a written protocol: canonical artefacts stay human-controlled, frozen frontiers hold mid-sprint, no commit without a GO."
   },
   "editorial": {
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "how-we-build",
     "topicIds": [
       "how-we-build"
@@ -62,7 +60,7 @@
       "id": "p-how-we-build-textos",
       "kind": "paragraph",
       "data": {
-        "text": "TextOS is built with development agents. Some of the code, some of the tests, some of the migrations pass through an agent before they pass through a human. That is not a marketing statement — it is an operational reality of a small team choosing to move quickly without hiring proportionally. Building this way is only defensible if the process itself is written down, and if the written process is strict enough that \"the agent said it was fine\" is not, ever, an acceptable answer."
+        "text": "TextOS is built with development agents. Some of the code, some of the tests, some of the migrations pass through an agent before they pass through a human. That is not a marketing statement \u2014 it is an operational reality of a small team choosing to move quickly without hiring proportionally. Building this way is only defensible if the process itself is written down, and if the written process is strict enough that \"the agent said it was fine\" is not, ever, an acceptable answer."
       }
     },
     {
@@ -100,7 +98,7 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "The sprint sequence — a written protocol, not a habit"
+        "text": "The sprint sequence \u2014 a written protocol, not a habit"
       }
     },
     {
@@ -154,6 +152,12 @@
       "data": {
         "text": "The protocol closes with a rule that is more cultural than technical: an agent that is uncertain whether to follow the protocol or to satisfy a request stops and asks a human. The rule primes velocity in favour of the rule. We wrote it that way because a slow correct sprint is recoverable; an undetected boundary violation is not. The protocol is the way we scale a small team without letting the tools that help us move fast quietly rewrite the product we are building."
       }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -166,7 +170,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

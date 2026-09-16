@@ -12,9 +12,7 @@
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "measurement-mechanics",
     "topicIds": [
       "measurement-mechanics",
@@ -83,6 +81,14 @@
       }
     },
     {
+      "id": "cta-contextual",
+      "kind": "cta_slot",
+      "slot": "primary-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
+      }
+    },
+    {
       "id": "h-what-the-three-measures-observe",
       "kind": "heading",
       "level": 2,
@@ -109,7 +115,7 @@
       "id": "p-why-the-union-is-not-a-sum",
       "kind": "paragraph",
       "data": {
-        "text": "The temptation is arithmetic. Direct Share of Model is 40%, Indirect Mention Share is 50%, therefore Authority is 90%. That number is wrong every time an observation carries both a direct citation and an indirect mention of the same entity — which is common, because an engine can plausibly link to a brand's own site and mention it in the same sentence."
+        "text": "The temptation is arithmetic. Direct Share of Model is 40%, Indirect Mention Share is 50%, therefore Authority is 90%. That number is wrong every time an observation carries both a direct citation and an indirect mention of the same entity \u2014 which is common, because an engine can plausibly link to a brand's own site and mention it in the same sentence."
       }
     },
     {
@@ -154,7 +160,7 @@
       "id": "p-every-measure-names-its-entity",
       "kind": "paragraph",
       "data": {
-        "text": "There is no such thing as \"the brand's Share of Model\" without an entity. Panels track multiple entities — a brand, its competitors, sometimes a category term — and every measure carries the identifier of the entity it is about. ADR-011 makes this explicit: measures are computed *per tracked entity*, never for the panel as a whole."
+        "text": "There is no such thing as \"the brand's Share of Model\" without an entity. Panels track multiple entities \u2014 a brand, its competitors, sometimes a category term \u2014 and every measure carries the identifier of the entity it is about. ADR-011 makes this explicit: measures are computed *per tracked entity*, never for the panel as a whole."
       }
     },
     {
@@ -169,7 +175,7 @@
       "id": "p-what-each-measure-carries-around-it",
       "kind": "paragraph",
       "data": {
-        "text": "A single number is easy to compare and easy to misread. Each measure is therefore reported alongside its numerator and denominator (exposed as integers, not hidden inside the ratio), a **per-query breakdown** — three hits out of five executions of one query says something about instability, three hits across five different queries says something about coverage, and a single average would flatten the two — and a **dispersion** summary of minimum, maximum, mean and standard deviation across queries."
+        "text": "A single number is easy to compare and easy to misread. Each measure is therefore reported alongside its numerator and denominator (exposed as integers, not hidden inside the ratio), a **per-query breakdown** \u2014 three hits out of five executions of one query says something about instability, three hits across five different queries says something about coverage, and a single average would flatten the two \u2014 and a **dispersion** summary of minimum, maximum, mean and standard deviation across queries."
       }
     },
     {
@@ -194,6 +200,20 @@
       "data": {
         "text": "Related methodology"
       }
+    },
+    {
+      "id": "cta-final",
+      "kind": "cta_slot",
+      "slot": "final-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
+      }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -207,7 +227,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

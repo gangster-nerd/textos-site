@@ -12,9 +12,7 @@
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "product-doctrine",
     "topicIds": [
       "product-doctrine",
@@ -78,7 +76,7 @@
       "id": "p-the-category-is-wrong-before-the-tool-is-even-chosen",
       "kind": "paragraph",
       "data": {
-        "text": "The label \"AI SEO\" carries a promise TextOS refuses to make. AI SEO tools optimise: they take a brand, a page, a topic, and return a graded output — a score to raise, a suggestion to apply, a checklist to close. That grammar was built for a search-result world in which a rank could be moved by an act. Answer engines do not work that way. They synthesise. They cite. They name. And they do all of it non-deterministically, on surfaces whose rules are not published and whose behaviour changes between two identical prompts."
+        "text": "The label \"AI SEO\" carries a promise TextOS refuses to make. AI SEO tools optimise: they take a brand, a page, a topic, and return a graded output \u2014 a score to raise, a suggestion to apply, a checklist to close. That grammar was built for a search-result world in which a rank could be moved by an act. Answer engines do not work that way. They synthesise. They cite. They name. And they do all of it non-deterministically, on surfaces whose rules are not published and whose behaviour changes between two identical prompts."
       }
     },
     {
@@ -101,14 +99,14 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "What is filled — and what is not"
+        "text": "What is filled \u2014 and what is not"
       }
     },
     {
       "id": "p-what-is-filled-and-what-is-not",
       "kind": "paragraph",
       "data": {
-        "text": "The existing category has learned to answer one question well: *what is visible?* Citations, mentions, gaps against a competitive set — those are legitimate observations and tools like Profound, Peec, Otterly and Surfer's AI tracker produce them. The unresolved question is the next one: *why?* And, after that: *what should change?*"
+        "text": "The existing category has learned to answer one question well: *what is visible?* Citations, mentions, gaps against a competitive set \u2014 those are legitimate observations and tools like Profound, Peec, Otterly and Surfer's AI tracker produce them. The unresolved question is the next one: *why?* And, after that: *what should change?*"
       }
     },
     {
@@ -138,7 +136,7 @@
       "id": "p-the-shape-of-the-promise",
       "kind": "paragraph",
       "data": {
-        "text": "The customer of an authority intelligence system is not buying articles. They are buying a defensible view of a market they cannot otherwise see: who answer engines treat as a reference on the questions their buyers ask, where their own brand sits in that landscape, and on which surfaces the picture changes. The product succeeds when a decision-maker can look at the measurement and act on it — or decide not to — with the same confidence they would give a survey whose methodology they trust."
+        "text": "The customer of an authority intelligence system is not buying articles. They are buying a defensible view of a market they cannot otherwise see: who answer engines treat as a reference on the questions their buyers ask, where their own brand sits in that landscape, and on which surfaces the picture changes. The product succeeds when a decision-maker can look at the measurement and act on it \u2014 or decide not to \u2014 with the same confidence they would give a survey whose methodology they trust."
       }
     },
     {
@@ -148,6 +146,12 @@
       "data": {
         "text": "Related reading"
       }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -160,7 +164,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

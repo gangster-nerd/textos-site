@@ -5,16 +5,14 @@
     "contentType": "product_article",
     "slug": "truthcheck-unmovable-gate",
     "language": "en",
-    "title": "TruthCheck — the Unmovable Gate",
-    "description": "TruthCheck is an unmovable gate: its blocking verdict is deterministic, reproducible, and never lifted — a language model can only raise alerts, never blocks."
+    "title": "TruthCheck \u2014 the Unmovable Gate",
+    "description": "TruthCheck is an unmovable gate: its blocking verdict is deterministic, reproducible, and never lifted \u2014 a language model can only raise alerts, never blocks."
   },
   "editorial": {
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "claim-evidence-and-truth-check",
     "topicIds": [
       "claim-evidence-and-truth-check",
@@ -56,7 +54,7 @@
       "id": "answer",
       "kind": "answer",
       "data": {
-        "text": "TruthCheck is designed as an unmovable gate on generated content in TextOS. Its blocking verdict is deterministic — the same content against the same evidence bundle always produces the same block — and it is never lifted, even under trusted publication modes. A language model can raise non-blocking alerts, never a block."
+        "text": "TruthCheck is designed as an unmovable gate on generated content in TextOS. Its blocking verdict is deterministic \u2014 the same content against the same evidence bundle always produces the same block \u2014 and it is never lifted, even under trusted publication modes. A language model can raise non-blocking alerts, never a block."
       }
     },
     {
@@ -71,7 +69,15 @@
       "id": "p-an-architecture-note-not-an-availability-claim",
       "kind": "paragraph",
       "data": {
-        "text": "TruthCheck is an internal capability in the current capability registry. This article documents **how it is designed** and **why the gate is unmovable** — not a claim that a customer receives a certified-content service today. The point of the piece is architectural: to explain a decision that shapes what TextOS is willing to let out of itself, and why that decision is a hard invariant rather than a policy that could be softened by product mood."
+        "text": "TruthCheck is an internal capability in the current capability registry. This article documents **how it is designed** and **why the gate is unmovable** \u2014 not a claim that a customer receives a certified-content service today. The point of the piece is architectural: to explain a decision that shapes what TextOS is willing to let out of itself, and why that decision is a hard invariant rather than a policy that could be softened by product mood."
+      }
+    },
+    {
+      "id": "cta-contextual",
+      "kind": "cta_slot",
+      "slot": "primary-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
       }
     },
     {
@@ -86,7 +92,7 @@
       "id": "p-what-truthcheck-is-designed-to-do",
       "kind": "paragraph",
       "data": {
-        "text": "Generated content, in TextOS, only exists as an extension of an accepted [Opportunity Brief](/insights/opportunity-brief-deterministic). The generation step is bounded by two gates: it must be adossed to an accepted brief (no orphan content — the \"no content factory\" rule), and its output must clear a truthfulness check against the evidence bundle before anything further happens."
+        "text": "Generated content, in TextOS, only exists as an extension of an accepted [Opportunity Brief](/insights/opportunity-brief-deterministic). The generation step is bounded by two gates: it must be adossed to an accepted brief (no orphan content \u2014 the \"no content factory\" rule), and its output must clear a truthfulness check against the evidence bundle before anything further happens."
       }
     },
     {
@@ -154,14 +160,14 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "TruthCheck is necessary but not sufficient — the fulfillment check"
+        "text": "TruthCheck is necessary but not sufficient \u2014 the fulfillment check"
       }
     },
     {
       "id": "p-truthcheck-is-necessary-but-not-sufficient-the-fulfillment-check",
       "kind": "paragraph",
       "data": {
-        "text": "The addendum captures a second lesson: **a draft can be certified true without being useful**. A `pass` from TruthCheck proves that every statement in the draft is grounded, but not that the draft covers what the brief asked for. A draft that trivially covers one required claim and stays silent on the rest can pass TruthCheck — \"empty certified true\"."
+        "text": "The addendum captures a second lesson: **a draft can be certified true without being useful**. A `pass` from TruthCheck proves that every statement in the draft is grounded, but not that the draft covers what the brief asked for. A draft that trivially covers one required claim and stays silent on the rest can pass TruthCheck \u2014 \"empty certified true\"."
       }
     },
     {
@@ -191,7 +197,7 @@
       "id": "p-why-the-gate-must-be-unmovable",
       "kind": "paragraph",
       "data": {
-        "text": "There is a version of TextOS in which TruthCheck is a soft gate — where operators can override, where trusted modes lift it, where a language model can escalate a block. That version would be easier to ship and easier to sell in the short term. It would also be, at the first controversy, indefensible. If the answer to \"why did this pass?\" ever depends on a mode, a heuristic, or a model's judgment on the day, the mechanism is not a gate at all."
+        "text": "There is a version of TextOS in which TruthCheck is a soft gate \u2014 where operators can override, where trusted modes lift it, where a language model can escalate a block. That version would be easier to ship and easier to sell in the short term. It would also be, at the first controversy, indefensible. If the answer to \"why did this pass?\" ever depends on a mode, a heuristic, or a model's judgment on the day, the mechanism is not a gate at all."
       }
     },
     {
@@ -201,6 +207,20 @@
       "data": {
         "text": "Related methodology"
       }
+    },
+    {
+      "id": "cta-final",
+      "kind": "cta_slot",
+      "slot": "final-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
+      }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -214,7 +234,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

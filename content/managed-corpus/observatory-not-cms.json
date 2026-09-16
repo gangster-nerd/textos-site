@@ -6,15 +6,13 @@
     "slug": "observatory-not-cms",
     "language": "en",
     "title": "Why TextOS Is an Observatory, Not a CMS",
-    "description": "TextOS is architecturally an observatory: scheduled, append-only observations of answer engines on a versioned panel — not a transactional CMS."
+    "description": "TextOS is architecturally an observatory: scheduled, append-only observations of answer engines on a versioned panel \u2014 not a transactional CMS."
   },
   "editorial": {
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "authority-observation",
     "topicIds": [
       "authority-observation",
@@ -70,7 +68,15 @@
       "id": "p-what-kind-of-system-is-textos",
       "kind": "paragraph",
       "data": {
-        "text": "There is a temptation, when a product handles text and eventually helps write it, to file it under \"content management\". TextOS refuses that filing. Its core object is not a document a user edits, and its central operation is not a save. It is a **station of measurement** — an observatory whose first-class citizens are dated observations of what answer engines say."
+        "text": "There is a temptation, when a product handles text and eventually helps write it, to file it under \"content management\". TextOS refuses that filing. Its core object is not a document a user edits, and its central operation is not a save. It is a **station of measurement** \u2014 an observatory whose first-class citizens are dated observations of what answer engines say."
+      }
+    },
+    {
+      "id": "cta-contextual",
+      "kind": "cta_slot",
+      "slot": "primary-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
       }
     },
     {
@@ -100,7 +106,7 @@
       "id": "p-the-observation-is-the-unit-not-the-brand",
       "kind": "paragraph",
       "data": {
-        "text": "The first architectural consequence: **the unit of measurement is the observation, not the brand**. One engine answer, at one moment, on one versioned query, in one locale, is the atom. Everything else — Direct Share of Model, Indirect Mention Share, Total Authority Presence — is a computation over a population of atoms. This is what [Authority Presence measurement](/methodology/authority-presence) sets out for the public methodology, and it is a direct consequence of ADR-001's decision to treat observations as first-class."
+        "text": "The first architectural consequence: **the unit of measurement is the observation, not the brand**. One engine answer, at one moment, on one versioned query, in one locale, is the atom. Everything else \u2014 Direct Share of Model, Indirect Mention Share, Total Authority Presence \u2014 is a computation over a population of atoms. This is what [Authority Presence measurement](/methodology/authority-presence) sets out for the public methodology, and it is a direct consequence of ADR-001's decision to treat observations as first-class."
       }
     },
     {
@@ -130,7 +136,7 @@
       "id": "p-empty-results-are-observations-not-errors",
       "kind": "paragraph",
       "data": {
-        "text": "A CMS mindset would treat an empty answer as a failed request. The observatory does not. ADR-001 fixes a canonical table of eight observation statuses, and only two of them — `ok` and `no_citations` — enter the denominator of the Share of Model. `no_answer_surface` (the answer surface was simply not triggered for this query) is a **valid observation**, not an error, and is deliberately excluded from the denominator. Transient errors (`rate_limited`, `timeout`, `provider_empty_response`, `provider_error`) are excluded from the measure and counted in the run's quality metrics instead."
+        "text": "A CMS mindset would treat an empty answer as a failed request. The observatory does not. ADR-001 fixes a canonical table of eight observation statuses, and only two of them \u2014 `ok` and `no_citations` \u2014 enter the denominator of the Share of Model. `no_answer_surface` (the answer surface was simply not triggered for this query) is a **valid observation**, not an error, and is deliberately excluded from the denominator. Transient errors (`rate_limited`, `timeout`, `provider_empty_response`, `provider_error`) are excluded from the measure and counted in the run's quality metrics instead."
       }
     },
     {
@@ -138,7 +144,7 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "Postgres and Trigger.dev — deliberate boredom"
+        "text": "Postgres and Trigger.dev \u2014 deliberate boredom"
       }
     },
     {
@@ -160,7 +166,7 @@
       "id": "p-idempotence-is-not-a-nice-to-have",
       "kind": "paragraph",
       "data": {
-        "text": "Because retries are normal and scheduling is the default, ADR-001 elevates idempotence to an invariant. An observation is keyed by engine, surface, panel version, query hash, locale, measurement window, method version and execution index. A retry may not produce a duplicate; a change of method version, on the other hand, is not a duplicate — it is a new observation, potentially the first point of a new comparable series."
+        "text": "Because retries are normal and scheduling is the default, ADR-001 elevates idempotence to an invariant. An observation is keyed by engine, surface, panel version, query hash, locale, measurement window, method version and execution index. A retry may not produce a duplicate; a change of method version, on the other hand, is not a duplicate \u2014 it is a new observation, potentially the first point of a new comparable series."
       }
     },
     {
@@ -190,7 +196,7 @@
       "id": "p-what-this-architecture-buys-and-what-it-costs",
       "kind": "paragraph",
       "data": {
-        "text": "The benefits are compounding rather than dramatic. Measurements remain reproducible under method evolution. Series carry their own method signature and can be refused for comparison when methods diverge. Volatility is treated as a domain property rather than a bug. Absence of measurement is preserved as absence of measurement, never coerced into a zero. The product's public claims — that Total is a union rather than a sum, that a signal not observable is not reported as zero, that the ledger contextualises rather than scores — are entailments of the schema, not slogans wrapped around it."
+        "text": "The benefits are compounding rather than dramatic. Measurements remain reproducible under method evolution. Series carry their own method signature and can be refused for comparison when methods diverge. Volatility is treated as a domain property rather than a bug. Absence of measurement is preserved as absence of measurement, never coerced into a zero. The product's public claims \u2014 that Total is a union rather than a sum, that a signal not observable is not reported as zero, that the ledger contextualises rather than scores \u2014 are entailments of the schema, not slogans wrapped around it."
       }
     },
     {
@@ -200,6 +206,20 @@
       "data": {
         "text": "Related methodology"
       }
+    },
+    {
+      "id": "cta-final",
+      "kind": "cta_slot",
+      "slot": "final-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
+      }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -213,7 +233,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

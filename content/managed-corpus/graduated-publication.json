@@ -5,16 +5,14 @@
     "contentType": "product_article",
     "slug": "graduated-publication",
     "language": "en",
-    "title": "Graduated Publication — Supervised, Trusted, Locked-Back",
-    "description": "How TextOS publishes accepted, truth-checked drafts under a graduated trust regime — and traces effect as a descriptive delta, never a causal claim."
+    "title": "Graduated Publication \u2014 Supervised, Trusted, Locked-Back",
+    "description": "How TextOS publishes accepted, truth-checked drafts under a graduated trust regime \u2014 and traces effect as a descriptive delta, never a causal claim."
   },
   "editorial": {
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "generation-and-publication",
     "topicIds": [
       "generation-and-publication",
@@ -57,7 +55,7 @@
       "id": "answer",
       "kind": "answer",
       "data": {
-        "text": "Publication moves through three modes — supervised (default), trusted (after a threshold of clean validations), and locked-back (forced return on incident). Two gates never lift: acceptance to a validated brief, and truth-check. Effect is reported as a descriptive delta between runs, never as a causal claim."
+        "text": "Publication moves through three modes \u2014 supervised (default), trusted (after a threshold of clean validations), and locked-back (forced return on incident). Two gates never lift: acceptance to a validated brief, and truth-check. Effect is reported as a descriptive delta between runs, never as a causal claim."
       }
     },
     {
@@ -72,7 +70,15 @@
       "id": "p-publication-is-the-moment-the-system-meets-a-live-surface",
       "kind": "paragraph",
       "data": {
-        "text": "A measurement system stays honest as long as it only observes. It becomes exposed the instant it publishes. Every content pipeline that sits above answer engines eventually confronts the same question: at what point does a draft leave human hands? Content farms answer immediately, en masse, and eat their own credibility. Fully-supervised pipelines answer never, and stop scaling. TextOS answers with a third option — a **graduated publication regime** governed by an explicit machine and two gates that never lift."
+        "text": "A measurement system stays honest as long as it only observes. It becomes exposed the instant it publishes. Every content pipeline that sits above answer engines eventually confronts the same question: at what point does a draft leave human hands? Content farms answer immediately, en masse, and eat their own credibility. Fully-supervised pipelines answer never, and stop scaling. TextOS answers with a third option \u2014 a **graduated publication regime** governed by an explicit machine and two gates that never lift."
+      }
+    },
+    {
+      "id": "cta-contextual",
+      "kind": "cta_slot",
+      "slot": "primary-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
       }
     },
     {
@@ -95,7 +101,7 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "Two gates that never lift — even in `trusted`"
+        "text": "Two gates that never lift \u2014 even in `trusted`"
       }
     },
     {
@@ -110,14 +116,14 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "Effect as descriptive delta — the first inter-run comparison, and only for effect"
+        "text": "Effect as descriptive delta \u2014 the first inter-run comparison, and only for effect"
       }
     },
     {
       "id": "p-effect-as-descriptive-delta-the-first-inter-run-comparison-and-only-for-effect",
       "kind": "paragraph",
       "data": {
-        "text": "Publication is inseparable from the question every operator asks next: *did it change anything?* Answering that question requires comparing presence measurements taken before and after — that is, comparing two runs. Elsewhere in the pipeline, inter-run comparison is explicitly forbidden: measurements from separate runs are not directly comparable because engines are non-deterministic and the same panel executed twice yields different distributions. That rule stands."
+        "text": "Publication is inseparable from the question every operator asks next: *did it change anything?* Answering that question requires comparing presence measurements taken before and after \u2014 that is, comparing two runs. Elsewhere in the pipeline, inter-run comparison is explicitly forbidden: measurements from separate runs are not directly comparable because engines are non-deterministic and the same panel executed twice yields different distributions. That rule stands."
       }
     },
     {
@@ -147,7 +153,7 @@
       "id": "p-why-we-are-documenting-this-now",
       "kind": "paragraph",
       "data": {
-        "text": "ADR-016 is an accepted architecture decision. The corresponding capabilities are implemented and held in `internal_only` — meaning: the engineering exists, the boundary is described, and the product does not yet expose it publicly. Documenting the decision without exposing the surface is deliberate. It lets the shape of the boundary be criticised, contested and refined before a customer-facing surface hardens around it."
+        "text": "ADR-016 is an accepted architecture decision. The corresponding capabilities are implemented and held in `internal_only` \u2014 meaning: the engineering exists, the boundary is described, and the product does not yet expose it publicly. Documenting the decision without exposing the surface is deliberate. It lets the shape of the boundary be criticised, contested and refined before a customer-facing surface hardens around it."
       }
     },
     {
@@ -157,6 +163,20 @@
       "data": {
         "text": "Related reading"
       }
+    },
+    {
+      "id": "cta-final",
+      "kind": "cta_slot",
+      "slot": "final-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
+      }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -170,7 +190,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

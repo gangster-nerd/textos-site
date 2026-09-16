@@ -5,16 +5,14 @@
     "contentType": "product_article",
     "slug": "brief-to-decision-economics",
     "language": "en",
-    "title": "From Brief to Decision — Economics as a Separate, Later Layer",
+    "title": "From Brief to Decision \u2014 Economics as a Separate, Later Layer",
     "description": "Direction under exploration: TextOS is investigating an economics layer above the Opportunity Brief reporting a break-even threshold, never predicted revenue."
   },
   "editorial": {
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "opportunity-and-decision",
     "topicIds": [
       "opportunity-and-decision",
@@ -56,7 +54,7 @@
       "id": "answer",
       "kind": "answer",
       "data": {
-        "text": "TextOS is exploring an economics layer that would sit above the Opportunity Brief and report a break-even threshold on contribution margin — never a predicted revenue. Direction under exploration — not a delivery commitment."
+        "text": "TextOS is exploring an economics layer that would sit above the Opportunity Brief and report a break-even threshold on contribution margin \u2014 never a predicted revenue. Direction under exploration \u2014 not a delivery commitment."
       }
     },
     {
@@ -72,6 +70,14 @@
       "kind": "paragraph",
       "data": {
         "text": "An authority-presence measurement can be defensible on its own. It answers what is visible, on which surface, on which panel, with what dispersion, and it refuses to answer questions it was not built for. That is enough to be trusted; it is not always enough to close a decision. Sooner or later a buyer asks the next question: *what is this absence costing me, who is capturing the attention I am not, and what is the smallest portfolio of assets that would recover the ground?* This article documents where TextOS is heading on that question. It documents an exploration, not a delivered feature."
+      }
+    },
+    {
+      "id": "cta-contextual",
+      "kind": "cta_slot",
+      "slot": "primary-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
       }
     },
     {
@@ -94,7 +100,7 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "The inversion — a break-even threshold on contribution margin"
+        "text": "The inversion \u2014 a break-even threshold on contribution margin"
       }
     },
     {
@@ -109,14 +115,14 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "Epistemic status and provenance — two axes, never merged"
+        "text": "Epistemic status and provenance \u2014 two axes, never merged"
       }
     },
     {
       "id": "p-epistemic-status-and-provenance-two-axes-never-merged",
       "kind": "paragraph",
       "data": {
-        "text": "The exploration also formalises what many marketing dashboards fudge: every economic output carries two labels, not one. **Epistemic status** answers *how sure*. **Provenance** answers *where the data came from*. A number can be `modeled` under transparent assumptions; it can be observed inside a client system; it can be reported by the client in an oral estimate; it can be an external proxy. These are all legitimate — and they are all different. A conversion rate declared by a salesperson is not the same input as a conversion rate read from GA4, even if both are called \"conversion rate\" in the CRM."
+        "text": "The exploration also formalises what many marketing dashboards fudge: every economic output carries two labels, not one. **Epistemic status** answers *how sure*. **Provenance** answers *where the data came from*. A number can be `modeled` under transparent assumptions; it can be observed inside a client system; it can be reported by the client in an oral estimate; it can be an external proxy. These are all legitimate \u2014 and they are all different. A conversion rate declared by a salesperson is not the same input as a conversion rate read from GA4, even if both are called \"conversion rate\" in the CRM."
       }
     },
     {
@@ -124,14 +130,14 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "Attention allocation — a modeled distribution, never a click count"
+        "text": "Attention allocation \u2014 a modeled distribution, never a click count"
       }
     },
     {
       "id": "p-attention-allocation-a-modeled-distribution-never-a-click-count",
       "kind": "paragraph",
       "data": {
-        "text": "The second half of the exploration concerns *who captures the attention we are not capturing*. TextOS can produce a modelled distribution — from observable signals — of how frequently which subjects appear, with what position, how often the domain is cited directly, and how stable that distribution is across runs. That distribution is a *modeled attention allocation*, and the word \"modeled\" travels with the number. It is not, and cannot be, a count of clicks received by a competitor. Where a real click stream exists in a client system, the label upgrades. Where it does not, the label stays honest."
+        "text": "The second half of the exploration concerns *who captures the attention we are not capturing*. TextOS can produce a modelled distribution \u2014 from observable signals \u2014 of how frequently which subjects appear, with what position, how often the domain is cited directly, and how stable that distribution is across runs. That distribution is a *modeled attention allocation*, and the word \"modeled\" travels with the number. It is not, and cannot be, a count of clicks received by a competitor. Where a real click stream exists in a client system, the label upgrades. Where it does not, the label stays honest."
       }
     },
     {
@@ -139,7 +145,7 @@
       "kind": "heading",
       "level": 2,
       "data": {
-        "text": "Why the layer sits later — and why it is not in S8/S9"
+        "text": "Why the layer sits later \u2014 and why it is not in S8/S9"
       }
     },
     {
@@ -161,7 +167,7 @@
       "id": "p-what-this-article-is-not",
       "kind": "paragraph",
       "data": {
-        "text": "It is not a launch announcement. It is not a delivery commitment. Neither `opportunity-brief` nor the economics layer is publicly available today — the Brief capability is held in `internal_only`, and the economics layer sits behind two accepted architecture decisions but not yet behind a shipped surface. What is documented here is an accepted *direction* whose invariants we have decided to publish now, precisely so that the direction can be criticised before it hardens."
+        "text": "It is not a launch announcement. It is not a delivery commitment. Neither `opportunity-brief` nor the economics layer is publicly available today \u2014 the Brief capability is held in `internal_only`, and the economics layer sits behind two accepted architecture decisions but not yet behind a shipped surface. What is documented here is an accepted *direction* whose invariants we have decided to publish now, precisely so that the direction can be criticised before it hardens."
       }
     },
     {
@@ -171,6 +177,20 @@
       "data": {
         "text": "Related reading"
       }
+    },
+    {
+      "id": "cta-final",
+      "kind": "cta_slot",
+      "slot": "final-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
+      }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -184,7 +204,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {

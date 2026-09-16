@@ -12,9 +12,7 @@
     "authorIds": [
       "textos-editorial-team"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "reviewerIds": [],
     "primaryTopicId": "measurement-mechanics",
     "topicIds": [
       "measurement-mechanics",
@@ -81,7 +79,15 @@
       "id": "p-an-anti-objective-named-explicitly",
       "kind": "paragraph",
       "data": {
-        "text": "Most measurement products end in a number. The dashboard headline is a score; the score is the promise; the score is what a buyer remembers. TextOS ends somewhere else, and that difference is not an oversight. It is a design decision, taken twice: once in the observatory architecture (ADR-001), and again in the authority-presence estimator (ADR-011). Both documents use the same phrase — *anti-objective* — to describe a single composite score, and both instruct the code that computes measurements to refuse the fusion at the source."
+        "text": "Most measurement products end in a number. The dashboard headline is a score; the score is the promise; the score is what a buyer remembers. TextOS ends somewhere else, and that difference is not an oversight. It is a design decision, taken twice: once in the observatory architecture (ADR-001), and again in the authority-presence estimator (ADR-011). Both documents use the same phrase \u2014 *anti-objective* \u2014 to describe a single composite score, and both instruct the code that computes measurements to refuse the fusion at the source."
+      }
+    },
+    {
+      "id": "cta-contextual",
+      "kind": "cta_slot",
+      "slot": "primary-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
       }
     },
     {
@@ -126,7 +132,7 @@
       "id": "p-two-different-signals-two-different-capabilities",
       "kind": "paragraph",
       "data": {
-        "text": "The estimator does more than compute a union. It carries a coverage flag that records **which** of the two signals contributed. Direct is available whenever the method can extract citations from the engine response. Indirect is available only when the method exposes the passages of text where third-party sources named the entity — which some providers do not do."
+        "text": "The estimator does more than compute a union. It carries a coverage flag that records **which** of the two signals contributed. Direct is available whenever the method can extract citations from the engine response. Indirect is available only when the method exposes the passages of text where third-party sources named the entity \u2014 which some providers do not do."
       }
     },
     {
@@ -141,7 +147,7 @@
       "id": "p-what-measurement-quality-would-disappear-inside-a-score",
       "kind": "paragraph",
       "data": {
-        "text": "Behind every share, TextOS carries a small set of quality facts: the number of eligible observations that produced the number, the dispersion of the number across queries in the panel, the completeness of the run that supplied the observations, the method version that measured them. These are not decorations — claim `m6-quality-ledger-contextualises` describes them as the context that keeps a result readable."
+        "text": "Behind every share, TextOS carries a small set of quality facts: the number of eligible observations that produced the number, the dispersion of the number across queries in the panel, the completeness of the run that supplied the observations, the method version that measured them. These are not decorations \u2014 claim `m6-quality-ledger-contextualises` describes them as the context that keeps a result readable."
       }
     },
     {
@@ -186,7 +192,7 @@
       "id": "p-what-refusing-a-score-does-not-mean",
       "kind": "paragraph",
       "data": {
-        "text": "Refusing a single score is not a refusal of clarity. The three measures are readable side by side; the [methodology worked example](/methodology/direct-indirect-total) shows how the shape of the three tells a story a single number cannot. And it is not a refusal to compute a union: Total Authority Presence *is* a summary, but a summary that names what it does — a count of observations in which the entity is present at all — and preserves the direct and indirect components alongside itself."
+        "text": "Refusing a single score is not a refusal of clarity. The three measures are readable side by side; the [methodology worked example](/methodology/direct-indirect-total) shows how the shape of the three tells a story a single number cannot. And it is not a refusal to compute a union: Total Authority Presence *is* a summary, but a summary that names what it does \u2014 a count of observations in which the entity is present at all \u2014 and preserves the direct and indirect components alongside itself."
       }
     },
     {
@@ -196,6 +202,20 @@
       "data": {
         "text": "Related methodology"
       }
+    },
+    {
+      "id": "cta-final",
+      "kind": "cta_slot",
+      "slot": "final-cta",
+      "data": {
+        "intent": "MEASURE_BRAND"
+      }
+    },
+    {
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related",
+      "data": {}
     }
   ],
   "relationships": {
@@ -209,7 +229,6 @@
     "firstPublishedAt": null,
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
     "revisionNumber": 0
   },
   "seo": {
