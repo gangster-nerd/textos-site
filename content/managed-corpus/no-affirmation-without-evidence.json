@@ -1,33 +1,792 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "TextOS treats affirmations without evidence as a defect, not a stylistic choice. A deterministic TruthCheck blocks any draft that contradicts the observed evidence, drafts exist only against an accepted brief, and signals that were not observed are reported as not observable rather than as zero."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A principle enforced in code"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-36f3863c81f6",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "\"No affirmation without evidence\" is easy to write on a values page. It is harder to enforce, because the temptation to fill a page with a plausible sentence is a permanent feature of anything that generates text. TextOS treats the principle as a constraint on the pipeline, not as a stylistic preference. Two gates, both non-negotiable, decide whether a generated draft can move forward at all: it must exist against an accepted brief, and it must survive a deterministic contradiction check against the evidence that motivated the brief."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-24c651786002",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Both gates are described in the architecture record ADR-015. Neither can be lifted — not by a reviewer, not by a \"trusted\" mode, not by a model that expresses high confidence. The purpose of this article is to describe what those gates are, why the blocking half is deterministic, and what happens when a signal is absent rather than negative."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-af9140d39255",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "type": "html",
+          "value": "<!-- cta:contextual -->"
+        }
+      },
+      "id": "cta-0272cbe8002e",
+      "kind": "cta_slot",
+      "slot": "primary-cta"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Two gates that do not lift"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-11512ea3df79",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The first gate is the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "brief gate"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". A generated draft is bound, in the schema, to the identifier of an accepted opportunity brief. The foreign key is not nullable. Generating text without such a brief is refused before any model is called. This is what ADR-015 calls the anti-content-factory rule: no orphan content, ever. A page cannot come into being because someone thought it might be interesting; it comes into being because an observation of the outside world produced a defensible reason to write it."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-f096fb23e940",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The second gate is the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "truth gate"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Every draft is submitted to a "
+            },
+            {
+              "type": "inlineCode",
+              "value": "TruthCheck"
+            },
+            {
+              "type": "text",
+              "value": " that compares it against an "
+            },
+            {
+              "type": "inlineCode",
+              "value": "EvidenceBundle"
+            },
+            {
+              "type": "text",
+              "value": " — the observed claims, cited sources and questions that supported the brief. The check returns one of three verdicts: "
+            },
+            {
+              "type": "inlineCode",
+              "value": "pass"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "alert"
+            },
+            {
+              "type": "text",
+              "value": " or "
+            },
+            {
+              "type": "inlineCode",
+              "value": "block"
+            },
+            {
+              "type": "text",
+              "value": ". A "
+            },
+            {
+              "type": "inlineCode",
+              "value": "block"
+            },
+            {
+              "type": "text",
+              "value": " verdict freezes the pipeline: nothing downstream — no preview, no publication, no promotion — can proceed. ADR-015 states the rule without exception: the truth gate is never lifted, in any mode, including modes that eventually lift editorial review."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-97eaf761a743",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "These two gates form the outer boundary of the principle. A draft that clears them is, at minimum, tied to an accepted brief and not in contradiction with the evidence that produced it."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-976dc88ce79a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why the blocking verdict is deterministic"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-0bb3175afb22",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The design choice that makes the truth gate defensible is that its blocking verdict is produced by deterministic rules, not by a language model. Given the same draft and the same evidence, the check returns the same verdict. Every time."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-931c3bf2fcc2",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The reason is spelled out in ADR-015: a language model can inform a review, but it cannot be the ultimate arbiter of blocking. A model that decides on Tuesday that a passage contradicts an observation and on Wednesday that it does not is not a gate — it is a mood. TextOS assigns to language models only the role of raising an "
+            },
+            {
+              "type": "inlineCode",
+              "value": "alert"
+            },
+            {
+              "type": "text",
+              "value": ": a non-blocking signal, addressed to a human reviewer, that a sentence carries a semantic risk (over-affirmation, misplaced nuance, sensitive claim type). Alerts inform. Blocks decide. Only rules block."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ef7f6fd9b95a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A blocking verdict therefore comes with the exact contradiction it detected — the passage, the evidence element it collides with, and the rule that fired. That triplet is what makes the block reproducible, auditable and rebuttable. A reviewer who disagrees with the block disagrees with a concrete rule against a concrete piece of evidence, not with an opaque score."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-e4764f3cce0d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What \"affirmation without evidence\" means in the schema"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-29428976fc13",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Beyond outright contradiction, the principle covers a second failure mode that took a full end-to-end run to surface: a draft can be free of contradictions and still say nothing the brief asked for. ADR-015's addendum names this shape \"empty content certified true\" — the truth gate says "
+            },
+            {
+              "type": "inlineCode",
+              "value": "pass"
+            },
+            {
+              "type": "text",
+              "value": ", but the draft covered only one of the claims the brief required."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-14f432dd62e1",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The response, added after the fact, is a separate check called the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "BriefFulfillment check"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Every required claim of the brief must be either covered by a grounded statement in the draft or explicitly excluded with a reason a reviewer has accepted. Required editorial sections must be present. The target query must be addressed. The rule wired into the controlled preview is now cumulative: a preview is authorised only when "
+            },
+            {
+              "type": "inlineCode",
+              "value": "TruthCheck = pass"
+            },
+            {
+              "type": "text",
+              "value": " "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "and"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " "
+            },
+            {
+              "type": "inlineCode",
+              "value": "BriefFulfillment = pass"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-28b0e364b61d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Two checks, then, not one. TruthCheck asks: does the draft contradict the evidence? BriefFulfillment asks: does the draft honour what the brief committed to cover? A page can be true, yet incomplete. TextOS refuses to preview it until it is both."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-668cf9111fbb",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Evidence honesty extends to measurements"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-0643dbcb1a46",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The generation layer inherits a discipline that starts much earlier in the pipeline. When TextOS measures Authority Presence, it distinguishes zero from not observable. Zero is a measured result — the engine answered, the method looked for the signal, and the entity was not there. Not observable is the absence of a measurement — the method cannot see the signal on this engine, or the sample was too thin to say anything."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-20d891095ded",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "That distinction is codified in the measurement doctrine (claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "m5-not-observable-is-not-zero"
+            },
+            {
+              "type": "text",
+              "value": "): a missing observation is never recorded as a measured zero. And every measurement carries its own quality context — coverage, completeness, dispersion, provenance, observability — reported alongside the result and never merged into it (claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "m6-quality-ledger-contextualises"
+            },
+            {
+              "type": "text",
+              "value": ")."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-765ef3b6f578",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Both principles feed the generation layer. A brief cannot be defended by a measurement that was never taken, and a draft cannot affirm presence in a market segment where the signal was not observable. The evidence bundle that TruthCheck consults carries the observability flags forward. Contradicting \"not observable\" by claiming a value is a rule-based "
+            },
+            {
+              "type": "inlineCode",
+              "value": "block"
+            },
+            {
+              "type": "text",
+              "value": ", exactly as contradicting a measured zero would be."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-043e3633bb39",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What TextOS deliberately does not affirm"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-77ea38c2c17c",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The principle also draws a line around what a measurement is entitled to say. Claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "m7-no-recommendations"
+            },
+            {
+              "type": "text",
+              "value": " states that an Authority Presence measurement reports observed presence and does not produce recommendations, automatic prioritisation, return-on-investment estimates, or guarantees of ranking or citation. Claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "m8-measurement-is-not-verification"
+            },
+            {
+              "type": "text",
+              "value": " adds that a measurement reports what answer engines say about a brand — it does not establish why the engine cited a brand, and it does not verify whether the statements inside an answer are true."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-408b12eb157b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "These are not commercial modesties. They are structural. Capture, extraction and verification are separate layers, and TextOS reports the boundary explicitly rather than blurring it. A draft that affirmed \"the engine cited us because our content is authoritative\" would be affirming a causal chain the measurement cannot support. The truth gate would block such a sentence not because it disliked the tone, but because a rule fires when a passage extends a measurement into a causal claim the evidence does not carry."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-80382cba3a2a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Provenance is part of the evidence"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-6731727df921",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A subtler dimension of the principle covers how a draft describes its own origin. ADR-015 pins the transport used to generate a draft to one of three values: a real invocation of an LLM (with the exact model identifier), a manual external import (a human wrote the passage and imported it), or a fixture replay (a static test corpus). A draft marked as coming from a live model must correspond to an actual model invocation; a helper function refuses to derive provenance from an unknown method version rather than guessing."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-04d68c989803",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The reason is that \"how was this written\" is itself an affirmation. A page that claims to be model-generated when it was hand-written affirms something the code cannot verify. TextOS refuses to record provenance it cannot prove."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-eebe1b69e6cf",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Demonstration content — pages used to show the pipeline internally — is written by hand and marked as fixture replay throughout. Nothing in the system presents such a page as generated by a model, or as a customer case."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ad0983cc1c7a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What acceptance means"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-e747c4ca6c54",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "If nothing is generated without an accepted brief, the acceptance itself becomes the moment of truth. It is where a human, looking at a set of observed gaps, decides that a defensible reason to write exists. Everything downstream — the draft, the TruthCheck, the BriefFulfillment check, the controlled preview — inherits that acceptance. Nothing downstream can synthesise it after the fact."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-1072317baf52",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This is why \"no affirmation without evidence\" is not a slogan attached to the output of the system. It is a rule attached to the input. If the input carries no evidence, the input never becomes a draft, and the question of what the draft affirms never arises."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a0c157b47a6e",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related methodology"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-d65d769b84a2",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the observation unit that produces the evidence the truth gate consults."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Why not observable is not zero"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/not-observable-is-not-zero"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the honesty rule that the generation layer inherits from measurement."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-e1015cfacc5e",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:no-affirmation-without-evidence",
-    "contentType": "product_article",
-    "slug": "no-affirmation-without-evidence",
-    "language": "en",
-    "title": "No affirmation without evidence",
-    "description": "TextOS never lets a draft affirm what the evidence does not support. A deterministic TruthCheck blocks any contradiction, and no draft ships without proof."
+  "conversion": {
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
+    "audience": "reader-mixed",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [],
+    "funnelStage": "consideration",
     "primaryTopicId": "claim-evidence-and-truth-check",
+    "reviewerIds": [],
     "topicIds": [
       "claim-evidence-and-truth-check",
       "generation-and-publication"
-    ],
-    "audience": "reader-mixed",
-    "funnelStage": "consideration"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "TextOS never lets a draft affirm what the evidence does not support. A deterministic TruthCheck blocks any contradiction, and no draft ships without proof.",
+    "documentId": "textos-insight:no-affirmation-without-evidence",
+    "language": "en",
+    "slug": "no-affirmation-without-evidence",
+    "title": "No affirmation without evidence"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "daddcd05074017a754d88a9afc1f821b634032420af586a64e631238056a5889",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/no-affirmation-without-evidence",
+    "indexingIntent": "noindex",
+    "schemaType": "Article",
+    "searchIntent": "informational",
+    "targetQuery": "how does textos avoid hallucinated claims"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "PRODUCT_PRINCIPLE:DOCUMENTARY:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
     ],
     "claimIds": [
       "m1-observation-unit",
@@ -41,193 +800,9 @@
       "observe-authority-presence:authority-presence-observation-v1",
       "quality-ledger:quality-ledger-rates-v1"
     ],
-    "capabilityIds": [
-      "observe-authority-presence",
-      "quality-ledger"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "3366388d14655b7be195fadbce0a4db24af8ecd3eeb474e80a7d3cfeac14e057",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "TextOS treats affirmations without evidence as a defect, not a stylistic choice. A deterministic TruthCheck blocks any draft that contradicts the observed evidence, drafts exist only against an accepted brief, and signals that were not observed are reported as not observable rather than as zero."
-      }
-    },
-    {
-      "id": "h-a-principle-enforced-in-code",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "A principle enforced in code"
-      }
-    },
-    {
-      "id": "p-a-principle-enforced-in-code",
-      "kind": "paragraph",
-      "data": {
-        "text": "\"No affirmation without evidence\" is easy to write on a values page. It is harder to enforce, because the temptation to fill a page with a plausible sentence is a permanent feature of anything that generates text. TextOS treats the principle as a constraint on the pipeline, not as a stylistic preference. Two gates, both non-negotiable, decide whether a generated draft can move forward at all: it must exist against an accepted brief, and it must survive a deterministic contradiction check against the evidence that motivated the brief."
-      }
-    },
-    {
-      "id": "cta-contextual",
-      "kind": "cta_slot",
-      "slot": "primary-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "h-two-gates-that-do-not-lift",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Two gates that do not lift"
-      }
-    },
-    {
-      "id": "p-two-gates-that-do-not-lift",
-      "kind": "paragraph",
-      "data": {
-        "text": "The first gate is the **brief gate**. A generated draft is bound, in the schema, to the identifier of an accepted opportunity brief. The foreign key is not nullable. Generating text without such a brief is refused before any model is called. This is what ADR-015 calls the anti-content-factory rule: no orphan content, ever. A page cannot come into being because someone thought it might be interesting; it comes into being because an observation of the outside world produced a defensible reason to write it."
-      }
-    },
-    {
-      "id": "h-why-the-blocking-verdict-is-deterministic",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why the blocking verdict is deterministic"
-      }
-    },
-    {
-      "id": "p-why-the-blocking-verdict-is-deterministic",
-      "kind": "paragraph",
-      "data": {
-        "text": "The design choice that makes the truth gate defensible is that its blocking verdict is produced by deterministic rules, not by a language model. Given the same draft and the same evidence, the check returns the same verdict. Every time."
-      }
-    },
-    {
-      "id": "h-what-affirmation-without-evidence-means-in-the-schema",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What \"affirmation without evidence\" means in the schema"
-      }
-    },
-    {
-      "id": "p-what-affirmation-without-evidence-means-in-the-schema",
-      "kind": "paragraph",
-      "data": {
-        "text": "Beyond outright contradiction, the principle covers a second failure mode that took a full end-to-end run to surface: a draft can be free of contradictions and still say nothing the brief asked for. ADR-015's addendum names this shape \"empty content certified true\" \u2014 the truth gate says `pass`, but the draft covered only one of the claims the brief required."
-      }
-    },
-    {
-      "id": "h-evidence-honesty-extends-to-measurements",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Evidence honesty extends to measurements"
-      }
-    },
-    {
-      "id": "p-evidence-honesty-extends-to-measurements",
-      "kind": "paragraph",
-      "data": {
-        "text": "The generation layer inherits a discipline that starts much earlier in the pipeline. When TextOS measures Authority Presence, it distinguishes zero from not observable. Zero is a measured result \u2014 the engine answered, the method looked for the signal, and the entity was not there. Not observable is the absence of a measurement \u2014 the method cannot see the signal on this engine, or the sample was too thin to say anything."
-      }
-    },
-    {
-      "id": "h-what-textos-deliberately-does-not-affirm",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What TextOS deliberately does not affirm"
-      }
-    },
-    {
-      "id": "p-what-textos-deliberately-does-not-affirm",
-      "kind": "paragraph",
-      "data": {
-        "text": "The principle also draws a line around what a measurement is entitled to say. Claim `m7-no-recommendations` states that an Authority Presence measurement reports observed presence and does not produce recommendations, automatic prioritisation, return-on-investment estimates, or guarantees of ranking or citation. Claim `m8-measurement-is-not-verification` adds that a measurement reports what answer engines say about a brand \u2014 it does not establish why the engine cited a brand, and it does not verify whether the statements inside an answer are true."
-      }
-    },
-    {
-      "id": "h-provenance-is-part-of-the-evidence",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Provenance is part of the evidence"
-      }
-    },
-    {
-      "id": "p-provenance-is-part-of-the-evidence",
-      "kind": "paragraph",
-      "data": {
-        "text": "A subtler dimension of the principle covers how a draft describes its own origin. ADR-015 pins the transport used to generate a draft to one of three values: a real invocation of an LLM (with the exact model identifier), a manual external import (a human wrote the passage and imported it), or a fixture replay (a static test corpus). A draft marked as coming from a live model must correspond to an actual model invocation; a helper function refuses to derive provenance from an unknown method version rather than guessing."
-      }
-    },
-    {
-      "id": "h-what-acceptance-means",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What acceptance means"
-      }
-    },
-    {
-      "id": "p-what-acceptance-means",
-      "kind": "paragraph",
-      "data": {
-        "text": "If nothing is generated without an accepted brief, the acceptance itself becomes the moment of truth. It is where a human, looking at a set of observed gaps, decides that a defensible reason to write exists. Everything downstream \u2014 the draft, the TruthCheck, the BriefFulfillment check, the controlled preview \u2014 inherits that acceptance. Nothing downstream can synthesise it after the fact."
-      }
-    },
-    {
-      "id": "h-related-methodology",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related methodology"
-      }
-    },
-    {
-      "id": "cta-final",
-      "kind": "cta_slot",
-      "slot": "final-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "related",
-      "kind": "related_content_slot",
-      "slot": "related",
-      "data": {}
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "ctaIntentId": "MEASURE_BRAND",
-    "conversionAllowed": true
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/no-affirmation-without-evidence",
-    "schemaType": "Article",
-    "targetQuery": "how does textos avoid hallucinated claims",
-    "searchIntent": "informational"
+    "publicationStatus": "draft",
+    "sourceStatus": "PRODUCT_PRINCIPLE:DOCUMENTARY:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

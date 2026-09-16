@@ -1,0 +1,356 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "body": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": {},
+            "default": {},
+            "propertyNames": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "paragraph",
+              "heading",
+              "answer",
+              "evidence",
+              "quote",
+              "figure",
+              "comparison",
+              "table",
+              "steps",
+              "callout",
+              "definition",
+              "statistic",
+              "source",
+              "cta_slot",
+              "related_content_slot"
+            ],
+            "type": "string"
+          },
+          "level": {
+            "maximum": 6,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "slot": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "contentSchemaVersion": {
+      "const": "content-document@1",
+      "type": "string"
+    },
+    "conversion": {
+      "additionalProperties": false,
+      "properties": {
+        "conversionAllowed": {
+          "default": true,
+          "type": "boolean"
+        },
+        "ctaIntentId": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "editorial": {
+      "additionalProperties": false,
+      "properties": {
+        "audience": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "authorIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "funnelStage": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "primaryTopicId": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reviewerIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "topicIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "identity": {
+      "additionalProperties": false,
+      "properties": {
+        "contentType": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "documentId": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "language": {
+          "maxLength": 8,
+          "minLength": 2,
+          "type": "string"
+        },
+        "slug": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "documentId",
+        "contentType",
+        "slug",
+        "language",
+        "title",
+        "description"
+      ],
+      "type": "object"
+    },
+    "lifecycle": {
+      "additionalProperties": false,
+      "properties": {
+        "firstPublishedAt": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lastReviewedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "publishedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "revisionNumber": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "revisionSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "supersededBy": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "sourceAuthority": {
+          "default": "UNCERTIFIED",
+          "enum": [
+            "CERTIFIED_MAIN",
+            "CERTIFIED_CANDIDATE",
+            "UNCERTIFIED"
+          ],
+          "type": "string"
+        },
+        "sourceEvidenceDigest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "sourceRepository": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sourceSha": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "relationships": {
+      "additionalProperties": false,
+      "properties": {
+        "relatedContentIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "seo": {
+      "additionalProperties": false,
+      "properties": {
+        "canonicalPath": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "indexingIntent": {
+          "default": "noindex",
+          "enum": [
+            "index",
+            "noindex"
+          ],
+          "type": "string"
+        },
+        "schemaType": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "searchIntent": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "targetQuery": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "truth": {
+      "additionalProperties": false,
+      "properties": {
+        "allowedSurfaces": {
+          "items": {
+            "enum": [
+              "reference",
+              "native"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "capabilityIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "claimIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "evidenceRefs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "publicationStatus": {
+          "enum": [
+            "draft",
+            "review",
+            "publishable",
+            "published",
+            "superseded",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "sourceStatus": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "statusVocabulary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "statusVocabularyVersion": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "statusVocabulary",
+        "statusVocabularyVersion",
+        "sourceStatus",
+        "publicationStatus",
+        "allowedSurfaces"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "contentSchemaVersion",
+    "identity",
+    "editorial",
+    "truth",
+    "provenance",
+    "body",
+    "relationships",
+    "conversion",
+    "lifecycle",
+    "seo"
+  ],
+  "type": "object"
+}

@@ -8,12 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       geist:
         specifier: ^1.7.2
         version: 1.7.2(next@15.5.20(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
+      mdast-util-from-markdown:
+        specifier: ^2.0.3
+        version: 2.0.3
       next:
         specifier: ^15.1.6
         version: 15.5.20(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -29,6 +35,15 @@ importers:
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      remark-stringify:
+        specifier: ^11.0.0
+        version: 11.0.0
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
       zod:
         specifier: ^4.4.3
         version: 4.4.3

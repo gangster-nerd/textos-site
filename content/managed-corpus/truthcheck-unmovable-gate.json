@@ -1,33 +1,1135 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "TruthCheck is designed as an unmovable gate on generated content in TextOS. Its blocking verdict is deterministic — the same content against the same evidence bundle always produces the same block — and it is never lifted, even under trusted publication modes. A language model can raise non-blocking alerts, never a block."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An architecture note, not an availability claim"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-ad2ada8666ba",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TruthCheck is an internal capability in the current capability registry. This article documents "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how it is designed"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "why the gate is unmovable"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " — not a claim that a customer receives a certified-content service today. The point of the piece is architectural: to explain a decision that shapes what TextOS is willing to let out of itself, and why that decision is a hard invariant rather than a policy that could be softened by product mood."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-9c9d7ed78e15",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "type": "html",
+          "value": "<!-- cta:contextual -->"
+        }
+      },
+      "id": "cta-0272cbe8002e",
+      "kind": "cta_slot",
+      "slot": "primary-cta"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What TruthCheck is designed to do"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-bb9ce8fa39c6",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Generated content, in TextOS, only exists as an extension of an accepted "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Opportunity Brief"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/insights/opportunity-brief-deterministic"
+            },
+            {
+              "type": "text",
+              "value": ". The generation step is bounded by two gates: it must be adossed to an accepted brief (no orphan content — the \"no content factory\" rule), and its output must clear a truthfulness check against the evidence bundle before anything further happens."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-296e9a1306e9",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TruthCheck is that second gate. It reads a generated draft, reads the evidence bundle assembled from real observations, and emits one of three verdicts:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-7417df994e4c",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "pass"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — no deterministic contradiction, no alert;"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "alert"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — an LLM has flagged a semantic risk (nuance, over-affirmation) that is not a strict contradiction;"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "block"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the deterministic core has detected a contradiction against the evidence."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-9343803a0cdb",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Only two of these verdicts have symmetric authority. "
+            },
+            {
+              "type": "inlineCode",
+              "value": "pass"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "type": "inlineCode",
+              "value": "block"
+            },
+            {
+              "type": "text",
+              "value": " both come from the deterministic core. "
+            },
+            {
+              "type": "inlineCode",
+              "value": "alert"
+            },
+            {
+              "type": "text",
+              "value": " is advisory. That asymmetry is deliberate."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a5f5851caebb",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Only the deterministic core can block"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-19a389931642",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-015 fixes a rule that shapes every other property of the mechanism: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "a "
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "block"
+                },
+                {
+                  "type": "text",
+                  "value": " is always deterministic; a language model is never permitted to emit a "
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "block"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-62fff64645b1",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The deterministic core evaluates a set of explicit rules — for example, the draft asserts a claim type that the observations attribute to a third party; the draft denies a cited piece of evidence; the draft attaches an absolute recommendation. These rules are code, not prompts. Given the same content and the same evidence bundle, the same block is produced. The verdict is reproducible."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4f8eb6a5218a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The LLM assistance sits in a strictly weaker position. It reads the same content and the same bundle and it may raise "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "alerts"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". It can note that a phrasing seems to overreach, that a nuance has been dropped, that a claim is stated more strongly than the observations support. It cannot block. That authority is denied by design."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ee54fa71f77d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The reasoning is not that the LLM is untrusted in general. It is that a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "gate cannot be non-deterministic"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". If a block could be raised by an LLM, then the meaning of \"blocked\" would drift as the model drifted, and the mechanism would be undefendable at the moment it needs to be defended: when someone asks why a piece of content was refused. TextOS refuses to have that conversation with a shrug. When TruthCheck blocks, the exact rule that fired can be produced, on demand, from code."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-87865e5c18de",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The gate is unmovable, even under trusted modes"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-135af46ffabb",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TextOS's publication layer contains a graduated trust mechanism (a state machine that can eventually lift the systematic human review of an author whose validations have consistently been clean). That mechanism exists to reduce editorial toil at scale, not to loosen the truthfulness constraint. ADR-015 fixes the boundary explicitly: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "the truthfulness gate is never lifted, in any mode, including trusted"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-5a778971e440",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The graduated trust state machine can lift the systematic editorial review. It cannot lift TruthCheck. A "
+            },
+            {
+              "type": "inlineCode",
+              "value": "block"
+            },
+            {
+              "type": "text",
+              "value": " verdict halts everything downstream, regardless of the publication policy attached to the draft's scope."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-7de038c63873",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This is the same discipline the public methodology carries when it says "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "a measurement does not verify whether statements inside an answer are true"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/authority-presence"
+            },
+            {
+              "type": "text",
+              "value": ": the observatory does not claim to verify the world. But an unmovable gate on generated content is not a claim about the world — it is a claim about TextOS's own outputs. The product refuses to publish content that contradicts the observations it was built on. That refusal is not an editorial preference; it is an invariant of the architecture."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-f0c36059306d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Generation is isolated behind a transport"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-44480a6b6f41",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The mechanism sits inside a broader design that keeps the language model in a narrow slot. Generation is a transport-isolated capability, following the same pattern the observatory uses for engine access: a "
+            },
+            {
+              "type": "inlineCode",
+              "value": "GenerationProvider"
+            },
+            {
+              "type": "text",
+              "value": " contract, a fixture-first implementation used in tests and in the first offline chain, and a live provider injected in a later, isolated sub-sprint. The live model is pinned; any change of model or prompt is a change of "
+            },
+            {
+              "type": "inlineCode",
+              "value": "generation_method_version"
+            },
+            {
+              "type": "text",
+              "value": ", in the same way that engine access carries a "
+            },
+            {
+              "type": "inlineCode",
+              "value": "provider_version"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-fb22794a245a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The generated content "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "cites only the evidence bundle"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Sources are imposed by the brief, not chosen by the model. Neutrality is a schema property, not a prompt instruction. This is what allows TruthCheck to be a deterministic function of "
+            },
+            {
+              "type": "inlineCode",
+              "value": "(content, bundle)"
+            },
+            {
+              "type": "text",
+              "value": ": because the model is constrained to a citation set the bundle already fixes, the space of possible contradictions is enumerable and can be evaluated by code."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-e087fc5b6745",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Provenance is honest, or the draft is refused"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-9ab09a2aae14",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An addendum to ADR-015 documents a further constraint learned in practice: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "provenance must be honest, or the draft is not accepted at all"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". The generation transport is one of three explicit values ("
+            },
+            {
+              "type": "inlineCode",
+              "value": "anthropic_api_live"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "manual_external_import"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "fixture_replay"
+            },
+            {
+              "type": "text",
+              "value": "), and the "
+            },
+            {
+              "type": "inlineCode",
+              "value": "generation_method_version"
+            },
+            {
+              "type": "text",
+              "value": " encodes the transport. A draft may only carry "
+            },
+            {
+              "type": "inlineCode",
+              "value": "anthropic_api_live"
+            },
+            {
+              "type": "text",
+              "value": " if a real live invocation actually took place; otherwise it stays "
+            },
+            {
+              "type": "inlineCode",
+              "value": "fixture_replay"
+            },
+            {
+              "type": "text",
+              "value": " or "
+            },
+            {
+              "type": "inlineCode",
+              "value": "manual_external_import"
+            },
+            {
+              "type": "text",
+              "value": ". There is no fallback that guesses; an unknown method version raises rather than being silently coerced."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-954e76d8b52b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This matters because a certified-vrai draft that was in fact hand-written must never be presented as model-generated. The architecture refuses to let the provenance drift, even for demonstration content. In practice, hand-written demonstration content stays labelled "
+            },
+            {
+              "type": "inlineCode",
+              "value": "fixture_replay"
+            },
+            {
+              "type": "text",
+              "value": " everywhere — never presented as generated, never presented as a customer case."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-9218185cd3ee",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TruthCheck is necessary but not sufficient — the fulfillment check"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-4a46b8b785d5",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The addendum captures a second lesson: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "a draft can be certified true without being useful"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". A "
+            },
+            {
+              "type": "inlineCode",
+              "value": "pass"
+            },
+            {
+              "type": "text",
+              "value": " from TruthCheck proves that every statement in the draft is grounded, but not that the draft covers what the brief asked for. A draft that trivially covers one required claim and stays silent on the rest can pass TruthCheck — \"empty certified true\"."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-f45e73ee87f8",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "To prevent that, an additional check runs alongside TruthCheck: brief fulfillment. Each required claim of the brief must either be covered by a grounded statement or be "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "explicitly excluded with a reason accepted by a human"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Required editorial sections must be present. The target query must be addressed. Only if both "
+            },
+            {
+              "type": "inlineCode",
+              "value": "TruthCheck=pass"
+            },
+            {
+              "type": "text",
+              "value": " "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "and"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " "
+            },
+            {
+              "type": "inlineCode",
+              "value": "BriefFulfillment=pass"
+            },
+            {
+              "type": "text",
+              "value": " is the controlled preview authorised."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8cc6dc497a2b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TruthCheck and fulfillment are distinct gates, held in distinct code paths, because they answer distinct questions. TruthCheck asks: is this draft grounded? Fulfillment asks: does this draft do what the brief requires? Neither implies the other. Neither is optional."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a3bb9ff03ef4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Preview is a diffusion state, not a validation verdict"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-a11a3b20f400",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A related discipline: controlled preview is an "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "orthogonal"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " dimension to validation. Previewing a draft never mutates its validation state. Three states coexist: "
+            },
+            {
+              "type": "inlineCode",
+              "value": "TruthCheck state"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Preview state"
+            },
+            {
+              "type": "text",
+              "value": ", and "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Publication state"
+            },
+            {
+              "type": "text",
+              "value": ". A preview receipt records that a diffusion happened; the validation state remains what it was; nothing is marked as published until an actual publication takes place. A draft can be re-previewed without ambiguity because its verdict has not been touched."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-02b31be5fe36",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This is another small refusal that makes a larger property true: verdicts, once fixed, are not entangled with what happens downstream. Preview does not upgrade a "
+            },
+            {
+              "type": "inlineCode",
+              "value": "truthchecked"
+            },
+            {
+              "type": "text",
+              "value": " draft into \"validated\". Publication is a separate transition, and the truthfulness gate remains attached to it as firmly as to preview."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8bbfe4ec0caa",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why the gate must be unmovable"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-8bfcfbbbe24b",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "There is a version of TextOS in which TruthCheck is a soft gate — where operators can override, where trusted modes lift it, where a language model can escalate a block. That version would be easier to ship and easier to sell in the short term. It would also be, at the first controversy, indefensible. If the answer to \"why did this pass?\" ever depends on a mode, a heuristic, or a model's judgment on the day, the mechanism is not a gate at all."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-914c99d60ed3",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-015's decision is that TextOS earns the right to publish grounded content only by keeping the gate deterministic and never lifting it. The line — nothing is written outside an accepted brief; nothing crosses the door if TruthCheck blocks; the block is deterministic — is the contract the architecture makes with itself before it makes any contract with an outside reader."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-dd2882d338eb",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related methodology"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-d65d769b84a2",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Why TextOS Is an Observatory, Not a CMS"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/insights/observatory-not-cms"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — why the observation record is the ground the gate stands on."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Opportunity Brief — Deterministic Assembly from Evidence"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/insights/opportunity-brief-deterministic"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the accepted brief that any generated draft must be adossed to."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the layer that measures without verifying, and why a separate gate is needed to verify what the product itself writes."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-efe741abe9d1",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:truthcheck-unmovable-gate",
-    "contentType": "product_article",
-    "slug": "truthcheck-unmovable-gate",
-    "language": "en",
-    "title": "TruthCheck \u2014 the Unmovable Gate",
-    "description": "TruthCheck is an unmovable gate: its blocking verdict is deterministic, reproducible, and never lifted \u2014 a language model can only raise alerts, never blocks."
+  "conversion": {
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
+    "audience": "reader-technical",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [],
+    "funnelStage": "consideration",
     "primaryTopicId": "claim-evidence-and-truth-check",
+    "reviewerIds": [],
     "topicIds": [
       "claim-evidence-and-truth-check",
       "generation-and-publication"
-    ],
-    "audience": "reader-technical",
-    "funnelStage": "consideration"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "TruthCheck is an unmovable gate: its blocking verdict is deterministic, reproducible, and never lifted — a language model can only raise alerts, never blocks.",
+    "documentId": "textos-insight:truthcheck-unmovable-gate",
+    "language": "en",
+    "slug": "truthcheck-unmovable-gate",
+    "title": "TruthCheck — the Unmovable Gate"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "665a16b7554dd0397caf72f259f41a7503730681a57a3e8f9d5a8e411d80dd30",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/truthcheck-unmovable-gate",
+    "indexingIntent": "noindex",
+    "schemaType": "TechArticle",
+    "searchIntent": "technical",
+    "targetQuery": "textos truthcheck unmovable gate architecture"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
     ],
     "claimIds": [
       "m7-no-recommendations",
@@ -39,208 +1141,9 @@
       "observe-authority-presence:observe-run-orchestration-v1",
       "quality-ledger:quality-ledger-rates-v1"
     ],
-    "capabilityIds": [
-      "observe-authority-presence",
-      "quality-ledger"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "4fba6a980609e1c0456d36c1b71ecf2c02e23b7ea821c1a4ea61220e614fec24",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "TruthCheck is designed as an unmovable gate on generated content in TextOS. Its blocking verdict is deterministic \u2014 the same content against the same evidence bundle always produces the same block \u2014 and it is never lifted, even under trusted publication modes. A language model can raise non-blocking alerts, never a block."
-      }
-    },
-    {
-      "id": "h-an-architecture-note-not-an-availability-claim",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "An architecture note, not an availability claim"
-      }
-    },
-    {
-      "id": "p-an-architecture-note-not-an-availability-claim",
-      "kind": "paragraph",
-      "data": {
-        "text": "TruthCheck is an internal capability in the current capability registry. This article documents **how it is designed** and **why the gate is unmovable** \u2014 not a claim that a customer receives a certified-content service today. The point of the piece is architectural: to explain a decision that shapes what TextOS is willing to let out of itself, and why that decision is a hard invariant rather than a policy that could be softened by product mood."
-      }
-    },
-    {
-      "id": "cta-contextual",
-      "kind": "cta_slot",
-      "slot": "primary-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "h-what-truthcheck-is-designed-to-do",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What TruthCheck is designed to do"
-      }
-    },
-    {
-      "id": "p-what-truthcheck-is-designed-to-do",
-      "kind": "paragraph",
-      "data": {
-        "text": "Generated content, in TextOS, only exists as an extension of an accepted [Opportunity Brief](/insights/opportunity-brief-deterministic). The generation step is bounded by two gates: it must be adossed to an accepted brief (no orphan content \u2014 the \"no content factory\" rule), and its output must clear a truthfulness check against the evidence bundle before anything further happens."
-      }
-    },
-    {
-      "id": "h-only-the-deterministic-core-can-block",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Only the deterministic core can block"
-      }
-    },
-    {
-      "id": "p-only-the-deterministic-core-can-block",
-      "kind": "paragraph",
-      "data": {
-        "text": "ADR-015 fixes a rule that shapes every other property of the mechanism: **a `block` is always deterministic; a language model is never permitted to emit a `block`**."
-      }
-    },
-    {
-      "id": "h-the-gate-is-unmovable-even-under-trusted-modes",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The gate is unmovable, even under trusted modes"
-      }
-    },
-    {
-      "id": "p-the-gate-is-unmovable-even-under-trusted-modes",
-      "kind": "paragraph",
-      "data": {
-        "text": "TextOS's publication layer contains a graduated trust mechanism (a state machine that can eventually lift the systematic human review of an author whose validations have consistently been clean). That mechanism exists to reduce editorial toil at scale, not to loosen the truthfulness constraint. ADR-015 fixes the boundary explicitly: **the truthfulness gate is never lifted, in any mode, including trusted**."
-      }
-    },
-    {
-      "id": "h-generation-is-isolated-behind-a-transport",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Generation is isolated behind a transport"
-      }
-    },
-    {
-      "id": "p-generation-is-isolated-behind-a-transport",
-      "kind": "paragraph",
-      "data": {
-        "text": "The mechanism sits inside a broader design that keeps the language model in a narrow slot. Generation is a transport-isolated capability, following the same pattern the observatory uses for engine access: a `GenerationProvider` contract, a fixture-first implementation used in tests and in the first offline chain, and a live provider injected in a later, isolated sub-sprint. The live model is pinned; any change of model or prompt is a change of `generation_method_version`, in the same way that engine access carries a `provider_version`."
-      }
-    },
-    {
-      "id": "h-provenance-is-honest-or-the-draft-is-refused",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Provenance is honest, or the draft is refused"
-      }
-    },
-    {
-      "id": "p-provenance-is-honest-or-the-draft-is-refused",
-      "kind": "paragraph",
-      "data": {
-        "text": "An addendum to ADR-015 documents a further constraint learned in practice: **provenance must be honest, or the draft is not accepted at all**. The generation transport is one of three explicit values (`anthropic_api_live`, `manual_external_import`, `fixture_replay`), and the `generation_method_version` encodes the transport. A draft may only carry `anthropic_api_live` if a real live invocation actually took place; otherwise it stays `fixture_replay` or `manual_external_import`. There is no fallback that guesses; an unknown method version raises rather than being silently coerced."
-      }
-    },
-    {
-      "id": "h-truthcheck-is-necessary-but-not-sufficient-the-fulfillment-check",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "TruthCheck is necessary but not sufficient \u2014 the fulfillment check"
-      }
-    },
-    {
-      "id": "p-truthcheck-is-necessary-but-not-sufficient-the-fulfillment-check",
-      "kind": "paragraph",
-      "data": {
-        "text": "The addendum captures a second lesson: **a draft can be certified true without being useful**. A `pass` from TruthCheck proves that every statement in the draft is grounded, but not that the draft covers what the brief asked for. A draft that trivially covers one required claim and stays silent on the rest can pass TruthCheck \u2014 \"empty certified true\"."
-      }
-    },
-    {
-      "id": "h-preview-is-a-diffusion-state-not-a-validation-verdict",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Preview is a diffusion state, not a validation verdict"
-      }
-    },
-    {
-      "id": "p-preview-is-a-diffusion-state-not-a-validation-verdict",
-      "kind": "paragraph",
-      "data": {
-        "text": "A related discipline: controlled preview is an **orthogonal** dimension to validation. Previewing a draft never mutates its validation state. Three states coexist: `TruthCheck state`, `Preview state`, and `Publication state`. A preview receipt records that a diffusion happened; the validation state remains what it was; nothing is marked as published until an actual publication takes place. A draft can be re-previewed without ambiguity because its verdict has not been touched."
-      }
-    },
-    {
-      "id": "h-why-the-gate-must-be-unmovable",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why the gate must be unmovable"
-      }
-    },
-    {
-      "id": "p-why-the-gate-must-be-unmovable",
-      "kind": "paragraph",
-      "data": {
-        "text": "There is a version of TextOS in which TruthCheck is a soft gate \u2014 where operators can override, where trusted modes lift it, where a language model can escalate a block. That version would be easier to ship and easier to sell in the short term. It would also be, at the first controversy, indefensible. If the answer to \"why did this pass?\" ever depends on a mode, a heuristic, or a model's judgment on the day, the mechanism is not a gate at all."
-      }
-    },
-    {
-      "id": "h-related-methodology",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related methodology"
-      }
-    },
-    {
-      "id": "cta-final",
-      "kind": "cta_slot",
-      "slot": "final-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "related",
-      "kind": "related_content_slot",
-      "slot": "related",
-      "data": {}
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "ctaIntentId": "MEASURE_BRAND",
-    "conversionAllowed": true
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/truthcheck-unmovable-gate",
-    "schemaType": "TechArticle",
-    "targetQuery": "textos truthcheck unmovable gate architecture",
-    "searchIntent": "technical"
+    "publicationStatus": "draft",
+    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

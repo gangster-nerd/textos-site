@@ -1,33 +1,897 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "TextOS is architected as an observatory, not a CMS. Its centre of gravity is the recurrent, append-only observation of answer engines on a versioned query panel. It does not manage user-triggered edits to content records; it accumulates dated observations and computes measurements over them."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What kind of system is TextOS?"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-91b88505da49",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "There is a temptation, when a product handles text and eventually helps write it, to file it under \"content management\". TextOS refuses that filing. Its core object is not a document a user edits, and its central operation is not a save. It is a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "station of measurement"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " — an observatory whose first-class citizens are dated observations of what answer engines say."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-42e57945b701",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-001 states this in a single sentence: TextOS is neither a transactional store nor a rendering factory. It is an observatory. That decision governs the schema, the orchestration, the runtime and, downstream, everything the product is willing to claim about a brand's authority presence."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-f1cd839b7869",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "type": "html",
+          "value": "<!-- cta:contextual -->"
+        }
+      },
+      "id": "cta-0272cbe8002e",
+      "kind": "cta_slot",
+      "slot": "primary-cta"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The three archetypes, and why the difference matters"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-4b661112d5f1",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A CMS-shaped system centres on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "transactions"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ": users create records, edit them, and expect low-latency consistency. A media factory centres on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "rendering"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ": heavy jobs, large artefacts, queues, object storage. An observatory centres on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "repeated observation"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ": scheduled runs, tolerated partial failures, series that accumulate over time, and analysis that operates on the accumulated record."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8d4d572a3ce1",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TextOS reuses vocabulary from the first two — gates and statuses from transactional systems, orchestration and retries from factories — without adopting either as its centre. Its three internal layers (Observe, Know, Act) each borrow what they need, but the centre of gravity remains Know: the accumulated, versioned observation record."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-781070cc186e",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "That distinction is not decorative. It changes what the product is entitled to say. A CMS reports what a user wrote. An observatory reports what was observed, when, under which method, and how well supported the observation is."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-fe38d48b7be9",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The observation is the unit, not the brand"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-7b0c986d162f",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The first architectural consequence: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "the unit of measurement is the observation, not the brand"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". One engine answer, at one moment, on one versioned query, in one locale, is the atom. Everything else — Direct Share of Model, Indirect Mention Share, Total Authority Presence — is a computation over a population of atoms. This is what "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Authority Presence measurement"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/authority-presence"
+            },
+            {
+              "type": "text",
+              "value": " sets out for the public methodology, and it is a direct consequence of ADR-001's decision to treat observations as first-class."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-6141d4eb36ee",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A CMS would let a user pick a brand, tweak its \"authority score\", and save. There is no such affordance in TextOS, because there is no such object. There are only observations and the measures computed over them."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ca3def1d21d2",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Append-only, versioned, comparable across time"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-bfd80c76894e",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Once observations are the unit, the storage discipline follows. ADR-001 fixes an append-only rule: an observation is never rewritten as if it were a stable truth. Each observation carries the engine, the surface interrogated, the query panel version, the provider version, the extractor version, the aggregation version, the canonicalization version, the run identifier, the canonical measurement window, the observed timestamp and its status. A retry does not overwrite; a change of method does not silently rewrite history."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-6871a5fb0594",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This is where an observatory diverges most sharply from a CMS. In a CMS, the current row is the truth and older versions are archive. In TextOS, older observations remain live citizens of the record, because a series is a claim about the world only if the older points are still available under the method that produced them. Method changes are marked as ruptures in the series — never smoothed away."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4b3d8b46e882",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The consequence for what TextOS is willing to promise: two figures are comparable only when the six method dimensions coincide. That constraint is not a caveat added to a marketing page; it is an invariant of the architecture and the reason the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Measurement Quality Ledger"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/measurement-quality-ledger"
+            },
+            {
+              "type": "text",
+              "value": " reports method version alongside every measurement."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8be13797bf70",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Empty results are observations, not errors"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-5e17948953cf",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A CMS mindset would treat an empty answer as a failed request. The observatory does not. ADR-001 fixes a canonical table of eight observation statuses, and only two of them — "
+            },
+            {
+              "type": "inlineCode",
+              "value": "ok"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "type": "inlineCode",
+              "value": "no_citations"
+            },
+            {
+              "type": "text",
+              "value": " — enter the denominator of the Share of Model. "
+            },
+            {
+              "type": "inlineCode",
+              "value": "no_answer_surface"
+            },
+            {
+              "type": "text",
+              "value": " (the answer surface was simply not triggered for this query) is a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "valid observation"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ", not an error, and is deliberately excluded from the denominator. Transient errors ("
+            },
+            {
+              "type": "inlineCode",
+              "value": "rate_limited"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "timeout"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "provider_empty_response"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "provider_error"
+            },
+            {
+              "type": "text",
+              "value": ") are excluded from the measure and counted in the run's quality metrics instead."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-afc3e48fd92a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This is why the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "not observable is not zero"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/not-observable-is-not-zero"
+            },
+            {
+              "type": "text",
+              "value": " rule can hold in the product without contradiction: the schema distinguishes \"the engine returned nothing citable\" from \"we could not observe it\". A CMS-shaped store would collapse both into a null value; an observatory keeps them separate because they carry different information about the world."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0ef8dab5410c",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Postgres and Trigger.dev — deliberate boredom"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-5afc2e60da4a",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-001 is also, quietly, a decision to stay boring. TextOS V1 uses Next.js on Vercel, Neon Postgres in the EU, Drizzle ORM and Trigger.dev v4 for scheduled observation runs. No time-series extension. No dedicated queue. No object store for raw responses in V1. No external analytics engine."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4febc2a82feb",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The reasoning is documented and holds up: the volume that would justify TimescaleDB, dedicated queues or an analytics warehouse has not been demonstrated. Adding those layers before the volume exists would create cognitive debt without any measurement of return. Post-V1 additions are gated on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "evidence of volume"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ", not on architectural fashion. This is consistent with the discipline the product applies to itself elsewhere: nothing is added because it is fashionable; every layer answers to a demonstrated need."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3c56d7416b0c",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Trigger.dev is used precisely for what an observatory needs: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "short, recurrent, idempotent"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " jobs that tolerate partial failure. Run the FR panel on Perplexity. Run the EN panel on Google's answer surface. Recompute Share of Model. Refresh expired claims. None of these are user-triggered heavy jobs; all of them are scheduled and must be safely retryable."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0149b2d28ae2",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Idempotence is not a nice-to-have"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-9cc0491e8a52",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Because retries are normal and scheduling is the default, ADR-001 elevates idempotence to an invariant. An observation is keyed by engine, surface, panel version, query hash, locale, measurement window, method version and execution index. A retry may not produce a duplicate; a change of method version, on the other hand, is not a duplicate — it is a new observation, potentially the first point of a new comparable series."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ee4b41a4b629",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "In a CMS, idempotence is a request-handling concern. In an observatory, it is the reason a series can be trusted at all: without it, a spike in retries would masquerade as a spike in observed authority."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-b33ca2699abd",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Windows are frozen, not sliding"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-5db2db5577c5",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Another invariant that follows from taking the observatory seriously: measurement windows are "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "canonical and frozen"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Two consultations of the same report at two nearby moments must return the same value for the same window. TextOS does not compute the Share of Model on a sliding window that shifts silently between refreshes. If a sliding view is offered, it is a derived view, explicitly labelled, and never the measurement of record."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-d71d56006fce",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Without this, an observatory would reproduce the very instability it was built to correct — a number that changes at each refresh, reported as if it were a fact about the market."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-9f72be8ddd09",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What this architecture buys, and what it costs"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-f8907e0961ef",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The benefits are compounding rather than dramatic. Measurements remain reproducible under method evolution. Series carry their own method signature and can be refused for comparison when methods diverge. Volatility is treated as a domain property rather than a bug. Absence of measurement is preserved as absence of measurement, never coerced into a zero. The product's public claims — that Total is a union rather than a sum, that a signal not observable is not reported as zero, that the ledger contextualises rather than scores — are entailments of the schema, not slogans wrapped around it."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-5e9b648ce2e4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The costs are equally honest. Less out-of-the-box analytical sophistication than a time-series stack would give. A stricter modelling discipline than a CRUD application demands. An operational dependency on Trigger.dev for the Observe layer. A running responsibility to index, aggregate and version the method carefully."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4bc52edba6ec",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "These trade-offs are the ones ADR-001 accepts explicitly. They are what allow TextOS to sit somewhere the market has not yet placed it: neither a GEO reporting tool that reads today's dashboard as truth, nor a content factory that starts with the article and works backward. An observatory begins with the observation, and refuses to say anything the observations do not support."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0b99067f7df4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related methodology"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-d65d769b84a2",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the observation unit and the versioned panel."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The Measurement Quality Ledger"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/measurement-quality-ledger"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — how the observatory reports the conditions of its own measurements."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Not observable is not zero"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/not-observable-is-not-zero"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — why the observatory preserves absence as absence."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-459c95758c57",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:observatory-not-cms",
-    "contentType": "product_article",
-    "slug": "observatory-not-cms",
-    "language": "en",
-    "title": "Why TextOS Is an Observatory, Not a CMS",
-    "description": "TextOS is architecturally an observatory: scheduled, append-only observations of answer engines on a versioned panel \u2014 not a transactional CMS."
+  "conversion": {
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
+    "audience": "reader-technical",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [],
+    "funnelStage": "consideration",
     "primaryTopicId": "authority-observation",
+    "reviewerIds": [],
     "topicIds": [
       "authority-observation",
       "product-doctrine"
-    ],
-    "audience": "reader-technical",
-    "funnelStage": "consideration"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "TextOS is architecturally an observatory: scheduled, append-only observations of answer engines on a versioned panel — not a transactional CMS.",
+    "documentId": "textos-insight:observatory-not-cms",
+    "language": "en",
+    "slug": "observatory-not-cms",
+    "title": "Why TextOS Is an Observatory, Not a CMS"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "2e6a7ca422637602150fe99bfa1826e66d5f634000b0fe8b3c170fe296219b88",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/observatory-not-cms",
+    "indexingIntent": "noindex",
+    "schemaType": "TechArticle",
+    "searchIntent": "technical",
+    "targetQuery": "textos observatory architecture not a cms"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
     ],
     "claimIds": [
       "m1-observation-unit",
@@ -38,208 +902,9 @@
       "observe-authority-presence:observe-run-orchestration-v1",
       "quality-ledger:quality-ledger-rates-v1"
     ],
-    "capabilityIds": [
-      "observe-authority-presence",
-      "quality-ledger"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "eb2a09d09eaa031b1fb6541e48e91329a340807046750131b949251c6095a712",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "TextOS is architected as an observatory, not a CMS. Its centre of gravity is the recurrent, append-only observation of answer engines on a versioned query panel. It does not manage user-triggered edits to content records; it accumulates dated observations and computes measurements over them."
-      }
-    },
-    {
-      "id": "h-what-kind-of-system-is-textos",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What kind of system is TextOS?"
-      }
-    },
-    {
-      "id": "p-what-kind-of-system-is-textos",
-      "kind": "paragraph",
-      "data": {
-        "text": "There is a temptation, when a product handles text and eventually helps write it, to file it under \"content management\". TextOS refuses that filing. Its core object is not a document a user edits, and its central operation is not a save. It is a **station of measurement** \u2014 an observatory whose first-class citizens are dated observations of what answer engines say."
-      }
-    },
-    {
-      "id": "cta-contextual",
-      "kind": "cta_slot",
-      "slot": "primary-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "h-the-three-archetypes-and-why-the-difference-matters",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The three archetypes, and why the difference matters"
-      }
-    },
-    {
-      "id": "p-the-three-archetypes-and-why-the-difference-matters",
-      "kind": "paragraph",
-      "data": {
-        "text": "A CMS-shaped system centres on **transactions**: users create records, edit them, and expect low-latency consistency. A media factory centres on **rendering**: heavy jobs, large artefacts, queues, object storage. An observatory centres on **repeated observation**: scheduled runs, tolerated partial failures, series that accumulate over time, and analysis that operates on the accumulated record."
-      }
-    },
-    {
-      "id": "h-the-observation-is-the-unit-not-the-brand",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The observation is the unit, not the brand"
-      }
-    },
-    {
-      "id": "p-the-observation-is-the-unit-not-the-brand",
-      "kind": "paragraph",
-      "data": {
-        "text": "The first architectural consequence: **the unit of measurement is the observation, not the brand**. One engine answer, at one moment, on one versioned query, in one locale, is the atom. Everything else \u2014 Direct Share of Model, Indirect Mention Share, Total Authority Presence \u2014 is a computation over a population of atoms. This is what [Authority Presence measurement](/methodology/authority-presence) sets out for the public methodology, and it is a direct consequence of ADR-001's decision to treat observations as first-class."
-      }
-    },
-    {
-      "id": "h-append-only-versioned-comparable-across-time",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Append-only, versioned, comparable across time"
-      }
-    },
-    {
-      "id": "p-append-only-versioned-comparable-across-time",
-      "kind": "paragraph",
-      "data": {
-        "text": "Once observations are the unit, the storage discipline follows. ADR-001 fixes an append-only rule: an observation is never rewritten as if it were a stable truth. Each observation carries the engine, the surface interrogated, the query panel version, the provider version, the extractor version, the aggregation version, the canonicalization version, the run identifier, the canonical measurement window, the observed timestamp and its status. A retry does not overwrite; a change of method does not silently rewrite history."
-      }
-    },
-    {
-      "id": "h-empty-results-are-observations-not-errors",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Empty results are observations, not errors"
-      }
-    },
-    {
-      "id": "p-empty-results-are-observations-not-errors",
-      "kind": "paragraph",
-      "data": {
-        "text": "A CMS mindset would treat an empty answer as a failed request. The observatory does not. ADR-001 fixes a canonical table of eight observation statuses, and only two of them \u2014 `ok` and `no_citations` \u2014 enter the denominator of the Share of Model. `no_answer_surface` (the answer surface was simply not triggered for this query) is a **valid observation**, not an error, and is deliberately excluded from the denominator. Transient errors (`rate_limited`, `timeout`, `provider_empty_response`, `provider_error`) are excluded from the measure and counted in the run's quality metrics instead."
-      }
-    },
-    {
-      "id": "h-postgres-and-trigger-dev-deliberate-boredom",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Postgres and Trigger.dev \u2014 deliberate boredom"
-      }
-    },
-    {
-      "id": "p-postgres-and-trigger-dev-deliberate-boredom",
-      "kind": "paragraph",
-      "data": {
-        "text": "ADR-001 is also, quietly, a decision to stay boring. TextOS V1 uses Next.js on Vercel, Neon Postgres in the EU, Drizzle ORM and Trigger.dev v4 for scheduled observation runs. No time-series extension. No dedicated queue. No object store for raw responses in V1. No external analytics engine."
-      }
-    },
-    {
-      "id": "h-idempotence-is-not-a-nice-to-have",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Idempotence is not a nice-to-have"
-      }
-    },
-    {
-      "id": "p-idempotence-is-not-a-nice-to-have",
-      "kind": "paragraph",
-      "data": {
-        "text": "Because retries are normal and scheduling is the default, ADR-001 elevates idempotence to an invariant. An observation is keyed by engine, surface, panel version, query hash, locale, measurement window, method version and execution index. A retry may not produce a duplicate; a change of method version, on the other hand, is not a duplicate \u2014 it is a new observation, potentially the first point of a new comparable series."
-      }
-    },
-    {
-      "id": "h-windows-are-frozen-not-sliding",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Windows are frozen, not sliding"
-      }
-    },
-    {
-      "id": "p-windows-are-frozen-not-sliding",
-      "kind": "paragraph",
-      "data": {
-        "text": "Another invariant that follows from taking the observatory seriously: measurement windows are **canonical and frozen**. Two consultations of the same report at two nearby moments must return the same value for the same window. TextOS does not compute the Share of Model on a sliding window that shifts silently between refreshes. If a sliding view is offered, it is a derived view, explicitly labelled, and never the measurement of record."
-      }
-    },
-    {
-      "id": "h-what-this-architecture-buys-and-what-it-costs",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What this architecture buys, and what it costs"
-      }
-    },
-    {
-      "id": "p-what-this-architecture-buys-and-what-it-costs",
-      "kind": "paragraph",
-      "data": {
-        "text": "The benefits are compounding rather than dramatic. Measurements remain reproducible under method evolution. Series carry their own method signature and can be refused for comparison when methods diverge. Volatility is treated as a domain property rather than a bug. Absence of measurement is preserved as absence of measurement, never coerced into a zero. The product's public claims \u2014 that Total is a union rather than a sum, that a signal not observable is not reported as zero, that the ledger contextualises rather than scores \u2014 are entailments of the schema, not slogans wrapped around it."
-      }
-    },
-    {
-      "id": "h-related-methodology",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related methodology"
-      }
-    },
-    {
-      "id": "cta-final",
-      "kind": "cta_slot",
-      "slot": "final-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "related",
-      "kind": "related_content_slot",
-      "slot": "related",
-      "data": {}
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "ctaIntentId": "MEASURE_BRAND",
-    "conversionAllowed": true
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/observatory-not-cms",
-    "schemaType": "TechArticle",
-    "targetQuery": "textos observatory architecture not a cms",
-    "searchIntent": "technical"
+    "publicationStatus": "draft",
+    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

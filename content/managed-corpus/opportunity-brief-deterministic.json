@@ -1,32 +1,994 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "An Opportunity Brief in TextOS is designed to be assembled mechanically from a typed authority gap and its observed evidence. No LLM writes it. It templates a factual objective, cites the exact observations that support it, and remains a proposal — human acceptance is the only path forward."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An architecture note, not an availability claim"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-ad2ada8666ba",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This article documents an architectural decision inside TextOS. The Opportunity Brief mechanism is implemented, but it is not, at this snapshot, a customer-facing feature: the capability registry keeps it as an internal capacity. What follows describes "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how the brief is designed to be assembled"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "why the design refuses shortcuts"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " — not what a buyer can expect to receive today."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-6e92a63a4659",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "type": "html",
+          "value": "<!-- cta:contextual -->"
+        }
+      },
+      "id": "cta-0272cbe8002e",
+      "kind": "cta_slot",
+      "slot": "primary-cta"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The problem the brief is designed to solve"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-2d91b90cb9e5",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Once TextOS accumulates observations, the natural next step for most tools would be a \"recommendation\": here is what to write, here is where to invest, here is a priority score. TextOS declines that step, on purpose. A recommendation is not an observation, and once a system starts recommending, its authority slides from \"we measured this\" to \"we think this\" — a slide the rest of the architecture has been designed to prevent."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-d6c4878e5a7a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The Opportunity Brief is the joint between what the observatory saw and what a human might choose to do about it. Its design constraint follows: the brief must "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "carry evidence forward without adding judgment"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". The judgment belongs to the human at acceptance time."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-89c82af1543a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What the brief is, mechanically"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-c43ea2362922",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-014 fixes the shape. A Proposed Opportunity Brief contains a gap identifier, a templated objective, the covered questions, the missing claim types, the cited sources, an evidence array that recopies competing subject mentions with their evidence spans, and a plan skeleton — a list of claim types to cover, not prose. Its status at birth is always "
+            },
+            {
+              "type": "inlineCode",
+              "value": "proposed"
+            },
+            {
+              "type": "text",
+              "value": ". Its "
+            },
+            {
+              "type": "inlineCode",
+              "value": "effect_metric"
+            },
+            {
+              "type": "text",
+              "value": " is "
+            },
+            {
+              "type": "inlineCode",
+              "value": "null"
+            },
+            {
+              "type": "text",
+              "value": " (there is no effect to measure before a publication has been made and re-observed)."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a4876c280b6f",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Every one of those fields is filled from data the earlier layers already produced. The objective is a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "template"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " parameterised by the gap type, the tracked entity and the missing claim types. The evidence copies the actual sentence-level spans surfaced by the extractor. The plan is a schema of claim types to cover, not a paragraph. Nothing in the assembly asks a language model to produce, phrase or interpret."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-7be7295f68ab",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why deterministic — and why explicitly no LLM"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-8aa7f98b2d15",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The earlier layers (extraction, gap typing) are deterministic and oracle-first. If the brief were assembled by an LLM, the deterministic lineage would break at exactly the moment it matters most: the moment where an operator has to decide whether an opportunity is real. A brief assembled mechanically is "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "reproducible, traceable and defendable"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Two runs on the same inputs produce the same brief. The evidence cited is the evidence observed, character for character. There is no drift between \"what the model said the observations meant\" and \"what the observations were\"."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4382c616dd86",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Writing prose — a real editorial angle, a real narrative — is a later, separate concern. That concern belongs to a subsequent layer, behind an isolated transport (the same pattern the observatory uses for engine access). Advancing an LLM into the brief itself would blur the frontier between judging what is defendable and writing about it. ADR-014 refuses to blur that frontier."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-21ab45392d68",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Defendability is a mechanical property"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-624a4de5e3e9",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Not every observed gap becomes a brief. ADR-014 fixes a defendability rule with no discretionary weights: a gap qualifies as a defendable opportunity if, and only if, (a) its type is not "
+            },
+            {
+              "type": "inlineCode",
+              "value": "signal_unavailable"
+            },
+            {
+              "type": "text",
+              "value": " — no observed matter, no opportunity; (b) there is "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "actionable observed material"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ", meaning at least one competing subject with an evidence span, and (for claim gaps and competitor displacement gaps) at least one missing claim type; for absence gaps, the absent entity plus at least one third party carrying claims suffices; (c) source-only gaps are not produced in V0 and therefore cannot originate a brief in V0."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0283b086fd87",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "That rule is not a heuristic in a prompt. It is a specification. It is validated against an oracle before any code ships. The exact rule and its edge cases are frozen sprint by sprint, not evolved by a model at inference time."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-57aeb17e5e2a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "There is a stronger consequence hidden in that rule: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "the brief mechanism must also know how to say nothing"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". An oracle for the mechanism explicitly requires at least one gap that is deliberately not retained — proof that the design abstains. A system that always produces briefs would fail its own oracle; the abstention is part of the specification."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-609539bc0bef",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Only retained gaps are persisted"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-67c58d0cfb1d",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An earlier layer types gaps but does not persist them. ADR-014 chooses the persistence moment carefully: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "retention materialises"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Only gaps kept as defendable are written to the store; the ones set aside are not. The reasoning is symmetrical to the append-only rule of "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "the observatory"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/insights/observatory-not-cms"
+            },
+            {
+              "type": "text",
+              "value": ": the record should reflect what was retained, not what was considered and dropped."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-b7d9b5c65d0d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The persisted brief is bound to its gap by a proper foreign key. The gap's typed characteristics — its type, its missing claim types, its severity hint — are carried into the record so that later re-reading remains typed. Severity is a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "mechanical hint"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " produced upstream; it is not turned into a score at persistence, and no economic priority is attached to it."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0663d4f6eef9",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The gate — human acceptance is the only path forward"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-f732971419e1",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A brief is born "
+            },
+            {
+              "type": "inlineCode",
+              "value": "proposed"
+            },
+            {
+              "type": "text",
+              "value": ". The transition to "
+            },
+            {
+              "type": "inlineCode",
+              "value": "accepted"
+            },
+            {
+              "type": "text",
+              "value": " or "
+            },
+            {
+              "type": "inlineCode",
+              "value": "rejected"
+            },
+            {
+              "type": "text",
+              "value": " is "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "only"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " performed by a human. Accepted briefs are terminal: they do not re-transition. Rejected briefs are terminal in the other direction. Generation of any downstream content is gated on acceptance — this is a non-negotiable rule in the specification, and it is enforced structurally (a downstream content draft always carries a non-null pointer to a brief)."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-6d3a831603f4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The metric that governs the whole layer is measured on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "accepted"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " briefs. That choice is deliberate. Counting proposals would reward volume; counting acceptances rewards the joint outcome of the mechanism (proposing something defendable) and the operator (recognising it as defendable). Neither party alone can inflate the number."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-97f5646a566e",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What the brief refuses to do"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-5966445013d7",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-014 documents a long list of refusals, and each one is a hedge against a specific failure mode."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-28f1acc1db84",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The brief does not accept itself. Automating acceptance would collapse the joint the mechanism was built to enforce."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-b8b39650eee8",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The brief does not write content. The "
+            },
+            {
+              "type": "inlineCode",
+              "value": "objective"
+            },
+            {
+              "type": "text",
+              "value": " is a factual template, not an editorial angle; the "
+            },
+            {
+              "type": "inlineCode",
+              "value": "plan"
+            },
+            {
+              "type": "text",
+              "value": " is a schema of claim types, not prose. That work belongs to a later, isolated layer."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-7e8c1df8924e",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The brief does not use an LLM anywhere in its own path. It is a determinstic assembler."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-912522d76977",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The brief does not publish. It does not set a published timestamp or a publication policy state."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3abab4e81ac0",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The brief does not estimate ROI. It does not attach a monetary or growth priority. It does not compare runs to synthesise a trend. It does not compute a composite score."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-d198cf84790b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The brief does not persist what it rejected. Only retained gaps are materialised."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-33a4e7b04881",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Each refusal is a load-bearing part of the mechanism. Together they define what \"defendable\" is allowed to mean inside TextOS: exactly the material the observations support, and nothing more. This is the same discipline the public methodology captures when it says "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "an Authority Presence measurement does not produce recommendations"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/authority-presence"
+            },
+            {
+              "type": "text",
+              "value": ": the measurement layer refuses recommendations, and the layer above it refuses the shortcut of turning observations into instructions."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ec2f502c2cc1",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why this design matters even before the brief is public"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-aa9c04ae7aed",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The brief mechanism sits behind an internal boundary today. That does not make its design private in intent. It matters because it defines "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "what TextOS is willing to build on top of an observation"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". A measurement-first product that then let an LLM synthesise \"opportunities\" from those measurements would be a measurement-flavoured content factory. Deterministic assembly, evidence carry-through, and the human gate are what keep the product from becoming that thing."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3433c06ccbc5",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Read alongside the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "observatory architecture"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/insights/observatory-not-cms"
+            },
+            {
+              "type": "text",
+              "value": " — which fixes the observation as the first-class citizen — ADR-014 fixes the second-class citizen: not a synthetic recommendation, not a scored priority, but a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "proposal"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " whose entire content is either fact from the observation record or a template that names the fact clearly."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-19ecb669ca95",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related methodology"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-d65d769b84a2",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Why TextOS Is an Observatory, Not a CMS"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/insights/observatory-not-cms"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the architectural context in which the brief sits."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the measurement layer whose observations feed the brief."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The Measurement Quality Ledger"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/measurement-quality-ledger"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — how the conditions of measurement are carried, contextualising the evidence any brief cites."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-e0a7bfdfbffc",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:opportunity-brief-deterministic",
-    "contentType": "product_article",
-    "slug": "opportunity-brief-deterministic",
-    "language": "en",
-    "title": "Opportunity Brief \u2014 Deterministic Assembly from Evidence",
-    "description": "The Opportunity Brief is a deterministic, mechanically assembled artefact: no LLM, no ROI estimate, no priority score \u2014 only observations and citations."
+  "conversion": {
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
+    "audience": "reader-technical",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [],
+    "funnelStage": "consideration",
     "primaryTopicId": "opportunity-and-decision",
+    "reviewerIds": [],
     "topicIds": [
       "opportunity-and-decision"
-    ],
-    "audience": "reader-technical",
-    "funnelStage": "consideration"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "The Opportunity Brief is a deterministic, mechanically assembled artefact: no LLM, no ROI estimate, no priority score — only observations and citations.",
+    "documentId": "textos-insight:opportunity-brief-deterministic",
+    "language": "en",
+    "slug": "opportunity-brief-deterministic",
+    "title": "Opportunity Brief — Deterministic Assembly from Evidence"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "3a6360e9a5a170af82ca4c0e8f6f8907aec2225594938c7ccc823b9435a7eb53",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/opportunity-brief-deterministic",
+    "indexingIntent": "noindex",
+    "schemaType": "TechArticle",
+    "searchIntent": "technical",
+    "targetQuery": "textos opportunity brief deterministic architecture"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
     ],
     "claimIds": [
       "m1-observation-unit",
@@ -38,208 +1000,9 @@
       "observe-authority-presence:observe-run-orchestration-v1",
       "quality-ledger:quality-ledger-rates-v1"
     ],
-    "capabilityIds": [
-      "observe-authority-presence",
-      "quality-ledger"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "c0f7edcbcb4425b4d8cb8456493cb16e4a0db4aeebd3749261d7ad5561cf107b",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "An Opportunity Brief in TextOS is designed to be assembled mechanically from a typed authority gap and its observed evidence. No LLM writes it. It templates a factual objective, cites the exact observations that support it, and remains a proposal \u2014 human acceptance is the only path forward."
-      }
-    },
-    {
-      "id": "h-an-architecture-note-not-an-availability-claim",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "An architecture note, not an availability claim"
-      }
-    },
-    {
-      "id": "p-an-architecture-note-not-an-availability-claim",
-      "kind": "paragraph",
-      "data": {
-        "text": "This article documents an architectural decision inside TextOS. The Opportunity Brief mechanism is implemented, but it is not, at this snapshot, a customer-facing feature: the capability registry keeps it as an internal capacity. What follows describes **how the brief is designed to be assembled** and **why the design refuses shortcuts** \u2014 not what a buyer can expect to receive today."
-      }
-    },
-    {
-      "id": "cta-contextual",
-      "kind": "cta_slot",
-      "slot": "primary-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "h-the-problem-the-brief-is-designed-to-solve",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The problem the brief is designed to solve"
-      }
-    },
-    {
-      "id": "p-the-problem-the-brief-is-designed-to-solve",
-      "kind": "paragraph",
-      "data": {
-        "text": "Once TextOS accumulates observations, the natural next step for most tools would be a \"recommendation\": here is what to write, here is where to invest, here is a priority score. TextOS declines that step, on purpose. A recommendation is not an observation, and once a system starts recommending, its authority slides from \"we measured this\" to \"we think this\" \u2014 a slide the rest of the architecture has been designed to prevent."
-      }
-    },
-    {
-      "id": "h-what-the-brief-is-mechanically",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What the brief is, mechanically"
-      }
-    },
-    {
-      "id": "p-what-the-brief-is-mechanically",
-      "kind": "paragraph",
-      "data": {
-        "text": "ADR-014 fixes the shape. A Proposed Opportunity Brief contains a gap identifier, a templated objective, the covered questions, the missing claim types, the cited sources, an evidence array that recopies competing subject mentions with their evidence spans, and a plan skeleton \u2014 a list of claim types to cover, not prose. Its status at birth is always `proposed`. Its `effect_metric` is `null` (there is no effect to measure before a publication has been made and re-observed)."
-      }
-    },
-    {
-      "id": "h-why-deterministic-and-why-explicitly-no-llm",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why deterministic \u2014 and why explicitly no LLM"
-      }
-    },
-    {
-      "id": "p-why-deterministic-and-why-explicitly-no-llm",
-      "kind": "paragraph",
-      "data": {
-        "text": "The earlier layers (extraction, gap typing) are deterministic and oracle-first. If the brief were assembled by an LLM, the deterministic lineage would break at exactly the moment it matters most: the moment where an operator has to decide whether an opportunity is real. A brief assembled mechanically is **reproducible, traceable and defendable**. Two runs on the same inputs produce the same brief. The evidence cited is the evidence observed, character for character. There is no drift between \"what the model said the observations meant\" and \"what the observations were\"."
-      }
-    },
-    {
-      "id": "h-defendability-is-a-mechanical-property",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Defendability is a mechanical property"
-      }
-    },
-    {
-      "id": "p-defendability-is-a-mechanical-property",
-      "kind": "paragraph",
-      "data": {
-        "text": "Not every observed gap becomes a brief. ADR-014 fixes a defendability rule with no discretionary weights: a gap qualifies as a defendable opportunity if, and only if, (a) its type is not `signal_unavailable` \u2014 no observed matter, no opportunity; (b) there is **actionable observed material**, meaning at least one competing subject with an evidence span, and (for claim gaps and competitor displacement gaps) at least one missing claim type; for absence gaps, the absent entity plus at least one third party carrying claims suffices; (c) source-only gaps are not produced in V0 and therefore cannot originate a brief in V0."
-      }
-    },
-    {
-      "id": "h-only-retained-gaps-are-persisted",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Only retained gaps are persisted"
-      }
-    },
-    {
-      "id": "p-only-retained-gaps-are-persisted",
-      "kind": "paragraph",
-      "data": {
-        "text": "An earlier layer types gaps but does not persist them. ADR-014 chooses the persistence moment carefully: **retention materialises**. Only gaps kept as defendable are written to the store; the ones set aside are not. The reasoning is symmetrical to the append-only rule of [the observatory](/insights/observatory-not-cms): the record should reflect what was retained, not what was considered and dropped."
-      }
-    },
-    {
-      "id": "h-the-gate-human-acceptance-is-the-only-path-forward",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The gate \u2014 human acceptance is the only path forward"
-      }
-    },
-    {
-      "id": "p-the-gate-human-acceptance-is-the-only-path-forward",
-      "kind": "paragraph",
-      "data": {
-        "text": "A brief is born `proposed`. The transition to `accepted` or `rejected` is **only** performed by a human. Accepted briefs are terminal: they do not re-transition. Rejected briefs are terminal in the other direction. Generation of any downstream content is gated on acceptance \u2014 this is a non-negotiable rule in the specification, and it is enforced structurally (a downstream content draft always carries a non-null pointer to a brief)."
-      }
-    },
-    {
-      "id": "h-what-the-brief-refuses-to-do",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What the brief refuses to do"
-      }
-    },
-    {
-      "id": "p-what-the-brief-refuses-to-do",
-      "kind": "paragraph",
-      "data": {
-        "text": "ADR-014 documents a long list of refusals, and each one is a hedge against a specific failure mode."
-      }
-    },
-    {
-      "id": "h-why-this-design-matters-even-before-the-brief-is-public",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why this design matters even before the brief is public"
-      }
-    },
-    {
-      "id": "p-why-this-design-matters-even-before-the-brief-is-public",
-      "kind": "paragraph",
-      "data": {
-        "text": "The brief mechanism sits behind an internal boundary today. That does not make its design private in intent. It matters because it defines **what TextOS is willing to build on top of an observation**. A measurement-first product that then let an LLM synthesise \"opportunities\" from those measurements would be a measurement-flavoured content factory. Deterministic assembly, evidence carry-through, and the human gate are what keep the product from becoming that thing."
-      }
-    },
-    {
-      "id": "h-related-methodology",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related methodology"
-      }
-    },
-    {
-      "id": "cta-final",
-      "kind": "cta_slot",
-      "slot": "final-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "related",
-      "kind": "related_content_slot",
-      "slot": "related",
-      "data": {}
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "ctaIntentId": "MEASURE_BRAND",
-    "conversionAllowed": true
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/opportunity-brief-deterministic",
-    "schemaType": "TechArticle",
-    "targetQuery": "textos opportunity brief deterministic architecture",
-    "searchIntent": "technical"
+    "publicationStatus": "draft",
+    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

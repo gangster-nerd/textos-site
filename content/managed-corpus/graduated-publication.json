@@ -1,33 +1,1108 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "Publication moves through three modes — supervised (default), trusted (after a threshold of clean validations), and locked-back (forced return on incident). Two gates never lift: acceptance to a validated brief, and truth-check. Effect is reported as a descriptive delta between runs, never as a causal claim."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Publication is the moment the system meets a live surface"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-67be0a3d7ce3",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A measurement system stays honest as long as it only observes. It becomes exposed the instant it publishes. Every content pipeline that sits above answer engines eventually confronts the same question: at what point does a draft leave human hands? Content farms answer immediately, en masse, and eat their own credibility. Fully-supervised pipelines answer never, and stop scaling. TextOS answers with a third option — a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "graduated publication regime"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " governed by an explicit machine and two gates that never lift."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-b91779f03066",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The regime is written in ADR-016 as an accepted architecture decision. This article documents that decision. It is not a promise of availability; both "
+            },
+            {
+              "type": "inlineCode",
+              "value": "controlled-preview"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "type": "inlineCode",
+              "value": "generation-handoff"
+            },
+            {
+              "type": "text",
+              "value": " are marked "
+            },
+            {
+              "type": "inlineCode",
+              "value": "internal_only"
+            },
+            {
+              "type": "text",
+              "value": " in the capability registry today, which means they exist as governed engineering surfaces, not as customer-facing features. What follows is the shape of the boundary we chose, not the shape of a shipped product."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-2edb9f56f5fb",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "type": "html",
+          "value": "<!-- cta:contextual -->"
+        }
+      },
+      "id": "cta-0272cbe8002e",
+      "kind": "cta_slot",
+      "slot": "primary-cta"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Three modes, one deterministic machine"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-0e0ac75a82c9",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Publication moves between three modes, each of which is a state in a pure, deterministic machine:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-7085df7fc330",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "inlineCode",
+                          "value": "supervised"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the default. Every draft receives explicit human review before it is published. The review is not advisory; it is a gate. Nothing bypasses it."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "inlineCode",
+                          "value": "trusted"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the systematic review is "
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "lifted"
+                        }
+                      ],
+                      "type": "emphasis"
+                    },
+                    {
+                      "type": "text",
+                      "value": " on a defined scope after a threshold of clean validations. A \"clean validation\" is a published draft that was not modified by a human between generation and publication. The default threshold is one hundred. Below it, a scope stays in "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "supervised"
+                    },
+                    {
+                      "type": "text",
+                      "value": "."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "inlineCode",
+                          "value": "locked_back"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — forced return to review. Triggered automatically on incident. From "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "locked_back"
+                    },
+                    {
+                      "type": "text",
+                      "value": ", clean validations can climb back toward "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "trusted"
+                    },
+                    {
+                      "type": "text",
+                      "value": "; nothing about the graduation is one-way."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-15c62c5153a8",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The state transitions are pure. They read observable counters ("
+            },
+            {
+              "type": "inlineCode",
+              "value": "clean_validations_count"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "threshold"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "last_incident_at"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "scope"
+            },
+            {
+              "type": "text",
+              "value": "), they emit a next state, they persist that decision. There is no informal judgement inside the machine, no \"let's grant trust for this run\", no reviewer who can nudge a scope forward. The rise from "
+            },
+            {
+              "type": "inlineCode",
+              "value": "supervised"
+            },
+            {
+              "type": "text",
+              "value": " to "
+            },
+            {
+              "type": "inlineCode",
+              "value": "trusted"
+            },
+            {
+              "type": "text",
+              "value": " is exactly the arithmetic; the return to "
+            },
+            {
+              "type": "inlineCode",
+              "value": "locked_back"
+            },
+            {
+              "type": "text",
+              "value": " is exactly the incident signal."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-e2e6367cecf1",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Two consequences follow. First, the graduation is "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "auditable"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ": an operator can point to the exact counter and the exact threshold that caused a state transition, and can reproduce it. Second, the graduation is "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "scoped"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ": "
+            },
+            {
+              "type": "inlineCode",
+              "value": "supervised → trusted"
+            },
+            {
+              "type": "text",
+              "value": " is granted on a defined perimeter, not globally. The perimeter is a JSON descriptor that the policy carries alongside the counter. A newly opened topic or vertical starts at zero, regardless of what an adjacent scope has earned."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-bcf151209d09",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Two gates that never lift — even in "
+            },
+            {
+              "type": "inlineCode",
+              "value": "trusted"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-8d47080d109c",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Modes govern the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "review"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " layer. They govern nothing else. Two gates operate underneath and remain in force whatever the mode says:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-dec86567108b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The brief-backing gate."
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " A draft may be published only if it is bound to an "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "OpportunityBrief"
+                    },
+                    {
+                      "type": "text",
+                      "value": " in state "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "accepted"
+                    },
+                    {
+                      "type": "text",
+                      "value": ". A draft that references no brief, or references a "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "proposed"
+                    },
+                    {
+                      "type": "text",
+                      "value": "/"
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "rejected"
+                    },
+                    {
+                      "type": "text",
+                      "value": " brief, cannot be published — not manually, not automatically, not in "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "trusted"
+                    },
+                    {
+                      "type": "text",
+                      "value": "."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The truth-check gate."
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " A draft that carries a "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "TruthCheck = block"
+                    },
+                    {
+                      "type": "text",
+                      "value": " verdict is refused. The verdict travels with the draft; the publisher reads it before any surface is touched. "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "trusted"
+                    },
+                    {
+                      "type": "text",
+                      "value": " mode has no privilege here. A blocked draft in "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "trusted"
+                    },
+                    {
+                      "type": "text",
+                      "value": " is exactly as unpublishable as a blocked draft in "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "supervised"
+                    },
+                    {
+                      "type": "text",
+                      "value": "."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-3ca153439502",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The doctrinal reason is written into the architecture: the graduation exists to remove the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "human review step"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " on a controlled perimeter, and nothing else. It does not grant permission to publish weaker drafts, or to skip verification, or to lower the bar of what \"acceptable\" means. When the machine is doing well, the human is doing less inspection — not looser inspection."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-c9e11a56d8f7",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Sampled a-posteriori review persists in "
+            },
+            {
+              "type": "inlineCode",
+              "value": "trusted"
+            },
+            {
+              "type": "text",
+              "value": ". A sample of what has been auto-published keeps being read by a human; when the sample surfaces drift, the scope moves to "
+            },
+            {
+              "type": "inlineCode",
+              "value": "locked_back"
+            },
+            {
+              "type": "text",
+              "value": " automatically. Trust is a running observation, not a granted title."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-e75d60e0f52d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Effect as descriptive delta — the first inter-run comparison, and only for effect"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-4f65826c8c62",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Publication is inseparable from the question every operator asks next: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "did it change anything?"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " Answering that question requires comparing presence measurements taken before and after — that is, comparing two runs. Elsewhere in the pipeline, inter-run comparison is explicitly forbidden: measurements from separate runs are not directly comparable because engines are non-deterministic and the same panel executed twice yields different distributions. That rule stands."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-c8e27de0a995",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-016 amends the rule, narrowly and explicitly, only for effect tracing. A pure function computes:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0e9af25b0461",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "lang": null,
+          "meta": null,
+          "type": "code",
+          "value": "computeEffect(before, after) = {\n  presenceBefore, presenceAfter,\n  delta = after − before,\n  descriptor: \"direct presence moved from X% to Y%\"\n}"
+        }
+      },
+      "id": "c-f7f574f1d630",
+      "kind": "callout"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The descriptor is deliberately flat. It reports a movement associated with a publication window. It does not assert that the publication caused the movement. It cannot. Answer engines change for a thousand reasons — a model version, a corpus refresh, a competitor moving, a seasonal drift, a random rerouting on the vendor's side. What the observation supports is a delta correlated with a window. What it does not support is a claim of cause."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-1b5edc1f6f6e",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This is the same discipline the measurement layer already carries: when a signal is not observable, we say so, and we do not record a measured zero. Here, when an effect is a delta and not a proof, we say delta and we do not record a cause. The word \"descriptive\" in this article is doing that work. It is not softness. It is the shape of what the data actually supports."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-cf06f1e17013",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What graduated publication does not do"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-41c1f0664c1c",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A short list, because the boundary matters:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4910cafb961b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "It does not generate anything. Generation lives one step earlier in the pipeline; publication receives a "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "truthchecked"
+                    },
+                    {
+                      "type": "text",
+                      "value": " draft, it does not author one."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "It does not enrich sources of evidence. That belongs to a downstream layer."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "It does not compare runs for anything other than effect. The inter-run door is opened for one purpose and closed to every other use."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "It does not touch the observation boundary. The measurement engine and its provider transport are unchanged."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "It does not affirm causality. Delta is the ceiling; cause is off-limits."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-4167006e9ea2",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The design bet is that a graduated regime with two unliftable gates is more honest than a fully-automated pipeline that pretends to be careful, and more scalable than a fully-manual regime that pretends to be exhaustive. It also makes the measurement layer look sharper by contrast: because publication reports a delta rather than a cause, the measurement it draws from does not have to answer questions it was never designed to answer."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-2aefa4827af7",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why we are documenting this now"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-e100436449e7",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-016 is an accepted architecture decision. The corresponding capabilities are implemented and held in "
+            },
+            {
+              "type": "inlineCode",
+              "value": "internal_only"
+            },
+            {
+              "type": "text",
+              "value": " — meaning: the engineering exists, the boundary is described, and the product does not yet expose it publicly. Documenting the decision without exposing the surface is deliberate. It lets the shape of the boundary be criticised, contested and refined before a customer-facing surface hardens around it."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-7f43d0b4584a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "We want the criticism. If you measure content operations, if you have opinions about how publication should be governed, or if you have run into the graduation-versus-manual trade-off in your own pipelines, we would like to hear how our regime looks from the outside — and where you would push back."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-007a475fdbcd",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related reading"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-9a9b1a293bbe",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the observation unit that publication ultimately affects."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Not observable is not zero"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/not-observable-is-not-zero"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the doctrine that shapes how we treat delta and absence."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The Measurement Quality Ledger"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/measurement-quality-ledger"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — how observation quality is exposed alongside every measurement."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-60e8d1b3e260",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:graduated-publication",
-    "contentType": "product_article",
-    "slug": "graduated-publication",
-    "language": "en",
-    "title": "Graduated Publication \u2014 Supervised, Trusted, Locked-Back",
-    "description": "How TextOS publishes accepted, truth-checked drafts under a graduated trust regime \u2014 and traces effect as a descriptive delta, never a causal claim."
+  "conversion": {
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
+    "audience": "reader-technical",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [],
+    "funnelStage": "consideration",
     "primaryTopicId": "generation-and-publication",
+    "reviewerIds": [],
     "topicIds": [
       "generation-and-publication",
       "quality-ledger-and-provenance"
-    ],
-    "audience": "reader-technical",
-    "funnelStage": "consideration"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "How TextOS publishes accepted, truth-checked drafts under a graduated trust regime — and traces effect as a descriptive delta, never a causal claim.",
+    "documentId": "textos-insight:graduated-publication",
+    "language": "en",
+    "slug": "graduated-publication",
+    "title": "Graduated Publication — Supervised, Trusted, Locked-Back"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "088b69bb7c233fbb94fc27a34899e81822b105acbf41ce2c366d0d798bde155b",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/graduated-publication",
+    "indexingIntent": "noindex",
+    "schemaType": "TechArticle",
+    "searchIntent": "informational",
+    "targetQuery": "how does textos publish content safely"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
     ],
     "claimIds": [
       "hp1-measurement-doctrine",
@@ -40,163 +1115,9 @@
       "quality-ledger:quality-ledger-rates-v1",
       "observe-authority-presence:authority-presence-observation-v1"
     ],
-    "capabilityIds": [
-      "observe-authority-presence",
-      "quality-ledger"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "b991298ea90a5bc111bc188124eb5e065fd9710220d8a16f9299149568084078",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "Publication moves through three modes \u2014 supervised (default), trusted (after a threshold of clean validations), and locked-back (forced return on incident). Two gates never lift: acceptance to a validated brief, and truth-check. Effect is reported as a descriptive delta between runs, never as a causal claim."
-      }
-    },
-    {
-      "id": "h-publication-is-the-moment-the-system-meets-a-live-surface",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Publication is the moment the system meets a live surface"
-      }
-    },
-    {
-      "id": "p-publication-is-the-moment-the-system-meets-a-live-surface",
-      "kind": "paragraph",
-      "data": {
-        "text": "A measurement system stays honest as long as it only observes. It becomes exposed the instant it publishes. Every content pipeline that sits above answer engines eventually confronts the same question: at what point does a draft leave human hands? Content farms answer immediately, en masse, and eat their own credibility. Fully-supervised pipelines answer never, and stop scaling. TextOS answers with a third option \u2014 a **graduated publication regime** governed by an explicit machine and two gates that never lift."
-      }
-    },
-    {
-      "id": "cta-contextual",
-      "kind": "cta_slot",
-      "slot": "primary-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "h-three-modes-one-deterministic-machine",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Three modes, one deterministic machine"
-      }
-    },
-    {
-      "id": "p-three-modes-one-deterministic-machine",
-      "kind": "paragraph",
-      "data": {
-        "text": "Publication moves between three modes, each of which is a state in a pure, deterministic machine:"
-      }
-    },
-    {
-      "id": "h-two-gates-that-never-lift-even-in-trusted",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Two gates that never lift \u2014 even in `trusted`"
-      }
-    },
-    {
-      "id": "p-two-gates-that-never-lift-even-in-trusted",
-      "kind": "paragraph",
-      "data": {
-        "text": "Modes govern the *review* layer. They govern nothing else. Two gates operate underneath and remain in force whatever the mode says:"
-      }
-    },
-    {
-      "id": "h-effect-as-descriptive-delta-the-first-inter-run-comparison-and-only-for-effect",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Effect as descriptive delta \u2014 the first inter-run comparison, and only for effect"
-      }
-    },
-    {
-      "id": "p-effect-as-descriptive-delta-the-first-inter-run-comparison-and-only-for-effect",
-      "kind": "paragraph",
-      "data": {
-        "text": "Publication is inseparable from the question every operator asks next: *did it change anything?* Answering that question requires comparing presence measurements taken before and after \u2014 that is, comparing two runs. Elsewhere in the pipeline, inter-run comparison is explicitly forbidden: measurements from separate runs are not directly comparable because engines are non-deterministic and the same panel executed twice yields different distributions. That rule stands."
-      }
-    },
-    {
-      "id": "h-what-graduated-publication-does-not-do",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What graduated publication does not do"
-      }
-    },
-    {
-      "id": "p-what-graduated-publication-does-not-do",
-      "kind": "paragraph",
-      "data": {
-        "text": "A short list, because the boundary matters:"
-      }
-    },
-    {
-      "id": "h-why-we-are-documenting-this-now",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why we are documenting this now"
-      }
-    },
-    {
-      "id": "p-why-we-are-documenting-this-now",
-      "kind": "paragraph",
-      "data": {
-        "text": "ADR-016 is an accepted architecture decision. The corresponding capabilities are implemented and held in `internal_only` \u2014 meaning: the engineering exists, the boundary is described, and the product does not yet expose it publicly. Documenting the decision without exposing the surface is deliberate. It lets the shape of the boundary be criticised, contested and refined before a customer-facing surface hardens around it."
-      }
-    },
-    {
-      "id": "h-related-reading",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related reading"
-      }
-    },
-    {
-      "id": "cta-final",
-      "kind": "cta_slot",
-      "slot": "final-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "related",
-      "kind": "related_content_slot",
-      "slot": "related",
-      "data": {}
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "ctaIntentId": "MEASURE_BRAND",
-    "conversionAllowed": true
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/graduated-publication",
-    "schemaType": "TechArticle",
-    "targetQuery": "how does textos publish content safely",
-    "searchIntent": "informational"
+    "publicationStatus": "draft",
+    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

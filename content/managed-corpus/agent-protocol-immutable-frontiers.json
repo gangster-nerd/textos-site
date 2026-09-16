@@ -1,182 +1,819 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "We build TextOS with development agents governed by a written protocol: agents never touch git identity or canonical artefacts on their own initiative, never modify frozen frontiers inside a sprint, and never land a commit without an explicit human GO after reading raw command output."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "How we build TextOS"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-6bab47a01212",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TextOS is built with development agents. Some of the code, some of the tests, some of the migrations pass through an agent before they pass through a human. That is not a marketing statement — it is an operational reality of a small team choosing to move quickly without hiring proportionally. Building this way is only defensible if the process itself is written down, and if the written process is strict enough that \"the agent said it was fine\" is not, ever, an acceptable answer."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-bf80e187b067",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This article documents the protocol we chose. It is our engineering discipline, not a customer feature. There is no waitlist, no external access point. What follows is how we work — the rules the agent operates under, the boundaries it cannot cross, and the human step that closes every sprint. We publish it because the credibility of a measurement product depends on the credibility of the process that produces it, and we would rather show that process than describe its outcome."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8818b4dad438",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Three inviolable rules"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-21541441209e",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The protocol opens with rules an agent may not break, regardless of what a task appears to require."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3b7ffc76ca09",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Git identity is never touched by an agent."
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " No agent configures, modifies, or rewrites "
+            },
+            {
+              "type": "inlineCode",
+              "value": "user.name"
+            },
+            {
+              "type": "text",
+              "value": " or "
+            },
+            {
+              "type": "inlineCode",
+              "value": "user.email"
+            },
+            {
+              "type": "text",
+              "value": ". Not globally, not locally. Identity is set once, by a human, on a human's machine. Commits are signed with that identity because that is the machine the work runs on — never because an agent quietly configured it. The moment the identity layer becomes something an agent can touch, the entire chain of authorship becomes negotiable."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-bf69abe3ee04",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Canonical artefacts are modified only on explicit instruction."
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " The product vision, the market documents and the specification ("
+            },
+            {
+              "type": "inlineCode",
+              "value": "docs/product/"
+            },
+            {
+              "type": "text",
+              "value": "), every accepted architecture decision ("
+            },
+            {
+              "type": "inlineCode",
+              "value": "docs/adr/"
+            },
+            {
+              "type": "text",
+              "value": "), and the protocol itself ("
+            },
+            {
+              "type": "inlineCode",
+              "value": "AGENTS.md"
+            },
+            {
+              "type": "text",
+              "value": ") are canonical. An agent reads them constantly — every task is framed by them — and never rewrites them to \"improve\" a decision. A decision is a decision. An ADR revision or a boundary change is a task for the human, outside the sprint. The protocol calls out the failure mode this rule prevents: an agent that thinks in good faith it has found a better shape for a frozen contract, and moves the contract silently to fit its own solution."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-1fe4f8fcdbb2",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Frozen frontiers do not move inside a sprint."
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " Once ADR-001 and ADR-002 are frozen, the contracts they define — engine provider interfaces, invocation and observation types, citation and tracked-entity shapes, the eight observation statuses, the S0.B database schema — are not to be modified during any subsequent execution sprint. This rule is doing a specific job: it protects the handoff between agents. A backup agent that inherits a project it did not design must not be able to break a contract it does not fully understand. The frozen frontier is the surface across which agents can trade shifts without stepping on each other's assumptions."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-baaf582bd96a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What \"vert\" does not prove"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-f76c3c186429",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Two rules at the heart of the protocol address a specific class of self-deception: the \"everything is green\" declaration."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-7d6ac1705c07",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Passing tests prove that code "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "runs"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ". They do not prove that the code "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "respects the decisions"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " — the ADRs, the frozen frontiers, the perimeter written into the sprint prompt. A green build does not detect a moved boundary. It does not detect a destructive migration hiding behind an apparently-clean diff. It does not detect a field quietly added to a frozen contract. It does not detect logic that has drifted outside the sprint's declared scope. Compliance and correctness are two different verifications. The tests speak to one; a human reading the code speaks to the other. Both are required. Neither substitutes for the other."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a2549e4d6aed",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The second rule closes the corresponding loophole in agent-agent-human dialogue. An agent is never asked \"is this compliant?\" — because a self-graded summary is a text the agent already knows how to shape favourably. The agent is asked instead to "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "run verification commands and paste the raw output, in full, without summarisation and without selection"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ". The output of "
+            },
+            {
+              "type": "inlineCode",
+              "value": "git diff --stat"
+            },
+            {
+              "type": "text",
+              "value": ", of "
+            },
+            {
+              "type": "inlineCode",
+              "value": "grep"
+            },
+            {
+              "type": "text",
+              "value": ", of "
+            },
+            {
+              "type": "inlineCode",
+              "value": "cat"
+            },
+            {
+              "type": "text",
+              "value": " on a migration file is a neutral artefact: it cannot be rewritten to flatter the work that produced it. What the agent is not allowed to do is "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "edit the output before pasting"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ". The human reads the raw text, and only the human renders the verdict."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a78e3449d9ec",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The sprint sequence — a written protocol, not a habit"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-dfe106a109f6",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Every sprint follows the same four-step sequence. It is written down precisely so that it does not degrade under time pressure."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-5a8b6218a5e1",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Plan first, execute after validation."
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " The agent proposes a plan and stops. Only after a human validation does execution begin. When execution ends, the agent shows the diff and does not commit."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Verification commands and raw output."
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " The agent runs verification commands — the exact set is defined per sprint, but always includes a quantitative view of the diff, a name-only file list, a pre-commit "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "git status"
+                    },
+                    {
+                      "type": "text",
+                      "value": ", and any grep-based non-regression checks the sprint requires. The raw output is pasted in full."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Human verdict."
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " The human reads the pastes. The verdict is either GO or a list of corrections. The verdict is textual and explicit."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "On explicit GO only."
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " The agent stages, shows the final "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "git status"
+                    },
+                    {
+                      "type": "text",
+                      "value": " and "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "git diff --cached --name-only"
+                    },
+                    {
+                      "type": "text",
+                      "value": ", produces the commit, pushes, and — where CI applies — confirms the run is green."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": true,
+          "spread": false,
+          "start": 1,
+          "type": "list"
+        }
+      },
+      "id": "l-3a7228cb4ec2",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The single signal that ends a sprint is an explicit human GO after reading raw verification output. Nothing else counts. Green tests do not count. A confident agent summary does not count. A CI badge does not count. Only the human, reading the output, on the record. That is the seam through which two entirely different agents can share a codebase without either of them becoming the point of failure."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-b9521dd00c0d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Verification, in practice"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-949d3ff75e3e",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The protocol lists the verification commands that must be pasted every sprint. Each of them exists to detect a specific class of silent regression."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a7dc1759f3a4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "inlineCode",
+              "value": "git diff --stat"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "type": "inlineCode",
+              "value": "git diff --name-only"
+            },
+            {
+              "type": "text",
+              "value": " produce, respectively, a quantitative view of the change and a nominal list of touched files. Any change to a forbidden file appears in the second view immediately. "
+            },
+            {
+              "type": "inlineCode",
+              "value": "git status"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "type": "inlineCode",
+              "value": "git diff --cached --name-only"
+            },
+            {
+              "type": "text",
+              "value": ", run before every commit, verify that exactly the expected files are staged, nothing more and nothing less — no stray "
+            },
+            {
+              "type": "inlineCode",
+              "value": ".env"
+            },
+            {
+              "type": "text",
+              "value": ", no forgotten dependency, no half-added migration. Grep-based checks confirm that a frozen type imported into new code has not been redefined, and that a forbidden term (a network call, a "
+            },
+            {
+              "type": "inlineCode",
+              "value": "process.env"
+            },
+            {
+              "type": "text",
+              "value": " reference, an internal type name that should stay contained) has not slipped into the diff."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-312f63d09fbc",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Migrations receive their own rule. The raw SQL is read from the generated file, not inferred from the TypeScript model that produced it. That is because a Drizzle model that looks additive can generate SQL that drops and recreates a table. The human reads the SQL, confirms that the change is additive or a properly-traced correction, checks that primary keys and constraints survive, and only then approves."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0a3b87b672b8",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Every one of these commands has the same property: its output cannot be embellished. That property is why the protocol trusts them."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-6994cd97ad52",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Anti-content-factory and the doctrine that closes the loop"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-3eeb5559dcc1",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "One line in the protocol reads: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "no generated content is published unless it is backed by an accepted Opportunity Brief."
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " That line is a boundary that lives between the engineering layer and the product itself. It is why the graduated publication regime described elsewhere has two gates that never lift. It is why the Opportunity Brief layer refuses to accept a brief automatically. It is why the extraction layer does not judge truth."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-c24204aac609",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "We wrote this rule into the agent protocol on purpose. An agent can technically produce content; the protocol says an agent may not produce content that is not tied to a defended opportunity. That constraint travels from the engineering rule (\"no content-farm behaviour\") to the product rule (\"no publication without a brief\") to the measurement rule (\"a signal that is not observable is not zero\"). It is the same discipline at three altitudes."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0aedaafe9643",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "When in doubt"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-0899ebc823ca",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The protocol closes with a rule that is more cultural than technical: an agent that is uncertain whether to follow the protocol or to satisfy a request stops and asks a human. The rule primes velocity in favour of the rule. We wrote it that way because a slow correct sprint is recoverable; an undetected boundary violation is not. The protocol is the way we scale a small team without letting the tools that help us move fast quietly rewrite the product we are building."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-c1ca823ca150",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "We publish it here because how a system is built is part of what the system is worth."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0d5d2d4f228d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:agent-protocol-immutable-frontiers",
-    "contentType": "product_article",
-    "slug": "agent-protocol-immutable-frontiers",
-    "language": "en",
-    "title": "Agent Protocol \u2014 Immutable Frontiers and Explicit GO",
-    "description": "Development agents at TextOS work under a written protocol: canonical artefacts stay human-controlled, frozen frontiers hold mid-sprint, no commit without a GO."
+  "conversion": {
+    "conversionAllowed": false
   },
   "editorial": {
+    "audience": "reader-technical",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [],
+    "funnelStage": "awareness",
     "primaryTopicId": "how-we-build",
+    "reviewerIds": [],
     "topicIds": [
       "how-we-build"
-    ],
-    "audience": "reader-technical",
-    "funnelStage": "awareness"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "Development agents at TextOS work under a written protocol: canonical artefacts stay human-controlled, frozen frontiers hold mid-sprint, no commit without a GO.",
+    "documentId": "textos-insight:agent-protocol-immutable-frontiers",
+    "language": "en",
+    "slug": "agent-protocol-immutable-frontiers",
+    "title": "Agent Protocol — Immutable Frontiers and Explicit GO"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "2fef740194578ef5d1409b03316774edbeffa17341e2adb0ce1e98106a7922cc",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/agent-protocol-immutable-frontiers",
+    "indexingIntent": "noindex",
+    "schemaType": "Article",
+    "searchIntent": "informational",
+    "targetQuery": "how textos uses development agents"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "COMPANY_TECHNOLOGY:DOCUMENTARY:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
     ],
+    "capabilityIds": [],
     "claimIds": [
       "hp1-measurement-doctrine",
       "hp2-metric-integrity"
     ],
     "evidenceRefs": [],
-    "capabilityIds": []
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "bd5a428e17764942973700142ff4bbbd88001452c5e6db44e9bd5a7635a9e0a8",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "We build TextOS with development agents governed by a written protocol: agents never touch git identity or canonical artefacts on their own initiative, never modify frozen frontiers inside a sprint, and never land a commit without an explicit human GO after reading raw command output."
-      }
-    },
-    {
-      "id": "h-how-we-build-textos",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "How we build TextOS"
-      }
-    },
-    {
-      "id": "p-how-we-build-textos",
-      "kind": "paragraph",
-      "data": {
-        "text": "TextOS is built with development agents. Some of the code, some of the tests, some of the migrations pass through an agent before they pass through a human. That is not a marketing statement \u2014 it is an operational reality of a small team choosing to move quickly without hiring proportionally. Building this way is only defensible if the process itself is written down, and if the written process is strict enough that \"the agent said it was fine\" is not, ever, an acceptable answer."
-      }
-    },
-    {
-      "id": "h-three-inviolable-rules",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Three inviolable rules"
-      }
-    },
-    {
-      "id": "p-three-inviolable-rules",
-      "kind": "paragraph",
-      "data": {
-        "text": "The protocol opens with rules an agent may not break, regardless of what a task appears to require."
-      }
-    },
-    {
-      "id": "h-what-vert-does-not-prove",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What \"vert\" does not prove"
-      }
-    },
-    {
-      "id": "p-what-vert-does-not-prove",
-      "kind": "paragraph",
-      "data": {
-        "text": "Two rules at the heart of the protocol address a specific class of self-deception: the \"everything is green\" declaration."
-      }
-    },
-    {
-      "id": "h-the-sprint-sequence-a-written-protocol-not-a-habit",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The sprint sequence \u2014 a written protocol, not a habit"
-      }
-    },
-    {
-      "id": "p-the-sprint-sequence-a-written-protocol-not-a-habit",
-      "kind": "paragraph",
-      "data": {
-        "text": "Every sprint follows the same four-step sequence. It is written down precisely so that it does not degrade under time pressure."
-      }
-    },
-    {
-      "id": "h-verification-in-practice",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Verification, in practice"
-      }
-    },
-    {
-      "id": "p-verification-in-practice",
-      "kind": "paragraph",
-      "data": {
-        "text": "The protocol lists the verification commands that must be pasted every sprint. Each of them exists to detect a specific class of silent regression."
-      }
-    },
-    {
-      "id": "h-anti-content-factory-and-the-doctrine-that-closes-the-loop",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Anti-content-factory and the doctrine that closes the loop"
-      }
-    },
-    {
-      "id": "p-anti-content-factory-and-the-doctrine-that-closes-the-loop",
-      "kind": "paragraph",
-      "data": {
-        "text": "One line in the protocol reads: *no generated content is published unless it is backed by an accepted Opportunity Brief.* That line is a boundary that lives between the engineering layer and the product itself. It is why the graduated publication regime described elsewhere has two gates that never lift. It is why the Opportunity Brief layer refuses to accept a brief automatically. It is why the extraction layer does not judge truth."
-      }
-    },
-    {
-      "id": "h-when-in-doubt",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "When in doubt"
-      }
-    },
-    {
-      "id": "p-when-in-doubt",
-      "kind": "paragraph",
-      "data": {
-        "text": "The protocol closes with a rule that is more cultural than technical: an agent that is uncertain whether to follow the protocol or to satisfy a request stops and asks a human. The rule primes velocity in favour of the rule. We wrote it that way because a slow correct sprint is recoverable; an undetected boundary violation is not. The protocol is the way we scale a small team without letting the tools that help us move fast quietly rewrite the product we are building."
-      }
-    },
-    {
-      "id": "related",
-      "kind": "related_content_slot",
-      "slot": "related",
-      "data": {}
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "conversionAllowed": false
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/agent-protocol-immutable-frontiers",
-    "schemaType": "Article",
-    "targetQuery": "how textos uses development agents",
-    "searchIntent": "informational"
+    "publicationStatus": "draft",
+    "sourceStatus": "COMPANY_TECHNOLOGY:DOCUMENTARY:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

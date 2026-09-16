@@ -1,33 +1,930 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "TextOS reports Authority Presence as three separate measures. Direct Share of Model counts observations where the tracked entity is cited as a source. Indirect Mention Share counts observations where a third-party citation names the entity. Total Authority Presence is the union of the two, counted once per observation."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An architectural decision, not a display choice"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-27c0cbad66e3",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A dashboard that shows \"Authority: 62\" hides an architectural choice. Somewhere in the code, someone decided how to weight what the engine cited as a source against what the engine merely named in a sentence, then folded the answer into a single number. That choice is invisible to the reader, unreproducible from the outside, and unstable the day the weighting changes."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0914a750fd04",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TextOS makes the opposite decision. Authority Presence is expressed as three separate measures, and their separation is enforced at the estimator layer — not at the chart layer. The architecture record ADR-011 states the constraint plainly: three measures are computed, each with its own numerator, its own coverage flag, and its own dispersion. There is no composite \"authority score\" produced anywhere in the system, and the same document names such a score an anti-objective."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-9b59074ebe98",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This article explains what the three measures are, why they must remain separate, and what that separation buys the reader."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-328dee8b7b31",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "type": "html",
+          "value": "<!-- cta:contextual -->"
+        }
+      },
+      "id": "cta-0272cbe8002e",
+      "kind": "cta_slot",
+      "slot": "primary-cta"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What the three measures observe"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-ab32b5f47c62",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Every measurement in TextOS starts from a single unit: one engine answer to one query, at one moment, on one surface. Each answer is kept as a separate observation, versioned by the method that produced it. On top of those observations, three questions are asked independently."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-46fa42a02250",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Direct Share of Model"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " asks: in what share of eligible observations is the tracked entity cited as a source? Cited as a source means the engine attributes part of its answer to the entity — typically by linking to or naming one of the entity's own canonical domains among its references. It is a citation "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "by"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " the engine "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "of"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " the entity."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3b89fda2368d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Indirect Mention Share"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " asks: in what share of eligible observations is the tracked entity named through a third party? A guide, a directory or a media outlet is cited by the engine, and that source names the entity in the passage the engine used. The engine did not credit the entity. It credited someone else who talked about the entity. That is a different signal."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-044b8ff2931f",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Total Authority Presence"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " asks: in what share of eligible observations is the entity present at all, directly or indirectly? It is the union of the first two — counted once per observation, never twice. An answer that both cites the entity as a source and names it in the prose is one observation, and it belongs to Total exactly once."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-af4f0abde89d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why the union is not a sum"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-15678bff392a",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The temptation is arithmetic. Direct Share of Model is 40%, Indirect Mention Share is 50%, therefore Authority is 90%. That number is wrong every time an observation carries both a direct citation and an indirect mention of the same entity — which is common, because an engine can plausibly link to a brand's own site and mention it in the same sentence."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-32cde294781a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-011 spells out the rule: Total is the union by observation, not the sum by citation. An observation containing both a direct citation and an indirect mention of the entity is counted "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "once"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " in Total. The estimator computes it that way, and the oracle fixture that governs the calculation deliberately includes such an observation, precisely so that the code cannot silently drift back into "
+            },
+            {
+              "type": "inlineCode",
+              "value": "direct + indirect"
+            },
+            {
+              "type": "text",
+              "value": " addition."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-70950cc1e13d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The article on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Direct, Indirect and Total Authority Presence"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/direct-indirect-total"
+            },
+            {
+              "type": "text",
+              "value": " works through the overlap arithmetic with a ten-observation example. The important point here is architectural: Total is a set operation, and the code that computes it cannot be replaced by a sum without breaking a test."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ea77a102d185",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why the measures must be reported separately"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-9d936114acdc",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Fusing Direct and Indirect into a single number destroys information that no downstream reader can recover."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ea50ee153f02",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A high Direct with a low Indirect describes a brand that engines treat as a reference. Its own pages are used as sources; the brand is credited by name in the citation list. A low Direct with a high Indirect describes a brand that is part of the conversation without being credited. Reviewers, aggregators and media outlets carry its name into engine answers, but the engines cite those third parties, not the brand itself. These are different market positions, and different problems."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ed14a1b89281",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A single composite figure would rank them as equivalent. The measurement doctrine — carried by claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "hp2-metric-integrity"
+            },
+            {
+              "type": "text",
+              "value": " — refuses that equivalence: Direct, Indirect and Total are separate measures. Total Authority Presence is the union of direct and indirect presence, never their sum."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-eb3f549d3f85",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "When a measure cannot be observed"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-323f305eaf45",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Not every method can see every signal. Some engines return a list of cited sources but no snippet of the passages that used them; from such a response, direct citations can be extracted, indirect mentions cannot. ADR-011 turns that limit into an explicit output: when the method of the run does not produce the "
+            },
+            {
+              "type": "inlineCode",
+              "value": "indirect_mention"
+            },
+            {
+              "type": "text",
+              "value": " signal, Indirect Mention Share is reported as "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "not observable"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ", not as zero."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-821a6ab149a1",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The distinction is load-bearing. Zero means the method looked for the signal and found none — a real observation. Not observable means the method cannot look for it — the absence of a measurement, not a measurement of absence. Recording one as the other invents data."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3c6cf11a204a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Total Authority Presence carries this honesty through. When Indirect is not observable, Total reports what direct citations alone establish, tagged as a floor — at least this much presence — not as the definitive total. That floor is useful; a fake ceiling would not be."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3250ad587254",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The commitment appears in claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "m5-not-observable-is-not-zero"
+            },
+            {
+              "type": "text",
+              "value": " and in the methodology page on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "why not observable is not zero"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/not-observable-is-not-zero"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-e8b4b50f8668",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Every measure names its entity"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-dab58c7c8aa7",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "There is no such thing as \"the brand's Share of Model\" without an entity. Panels track multiple entities — a brand, its competitors, sometimes a category term — and every measure carries the identifier of the entity it is about. ADR-011 makes this explicit: measures are computed "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "per tracked entity"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ", never for the panel as a whole."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-186a8b7aaee5",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The filter that decides whether a citation counts for an entity is the entity match, not the flag that says \"this citation belongs to a tracked entity somewhere\". The two would coincide most of the time; the entity match is the one that survives edge cases, and the estimator uses it by design."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-46815f4b67e6",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What each measure carries around it"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-171e5cf2d270",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A single number is easy to compare and easy to misread. Each measure is therefore reported alongside its numerator and denominator (exposed as integers, not hidden inside the ratio), a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "per-query breakdown"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " — three hits out of five executions of one query says something about instability, three hits across five different queries says something about coverage, and a single average would flatten the two — and a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "dispersion"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " summary of minimum, maximum, mean and standard deviation across queries."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-5bf128f6048b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "None of this is a statistical model yet. ADR-011 calls the design "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "variance-ready"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ", not variance-aware: the structure carries the dimensions a later confidence-interval model will need, without pretending to produce those intervals today. Total additionally carries a coverage flag that records which of the two component signals actually contributed — enforcing at the data layer that a direct-only floor cannot be presented as a definitive total."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-116a5fc813d3",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What this decision buys"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-4ffe13f036b2",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Three separate measures cost more to display than one. They also do three things a composite score cannot."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0da0a11550cb",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "They "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "stay defensible when the method evolves"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Direct extraction and indirect extraction can improve at different times, on different engines. Each measure keeps its own version markers, and a series that breaks on one signal does not silently corrupt the other two."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a8cf86063575",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "They "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "stay honest when a signal is missing"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Not observable is a first-class state; Total tells the reader whether it is a full union or a direct-only floor."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-282c87f19542",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "And they "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "stay actionable"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". Direct and Indirect describe different mechanisms — being cited as a reference, versus being carried by third parties. A reader who wants to act on the measurement can see which lever the observations point to. A single number would have removed that distinction to spare a chart column."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-833ce865750b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The three measures are not three views on the same result. They are three results on the same set of observations, and TextOS reports them as such."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-6f0a555a2921",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related methodology"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-d65d769b84a2",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the observation unit and the versioned query panel that all three measures rest on."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direct, Indirect and Total Authority Presence"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/direct-indirect-total"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — a worked example of the union arithmetic."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-6a3b1cba805f",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:three-dimensions-authority-presence",
-    "contentType": "product_article",
-    "slug": "three-dimensions-authority-presence",
-    "language": "en",
-    "title": "The three dimensions of Authority Presence",
-    "description": "Authority Presence is not one score. TextOS reports Direct Share of Model, Indirect Mention Share, and Total Authority Presence as three separate measures."
+  "conversion": {
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
+    "audience": "reader-technical",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [],
+    "funnelStage": "consideration",
     "primaryTopicId": "measurement-mechanics",
+    "reviewerIds": [],
     "topicIds": [
       "measurement-mechanics",
       "authority-observation"
-    ],
-    "audience": "reader-technical",
-    "funnelStage": "consideration"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "Authority Presence is not one score. TextOS reports Direct Share of Model, Indirect Mention Share, and Total Authority Presence as three separate measures.",
+    "documentId": "textos-insight:three-dimensions-authority-presence",
+    "language": "en",
+    "slug": "three-dimensions-authority-presence",
+    "title": "The three dimensions of Authority Presence"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "77abe2f5dc909c98af5ab9cfa5ab5613ac17e969b594198caee960ed99c25c43",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/three-dimensions-authority-presence",
+    "indexingIntent": "noindex",
+    "schemaType": "TechArticle",
+    "searchIntent": "informational",
+    "targetQuery": "three measures of authority presence"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "direct-share-of-model",
+      "indirect-mention-share",
+      "observe-authority-presence",
+      "quality-ledger",
+      "total-authority-presence"
     ],
     "claimIds": [
       "m1-observation-unit",
@@ -44,196 +941,9 @@
       "quality-ledger:quality-ledger-rates-v1",
       "observe-authority-presence:authority-presence-observation-v1"
     ],
-    "capabilityIds": [
-      "direct-share-of-model",
-      "indirect-mention-share",
-      "observe-authority-presence",
-      "quality-ledger",
-      "total-authority-presence"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "766492056e0b1f36238cc300663daeca1f0cdd84826192694fc0ca6f8d3e9fba",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "TextOS reports Authority Presence as three separate measures. Direct Share of Model counts observations where the tracked entity is cited as a source. Indirect Mention Share counts observations where a third-party citation names the entity. Total Authority Presence is the union of the two, counted once per observation."
-      }
-    },
-    {
-      "id": "h-an-architectural-decision-not-a-display-choice",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "An architectural decision, not a display choice"
-      }
-    },
-    {
-      "id": "p-an-architectural-decision-not-a-display-choice",
-      "kind": "paragraph",
-      "data": {
-        "text": "A dashboard that shows \"Authority: 62\" hides an architectural choice. Somewhere in the code, someone decided how to weight what the engine cited as a source against what the engine merely named in a sentence, then folded the answer into a single number. That choice is invisible to the reader, unreproducible from the outside, and unstable the day the weighting changes."
-      }
-    },
-    {
-      "id": "cta-contextual",
-      "kind": "cta_slot",
-      "slot": "primary-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "h-what-the-three-measures-observe",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What the three measures observe"
-      }
-    },
-    {
-      "id": "p-what-the-three-measures-observe",
-      "kind": "paragraph",
-      "data": {
-        "text": "Every measurement in TextOS starts from a single unit: one engine answer to one query, at one moment, on one surface. Each answer is kept as a separate observation, versioned by the method that produced it. On top of those observations, three questions are asked independently."
-      }
-    },
-    {
-      "id": "h-why-the-union-is-not-a-sum",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why the union is not a sum"
-      }
-    },
-    {
-      "id": "p-why-the-union-is-not-a-sum",
-      "kind": "paragraph",
-      "data": {
-        "text": "The temptation is arithmetic. Direct Share of Model is 40%, Indirect Mention Share is 50%, therefore Authority is 90%. That number is wrong every time an observation carries both a direct citation and an indirect mention of the same entity \u2014 which is common, because an engine can plausibly link to a brand's own site and mention it in the same sentence."
-      }
-    },
-    {
-      "id": "h-why-the-measures-must-be-reported-separately",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why the measures must be reported separately"
-      }
-    },
-    {
-      "id": "p-why-the-measures-must-be-reported-separately",
-      "kind": "paragraph",
-      "data": {
-        "text": "Fusing Direct and Indirect into a single number destroys information that no downstream reader can recover."
-      }
-    },
-    {
-      "id": "h-when-a-measure-cannot-be-observed",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "When a measure cannot be observed"
-      }
-    },
-    {
-      "id": "p-when-a-measure-cannot-be-observed",
-      "kind": "paragraph",
-      "data": {
-        "text": "Not every method can see every signal. Some engines return a list of cited sources but no snippet of the passages that used them; from such a response, direct citations can be extracted, indirect mentions cannot. ADR-011 turns that limit into an explicit output: when the method of the run does not produce the `indirect_mention` signal, Indirect Mention Share is reported as *not observable*, not as zero."
-      }
-    },
-    {
-      "id": "h-every-measure-names-its-entity",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Every measure names its entity"
-      }
-    },
-    {
-      "id": "p-every-measure-names-its-entity",
-      "kind": "paragraph",
-      "data": {
-        "text": "There is no such thing as \"the brand's Share of Model\" without an entity. Panels track multiple entities \u2014 a brand, its competitors, sometimes a category term \u2014 and every measure carries the identifier of the entity it is about. ADR-011 makes this explicit: measures are computed *per tracked entity*, never for the panel as a whole."
-      }
-    },
-    {
-      "id": "h-what-each-measure-carries-around-it",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What each measure carries around it"
-      }
-    },
-    {
-      "id": "p-what-each-measure-carries-around-it",
-      "kind": "paragraph",
-      "data": {
-        "text": "A single number is easy to compare and easy to misread. Each measure is therefore reported alongside its numerator and denominator (exposed as integers, not hidden inside the ratio), a **per-query breakdown** \u2014 three hits out of five executions of one query says something about instability, three hits across five different queries says something about coverage, and a single average would flatten the two \u2014 and a **dispersion** summary of minimum, maximum, mean and standard deviation across queries."
-      }
-    },
-    {
-      "id": "h-what-this-decision-buys",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What this decision buys"
-      }
-    },
-    {
-      "id": "p-what-this-decision-buys",
-      "kind": "paragraph",
-      "data": {
-        "text": "Three separate measures cost more to display than one. They also do three things a composite score cannot."
-      }
-    },
-    {
-      "id": "h-related-methodology",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related methodology"
-      }
-    },
-    {
-      "id": "cta-final",
-      "kind": "cta_slot",
-      "slot": "final-cta",
-      "data": {
-        "intent": "MEASURE_BRAND"
-      }
-    },
-    {
-      "id": "related",
-      "kind": "related_content_slot",
-      "slot": "related",
-      "data": {}
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "ctaIntentId": "MEASURE_BRAND",
-    "conversionAllowed": true
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/three-dimensions-authority-presence",
-    "schemaType": "TechArticle",
-    "targetQuery": "three measures of authority presence",
-    "searchIntent": "informational"
+    "publicationStatus": "draft",
+    "sourceStatus": "ARCHITECTURE_DECISION:DOCUMENTARY:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }
