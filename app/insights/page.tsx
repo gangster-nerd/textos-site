@@ -9,6 +9,7 @@ import Link from "next/link";
 
 import { listInsightEntries } from "@/lib/content-surface-engine/site-integration";
 import { siteConfig } from "@/lib/config/site";
+import { previewVisibility } from "@/lib/config/preview-visibility";
 
 export const dynamic = "force-static";
 
@@ -24,9 +25,11 @@ export const metadata: Metadata = {
 
 export default function InsightsIndex() {
   const all = listInsightEntries();
-  const visible = siteConfig.allowIndexing
-    ? all.filter((e) => e.document.truth.publicationStatus === "published")
-    : all;
+  // PR21 §3 : draft visibility, NOT indexing, decides whether drafts appear on
+  // this list. A Production build with indexing off still hides drafts.
+  const visible = previewVisibility.showDraftContent
+    ? all
+    : all.filter((e) => e.document.truth.publicationStatus === "published");
 
   return (
     <main>

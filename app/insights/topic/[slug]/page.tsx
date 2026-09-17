@@ -15,6 +15,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { siteConfig } from "@/lib/config/site";
+import { previewVisibility } from "@/lib/config/preview-visibility";
 import {
   listGovernedTopics,
   documentsForTopic,
@@ -77,9 +78,11 @@ export default async function Page({
 
   const label = humanLabel(slug);
   const allDocs = documentsForTopic(slug);
-  if (allDocs.length === 0 && siteConfig.allowIndexing) notFound();
-
-  const publicOnly = siteConfig.allowIndexing;
+  // PR21 §3 : draft visibility governs listing ; indexability governs sitemap
+  // and JSON-LD dates. Public builds without preview authorisation never list
+  // drafts, regardless of indexing state.
+  const publicOnly = !previewVisibility.showDraftContent;
+  if (allDocs.length === 0 && publicOnly) notFound();
   const visible = publicOnly
     ? allDocs.filter(
         (d) =>
@@ -88,7 +91,7 @@ export default async function Page({
       )
     : allDocs;
 
-  // Empty public hub → 404 in Production ; render honest empty state in Preview.
+  // Empty public hub → 404 in public builds ; render honest empty state in Preview.
   if (publicOnly && visible.length === 0) notFound();
 
   const canonical = `/insights/topic/${slug}`;

@@ -8,7 +8,14 @@
     "surfacePassCount": 12,
     "publicationPassCount": 0,
     "indexableCount": 0,
-    "noindexCount": 12
+    "noindexCount": 12,
+    "provenanceCertifiedCount": 0,
+    "provenanceModes": {
+      "NON_GIT_EVIDENCE": 12
+    },
+    "provenanceBlockers": {
+      "non-git-provenance-not-authorized": 12
+    }
   },
   "rows": [
     {
@@ -47,7 +54,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:authority-intelligence-not-ai-seo",
@@ -86,7 +95,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:brief-to-decision-economics",
@@ -125,7 +136,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:graduated-publication",
@@ -164,7 +177,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:no-affirmation-without-evidence",
@@ -203,7 +218,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:north-star-brief-acceptance",
@@ -242,7 +259,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:observation-not-optimization",
@@ -281,7 +300,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:observatory-not-cms",
@@ -320,7 +341,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:opportunity-brief-deterministic",
@@ -358,7 +381,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:three-dimensions-authority-presence",
@@ -397,7 +422,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:three-measures-never-one-score",
@@ -436,7 +463,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     },
     {
       "documentId": "textos-insight:truthcheck-unmovable-gate",
@@ -475,7 +504,9 @@
         "not-indexable-build",
         "indexability-not-approved",
         "indexability-gate-failed"
-      ]
+      ],
+      "provenanceMode": "NON_GIT_EVIDENCE",
+      "provenanceBlocker": "non-git-provenance-not-authorized"
     }
   ]
 }

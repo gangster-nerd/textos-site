@@ -28,6 +28,7 @@ import {
 import { textosArticleReferencePolicy } from "@/lib/content-surface-engine/surface-policy";
 import { serializeJsonLd } from "@/lib/schema-org/serialize";
 import { siteConfig } from "@/lib/config/site";
+import { previewVisibility } from "@/lib/config/preview-visibility";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -37,9 +38,12 @@ const EMPTY_CORPUS_SENTINEL = "__empty_insights__";
 
 function visibleEntries() {
   const all = listInsightEntries();
-  return siteConfig.allowIndexing
-    ? all.filter((e) => e.document.truth.publicationStatus === "published")
-    : all;
+  // PR21 §§2-3 : draft visibility is governed by preview-visibility, NEVER by
+  // `siteConfig.allowIndexing`. A Production deployment with indexing off is
+  // still Production ; it must never surface drafts.
+  return previewVisibility.showDraftContent
+    ? all
+    : all.filter((e) => e.document.truth.publicationStatus === "published");
 }
 
 export function generateStaticParams() {
@@ -153,8 +157,11 @@ export default async function Page({
   const entry = findInsightEntry(slug);
   if (!entry) notFound();
   // Belt-and-braces : if Production somehow reaches a draft (upstream mis-config), 404.
+  // PR21 §3 : belt-and-braces. `generateStaticParams` already excludes drafts
+  // when preview visibility is off ; this guard is the runtime safety net that
+  // ensures no draft URL is ever reachable in a public build.
   if (
-    siteConfig.allowIndexing &&
+    !previewVisibility.showDraftContent &&
     entry.document.truth.publicationStatus !== "published"
   ) {
     notFound();
@@ -296,7 +303,7 @@ export default async function Page({
           }
           relatedEntries={resolveRelatedContent({
             target: entry.document,
-            publicOnly: siteConfig.allowIndexing,
+            publicOnly: !previewVisibility.showDraftContent,
             limit: 6,
           })}
         />

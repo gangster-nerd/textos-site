@@ -6,3 +6,7 @@ next-env.d.ts
 .DS_Store
 .env.local
 .vercel
+
+# PR21 mobile cert artifacts (Playwright screenshots + JSON report). Regenerated
+# by scripts/pr21-real-mobile-cert.ts ; not source of truth.
+artifacts/

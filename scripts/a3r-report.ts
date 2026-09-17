@@ -190,6 +190,33 @@ function main(): void {
   const publicationPassCount = rows.filter((r) => r.publicationPass).length;
   const indexableCount = rows.filter((r) => r.indexable).length;
 
+  // Provenance classification per row. Governed correctly : `sourceSha` is
+  // ABSENT on every corpus document (Markdown producer emits none), while
+  // `sourceEvidenceDigest` is PRESENT — so the effective provenance mode is
+  // NON_GIT_EVIDENCE, and the blocking reason surfaced by publication-pass is
+  // `non-git-provenance-not-authorized` (a positive authorisation gate that
+  // remains OFF at A3R). This is the honest state ; do not misreport as
+  // `source-authority-uncertified`.
+  const provenanceRows = rows.map((r) => {
+    const mode = r.sourceSha
+      ? "GIT_SHA"
+      : r.sourceEvidenceDigest
+        ? "NON_GIT_EVIDENCE"
+        : "ABSENT";
+    const blocker = mode === "NON_GIT_EVIDENCE"
+      ? "non-git-provenance-not-authorized"
+      : mode === "GIT_SHA"
+        ? "source-authority-uncertified"
+        : "no-provenance-declared";
+    return { ...r, provenanceMode: mode, provenanceBlocker: blocker };
+  });
+  const provenanceModeCounts: Record<string, number> = {};
+  const provenanceBlockerCounts: Record<string, number> = {};
+  for (const r of provenanceRows) {
+    provenanceModeCounts[r.provenanceMode] = (provenanceModeCounts[r.provenanceMode] ?? 0) + 1;
+    provenanceBlockerCounts[r.provenanceBlocker] = (provenanceBlockerCounts[r.provenanceBlocker] ?? 0) + 1;
+  }
+
   const report = {
     generatedAt: null, // deterministic
     contractFingerprint: CONTRACT_FINGERPRINT,
@@ -201,8 +228,11 @@ function main(): void {
       publicationPassCount,
       indexableCount,
       noindexCount: rows.length - indexableCount,
+      provenanceCertifiedCount: 0,
+      provenanceModes: provenanceModeCounts,
+      provenanceBlockers: provenanceBlockerCounts,
     },
-    rows: rows.sort((a, b) => a.slug.localeCompare(b.slug)),
+    rows: provenanceRows.sort((a, b) => a.slug.localeCompare(b.slug)),
   };
   if (!existsSync("content/managed-corpus")) mkdirSync("content/managed-corpus", { recursive: true });
   writeFileSync(
