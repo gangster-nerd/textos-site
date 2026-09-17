@@ -20,6 +20,7 @@ export function SiteHeader() {
           TextOS
         </Link>
         <nav className="site-header__nav" aria-label="Main">
+          <Link href="/insights">Insights</Link>
           <Link href="/methodology/authority-presence">Methodology</Link>
           <Link href="/faq">FAQ</Link>
         </nav>

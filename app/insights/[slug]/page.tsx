@@ -194,9 +194,45 @@ export default async function Page({
 
   const isDraft = entry.document.truth.publicationStatus !== "published";
 
+  // A2R-SURFACE-SEAL-1 §5 — draft honesty. `compileAuthority` currently emits a
+  // schema.org Article node regardless of publication status. For A2R-drafts
+  // we filter it OUT so no Article / TechArticle / BlogPosting node reaches
+  // the DOM ; and we substitute a minimal Organization + WebPage graph so the
+  // page still carries an HONEST publisher identity without any publication
+  // semantics.
+  const ARTICLE_TYPES = new Set(["Article", "TechArticle", "BlogPosting"]);
+  const draftJsonLd: Record<string, unknown>[] = isDraft
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "urn:textos:org",
+              name: "TextOS",
+              ...(siteConfig.allowIndexing ? { url: siteConfig.origin } : {}),
+            },
+            {
+              "@type": "WebPage",
+              "@id": `urn:textos:content:${entry.document.identity.documentId}#webpage`,
+              name: entry.document.identity.title,
+              description: entry.document.identity.description,
+              inLanguage: entry.document.identity.language,
+              publisher: { "@id": "urn:textos:org" },
+            },
+          ],
+        },
+      ]
+    : [];
+  const emittedJsonLd = isDraft
+    ? draftJsonLd
+    : compiled.jsonLd.filter(
+        (node) => !ARTICLE_TYPES.has(String((node as { "@type"?: string })["@type"])) || true,
+      );
+
   return (
     <>
-      {compiled.jsonLd.map((node, i) => (
+      {emittedJsonLd.map((node, i) => (
         <script
           key={i}
           type="application/ld+json"

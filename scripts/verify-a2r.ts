@@ -39,6 +39,10 @@ function main(): void {
     "tests/a2r-render-semantic-parity.test.ts",
     "tests/a2r-mutation-tests.test.ts",
     "tests/a2r-author-route.test.ts",
+    // A2R-SURFACE-SEAL-1 tests
+    "tests/a2r-exact-render-parity.test.ts",
+    "tests/a2r-surface-mutations.test.ts",
+    "tests/a2r-insights-jsonld.test.ts",
   ]);
   if (testStatus !== 0) {
     console.error("[verify:a2r] A2R tests failed");
