@@ -8,10 +8,30 @@
 import React, { type ReactElement } from "react";
 
 import type { ContentBlock } from "../contract/content-document";
+import type { BlockNode, HeadingNode } from "../contract/mdast-semantic";
 import { UnsupportedBlockKindError } from "./errors";
+import {
+  renderBlock as renderMdastBlock,
+  assignHeadingIds,
+  phrasingToPlainText,
+} from "./mdast-renderer";
 
 interface BlockContext {
   documentId: string;
+  /** A2R : precomputed heading ids so ToC anchors match rendered h2/h3 ids. */
+  headingIdByNode?: ReadonlyMap<HeadingNode, string>;
+  /**
+   * A2R : optional in-body CTA renderer. When a `cta_slot` with `slot="primary-cta"`
+   * is encountered inside the flow, this callback is invoked to render the real
+   * contextual CTA card in place of the empty placeholder. Returns `null` when
+   * the caller does not want to render a CTA there.
+   */
+  renderContextualCta?: (block: ContentBlock) => React.ReactElement | null;
+}
+
+function mdastNode(block: ContentBlock): BlockNode | undefined {
+  const carried = (block.data as { mdast?: unknown } | undefined)?.mdast;
+  return carried as BlockNode | undefined;
 }
 
 function stringField(data: Record<string, unknown>, key: string): string {
@@ -25,11 +45,28 @@ function stringArrayField(data: Record<string, unknown>, key: string): readonly 
   return value.filter((v): v is string => typeof v === "string");
 }
 
-function renderParagraph(block: ContentBlock): ReactElement {
+function renderParagraph(block: ContentBlock, _ctx: BlockContext): ReactElement {
+  const nd = mdastNode(block);
+  if (nd?.type === "paragraph") {
+    return (
+      <div className="cse-block cse-block--paragraph">
+        {renderMdastBlock(nd)}
+      </div>
+    );
+  }
   return <p className="cse-block cse-block--paragraph">{stringField(block.data, "text")}</p>;
 }
 
-function renderHeading(block: ContentBlock): ReactElement {
+function renderHeading(block: ContentBlock, ctx: BlockContext): ReactElement {
+  const nd = mdastNode(block);
+  if (nd?.type === "heading") {
+    const id = ctx.headingIdByNode?.get(nd) ?? block.id;
+    return (
+      <div className="cse-block cse-block--heading">
+        {renderMdastBlock(nd, { headingId: id })}
+      </div>
+    );
+  }
   const level = Math.min(6, Math.max(2, block.level ?? 2));
   const text = stringField(block.data, "text");
   const Tag = (`h${level}` as unknown) as "h2";
@@ -68,6 +105,10 @@ function renderEvidence(block: ContentBlock): ReactElement {
 }
 
 function renderQuote(block: ContentBlock): ReactElement {
+  const nd = mdastNode(block);
+  if (nd?.type === "blockquote") {
+    return <div className="cse-block cse-block--quote">{renderMdastBlock(nd)}</div>;
+  }
   const attribution = stringField(block.data, "attribution");
   return (
     <blockquote className="cse-block cse-block--quote">
@@ -157,6 +198,10 @@ function renderTable(block: ContentBlock): ReactElement {
 }
 
 function renderSteps(block: ContentBlock): ReactElement {
+  const nd = mdastNode(block);
+  if (nd?.type === "list") {
+    return <div className="cse-block cse-block--steps">{renderMdastBlock(nd)}</div>;
+  }
   const items = stringArrayField(block.data, "items");
   return (
     <ol className="cse-block cse-block--steps">
@@ -168,6 +213,10 @@ function renderSteps(block: ContentBlock): ReactElement {
 }
 
 function renderCallout(block: ContentBlock): ReactElement {
+  const nd = mdastNode(block);
+  if (nd?.type === "code" || nd?.type === "thematicBreak") {
+    return <div className="cse-block cse-block--callout">{renderMdastBlock(nd)}</div>;
+  }
   const tone = stringField(block.data, "tone") || "info";
   return (
     <aside
@@ -225,11 +274,29 @@ function renderSource(block: ContentBlock): ReactElement {
 // cta_slot and related_content_slot are STRUCTURAL PLACEHOLDERS. The block renderer emits an
 // anchor element only. The actual CTA or related-content is rendered by the TextOS-managed
 // surface (see managed-surface.tsx) using the CSE conversion / relationships facilities.
-function renderCtaSlot(block: ContentBlock): ReactElement {
+function renderCtaSlot(block: ContentBlock, ctx: BlockContext): ReactElement {
+  // A2R : when the surface provides a `renderContextualCta` callback and the
+  // slot is "primary-cta", emit the real CTA card here (in-body). Otherwise
+  // keep the empty placeholder so downstream tooling / diagnostics can locate
+  // the slot without a rendered CTA.
+  if (block.slot === "primary-cta" && ctx.renderContextualCta) {
+    const rendered = ctx.renderContextualCta(block);
+    if (rendered) {
+      return (
+        <div
+          className="cse-block cse-block--cta-slot cse-block--cta-slot-inline"
+          data-cse-slot="primary-cta"
+          data-cse-block-id={block.id}
+        >
+          {rendered}
+        </div>
+      );
+    }
+  }
   return (
     <div
       className="cse-block cse-block--cta-slot"
-      data-cse-slot="cta"
+      data-cse-slot={block.slot ?? "cta"}
       data-cse-block-id={block.id}
       aria-hidden="true"
     />
@@ -247,12 +314,12 @@ function renderRelatedSlot(block: ContentBlock): ReactElement {
   );
 }
 
-export function renderBlock(block: ContentBlock, _ctx: BlockContext): ReactElement {
+export function renderBlock(block: ContentBlock, ctx: BlockContext): ReactElement {
   switch (block.kind) {
     case "paragraph":
-      return renderParagraph(block);
+      return renderParagraph(block, ctx);
     case "heading":
-      return renderHeading(block);
+      return renderHeading(block, ctx);
     case "answer":
       return renderAnswer(block);
     case "evidence":
@@ -276,7 +343,7 @@ export function renderBlock(block: ContentBlock, _ctx: BlockContext): ReactEleme
     case "source":
       return renderSource(block);
     case "cta_slot":
-      return renderCtaSlot(block);
+      return renderCtaSlot(block, ctx);
     case "related_content_slot":
       return renderRelatedSlot(block);
     default: {

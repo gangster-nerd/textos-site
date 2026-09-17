@@ -9,15 +9,46 @@
 import React, { type ReactElement } from "react";
 
 import type { ResolvedContentSurface } from "../contract/resolved-content-surface";
+import type { BlockNode, HeadingNode } from "../contract/mdast-semantic";
 import { renderBlock } from "./block-renderers";
+import { assignHeadingIds } from "./mdast-renderer";
 
 export const RENDER_VERSION = "reference@1" as const;
 
-export interface RenderReferenceBodyProps {
-  resolved: ResolvedContentSurface;
+/**
+ * Pre-compute a heading-id map so the H2/H3 anchors emitted in the body match
+ * the ToC fragments. Sourced from the SEALED semantic tree (block.data.mdast).
+ */
+function buildHeadingIdMap(
+  resolved: ResolvedContentSurface,
+): ReadonlyMap<HeadingNode, string> {
+  const roots: BlockNode[] = [];
+  for (const rb of resolved.blocks) {
+    if (!rb.visible) continue;
+    const mdast = (rb.block.data as { mdast?: unknown } | undefined)?.mdast;
+    if (mdast && typeof mdast === "object") {
+      roots.push(mdast as BlockNode);
+    }
+  }
+  return assignHeadingIds(roots).ids;
 }
 
-export function RenderReferenceBody({ resolved }: RenderReferenceBodyProps): ReactElement {
+export interface RenderReferenceBodyProps {
+  resolved: ResolvedContentSurface;
+  /**
+   * A2R : optional in-body CTA renderer, invoked when a primary-cta slot block
+   * is encountered. See BlockContext.renderContextualCta.
+   */
+  renderContextualCta?: (block: import("../contract/content-document").ContentBlock) =>
+    | ReactElement
+    | null;
+}
+
+export function RenderReferenceBody({
+  resolved,
+  renderContextualCta,
+}: RenderReferenceBodyProps): ReactElement {
+  const headingIdByNode = buildHeadingIdMap(resolved);
   return (
     <div
       className="cse-body"
@@ -37,7 +68,11 @@ export function RenderReferenceBody({ resolved }: RenderReferenceBodyProps): Rea
             data-cse-block-kind={rb.block.kind}
             data-cse-region={rb.region ?? undefined}
           >
-            {renderBlock(rb.block, { documentId: resolved.documentId })}
+            {renderBlock(rb.block, {
+              documentId: resolved.documentId,
+              headingIdByNode,
+              renderContextualCta,
+            })}
           </div>
         ))}
     </div>

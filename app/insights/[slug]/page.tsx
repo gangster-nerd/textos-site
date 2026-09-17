@@ -16,11 +16,14 @@ import { notFound } from "next/navigation";
 import { compileAuthority } from "@/lib/content-surface-engine/authority";
 import { resolveContentSurface } from "@/lib/content-surface-engine/composition/resolve-content-surface";
 import { resolveReferenceCta } from "@/lib/content-surface-engine/conversion";
+import { buildCtaAttributionHref } from "@/lib/content-surface-engine/conversion/build-cta-attribution";
 import { ManagedTextosSurface } from "@/lib/content-surface-engine/renderer/managed-textos-surface";
 import {
   findInsightEntry,
   listInsightEntries,
   resolveReferenceAuthor,
+  resolveReferenceEntity,
+  resolveRelatedContent,
 } from "@/lib/content-surface-engine/site-integration";
 import { textosArticleReferencePolicy } from "@/lib/content-surface-engine/surface-policy";
 import { serializeJsonLd } from "@/lib/schema-org/serialize";
@@ -112,11 +115,28 @@ export async function generateMetadata({
             ...(compiled.metadata.openGraph.siteName
               ? { siteName: compiled.metadata.openGraph.siteName }
               : {}),
+            // A2R : governed social card. Asset exists on disk per verify:a2r ; the
+            // width/height are the deterministic viewBox of the SVG.
+            images: [
+              {
+                url: siteConfig.allowIndexing
+                  ? `${siteConfig.origin}/og/insights/${slug}.svg`
+                  : `/og/insights/${slug}.svg`,
+                width: 1200,
+                height: 630,
+                alt: `${entry.document.identity.title} — TextOS Insight`,
+              },
+            ],
           },
           twitter: {
-            card: compiled.metadata.twitter.card,
+            card: "summary_large_image",
             title: compiled.metadata.twitter.title,
             description: compiled.metadata.twitter.description,
+            images: [
+              siteConfig.allowIndexing
+                ? `${siteConfig.origin}/og/insights/${slug}.svg`
+                : `/og/insights/${slug}.svg`,
+            ],
           },
         }
       : {}),
@@ -145,6 +165,7 @@ export default async function Page({
     resolved,
     intent: entry.document.conversion.ctaIntentId ?? "",
   });
+  const contentRevision = String(entry.document.lifecycle.revisionNumber ?? 0);
   const compiled = compileAuthority({
     resolved,
     siteOrigin: siteConfig.allowIndexing ? siteConfig.origin : null,
@@ -202,9 +223,46 @@ export default async function Page({
         <ManagedTextosSurface
           resolved={resolved}
           cta={cta}
-          resolveAuthor={(id) => resolveReferenceAuthor(id)}
+          resolveAuthor={(id) => {
+            const e = resolveReferenceEntity(id);
+            return e
+              ? { name: e.name, role: e.role, profilePath: e.profilePath }
+              : null;
+          }}
           kicker={entry.kicker}
-          contentRevision={String(entry.document.lifecycle.revisionNumber ?? 0)}
+          contentRevision={contentRevision}
+          breadcrumbInsights
+          ctaContextualHref={
+            cta
+              ? buildCtaAttributionHref({
+                  destination: cta.destination,
+                  contentId: entry.document.identity.documentId,
+                  clusterId: (entry.document as { clusterId?: string }).clusterId ?? null,
+                  ctaVariant: cta.variantId,
+                  ctaVersion: cta.version,
+                  position: "contextual",
+                  contentRevision,
+                })
+              : null
+          }
+          ctaFinalHref={
+            cta
+              ? buildCtaAttributionHref({
+                  destination: cta.destination,
+                  contentId: entry.document.identity.documentId,
+                  clusterId: (entry.document as { clusterId?: string }).clusterId ?? null,
+                  ctaVariant: cta.variantId,
+                  ctaVersion: cta.version,
+                  position: "final",
+                  contentRevision,
+                })
+              : null
+          }
+          relatedEntries={resolveRelatedContent({
+            target: entry.document,
+            publicOnly: siteConfig.allowIndexing,
+            limit: 6,
+          })}
         />
       </main>
     </>

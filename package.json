@@ -15,7 +15,8 @@
     "content:sync": "tsx scripts/content-sync.ts",
     "content:verify": "tsx scripts/content-verify.ts",
     "content:status": "tsx scripts/content-status.ts",
-    "a1r:emit-contract": "tsx scripts/a1r-emit-contract-schema.ts"
+    "a1r:emit-contract": "tsx scripts/a1r-emit-contract-schema.ts",
+    "verify:a2r": "tsx scripts/verify-a2r.ts"
   },
   "dependencies": {
     "@types/mdast": "^4.0.4",

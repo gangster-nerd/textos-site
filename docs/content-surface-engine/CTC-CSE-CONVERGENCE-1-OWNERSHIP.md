@@ -1,10 +1,27 @@
 # CTC-CSE-CONVERGENCE-1 — ownership matrix
 
+## A2R-PORT correction (2026-09-17)
+
+The initial convergence PR classified nearly every PR #19 change as
+`REJECTED_DUPLICATE`. That was too aggressive : it lumped PROVEN presentation
+behaviour into the same bucket as the parallel composition engine.
+
+A2R-PORT rewrites the matrix with a nuanced disposition set :
+
+- **REUSED_AS_CONTRACT** — producer-side facts left with the producer.
+- **PORTED_TO_CSE** — PR #19 presentation behaviour has been faithfully re-implemented
+  against `ResolvedContentSurface`. Automated functional parity demonstrated.
+- **SUPERSEDED_CANDIDATE** — CSE now has an equivalent, but functional AND visual
+  parity are not yet fully certified. Kept in this list until A2R's non-vacuous
+  mutation tests + visual acceptance pass.
+- **SUPERSEDED_BY_CSE** — both (1) automated parity is demonstrated AND (2) visual
+  parity or improvement is certified against the PR #19 acceptance oracle.
+
 Base: `main @ 7e2e74b2` (CSE Lane A merged: A1 `41e370c` + A2 `4860834` + A3 `7e6bb53` + review-fix `569ea3b`).
 
 Purpose: classify every file changed across PR #17, #18, #19 so the convergence branch
-imports each once, from its rightful owner, without carrying a parallel composition
-engine forward.
+imports each once, from its rightful owner, while the presentation surface is
+recertified against the sealed A1R contract.
 
 The shared boundary is **`ContentDocument`** (`lib/content-surface-engine/contract/content-document.ts`).
 Commit-to-Content produces `ContentDocument`s. Content Surface Engine composes and renders
@@ -16,8 +33,48 @@ them.
 - **CONTENT_DOCUMENT_CONTRACT** — shared between producers and CSE.
 - **CSE_REFERENCE_RENDERER** — owned by Content Surface Engine.
 - **SITE_SHELL** — owned by textos-site (header, nav, layout).
-- **DUPLICATE_OR_SUPERSEDED** — replaced by CSE ; do NOT import into convergence.
+- **REUSED_AS_CONTRACT / PORTED_TO_CSE / SUPERSEDED_CANDIDATE / SUPERSEDED_BY_CSE** — A2R disposition (see above).
 - **NATIVE_FORBIDDEN** — must not be touched until PA_RECEIPT_VERIFIED.
+
+## A2R disposition per PR #19 component
+
+| PR #19 component | A1 verdict | A2R disposition | Note |
+|---|---|---|---|
+| `app/insights/[slug]/page.tsx` (article route composer) | REJECTED_DUPLICATE | **PORTED_TO_CSE** | Article-route thin adapter reads `ResolvedContentSurface` and delegates to `ManagedTextosSurface` + `RenderReferenceBody`. No Markdown reparse. |
+| `app/insights/topic/[slug]/page.tsx` | REJECTED_DUPLICATE | **SUPERSEDED_CANDIDATE** | Topic-hub route deferred to A3R. Corpus does not yet carry stable `topicIds` aligned with hub slugs. |
+| `app/insights/page.tsx` (index) | REJECTED_DUPLICATE | **PORTED_TO_CSE** | Reuses managed corpus listing. |
+| `app/sitemap.ts` | SUPERSEDED_BY_CSE | **SUPERSEDED_CANDIDATE** | Full sitemap recertification is A3R. |
+| `components/content/ContentCta.tsx` (composer) | REJECTED_DUPLICATE | **SUPERSEDED_BY_CSE** | CSE `resolveReferenceCta` + `buildCtaAttributionHref` + slot-position rendering replace it end-to-end. Attribution URL parity certified. |
+| `components/site/SiteHeader.tsx` (Insights nav entry) | REJECTED_DUPLICATE | **SUPERSEDED_CANDIDATE** | The Insights breadcrumb is emitted by the surface (`breadcrumbInsights`) but the global `SiteHeader` nav update is not required for A2R. |
+| `content/insights/*.md` (×12) | REUSED_AS_CONTRACT | **REUSED_AS_CONTRACT** | Authoritative producer source. Compiled to ContentDocument via A1R Markdown compiler. |
+| `lib/content/article-derivations.ts` | REJECTED_DUPLICATE | **PORTED_TO_CSE** | `slugifyHeading`, `extractHeadings`, `readingTime` are re-implemented as CSE `assignHeadingIds` / `phrasingToPlainText` on the SEALED semantic tree. |
+| `lib/content/author-registry.ts` | REUSED_AS_CONTRACT | **PORTED_TO_CSE** | CSE `resolveReferenceEntity` distinguishes Person / Organization ; A1R EditorialIdentityPolicy governs. |
+| `lib/content/topic-registry.ts` | REUSED_AS_CONTRACT | **REUSED_AS_CONTRACT** | Producer taxonomy. Not consumed by the renderer directly. |
+| `lib/content/link-graph.ts` | REJECTED_DUPLICATE | **SUPERSEDED_BY_CSE** | CSE `link-graph/` module carries it. |
+| `lib/content/freshness.ts` | REJECTED_DUPLICATE | **SUPERSEDED_CANDIDATE** | CSE `lifecycle/` covers current cases ; parity check for edge lifecycle states is A3R. |
+| `lib/content/insight-verifier.ts` | REUSED_AS_CONTRACT | **REUSED_AS_CONTRACT** | Producer-side gates. |
+| `lib/content/content-schema.ts` | REUSED_AS_CONTRACT | **REUSED_AS_CONTRACT** | Producer frontmatter contract. |
+| `lib/conversion/cta-registry.ts` | REUSED_AS_CONTRACT | **REUSED_AS_CONTRACT** | Governed CTA intents. Consumed by CSE `resolveReferenceCta`. |
+| `lib/schema-org/build-article-graph.ts` | REJECTED_DUPLICATE | **SUPERSEDED_BY_CSE** | CSE `compileAuthority` produces the JSON-LD graph including draft WebPage / published Article split. |
+| `public/og/insights/*.svg` (×12) | PORTED_AS_CSE_TEST | **PORTED_TO_CSE** | 12 SVGs sourced from `ctc-pr19-oracle-c88d3af` under `public/og/insights/`. Wired into `generateMetadata` (OG + Twitter summary_large_image). |
+| `scripts/backlink-candidates.ts` | REJECTED_DUPLICATE | **SUPERSEDED_BY_CSE** | CSE `computeBacklinkCandidates`. |
+| `scripts/generate-social-cards.ts` | REUSED_AS_CONTRACT | **REUSED_AS_CONTRACT** | Producer tooling. Not modified. |
+| `scripts/validate-jsonld.mjs` | SITE_SHELL | **SITE_SHELL** | Site gate. |
+| `tests/article-derivations.test.ts` | REJECTED_DUPLICATE | **PORTED_TO_CSE** | A2R re-covers heading id derivation on the SEALED semantic tree. |
+| `tests/link-graph.test.ts` | REJECTED_DUPLICATE | **SUPERSEDED_BY_CSE** | CSE link-graph tests already on main. |
+| `tests/insights-a11y-source.test.ts` | REJECTED_DUPLICATE | **PORTED_TO_CSE** | A2R adds non-vacuous HTML tests (`a2r-*.test.ts`) that ALWAYS run against a fresh build, never `describe.skipIf`. |
+| `tests/insights-frontmatter-contract.test.ts` | REJECTED_DUPLICATE | **PORTED_TO_CSE** | The path-aware invariants are enforced by A1R producer-schema + editorial-identity-policy. |
+
+## Sum-count per A2R disposition
+
+| Disposition | Count |
+|---|---|
+| REUSED_AS_CONTRACT (producer facts) | 7 |
+| PORTED_TO_CSE (functional parity demonstrated) | 9 |
+| SUPERSEDED_BY_CSE (functional + visual parity) | 5 |
+| SUPERSEDED_CANDIDATE (parity in progress) | 4 |
+
+
 
 ## Matrix
 
