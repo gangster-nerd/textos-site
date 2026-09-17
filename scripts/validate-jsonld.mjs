@@ -52,7 +52,19 @@ function readNodes(htmlPath) {
     } catch (e) {
       fail(`JSON-LD non parsable (${htmlPath}): ` + e.message);
     }
-    nodes = nodes.concat(Array.isArray(parsed) ? parsed : [parsed]);
+    // A3R : unwrap @graph wrappers. A draft insight emits
+    // { "@context": ..., "@graph": [Organization, WebPage] } — the graph
+    // wrapper itself has no @type but every node inside does.
+    const candidates = Array.isArray(parsed) ? parsed : [parsed];
+    for (const c of candidates) {
+      if (Array.isArray(c["@graph"])) {
+        for (const child of c["@graph"]) {
+          nodes.push({ "@context": c["@context"], ...child });
+        }
+      } else {
+        nodes.push(c);
+      }
+    }
   }
 
   for (const n of nodes) {
@@ -132,8 +144,17 @@ if (contentFiles.length === 0) {
   for (const { collection, file, p } of contentFiles) {
     const nodes = readNodes(p);
 
-    const article = nodes.find((n) => n["@type"] === "Article");
-    if (!article) fail(`nœud Article absent (${p})`);
+    // A3R : an insight page is either PUBLISHED (Article node) or DRAFT
+    // (WebPage node only, no Article). A CollectionPage represents an
+    // insights index / topic hub. Any of these three shapes is legitimate ;
+    // the invariant is "at least one page-level node" plus honesty about
+    // publication (drafts NEVER carry Article + datePublished).
+    const pageLevel = nodes.find((n) =>
+      ["Article", "TechArticle", "BlogPosting", "WebPage", "CollectionPage"].includes(
+        n["@type"],
+      ),
+    );
+    if (!pageLevel) fail(`nœud page-level absent (Article/WebPage/CollectionPage) (${p})`);
 
     if (nodes.some((n) => n["@type"] === "SoftwareApplication")) {
       fail(`SoftwareApplication interdit sur une page de contenu (${p})`);
@@ -141,7 +162,18 @@ if (contentFiles.length === 0) {
     if (nodes.some((n) => "featureList" in n)) {
       fail(`featureList interdit sur une page de contenu (${p})`);
     }
-    if (!article.headline) fail(`Article sans headline (${p})`);
+    const isDraftPage = pageLevel["@type"] === "WebPage" && !pageLevel.datePublished;
+    if (!isDraftPage && !pageLevel.headline && !pageLevel.name) {
+      fail(`Nœud page-level sans headline/name (${p})`);
+    }
+    // Drafts MUST NOT leak datePublished / dateModified anywhere in the graph.
+    if (isDraftPage) {
+      const blob = JSON.stringify(nodes);
+      if (/"datePublished"|"dateModified"/.test(blob)) {
+        fail(`draft WebPage (${p}) émet datePublished/dateModified — draft ne doit pas publier de dates.`);
+      }
+    }
+    const article = pageLevel; // for the origin/url check below
 
     // Auto-référence absolue (@id/url) OPTIONNELLE : présente seulement si
     // l'origine est réelle et indexable ; sinon la valeur inconnue se déclare

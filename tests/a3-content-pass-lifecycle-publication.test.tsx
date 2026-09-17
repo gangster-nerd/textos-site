@@ -63,15 +63,23 @@ describe("A3 — corpus + gates", () => {
     }
   });
 
-  it("(#2) migration preserves governed claims/evidence", () => {
+  it("(#2) A3R regeneration preserves governed claims/evidence and swaps to canonical Person author", () => {
+    // Prior expectation `authorIds contains textos-editorial-team` reflected the
+    // migration-era Organization placeholder. A1R ratified the
+    // EditorialIdentityPolicy — canonical Person = Marc Prempain — and the A1R
+    // corpus regeneration mapped every article's authorId. Assert BOTH invariants
+    // remain true : the claims/evidence carry-over is preserved AND the corpus
+    // now names Marc Prempain, never the placeholder Organization.
     const corpus = loadManagedCorpus();
-    // Spot-check three well-known insights from ARTICLE-SYSTEM-1.
-    const noAffirmation = corpus.find((d) => d.identity.slug === "no-affirmation-without-evidence")!;
+    const noAffirmation = corpus.find(
+      (d) => d.identity.slug === "no-affirmation-without-evidence",
+    )!;
     expect(noAffirmation.truth.claimIds).toContain("m5-not-observable-is-not-zero");
     expect(noAffirmation.truth.capabilityIds).toContain("observe-authority-presence");
     const observatory = corpus.find((d) => d.identity.slug === "observatory-not-cms")!;
     expect(observatory).toBeDefined();
-    expect(observatory.editorial.authorIds).toContain("textos-editorial-team");
+    expect(observatory.editorial.authorIds).toContain("marc-prempain");
+    expect(observatory.editorial.authorIds).not.toContain("textos-editorial-team");
     const briefEcon = corpus.find((d) => d.identity.slug === "brief-to-decision-economics")!;
     expect(briefEcon.truth.claimIds.length).toBeGreaterThan(0);
     expect(briefEcon.provenance.sourceEvidenceDigest).toMatch(/^[0-9a-f]{64}$/);
@@ -118,7 +126,17 @@ describe("A3 — corpus + gates", () => {
     const codes = failed.issues.map((i) => i.code);
     expect(codes).toContain("textos.article.short-answer");
     expect(codes).toContain("textos.article.heading-present");
-    expect(codes).toContain("textos.article.named-author");
+    // A1R ratified EditorialIdentityPolicy replaces the previous
+    // `textos.article.named-author` scalar check with a family of policy
+    // codes ; a generic doc without authorship fails with the specific
+    // "author-missing" ratification.
+    expect(
+      codes.some((c) =>
+        c.startsWith("textos.article.identity.author-missing") ||
+        c === "textos.article.identity.author-missing",
+      ),
+      `expected an identity policy failure ; got ${codes.join(", ")}`,
+    ).toBe(true);
   });
 
   it("(#7) LinkGraph is deterministic", () => {
@@ -215,14 +233,26 @@ describe("A3 — corpus + gates", () => {
     expect(codes).toContain("publication-status-not-publishable");
   });
 
-  it("(#15) INDEXABLE requires all three passes", () => {
+  it("(#15) INDEXABLE requires the four-gate conjunction (CONTENT + FIDELITY + SURFACE + PUBLICATION)", () => {
     const cp = { documentId: "d", profile: "default" as const, passed: true, issues: [], checked: [] };
+    const fp = {
+      documentId: "d",
+      producerKind: "markdown-textos-insights" as const,
+      sourceFingerprint: "0".repeat(64),
+      documentFingerprint: "0".repeat(64),
+      passed: true,
+      issues: [] as never[],
+    };
     const surface = { passed: true, reasons: [] as readonly string[] };
     const pub = { documentId: "d", surface: "reference" as const, passed: true, issues: [] };
-    expect(decideIndexable({ contentPass: cp, surfacePass: surface, publicationPass: pub }).indexable).toBe(true);
+    expect(
+      decideIndexable({ contentPass: cp, fidelityPass: fp, surfacePass: surface, publicationPass: pub }).indexable,
+    ).toBe(true);
+    // Each gate individually RED while the others GREEN → noindex.
     expect(
       decideIndexable({
         contentPass: { ...cp, passed: false, issues: [{ code: "x", severity: "error", path: [], message: "m" }] },
+        fidelityPass: fp,
         surfacePass: surface,
         publicationPass: pub,
       }).indexable,
@@ -230,6 +260,21 @@ describe("A3 — corpus + gates", () => {
     expect(
       decideIndexable({
         contentPass: cp,
+        fidelityPass: {
+          ...fp,
+          passed: false,
+          issues: [
+            { code: "ast-divergence", path: [] as const, message: "shape divergence" },
+          ],
+        },
+        surfacePass: surface,
+        publicationPass: pub,
+      }).indexable,
+    ).toBe(false);
+    expect(
+      decideIndexable({
+        contentPass: cp,
+        fidelityPass: fp,
         surfacePass: { passed: false, reasons: ["render error"] },
         publicationPass: pub,
       }).indexable,
@@ -237,10 +282,28 @@ describe("A3 — corpus + gates", () => {
     expect(
       decideIndexable({
         contentPass: cp,
+        fidelityPass: fp,
         surfacePass: surface,
         publicationPass: { ...pub, passed: false, issues: [{ code: "publication-status-not-publishable", message: "m" }] },
       }).indexable,
     ).toBe(false);
+    // Wrong-document identity on any gate → noindex.
+    expect(
+      decideIndexable({
+        contentPass: { ...cp, documentId: "OTHER" },
+        fidelityPass: fp,
+        surfacePass: surface,
+        publicationPass: pub,
+      }).reasons.some((r) => r.code === "document-identity-mismatch"),
+    ).toBe(true);
+    expect(
+      decideIndexable({
+        contentPass: cp,
+        fidelityPass: { ...fp, documentId: "OTHER" },
+        surfacePass: surface,
+        publicationPass: pub,
+      }).reasons.some((r) => r.code === "document-identity-mismatch"),
+    ).toBe(true);
   });
 
   it("(#16) draft/review is noindex through PUBLICATION_PASS", () => {
@@ -275,10 +338,13 @@ describe("A3 — corpus + gates", () => {
 
   it("(#18) publication receipt never fabricates deployment facts", () => {
     // No env → NOT_ISSUED with all reasons enumerated.
+    const A3R_FINGERPRINT =
+      "4cefe8c6ed8917180870a37a3f3dbf5d2ff3d9395563dc683fc189b4e47b7e7b";
     const receipt = issueReferencePublicationReceipt({
       contentDocumentId: "d",
       contentRevision: "1",
       contentSchemaVersion: "content-document@1",
+      contentContractFingerprint: A3R_FINGERPRINT,
       surfacePolicyVersion: "textos-site@1",
       renderVersion: "reference@1",
       sourceSha: null,
@@ -293,17 +359,21 @@ describe("A3 — corpus + gates", () => {
       expect(receipt.reasons).toContain("no-canonical-origin");
       expect(receipt.reasons).toContain("not-indexable-build");
       expect(receipt.reasons).toContain("indexability-not-approved");
+      // Fingerprint carried on NOT_ISSUED too.
+      expect(receipt.contentContractFingerprint).toBe(A3R_FINGERPRINT);
     }
-    // Fully-formed env → ISSUED with declared facts.
+    // Fully-formed env AND indexable=true → ISSUED with declared facts.
     const issued = issueReferencePublicationReceipt({
       contentDocumentId: "d",
       contentRevision: "1",
       contentSchemaVersion: "content-document@1",
+      contentContractFingerprint: A3R_FINGERPRINT,
       surfacePolicyVersion: "textos-site@1",
       renderVersion: "reference@1",
       sourceSha: null,
       sourceEvidenceDigest: "a".repeat(64),
       builtPath: "/reference-preview/foo",
+      indexableDecision: { documentId: "d", indexable: true },
       env: {
         VERCEL_GIT_COMMIT_SHA: "c".repeat(40),
         VERCEL_DEPLOYMENT_ID: "dpl_123",
@@ -403,6 +473,19 @@ describe("A3 — corpus + gates", () => {
       });
       const decision = decideIndexable({
         contentPass: cp,
+        // A3R : four-gate. The 12 A1R corpus documents are certified against
+        // their authoritative Markdown ; fidelity is GREEN. We stamp a green
+        // FidelityPassResult here so the truth-table exercised in this loop
+        // matches the actual production pipeline. The `a1r-fidelity-corpus`
+        // suite proves the underlying invariant per document.
+        fidelityPass: {
+          documentId: doc.identity.documentId,
+          producerKind: "markdown-textos-insights",
+          sourceFingerprint: "0".repeat(64),
+          documentFingerprint: "0".repeat(64),
+          passed: true,
+          issues: [],
+        },
         surfacePass: { passed: surfacePassed, reasons: surfaceReasons },
         publicationPass: pub,
       });

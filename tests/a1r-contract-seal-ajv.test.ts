@@ -21,7 +21,13 @@ const ajv = new Ajv2020({ strict: false, allErrors: true });
 const validate = ajv.compile(SCHEMA);
 
 const corpusFiles = readdirSync("content/managed-corpus")
-  .filter((f) => f.endsWith(".json") && !f.startsWith("A3-") && f !== "INVENTORY.json")
+  .filter(
+    (f) =>
+      f.endsWith(".json") &&
+      !f.startsWith("A3-") &&
+      !f.startsWith("A3R-") &&
+      f !== "INVENTORY.json",
+  )
   .sort();
 
 // A minimal known-good document to base negative fixtures on.

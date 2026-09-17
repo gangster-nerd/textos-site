@@ -278,19 +278,29 @@ describe("état réel du dépôt", () => {
     expect(kinds).not.toContain("capability_absent_from_registry");
   });
 
-  it("les cinq documents RÉELS portent le snapshot épinglé et résolvent leur provenance", () => {
+  it("tous les documents routés RÉELS portent le snapshot épinglé et résolvent leur provenance", () => {
     // Version précédente : elle fabriquait `productSnapshotSha: manifest.snapshotCommit`, donc ne
     // pouvait par construction jamais produire de mismatch. Elle ne lisait aucun fichier réel et
     // prouvait exactement rien — tout en prétendant verrouiller la décision éditoriale.
     //
-    // Ici les documents sont chargés par le MÊME pipeline que les pages, et ce sont leurs valeurs
-    // de frontmatter qui entrent dans la vérification. Un futur réimport qui bougerait le snapshot
-    // sans relire les contenus fera donc réellement rougir ce test.
+    // A3R : le décompte magique "5" a été retiré. La branche porte désormais plusieurs familles
+    // de contenu gouvernées (faq, methodology, insights au fil des ports). Le test valide
+    // l'INVENTAIRE ROUTÉ : chaque document du répertoire routé est chargé par le même pipeline
+    // que les pages, et la vérification s'applique à TOUS. Un futur réimport qui déplacerait
+    // le snapshot sans relire les contenus fera donc réellement rougir ce test — indépendamment
+    // du nombre total d'articles. L'addition prochaine des 33 briefs échouera ici si — et
+    // seulement si — leur provenance n'est pas justifiée.
     const docs = routedCollections(process.cwd()).flatMap((collection) =>
       loadCollection(collection)
     );
 
-    expect(docs).toHaveLength(5);
+    // Non-vacuité minimale : au moins une famille de contenu routée est présente. Le compte
+    // exact est délibérément absent — l'invariant à protéger est la RÉSOLUTION de provenance,
+    // pas un nombre.
+    expect(
+      docs.length,
+      "aucun document routé chargé — pipeline cassé ou routed-collections vide",
+    ).toBeGreaterThan(0);
 
     for (const doc of docs) {
       const { productSnapshotSha, evidenceRefs, capabilityIds } = doc.frontmatter;

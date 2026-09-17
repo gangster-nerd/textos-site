@@ -1,0 +1,481 @@
+{
+  "generatedAt": null,
+  "contractFingerprint": "4cefe8c6ed8917180870a37a3f3dbf5d2ff3d9395563dc683fc189b4e47b7e7b",
+  "counts": {
+    "documents": 12,
+    "contentPassCount": 12,
+    "fidelityPassCount": 12,
+    "surfacePassCount": 12,
+    "publicationPassCount": 0,
+    "indexableCount": 0,
+    "noindexCount": 12
+  },
+  "rows": [
+    {
+      "documentId": "textos-insight:agent-protocol-immutable-frontiers",
+      "slug": "agent-protocol-immutable-frontiers",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "2fef740194578ef5d1409b03316774edbeffa17341e2adb0ce1e98106a7922cc",
+      "primaryTopicId": "how-we-build",
+      "topicIds": [
+        "how-we-build"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:authority-intelligence-not-ai-seo",
+      "slug": "authority-intelligence-not-ai-seo",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "c2f64554696a5715c6468e435b32b3eee2d97d47f1a137893b0599641f333de1",
+      "primaryTopicId": "product-doctrine",
+      "topicIds": [
+        "product-doctrine",
+        "authority-observation"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:brief-to-decision-economics",
+      "slug": "brief-to-decision-economics",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "a1af0b28f2e926b3fcdb5225d2f8fbdbcd7cea09b93e487945094ffe8e1fe00a",
+      "primaryTopicId": "opportunity-and-decision",
+      "topicIds": [
+        "opportunity-and-decision",
+        "product-doctrine"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:graduated-publication",
+      "slug": "graduated-publication",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "088b69bb7c233fbb94fc27a34899e81822b105acbf41ce2c366d0d798bde155b",
+      "primaryTopicId": "generation-and-publication",
+      "topicIds": [
+        "generation-and-publication",
+        "quality-ledger-and-provenance"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:no-affirmation-without-evidence",
+      "slug": "no-affirmation-without-evidence",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "daddcd05074017a754d88a9afc1f821b634032420af586a64e631238056a5889",
+      "primaryTopicId": "claim-evidence-and-truth-check",
+      "topicIds": [
+        "claim-evidence-and-truth-check",
+        "generation-and-publication"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:north-star-brief-acceptance",
+      "slug": "north-star-brief-acceptance",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "deb0bde199950bc160b0affa917b46fbbb904840bdcbd164b3e45e23f2cc45f4",
+      "primaryTopicId": "opportunity-and-decision",
+      "topicIds": [
+        "opportunity-and-decision",
+        "product-doctrine"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:observation-not-optimization",
+      "slug": "observation-not-optimization",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "52683ad02e3b6518659f934273b70e12765c2b8c1f4ee009131bc2cb0aef2bf5",
+      "primaryTopicId": "product-doctrine",
+      "topicIds": [
+        "product-doctrine",
+        "authority-observation"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:observatory-not-cms",
+      "slug": "observatory-not-cms",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "2e6a7ca422637602150fe99bfa1826e66d5f634000b0fe8b3c170fe296219b88",
+      "primaryTopicId": "authority-observation",
+      "topicIds": [
+        "authority-observation",
+        "product-doctrine"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:opportunity-brief-deterministic",
+      "slug": "opportunity-brief-deterministic",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "3a6360e9a5a170af82ca4c0e8f6f8907aec2225594938c7ccc823b9435a7eb53",
+      "primaryTopicId": "opportunity-and-decision",
+      "topicIds": [
+        "opportunity-and-decision"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:three-dimensions-authority-presence",
+      "slug": "three-dimensions-authority-presence",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "77abe2f5dc909c98af5ab9cfa5ab5613ac17e969b594198caee960ed99c25c43",
+      "primaryTopicId": "measurement-mechanics",
+      "topicIds": [
+        "measurement-mechanics",
+        "authority-observation"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:three-measures-never-one-score",
+      "slug": "three-measures-never-one-score",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "9e4506c77fe924e79823d809f4730a7eb68f4f92892864507966ae736a4c8046",
+      "primaryTopicId": "measurement-mechanics",
+      "topicIds": [
+        "measurement-mechanics",
+        "product-doctrine"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    },
+    {
+      "documentId": "textos-insight:truthcheck-unmovable-gate",
+      "slug": "truthcheck-unmovable-gate",
+      "contentPass": true,
+      "contentPassIssues": [],
+      "fidelityPass": true,
+      "fidelityPassIssues": [],
+      "surfacePass": true,
+      "surfacePassIssues": [],
+      "publicationPass": false,
+      "publicationPassIssues": [
+        "publication-status-not-publishable",
+        "non-git-provenance-not-authorized"
+      ],
+      "indexable": false,
+      "indexabilityReasons": [
+        "publication-pass-failed"
+      ],
+      "lifecycleState": "CURRENT",
+      "lifecycleReasons": [],
+      "sourceAuthority": "UNCERTIFIED",
+      "sourceSha": null,
+      "sourceEvidenceDigest": "665a16b7554dd0397caf72f259f41a7503730681a57a3e8f9d5a8e411d80dd30",
+      "primaryTopicId": "claim-evidence-and-truth-check",
+      "topicIds": [
+        "claim-evidence-and-truth-check",
+        "generation-and-publication"
+      ],
+      "relatedPublicTargets": [],
+      "receiptStatus": "NOT_ISSUED",
+      "receiptReasons": [
+        "no-merge-sha",
+        "no-deployment-id",
+        "no-canonical-origin",
+        "not-indexable-build",
+        "indexability-not-approved",
+        "indexability-gate-failed"
+      ]
+    }
+  ]
+}
