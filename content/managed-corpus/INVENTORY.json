@@ -1,66 +1,66 @@
 {
-  "migratedAt": "2026-09-13",
-  "sourceBranch": "feat/ctc-article-system-1",
   "entries": [
     {
-      "slug": "agent-protocol-immutable-frontiers",
       "path": "content/insights/agent-protocol-immutable-frontiers.md",
-      "sha256": "bd5a428e17764942973700142ff4bbbd88001452c5e6db44e9bd5a7635a9e0a8"
+      "sha256": "2fef740194578ef5d1409b03316774edbeffa17341e2adb0ce1e98106a7922cc",
+      "slug": "agent-protocol-immutable-frontiers"
     },
     {
-      "slug": "authority-intelligence-not-ai-seo",
       "path": "content/insights/authority-intelligence-not-ai-seo.md",
-      "sha256": "24ab42cbaf4152ef1de6cc84dda9a0f52858d649853882f8a409d2d0fef14f0f"
+      "sha256": "c2f64554696a5715c6468e435b32b3eee2d97d47f1a137893b0599641f333de1",
+      "slug": "authority-intelligence-not-ai-seo"
     },
     {
-      "slug": "brief-to-decision-economics",
       "path": "content/insights/brief-to-decision-economics.md",
-      "sha256": "6e978e584a57e74c7a669cd0c63065a31edce6e7c3764e25a3d9ec53b4e18caf"
+      "sha256": "a1af0b28f2e926b3fcdb5225d2f8fbdbcd7cea09b93e487945094ffe8e1fe00a",
+      "slug": "brief-to-decision-economics"
     },
     {
-      "slug": "graduated-publication",
       "path": "content/insights/graduated-publication.md",
-      "sha256": "b991298ea90a5bc111bc188124eb5e065fd9710220d8a16f9299149568084078"
+      "sha256": "088b69bb7c233fbb94fc27a34899e81822b105acbf41ce2c366d0d798bde155b",
+      "slug": "graduated-publication"
     },
     {
-      "slug": "no-affirmation-without-evidence",
       "path": "content/insights/no-affirmation-without-evidence.md",
-      "sha256": "3366388d14655b7be195fadbce0a4db24af8ecd3eeb474e80a7d3cfeac14e057"
+      "sha256": "daddcd05074017a754d88a9afc1f821b634032420af586a64e631238056a5889",
+      "slug": "no-affirmation-without-evidence"
     },
     {
-      "slug": "north-star-brief-acceptance",
       "path": "content/insights/north-star-brief-acceptance.md",
-      "sha256": "aa265a372c0add58563a5ff997e881fcd2ba2a6e860cf8892d316a26cb5883df"
+      "sha256": "deb0bde199950bc160b0affa917b46fbbb904840bdcbd164b3e45e23f2cc45f4",
+      "slug": "north-star-brief-acceptance"
     },
     {
-      "slug": "observation-not-optimization",
       "path": "content/insights/observation-not-optimization.md",
-      "sha256": "fb20291e3ee678eca18b932c34f4baf0d0a11403991f736e1430a29077ca7025"
+      "sha256": "52683ad02e3b6518659f934273b70e12765c2b8c1f4ee009131bc2cb0aef2bf5",
+      "slug": "observation-not-optimization"
     },
     {
-      "slug": "observatory-not-cms",
       "path": "content/insights/observatory-not-cms.md",
-      "sha256": "eb2a09d09eaa031b1fb6541e48e91329a340807046750131b949251c6095a712"
+      "sha256": "2e6a7ca422637602150fe99bfa1826e66d5f634000b0fe8b3c170fe296219b88",
+      "slug": "observatory-not-cms"
     },
     {
-      "slug": "opportunity-brief-deterministic",
       "path": "content/insights/opportunity-brief-deterministic.md",
-      "sha256": "c0f7edcbcb4425b4d8cb8456493cb16e4a0db4aeebd3749261d7ad5561cf107b"
+      "sha256": "3a6360e9a5a170af82ca4c0e8f6f8907aec2225594938c7ccc823b9435a7eb53",
+      "slug": "opportunity-brief-deterministic"
     },
     {
-      "slug": "three-dimensions-authority-presence",
       "path": "content/insights/three-dimensions-authority-presence.md",
-      "sha256": "766492056e0b1f36238cc300663daeca1f0cdd84826192694fc0ca6f8d3e9fba"
+      "sha256": "77abe2f5dc909c98af5ab9cfa5ab5613ac17e969b594198caee960ed99c25c43",
+      "slug": "three-dimensions-authority-presence"
     },
     {
-      "slug": "three-measures-never-one-score",
       "path": "content/insights/three-measures-never-one-score.md",
-      "sha256": "2369d149f1a065a502ca5bb0e0fc177dff560eb835f640fc6b41de4c111c0166"
+      "sha256": "9e4506c77fe924e79823d809f4730a7eb68f4f92892864507966ae736a4c8046",
+      "slug": "three-measures-never-one-score"
     },
     {
-      "slug": "truthcheck-unmovable-gate",
       "path": "content/insights/truthcheck-unmovable-gate.md",
-      "sha256": "4fba6a980609e1c0456d36c1b71ecf2c02e23b7ea821c1a4ea61220e614fec24"
+      "sha256": "665a16b7554dd0397caf72f259f41a7503730681a57a3e8f9d5a8e411d80dd30",
+      "slug": "truthcheck-unmovable-gate"
     }
-  ]
+  ],
+  "migratedAt": "2026-09-16",
+  "sourceBranch": "feat/ctc-cse-convergence-1"
 }

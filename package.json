@@ -14,22 +14,35 @@
     "verify:product-manifest": "tsx scripts/verify-product-manifest.ts",
     "content:sync": "tsx scripts/content-sync.ts",
     "content:verify": "tsx scripts/content-verify.ts",
-    "content:status": "tsx scripts/content-status.ts"
+    "content:status": "tsx scripts/content-status.ts",
+    "a1r:emit-contract": "tsx scripts/a1r-emit-contract-schema.ts",
+    "verify:a2r": "tsx scripts/verify-a2r.ts",
+    "a3r:report": "tsx scripts/a3r-report.ts",
+    "verify:a3r": "tsx scripts/verify-a3r.ts"
   },
   "dependencies": {
+    "@types/mdast": "^4.0.4",
     "geist": "^1.7.2",
     "gray-matter": "^4.0.3",
+    "mdast-util-from-markdown": "^2.0.3",
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.5",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "cheerio": "^1.2.0",
+    "playwright": "^1.63.0",
     "tsx": "^4.23.1",
     "typescript": "^5.7.3",
     "vitest": "^4.1.10"

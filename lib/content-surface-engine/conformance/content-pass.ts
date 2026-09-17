@@ -22,6 +22,8 @@
 // nothing in the core dispatches on contentType.
 
 import type { ContentDocument } from "../contract/content-document";
+import { evaluateEditorialIdentity } from "../authority/editorial-identity-policy";
+import { resolveReferenceEntity } from "../site-integration/authors";
 
 export type ContentPassProfile = "default" | "textos.article@1";
 
@@ -112,15 +114,28 @@ function runTextosArticle(document: ContentDocument, checked: string[], issues: 
       ),
     );
 
-  checked.push("textos.article.named-author");
-  if (document.editorial.authorIds.length === 0)
-    issues.push(
-      err(
-        "textos.article.named-author",
-        ["editorial", "authorIds"],
-        "TextOS article requires at least one authorId.",
-      ),
-    );
+  checked.push("textos.article.editorial-identity-policy");
+  const identityIssues = evaluateEditorialIdentity({
+    authorIds: document.editorial.authorIds,
+    resolve: (id) => {
+      const e = resolveReferenceEntity(id);
+      if (!e) return null;
+      return {
+        id: e.id,
+        name: e.name,
+        entityType: e.entityType,
+        profilePath: e.profilePath,
+      };
+    },
+  });
+  for (const ii of identityIssues) {
+    issues.push({
+      code: `textos.article.identity.${ii.code}`,
+      severity: "error",
+      path: ii.path,
+      message: ii.message,
+    });
+  }
 
   checked.push("textos.article.canonical-path");
   if (!document.seo.canonicalPath)

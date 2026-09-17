@@ -1,35 +1,960 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "TextOS is exploring an economics layer that would sit above the Opportunity Brief and report a break-even threshold on contribution margin — never a predicted revenue. Direction under exploration — not a delivery commitment."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Direction under exploration — not a delivery commitment."
+                }
+              ],
+              "type": "paragraph"
+            }
+          ],
+          "type": "blockquote"
+        }
+      },
+      "id": "q-827e4353c211",
+      "kind": "quote"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The question the buyer eventually asks"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-4101b3add4e6",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An authority-presence measurement can be defensible on its own. It answers what is visible, on which surface, on which panel, with what dispersion, and it refuses to answer questions it was not built for. That is enough to be trusted; it is not always enough to close a decision. Sooner or later a buyer asks the next question: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "what is this absence costing me, who is capturing the attention I am not, and what is the smallest portfolio of assets that would recover the ground?"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " This article documents where TextOS is heading on that question. It documents an exploration, not a delivered feature."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-9a66e480f501",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The Opportunity Brief layer, described in ADR-014, sits one step earlier. It judges — mechanically — which observed authority gaps qualify as "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "defensible opportunities"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " and assembles a proposed brief for each. It does no estimation. It uses no language model. It produces no ROI. A human accepts or rejects; the system never accepts on its own. The line we drew there is deliberately narrow: mechanical judgement of defensibility, factual assembly of evidence, human acceptance as the North Star."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-e0bed1f2e64b",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The economics layer, described in ADR-018, is a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "separate"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "later"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " derivation. It is being explored precisely because the Brief layer refuses to answer the economic question — and refusing to answer that question forever would eventually push customers into building the estimate themselves, unaided. The exploration asks: is there a way to answer without inventing numbers? The rest of this article is what \"without inventing numbers\" looks like in practice."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-6a4dfba22321",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "type": "html",
+          "value": "<!-- cta:contextual -->"
+        }
+      },
+      "id": "cta-0272cbe8002e",
+      "kind": "cta_slot",
+      "slot": "primary-cta"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The decision we are not going to make"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-79c7283e462c",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "There is a tempting formula for lost opportunity that reads well in a slide:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3d82af655982",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "lang": null,
+          "meta": null,
+          "type": "code",
+          "value": "Estimated Lost Visits =\n  Query Demand × Surface Usage Share × Answer Trigger Rate ×\n  Click Opportunity × Lost Capture Share"
+        }
+      },
+      "id": "c-30eda2b498fc",
+      "kind": "callout"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Every factor in that product is a coefficient between zero and one, except "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Query Demand"
+            },
+            {
+              "type": "text",
+              "value": ", which is a volume. "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Query Demand"
+            },
+            {
+              "type": "text",
+              "value": " — how many prompts a market is actually running against a given topic on a given engine — is not directly observable from the outputs TextOS reads today. It has a proxy (search-volume signals from a different channel) and it has soft signals from customers, but it is not a first-party measurement. A five-fold uncertainty on that variable produces a five-fold uncertainty on the euro figure at the end of the formula. Publishing \"your absence is costing you between €18k and €75k per month\" would show a CFO a precision the data does not carry."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-44a2a5e3d69e",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "We are not going to do that. It would be the one place in the entire product where TextOS quietly overpromises, and it would poison everything else that is careful. The exploration deliberately walks around that formula."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-777eedd9c448",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The inversion — a break-even threshold on contribution margin"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-b5634f212205",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The direction under exploration inverts the model. Instead of asking \"how much revenue would we recover?\", it asks \"how well would the intervention have to perform to be worth doing?\". Mathematically:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-27a4a1d0b2a4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "lang": null,
+          "meta": null,
+          "type": "code",
+          "value": "Required incremental wins           = Total intervention cost / Contribution margin per won customer\n\nRequired qualified visits (horizon) = Total intervention cost /\n                                      ( Visit-to-lead rate × Lead-to-opportunity rate ×\n                                        Win rate × Contribution margin per win )\n\nRequired qualified visits per month = Required qualified visits (horizon) / Amortization horizon"
+        }
+      },
+      "id": "c-e4a0865dd01e",
+      "kind": "callout"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Every input in that formula is either a cost the operator controls, a funnel rate the operator can source from a system they own, or an amortization window they can set. "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Query Demand"
+            },
+            {
+              "type": "text",
+              "value": " does not appear. It cannot corrupt the result because it is not in the result."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-46e9558649ca",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Three things follow. First, the break-even is "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "computable when the client has funnel and margin data"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ", and reports "
+            },
+            {
+              "type": "inlineCode",
+              "value": "not_available"
+            },
+            {
+              "type": "text",
+              "value": " when it does not — never zero. Second, the number produced is a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "threshold"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ", not a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "forecast"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ": it is a statement about the intervention, not about the market. Third, the threshold is naturally auditable. Each rate arrives as an explicit input ("
+            },
+            {
+              "type": "inlineCode",
+              "value": "visitToLeadRate"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "leadToOpportunityRate"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "opportunityWinRate"
+            },
+            {
+              "type": "text",
+              "value": ") with a source, a provenance, an observed window, and a confidence — not buried inside an \"assumptions\" bag. An operator who disagrees with the win-rate assumption can substitute their own and recompute. The tool respects the operator's judgement instead of overriding it."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-2c075769435c",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Only when a documented demand estimate is available — first-party, partner, or provider — does the exploration add a secondary quantity: "
+            },
+            {
+              "type": "inlineCode",
+              "value": "requiredDemandShare"
+            },
+            {
+              "type": "text",
+              "value": ", the fraction of that estimate the intervention would have to capture. That number is a plausibility check the reader can perform (\"do I really believe we can capture two per cent of this?\"), not a claim TextOS advances."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-fc91aa058375",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Epistemic status and provenance — two axes, never merged"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-9ed2b6238e8f",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The exploration also formalises what many marketing dashboards fudge: every economic output carries two labels, not one. "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Epistemic status"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " answers "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how sure"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ". "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Provenance"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " answers "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "where the data came from"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ". A number can be "
+            },
+            {
+              "type": "inlineCode",
+              "value": "modeled"
+            },
+            {
+              "type": "text",
+              "value": " under transparent assumptions; it can be observed inside a client system; it can be reported by the client in an oral estimate; it can be an external proxy. These are all legitimate — and they are all different. A conversion rate declared by a salesperson is not the same input as a conversion rate read from GA4, even if both are called \"conversion rate\" in the CRM."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8f9f4e6d994e",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Two rules govern the labels. First, "
+            },
+            {
+              "type": "inlineCode",
+              "value": "commercially_observed"
+            },
+            {
+              "type": "text",
+              "value": " is the only status that can appear in a customer-facing headline — and it requires a preserved attribution mechanism, not a narrative of one. A pure declaration remains "
+            },
+            {
+              "type": "inlineCode",
+              "value": "client_reported"
+            },
+            {
+              "type": "text",
+              "value": "; it can feed a model, but it cannot become an observed commercial result by promotion. Second, ranges are always ranges. Every estimate is "
+            },
+            {
+              "type": "inlineCode",
+              "value": "low / base / high"
+            },
+            {
+              "type": "text",
+              "value": ", never a point estimate. A single number would forget how much it does not know."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-fcb512be9ac4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Attention allocation — a modeled distribution, never a click count"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-a92cc3a81076",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The second half of the exploration concerns "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "who captures the attention we are not capturing"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ". TextOS can produce a modelled distribution — from observable signals — of how frequently which subjects appear, with what position, how often the domain is cited directly, and how stable that distribution is across runs. That distribution is a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "modeled attention allocation"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ", and the word \"modeled\" travels with the number. It is not, and cannot be, a count of clicks received by a competitor. Where a real click stream exists in a client system, the label upgrades. Where it does not, the label stays honest."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-cafd116228a6",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Two constraints on the distribution matter. First, it is never normalised to one hundred percent across named subjects: an unattributed share is always preserved, because a real answer can produce no click, disperse attention, or influence a later brand search that no observation captures. Second, it does not exist for "
+            },
+            {
+              "type": "inlineCode",
+              "value": "n=1"
+            },
+            {
+              "type": "text",
+              "value": ": stability across runs is a factor of the model, so a distribution is only produced when a scope has been re-observed at least three times."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a8ad1628df4d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why the layer sits later — and why it is not in S8/S9"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-80efaa4d216a",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The Brief layer must remain deterministic and ROI-free. Every argument for the pipeline's honesty depends on that. If a euro figure travelled inside "
+            },
+            {
+              "type": "inlineCode",
+              "value": "judgeOpportunities"
+            },
+            {
+              "type": "text",
+              "value": ", the mechanical judgement of defensibility would immediately become a defence of the assumptions behind the number, and the entire chain from observation to brief would inherit that fragility."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-eb8c29f7b164",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The exploration keeps the economics as a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "reading layer"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " — a separate derivation, versioned independently, attached to the brief but not carried inside it. Two briefs assembled by the same run can be re-costed by two different versions of the economics layer without changing the briefs themselves. That is the same pattern the extraction layer already uses for claim derivations: the measurement is untouched; the reading of the measurement is versioned. It is what makes the reading contestable."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-9ab42d8d63d6",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What this article is not"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-d8a96d40bde4",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "It is not a launch announcement. It is not a delivery commitment. Neither "
+            },
+            {
+              "type": "inlineCode",
+              "value": "opportunity-brief"
+            },
+            {
+              "type": "text",
+              "value": " nor the economics layer is publicly available today — the Brief capability is held in "
+            },
+            {
+              "type": "inlineCode",
+              "value": "internal_only"
+            },
+            {
+              "type": "text",
+              "value": ", and the economics layer sits behind two accepted architecture decisions but not yet behind a shipped surface. What is documented here is an accepted "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "direction"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " whose invariants we have decided to publish now, precisely so that the direction can be criticised before it hardens."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-e81aec1cb126",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Direction under exploration — not a delivery commitment. If you have run an authority-adjacent intervention in your own market, or if you have opinions about where a break-even model like this would break, we would like to hear them."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4828765e1498",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related reading"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-9a9b1a293bbe",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the observation layer this direction sits above."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Not observable is not zero"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/not-observable-is-not-zero"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the doctrine of absence that governs "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "not_available"
+                    },
+                    {
+                      "type": "text",
+                      "value": " throughout."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The Measurement Quality Ledger"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/measurement-quality-ledger"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — how confidence is reported alongside every reading."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-d76d2a451d39",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:brief-to-decision-economics",
-    "contentType": "product_article",
-    "slug": "brief-to-decision-economics",
-    "language": "en",
-    "title": "From Brief to Decision — Economics as a Separate, Later Layer",
-    "description": "Direction under exploration: TextOS is investigating an economics layer above the Opportunity Brief reporting a break-even threshold, never predicted revenue."
+  "conversion": {
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
+    "audience": "reader-executive",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "funnelStage": "consideration",
     "primaryTopicId": "opportunity-and-decision",
+    "reviewerIds": [],
     "topicIds": [
       "opportunity-and-decision",
       "product-doctrine"
-    ],
-    "audience": "reader-executive",
-    "funnelStage": "consideration"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "Direction under exploration: TextOS is investigating an economics layer above the Opportunity Brief reporting a break-even threshold, never predicted revenue.",
+    "documentId": "textos-insight:brief-to-decision-economics",
+    "language": "en",
+    "slug": "brief-to-decision-economics",
+    "title": "From Brief to Decision — Economics as a Separate, Later Layer"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "a1af0b28f2e926b3fcdb5225d2f8fbdbcd7cea09b93e487945094ffe8e1fe00a",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/brief-to-decision-economics",
+    "indexingIntent": "noindex",
+    "schemaType": "Article",
+    "searchIntent": "informational",
+    "targetQuery": "textos roi economics opportunity brief"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "ROADMAP_DIRECTION:PROSPECTIVE:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "observe-authority-presence",
+      "quality-ledger"
     ],
     "claimIds": [
       "hp1-measurement-doctrine",
@@ -41,157 +966,9 @@
       "quality-ledger:quality-ledger-rates-v1",
       "observe-authority-presence:authority-presence-observation-v1"
     ],
-    "capabilityIds": [
-      "observe-authority-presence",
-      "quality-ledger"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "6e978e584a57e74c7a669cd0c63065a31edce6e7c3764e25a3d9ec53b4e18caf",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "TextOS is exploring an economics layer that would sit above the Opportunity Brief and report a break-even threshold on contribution margin — never a predicted revenue. Direction under exploration — not a delivery commitment."
-      }
-    },
-    {
-      "id": "h-the-question-the-buyer-eventually-asks",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The question the buyer eventually asks"
-      }
-    },
-    {
-      "id": "p-the-question-the-buyer-eventually-asks",
-      "kind": "paragraph",
-      "data": {
-        "text": "An authority-presence measurement can be defensible on its own. It answers what is visible, on which surface, on which panel, with what dispersion, and it refuses to answer questions it was not built for. That is enough to be trusted; it is not always enough to close a decision. Sooner or later a buyer asks the next question: *what is this absence costing me, who is capturing the attention I am not, and what is the smallest portfolio of assets that would recover the ground?* This article documents where TextOS is heading on that question. It documents an exploration, not a delivered feature."
-      }
-    },
-    {
-      "id": "h-the-decision-we-are-not-going-to-make",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The decision we are not going to make"
-      }
-    },
-    {
-      "id": "p-the-decision-we-are-not-going-to-make",
-      "kind": "paragraph",
-      "data": {
-        "text": "There is a tempting formula for lost opportunity that reads well in a slide:"
-      }
-    },
-    {
-      "id": "h-the-inversion-a-break-even-threshold-on-contribution-margin",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The inversion — a break-even threshold on contribution margin"
-      }
-    },
-    {
-      "id": "p-the-inversion-a-break-even-threshold-on-contribution-margin",
-      "kind": "paragraph",
-      "data": {
-        "text": "The direction under exploration inverts the model. Instead of asking \"how much revenue would we recover?\", it asks \"how well would the intervention have to perform to be worth doing?\". Mathematically:"
-      }
-    },
-    {
-      "id": "h-epistemic-status-and-provenance-two-axes-never-merged",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Epistemic status and provenance — two axes, never merged"
-      }
-    },
-    {
-      "id": "p-epistemic-status-and-provenance-two-axes-never-merged",
-      "kind": "paragraph",
-      "data": {
-        "text": "The exploration also formalises what many marketing dashboards fudge: every economic output carries two labels, not one. **Epistemic status** answers *how sure*. **Provenance** answers *where the data came from*. A number can be `modeled` under transparent assumptions; it can be observed inside a client system; it can be reported by the client in an oral estimate; it can be an external proxy. These are all legitimate — and they are all different. A conversion rate declared by a salesperson is not the same input as a conversion rate read from GA4, even if both are called \"conversion rate\" in the CRM."
-      }
-    },
-    {
-      "id": "h-attention-allocation-a-modeled-distribution-never-a-click-count",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Attention allocation — a modeled distribution, never a click count"
-      }
-    },
-    {
-      "id": "p-attention-allocation-a-modeled-distribution-never-a-click-count",
-      "kind": "paragraph",
-      "data": {
-        "text": "The second half of the exploration concerns *who captures the attention we are not capturing*. TextOS can produce a modelled distribution — from observable signals — of how frequently which subjects appear, with what position, how often the domain is cited directly, and how stable that distribution is across runs. That distribution is a *modeled attention allocation*, and the word \"modeled\" travels with the number. It is not, and cannot be, a count of clicks received by a competitor. Where a real click stream exists in a client system, the label upgrades. Where it does not, the label stays honest."
-      }
-    },
-    {
-      "id": "h-why-the-layer-sits-later-and-why-it-is-not-in-s8-s9",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why the layer sits later — and why it is not in S8/S9"
-      }
-    },
-    {
-      "id": "p-why-the-layer-sits-later-and-why-it-is-not-in-s8-s9",
-      "kind": "paragraph",
-      "data": {
-        "text": "The Brief layer must remain deterministic and ROI-free. Every argument for the pipeline's honesty depends on that. If a euro figure travelled inside `judgeOpportunities`, the mechanical judgement of defensibility would immediately become a defence of the assumptions behind the number, and the entire chain from observation to brief would inherit that fragility."
-      }
-    },
-    {
-      "id": "h-what-this-article-is-not",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What this article is not"
-      }
-    },
-    {
-      "id": "p-what-this-article-is-not",
-      "kind": "paragraph",
-      "data": {
-        "text": "It is not a launch announcement. It is not a delivery commitment. Neither `opportunity-brief` nor the economics layer is publicly available today — the Brief capability is held in `internal_only`, and the economics layer sits behind two accepted architecture decisions but not yet behind a shipped surface. What is documented here is an accepted *direction* whose invariants we have decided to publish now, precisely so that the direction can be criticised before it hardens."
-      }
-    },
-    {
-      "id": "h-related-reading",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related reading"
-      }
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "ctaIntentId": "MEASURE_BRAND",
-    "conversionAllowed": true
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/brief-to-decision-economics",
-    "schemaType": "Article",
-    "targetQuery": "textos roi economics opportunity brief",
-    "searchIntent": "informational"
+    "publicationStatus": "draft",
+    "sourceStatus": "ROADMAP_DIRECTION:PROSPECTIVE:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

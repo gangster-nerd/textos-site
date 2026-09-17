@@ -32,19 +32,23 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
 
-      # Types puis logique, AVANT le build : un gate cassé (registre Zod, sous-ensemble de claims
-      # d'un visuel, résolution CTA) doit rougir sur la PR, pas seulement sur le poste de dev.
-      - run: pnpm typecheck
-      - run: pnpm test
-
-      - run: pnpm build
-
-      # Assertions portant sur l'export lui-même : absence ou présence du CTA selon le mode, visuel
-      # avec alt et figcaption, manifeste d'attribution. Elles se sautent d'elles-mêmes quand out/
-      # n'existe pas encore — les relancer ICI est la seule façon de garantir qu'elles s'exécutent.
-      - run: pnpm exec vitest run tests/exported-html.test.ts
-
-      - run: pnpm validate:jsonld
+      # PR21-FINAL-RELEASE-GATE §§5–6 — la vérification autoritative est
+      # `pnpm verify:a3r`. Elle contrôle elle-même l'ORDRE des étapes :
+      #   contract fingerprint → a3r-report → typecheck → content:verify
+      #   → verify:product-manifest → rm -rf out → build → vitest
+      #   → validate:jsonld → verify:a2r (fresh out/) → git diff --check.
+      #
+      # Le décommissionnement des anciennes commentaires « types puis logique
+      # AVANT le build » est délibéré : plusieurs suites (a2r-*.test.ts,
+      # a1r-fidelity-corpus, a2r-render-semantic-parity, insights-html-invariants,
+      # a2r-exact-render-parity, a2r-surface-mutations) inspectent maintenant les
+      # artefacts sous `out/`. Les faire tourner avant le build les faisait
+      # échouer par manque d'artefacts sur runner fraîchement cloné.
+      #
+      # `verify:a3r` fait aussi rejouer verify:a2r sur le build frais (avec
+      # A2R_SKIP_BUILD=1) pour empêcher toute régression de surface introduite
+      # par une PR.
+      - run: pnpm verify:a3r
 
   # JOB INDÉPENDANT, et non une branche de la matrice.
   #
@@ -70,8 +74,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       # Confronte le registre éditorial au manifeste produit épinglé et résout la provenance de
-      # chaque document. Échoue si le site est plus permissif que le produit, ou si une référence de
-      # preuve ne se résout pas ; imprime sans bloquer les écarts qui appellent une décision.
+      # chaque document. Échoue si le site est plus permissif que le produit, ou si une référence
+      # de preuve ne se résout pas ; imprime sans bloquer les écarts qui appellent une décision.
       #
       # Aucun build préalable : le vérificateur lit le contenu par le même loader que les pages.
       - run: pnpm verify:product-manifest

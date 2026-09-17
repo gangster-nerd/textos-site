@@ -1,35 +1,640 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "TextOS begins by observing answer engines on a versioned query panel, one answer at a time. Observation is the product. It reports three separate measures with their measurement quality, distinguishes not observable from measured zero, and never produces optimisation scores or recommendations."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Direction under exploration — not a delivery commitment."
+                }
+              ],
+              "type": "paragraph"
+            }
+          ],
+          "type": "blockquote"
+        }
+      },
+      "id": "q-827e4353c211",
+      "kind": "quote"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The instinct we refuse"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-cadf18b794ef",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Faced with a moving system, a familiar reflex takes over: turn a dial. Optimisation categories — for search engines, for social feeds, for ad auctions — were built on that reflex. They collapse a complicated question (\"what is happening in this system?\") into a simpler one (\"what should I change to raise this number?\"), and they charge for the second one."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-27257b19bab6",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "We deliberately refuse to start there. TextOS begins by "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "observing"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " what answer engines do. Observation is not the setup for a recommendation; observation is the product. Only from a defensible observation can any further work — a diagnosis, a brief, a decision to act — be honestly built."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-be9cfce7e2f0",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The distinction is architectural, not stylistic. In a classical transactional product, the primary object is an action taken by the user. In an optimisation product, the primary object is a score to be moved. In TextOS, the primary object is "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "an observation"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ": a single, normalised record of what an answer engine did in response to a single query, at a single moment, under a declared method. That decision changes almost everything downstream."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-c0e6cd717288",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The observatory choice"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-ad67e18c83e5",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An observatory is a system whose centre of gravity is not the transaction and not the render, but the recurrent collection and accumulation of measurements from an outside world it cannot control. It is closer to a monitoring system than to a CMS. It runs scheduled jobs, tolerates partial failures, keeps every observation independent, versions its own methods and never rewrites the past."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-dbea6d016768",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TextOS observes one engine answer at a time, on a versioned query panel, and keeps each observation separate. The observation, not the brand, is the unit of measurement. This is the load-bearing choice. It means the same question can be asked N times against the same engine and produce N observations, each capturing exactly what the engine said at that moment, with the panel version and the method version stamped on it. A distribution can then be measured against a stable definition — and a definition that can be identified is a definition that can be defended."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-1f145e4c866f",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An observation, once written, is never rewritten. If the engines change, if the parser evolves, if the aggregation rule is revised, those changes become new versions. The historical record remains legible. The alternative — silently reinterpreting past observations under a new method — would reproduce the very instability we exist to describe."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-444168297080",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What \"observe first\" costs us to say"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-cbb53f130531",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Choosing observation as the product means we say fewer things than an optimisation vendor. That is a feature, not a lack."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-34e7d69b9b38",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "We do not produce an authority score. Direct, Indirect and Total are separate measures. Total Authority Presence is the union of direct and indirect presence, never their sum. A signal that is not observable is reported as not observable, never zero."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "When a signal cannot be observed, TextOS reports it as not observable. A missing observation is never recorded as a measured zero. Zero is a real result — the engine answered and the brand was absent. Not observable is different: no usable measurement exists, because the surface did not trigger, the engine returned nothing, or coverage was insufficient. Writing zero in place of an absence would invent data, and observatories that invent data are worthless."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Observation coverage, completeness, dispersion, provenance and observability status describe how well a measurement is supported. They contextualise the measured result and are never combined with it into a single composite figure. Two answers of \"60%\" — one supported by three consistent observations, the other by fifteen volatile ones — are different facts. They are reported as different facts."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "An authority presence measurement reports observed presence. It does not produce recommendations, automatic prioritisation, return-on-investment estimates, or guarantees of ranking or citation."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "An authority presence measurement reports what answer engines say about a brand. It does not establish why an engine cited a brand, and it does not verify whether the statements inside an answer are true."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-1df134d1403b",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "None of that reads like sales copy. It reads like a spec. Which is the point: an observation category has to look like a spec, because a spec is what a technical buyer will cross-examine and what an editorial team will need in order to reason about anything the observation implies."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-be6814b67cb4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Why not \"optimise the score\"?"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-0dbbf8b0612b",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Because there is no score to optimise, and pretending otherwise would be dishonest. Answer engines are non-deterministic surfaces whose ranking or citation behaviour cannot be moved by an act in the way a classical SERP could. Even the observation itself has to be taken as a distribution rather than a point. A product that promised to raise a number in such a system would either be measuring something else (proxy scores derived from documents), or be silently taking credit for volatility."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-62c8d3a19178",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The tractable question is different. Given a defensible observation, what patterns distinguish the sources answer engines cite from the sources they ignore? That is descriptive work on the sources — corroborative, verifiable, actionable — not causal work on the model. It leads to briefs that can be defended by pointing at real observations, not by asserting confidence percentages on the decisions of a black box."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-48484b07714d",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The methodology pages set out the mechanics: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Direct, Indirect and Total"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/direct-indirect-total"
+            },
+            {
+              "type": "text",
+              "value": " defines the three measures and the union arithmetic; "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "What Authority Presence measures"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/authority-presence"
+            },
+            {
+              "type": "text",
+              "value": " walks through the unit of observation, the versioned panel, and the quality ledger; the FAQ on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "automatic claim verification"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/faq/does-textos-automatically-verify-claims"
+            },
+            {
+              "type": "text",
+              "value": " draws the line between what the observatory sees and what it does not."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-1e2f2c4ec6f6",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The product succeeds when the observation is trusted"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-eb0b06d7be69",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "There is an obvious commercial temptation in this space to skip the observatory work and go straight to the deliverable — the brief, the article, the \"AI-optimised\" page. We think that path is where the category has already been tried, and where its credibility is already thin. Building briefs on undefended observations produces exactly the content-farm dynamic that answer engines themselves increasingly refuse to reward."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-729b54b85bfe",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "We would rather earn a smaller, harder claim. TextOS wins when a decision-maker looks at the measurement and can act — or decide not to — with the confidence of someone reading a survey whose methodology they trust. Observation is not the appetiser before the recommendation. It is the product, and the recommendation, when it comes, is downstream of the observation, or it is not defensible."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a9cf96c083dd",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related reading"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-9a9b1a293bbe",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direct, Indirect and Total Authority Presence"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/direct-indirect-total"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Does TextOS automatically verify claims?"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/faq/does-textos-automatically-verify-claims"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-92f7207b8c26",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:observation-not-optimization",
-    "contentType": "product_article",
-    "slug": "observation-not-optimization",
-    "language": "en",
-    "title": "Observation, Not Optimization",
-    "description": "TextOS begins by observing what answer engines do, not by optimising an SEO score. The observation itself is the product."
+  "conversion": {
+    "conversionAllowed": false
   },
   "editorial": {
+    "audience": "reader-mixed",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "funnelStage": "awareness",
     "primaryTopicId": "product-doctrine",
+    "reviewerIds": [],
     "topicIds": [
       "product-doctrine",
       "authority-observation"
-    ],
-    "audience": "reader-mixed",
-    "funnelStage": "awareness"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "TextOS begins by observing what answer engines do, not by optimising an SEO score. The observation itself is the product.",
+    "documentId": "textos-insight:observation-not-optimization",
+    "language": "en",
+    "slug": "observation-not-optimization",
+    "title": "Observation, Not Optimization"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "52683ad02e3b6518659f934273b70e12765c2b8c1f4ee009131bc2cb0aef2bf5",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/observation-not-optimization",
+    "indexingIntent": "noindex",
+    "schemaType": "Article",
+    "searchIntent": "informational",
+    "targetQuery": "observing answer engines versus optimising for them"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "PRODUCT_PRINCIPLE:PROSPECTIVE:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "direct-share-of-model",
+      "indirect-mention-share",
+      "observe-authority-presence",
+      "quality-ledger",
+      "total-authority-presence"
     ],
     "claimIds": [
       "hp1-measurement-doctrine",
@@ -48,129 +653,9 @@
       "indirect-mention-share:indirect-mention-measurement-v1",
       "total-authority-presence:total-presence-composition-v1"
     ],
-    "capabilityIds": [
-      "direct-share-of-model",
-      "indirect-mention-share",
-      "observe-authority-presence",
-      "quality-ledger",
-      "total-authority-presence"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "fb20291e3ee678eca18b932c34f4baf0d0a11403991f736e1430a29077ca7025",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "TextOS begins by observing answer engines on a versioned query panel, one answer at a time. Observation is the product. It reports three separate measures with their measurement quality, distinguishes not observable from measured zero, and never produces optimisation scores or recommendations."
-      }
-    },
-    {
-      "id": "h-the-instinct-we-refuse",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The instinct we refuse"
-      }
-    },
-    {
-      "id": "p-the-instinct-we-refuse",
-      "kind": "paragraph",
-      "data": {
-        "text": "Faced with a moving system, a familiar reflex takes over: turn a dial. Optimisation categories — for search engines, for social feeds, for ad auctions — were built on that reflex. They collapse a complicated question (\"what is happening in this system?\") into a simpler one (\"what should I change to raise this number?\"), and they charge for the second one."
-      }
-    },
-    {
-      "id": "h-the-observatory-choice",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The observatory choice"
-      }
-    },
-    {
-      "id": "p-the-observatory-choice",
-      "kind": "paragraph",
-      "data": {
-        "text": "An observatory is a system whose centre of gravity is not the transaction and not the render, but the recurrent collection and accumulation of measurements from an outside world it cannot control. It is closer to a monitoring system than to a CMS. It runs scheduled jobs, tolerates partial failures, keeps every observation independent, versions its own methods and never rewrites the past."
-      }
-    },
-    {
-      "id": "h-what-observe-first-costs-us-to-say",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What \"observe first\" costs us to say"
-      }
-    },
-    {
-      "id": "p-what-observe-first-costs-us-to-say",
-      "kind": "paragraph",
-      "data": {
-        "text": "Choosing observation as the product means we say fewer things than an optimisation vendor. That is a feature, not a lack."
-      }
-    },
-    {
-      "id": "h-why-not-optimise-the-score",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Why not \"optimise the score\"?"
-      }
-    },
-    {
-      "id": "p-why-not-optimise-the-score",
-      "kind": "paragraph",
-      "data": {
-        "text": "Because there is no score to optimise, and pretending otherwise would be dishonest. Answer engines are non-deterministic surfaces whose ranking or citation behaviour cannot be moved by an act in the way a classical SERP could. Even the observation itself has to be taken as a distribution rather than a point. A product that promised to raise a number in such a system would either be measuring something else (proxy scores derived from documents), or be silently taking credit for volatility."
-      }
-    },
-    {
-      "id": "h-the-product-succeeds-when-the-observation-is-trusted",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The product succeeds when the observation is trusted"
-      }
-    },
-    {
-      "id": "p-the-product-succeeds-when-the-observation-is-trusted",
-      "kind": "paragraph",
-      "data": {
-        "text": "There is an obvious commercial temptation in this space to skip the observatory work and go straight to the deliverable — the brief, the article, the \"AI-optimised\" page. We think that path is where the category has already been tried, and where its credibility is already thin. Building briefs on undefended observations produces exactly the content-farm dynamic that answer engines themselves increasingly refuse to reward."
-      }
-    },
-    {
-      "id": "h-related-reading",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related reading"
-      }
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "conversionAllowed": false
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/observation-not-optimization",
-    "schemaType": "Article",
-    "targetQuery": "observing answer engines versus optimising for them",
-    "searchIntent": "informational"
+    "publicationStatus": "draft",
+    "sourceStatus": "PRODUCT_PRINCIPLE:PROSPECTIVE:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

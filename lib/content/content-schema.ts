@@ -38,12 +38,16 @@ export const ContentFrontmatterSchema = z
       .string()
       .regex(/^[0-9a-f]{40}$/, "SHA produit complet attendu (40 hex)"),
     // `capabilityId:bundleId` — résolus contre le manifeste produit épinglé par les gates.
-    evidenceRefs: z
-      .array(z.string().regex(/^[a-z0-9-]+:[a-z0-9-]+$/, 'format attendu "capacite:bundle"'))
-      .min(1),
+    // A1R producer-schema evolution : `.min(1)` retiré. Le contrat A1R autorise les
+    // articles COMPANY_TECHNOLOGY (et équivalents) à publier avec zero evidence /
+    // capability / claim. La contrainte par classe éditoriale reste appliquée par les
+    // gates métier — pas par ce schéma structurel.
+    evidenceRefs: z.array(
+      z.string().regex(/^[a-z0-9-]+:[a-z0-9-]+$/, 'format attendu "capacite:bundle"'),
+    ),
 
-    capabilityIds: z.array(z.string().min(1)).min(1),
-    claimIds: z.array(z.string().min(1)).min(1),
+    capabilityIds: z.array(z.string().min(1)),
+    claimIds: z.array(z.string().min(1)),
 
     // Taxonomie + conversion. Le contenu déclare des IDENTIFIANTS ; la copy CTA,
     // les destinations et les métadonnées visuelles vivent dans leurs registres.
@@ -63,6 +67,63 @@ export const ContentFrontmatterSchema = z
       body: z.string().min(1).max(400),
       claimIds: z.array(z.string().min(1)).min(1),
     }),
+
+    // A1R producer-schema extension : additive optional keys that the A1R Markdown
+    // compiler owns. Declaring them here (instead of `.passthrough()`) preserves the
+    // strict-unknown-key rejection for foreign keys (e.g., a content author attempting
+    // to smuggle a `ctaCopy` field) while unblocking A1R-authored files.
+    authorId: z.string().regex(/^[a-z0-9-]+$/).optional(),
+    reviewerIds: z.array(z.string().regex(/^[a-z0-9-]+$/)).optional(),
+    primaryTopicId: z.string().min(1).optional(),
+    topicIds: z.array(z.string().min(1)).optional(),
+    audience: z
+      .enum(["reader-marketing", "reader-technical", "reader-executive", "reader-mixed"])
+      .optional(),
+    funnelStage: z
+      .enum(["awareness", "consideration", "decision", "expansion", "retention"])
+      .optional(),
+    relatedContentIds: z.array(z.string().min(1)).optional(),
+    firstPublishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+    lastReviewedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+    revisionNumber: z.number().int().nonnegative().optional(),
+    revisionSummary: z.string().min(1).optional(),
+    schemaType: z.enum(["Article", "TechArticle", "BlogPosting"]).optional(),
+    editorialClass: z
+      .enum([
+        "CURRENT_CAPABILITY",
+        "PRODUCT_PRINCIPLE",
+        "ARCHITECTURE_DECISION",
+        "ENGINEERING_NOTE",
+        "EXPERIMENT",
+        "ROADMAP_DIRECTION",
+        "RETROSPECTIVE",
+        "COMPANY_TECHNOLOGY",
+      ])
+      .optional(),
+    truthMode: z.enum(["AUTHORITATIVE", "DOCUMENTARY", "PROSPECTIVE"]).optional(),
+    sourcePaths: z.array(z.string().min(1)).optional(),
+    sourceSemantics: z
+      .enum([
+        "ACCEPTED_ADR",
+        "IMPLEMENTATION_EVIDENCE",
+        "VERIFIED_CHANGE_RECORD",
+        "HISTORICAL_SPRINT_INTENT",
+        "ROADMAP_DIRECTION",
+        "GOVERNANCE_DECISION",
+      ])
+      .optional(),
+    sourceDigests: z
+      .record(z.string().min(1), z.string().regex(/^[0-9a-f]{64}$/))
+      .optional(),
+    disclaimer: z.string().min(1).optional(),
+    image: z
+      .object({
+        src: z.string().regex(/^\/[a-z0-9/_.-]+$/),
+        alt: z.string().min(1),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+      })
+      .optional(),
   })
   .strict()
   .superRefine((value, ctx) => {

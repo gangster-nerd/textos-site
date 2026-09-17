@@ -1,35 +1,937 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "A composite authority score would confuse being cited as a source with being named by a third party, would hide the choice of weightings behind an opaque number, and would silently redefine measurements when the method evolves. TextOS treats a single score as an anti-objective and reports three measures separately."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An anti-objective, named explicitly"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-6cc7433e6aa1",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Most measurement products end in a number. The dashboard headline is a score; the score is the promise; the score is what a buyer remembers. TextOS ends somewhere else, and that difference is not an oversight. It is a design decision, taken twice: once in the observatory architecture (ADR-001), and again in the authority-presence estimator (ADR-011). Both documents use the same phrase — "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "anti-objective"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " — to describe a single composite score, and both instruct the code that computes measurements to refuse the fusion at the source."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-b8a55177aad2",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This article explains what the fusion would silently do, why it would be strategically wrong even when it is technically clean, and what TextOS reports instead."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4d3689e81e6a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "type": "html",
+          "value": "<!-- cta:contextual -->"
+        }
+      },
+      "id": "cta-0272cbe8002e",
+      "kind": "cta_slot",
+      "slot": "primary-cta"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The three questions a composite score conflates"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-33332c5aa807",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TextOS observes engine answers one at a time and asks three separate questions of each observation. The questions are described at length in the piece on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Direct, Indirect and Total Authority Presence"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/direct-indirect-total"
+            },
+            {
+              "type": "text",
+              "value": ". In short:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-dda7b9a3149a",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direct Share of Model"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " counts observations in which the tracked entity is cited "
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "as a source"
+                        }
+                      ],
+                      "type": "emphasis"
+                    },
+                    {
+                      "type": "text",
+                      "value": " by the engine."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Indirect Mention Share"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " counts observations in which the tracked entity is "
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "named through a third party"
+                        }
+                      ],
+                      "type": "emphasis"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — a media outlet or guide is cited by the engine, and that citation talks about the entity."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Total Authority Presence"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " counts observations in which the entity is present at all, direct or indirect, once per observation."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-4e3c0df602bb",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Direct and Indirect are two different mechanisms of authority. Direct says the engine treats the entity's own materials as reference material. Indirect says the entity is part of the conversation that reference materials carry. A high Direct with a low Indirect is a very different market position from a low Direct with a high Indirect — and both are different again from an entity that is present through both channels."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-df540f4717e2",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A composite score would collapse those three positions into one number and choose, silently, how much each dimension mattered. The reader would see the same 62 for two entities that look nothing alike."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-deff23792111",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The union is not a sum"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-cfc57e1ea973",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Even if a reader accepted the collapse in principle, the arithmetic of the collapse would still be wrong. ADR-011 makes the constraint explicit: Total Authority Presence is the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "union"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " of direct and indirect presence, evaluated once per observation. It is never their sum."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-350b4eb6bb84",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The reason is that a single answer can satisfy both criteria at once. An engine can cite an entity's own documentation "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "and"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " name the entity in the sentence it writes. That answer is one observation. If Direct Share of Model is 40% and Indirect Mention Share is 50% and 20% of observations are in both sets, Total is 40 + 50 − 20 = 70%, not 90%. Sums exceed 100% as overlap grows, and no observation supports a share above 100%."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8a69cf030504",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The estimator's oracle fixture — the frozen test case that governs the calculation — deliberately contains an observation with a direct citation and an indirect mention of the same entity. Without that case, the code would drift back into addition over time and pass tests that only cover disjoint sets. The fixture is what makes the union enforceable."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-ab45f9b1e10f",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "m4-total-is-a-union"
+            },
+            {
+              "type": "text",
+              "value": " states the rule in the public methodology, and claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "hp2-metric-integrity"
+            },
+            {
+              "type": "text",
+              "value": " restates it in the public doctrine: Direct, Indirect and Total are separate measures. Total is the union, never the sum."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a83ce56ff58e",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Two different signals, two different capabilities"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-c763341fc942",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The estimator does more than compute a union. It carries a coverage flag that records "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "which"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": " of the two signals contributed. Direct is available whenever the method can extract citations from the engine response. Indirect is available only when the method exposes the passages of text where third-party sources named the entity — which some providers do not do."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-58c11c2303f3",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A single composite score would have no way to represent this asymmetry. It would either invent a value where none exists — pretending Indirect is 0% when the method never looked — or refuse to compute the whole score whenever any component was missing."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-b189961da1b4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "ADR-011 chooses a third path: when the method cannot produce the indirect signal, Indirect Mention Share is reported as "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "not observable"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": ", and Total is reported as equal to Direct with a coverage flag marking it a "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "floor"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ". At least this much presence exists; a fuller total might exist and would raise the number, never lower it."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0d3c4af188cb",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "This is what claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "m5-not-observable-is-not-zero"
+            },
+            {
+              "type": "text",
+              "value": " protects. Zero is a measured absence — a signal the method looked for and did not find. Not observable is a structural absence — a signal the method cannot produce. A composite score turns both into the same digit, and the reader cannot tell which one is on their screen."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-9761f06b0767",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What measurement quality would disappear inside a score"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-7e01f12b9b6e",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Behind every share, TextOS carries a small set of quality facts: the number of eligible observations that produced the number, the dispersion of the number across queries in the panel, the completeness of the run that supplied the observations, the method version that measured them. These are not decorations — claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "m6-quality-ledger-contextualises"
+            },
+            {
+              "type": "text",
+              "value": " describes them as the context that keeps a result readable."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-fb0c4488f9fe",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A composite score would have to fold all of that into one figure. Sixty percent supported by three consistent observations and sixty percent supported by fifteen volatile observations are the same score and very different facts. ADR-001 raises this concern directly and lists three quality rates — run completion, share-of-model eligibility, answer-surface trigger — that must be reported alongside the measurement, not baked into it. A drop in completion, for instance, would show up in a composite score as a drop in authority. It would be nothing of the kind."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-91b1aa06a589",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Dispersion tells a similar story. ADR-011 defines a per-query view of every measure — how many observations came from each query, and how the share varies across the panel — precisely because a single averaged score cannot distinguish \"three hits on the same query five times\" from \"three hits spread over five different queries\". One is instability on an intention; the other is partial coverage of a market. A single number can be either."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-c51a6cbf5eea",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Method versions and the illusion of continuity"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-6ada00318c3d",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The observatory architecture adds a third argument against a composite score, one that appears only over time. Provider access, citation extraction, aggregation and canonicalisation all evolve, and ADR-001 requires each to be versioned; the four versions combine into a "
+            },
+            {
+              "type": "inlineCode",
+              "value": "measurement_method_version"
+            },
+            {
+              "type": "text",
+              "value": " that identifies the exact method by which a number was produced. Two measurements are directly comparable only if that method version matches, and a change in method creates a break in the series, marked explicitly."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-7e1520a28f5c",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A composite score would carry the break silently. When the method changed, the number would either shift for reasons unrelated to the market or be re-baselined without the reader noticing. Reporting three measures separately does not eliminate this problem, but it isolates it: a change to the indirect extractor breaks the Indirect series and leaves Direct alone. A composite would smear the break across all of them."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-c928e3c14926",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What TextOS reports instead"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-c7b28dc1a6e4",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The alternative is what the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "methodology page on Authority Presence"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/authority-presence"
+            },
+            {
+              "type": "text",
+              "value": " already describes: three measures reported side by side, each with its numerator and denominator, its per-query view, its dispersion, its coverage flag, and the quality rates of the run that produced it. Claim "
+            },
+            {
+              "type": "inlineCode",
+              "value": "hp1-measurement-doctrine"
+            },
+            {
+              "type": "text",
+              "value": " gives the short form of the promise: TextOS measures authority presence reproducibly on a versioned query panel, with dispersion and completeness. Not a score. A measurement."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-3bb622ce3095",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A reader who wants to compress the picture to one number can still do so — averaging by hand, weighting one signal over the other — and that choice will be theirs, exposed, contestable. The instrument does not make it for them."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-94ece141a088",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What refusing a score does not mean"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-fa1e7b7e84b3",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Refusing a single score is not a refusal of clarity. The three measures are readable side by side; the "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "methodology worked example"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/direct-indirect-total"
+            },
+            {
+              "type": "text",
+              "value": " shows how the shape of the three tells a story a single number cannot. And it is not a refusal to compute a union: Total Authority Presence "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "is"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " a summary, but a summary that names what it does — a count of observations in which the entity is present at all — and preserves the direct and indirect components alongside itself."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-4ab95ca7e123",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What it is, is a refusal to hide choices. Weighting direct against indirect is a choice. Deciding how much dispersion should discount a result is a choice. Deciding whether a not-observable signal counts as zero is a choice. A composite score would make all of those choices, silently, on behalf of the reader. TextOS surfaces them, so that the reader can make them or refuse to make them, and so that the instrument does not stand in for the judgment that only the reader can supply."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-dc657ea44c06",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related methodology"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-d65d769b84a2",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the observation unit, the panel and the three measures reported together."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direct, Indirect and Total Authority Presence"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/direct-indirect-total"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — a worked example of the union arithmetic and why sums fail."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-5c6f93ded59c",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:three-measures-never-one-score",
-    "contentType": "product_article",
-    "slug": "three-measures-never-one-score",
-    "language": "en",
-    "title": "Three measures, never one score",
-    "description": "Fusing citations and mentions into one authority score hides the difference between being cited and being talked about. TextOS refuses the fusion."
+  "conversion": {
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
+    "audience": "reader-mixed",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "funnelStage": "consideration",
     "primaryTopicId": "measurement-mechanics",
+    "reviewerIds": [],
     "topicIds": [
       "measurement-mechanics",
       "product-doctrine"
-    ],
-    "audience": "reader-mixed",
-    "funnelStage": "consideration"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "Fusing citations and mentions into one authority score hides the difference between being cited and being talked about. TextOS refuses the fusion.",
+    "documentId": "textos-insight:three-measures-never-one-score",
+    "language": "en",
+    "slug": "three-measures-never-one-score",
+    "title": "Three measures, never one score"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "9e4506c77fe924e79823d809f4730a7eb68f4f92892864507966ae736a4c8046",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/three-measures-never-one-score",
+    "indexingIntent": "noindex",
+    "schemaType": "Article",
+    "searchIntent": "informational",
+    "targetQuery": "why textos does not have an authority score"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "PRODUCT_PRINCIPLE:DOCUMENTARY:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "direct-share-of-model",
+      "indirect-mention-share",
+      "observe-authority-presence",
+      "quality-ledger",
+      "total-authority-presence"
     ],
     "claimIds": [
       "m2-direct-share-of-model",
@@ -48,175 +950,9 @@
       "quality-ledger:quality-ledger-rates-v1",
       "observe-authority-presence:authority-presence-observation-v1"
     ],
-    "capabilityIds": [
-      "direct-share-of-model",
-      "indirect-mention-share",
-      "observe-authority-presence",
-      "quality-ledger",
-      "total-authority-presence"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "2369d149f1a065a502ca5bb0e0fc177dff560eb835f640fc6b41de4c111c0166",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "A composite authority score would confuse being cited as a source with being named by a third party, would hide the choice of weightings behind an opaque number, and would silently redefine measurements when the method evolves. TextOS treats a single score as an anti-objective and reports three measures separately."
-      }
-    },
-    {
-      "id": "h-an-anti-objective-named-explicitly",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "An anti-objective, named explicitly"
-      }
-    },
-    {
-      "id": "p-an-anti-objective-named-explicitly",
-      "kind": "paragraph",
-      "data": {
-        "text": "Most measurement products end in a number. The dashboard headline is a score; the score is the promise; the score is what a buyer remembers. TextOS ends somewhere else, and that difference is not an oversight. It is a design decision, taken twice: once in the observatory architecture (ADR-001), and again in the authority-presence estimator (ADR-011). Both documents use the same phrase — *anti-objective* — to describe a single composite score, and both instruct the code that computes measurements to refuse the fusion at the source."
-      }
-    },
-    {
-      "id": "h-the-three-questions-a-composite-score-conflates",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The three questions a composite score conflates"
-      }
-    },
-    {
-      "id": "p-the-three-questions-a-composite-score-conflates",
-      "kind": "paragraph",
-      "data": {
-        "text": "TextOS observes engine answers one at a time and asks three separate questions of each observation. The questions are described at length in the piece on [Direct, Indirect and Total Authority Presence](/methodology/direct-indirect-total). In short:"
-      }
-    },
-    {
-      "id": "h-the-union-is-not-a-sum",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The union is not a sum"
-      }
-    },
-    {
-      "id": "p-the-union-is-not-a-sum",
-      "kind": "paragraph",
-      "data": {
-        "text": "Even if a reader accepted the collapse in principle, the arithmetic of the collapse would still be wrong. ADR-011 makes the constraint explicit: Total Authority Presence is the **union** of direct and indirect presence, evaluated once per observation. It is never their sum."
-      }
-    },
-    {
-      "id": "h-two-different-signals-two-different-capabilities",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Two different signals, two different capabilities"
-      }
-    },
-    {
-      "id": "p-two-different-signals-two-different-capabilities",
-      "kind": "paragraph",
-      "data": {
-        "text": "The estimator does more than compute a union. It carries a coverage flag that records **which** of the two signals contributed. Direct is available whenever the method can extract citations from the engine response. Indirect is available only when the method exposes the passages of text where third-party sources named the entity — which some providers do not do."
-      }
-    },
-    {
-      "id": "h-what-measurement-quality-would-disappear-inside-a-score",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What measurement quality would disappear inside a score"
-      }
-    },
-    {
-      "id": "p-what-measurement-quality-would-disappear-inside-a-score",
-      "kind": "paragraph",
-      "data": {
-        "text": "Behind every share, TextOS carries a small set of quality facts: the number of eligible observations that produced the number, the dispersion of the number across queries in the panel, the completeness of the run that supplied the observations, the method version that measured them. These are not decorations — claim `m6-quality-ledger-contextualises` describes them as the context that keeps a result readable."
-      }
-    },
-    {
-      "id": "h-method-versions-and-the-illusion-of-continuity",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Method versions and the illusion of continuity"
-      }
-    },
-    {
-      "id": "p-method-versions-and-the-illusion-of-continuity",
-      "kind": "paragraph",
-      "data": {
-        "text": "The observatory architecture adds a third argument against a composite score, one that appears only over time. Provider access, citation extraction, aggregation and canonicalisation all evolve, and ADR-001 requires each to be versioned; the four versions combine into a `measurement_method_version` that identifies the exact method by which a number was produced. Two measurements are directly comparable only if that method version matches, and a change in method creates a break in the series, marked explicitly."
-      }
-    },
-    {
-      "id": "h-what-textos-reports-instead",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What TextOS reports instead"
-      }
-    },
-    {
-      "id": "p-what-textos-reports-instead",
-      "kind": "paragraph",
-      "data": {
-        "text": "The alternative is what the [methodology page on Authority Presence](/methodology/authority-presence) already describes: three measures reported side by side, each with its numerator and denominator, its per-query view, its dispersion, its coverage flag, and the quality rates of the run that produced it. Claim `hp1-measurement-doctrine` gives the short form of the promise: TextOS measures authority presence reproducibly on a versioned query panel, with dispersion and completeness. Not a score. A measurement."
-      }
-    },
-    {
-      "id": "h-what-refusing-a-score-does-not-mean",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What refusing a score does not mean"
-      }
-    },
-    {
-      "id": "p-what-refusing-a-score-does-not-mean",
-      "kind": "paragraph",
-      "data": {
-        "text": "Refusing a single score is not a refusal of clarity. The three measures are readable side by side; the [methodology worked example](/methodology/direct-indirect-total) shows how the shape of the three tells a story a single number cannot. And it is not a refusal to compute a union: Total Authority Presence *is* a summary, but a summary that names what it does — a count of observations in which the entity is present at all — and preserves the direct and indirect components alongside itself."
-      }
-    },
-    {
-      "id": "h-related-methodology",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related methodology"
-      }
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "ctaIntentId": "MEASURE_BRAND",
-    "conversionAllowed": true
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/three-measures-never-one-score",
-    "schemaType": "Article",
-    "targetQuery": "why textos does not have an authority score",
-    "searchIntent": "informational"
+    "publicationStatus": "draft",
+    "sourceStatus": "PRODUCT_PRINCIPLE:DOCUMENTARY:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

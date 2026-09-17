@@ -1,35 +1,763 @@
 {
+  "body": [
+    {
+      "data": {
+        "text": "TextOS is an authority intelligence system, not an AI SEO tool. It measures how answer engines cite or name a brand on a versioned query panel, reports three separate measures with their measurement quality, and produces no rankings, no scores, and no optimisation recommendations."
+      },
+      "id": "answer",
+      "kind": "answer"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Direction under exploration — not a delivery commitment."
+                }
+              ],
+              "type": "paragraph"
+            }
+          ],
+          "type": "blockquote"
+        }
+      },
+      "id": "q-827e4353c211",
+      "kind": "quote"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The category is wrong before the tool is even chosen"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-4e3b1f080892",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The label \"AI SEO\" carries a promise TextOS refuses to make. AI SEO tools optimise: they take a brand, a page, a topic, and return a graded output — a score to raise, a suggestion to apply, a checklist to close. That grammar was built for a search-result world in which a rank could be moved by an act. Answer engines do not work that way. They synthesise. They cite. They name. And they do all of it non-deterministically, on surfaces whose rules are not published and whose behaviour changes between two identical prompts."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-34f64641bebc",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "We chose a different frame. TextOS is an "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "authority intelligence system"
+                }
+              ],
+              "type": "strong"
+            },
+            {
+              "type": "text",
+              "value": ": an observatory whose purpose is to describe, faithfully and reproducibly, how answer engines treat a brand in the questions its buyers ask. The observation itself is the product. Everything else — briefs, actions, publications — is downstream of a measurement we can defend."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8e83ddec25e3",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Measurement, not scoring"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-271a1963327c",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TextOS measures authority presence reproducibly on a versioned query panel, with dispersion and completeness. It is not a score. It is a measurement."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a5e811089f8c",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "That distinction sounds pedantic. It is not. A score compresses several judgements into a single number: how much direct citation counts against indirect mention, how much dispersion should penalise a result, how much coverage matters relative to signal. Those judgements belong to whoever reads the number, not to the instrument that produced it. A score hides them; a measurement exposes them."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-8a969fa073cf",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The unit is the answer, not the brand. TextOS observes one engine answer at a time, on a versioned query panel, and keeps each observation separate through the entire pipeline. The observation, not the brand, is the unit of measurement. A single answer proves very little — answer engines are not deterministic, and the same question asked twice can produce different citations. What can be measured is a distribution over a declared panel, taken repeatedly under identifiable conditions."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-16c90af1d8d6",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "We report three separate measures, never one composite score:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-6efb23a0e7b4",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direct Share of Model"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the share of eligible observations in which the tracked entity is cited as a source by the engine."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Indirect Mention Share"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the share of eligible observations in which the entity is named in the answer text, evaluated independently of citation."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Total Authority Presence"
+                        }
+                      ],
+                      "type": "strong"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the union of direct and indirect presence, counted once per observation, never their arithmetic sum."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-0e87b3f6cc80",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The methodology page on "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Direct, Indirect and Total"
+                }
+              ],
+              "title": null,
+              "type": "link",
+              "url": "/methodology/direct-indirect-total"
+            },
+            {
+              "type": "text",
+              "value": " works through the overlap arithmetic. The reason to keep three measures apart is not statistical purity for its own sake — it is that \"your brand is cited as a source\" and \"a source cited by the engine mentions your brand\" describe two genuinely different market positions. Fusing them into a single \"authority score\" would erase the distinction and pretend a decision has been made when it has not."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-0b97ce06ca57",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What is filled — and what is not"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-38eec225ed07",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The existing category has learned to answer one question well: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "what is visible?"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " Citations, mentions, gaps against a competitive set — those are legitimate observations and tools like Profound, Peec, Otterly and Surfer's AI tracker produce them. The unresolved question is the next one: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "why?"
+                }
+              ],
+              "type": "emphasis"
+            },
+            {
+              "type": "text",
+              "value": " And, after that: "
+            },
+            {
+              "children": [
+                {
+                  "type": "text",
+                  "value": "what should change?"
+                }
+              ],
+              "type": "emphasis"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-2a72058b9871",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "TextOS positions itself on the second terrain. Not because we claim to open the black box of a language model — we do not, and any product that promises to is overselling. The tractable question is narrower and more defensible: what observable pattern distinguishes the sources answer engines cite from the sources they ignore? That is corroborative work on the sources themselves, not causal work on the model. It is observable, it is verifiable, and it is actionable in a way a \"confidence-weighted causal cause\" is not."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-96087fbfdd79",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "An authority presence measurement reports observed presence. It does not produce recommendations, automatic prioritisation, return-on-investment estimates, or guarantees of ranking or citation. Those are decisions, and decisions belong to the reader of the measurement."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-e26eb8e21708",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "What TextOS refuses to promise"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-46d63a9b2e07",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "A short list, because promises are how categories mislead their markets:"
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-a179ddb4fff0",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "No authority score. Three measures, always separate, always reported alongside their measurement quality."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "No causal claim about why a language model decided anything. The tractable claim is about patterns on the sources it cites."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "No prediction of what a publication will do to the numbers. That would require an intervention-to-citation dataset we do not have on day one; building it honestly is a downstream product concern, not a launch promise."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "No verification of the truth of the statements engines produce. An authority presence measurement reports what answer engines say about a brand. It does not establish why an engine cited a brand, and it does not verify whether the statements inside an answer are true. The FAQ on "
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "automatic claim verification"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/faq/does-textos-automatically-verify-claims"
+                    },
+                    {
+                      "type": "text",
+                      "value": " sets out that boundary."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "No ranking guarantee. No product controls an answer engine."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-b8901499f5f9",
+      "kind": "steps"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "None of these refusals weakens the offer. They constitute it. A measurement one can defend in front of a technical buyer — panel versioned, observations independent, method versioned, dispersion reported, absence distinguished from zero — is worth substantially more than a score one has to explain away."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-39d253e702fc",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The shape of the promise"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-780f34c30e07",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "The customer of an authority intelligence system is not buying articles. They are buying a defensible view of a market they cannot otherwise see: who answer engines treat as a reference on the questions their buyers ask, where their own brand sits in that landscape, and on which surfaces the picture changes. The product succeeds when a decision-maker can look at the measurement and act on it — or decide not to — with the same confidence they would give a survey whose methodology they trust."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-56c8c520ac25",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "That is what \"authority intelligence\" names. It is not a slogan against AI SEO; it is a different category of instrument. The one produces suggestions. The other produces evidence. The gap between \"we scored your page 78\" and \"on this versioned panel, on these surfaces, in this window, your brand is cited in 12% of eligible observations, named in 27%, absent in the rest, with the following dispersion\" is the gap TextOS exists to close."
+            }
+          ],
+          "type": "paragraph"
+        }
+      },
+      "id": "p-508dba338f30",
+      "kind": "paragraph"
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "type": "text",
+              "value": "Related reading"
+            }
+          ],
+          "depth": 2,
+          "type": "heading"
+        }
+      },
+      "id": "h-9a9b1a293bbe",
+      "kind": "heading",
+      "level": 2
+    },
+    {
+      "data": {
+        "mdast": {
+          "children": [
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "What Authority Presence measures"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/authority-presence"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the observation unit and the versioned query panel."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direct, Indirect and Total Authority Presence"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/methodology/direct-indirect-total"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the three measures and why they are never summed."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            },
+            {
+              "checked": null,
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Does TextOS automatically verify claims?"
+                        }
+                      ],
+                      "title": null,
+                      "type": "link",
+                      "url": "/faq/does-textos-automatically-verify-claims"
+                    },
+                    {
+                      "type": "text",
+                      "value": " — the boundary between measurement and verification."
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "spread": false,
+              "type": "listItem"
+            }
+          ],
+          "ordered": false,
+          "spread": false,
+          "start": null,
+          "type": "list"
+        }
+      },
+      "id": "l-de89b653d9c3",
+      "kind": "steps"
+    },
+    {
+      "data": {},
+      "id": "related",
+      "kind": "related_content_slot",
+      "slot": "related"
+    }
+  ],
   "contentSchemaVersion": "content-document@1",
-  "identity": {
-    "documentId": "textos-insight:authority-intelligence-not-ai-seo",
-    "contentType": "product_article",
-    "slug": "authority-intelligence-not-ai-seo",
-    "language": "en",
-    "title": "Authority Intelligence, Not AI SEO",
-    "description": "TextOS measures why answer engines cite or ignore a brand. It is an authority intelligence system, not an AI SEO writer."
+  "conversion": {
+    "conversionAllowed": false
   },
   "editorial": {
+    "audience": "reader-mixed",
     "authorIds": [
-      "textos-editorial-team"
+      "marc-prempain"
     ],
-    "reviewerIds": [
-      "marc-p"
-    ],
+    "funnelStage": "awareness",
     "primaryTopicId": "product-doctrine",
+    "reviewerIds": [],
     "topicIds": [
       "product-doctrine",
       "authority-observation"
-    ],
-    "audience": "reader-mixed",
-    "funnelStage": "awareness"
+    ]
+  },
+  "identity": {
+    "contentType": "product_article",
+    "description": "TextOS measures why answer engines cite or ignore a brand. It is an authority intelligence system, not an AI SEO writer.",
+    "documentId": "textos-insight:authority-intelligence-not-ai-seo",
+    "language": "en",
+    "slug": "authority-intelligence-not-ai-seo",
+    "title": "Authority Intelligence, Not AI SEO"
+  },
+  "lifecycle": {
+    "firstPublishedAt": null,
+    "publishedAt": "2026-09-12",
+    "revisionNumber": 0,
+    "updatedAt": "2026-09-12"
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "c2f64554696a5715c6468e435b32b3eee2d97d47f1a137893b0599641f333de1",
+    "sourceRepository": "gangster-nerd/textos-site"
+  },
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "seo": {
+    "canonicalPath": "/insights/authority-intelligence-not-ai-seo",
+    "indexingIntent": "noindex",
+    "schemaType": "Article",
+    "searchIntent": "informational",
+    "targetQuery": "authority intelligence versus ai seo"
   },
   "truth": {
-    "statusVocabulary": "textos.insights.ctc-article-system-1",
-    "statusVocabularyVersion": "v1",
-    "sourceStatus": "PRODUCT_PRINCIPLE:PROSPECTIVE:draft",
-    "publicationStatus": "draft",
     "allowedSurfaces": [
       "reference"
+    ],
+    "capabilityIds": [
+      "direct-share-of-model",
+      "indirect-mention-share",
+      "observe-authority-presence",
+      "quality-ledger",
+      "total-authority-presence"
     ],
     "claimIds": [
       "hp1-measurement-doctrine",
@@ -45,129 +773,9 @@
       "total-authority-presence:total-presence-composition-v1",
       "quality-ledger:quality-ledger-rates-v1"
     ],
-    "capabilityIds": [
-      "direct-share-of-model",
-      "indirect-mention-share",
-      "observe-authority-presence",
-      "quality-ledger",
-      "total-authority-presence"
-    ]
-  },
-  "provenance": {
-    "sourceRepository": "gangster-nerd/textos-v0",
-    "sourceEvidenceDigest": "24ab42cbaf4152ef1de6cc84dda9a0f52858d649853882f8a409d2d0fef14f0f",
-    "sourceAuthority": "UNCERTIFIED"
-  },
-  "body": [
-    {
-      "id": "answer",
-      "kind": "answer",
-      "data": {
-        "text": "TextOS is an authority intelligence system, not an AI SEO tool. It measures how answer engines cite or name a brand on a versioned query panel, reports three separate measures with their measurement quality, and produces no rankings, no scores, and no optimisation recommendations."
-      }
-    },
-    {
-      "id": "h-the-category-is-wrong-before-the-tool-is-even-chosen",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The category is wrong before the tool is even chosen"
-      }
-    },
-    {
-      "id": "p-the-category-is-wrong-before-the-tool-is-even-chosen",
-      "kind": "paragraph",
-      "data": {
-        "text": "The label \"AI SEO\" carries a promise TextOS refuses to make. AI SEO tools optimise: they take a brand, a page, a topic, and return a graded output — a score to raise, a suggestion to apply, a checklist to close. That grammar was built for a search-result world in which a rank could be moved by an act. Answer engines do not work that way. They synthesise. They cite. They name. And they do all of it non-deterministically, on surfaces whose rules are not published and whose behaviour changes between two identical prompts."
-      }
-    },
-    {
-      "id": "h-measurement-not-scoring",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Measurement, not scoring"
-      }
-    },
-    {
-      "id": "p-measurement-not-scoring",
-      "kind": "paragraph",
-      "data": {
-        "text": "TextOS measures authority presence reproducibly on a versioned query panel, with dispersion and completeness. It is not a score. It is a measurement."
-      }
-    },
-    {
-      "id": "h-what-is-filled-and-what-is-not",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What is filled — and what is not"
-      }
-    },
-    {
-      "id": "p-what-is-filled-and-what-is-not",
-      "kind": "paragraph",
-      "data": {
-        "text": "The existing category has learned to answer one question well: *what is visible?* Citations, mentions, gaps against a competitive set — those are legitimate observations and tools like Profound, Peec, Otterly and Surfer's AI tracker produce them. The unresolved question is the next one: *why?* And, after that: *what should change?*"
-      }
-    },
-    {
-      "id": "h-what-textos-refuses-to-promise",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "What TextOS refuses to promise"
-      }
-    },
-    {
-      "id": "p-what-textos-refuses-to-promise",
-      "kind": "paragraph",
-      "data": {
-        "text": "A short list, because promises are how categories mislead their markets:"
-      }
-    },
-    {
-      "id": "h-the-shape-of-the-promise",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "The shape of the promise"
-      }
-    },
-    {
-      "id": "p-the-shape-of-the-promise",
-      "kind": "paragraph",
-      "data": {
-        "text": "The customer of an authority intelligence system is not buying articles. They are buying a defensible view of a market they cannot otherwise see: who answer engines treat as a reference on the questions their buyers ask, where their own brand sits in that landscape, and on which surfaces the picture changes. The product succeeds when a decision-maker can look at the measurement and act on it — or decide not to — with the same confidence they would give a survey whose methodology they trust."
-      }
-    },
-    {
-      "id": "h-related-reading",
-      "kind": "heading",
-      "level": 2,
-      "data": {
-        "text": "Related reading"
-      }
-    }
-  ],
-  "relationships": {
-    "relatedContentIds": []
-  },
-  "conversion": {
-    "conversionAllowed": false
-  },
-  "lifecycle": {
-    "firstPublishedAt": null,
-    "publishedAt": "2026-09-12",
-    "updatedAt": "2026-09-12",
-    "lastReviewedAt": "2026-09-13",
-    "revisionNumber": 0
-  },
-  "seo": {
-    "indexingIntent": "noindex",
-    "canonicalPath": "/insights/authority-intelligence-not-ai-seo",
-    "schemaType": "Article",
-    "targetQuery": "authority intelligence versus ai seo",
-    "searchIntent": "informational"
+    "publicationStatus": "draft",
+    "sourceStatus": "PRODUCT_PRINCIPLE:PROSPECTIVE:draft",
+    "statusVocabulary": "textos.insights.ctc-article-system-1",
+    "statusVocabularyVersion": "v1"
   }
 }

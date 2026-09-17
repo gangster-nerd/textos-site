@@ -30,7 +30,13 @@ let cache: readonly ContentDocument[] | null = null;
 export function loadManagedCorpus(): readonly ContentDocument[] {
   if (cache) return cache;
   const files = readdirSync(CORPUS_DIR)
-    .filter((f) => f.endsWith(".json") && !f.startsWith("A3-") && f !== "INVENTORY.json")
+    .filter(
+      (f) =>
+        f.endsWith(".json") &&
+        !f.startsWith("A3-") &&
+        !f.startsWith("A3R-") &&
+        f !== "INVENTORY.json",
+    )
     .sort();
   cache = files.map((filename) => {
     const raw = JSON.parse(readFileSync(path.join(CORPUS_DIR, filename), "utf8"));

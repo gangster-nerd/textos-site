@@ -11,26 +11,38 @@
 import React, { type ReactElement, type ReactNode } from "react";
 
 import type { ResolvedContentSurface } from "../contract/resolved-content-surface";
+import type { BlockNode, HeadingNode } from "../contract/mdast-semantic";
 import { RenderReferenceBody } from "./reference-renderer";
+import { assignHeadingIds, phrasingToPlainText } from "./mdast-renderer";
 import type { ResolvedReferenceCta } from "../conversion/resolve-reference-cta";
+import type { ResolvedRelatedEntry } from "../site-integration/related-resolution";
 
 export interface ManagedSurfaceProps {
   resolved: ResolvedContentSurface;
   cta: ResolvedReferenceCta | null;
-  // Optional author display bridge — the managed surface knows how to place the card, the
-  // caller supplies the names.
-  resolveAuthor?: (id: string) => { name: string; role?: string } | null;
-  // Optional headings for a rudimentary TOC. Derived from the resolved surface (visible
-  // heading blocks). The managed surface applies its own threshold.
+  // Optional entity bridge — resolveAuthor returns display info AND profilePath when known.
+  resolveAuthor?: (
+    id: string,
+  ) => { name: string; role?: string; profilePath?: string } | null;
   tocEnabled?: boolean;
-  // Kicker text above the title (e.g. content-type badge). TextOS-editorial.
   kicker?: string;
-  // Optional attribution URL (contains only aid=…). Substitutes the raw destination on the
-  // CTA. When absent the CTA points to `cta.destination` unchanged.
-  ctaAttributedHref?: string | null;
-  // Optional content revision passed through as a data attribute for the AttributionTouch
-  // pipeline on the client. Never derived from content identity.
+  /**
+   * A2R : two positions for the CTA. Contextual is rendered INSIDE the body flow at
+   * the first source-backed `cta_slot` block. Final is rendered AFTER the body but
+   * before related-content.
+   */
+  ctaContextualHref?: string | null;
+  ctaFinalHref?: string | null;
   contentRevision?: string;
+  /**
+   * Optional : resolved related-content entries. When provided, the managed surface
+   * renders titles + descriptions + links (not raw ids).
+   */
+  relatedEntries?: readonly ResolvedRelatedEntry[];
+  /**
+   * A2R : includes an "Insights" breadcrumb step between TextOS and the title.
+   */
+  breadcrumbInsights?: boolean;
 }
 
 interface HeadingItem {
@@ -40,14 +52,30 @@ interface HeadingItem {
 }
 
 function collectHeadings(resolved: ResolvedContentSurface): readonly HeadingItem[] {
-  const out: HeadingItem[] = [];
+  // A2R : the ToC MUST use the SAME id derivation as the body renderer. Extract
+  // ids from source-backed mdast headings via `assignHeadingIds` (shared with
+  // reference-renderer). Synthetic headings (A2 fixtures) fall back to the block
+  // id + synthetic text.
+  const roots: BlockNode[] = [];
+  const syntheticFallback: HeadingItem[] = [];
   for (const rb of resolved.blocks) {
     if (!rb.visible) continue;
     if (rb.block.kind !== "heading") continue;
+    const mdast = (rb.block.data as { mdast?: unknown } | undefined)?.mdast;
+    if (mdast && typeof mdast === "object") {
+      roots.push(mdast as BlockNode);
+      continue;
+    }
     const text = typeof rb.block.data.text === "string" ? rb.block.data.text : "";
-    out.push({ id: rb.block.id, text, level: rb.block.level ?? 2 });
+    syntheticFallback.push({ id: rb.block.id, text, level: rb.block.level ?? 2 });
   }
-  return out;
+  if (roots.length === 0) return syntheticFallback;
+  const { order } = assignHeadingIds(roots);
+  const mdastItems = order.map((o) => ({ id: o.id, text: o.text, depth: o.depth }));
+  return [
+    ...mdastItems.map((h) => ({ id: h.id, text: h.text, level: h.depth })),
+    ...syntheticFallback,
+  ];
 }
 
 function collectSources(resolved: ResolvedContentSurface): readonly ReactNode[] {
@@ -74,8 +102,11 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
     resolveAuthor,
     tocEnabled = true,
     kicker,
-    ctaAttributedHref,
+    ctaContextualHref,
+    ctaFinalHref,
     contentRevision,
+    relatedEntries,
+    breadcrumbInsights = false,
   } = props;
 
   const headings = collectHeadings(resolved);
@@ -102,6 +133,11 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
             <li>
               <a href="/">TextOS</a>
             </li>
+            {breadcrumbInsights ? (
+              <li>
+                <a href="/insights">Insights</a>
+              </li>
+            ) : null}
             <li aria-current="page">{resolved.title}</li>
           </ol>
         </nav>
@@ -120,13 +156,29 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         {authors.length > 0 ? (
           <p className="cse-surface__byline">
             <span className="cse-surface__label">By</span>{" "}
-            {authors.map((a, i) => (
-              <span key={a.id}>
-                {i > 0 ? ", " : ""}
-                {a.person?.name}
-                {a.person?.role ? <span className="cse-surface__role"> ({a.person.role})</span> : null}
-              </span>
-            ))}
+            {authors.map((a, i) => {
+              const profilePath = (a.person as { profilePath?: string } | null)
+                ?.profilePath;
+              return (
+                <span key={a.id}>
+                  {i > 0 ? ", " : ""}
+                  {profilePath ? (
+                    <a
+                      className="cse-surface__author-link"
+                      href={profilePath}
+                      data-cse-author-id={a.id}
+                    >
+                      {a.person?.name}
+                    </a>
+                  ) : (
+                    <span data-cse-author-id={a.id}>{a.person?.name}</span>
+                  )}
+                  {a.person?.role ? (
+                    <span className="cse-surface__role"> ({a.person.role})</span>
+                  ) : null}
+                </span>
+              );
+            })}
           </p>
         ) : null}
       </header>
@@ -148,7 +200,32 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         </nav>
       ) : null}
 
-      <RenderReferenceBody resolved={resolved} />
+      <RenderReferenceBody
+        resolved={resolved}
+        renderContextualCta={
+          cta && ctaContextualHref
+            ? () => (
+                <aside
+                  className="cse-surface__cta cse-surface__cta--contextual"
+                  data-cse-cta-variant={cta.variantId}
+                  data-cse-cta-version={cta.version}
+                  data-cse-cta-position="contextual"
+                  data-cse-content-revision={contentRevision}
+                >
+                  <p className="cse-surface__cta-title">{cta.title}</p>
+                  <p className="cse-surface__cta-body">{cta.body}</p>
+                  <a
+                    className="cse-surface__cta-action"
+                    href={ctaContextualHref}
+                    data-cse-cta-destination={cta.destination}
+                  >
+                    {cta.primaryLabel}
+                  </a>
+                </aside>
+              )
+            : undefined
+        }
+      />
 
       {sources.length > 0 ? (
         <section className="cse-surface__sources" aria-labelledby={`${resolved.documentId}-sources`}>
@@ -159,19 +236,20 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         </section>
       ) : null}
 
+      {/* A2R : final CTA emitted AFTER body (and after any contextual CTA in body). */}
       {resolved.conversion.effectiveCtaAllowed && cta ? (
         <aside
-          className="cse-surface__cta"
+          className="cse-surface__cta cse-surface__cta--final"
           data-cse-cta-variant={cta.variantId}
           data-cse-cta-version={cta.version}
-          data-cse-cta-position="foot"
+          data-cse-cta-position="final"
           data-cse-content-revision={contentRevision}
         >
           <p className="cse-surface__cta-title">{cta.title}</p>
           <p className="cse-surface__cta-body">{cta.body}</p>
           <a
             className="cse-surface__cta-action"
-            href={ctaAttributedHref ?? cta.destination}
+            href={ctaFinalHref ?? cta.destination}
             data-cse-cta-destination={cta.destination}
           >
             {cta.primaryLabel}
@@ -182,14 +260,25 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         </aside>
       ) : null}
 
-      {resolved.navigation.showRelatedContent
-        && resolved.navigation.relatedContentIds.length > 0 ? (
+      {/* A2R : related entries — resolved titles + descriptions + hrefs. Never raw ids. */}
+      {resolved.navigation.showRelatedContent && relatedEntries && relatedEntries.length > 0 ? (
         <nav className="cse-surface__related" aria-label="Related">
           <p className="cse-surface__label">Related</p>
           <ul>
-            {resolved.navigation.relatedContentIds.map((id) => (
-              <li key={id} data-cse-related-id={id}>
-                {id}
+            {relatedEntries.map((r) => (
+              <li key={r.documentId} data-cse-related-id={r.documentId}>
+                <a href={r.href} data-cse-related-slug={r.slug}>
+                  {r.title}
+                </a>
+                <p className="cse-surface__related-description">{r.description}</p>
+                {r.isDraft ? (
+                  <span
+                    className="cse-surface__related-draft-badge"
+                    data-role="related-draft-badge"
+                  >
+                    draft
+                  </span>
+                ) : null}
               </li>
             ))}
           </ul>

@@ -46,4 +46,44 @@ describe("contrat de CI", () => {
     // la matrice elle-même, qui prouve les deux modes de conversion.
     expect(WORKFLOW).toMatch(/conversion_mode: \["off", "demo"\]/);
   });
+
+  // PR21-FINAL-RELEASE-GATE §7 — le workflow doit exécuter une vérification
+  // qui BUILD AVANT les tests, sinon les suites qui inspectent `out/` échouent
+  // sur runner GitHub sans que le vert local le prédise. La commande
+  // autoritaire est `pnpm verify:a3r` (ou une commande équivalente qui
+  // enchaîne rm -rf out → build → vitest → validate:jsonld → verify:a2r).
+  //
+  // Ce test détecte précisément la classe de panne du run 35247495182 :
+  // `pnpm test` invoqué avant `pnpm build`.
+  test("build-validate n'exécute pas `pnpm test` avant `pnpm build`", () => {
+    const job = WORKFLOW.slice(
+      WORKFLOW.indexOf("build-validate:"),
+      WORKFLOW.indexOf("\n  product-truth:"),
+    );
+    const testIndex = job.indexOf("pnpm test");
+    const buildIndex = job.indexOf("pnpm build");
+    // Cas OK : la commande `verify:a3r` remplace la séquence explicite.
+    if (job.includes("pnpm verify:a3r")) {
+      // Ni `pnpm test` NI `pnpm build` bruts ne sont autorisés en dehors de
+      // `verify:a3r` — un `- run: pnpm test` séparé reviendrait à la classe
+      // de panne d'origine.
+      expect(testIndex, "aucun `pnpm test` isolé n'est autorisé si verify:a3r est utilisé").toBe(-1);
+      return;
+    }
+    // Sinon on VÉRIFIE l'ordre strict : build avant test.
+    expect(testIndex).toBeGreaterThan(-1);
+    expect(buildIndex).toBeGreaterThan(-1);
+    expect(
+      buildIndex,
+      "`pnpm build` doit précéder `pnpm test` afin que les suites de sortie disposent de `out/`",
+    ).toBeLessThan(testIndex);
+  });
+
+  test("build-validate exécute la commande autoritaire `pnpm verify:a3r`", () => {
+    const job = WORKFLOW.slice(
+      WORKFLOW.indexOf("build-validate:"),
+      WORKFLOW.indexOf("\n  product-truth:"),
+    );
+    expect(job).toContain("pnpm verify:a3r");
+  });
 });
