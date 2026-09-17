@@ -10,6 +10,34 @@
 
 import { z } from "zod";
 
+import {
+  ParagraphNodeSchema,
+  HeadingNodeSchema,
+  ListNodeSchema,
+  BlockquoteNodeSchema,
+  TableNodeSchema,
+  CodeNodeSchema,
+  ThematicBreakNodeSchema,
+  ImageNodeSchema,
+  HtmlCtaMarkerNodeSchema,
+  DefinitionNodeSchema,
+  FootnoteDefinitionNodeSchema,
+} from "./mdast-semantic";
+
+// Short aliases used by the source-backed ContentBlock variants below. Keeping
+// them local avoids repeating the long import names in every variant.
+const PARAGRAPH_NODE_REF = ParagraphNodeSchema;
+const HEADING_NODE_REF = HeadingNodeSchema;
+const LIST_NODE_REF = ListNodeSchema;
+const BLOCKQUOTE_NODE_REF = BlockquoteNodeSchema;
+const TABLE_NODE_REF = TableNodeSchema;
+const CODE_NODE_REF = CodeNodeSchema;
+const THEMATIC_BREAK_NODE_REF = ThematicBreakNodeSchema;
+const IMAGE_NODE_REF = ImageNodeSchema;
+const HTML_CTA_MARKER_NODE_REF = HtmlCtaMarkerNodeSchema;
+const DEFINITION_NODE_REF = DefinitionNodeSchema;
+const FOOTNOTE_DEFINITION_NODE_REF = FootnoteDefinitionNodeSchema;
+
 export const CONTENT_SCHEMA_VERSION = "content-document@1" as const;
 
 // -- publicationStatus ------------------------------------------------------
@@ -60,22 +88,349 @@ export const BLOCK_KINDS = [
 export const BlockKindSchema = z.enum(BLOCK_KINDS);
 export type BlockKind = (typeof BLOCK_KINDS)[number];
 
-// A block carries an intrinsic identity, a kind, and free-form semantic payload the engine
-// does not interpret. The engine orders and gates blocks; producers own their meaning.
-export const ContentBlockSchema = z
+// A1R-CONTRACT-SEAL-1 — every ContentBlock variant is now a strict discriminated
+// object with an explicitly-typed `data` payload. No `z.unknown()`, no
+// `z.record(_, z.unknown())`, no `z.any()`. The exported JSON Schema therefore
+// encodes the semantic tree contract — a downstream vendorer validates the shape
+// with a JSON Schema validator alone, without executing TextOS compiler code.
+//
+// TWO data-shape families exist per source-backed kind :
+//   - SOURCE-BACKED : `data: { mdast: TypedMdastNode }` (strict). The kind
+//     constrains the mdast type. Emitted by the TextOS Markdown producer.
+//   - SYNTHETIC     : producer-authored fields, per-kind. Kept to admit A2 SURFACE_PASS
+//     fixtures and non-Markdown producers without leaking `z.unknown()`.
+//
+// Every leaf is `.strict()` — an unknown key on any variant fails validation.
+
+// Import the mdast semantic schemas AFTER the file-level enum declarations so
+// they can reference BlockKindSchema when needed.
+// Deferred import via a require-cycle-safe direct reference : declared here.
+
+// The imports are placed near the top of the module for clarity ; see file header.
+
+// ── source-backed helpers ---------------------------------------------------
+
+const SourceBackedParagraph = z
   .object({
     id: z.string().min(1),
-    kind: BlockKindSchema,
-    // Level applies to headings; ignored elsewhere. The engine does not enforce document
-    // heading hierarchy — that is a linter / editorial concern, not a composition concern.
-    level: z.number().int().min(1).max(6).optional(),
-    // Producer-defined payload. The engine treats it as opaque data.
-    data: z.record(z.string(), z.unknown()).default({}),
-    // Semantic slot name a SurfacePolicy can bind against. Optional.
+    kind: z.literal("paragraph"),
     slot: z.string().min(1).optional(),
+    data: z.object({ mdast: PARAGRAPH_NODE_REF }).strict(),
   })
   .strict();
-export type ContentBlock = z.infer<typeof ContentBlockSchema>;
+
+const SourceBackedHeading = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("heading"),
+    level: z.number().int().min(1).max(6).optional(),
+    slot: z.string().min(1).optional(),
+    data: z.object({ mdast: HEADING_NODE_REF }).strict(),
+  })
+  .strict();
+
+const SourceBackedSteps = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("steps"),
+    slot: z.string().min(1).optional(),
+    data: z.object({ mdast: LIST_NODE_REF }).strict(),
+  })
+  .strict();
+
+const SourceBackedQuote = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("quote"),
+    slot: z.string().min(1).optional(),
+    data: z.object({ mdast: BLOCKQUOTE_NODE_REF }).strict(),
+  })
+  .strict();
+
+const SourceBackedTable = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("table"),
+    slot: z.string().min(1).optional(),
+    data: z.object({ mdast: TABLE_NODE_REF }).strict(),
+  })
+  .strict();
+
+/** callout = code fence OR thematic break in the current compiler. */
+const SourceBackedCallout = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("callout"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({ mdast: z.union([CODE_NODE_REF, THEMATIC_BREAK_NODE_REF]) })
+      .strict(),
+  })
+  .strict();
+
+const SourceBackedFigure = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("figure"),
+    slot: z.string().min(1).optional(),
+    data: z.object({ mdast: IMAGE_NODE_REF }).strict(),
+  })
+  .strict();
+
+const SourceBackedSource = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("source"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({ mdast: z.union([DEFINITION_NODE_REF, FOOTNOTE_DEFINITION_NODE_REF]) })
+      .strict(),
+  })
+  .strict();
+
+const SourceBackedCtaSlot = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("cta_slot"),
+    // A source-backed CTA slot MUST bind to primary-cta ; the html marker only
+    // lives at the contextual insertion point.
+    slot: z.literal("primary-cta"),
+    data: z.object({ mdast: HTML_CTA_MARKER_NODE_REF }).strict(),
+  })
+  .strict();
+
+// ── synthetic (producer-authored) variants ---------------------------------
+//
+// These admit the A2 SURFACE_PASS fixtures already checked in on main, plus
+// non-Markdown producers. Every payload shape is STRICT.
+
+const SyntheticText = z.object({ text: z.string().min(1) }).strict();
+
+const SyntheticParagraph = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("paragraph"),
+    slot: z.string().min(1).optional(),
+    data: SyntheticText,
+  })
+  .strict();
+
+const SyntheticHeading = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("heading"),
+    level: z.number().int().min(1).max(6).optional(),
+    slot: z.string().min(1).optional(),
+    data: SyntheticText,
+  })
+  .strict();
+
+const SyntheticAnswer = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("answer"),
+    slot: z.string().min(1).optional(),
+    data: SyntheticText,
+  })
+  .strict();
+
+const SyntheticSteps = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("steps"),
+    slot: z.string().min(1).optional(),
+    data: z.object({ items: z.array(z.string().min(1)) }).strict(),
+  })
+  .strict();
+
+const SyntheticQuote = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("quote"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({ text: z.string().min(1), attribution: z.string().min(1).optional() })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticCallout = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("callout"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({
+        text: z.string().min(1),
+        tone: z.string().min(1).optional(),
+        title: z.string().min(1).optional(),
+      })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticEvidence = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("evidence"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({
+        ref: z.string().min(1),
+        summary: z.string().min(1).optional(),
+      })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticSource = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("source"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({
+        ref: z.string().min(1),
+        title: z.string().min(1).optional(),
+        href: z.string().min(1).optional(),
+      })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticDefinition = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("definition"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({ term: z.string().min(1), definition: z.string().min(1) })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticStatistic = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("statistic"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({ value: z.string().min(1), label: z.string().min(1) })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticComparison = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("comparison"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({
+        left: z.string().min(1),
+        right: z.string().min(1),
+        label: z.string().min(1).optional(),
+      })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticFigure = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("figure"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({
+        src: z.string().min(1),
+        alt: z.string().min(1),
+        caption: z.string().min(1).optional(),
+      })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticTable = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("table"),
+    slot: z.string().min(1).optional(),
+    data: z
+      .object({
+        columns: z.array(z.string().min(1)),
+        rows: z.array(z.array(z.string())),
+      })
+      .strict(),
+  })
+  .strict();
+
+const SyntheticCtaSlot = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("cta_slot"),
+    slot: z.union([z.literal("primary-cta"), z.literal("final-cta"), z.literal("header-cta")]),
+    data: z.object({ intent: z.string().min(1) }).strict(),
+  })
+  .strict();
+
+const SyntheticRelatedContentSlot = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("related_content_slot"),
+    slot: z.literal("related"),
+    data: z.object({}).strict(),
+  })
+  .strict();
+
+/**
+ * ContentBlockSchema — strict union over every allowed block variant.
+ *
+ * Every alternative is a `.strict()` object with a typed `data` payload. No
+ * `z.unknown()`, no `z.any()`. A downstream vendorer validates the semantic
+ * tree with a JSON Schema validator alone.
+ */
+export const ContentBlockSchema = z.union([
+  SourceBackedParagraph,
+  SourceBackedHeading,
+  SourceBackedSteps,
+  SourceBackedQuote,
+  SourceBackedTable,
+  SourceBackedCallout,
+  SourceBackedFigure,
+  SourceBackedSource,
+  SourceBackedCtaSlot,
+  SyntheticParagraph,
+  SyntheticHeading,
+  SyntheticAnswer,
+  SyntheticSteps,
+  SyntheticQuote,
+  SyntheticCallout,
+  SyntheticEvidence,
+  SyntheticSource,
+  SyntheticDefinition,
+  SyntheticStatistic,
+  SyntheticComparison,
+  SyntheticFigure,
+  SyntheticTable,
+  SyntheticCtaSlot,
+  SyntheticRelatedContentSlot,
+]);
+
+/**
+ * `ContentBlock` widened for TypeScript-level ergonomics. The RUNTIME contract
+ * (ContentBlockSchema) enforces the strict per-kind unions above ; the exported
+ * TS type preserves the pre-A1R-SEAL-1 access shape so A2 renderer code that
+ * dereferences `block.data.text`, `block.data.ref`, `block.level`, etc. keeps
+ * compiling. The vendor contract is JSON-Schema-level and is not affected by
+ * this ergonomic widening.
+ */
+export type ContentBlock = {
+  id: string;
+  kind: BlockKind;
+  level?: number;
+  slot?: string;
+  data: Record<string, unknown>;
+};
 
 // -- identity ---------------------------------------------------------------
 export const IdentitySchema = z
@@ -246,4 +601,9 @@ export const ContentDocumentSchema = z
     }
   });
 
-export type ContentDocument = z.infer<typeof ContentDocumentSchema>;
+// SEAL-1 : `body` is widened at the TypeScript level (same rationale as the
+// ContentBlock widening above) so existing renderer/pipeline code compiles.
+// Runtime validation remains strict via ContentBlockSchema in the union.
+export type ContentDocument = Omit<z.infer<typeof ContentDocumentSchema>, "body"> & {
+  body: ContentBlock[];
+};

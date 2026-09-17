@@ -67,18 +67,34 @@ export function evaluateMarkdownFidelityPass(
         });
       }
     } else {
-      const expectedBody = oracle.blocks.map((b) => ({
-        kind: b.kind,
-        slot: b.slot ?? null,
-        level: b.level ?? null,
-        mdast: (b.data as { mdast?: unknown }).mdast,
-      }));
-      const actualBody = parsed.data.body.map((b) => ({
-        kind: b.kind,
-        slot: b.slot ?? null,
-        level: b.level ?? null,
-        mdast: (b.data as { mdast?: unknown } | undefined)?.mdast,
-      }));
+      const expectedBody = oracle.blocks.map((b) => {
+        const bx = b as {
+          kind: string;
+          slot?: string;
+          level?: number;
+          data: Record<string, unknown>;
+        };
+        return {
+          kind: bx.kind,
+          slot: bx.slot ?? null,
+          level: bx.level ?? null,
+          mdast: (bx.data as { mdast?: unknown }).mdast,
+        };
+      });
+      const actualBody = parsed.data.body.map((b) => {
+        const bx = b as {
+          kind: string;
+          slot?: string;
+          level?: number;
+          data: Record<string, unknown>;
+        };
+        return {
+          kind: bx.kind,
+          slot: bx.slot ?? null,
+          level: bx.level ?? null,
+          mdast: (bx.data as { mdast?: unknown } | undefined)?.mdast,
+        };
+      });
       // Filter out synthetic non-authoritative blocks (no mdast payload) on the
       // checked-in side — related_content_slot / injected policy slots are legitimate
       // additions to the document but do NOT participate in fidelity.
