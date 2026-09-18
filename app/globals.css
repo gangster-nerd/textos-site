@@ -1255,3 +1255,224 @@ article { overflow-wrap: break-word; }
 .cse-surface__newsletter-consent a {
   color: var(--color-editorial-link);
 }
+
+/* MEASUREMENT-REQUEST-CAPTURE-1A — governed capture form visual contract.
+   One coherent dark panel ; stacked field groups ; no positional CSS.
+   All values resolve through existing site tokens. */
+
+.measurement-request {
+  margin: var(--space-6) 0;
+  padding: 1.5rem 1.5rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+}
+@media (max-width: 40rem) {
+  .measurement-request { padding: var(--space-4); }
+}
+
+.measurement-request__form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.measurement-request__field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.measurement-request__label-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.measurement-request__label {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold, 600);
+  font-size: var(--text-sm);
+}
+
+.measurement-request__optional,
+.measurement-request__required {
+  font-size: var(--font-size-micro);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium, 500);
+}
+.measurement-request__required { color: var(--color-editorial-link); }
+
+.measurement-request__control {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 0.625rem 0.75rem;
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-emphasis);
+  border-radius: 4px;
+  font: inherit;
+  line-height: var(--line-height-normal);
+}
+.measurement-request__control::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+.measurement-request__control:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: var(--color-focus-ring);
+}
+.measurement-request__control:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+.measurement-request__control--textarea {
+  min-height: 140px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.measurement-request__hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
+.measurement-request__note {
+  margin: var(--space-2) 0 0;
+  padding: var(--space-3);
+  background: var(--color-bg-surface);
+  border-left: 3px solid var(--color-editorial-rule);
+  border-radius: 3px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.measurement-request__actions {
+  margin-top: var(--space-3);
+  display: flex;
+  justify-content: flex-start;
+}
+.measurement-request__submit {
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+}
+@media (max-width: 40rem) {
+  .measurement-request__actions { justify-content: stretch; }
+  .measurement-request__submit  { width: 100%; }
+}
+
+.measurement-request__status {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+.measurement-request__status[data-state="error"] { color: var(--color-text-primary); }
+
+.measurement-request__privacy {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-default);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+.measurement-request__privacy p { margin: 0 0 var(--space-3); }
+.measurement-request__privacy p:last-child { margin-bottom: 0; }
+.measurement-request__privacy a { color: var(--color-editorial-link); }
+
+/* MEASUREMENT-REQUEST-QUESTIONS-1 — buyer-question fieldset. Stacks vertically
+   inside the dark panel ; controls reuse the governed measurement-request
+   controls, and add/remove are visibly secondary to the primary submit CTA. */
+
+.measurement-request__questions {
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  padding: var(--space-4);
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.measurement-request__legend {
+  padding: 0 var(--space-2);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold, 600);
+  font-size: var(--text-sm);
+}
+
+.measurement-request__question-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.measurement-request__question-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: stretch;
+  min-width: 0;
+}
+
+.measurement-request__question-row .measurement-request__control {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.measurement-request__question-remove,
+.measurement-request__question-add {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-emphasis);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  min-height: 44px;
+  white-space: nowrap;
+}
+.measurement-request__question-remove:hover:not(:disabled),
+.measurement-request__question-add:hover:not(:disabled) {
+  color: var(--color-text-primary);
+  border-color: var(--color-editorial-rule);
+}
+.measurement-request__question-remove:disabled,
+.measurement-request__question-add:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.measurement-request__question-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.measurement-request__question-count {
+  font-size: var(--font-size-micro);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.measurement-request__question-error {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+@media (max-width: 40rem) {
+  .measurement-request__question-row { flex-wrap: wrap; }
+  .measurement-request__question-remove { width: 100%; }
+}

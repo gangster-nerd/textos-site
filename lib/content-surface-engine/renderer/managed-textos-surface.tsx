@@ -24,6 +24,7 @@ import { computeManagedSurfacePlan } from "../site-integration/managed-surface-p
 import { findSourceRelatedSectionFromResolved } from "../site-integration/related-source-links";
 import {
   deriveResolvedConversionPlan,
+  type CommercialCapabilityState,
   type ResolvedConversionPlan,
 } from "../site-integration/conversion-plan";
 
@@ -81,6 +82,14 @@ export interface ManagedSurfaceProps {
     /** True if this build is an editorial preview (drafts visible). */
     isPreview: boolean;
   };
+  /**
+   * MEASUREMENT-REQUEST-CAPTURE-1 (strict gate) : commercial CTA capability
+   * state. STRICT POSITIVE — only the exact literal "configured" enables
+   * the commercial cohort. Omitting this prop, passing "unconfigured", or
+   * any other value suppresses header/contextual/final. Editorial next step
+   * is unaffected.
+   */
+  commercialCapability?: CommercialCapabilityState;
 }
 
 interface HeadingItem {
@@ -192,6 +201,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
     contentRevision,
     relatedEntries,
     newsletter,
+    commercialCapability,
   } = props;
 
   const eyebrow = kicker ?? (document ? editorialEyebrowLabel(document) : "");
@@ -247,6 +257,8 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
     sourceRelated: findSourceRelatedSectionFromResolved(resolved),
     computedRelated: (relatedEntries ?? []),
     newsletterEnabled,
+    // Fail-closed default : if the caller omits the state, treat as unconfigured.
+    commercialCapability: commercialCapability ?? "unconfigured",
   });
 
   // CMO-SURFACE-VISUAL-CORRECTION-1 : promote the first visible Short Answer

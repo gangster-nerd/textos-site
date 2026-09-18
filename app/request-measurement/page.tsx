@@ -1,46 +1,49 @@
 import type { Metadata } from "next";
 
-import { DemoDisclosure } from "@/components/conversion/DemoDisclosure";
-import { MeasurementRequestForm } from "@/components/conversion/MeasurementRequestForm";
-import { conversionConfig } from "@/lib/conversion/conversion-config";
-import { MEASUREMENT_REQUEST_COPY } from "@/lib/conversion/measurement-request-copy";
+import { MeasurementRequestCaptureForm } from "@/components/conversion/MeasurementRequestCaptureForm";
+import { measurementRequestCapability } from "@/lib/config/measurement-request-config";
 
-// Destination du CTA `measurement_request`. Page STATIQUE gouvernée : la copy vient du registre
-// fermé, jamais du Markdown ni du sous-traitant. Le prestataire ne fournit que l'endpoint de
-// réception — il ne possède pas le parcours éditorial.
-//
-// La page est IDENTIQUE en démo et en production, au bandeau de démonstration près.
+// MEASUREMENT-REQUEST-CAPTURE-1 — governed capture surface.
+// Static-export compatible : the page shell is server-rendered, the form is a
+// client component that progressively enhances the native POST. If the
+// governed capability is unconfigured (invalid endpoint), the page fails
+// closed with a non-submittable notice — no dead-linked commercial CTA.
 export const dynamic = "force-static";
 
-const { form } = MEASUREMENT_REQUEST_COPY;
+const TITLE = "Request an Authority Presence measurement";
+const INTRO =
+  "Provide the context needed to review a potential Authority Presence measurement. Requests are reviewed manually. No measurement starts on submission.";
 
 export const metadata: Metadata = {
-  title: form.title,
-  description: form.intro,
+  title: TITLE,
+  description: INTRO,
   robots: { index: false, follow: false },
 };
 
 export default function RequestMeasurementPage() {
+  const cap = measurementRequestCapability;
   return (
     <main>
       <article>
-        <h1>{form.title}</h1>
-        <p>{form.intro}</p>
-
-        <DemoDisclosure />
-
-        {conversionConfig.isOff ? (
-          // Mode `off` : aucun formulaire actif. Pas de bouton grisé, pas de promesse différée.
-          <p role="status" data-form-state="unavailable">
-            {form.unavailableMessage}
-          </p>
-        ) : (
-          <MeasurementRequestForm
-            mode={conversionConfig.mode}
-            endpoint={conversionConfig.formEndpoint}
-            copy={form}
-            copyVersion={MEASUREMENT_REQUEST_COPY.version}
+        <h1>{TITLE}</h1>
+        <p>{INTRO}</p>
+        {cap.state === "configured" ? (
+          <MeasurementRequestCaptureForm
+            endpoint={cap.endpoint}
+            privacyUrl={cap.privacyUrl}
+            privacyContactEmail={cap.privacyContactEmail}
+            controllerName={cap.controllerName}
           />
+        ) : (
+          <p
+            role="status"
+            data-role="measurement-request-status"
+            data-state="unavailable"
+            data-provider-state="unconfigured"
+          >
+            The measurement-request capture is temporarily unavailable. Please
+            contact {cap.controllerName} at {cap.privacyContactEmail}.
+          </p>
         )}
       </article>
     </main>

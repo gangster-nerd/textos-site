@@ -44,12 +44,26 @@ export interface ResolvedConversionPlan {
   };
 }
 
+/**
+ * MEASUREMENT-REQUEST-CAPTURE-1 (strict gate) : the downstream capture
+ * capability the commercial CTA depends on. STRICT POSITIVE semantics: only
+ * the exact literal "configured" enables commercial slots. Anything else —
+ * "unconfigured", any other string, boolean, undefined, null, missing key —
+ * suppresses header/contextual/final. Editorial next step is unaffected.
+ */
+export type CommercialCapabilityState = "configured" | "unconfigured";
+
 interface DeriveInput {
   resolved: ResolvedContentSurface;
   cta: ResolvedReferenceCta | null;
   sourceRelated: SourceRelatedSection | null;
   computedRelated: readonly ResolvedRelatedEntry[];
   newsletterEnabled: boolean;
+  /**
+   * REQUIRED. Callers must pass the resolved capability. There is NO
+   * permissive default — an omitted or unrecognised value fails closed.
+   */
+  commercialCapability: CommercialCapabilityState;
 }
 
 const HEADER_SECONDARY_LABEL = "See how measurement works";
@@ -112,8 +126,17 @@ function pickEditorialNextStep(input: DeriveInput): EditorialNextStep | null {
 }
 
 export function deriveResolvedConversionPlan(input: DeriveInput): ResolvedConversionPlan {
+  // Strict positive gate: only the exact literal "configured" enables the
+  // commercial cohort. Any other input (undefined, null, malformed, "off",
+  // "unconfigured", ...) is treated as fail-closed by construction. TypeScript
+  // enforces the literal at compile time; the runtime check is the safety net
+  // for `as` casts and untyped call sites at the module boundary.
+  const capabilityConfigured =
+    (input.commercialCapability as unknown) === "configured";
   const commercialEnabled =
-    input.resolved.conversion.effectiveCtaAllowed && input.cta !== null;
+    capabilityConfigured &&
+    input.resolved.conversion.effectiveCtaAllowed &&
+    input.cta !== null;
 
   const cta = input.cta;
   const commercial = commercialEnabled && cta
