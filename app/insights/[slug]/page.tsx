@@ -272,9 +272,8 @@ export default async function Page({
               ? { name: e.name, role: e.role, profilePath: e.profilePath }
               : null;
           }}
-          kicker={entry.kicker}
+          document={entry.document}
           contentRevision={contentRevision}
-          breadcrumbInsights
           ctaContextualHref={
             cta
               ? buildCtaAttributionHref({

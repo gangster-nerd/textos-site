@@ -19,6 +19,7 @@ import type { ContentDocument } from "@/lib/content-surface-engine/contract/cont
 import type { BlockNode } from "@/lib/content-surface-engine/contract/mdast-semantic";
 import { loadManagedCorpus } from "@/lib/content-surface-engine/conformance/corpus-loader";
 import { evaluateRenderParity } from "@/lib/content-surface-engine/conformance/render-parity";
+import { findSourceRelatedSection } from "@/lib/content-surface-engine/site-integration/related-source-links";
 
 const OUT_DIR = path.resolve("out/insights");
 if (!fs.existsSync(OUT_DIR)) {
@@ -28,9 +29,15 @@ if (!fs.existsSync(OUT_DIR)) {
 }
 
 const corpus = loadManagedCorpus();
-const BASE = corpus.find((d) => d.identity.slug === "brief-to-decision-economics")!;
+// CMO-SURFACE-VERTICAL-SLICE-1 REVIEW FIX : `brief-to-decision-economics` was
+// the fixture, but its only list block is now consumed by the managed surface
+// (it's the trailing "Related reading" list) — the "ordered list start
+// modified" mutation would land on that consumed block and be legitimately
+// ignored by parity, hiding the mutation. `agent-protocol-immutable-frontiers`
+// has no trailing Related section and preserves every mutation shape.
+const BASE = corpus.find((d) => d.identity.slug === "agent-protocol-immutable-frontiers")!;
 const BASE_HTML = fs.readFileSync(
-  path.join(OUT_DIR, "brief-to-decision-economics.html"),
+  path.join(OUT_DIR, "agent-protocol-immutable-frontiers.html"),
   "utf8",
 );
 
@@ -348,9 +355,23 @@ const MUTATIONS: Mutation[] = [
   },
 ];
 
+// CMO-SURFACE-VERTICAL-SLICE-1 REVIEW FIX : blocks the managed surface
+// consumes (Related … heading + list) are projected outside the body and
+// NOT counted as "missing in HTML" by exact parity. Consumed set is derived
+// from the source document via the same production predicate, keeping the
+// test and runtime in lockstep.
+function consumedFor(doc: typeof BASE): ReadonlySet<string> {
+  const src = findSourceRelatedSection(doc);
+  return new Set(src ? [src.headingBlockId, src.listBlockId] : []);
+}
+
 describe("A2R — surface mutation proof (each mutation MUST fail exact parity)", () => {
   it("baseline : untouched document passes exact parity", () => {
-    const r = evaluateRenderParity({ document: BASE, html: BASE_HTML });
+    const r = evaluateRenderParity({
+      document: BASE,
+      html: BASE_HTML,
+      consumedBlockIds: consumedFor(BASE),
+    });
     expect(r.passed).toBe(true);
     expect(r.diffs).toEqual([]);
   });
@@ -360,7 +381,11 @@ describe("A2R — surface mutation proof (each mutation MUST fail exact parity)"
     (_label, mutation) => {
       const mutated = mutation.apply(clone(BASE));
       if (mutated === null) return; // fixture unsuitable ; no-op skip
-      const r = evaluateRenderParity({ document: mutated, html: BASE_HTML });
+      const r = evaluateRenderParity({
+        document: mutated,
+        html: BASE_HTML,
+        consumedBlockIds: consumedFor(mutated),
+      });
       expect(
         r.passed,
         `mutation "${mutation.label}" should FAIL parity but passed`,

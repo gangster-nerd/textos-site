@@ -10,12 +10,19 @@
 
 import React, { type ReactElement, type ReactNode } from "react";
 
+import type { ContentDocument } from "../contract/content-document";
 import type { ResolvedContentSurface } from "../contract/resolved-content-surface";
 import type { BlockNode, HeadingNode } from "../contract/mdast-semantic";
-import { RenderReferenceBody } from "./reference-renderer";
+import { RenderReferenceBody, RENDER_VERSION } from "./reference-renderer";
 import { assignHeadingIds, phrasingToPlainText } from "./mdast-renderer";
 import type { ResolvedReferenceCta } from "../conversion/resolve-reference-cta";
 import type { ResolvedRelatedEntry } from "../site-integration/related-resolution";
+import { editorialEyebrowLabel } from "../site-integration/editorial-eyebrow";
+import { computeReadingTimeMinutes } from "../site-integration/reading-time";
+import { computeManagedSurfacePlan } from "../site-integration/managed-surface-plan";
+import { findSourceRelatedSectionFromResolved } from "../site-integration/related-source-links";
+
+const RELATED_MAX = 5;
 
 export interface ManagedSurfaceProps {
   resolved: ResolvedContentSurface;
@@ -25,7 +32,18 @@ export interface ManagedSurfaceProps {
     id: string,
   ) => { name: string; role?: string; profilePath?: string } | null;
   tocEnabled?: boolean;
+  /**
+   * Explicit eyebrow label. Callers that pass `document` may omit this — the
+   * managed surface then derives the label from doc.truth.sourceStatus via
+   * `editorialEyebrowLabel`. Never render SNAKE_CASE.
+   */
   kicker?: string;
+  /**
+   * Optional : full ContentDocument. When provided, the managed surface derives
+   * the eyebrow label, reading time and metadata dates itself — no per-slug
+   * logic in the route.
+   */
+  document?: ContentDocument;
   /**
    * A2R : two positions for the CTA. Contextual is rendered INSIDE the body flow at
    * the first source-backed `cta_slot` block. Final is rendered AFTER the body but
@@ -41,6 +59,7 @@ export interface ManagedSurfaceProps {
   relatedEntries?: readonly ResolvedRelatedEntry[];
   /**
    * A2R : includes an "Insights" breadcrumb step between TextOS and the title.
+   * When `document` is provided, defaults to true.
    */
   breadcrumbInsights?: boolean;
 }
@@ -51,19 +70,22 @@ interface HeadingItem {
   level: number;
 }
 
-function collectHeadings(resolved: ResolvedContentSurface): readonly HeadingItem[] {
-  // A2R : the ToC MUST use the SAME id derivation as the body renderer. Extract
-  // ids from source-backed mdast headings via `assignHeadingIds` (shared with
-  // reference-renderer). Synthetic headings (A2 fixtures) fall back to the block
-  // id + synthetic text.
+function collectHeadings(
+  resolved: ResolvedContentSurface,
+  skipHeadingIds: ReadonlySet<string>,
+): readonly HeadingItem[] {
   const roots: BlockNode[] = [];
+  const rootBlockIdByRoot = new Map<BlockNode, string>();
   const syntheticFallback: HeadingItem[] = [];
   for (const rb of resolved.blocks) {
     if (!rb.visible) continue;
     if (rb.block.kind !== "heading") continue;
+    if (skipHeadingIds.has(rb.block.id)) continue;
     const mdast = (rb.block.data as { mdast?: unknown } | undefined)?.mdast;
     if (mdast && typeof mdast === "object") {
-      roots.push(mdast as BlockNode);
+      const node = mdast as BlockNode;
+      roots.push(node);
+      rootBlockIdByRoot.set(node, rb.block.id);
       continue;
     }
     const text = typeof rb.block.data.text === "string" ? rb.block.data.text : "";
@@ -72,10 +94,14 @@ function collectHeadings(resolved: ResolvedContentSurface): readonly HeadingItem
   if (roots.length === 0) return syntheticFallback;
   const { order } = assignHeadingIds(roots);
   const mdastItems = order.map((o) => ({ id: o.id, text: o.text, depth: o.depth }));
-  return [
-    ...mdastItems.map((h) => ({ id: h.id, text: h.text, level: h.depth })),
-    ...syntheticFallback,
-  ];
+  const seen = new Set<string>();
+  const deduped: HeadingItem[] = [];
+  for (const h of mdastItems) {
+    if (seen.has(h.id)) continue;
+    seen.add(h.id);
+    deduped.push({ id: h.id, text: h.text, level: h.depth });
+  }
+  return [...deduped, ...syntheticFallback];
 }
 
 function collectSources(resolved: ResolvedContentSurface): readonly ReactNode[] {
@@ -95,6 +121,45 @@ function collectSources(resolved: ResolvedContentSurface): readonly ReactNode[] 
   return items;
 }
 
+function formatDate(iso: string): string {
+  const trimmed = iso.slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return iso;
+  const d = new Date(trimmed + "T00:00:00Z");
+  if (Number.isNaN(d.getTime())) return trimmed;
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+interface MetadataDateEntry {
+  label: "First published" | "Last reviewed";
+  iso: string;
+  display: string;
+}
+
+function computeMetadataDates(doc: ContentDocument | undefined): readonly MetadataDateEntry[] {
+  if (!doc) return [];
+  const lc = doc.lifecycle;
+  const entries: MetadataDateEntry[] = [];
+  const firstPublishedAt = lc.firstPublishedAt ?? null;
+  const lastReviewedAt = (lc as { lastReviewedAt?: string | null }).lastReviewedAt ?? null;
+
+  // "First published" — iff a real governed firstPublishedAt exists.
+  if (firstPublishedAt) {
+    entries.push({ label: "First published", iso: firstPublishedAt, display: formatDate(firstPublishedAt) });
+  }
+  // "Last reviewed" — iff a real governed lastReviewedAt exists. Draft status
+  // is not a reason to suppress a real review date ; both fields are truthful,
+  // independent signals — never inferred, never fabricated.
+  if (lastReviewedAt) {
+    entries.push({ label: "Last reviewed", iso: lastReviewedAt, display: formatDate(lastReviewedAt) });
+  }
+  return entries;
+}
+
 export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
   const {
     resolved,
@@ -102,14 +167,56 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
     resolveAuthor,
     tocEnabled = true,
     kicker,
+    document,
     ctaContextualHref,
     ctaFinalHref,
     contentRevision,
     relatedEntries,
-    breadcrumbInsights = false,
   } = props;
 
-  const headings = collectHeadings(resolved);
+  const eyebrow = kicker ?? (document ? editorialEyebrowLabel(document) : "");
+  const breadcrumbInsights = props.breadcrumbInsights ?? Boolean(document);
+  const readingTimeMinutes = computeReadingTimeMinutes(resolved);
+  const metadataDates = computeMetadataDates(document);
+  const plan = computeManagedSurfacePlan(resolved);
+  const sourceRelated = findSourceRelatedSectionFromResolved(resolved);
+  const computedRelated = (relatedEntries ?? []).slice(0, RELATED_MAX);
+  // Fallback : governed outbound links from the source "Related …" section
+  // are surfaced iff the computed graph found no publishable relation. Never
+  // inflated to fill space, never mixed to inflate count. Draft targets are
+  // filtered upstream by resolveRelatedContent's publicOnly caller.
+  const fallbackRelated =
+    computedRelated.length === 0 && sourceRelated
+      ? sourceRelated.links.slice(0, RELATED_MAX).map((l) => ({
+          key: l.href,
+          title: l.title || l.href,
+          href: l.href,
+          description: "",
+          source: "governed-body-link" as const,
+        }))
+      : [];
+  const relatedForRender: readonly {
+    key: string;
+    title: string;
+    href: string;
+    description: string;
+    source: "computed" | "governed-body-link";
+    documentId?: string;
+    slug?: string;
+  }[] =
+    computedRelated.length > 0
+      ? computedRelated.map((r) => ({
+          key: r.documentId,
+          title: r.title,
+          href: r.href,
+          description: r.description,
+          source: "computed" as const,
+          documentId: r.documentId,
+          slug: r.slug,
+        }))
+      : fallbackRelated;
+
+  const headings = collectHeadings(resolved, plan.skipHeadingIds);
   const showToc =
     tocEnabled && resolved.navigation.showTableOfContents && headings.length >= 3;
   const sources = collectSources(resolved);
@@ -124,18 +231,24 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
       className="cse-surface cse-surface--textos"
       lang={resolved.language}
       data-cse-surface-policy={resolved.policyId}
-      data-cse-render-version="reference@1"
+      data-cse-render-version={RENDER_VERSION}
       data-cse-content-id={resolved.documentId}
     >
       {resolved.navigation.showBreadcrumbs ? (
-        <nav className="cse-surface__breadcrumbs" aria-label="Breadcrumb">
-          <ol>
+        <nav
+          className="cse-surface__breadcrumbs"
+          aria-label="Breadcrumb"
+          data-role="breadcrumb"
+        >
+          <ol role="list">
             <li>
               <a href="/">TextOS</a>
+              <span aria-hidden="true" className="cse-surface__breadcrumb-sep">/</span>
             </li>
             {breadcrumbInsights ? (
               <li>
                 <a href="/insights">Insights</a>
+                <span aria-hidden="true" className="cse-surface__breadcrumb-sep">/</span>
               </li>
             ) : null}
             <li aria-current="page">{resolved.title}</li>
@@ -144,15 +257,16 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
       ) : null}
 
       <header className="cse-surface__head">
-        {kicker ? <p className="cse-surface__kicker">{kicker}</p> : null}
-        <h1 className="cse-surface__title">{resolved.title}</h1>
-        <p className="cse-surface__description">{resolved.description}</p>
-        {resolved.truth.publicationStatus !== "published" ? (
-          <p className="cse-surface__status" role="note">
-            <span className="cse-surface__label">Status</span>{" "}
-            {resolved.truth.publicationStatus}
+        {eyebrow ? (
+          <p
+            className="cse-surface__eyebrow"
+            data-role="editorial-eyebrow"
+          >
+            {eyebrow}
           </p>
         ) : null}
+        <h1 className="cse-surface__title">{resolved.title}</h1>
+        <p className="cse-surface__description">{resolved.description}</p>
         {authors.length > 0 ? (
           <p className="cse-surface__byline">
             <span className="cse-surface__label">By</span>{" "}
@@ -181,6 +295,25 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
             })}
           </p>
         ) : null}
+        <p
+          className="cse-surface__meta"
+          data-role="article-meta"
+          aria-label="Article metadata"
+        >
+          <span className="cse-surface__meta-item" data-role="reading-time">
+            {readingTimeMinutes} min read
+          </span>
+          {metadataDates.map((entry) => (
+            <span
+              key={entry.label}
+              className="cse-surface__meta-item"
+              data-role={`meta-${entry.label.toLowerCase().replace(/\s+/g, "-")}`}
+            >
+              <span className="cse-surface__meta-label">{entry.label}</span>{" "}
+              <time dateTime={entry.iso}>{entry.display}</time>
+            </span>
+          ))}
+        </p>
       </header>
 
       {showToc ? (
@@ -202,6 +335,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
 
       <RenderReferenceBody
         resolved={resolved}
+        consumedBlockIds={plan.consumedBlockIds}
         renderContextualCta={
           cta && ctaContextualHref
             ? () => (
@@ -260,24 +394,37 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         </aside>
       ) : null}
 
-      {/* A2R : related entries — resolved titles + descriptions + hrefs. Never raw ids. */}
-      {resolved.navigation.showRelatedContent && relatedEntries && relatedEntries.length > 0 ? (
-        <nav className="cse-surface__related" aria-label="Related">
+      {/* CMO-SURFACE-VERTICAL-SLICE-1 REVIEW FIX : single Related module. No
+          draft badges. Computed relations preferred ; governed body-link
+          fallback (from a consumed "Related …" section) is used only when
+          the graph has no publishable result. Section is hidden entirely if
+          neither source has admissible entries. */}
+      {resolved.navigation.showRelatedContent && relatedForRender.length > 0 ? (
+        <nav
+          className="cse-surface__related"
+          aria-label="Related"
+          data-role="related"
+          data-cse-related-source={
+            relatedForRender[0]?.source === "governed-body-link"
+              ? "governed-body-link"
+              : "computed"
+          }
+        >
           <p className="cse-surface__label">Related</p>
           <ul>
-            {relatedEntries.map((r) => (
-              <li key={r.documentId} data-cse-related-id={r.documentId}>
-                <a href={r.href} data-cse-related-slug={r.slug}>
+            {relatedForRender.map((r) => (
+              <li
+                key={r.key}
+                {...(r.documentId ? { "data-cse-related-id": r.documentId } : {})}
+              >
+                <a
+                  href={r.href}
+                  {...(r.slug ? { "data-cse-related-slug": r.slug } : {})}
+                >
                   {r.title}
                 </a>
-                <p className="cse-surface__related-description">{r.description}</p>
-                {r.isDraft ? (
-                  <span
-                    className="cse-surface__related-draft-badge"
-                    data-role="related-draft-badge"
-                  >
-                    draft
-                  </span>
+                {r.description ? (
+                  <p className="cse-surface__related-description">{r.description}</p>
                 ) : null}
               </li>
             ))}

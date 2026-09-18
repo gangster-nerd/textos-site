@@ -12,6 +12,7 @@
 
 import type { ContentDocument } from "../contract/content-document";
 import { loadManagedCorpus } from "../conformance/corpus-loader";
+import { editorialEyebrowLabel } from "./editorial-eyebrow";
 
 export interface InsightEntry {
   slug: string;
@@ -34,11 +35,10 @@ function build(): readonly InsightEntry[] {
 
 // Kicker string surfaced above the title. Drawn from the truth vocabulary the producer
 // stamped on the document (editorial class or governance stamp). Never invented — if the
-// producer did not stamp one, the kicker falls back to the neutral contentType.
+// producer did not stamp one, the kicker falls back to a translated contentType.
+// SNAKE_CASE never reaches the DOM ; see editorial-eyebrow.ts for the reader map.
 function kickerFor(doc: ContentDocument): string {
-  const source = doc.truth.sourceStatus.split(":")[0]?.replace(/_/g, " ").toLowerCase() ?? "";
-  if (source) return source;
-  return doc.identity.contentType;
+  return editorialEyebrowLabel(doc);
 }
 
 export function listInsightSlugs(): readonly string[] {

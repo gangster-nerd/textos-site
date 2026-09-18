@@ -19,6 +19,7 @@ import type {
 } from "@/lib/content-surface-engine/contract/mdast-semantic";
 import { loadManagedCorpus } from "@/lib/content-surface-engine/conformance/corpus-loader";
 import { phrasingToPlainText } from "@/lib/content-surface-engine/renderer/mdast-renderer";
+import { findSourceRelatedSection } from "@/lib/content-surface-engine/site-integration/related-source-links";
 
 const OUT_DIR = path.resolve("out/insights");
 
@@ -107,11 +108,24 @@ function projectDocument(doc: ContentDocument): Projection {
     imageAlts: [],
     words: [],
   };
+  // CMO-SURFACE-VERTICAL-SLICE-1 REVIEW FIX : the trailing "Related …" heading
+  // and its following list are consumed by the managed surface and projected
+  // into the Related nav. The heading label is NOT expected to appear as an
+  // h2/h3 in HTML — parity is over substantive content and governed links,
+  // not over the consumed presentation section. Link URLs and word tokens
+  // from the list are still expected in HTML (they surface in the Related
+  // nav) so we keep collecting them.
+  const src = findSourceRelatedSection(doc);
+  const skipIds = new Set<string>();
+  if (src) {
+    skipIds.add(src.headingBlockId);
+    skipIds.add(src.listBlockId);
+  }
   for (const b of doc.body) {
     const mdast = (b.data as { mdast?: unknown } | undefined)?.mdast;
-    if (mdast && typeof mdast === "object") {
-      walkBlock(mdast as BlockNode, p);
-    }
+    if (!mdast || typeof mdast !== "object") continue;
+    if (skipIds.has(b.id)) continue;
+    walkBlock(mdast as BlockNode, p);
   }
   return p;
 }
