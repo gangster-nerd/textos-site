@@ -14,6 +14,7 @@ import type { ContentDocument } from "../contract/content-document";
 import type { ResolvedContentSurface } from "../contract/resolved-content-surface";
 import type { BlockNode, HeadingNode } from "../contract/mdast-semantic";
 import { RenderReferenceBody, RENDER_VERSION } from "./reference-renderer";
+import { renderBlock } from "./block-renderers";
 import { assignHeadingIds, phrasingToPlainText } from "./mdast-renderer";
 import type { ResolvedReferenceCta } from "../conversion/resolve-reference-cta";
 import type { ResolvedRelatedEntry } from "../site-integration/related-resolution";
@@ -21,6 +22,10 @@ import { editorialEyebrowLabel } from "../site-integration/editorial-eyebrow";
 import { computeReadingTimeMinutes } from "../site-integration/reading-time";
 import { computeManagedSurfacePlan } from "../site-integration/managed-surface-plan";
 import { findSourceRelatedSectionFromResolved } from "../site-integration/related-source-links";
+import {
+  deriveResolvedConversionPlan,
+  type ResolvedConversionPlan,
+} from "../site-integration/conversion-plan";
 
 const RELATED_MAX = 5;
 
@@ -62,6 +67,20 @@ export interface ManagedSurfaceProps {
    * When `document` is provided, defaults to true.
    */
   breadcrumbInsights?: boolean;
+  /**
+   * CMO-CONVERSION-SURFACE-2 : governed retention descriptor. When provided
+   * and `provider` is configured, the managed surface emits the newsletter
+   * capture box before Related. When state is "unconfigured", the box is
+   * rendered ONLY in a preview build and cannot submit.
+   */
+  newsletter?: {
+    provider: "buttondown";
+    username: string | null;
+    sourceTag: string;
+    privacyUrl: string | null;
+    /** True if this build is an editorial preview (drafts visible). */
+    isPreview: boolean;
+  };
 }
 
 interface HeadingItem {
@@ -172,6 +191,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
     ctaFinalHref,
     contentRevision,
     relatedEntries,
+    newsletter,
   } = props;
 
   const eyebrow = kicker ?? (document ? editorialEyebrowLabel(document) : "");
@@ -215,6 +235,28 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
           slug: r.slug,
         }))
       : fallbackRelated;
+
+  // CMO-CONVERSION-SURFACE-2 : derived conversion plan (commercial CTA at
+  // three placements, editorial next step, retention).
+  const newsletterEnabled = Boolean(
+    newsletter && (newsletter.isPreview || (newsletter.username && newsletter.privacyUrl)),
+  );
+  const conversionPlan: ResolvedConversionPlan = deriveResolvedConversionPlan({
+    resolved,
+    cta,
+    sourceRelated: findSourceRelatedSectionFromResolved(resolved),
+    computedRelated: (relatedEntries ?? []),
+    newsletterEnabled,
+  });
+
+  // CMO-SURFACE-VISUAL-CORRECTION-1 : promote the first visible Short Answer
+  // block above the ToC so it lives in the first viewport, and consume its
+  // body-flow copy so it isn't rendered twice.
+  const shortAnswerRb = resolved.blocks.find(
+    (rb) => rb.visible && rb.block.kind === "answer",
+  );
+  const bodyConsumedIds = new Set<string>(plan.consumedBlockIds);
+  if (shortAnswerRb) bodyConsumedIds.add(shortAnswerRb.block.id);
 
   const headings = collectHeadings(resolved, plan.skipHeadingIds);
   const showToc =
@@ -316,13 +358,56 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         </p>
       </header>
 
+      {shortAnswerRb ? (
+        <div
+          className="cse-surface__short-answer"
+          data-role="short-answer"
+          data-cse-block-id={shortAnswerRb.block.id}
+        >
+          {renderBlock(shortAnswerRb.block, {
+            documentId: resolved.documentId,
+            headingIdByNode: new Map(),
+          })}
+        </div>
+      ) : null}
+
+      {conversionPlan.commercial.header ? (
+        <div
+          className="cse-surface__cta cse-surface__cta--header"
+          data-role="commercial-cta"
+          data-cse-cta-slot="header"
+          data-cse-cta-variant={conversionPlan.commercial.header.variantId}
+          data-cse-cta-version={conversionPlan.commercial.header.version}
+          data-cse-content-revision={contentRevision}
+          data-cse-instrument-event="commercial_cta_impression"
+        >
+          <a
+            className="cse-surface__cta-primary"
+            href={conversionPlan.commercial.header.destination}
+            data-cse-cta-destination={conversionPlan.commercial.header.destination}
+            data-cse-instrument-event="commercial_cta_click"
+          >
+            {conversionPlan.commercial.header.primaryLabel}
+          </a>
+          {conversionPlan.commercial.header.secondaryHref ? (
+            <a
+              className="cse-surface__cta-secondary"
+              href={conversionPlan.commercial.header.secondaryHref}
+              data-cse-instrument-event="editorial_next_step_click"
+            >
+              {conversionPlan.commercial.header.secondaryLabel}
+            </a>
+          ) : null}
+        </div>
+      ) : null}
+
       {showToc ? (
         <nav
           className="cse-surface__toc"
           aria-label="Table of contents"
           data-cse-instrument="toc"
         >
-          <p className="cse-surface__label">On this page</p>
+          <p className="cse-surface__toc-title">On this page</p>
           <ol>
             {headings.map((h) => (
               <li key={h.id} className={`cse-surface__toc-level-${h.level}`}>
@@ -335,28 +420,34 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
 
       <RenderReferenceBody
         resolved={resolved}
-        consumedBlockIds={plan.consumedBlockIds}
+        consumedBlockIds={bodyConsumedIds}
         renderContextualCta={
-          cta && ctaContextualHref
-            ? () => (
-                <aside
-                  className="cse-surface__cta cse-surface__cta--contextual"
-                  data-cse-cta-variant={cta.variantId}
-                  data-cse-cta-version={cta.version}
-                  data-cse-cta-position="contextual"
-                  data-cse-content-revision={contentRevision}
-                >
-                  <p className="cse-surface__cta-title">{cta.title}</p>
-                  <p className="cse-surface__cta-body">{cta.body}</p>
-                  <a
-                    className="cse-surface__cta-action"
-                    href={ctaContextualHref}
-                    data-cse-cta-destination={cta.destination}
+          conversionPlan.commercial.contextual && ctaContextualHref
+            ? () => {
+                const c = conversionPlan.commercial.contextual!;
+                return (
+                  <aside
+                    className="cse-surface__cta cse-surface__cta--contextual"
+                    data-role="commercial-cta"
+                    data-cse-cta-slot="contextual"
+                    data-cse-cta-variant={c.variantId}
+                    data-cse-cta-version={c.version}
+                    data-cse-cta-position="contextual"
+                    data-cse-content-revision={contentRevision}
+                    data-cse-instrument-event="commercial_cta_impression"
                   >
-                    {cta.primaryLabel}
-                  </a>
-                </aside>
-              )
+                    <p className="cse-surface__cta-title">{c.headline}</p>
+                    <a
+                      className="cse-surface__cta-action"
+                      href={ctaContextualHref}
+                      data-cse-cta-destination={c.destination}
+                      data-cse-instrument-event="commercial_cta_click"
+                    >
+                      {c.primaryLabel}
+                    </a>
+                  </aside>
+                );
+              }
             : undefined
         }
       />
@@ -370,28 +461,144 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         </section>
       ) : null}
 
-      {/* A2R : final CTA emitted AFTER body (and after any contextual CTA in body). */}
-      {resolved.conversion.effectiveCtaAllowed && cta ? (
+      {conversionPlan.commercial.final ? (
         <aside
           className="cse-surface__cta cse-surface__cta--final"
-          data-cse-cta-variant={cta.variantId}
-          data-cse-cta-version={cta.version}
+          data-role="commercial-cta"
+          data-cse-cta-slot="final"
+          data-cse-cta-variant={conversionPlan.commercial.final.variantId}
+          data-cse-cta-version={conversionPlan.commercial.final.version}
           data-cse-cta-position="final"
           data-cse-content-revision={contentRevision}
+          data-cse-instrument-event="commercial_cta_impression"
         >
-          <p className="cse-surface__cta-title">{cta.title}</p>
-          <p className="cse-surface__cta-body">{cta.body}</p>
+          <p className="cse-surface__cta-eyebrow">{conversionPlan.commercial.final.eyebrow}</p>
+          <p className="cse-surface__cta-title">{conversionPlan.commercial.final.headline}</p>
+          <p className="cse-surface__cta-body">{conversionPlan.commercial.final.copy}</p>
           <a
-            className="cse-surface__cta-action"
-            href={ctaFinalHref ?? cta.destination}
-            data-cse-cta-destination={cta.destination}
+            className="cse-surface__cta-action cse-surface__cta-primary"
+            href={ctaFinalHref ?? conversionPlan.commercial.final.destination}
+            data-cse-cta-destination={conversionPlan.commercial.final.destination}
+            data-cse-instrument-event="commercial_cta_click"
           >
-            {cta.primaryLabel}
+            {conversionPlan.commercial.final.primaryLabel}
           </a>
-          {cta.disclaimer ? (
+          {cta?.disclaimer ? (
             <p className="cse-surface__cta-disclaimer">{cta.disclaimer}</p>
           ) : null}
         </aside>
+      ) : null}
+
+      {conversionPlan.editorialNextStep ? (
+        <nav
+          className="cse-surface__editorial-next-step"
+          aria-label="Continue exploring"
+          data-role="editorial-next-step"
+          data-cse-instrument-event="editorial_next_step_impression"
+          data-cse-next-step-source={conversionPlan.editorialNextStep.source}
+        >
+          <p className="cse-surface__label">Continue exploring</p>
+          <a
+            className="cse-surface__editorial-next-step-link"
+            href={conversionPlan.editorialNextStep.href}
+            data-cse-instrument-event="editorial_next_step_click"
+          >
+            {conversionPlan.editorialNextStep.label}
+          </a>
+          {conversionPlan.editorialNextStep.description ? (
+            <p className="cse-surface__editorial-next-step-description">
+              {conversionPlan.editorialNextStep.description}
+            </p>
+          ) : null}
+        </nav>
+      ) : null}
+
+      {newsletter && conversionPlan.retention.enabled ? (
+        <section
+          className="cse-surface__newsletter"
+          data-role="newsletter"
+          data-cse-instrument-event="newsletter_impression"
+          data-provider={newsletter.provider}
+          data-provider-state={
+            newsletter.username && newsletter.privacyUrl ? "configured" : "unconfigured"
+          }
+          aria-labelledby={`${resolved.documentId}-newsletter-title`}
+        >
+          <p
+            id={`${resolved.documentId}-newsletter-title`}
+            className="cse-surface__newsletter-title"
+          >
+            The Authority Intelligence Brief
+          </p>
+          <p className="cse-surface__newsletter-copy">
+            One evidence-led note on how brands earn visibility in answer engines. No rankings. No noise.
+          </p>
+          {newsletter.username && newsletter.privacyUrl ? (
+            <form
+              className="cse-surface__newsletter-form"
+              method="post"
+              action={`https://buttondown.com/api/emails/embed-subscribe/${encodeURIComponent(newsletter.username)}`}
+              target="popupwindow"
+            >
+              <label className="cse-surface__newsletter-label" htmlFor={`${resolved.documentId}-newsletter-email`}>
+                Work email
+              </label>
+              <input
+                id={`${resolved.documentId}-newsletter-email`}
+                type="email"
+                name="email"
+                autoComplete="email"
+                required
+                placeholder="Work email"
+                className="cse-surface__newsletter-input"
+              />
+              <input type="hidden" name="tag" value={newsletter.sourceTag} />
+              <input type="hidden" name="embed" value="1" />
+              <button
+                type="submit"
+                className="cse-surface__newsletter-submit"
+                data-cse-instrument-event="newsletter_submit_attempt"
+              >
+                Get the brief
+              </button>
+              <p className="cse-surface__newsletter-consent">
+                By subscribing you consent to receive the brief.{" "}
+                <a href={newsletter.privacyUrl}>Privacy notice</a>.
+              </p>
+            </form>
+          ) : (
+            <>
+              {newsletter.isPreview ? (
+                <p className="cse-surface__newsletter-preview-label" data-role="newsletter-preview-label">
+                  Preview — provider connection required
+                </p>
+              ) : null}
+              <div className="cse-surface__newsletter-form" aria-disabled="true">
+                <label className="cse-surface__newsletter-label" htmlFor={`${resolved.documentId}-newsletter-email`}>
+                  Work email
+                </label>
+                <input
+                  id={`${resolved.documentId}-newsletter-email`}
+                  type="email"
+                  placeholder="Work email"
+                  disabled
+                  className="cse-surface__newsletter-input"
+                />
+                <button
+                  type="button"
+                  disabled
+                  className="cse-surface__newsletter-submit"
+                  aria-disabled="true"
+                >
+                  Get the brief
+                </button>
+                <p className="cse-surface__newsletter-consent">
+                  Newsletter provider is not configured — no submission possible.
+                </p>
+              </div>
+            </>
+          )}
+        </section>
       ) : null}
 
       {/* CMO-SURFACE-VERTICAL-SLICE-1 REVIEW FIX : single Related module. No

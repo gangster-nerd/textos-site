@@ -858,15 +858,18 @@ article { overflow-wrap: break-word; }
   .panel__note { padding: var(--space-3) var(--space-4) var(--space-4); }
 }
 
-/* CMO-SURFACE-VERTICAL-SLICE-1 — TextOS-managed reference surface polish.
-   Scope : only .cse-surface* / .cse-block* selectors introduced or reshaped
-   for reference@2. No token changes, no cascade rewiring. Reference-only. */
+/* CMO-SURFACE-VERTICAL-SLICE-1 + VISUAL-CORRECTION-1 — TextOS-managed
+   reference surface polish. Scope: only .cse-surface* / .cse-block* selectors
+   introduced or reshaped for reference@2. No token changes, no cascade
+   rewiring. Resolves onto the site's dark palette via existing aliases. */
 
-/* Breadcrumb — inline, compact, no visible numbering (list-style:none). */
+/* Breadcrumb — inline, compact, no visible numbering (list-style:none). Every
+   segment reads on the dark surface ; the current-page segment is visually
+   secondary but readable (fg, not muted). */
 .cse-surface__breadcrumbs {
   margin: var(--space-4) 0 var(--space-2);
   font-size: var(--font-size-micro);
-  color: var(--color-text-muted, #6b6f76);
+  color: var(--color-text-muted);
 }
 .cse-surface__breadcrumbs ol {
   display: flex;
@@ -883,86 +886,175 @@ article { overflow-wrap: break-word; }
   gap: var(--space-2);
 }
 .cse-surface__breadcrumbs a {
-  color: inherit;
+  color: var(--color-text-secondary);
   text-decoration: none;
 }
 .cse-surface__breadcrumbs a:hover,
 .cse-surface__breadcrumbs a:focus-visible {
+  color: var(--color-text-primary);
   text-decoration: underline;
 }
 .cse-surface__breadcrumbs [aria-current="page"] {
-  color: var(--color-text, #111);
+  color: var(--color-text-secondary);
 }
 .cse-surface__breadcrumb-sep {
-  opacity: .5;
+  color: var(--color-text-muted);
+  opacity: .6;
 }
 
-/* Editorial eyebrow — reader label above title. */
+/* Editorial eyebrow — non-clickable category chip. Restrained ink+border
+   treatment ; explicitly NOT the interactive accent (`--color-editorial-link`
+   is reserved for actual anchors) to avoid the "blue link" affordance. */
 .cse-surface__eyebrow {
-  margin: 0 0 var(--space-2);
+  display: inline-block;
+  margin: 0 0 var(--space-3);
+  padding: 2px var(--space-2);
+  border: 1px solid var(--color-border-emphasis);
+  border-radius: 4px;
+  background: var(--color-bg-subtle);
   font-size: var(--font-size-micro);
-  letter-spacing: .04em;
-  text-transform: none;
-  color: var(--color-accent, #0a66c2);
-  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold, 600);
 }
 
-/* Metadata row — reading time + optional dates. */
+/* Metadata row — legible reading time without competing with the dek. */
 .cse-surface__meta {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
-  margin: var(--space-3) 0 var(--space-2);
-  font-size: var(--font-size-micro);
-  color: var(--color-text-muted, #6b6f76);
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
 }
 .cse-surface__meta-item {
   display: inline-flex;
   align-items: baseline;
   gap: .35rem;
 }
+.cse-surface__meta-item[data-role="reading-time"] {
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--color-text-primary);
+}
 .cse-surface__meta-label {
-  font-weight: 600;
-  color: var(--color-text, #111);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-text-primary);
 }
 
-/* Short Answer callout — raised card with rule, label, editorial hierarchy. */
-.cse-block--answer {
+/* Short Answer — raised DARK surface with accent rule, promoted above the
+   ToC so it lives in the first viewport (see managed-textos-surface.tsx).
+   Exactly one callout per article ; semantic <section aria-labelledby>. */
+.cse-surface__short-answer {
   margin: var(--space-6) 0;
-  padding: var(--space-5) var(--space-6);
-  background: var(--color-callout-bg, #f6f8fb);
-  border: 1px solid var(--color-callout-border, #d6dde5);
-  border-left: 4px solid var(--color-accent, #0a66c2);
+}
+/* Root cause of the earlier collapsed-padding regression: --space-5 is not
+   declared in this codebase (only 1/2/3/4/6/8/12/16). `padding: var(--space-5)
+   var(--space-6)` was therefore an invalid shorthand and the whole declaration
+   was dropped by the browser, leaving text against the border. All values
+   below are either declared tokens or explicit rem/px. Selectors are scoped
+   to the managed surface via data-role/parent to avoid any global override. */
+.cse-surface__short-answer .cse-block--answer {
+  margin: 0;
+  /* 20px vertical / 24px horizontal desktop inset (task minimum). */
+  padding: 1.25rem 1.5rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-emphasis);
+  border-left: 3px solid var(--color-editorial-rule);
   border-radius: 6px;
 }
-.cse-block--answer .cse-block__label {
-  margin: 0 0 var(--space-2);
+.cse-surface__short-answer .cse-block--answer .cse-block__label {
+  margin: 0 0 var(--space-3); /* 12px separation between label and prose */
   font-size: var(--font-size-micro);
-  letter-spacing: .04em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--color-accent, #0a66c2);
-  font-weight: 700;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-semibold, 600);
 }
-.cse-block--answer .cse-block__lede {
-  margin: 0;
-  font-size: 1.125rem;
-  line-height: 1.55;
-  color: var(--color-text, #111);
+.cse-surface__short-answer .cse-block--answer .cse-block__lede {
+  margin: 0; /* neutralises the global `p { margin: 0 0 var(--space-4) }` */
+  font-size: var(--text-lg);
+  line-height: var(--line-height-prose);
+  color: var(--color-text-primary);
+}
+@media (max-width: 40rem) {
+  .cse-surface__short-answer .cse-block--answer {
+    padding: var(--space-4); /* 16px inset mobile (task minimum) */
+  }
 }
 
-/* Related — no draft badges, single module (managed surface owns the section). */
+/* Table of contents — deliberate navigation, not an unstyled Markdown list.
+   Explicit values (var(--space-5) was undefined — see Short Answer note). */
+.cse-surface__toc {
+  margin: var(--space-6) 0;
+  /* 18px vertical / 20px horizontal desktop inset (task minimum). */
+  padding: 1.125rem 1.25rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-bg-subtle);
+}
+@media (max-width: 40rem) {
+  .cse-surface__toc {
+    padding: var(--space-4); /* 16px inset mobile */
+  }
+}
+.cse-surface__toc-title {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-micro);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-semibold, 600);
+}
+.cse-surface__toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-3); /* 12px vertical rhythm between links */
+  counter-reset: cse-toc;
+}
+.cse-surface__toc li {
+  counter-increment: cse-toc;
+  padding-left: var(--space-4);
+  position: relative;
+  line-height: var(--line-height-normal);
+  margin: 0; /* neutralise global list margin if any */
+}
+.cse-surface__toc li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: var(--space-2);
+  height: 1px;
+  background: var(--color-editorial-rule);
+  opacity: .8;
+}
+.cse-surface__toc a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+.cse-surface__toc a:hover,
+.cse-surface__toc a:focus-visible {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+.cse-surface__toc-level-3 { padding-left: var(--space-6); }
+
+/* Related — no draft badges, single module. */
 .cse-surface__related {
   margin-top: var(--space-8);
   padding-top: var(--space-5);
-  border-top: 1px solid var(--color-rule, #e6e8eb);
+  border-top: 1px solid var(--color-border-default);
 }
 .cse-surface__related .cse-surface__label {
   margin: 0 0 var(--space-3);
   font-size: var(--font-size-micro);
-  letter-spacing: .04em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--color-text-muted, #6b6f76);
-  font-weight: 700;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-semibold, 600);
 }
 .cse-surface__related ul {
   list-style: none;
@@ -970,4 +1062,196 @@ article { overflow-wrap: break-word; }
   margin: 0;
   display: grid;
   gap: var(--space-4);
+}
+.cse-surface__related a {
+  color: var(--color-editorial-link);
+  text-decoration: none;
+}
+.cse-surface__related a:hover,
+.cse-surface__related a:focus-visible {
+  text-decoration: underline;
+}
+.cse-surface__related-description {
+  margin: var(--space-1) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* CMO-CONVERSION-SURFACE-2 — commercial CTA header + final, editorial next
+   step, newsletter capture. All resolve onto existing dark tokens. */
+
+/* Header CTA — right after Short Answer, before ToC. Two actions: primary
+   commercial + secondary editorial. */
+.cse-surface__cta--header {
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-emphasis);
+  border-left: 3px solid var(--color-editorial-rule);
+  border-radius: 6px;
+}
+.cse-surface__cta-primary {
+  display: inline-block;
+  padding: 0.625rem 1rem;
+  background: var(--color-action-primary);
+  color: var(--color-bg-surface);
+  border-radius: 4px;
+  font-weight: var(--font-weight-semibold, 600);
+  text-decoration: none;
+  border: 1px solid var(--color-action-primary);
+}
+.cse-surface__cta-primary:hover,
+.cse-surface__cta-primary:focus-visible {
+  filter: brightness(1.1);
+}
+.cse-surface__cta-secondary {
+  color: var(--color-editorial-link);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+}
+.cse-surface__cta-secondary:hover,
+.cse-surface__cta-secondary:focus-visible {
+  text-decoration: underline;
+}
+
+/* Final CTA — after body, before editorial next step + related. */
+.cse-surface__cta--final {
+  margin: var(--space-12) 0 var(--space-6);
+  padding: 1.5rem 1.5rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-emphasis);
+  border-radius: 6px;
+  display: block;
+}
+.cse-surface__cta-eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-micro);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-semibold, 600);
+}
+.cse-surface__cta--final .cse-surface__cta-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold, 600);
+}
+.cse-surface__cta--final .cse-surface__cta-body {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-prose);
+}
+
+/* Editorial next step — reading path, not a commercial action. */
+.cse-surface__editorial-next-step {
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border-default);
+  border-bottom: 1px solid var(--color-border-default);
+}
+.cse-surface__editorial-next-step .cse-surface__label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-micro);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-semibold, 600);
+}
+.cse-surface__editorial-next-step-link {
+  display: inline-block;
+  font-size: var(--text-lg);
+  color: var(--color-editorial-link);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold, 600);
+}
+.cse-surface__editorial-next-step-link:hover,
+.cse-surface__editorial-next-step-link:focus-visible {
+  text-decoration: underline;
+}
+.cse-surface__editorial-next-step-description {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Newsletter capture. Preview/unconfigured variant is visibly labelled. */
+.cse-surface__newsletter {
+  margin: var(--space-6) 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-emphasis);
+  border-radius: 6px;
+}
+.cse-surface__newsletter-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-lg);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold, 600);
+}
+.cse-surface__newsletter-copy {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-prose);
+}
+.cse-surface__newsletter-preview-label {
+  margin: 0 0 var(--space-3);
+  padding: 2px var(--space-2);
+  display: inline-block;
+  border-radius: 4px;
+  background: var(--color-bg-surface);
+  border: 1px dashed var(--color-border-emphasis);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-micro);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.cse-surface__newsletter-form {
+  display: grid;
+  gap: var(--space-2);
+}
+.cse-surface__newsletter-label {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cse-surface__newsletter-input {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-emphasis);
+  border-radius: 4px;
+  font: inherit;
+}
+.cse-surface__newsletter-input:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+.cse-surface__newsletter-submit {
+  padding: 0.5rem 1rem;
+  background: var(--color-action-primary);
+  color: var(--color-bg-surface);
+  border: 1px solid var(--color-action-primary);
+  border-radius: 4px;
+  font-weight: var(--font-weight-semibold, 600);
+  cursor: pointer;
+}
+.cse-surface__newsletter-submit:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+.cse-surface__newsletter-consent {
+  margin: var(--space-2) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+.cse-surface__newsletter-consent a {
+  color: var(--color-editorial-link);
 }

@@ -5,7 +5,7 @@ export class UnsupportedBlockKindError extends Error {
   readonly blockKind: string;
   constructor(blockId: string, blockKind: string) {
     super(
-      `REFERENCE renderer (reference@2) does not support block kind "${blockKind}" ` +
+      `REFERENCE renderer (reference@3) does not support block kind "${blockKind}" ` +
         `(block id="${blockId}"). Fail-closed by design: an unknown block must not silently ` +
         `disappear.`,
     );

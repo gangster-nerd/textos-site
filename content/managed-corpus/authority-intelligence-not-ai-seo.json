@@ -704,7 +704,8 @@
   ],
   "contentSchemaVersion": "content-document@1",
   "conversion": {
-    "conversionAllowed": false
+    "conversionAllowed": true,
+    "ctaIntentId": "MEASURE_BRAND"
   },
   "editorial": {
     "audience": "reader-mixed",
@@ -721,7 +722,7 @@
   },
   "identity": {
     "contentType": "product_article",
-    "description": "TextOS measures why answer engines cite or ignore a brand. It is an authority intelligence system, not an AI SEO writer.",
+    "description": "TextOS measures where answer engines cite or mention a brand across a versioned query panel. It is an authority intelligence system—not an AI SEO writer.",
     "documentId": "textos-insight:authority-intelligence-not-ai-seo",
     "language": "en",
     "slug": "authority-intelligence-not-ai-seo",

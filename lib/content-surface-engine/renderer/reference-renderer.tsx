@@ -13,7 +13,7 @@ import type { BlockNode, HeadingNode } from "../contract/mdast-semantic";
 import { renderBlock } from "./block-renderers";
 import { assignHeadingIds } from "./mdast-renderer";
 
-export const RENDER_VERSION = "reference@2" as const;
+export const RENDER_VERSION = "reference@3" as const;
 
 /**
  * Pre-compute a heading-id map so the H2/H3 anchors emitted in the body match

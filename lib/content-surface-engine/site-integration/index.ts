@@ -7,3 +7,4 @@ export * from "./editorial-eyebrow";
 export * from "./reading-time";
 export * from "./managed-surface-plan";
 export * from "./related-source-links";
+export * from "./conversion-plan";

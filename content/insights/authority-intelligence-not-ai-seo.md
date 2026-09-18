@@ -1,6 +1,6 @@
 ---
 title: Authority Intelligence, Not AI SEO
-description: TextOS measures why answer engines cite or ignore a brand. It is an authority intelligence system, not an AI SEO writer.
+description: TextOS measures where answer engines cite or mention a brand across a versioned query panel. It is an authority intelligence system—not an AI SEO writer.
 contentType: product_article
 language: en
 editorialStatus: draft
