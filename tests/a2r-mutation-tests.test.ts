@@ -22,7 +22,11 @@ const draftArticleFiles = fs
   .filter((f) => f.endsWith(".html"))
   .sort();
 
+// CMO-CONVERSION-SURFACE-2 : the authority-intelligence article now carries
+// the MEASURE_BRAND intent (governed field change authorised for this article
+// only — see task brief). It therefore joins the CTA cohort.
 const CTA_ARTICLES = [
+  "authority-intelligence-not-ai-seo",
   "brief-to-decision-economics",
   "graduated-publication",
   "no-affirmation-without-evidence",
@@ -32,9 +36,11 @@ const CTA_ARTICLES = [
   "three-measures-never-one-score",
   "truthcheck-unmovable-gate",
 ];
+// authority-intelligence has a body-flow cta_slot; the remaining NO_CTA
+// articles genuinely have no authorised intent → zero article-local
+// commercial CTAs (editorial next step is checked separately).
 const NO_CTA_ARTICLES = [
   "agent-protocol-immutable-frontiers",
-  "authority-intelligence-not-ai-seo",
   "north-star-brief-acceptance",
   "observation-not-optimization",
 ];
@@ -104,18 +110,35 @@ describe("A2R — author identity across all 12 articles", () => {
   );
 });
 
+// CMO-CONVERSION-SURFACE-2 : the 8 pre-existing CTA articles carry a body
+// `cta_slot` and therefore emit contextual + final. The authority-intelligence
+// article has no `cta_slot` in its body → header + final, no contextual.
+const CTA_ARTICLES_WITH_CTA_SLOT = CTA_ARTICLES.filter(
+  (s) => s !== "authority-intelligence-not-ai-seo",
+);
+
 describe("A2R — CTA counts + positions", () => {
-  it.each(CTA_ARTICLES)("%s : exactly 1 contextual + 1 final CTA", (slug) => {
-    const html = readHtml(slug);
-    const contextual = (html.match(/data-cse-cta-position="contextual"/g) ?? []).length;
-    const finalCta = (html.match(/data-cse-cta-position="final"/g) ?? []).length;
-    expect(contextual, `${slug} contextual count`).toBe(1);
-    expect(finalCta, `${slug} final count`).toBe(1);
-    // Ordering : contextual MUST precede final in the DOM.
-    const cxIdx = html.indexOf('data-cse-cta-position="contextual"');
-    const fnIdx = html.indexOf('data-cse-cta-position="final"');
-    expect(cxIdx).toBeGreaterThan(-1);
-    expect(fnIdx).toBeGreaterThan(cxIdx);
+  it.each(CTA_ARTICLES_WITH_CTA_SLOT)(
+    "%s : exactly 1 contextual + 1 final CTA",
+    (slug) => {
+      const html = readHtml(slug);
+      const contextual = (html.match(/data-cse-cta-position="contextual"/g) ?? []).length;
+      const finalCta = (html.match(/data-cse-cta-position="final"/g) ?? []).length;
+      expect(contextual, `${slug} contextual count`).toBe(1);
+      expect(finalCta, `${slug} final count`).toBe(1);
+      // Ordering : contextual MUST precede final in the DOM.
+      const cxIdx = html.indexOf('data-cse-cta-position="contextual"');
+      const fnIdx = html.indexOf('data-cse-cta-position="final"');
+      expect(cxIdx).toBeGreaterThan(-1);
+      expect(fnIdx).toBeGreaterThan(cxIdx);
+    },
+  );
+
+  it("authority-intelligence-not-ai-seo : header + final commercial CTAs (no cta_slot)", () => {
+    const html = readHtml("authority-intelligence-not-ai-seo");
+    expect((html.match(/data-cse-cta-slot="header"/g) ?? []).length).toBe(1);
+    expect((html.match(/data-cse-cta-slot="final"/g) ?? []).length).toBe(1);
+    expect((html.match(/data-cse-cta-slot="contextual"/g) ?? []).length).toBe(0);
   });
 
   it.each(NO_CTA_ARTICLES)("%s : zero CTAs (no authorised intent)", (slug) => {
@@ -126,7 +149,7 @@ describe("A2R — CTA counts + positions", () => {
 });
 
 describe("A2R — CTA attribution URL", () => {
-  it.each(CTA_ARTICLES)("%s : href contains source, contentId, ctaVariant, ctaVersion, position, contentRevision", (slug) => {
+  it.each(CTA_ARTICLES_WITH_CTA_SLOT)("%s : href contains source, contentId, ctaVariant, ctaVersion, position, contentRevision", (slug) => {
     const html = readHtml(slug);
     // Extract every anchor and pick the ones whose class list mentions
     // cse-surface__cta-action. React-serialized payload strings escape quotes

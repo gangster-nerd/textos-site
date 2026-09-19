@@ -29,6 +29,8 @@ import { textosArticleReferencePolicy } from "@/lib/content-surface-engine/surfa
 import { serializeJsonLd } from "@/lib/schema-org/serialize";
 import { siteConfig } from "@/lib/config/site";
 import { previewVisibility } from "@/lib/config/preview-visibility";
+import { newsletterConfig } from "@/lib/config/newsletter-config";
+import { measurementRequestCapability } from "@/lib/config/measurement-request-config";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -272,9 +274,16 @@ export default async function Page({
               ? { name: e.name, role: e.role, profilePath: e.profilePath }
               : null;
           }}
-          kicker={entry.kicker}
+          document={entry.document}
           contentRevision={contentRevision}
-          breadcrumbInsights
+          commercialCapability={measurementRequestCapability.state}
+          newsletter={{
+            provider: newsletterConfig.provider,
+            username: newsletterConfig.username,
+            sourceTag: newsletterConfig.sourceTag,
+            privacyUrl: newsletterConfig.privacyUrl,
+            isPreview: previewVisibility.showDraftContent,
+          }}
           ctaContextualHref={
             cta
               ? buildCtaAttributionHref({

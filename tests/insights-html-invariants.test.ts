@@ -62,12 +62,12 @@ describe.skipIf(!hasBuild)("out/insights/*.html — source-level invariants", ()
     // ManagedTextosSurface stamps data-cse-composition-signature; its presence proves
     // the page was composed through CSE, not through a competing renderer.
     expect(html).toMatch(/data-cse-composition-signature="[^"]+"/);
-    // And carry the reference@1 render version.
-    expect(html).toMatch(/data-cse-render-version="reference@1"/);
+    // And carry the reference@3 render version (CMO-CONVERSION-SURFACE-2).
+    expect(html).toMatch(/data-cse-render-version="reference@3"/);
   });
 
   it.each(files)("%s : uses managed textos surface policy", (file) => {
     const html = fs.readFileSync(path.join(OUT_DIR, file), "utf8");
-    expect(html).toMatch(/data-cse-surface-policy="textos-site\.reference@1"/);
+    expect(html).toMatch(/data-cse-surface-policy="textos-site\.reference@2"/);
   });
 });

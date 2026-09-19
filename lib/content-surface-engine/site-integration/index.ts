@@ -3,3 +3,8 @@ export * from "./authors";
 export * from "./insights-catalog";
 export * from "./related-resolution";
 export * from "./topic-catalog";
+export * from "./editorial-eyebrow";
+export * from "./reading-time";
+export * from "./managed-surface-plan";
+export * from "./related-source-links";
+export * from "./conversion-plan";

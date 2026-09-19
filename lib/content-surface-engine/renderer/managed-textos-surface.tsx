@@ -10,12 +10,25 @@
 
 import React, { type ReactElement, type ReactNode } from "react";
 
+import type { ContentDocument } from "../contract/content-document";
 import type { ResolvedContentSurface } from "../contract/resolved-content-surface";
 import type { BlockNode, HeadingNode } from "../contract/mdast-semantic";
-import { RenderReferenceBody } from "./reference-renderer";
+import { RenderReferenceBody, RENDER_VERSION } from "./reference-renderer";
+import { renderBlock } from "./block-renderers";
 import { assignHeadingIds, phrasingToPlainText } from "./mdast-renderer";
 import type { ResolvedReferenceCta } from "../conversion/resolve-reference-cta";
 import type { ResolvedRelatedEntry } from "../site-integration/related-resolution";
+import { editorialEyebrowLabel } from "../site-integration/editorial-eyebrow";
+import { computeReadingTimeMinutes } from "../site-integration/reading-time";
+import { computeManagedSurfacePlan } from "../site-integration/managed-surface-plan";
+import { findSourceRelatedSectionFromResolved } from "../site-integration/related-source-links";
+import {
+  deriveResolvedConversionPlan,
+  type CommercialCapabilityState,
+  type ResolvedConversionPlan,
+} from "../site-integration/conversion-plan";
+
+const RELATED_MAX = 5;
 
 export interface ManagedSurfaceProps {
   resolved: ResolvedContentSurface;
@@ -25,7 +38,18 @@ export interface ManagedSurfaceProps {
     id: string,
   ) => { name: string; role?: string; profilePath?: string } | null;
   tocEnabled?: boolean;
+  /**
+   * Explicit eyebrow label. Callers that pass `document` may omit this — the
+   * managed surface then derives the label from doc.truth.sourceStatus via
+   * `editorialEyebrowLabel`. Never render SNAKE_CASE.
+   */
   kicker?: string;
+  /**
+   * Optional : full ContentDocument. When provided, the managed surface derives
+   * the eyebrow label, reading time and metadata dates itself — no per-slug
+   * logic in the route.
+   */
+  document?: ContentDocument;
   /**
    * A2R : two positions for the CTA. Contextual is rendered INSIDE the body flow at
    * the first source-backed `cta_slot` block. Final is rendered AFTER the body but
@@ -41,8 +65,31 @@ export interface ManagedSurfaceProps {
   relatedEntries?: readonly ResolvedRelatedEntry[];
   /**
    * A2R : includes an "Insights" breadcrumb step between TextOS and the title.
+   * When `document` is provided, defaults to true.
    */
   breadcrumbInsights?: boolean;
+  /**
+   * CMO-CONVERSION-SURFACE-2 : governed retention descriptor. When provided
+   * and `provider` is configured, the managed surface emits the newsletter
+   * capture box before Related. When state is "unconfigured", the box is
+   * rendered ONLY in a preview build and cannot submit.
+   */
+  newsletter?: {
+    provider: "buttondown";
+    username: string | null;
+    sourceTag: string;
+    privacyUrl: string | null;
+    /** True if this build is an editorial preview (drafts visible). */
+    isPreview: boolean;
+  };
+  /**
+   * MEASUREMENT-REQUEST-CAPTURE-1 (strict gate) : commercial CTA capability
+   * state. STRICT POSITIVE — only the exact literal "configured" enables
+   * the commercial cohort. Omitting this prop, passing "unconfigured", or
+   * any other value suppresses header/contextual/final. Editorial next step
+   * is unaffected.
+   */
+  commercialCapability?: CommercialCapabilityState;
 }
 
 interface HeadingItem {
@@ -51,19 +98,22 @@ interface HeadingItem {
   level: number;
 }
 
-function collectHeadings(resolved: ResolvedContentSurface): readonly HeadingItem[] {
-  // A2R : the ToC MUST use the SAME id derivation as the body renderer. Extract
-  // ids from source-backed mdast headings via `assignHeadingIds` (shared with
-  // reference-renderer). Synthetic headings (A2 fixtures) fall back to the block
-  // id + synthetic text.
+function collectHeadings(
+  resolved: ResolvedContentSurface,
+  skipHeadingIds: ReadonlySet<string>,
+): readonly HeadingItem[] {
   const roots: BlockNode[] = [];
+  const rootBlockIdByRoot = new Map<BlockNode, string>();
   const syntheticFallback: HeadingItem[] = [];
   for (const rb of resolved.blocks) {
     if (!rb.visible) continue;
     if (rb.block.kind !== "heading") continue;
+    if (skipHeadingIds.has(rb.block.id)) continue;
     const mdast = (rb.block.data as { mdast?: unknown } | undefined)?.mdast;
     if (mdast && typeof mdast === "object") {
-      roots.push(mdast as BlockNode);
+      const node = mdast as BlockNode;
+      roots.push(node);
+      rootBlockIdByRoot.set(node, rb.block.id);
       continue;
     }
     const text = typeof rb.block.data.text === "string" ? rb.block.data.text : "";
@@ -72,10 +122,14 @@ function collectHeadings(resolved: ResolvedContentSurface): readonly HeadingItem
   if (roots.length === 0) return syntheticFallback;
   const { order } = assignHeadingIds(roots);
   const mdastItems = order.map((o) => ({ id: o.id, text: o.text, depth: o.depth }));
-  return [
-    ...mdastItems.map((h) => ({ id: h.id, text: h.text, level: h.depth })),
-    ...syntheticFallback,
-  ];
+  const seen = new Set<string>();
+  const deduped: HeadingItem[] = [];
+  for (const h of mdastItems) {
+    if (seen.has(h.id)) continue;
+    seen.add(h.id);
+    deduped.push({ id: h.id, text: h.text, level: h.depth });
+  }
+  return [...deduped, ...syntheticFallback];
 }
 
 function collectSources(resolved: ResolvedContentSurface): readonly ReactNode[] {
@@ -95,6 +149,45 @@ function collectSources(resolved: ResolvedContentSurface): readonly ReactNode[] 
   return items;
 }
 
+function formatDate(iso: string): string {
+  const trimmed = iso.slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return iso;
+  const d = new Date(trimmed + "T00:00:00Z");
+  if (Number.isNaN(d.getTime())) return trimmed;
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+interface MetadataDateEntry {
+  label: "First published" | "Last reviewed";
+  iso: string;
+  display: string;
+}
+
+function computeMetadataDates(doc: ContentDocument | undefined): readonly MetadataDateEntry[] {
+  if (!doc) return [];
+  const lc = doc.lifecycle;
+  const entries: MetadataDateEntry[] = [];
+  const firstPublishedAt = lc.firstPublishedAt ?? null;
+  const lastReviewedAt = (lc as { lastReviewedAt?: string | null }).lastReviewedAt ?? null;
+
+  // "First published" — iff a real governed firstPublishedAt exists.
+  if (firstPublishedAt) {
+    entries.push({ label: "First published", iso: firstPublishedAt, display: formatDate(firstPublishedAt) });
+  }
+  // "Last reviewed" — iff a real governed lastReviewedAt exists. Draft status
+  // is not a reason to suppress a real review date ; both fields are truthful,
+  // independent signals — never inferred, never fabricated.
+  if (lastReviewedAt) {
+    entries.push({ label: "Last reviewed", iso: lastReviewedAt, display: formatDate(lastReviewedAt) });
+  }
+  return entries;
+}
+
 export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
   const {
     resolved,
@@ -102,14 +195,82 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
     resolveAuthor,
     tocEnabled = true,
     kicker,
+    document,
     ctaContextualHref,
     ctaFinalHref,
     contentRevision,
     relatedEntries,
-    breadcrumbInsights = false,
+    newsletter,
+    commercialCapability,
   } = props;
 
-  const headings = collectHeadings(resolved);
+  const eyebrow = kicker ?? (document ? editorialEyebrowLabel(document) : "");
+  const breadcrumbInsights = props.breadcrumbInsights ?? Boolean(document);
+  const readingTimeMinutes = computeReadingTimeMinutes(resolved);
+  const metadataDates = computeMetadataDates(document);
+  const plan = computeManagedSurfacePlan(resolved);
+  const sourceRelated = findSourceRelatedSectionFromResolved(resolved);
+  const computedRelated = (relatedEntries ?? []).slice(0, RELATED_MAX);
+  // Fallback : governed outbound links from the source "Related …" section
+  // are surfaced iff the computed graph found no publishable relation. Never
+  // inflated to fill space, never mixed to inflate count. Draft targets are
+  // filtered upstream by resolveRelatedContent's publicOnly caller.
+  const fallbackRelated =
+    computedRelated.length === 0 && sourceRelated
+      ? sourceRelated.links.slice(0, RELATED_MAX).map((l) => ({
+          key: l.href,
+          title: l.title || l.href,
+          href: l.href,
+          description: "",
+          source: "governed-body-link" as const,
+        }))
+      : [];
+  const relatedForRender: readonly {
+    key: string;
+    title: string;
+    href: string;
+    description: string;
+    source: "computed" | "governed-body-link";
+    documentId?: string;
+    slug?: string;
+  }[] =
+    computedRelated.length > 0
+      ? computedRelated.map((r) => ({
+          key: r.documentId,
+          title: r.title,
+          href: r.href,
+          description: r.description,
+          source: "computed" as const,
+          documentId: r.documentId,
+          slug: r.slug,
+        }))
+      : fallbackRelated;
+
+  // CMO-CONVERSION-SURFACE-2 : derived conversion plan (commercial CTA at
+  // three placements, editorial next step, retention).
+  const newsletterEnabled = Boolean(
+    newsletter && (newsletter.isPreview || (newsletter.username && newsletter.privacyUrl)),
+  );
+  const conversionPlan: ResolvedConversionPlan = deriveResolvedConversionPlan({
+    resolved,
+    cta,
+    sourceRelated: findSourceRelatedSectionFromResolved(resolved),
+    computedRelated: (relatedEntries ?? []),
+    newsletterEnabled,
+    // Fail-closed default : if the caller omits the state, treat as unconfigured.
+    commercialCapability: commercialCapability ?? "unconfigured",
+  });
+
+  // CMO-SURFACE-VISUAL-CORRECTION-1 : promote the first visible Short Answer
+  // block above the ToC so it lives in the first viewport, and consume its
+  // body-flow copy so it isn't rendered twice.
+  const shortAnswerRb = resolved.blocks.find(
+    (rb) => rb.visible && rb.block.kind === "answer",
+  );
+  const bodyConsumedIds = new Set<string>(plan.consumedBlockIds);
+  if (shortAnswerRb) bodyConsumedIds.add(shortAnswerRb.block.id);
+
+  const headings = collectHeadings(resolved, plan.skipHeadingIds);
   const showToc =
     tocEnabled && resolved.navigation.showTableOfContents && headings.length >= 3;
   const sources = collectSources(resolved);
@@ -124,18 +285,24 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
       className="cse-surface cse-surface--textos"
       lang={resolved.language}
       data-cse-surface-policy={resolved.policyId}
-      data-cse-render-version="reference@1"
+      data-cse-render-version={RENDER_VERSION}
       data-cse-content-id={resolved.documentId}
     >
       {resolved.navigation.showBreadcrumbs ? (
-        <nav className="cse-surface__breadcrumbs" aria-label="Breadcrumb">
-          <ol>
+        <nav
+          className="cse-surface__breadcrumbs"
+          aria-label="Breadcrumb"
+          data-role="breadcrumb"
+        >
+          <ol role="list">
             <li>
               <a href="/">TextOS</a>
+              <span aria-hidden="true" className="cse-surface__breadcrumb-sep">/</span>
             </li>
             {breadcrumbInsights ? (
               <li>
                 <a href="/insights">Insights</a>
+                <span aria-hidden="true" className="cse-surface__breadcrumb-sep">/</span>
               </li>
             ) : null}
             <li aria-current="page">{resolved.title}</li>
@@ -144,15 +311,16 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
       ) : null}
 
       <header className="cse-surface__head">
-        {kicker ? <p className="cse-surface__kicker">{kicker}</p> : null}
-        <h1 className="cse-surface__title">{resolved.title}</h1>
-        <p className="cse-surface__description">{resolved.description}</p>
-        {resolved.truth.publicationStatus !== "published" ? (
-          <p className="cse-surface__status" role="note">
-            <span className="cse-surface__label">Status</span>{" "}
-            {resolved.truth.publicationStatus}
+        {eyebrow ? (
+          <p
+            className="cse-surface__eyebrow"
+            data-role="editorial-eyebrow"
+          >
+            {eyebrow}
           </p>
         ) : null}
+        <h1 className="cse-surface__title">{resolved.title}</h1>
+        <p className="cse-surface__description">{resolved.description}</p>
         {authors.length > 0 ? (
           <p className="cse-surface__byline">
             <span className="cse-surface__label">By</span>{" "}
@@ -181,7 +349,69 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
             })}
           </p>
         ) : null}
+        <p
+          className="cse-surface__meta"
+          data-role="article-meta"
+          aria-label="Article metadata"
+        >
+          <span className="cse-surface__meta-item" data-role="reading-time">
+            {readingTimeMinutes} min read
+          </span>
+          {metadataDates.map((entry) => (
+            <span
+              key={entry.label}
+              className="cse-surface__meta-item"
+              data-role={`meta-${entry.label.toLowerCase().replace(/\s+/g, "-")}`}
+            >
+              <span className="cse-surface__meta-label">{entry.label}</span>{" "}
+              <time dateTime={entry.iso}>{entry.display}</time>
+            </span>
+          ))}
+        </p>
       </header>
+
+      {shortAnswerRb ? (
+        <div
+          className="cse-surface__short-answer"
+          data-role="short-answer"
+          data-cse-block-id={shortAnswerRb.block.id}
+        >
+          {renderBlock(shortAnswerRb.block, {
+            documentId: resolved.documentId,
+            headingIdByNode: new Map(),
+          })}
+        </div>
+      ) : null}
+
+      {conversionPlan.commercial.header ? (
+        <div
+          className="cse-surface__cta cse-surface__cta--header"
+          data-role="commercial-cta"
+          data-cse-cta-slot="header"
+          data-cse-cta-variant={conversionPlan.commercial.header.variantId}
+          data-cse-cta-version={conversionPlan.commercial.header.version}
+          data-cse-content-revision={contentRevision}
+          data-cse-instrument-event="commercial_cta_impression"
+        >
+          <a
+            className="cse-surface__cta-primary"
+            href={conversionPlan.commercial.header.destination}
+            data-cse-cta-destination={conversionPlan.commercial.header.destination}
+            data-cse-instrument-event="commercial_cta_click"
+          >
+            {conversionPlan.commercial.header.primaryLabel}
+          </a>
+          {conversionPlan.commercial.header.secondaryHref ? (
+            <a
+              className="cse-surface__cta-secondary"
+              href={conversionPlan.commercial.header.secondaryHref}
+              data-cse-instrument-event="editorial_next_step_click"
+            >
+              {conversionPlan.commercial.header.secondaryLabel}
+            </a>
+          ) : null}
+        </div>
+      ) : null}
 
       {showToc ? (
         <nav
@@ -189,7 +419,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
           aria-label="Table of contents"
           data-cse-instrument="toc"
         >
-          <p className="cse-surface__label">On this page</p>
+          <p className="cse-surface__toc-title">On this page</p>
           <ol>
             {headings.map((h) => (
               <li key={h.id} className={`cse-surface__toc-level-${h.level}`}>
@@ -202,27 +432,34 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
 
       <RenderReferenceBody
         resolved={resolved}
+        consumedBlockIds={bodyConsumedIds}
         renderContextualCta={
-          cta && ctaContextualHref
-            ? () => (
-                <aside
-                  className="cse-surface__cta cse-surface__cta--contextual"
-                  data-cse-cta-variant={cta.variantId}
-                  data-cse-cta-version={cta.version}
-                  data-cse-cta-position="contextual"
-                  data-cse-content-revision={contentRevision}
-                >
-                  <p className="cse-surface__cta-title">{cta.title}</p>
-                  <p className="cse-surface__cta-body">{cta.body}</p>
-                  <a
-                    className="cse-surface__cta-action"
-                    href={ctaContextualHref}
-                    data-cse-cta-destination={cta.destination}
+          conversionPlan.commercial.contextual && ctaContextualHref
+            ? () => {
+                const c = conversionPlan.commercial.contextual!;
+                return (
+                  <aside
+                    className="cse-surface__cta cse-surface__cta--contextual"
+                    data-role="commercial-cta"
+                    data-cse-cta-slot="contextual"
+                    data-cse-cta-variant={c.variantId}
+                    data-cse-cta-version={c.version}
+                    data-cse-cta-position="contextual"
+                    data-cse-content-revision={contentRevision}
+                    data-cse-instrument-event="commercial_cta_impression"
                   >
-                    {cta.primaryLabel}
-                  </a>
-                </aside>
-              )
+                    <p className="cse-surface__cta-title">{c.headline}</p>
+                    <a
+                      className="cse-surface__cta-action"
+                      href={ctaContextualHref}
+                      data-cse-cta-destination={c.destination}
+                      data-cse-instrument-event="commercial_cta_click"
+                    >
+                      {c.primaryLabel}
+                    </a>
+                  </aside>
+                );
+              }
             : undefined
         }
       />
@@ -236,48 +473,177 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         </section>
       ) : null}
 
-      {/* A2R : final CTA emitted AFTER body (and after any contextual CTA in body). */}
-      {resolved.conversion.effectiveCtaAllowed && cta ? (
+      {conversionPlan.commercial.final ? (
         <aside
           className="cse-surface__cta cse-surface__cta--final"
-          data-cse-cta-variant={cta.variantId}
-          data-cse-cta-version={cta.version}
+          data-role="commercial-cta"
+          data-cse-cta-slot="final"
+          data-cse-cta-variant={conversionPlan.commercial.final.variantId}
+          data-cse-cta-version={conversionPlan.commercial.final.version}
           data-cse-cta-position="final"
           data-cse-content-revision={contentRevision}
+          data-cse-instrument-event="commercial_cta_impression"
         >
-          <p className="cse-surface__cta-title">{cta.title}</p>
-          <p className="cse-surface__cta-body">{cta.body}</p>
+          <p className="cse-surface__cta-eyebrow">{conversionPlan.commercial.final.eyebrow}</p>
+          <p className="cse-surface__cta-title">{conversionPlan.commercial.final.headline}</p>
+          <p className="cse-surface__cta-body">{conversionPlan.commercial.final.copy}</p>
           <a
-            className="cse-surface__cta-action"
-            href={ctaFinalHref ?? cta.destination}
-            data-cse-cta-destination={cta.destination}
+            className="cse-surface__cta-action cse-surface__cta-primary"
+            href={ctaFinalHref ?? conversionPlan.commercial.final.destination}
+            data-cse-cta-destination={conversionPlan.commercial.final.destination}
+            data-cse-instrument-event="commercial_cta_click"
           >
-            {cta.primaryLabel}
+            {conversionPlan.commercial.final.primaryLabel}
           </a>
-          {cta.disclaimer ? (
+          {cta?.disclaimer ? (
             <p className="cse-surface__cta-disclaimer">{cta.disclaimer}</p>
           ) : null}
         </aside>
       ) : null}
 
-      {/* A2R : related entries — resolved titles + descriptions + hrefs. Never raw ids. */}
-      {resolved.navigation.showRelatedContent && relatedEntries && relatedEntries.length > 0 ? (
-        <nav className="cse-surface__related" aria-label="Related">
+      {conversionPlan.editorialNextStep ? (
+        <nav
+          className="cse-surface__editorial-next-step"
+          aria-label="Continue exploring"
+          data-role="editorial-next-step"
+          data-cse-instrument-event="editorial_next_step_impression"
+          data-cse-next-step-source={conversionPlan.editorialNextStep.source}
+        >
+          <p className="cse-surface__label">Continue exploring</p>
+          <a
+            className="cse-surface__editorial-next-step-link"
+            href={conversionPlan.editorialNextStep.href}
+            data-cse-instrument-event="editorial_next_step_click"
+          >
+            {conversionPlan.editorialNextStep.label}
+          </a>
+          {conversionPlan.editorialNextStep.description ? (
+            <p className="cse-surface__editorial-next-step-description">
+              {conversionPlan.editorialNextStep.description}
+            </p>
+          ) : null}
+        </nav>
+      ) : null}
+
+      {newsletter && conversionPlan.retention.enabled ? (
+        <section
+          className="cse-surface__newsletter"
+          data-role="newsletter"
+          data-cse-instrument-event="newsletter_impression"
+          data-provider={newsletter.provider}
+          data-provider-state={
+            newsletter.username && newsletter.privacyUrl ? "configured" : "unconfigured"
+          }
+          aria-labelledby={`${resolved.documentId}-newsletter-title`}
+        >
+          <p
+            id={`${resolved.documentId}-newsletter-title`}
+            className="cse-surface__newsletter-title"
+          >
+            The Authority Intelligence Brief
+          </p>
+          <p className="cse-surface__newsletter-copy">
+            One evidence-led note on how brands earn visibility in answer engines. No rankings. No noise.
+          </p>
+          {newsletter.username && newsletter.privacyUrl ? (
+            <form
+              className="cse-surface__newsletter-form"
+              method="post"
+              action={`https://buttondown.com/api/emails/embed-subscribe/${encodeURIComponent(newsletter.username)}`}
+              target="popupwindow"
+            >
+              <label className="cse-surface__newsletter-label" htmlFor={`${resolved.documentId}-newsletter-email`}>
+                Work email
+              </label>
+              <input
+                id={`${resolved.documentId}-newsletter-email`}
+                type="email"
+                name="email"
+                autoComplete="email"
+                required
+                placeholder="Work email"
+                className="cse-surface__newsletter-input"
+              />
+              <input type="hidden" name="tag" value={newsletter.sourceTag} />
+              <input type="hidden" name="embed" value="1" />
+              <button
+                type="submit"
+                className="cse-surface__newsletter-submit"
+                data-cse-instrument-event="newsletter_submit_attempt"
+              >
+                Get the brief
+              </button>
+              <p className="cse-surface__newsletter-consent">
+                By subscribing you consent to receive the brief.{" "}
+                <a href={newsletter.privacyUrl}>Privacy notice</a>.
+              </p>
+            </form>
+          ) : (
+            <>
+              {newsletter.isPreview ? (
+                <p className="cse-surface__newsletter-preview-label" data-role="newsletter-preview-label">
+                  Preview — provider connection required
+                </p>
+              ) : null}
+              <div className="cse-surface__newsletter-form" aria-disabled="true">
+                <label className="cse-surface__newsletter-label" htmlFor={`${resolved.documentId}-newsletter-email`}>
+                  Work email
+                </label>
+                <input
+                  id={`${resolved.documentId}-newsletter-email`}
+                  type="email"
+                  placeholder="Work email"
+                  disabled
+                  className="cse-surface__newsletter-input"
+                />
+                <button
+                  type="button"
+                  disabled
+                  className="cse-surface__newsletter-submit"
+                  aria-disabled="true"
+                >
+                  Get the brief
+                </button>
+                <p className="cse-surface__newsletter-consent">
+                  Newsletter provider is not configured — no submission possible.
+                </p>
+              </div>
+            </>
+          )}
+        </section>
+      ) : null}
+
+      {/* CMO-SURFACE-VERTICAL-SLICE-1 REVIEW FIX : single Related module. No
+          draft badges. Computed relations preferred ; governed body-link
+          fallback (from a consumed "Related …" section) is used only when
+          the graph has no publishable result. Section is hidden entirely if
+          neither source has admissible entries. */}
+      {resolved.navigation.showRelatedContent && relatedForRender.length > 0 ? (
+        <nav
+          className="cse-surface__related"
+          aria-label="Related"
+          data-role="related"
+          data-cse-related-source={
+            relatedForRender[0]?.source === "governed-body-link"
+              ? "governed-body-link"
+              : "computed"
+          }
+        >
           <p className="cse-surface__label">Related</p>
           <ul>
-            {relatedEntries.map((r) => (
-              <li key={r.documentId} data-cse-related-id={r.documentId}>
-                <a href={r.href} data-cse-related-slug={r.slug}>
+            {relatedForRender.map((r) => (
+              <li
+                key={r.key}
+                {...(r.documentId ? { "data-cse-related-id": r.documentId } : {})}
+              >
+                <a
+                  href={r.href}
+                  {...(r.slug ? { "data-cse-related-slug": r.slug } : {})}
+                >
                   {r.title}
                 </a>
-                <p className="cse-surface__related-description">{r.description}</p>
-                {r.isDraft ? (
-                  <span
-                    className="cse-surface__related-draft-badge"
-                    data-role="related-draft-badge"
-                  >
-                    draft
-                  </span>
+                {r.description ? (
+                  <p className="cse-surface__related-description">{r.description}</p>
                 ) : null}
               </li>
             ))}
