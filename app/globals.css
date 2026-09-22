@@ -336,6 +336,36 @@ a:hover { text-decoration: underline; }
 .site-header__nav a { color: var(--color-text-muted); }
 .site-header__nav a:hover { color: var(--color-text-secondary); text-decoration: none; }
 
+/* ── Pied de page public ────────────────────────────────────────────────────────────────────── */
+
+.site-footer {
+  border-top: var(--border-width-hairline) solid var(--color-border-default);
+  background: var(--color-bg-surface);
+}
+
+.site-footer__inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+}
+
+.site-footer__mark { color: var(--color-text-muted); margin: 0; }
+
+.site-footer__nav {
+  display: flex;
+  gap: var(--space-6);
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.site-footer__nav a { color: var(--color-text-muted); }
+.site-footer__nav a:hover { color: var(--color-text-secondary); text-decoration: none; }
+
 /* ══ SURFACES INSTRUMENT ═════════════════════════════════════════════════════════════════════
    À partir d'ici et jusqu'aux blocs éditoriaux : échelle produit (--font-size-*) et interlignes
    produit. Ce sont les surfaces qui montrent une MESURE, pas celles qui la racontent.
