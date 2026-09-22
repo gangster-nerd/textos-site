@@ -161,10 +161,12 @@ export default function Home() {
           qui n'existe pas — ni login, ni authentification, ni destination produit. C'est
           exactement le faux chrome applicatif que la règle « app-shaped, not app-fake » interdit.
           Rien ne le remplace : ni « Log in », ni « Coming soon », ni « Open TextOS ». Un accès
-          s'affiche le jour où il existe. */}
-      <footer>
-        <span>Product in active development. This site publishes only what is measured and validated.</span>
-      </footer>
+          s'affiche le jour où il existe.
+
+          Pas de second `<footer>` ici : le pied de page global (`SiteFooter`, monté par le
+          layout racine) clôt désormais toutes les pages, et la disclosure "produit en
+          développement actif" était déjà portée par le bloc `.note` ci-dessus — la répéter ici
+          aurait affiché deux fois la même phrase, dans deux landmarks `footer` empilés. */}
     </main>
   );
 }

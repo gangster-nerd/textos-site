@@ -718,6 +718,97 @@ table.observations thead th:nth-child(5) { width: 15%; }
 
 .note strong { color: var(--color-text-secondary); }
 
+/* ── CTA commercial (measurement_request) ───────────────────────────────────────────────────────
+   Seul moment de conversion du site. Sans ce bloc, `ContentCta` rendait un titre, un paragraphe et
+   un lien bleu nu — même poids visuel qu'une phrase de prose, sur homepage comme sur chaque
+   article. Un bouton, une bordure d'accent et un fond distingué le séparent explicitement du
+   contenu éditorial qui l'entoure : la proposition commerciale ne doit jamais se lire comme une
+   phrase parmi d'autres. */
+.content-cta {
+  margin: var(--space-8) 0;
+  padding: var(--space-6);
+  background: var(--color-bg-subtle);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-left: 2px solid var(--color-action-primary);
+  border-radius: var(--radius-lg);
+}
+
+.content-cta__title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.content-cta__body { margin: 0 0 var(--space-4); color: var(--color-text-secondary); }
+
+.content-cta__disclaimer {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Bouton primaire — partagé par le CTA commercial et le formulaire de demande de mesure. Un lien
+   bleu nu et un `<button type="submit">` par défaut du navigateur portaient jusqu'ici le même
+   poids visuel que du texte : aucune des deux actions qui font réellement avancer un visiteur
+   n'avait de traitement distinct. */
+.content-cta__action,
+button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-6);
+  background: var(--color-action-primary);
+  color: var(--bg);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
+  border: none;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.content-cta__action:hover, button[type="submit"]:hover:not(:disabled) { text-decoration: none; opacity: 0.9; }
+button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Champs de formulaire — sans cette règle, les inputs restaient blancs (défaut du navigateur) sur
+   un fond quasi noir : le seul endroit du site où le thème sombre se rompait brutalement. */
+input[type="email"],
+input[type="text"] {
+  display: block;
+  width: 100%;
+  max-width: 28rem;
+  margin-top: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+input[type="email"]:disabled, input[type="text"]:disabled { opacity: 0.4; }
+
+button[type="button"] {
+  background: transparent;
+  color: var(--color-editorial-link);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+fieldset {
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+}
+
+legend { font-weight: var(--font-weight-medium); color: var(--color-text-primary); padding: 0 var(--space-1); }
+
 ul.measures {
   list-style: none;
   padding: 0;
