@@ -911,6 +911,206 @@ article { overflow-wrap: break-word; }
 
 .hero__panel { margin: var(--space-8) 0 var(--space-12); }
 
+/* ── Récit de valeur (SITE-R1-VALUE-STORY-1) — ABSENCE → action éditoriale → PRÉSENCE ─────────
+   Un seul conteneur de hauteur FIXE (`--value-story-stage-h`) porte les quatre états : sans elle,
+   les deux états compacts (détection, rédaction) feraient reculer tout ce qui suit de plusieurs
+   centaines de pixels toutes les ~2 s — exactement le saut de mise en page que la vérification
+   « no layout shift from animation » interdit. Le contenu de chaque état se centre dedans plutôt
+   que de la redimensionner. */
+
+.value-story { margin: var(--space-12) 0; max-width: var(--wide); }
+
+.value-story__headline {
+  font-size: var(--text-2xl);
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+.value-story__stage-wrap { margin-top: var(--space-6); }
+
+:root { --value-story-stage-h: 21rem; }
+
+.value-story__stage {
+  min-height: var(--value-story-stage-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: var(--color-bg-subtle);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+}
+
+.value-story__steps {
+  display: flex;
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+.value-story__steps li {
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+}
+.value-story__steps li[data-active="true"] {
+  color: var(--color-text-primary);
+  border-color: var(--color-action-primary);
+}
+
+.value-story__disclaimer {
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  max-width: 42rem;
+}
+
+/* Rendu statique (`prefers-reduced-motion`) : les quatre états visibles à la fois, jamais un seul
+   frame figé en plein milieu d'une transition qui ne jouera pas. */
+.value-story__static {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.value-story__static-frame .value-story__label {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.value-story__static .value-story__stage,
+.value-story__static-frame > :first-child {
+  min-height: 14rem;
+  padding: var(--space-4);
+}
+@media (max-width: 64rem) {
+  .value-story__static { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 30rem) {
+  .value-story__static { grid-template-columns: 1fr; }
+}
+
+/* État "answer" — absence et présence, même carte. */
+.value-story__answer { width: 100%; max-width: 34rem; }
+.value-story__answer-head { margin-bottom: var(--space-2); }
+.value-story__question {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-2);
+}
+.value-story__answer-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-3);
+}
+.value-story__sources {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.value-story__source-chip {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-micro);
+  padding: var(--space-1) var(--space-2);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.value-story__source-chip[data-brand="true"] {
+  color: var(--color-text-primary);
+  border-color: var(--color-action-primary);
+  box-shadow: 0 0 0 1px var(--color-action-primary) inset;
+}
+.value-story__source-chip--ghost {
+  border-style: dashed;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+.value-story__presence-note {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Marqueur TextOS — pointe la citation manquante ou observée. Un rond, jamais une couleur d'état
+   non ratifiée : `--color-action-primary` (bleu unique) sert ici, ambre/rouge restent hors surface
+   publique (cf. doctrine de tonalité en tête de fichier). */
+.value-story__marker {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-action-primary);
+  background: transparent;
+  flex-shrink: 0;
+}
+.value-story__marker--found { background: var(--color-action-primary); }
+
+/* États compacts — détection, rédaction. Volontairement plus petits que la carte de réponse : la
+   mission demande explicitement de ne pas exposer l'architecture interne à cette étape. */
+.value-story__compact {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  max-width: 26rem;
+  color: var(--color-text-secondary);
+}
+.value-story__compact .value-story__marker { margin-top: var(--space-1); width: 1rem; height: 1rem; }
+.value-story__pen {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--color-action-primary);
+  flex-shrink: 0;
+}
+.value-story__draft-lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: var(--space-3) 0;
+  width: 12rem;
+}
+.value-story__draft-lines span {
+  height: 0.4rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-border-emphasis);
+}
+.value-story__draft-lines span:nth-child(1) { width: 100%; }
+.value-story__draft-lines span:nth-child(2) { width: 85%; }
+.value-story__draft-lines span:nth-child(3) { width: 60%; }
+.value-story__status-badge {
+  display: inline-block;
+  font-size: var(--font-size-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-action-primary);
+  border: var(--border-width-hairline) solid var(--color-action-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+}
+
+/* Transition douce entre états — jamais de mouvement quand `prefers-reduced-motion` est actif : le
+   rendu statique (§ ci-dessus) ne monte même pas ce chemin, `animation`/`transition` n'y figurent
+   donc jamais. */
+.value-story__answer, .value-story__compact {
+  animation: value-story-fade-in 0.4s ease-out;
+}
+@keyframes value-story-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* ── Pages de documentation (méthodologie, FAQ) ─────────────────────────────────────────────── */
 
 .doc__head { margin-bottom: var(--space-8); }

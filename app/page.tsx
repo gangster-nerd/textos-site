@@ -4,6 +4,7 @@ import { CAPABILITY_REGISTRY, isMarketableOn, type CapabilityId } from "@/lib/ca
 import { loadCollection } from "@/lib/content/content-loader";
 import { ExampleMeasurement } from "@/components/product/ExampleMeasurement";
 import { ProductProof } from "@/components/product/ProductProof";
+import { ValueStory } from "@/components/product/ValueStory";
 import { ContentCta } from "@/components/content/ContentCta";
 import {
   assertConfiguredCtaPublishable,
@@ -13,9 +14,17 @@ import { deliveryContext } from "@/lib/conversion/delivery-context";
 
 // Homepage : surface "homepage" (page-map.spec.md §1) → uniquement public_marketable (§3).
 //
-// ORDRE DE LECTURE : objet de mesure → interprétation → méthode → état du produit. La page montre
-// d'abord CE QUI EST MESURÉ, et seulement ensuite ce qu'on en dit. Une suite de cartes de
-// fonctionnalités suivie d'un bouton dirait l'inverse : que la promesse précède l'instrument.
+// ORDRE DE LECTURE — révisé par SITE-R1-VALUE-STORY-1. L'ordre tenait jusqu'ici : objet de mesure
+// → interprétation → méthode → état du produit, l'instrument montré avant toute promesse. Il
+// restait néanmoins « architecture d'abord » : la toute première chose vue après le titre était un
+// panneau d'instrument (mesures, panel versionné), pas la transformation qu'il rend possible. Un
+// visiteur pressé n'a que quelques secondes ; comprendre exige de voir le PROBLÈME (absence) et la
+// TRANSFORMATION (publication → nouvelle mesure) avant l'appareil qui les mesure.
+//
+// Nouvel ordre : problème (hero) → transformation (ValueStory) → preuve/méthode (le panneau
+// Authority Presence, désormais « comment ça marche » plutôt que première explication, suivi de
+// ProductProof) → état du produit → CTA. Rien n'est supprimé : le panneau qui ouvrait la page
+// jusqu'ici garde tout son contenu, simplement plus bas — comme preuve, pas comme introduction.
 //
 // LE CTA PASSE PAR LE RESOLVER, comme sur n'importe quelle page de contenu. Le registre exprime
 // désormais `homepage` parmi les surfaces autorisées de `measurement_request` — mais la page ne
@@ -76,6 +85,9 @@ export default function Home() {
         </p>
       </section>
 
+      <ValueStory />
+
+      <h2>How it works</h2>
       <section className="hero__panel" aria-label="What a measurement looks like">
         <ExampleMeasurement />
       </section>
