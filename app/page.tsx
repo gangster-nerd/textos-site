@@ -3,6 +3,7 @@ import { buildHomepageJsonLd } from "@/lib/entity-graph";
 import { CAPABILITY_REGISTRY, isMarketableOn, type CapabilityId } from "@/lib/capability-registry";
 import { loadCollection } from "@/lib/content/content-loader";
 import { ExampleMeasurement } from "@/components/product/ExampleMeasurement";
+import { HeroAnswerCard } from "@/components/product/HeroAnswerCard";
 import { ProductProof } from "@/components/product/ProductProof";
 import { ContentCta } from "@/components/content/ContentCta";
 import {
@@ -66,14 +67,23 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <section className="hero">
-        <p className="kicker">Authority Intelligence System</p>
-        <h1>Measure how AI answer engines cite your brand.</h1>
-        <p className="lede">
-          TextOS observes what answer engines say about a market and measures a brand&rsquo;s
-          authority presence &mdash; reproducibly, on a versioned query panel, with dispersion
-          and completeness. <span className="muted">Not a score. A measurement.</span>
-        </p>
+      {/* HERO EN DEUX COLONNES. La carte de réponse ne répète pas la promesse, elle la MONTRE :
+          une réponse de moteur sans la marque, puis la même avec elle. Le texte pose l'objet de
+          mesure, la carte montre ce qu'on mesure — c'est le même ordre de lecture que le reste de
+          la page, à l'échelle d'un écran. Sous 56rem la grille retombe en une colonne et la carte
+          passe sous le titre : elle l'illustre, elle ne le comprime jamais. */}
+      <section className="hero hero--split">
+        <div>
+          <p className="kicker">Authority Intelligence System</p>
+          <h1>Measure how AI answer engines cite your brand.</h1>
+          <p className="lede">
+            TextOS observes what answer engines say about a market and measures a brand&rsquo;s
+            authority presence &mdash; reproducibly, on a versioned query panel, with dispersion
+            and completeness. <span className="muted">Not a score. A measurement.</span>
+          </p>
+        </div>
+
+        <HeroAnswerCard />
       </section>
 
       <section className="hero__panel" aria-label="What a measurement looks like">

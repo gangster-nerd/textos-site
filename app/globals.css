@@ -857,3 +857,201 @@ article { overflow-wrap: break-word; }
   .panel__body { padding: var(--space-4); }
   .panel__note { padding: var(--space-3) var(--space-4) var(--space-4); }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════════════════════
+   CARTE DE RÉPONSE DU HERO — components/product/HeroAnswerCard.tsx
+
+   Aucune primitive nouvelle, aucun alias nouveau. C'est volontaire : la doctrine de tonalité (§2)
+   rend l'ABSENCE OBSERVÉE en NEUTRE, et `--color-status-pending` reste une valeur non résolue.
+   Une carte qui aurait peint l'absence en ambre aurait donc contredit le contrat en image, et
+   aurait exigé d'inventer la palette sombre du produit pour le faire.
+
+   La distinction se porte autrement, et mieux : l'absence est un filet POINTILLÉ neutre, la
+   présence un filet PLEIN à l'accent. Le trait dit le constat, la couleur dit qu'un lien existe.
+   ═══════════════════════════════════════════════════════════════════════════════════════════ */
+
+/* Le hero par défaut est une colonne de prose bornée à 46rem. Avec une carte à droite, la
+   contrainte n'est plus la longueur de ligne mais l'équilibre des deux colonnes : on repasse en
+   grille et c'est la colonne qui borne la prose. Sous 56rem la carte passe dessous — elle
+   illustre le titre, elle ne doit jamais le comprimer. */
+.hero--split {
+  max-width: none;
+  display: grid;
+  /* Deux colonnes ÉGALES. Mesuré : à 1.3fr / 1fr, la carte tombait sous 455 px, ses sources
+     passaient sur deux lignes et elle dépassait la colonne de texte de près de 300 px — le titre
+     flottait au milieu d'un vide et le panneau de mesure sortait de l'écran. À parts égales, les
+     sources tiennent sur une ligne et les deux colonnes se répondent. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (max-width: 56rem) {
+  .hero--split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+/* Le panneau de mesure est le sujet de la page ; la carte de réponse n'est qu'une illustration.
+   Son titre se tient donc un cran plus bas dans la hiérarchie, et son rembourrage un cran plus
+   serré — elle doit rester au-dessus de la ligne de flottaison avec le titre, ce que le
+   rembourrage de panneau (--panel-pad) ne permettait pas. */
+.answer .panel__title { font-size: var(--font-size-base); }
+.answer .panel__head,
+.answer .panel__body { padding: var(--space-4); }
+.answer .panel__note { padding: var(--space-3) var(--space-4) var(--space-4); }
+
+.answer__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.answer__meta { margin: 0; }
+
+.answer__query {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.answer__query span { color: var(--color-editorial-rule); }
+
+/* Le bloc est remonté par React à chaque bascule : l'animation d'entrée rejoue, et c'est elle qui
+   signale qu'on regarde une AUTRE réponse. Sans ce signal, le texte changerait en silence. */
+.answer__result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  animation: answer-rise 320ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.answer__text {
+  margin: 0;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-prose);
+  color: var(--color-text-secondary);
+}
+
+.answer__sources-label { margin: 0; }
+
+.answer__sources {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.answer__chip {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-micro);
+  color: var(--color-text-muted);
+  background: var(--color-bg-surface);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  animation: answer-rise 300ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.answer__sources li:nth-child(1) { animation-delay: 120ms; }
+.answer__sources li:nth-child(2) { animation-delay: 200ms; }
+.answer__sources li:nth-child(3) { animation-delay: 280ms; }
+.answer__sources li:nth-child(4) { animation-delay: 360ms; }
+
+/* Après les nth-child, et de même spécificité, pour gagner : la source de la marque arrive en
+   DERNIER quel que soit son rang dans la liste. C'est la nouvelle, elle ne se noie pas. */
+.answer__sources li.answer__chip--brand {
+  color: var(--color-editorial-link);
+  border-color: var(--color-editorial-rule);
+  animation-delay: 520ms;
+}
+
+/* Filet pointillé et neutre : un constat de mesure, pas une alerte. */
+.answer__verdict {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  border: var(--border-width-hairline) dashed var(--color-border-emphasis);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  animation: answer-rise 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 640ms both;
+}
+
+/* Filet plein et accent : quelque chose existe maintenant, et c'est un lien. */
+.answer__verdict--cited {
+  border-style: solid;
+  border-color: var(--color-editorial-rule);
+  color: var(--color-editorial-link);
+}
+
+.answer__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.answer__note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.answer__note-strong {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* WCAG 2.2.2 : le contenu se met à jour seul au-delà de 5 s, il faut pouvoir l'arrêter. Cible
+   44 px, comme toute commande de cette surface. */
+.answer__toggle {
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  background: transparent;
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.answer__toggle:hover {
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-emphasis);
+}
+
+@keyframes answer-rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* L'état d'arrivée EST le design : le mouvement ne fait que séquencer. Le réduire à néant ne
+   retire donc aucune information. L'alternance automatique, elle, ne démarre pas du tout — c'est
+   le composant qui le décide, pas cette feuille. */
+@media (prefers-reduced-motion: reduce) {
+  .answer__result,
+  .answer__chip,
+  .answer__sources li,
+  .answer__verdict {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+}
