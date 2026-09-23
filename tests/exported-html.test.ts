@@ -104,7 +104,7 @@ describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () =
     // sérialisé par Next — même bloc, pas un second rendu.
     expect(out.match(/class="content-cta"/g) ?? []).toHaveLength(1);
     expect(out).toContain('data-cta-variant="measurement_request"');
-    expect(out).toContain('data-cta-version="1"');
+    expect(out).toContain('data-cta-version="2"');
     expect(out).toContain('data-content-id="faq:does-textos-automatically-verify-claims"');
     expect(out).toContain('data-cta-position="end"');
   });
@@ -168,7 +168,7 @@ describe.skipIf(!existsSync(FAQ_HTML))("export statique out/ (post-build)", () =
       expect(faq.ctaVersion).toBeNull();
     } else {
       expect(faq.resolvedCtaVariant).toBe("measurement_request");
-      expect(faq.ctaVersion).toBe(1);
+      expect(faq.ctaVersion).toBe(2);
     }
     expect(existsSync(path.join(OUT, "faq", `${FAQ_SLUG}.html`))).toBe(true);
   });
