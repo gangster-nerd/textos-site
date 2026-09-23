@@ -76,12 +76,23 @@ export default function Home() {
       />
 
       <section className="hero">
-        <p className="kicker">Authority Intelligence System</p>
+        {/* HD-2 (SITE-R1-HUMAN-DECISIONS-AND-PREVIEW-1) : catégorie resserrée sur ce que le produit
+            fait réellement — "for AI answer engines" nomme la surface mesurée, sans "system"
+            générique. Aucune claim comparative, aucun "best/first/leading" : la seule affirmation
+            est la boucle mesure → compréhension → action, et "as shown below" la rattache
+            explicitement à l'illustration qui suit plutôt que d'en faire une promesse de produit
+            self-serve. */}
+        <p className="kicker">Authority Intelligence for AI answer engines</p>
         <h1>Measure how AI answer engines cite your brand.</h1>
         <p className="lede">
           TextOS observes what answer engines say about a market and measures a brand&rsquo;s
           authority presence &mdash; reproducibly, on a versioned query panel, with dispersion
           and completeness. <span className="muted">Not a score. A measurement.</span>
+        </p>
+        <p className="lede">
+          It measures where a brand is absent, present or cited, helps identify which gaps
+          matter, and &mdash; as shown below &mdash; turns a worthwhile gap into published,
+          evidence-backed content.
         </p>
       </section>
 
