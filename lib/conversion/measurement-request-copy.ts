@@ -11,7 +11,7 @@
 import { z } from "zod";
 
 /** Toute évolution de la copy publique change cette version (traçabilité de l'attribution). */
-export const MEASUREMENT_REQUEST_COPY_VERSION = "measurement-request-copy@1";
+export const MEASUREMENT_REQUEST_COPY_VERSION = "measurement-request-copy@3";
 
 const NonEmpty = z.string().trim().min(1);
 
@@ -32,6 +32,9 @@ export const MeasurementRequestCopySchema = z
         submitLabel: NonEmpty,
         errorMessage: NonEmpty,
         unavailableMessage: NonEmpty,
+        addQuestionLabel: NonEmpty,
+        removeQuestionLabel: NonEmpty,
+        emptyQuestionError: NonEmpty,
       })
       .strict(),
     confirmation: z.object({ title: NonEmpty, body: NonEmpty }).strict(),
@@ -43,13 +46,23 @@ export type MeasurementRequestCopy = z.infer<typeof MeasurementRequestCopySchema
 const RAW = {
   version: MEASUREMENT_REQUEST_COPY_VERSION,
   form: {
-    title: "Request an Authority Presence measurement",
+    // HD-1 (SITE-R1-HUMAN-DECISIONS-AND-PREVIEW-1) : titre aligné sur le libellé du CTA
+    // ("Request a measurement", cta-registry.ts) — la formulation longue "Request an Authority
+    // Presence measurement" restait au singulier ce qu'on peut nommer en prose explicative, jamais
+    // ce que le bouton promet. Un visiteur qui clique le CTA doit retrouver EXACTEMENT sa promesse
+    // sur la page qui s'ouvre, pas une reformulation plus verbeuse.
+    title: "Request a measurement",
     intro:
       "Provide the context needed to review a potential Authority Presence measurement. Scope and delivery are handled manually while TextOS is in active development.",
-    // Champ central : la question acheteur. C'est la matière d'un panel de requêtes.
-    fieldLabel: "What questions do your buyers ask?",
+    // Champ central : la question acheteur. C'est la matière d'un panel de requêtes. Jusqu'à dix
+    // questions, transmises comme autant de valeurs `buyer_questions` — jamais concatenées, pour
+    // que le sous-traitant reçoive le panel tel qu'il a été saisi, pas une seule chaîne à ré-analyser.
+    fieldLabel: "What questions do your buyers ask? (up to 10)",
     fieldHelp:
       "Share the questions buyers use when comparing brands, products or providers in your market.",
+    addQuestionLabel: "Add another question",
+    removeQuestionLabel: "Remove this question",
+    emptyQuestionError: "This question can't be empty.",
     emailLabel: "Work email",
     emailHelp: "Used only to contact you about this request.",
     brandLabel: "Brand or domain",

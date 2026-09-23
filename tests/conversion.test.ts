@@ -226,7 +226,7 @@ describe("résolution CTA — stricte, contexte toujours complet", () => {
     // Avec le contexte complet, la résolution aboutit — c'est bien le contexte qui décide.
     const r = resolveCtaForDocument({ configuredVariant: "measurement_request", contentType: "faq_entry", delivery: DELIVERY });
     expect(r.resolvedVariant).toBe("measurement_request");
-    expect(r.version).toBe(1);
+    expect(r.version).toBe(2);
   });
 
   test("une variante disabled ne rend aucun CTA", () => {

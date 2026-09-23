@@ -92,12 +92,18 @@ const RAW_CTA_VARIANTS = {
     title: "See your brand measured",
     body: "Request an authority-presence measurement on a versioned query panel for your brand.",
     primaryLabel: "Request a measurement",
+    // HD-3 (SITE-R1-HUMAN-DECISIONS-AND-PREVIEW-1) : la micro-promesse qui répond, au moment même
+    // du clic, aux deux questions qu'un visiteur se pose avant de s'engager — que dois-je fournir,
+    // qu'advient-il ensuite. Aucune automatisme, aucun délai, aucune exécution immédiate : "review"
+    // et "prepare" restent des verbes humains, jamais un provider appelé pour de vrai.
+    disclaimer:
+      "Share your domain and the buyer questions that matter. We'll review them and prepare the measurement request.",
     claimIds: [
       "sales-authority-presence-measurement",
       "sales-versioned-authority-measurement",
       "sales-authority-presence-boundaries",
     ],
-    version: 1,
+    version: 2,
   },
   claim_lookup: {
     id: "claim_lookup",
