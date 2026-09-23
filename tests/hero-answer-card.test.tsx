@@ -4,76 +4,64 @@ import path from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { HeroAnswerCard } from "@/components/product/HeroAnswerCard";
-import { exampleAnswer } from "@/lib/fixtures/example-answer";
-import { exampleMeasurement } from "@/lib/fixtures/example-measurement";
+import { TRACKED_BRAND, VALUE_STORY_ANSWER } from "@/lib/product-proof/value-story-example";
 import { CAPABILITY_REGISTRY, isMarketableOn, type CapabilityId } from "@/lib/capability-registry";
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 const markup = renderToStaticMarkup(<HeroAnswerCard />);
 
-describe("carte de réponse du hero — état rendu par le serveur", () => {
-  // Sans JavaScript, le lecteur garde l'état initial. Ce doit être l'ABSENCE : c'est le problème
-  // que le reste de la page résout. Rendre la présence par défaut vendrait la conclusion avant
-  // d'avoir posé la question.
-  it("rend l'état d'absence, jamais celui de présence", () => {
-    expect(markup).toContain("your brand — not cited");
-    expect(markup).not.toContain("cited, with its source");
+describe("carte de réponse du hero — ce qu'elle montre", () => {
+  // La carte pose le PROBLÈME. Rendre la présence ici vendrait la conclusion avant d'avoir posé la
+  // question, et doublonnerait le dernier repère de ValueStory.
+  it("rend l'absence, jamais l'état de présence", () => {
+    expect(markup).toContain("not cited in this answer");
+    expect(markup).toContain(VALUE_STORY_ANSWER.before.text);
+    expect(markup).not.toContain(VALUE_STORY_ANSWER.after.text);
   });
 
-  it("ne cite aucune source de la marque dans l'état d'absence", () => {
-    expect(markup).not.toContain("yourbrand.example");
-  });
-
-  // L'étiquette d'illustration doit être LUE avant le contenu, par une personne comme par un
-  // lecteur d'écran. On vérifie l'ordre dans le markup, pas seulement la présence.
-  it("annonce « Illustrative » avant le corps de la réponse", () => {
-    expect(markup.indexOf("Illustrative")).toBeGreaterThan(-1);
-    expect(markup.indexOf("Illustrative")).toBeLessThan(markup.indexOf(exampleAnswer.absent.body));
-  });
-
-  it("expose une commande réelle pour arrêter la mise à jour automatique (WCAG 2.2.2)", () => {
-    expect(markup).toContain("<button");
-    expect(markup).toContain("Show after");
-    expect(markup).toContain('aria-labelledby="hero-answer-title"');
-  });
-});
-
-describe("fixture de réponse — invariants de vérité publique", () => {
-  const allSources = [...exampleAnswer.absent.sources, ...exampleAnswer.cited.sources];
-
-  // Nommer un concurrent réel serait un claim de marché : il exigerait une source gouvernée
-  // (copy-safety-rules.spec.md §4), qu'une carte d'illustration ne peut pas porter.
-  it("n'utilise que des hôtes sous le TLD réservé `.example`", () => {
-    for (const source of allSources) {
-      expect(source.host.endsWith(".example")).toBe(true);
+  it("ne cite aucune source de la marque suivie", () => {
+    for (const citation of VALUE_STORY_ANSWER.after.citations) {
+      if (!("brand" in citation && citation.brand)) continue;
+      expect(markup).not.toContain(citation.sourceDomain);
     }
   });
 
-  // Toute la démonstration tient dans « même réponse ». Si les sources non-marque divergeaient,
-  // la carte montrerait deux réponses différentes et la promesse deviendrait fausse en silence.
-  it("garde les sources non-marque identiques et dans le même ordre entre les deux états", () => {
-    const nonBrand = (sources: readonly { host: string; brand: boolean }[]) =>
-      sources.filter((source) => !source.brand).map((source) => source.host);
-
-    expect(nonBrand(exampleAnswer.cited.sources)).toEqual(nonBrand(exampleAnswer.absent.sources));
+  // Un second jeu de valeurs dériverait du premier dès la première réécriture, et la page
+  // raconterait deux exemples au lieu d'un. La carte LIT la fixture de ValueStory.
+  it("lit la même fixture que la storyboard, sans la redéclarer", () => {
+    expect(markup).toContain(VALUE_STORY_ANSWER.question);
+    expect(markup).toContain(TRACKED_BRAND);
+    for (const citation of VALUE_STORY_ANSWER.before.citations) {
+      expect(markup).toContain(citation.sourceDomain);
+    }
   });
 
-  it("cite la marque exactement une fois dans l'état de présence, jamais dans l'autre", () => {
-    expect(exampleAnswer.cited.sources.filter((source) => source.brand)).toHaveLength(1);
-    expect(exampleAnswer.absent.sources.filter((source) => source.brand)).toHaveLength(0);
+  // L'étiquette d'illustration doit être lue avant le contenu, par une personne comme par un
+  // lecteur d'écran. On vérifie l'ORDRE dans le markup, pas seulement la présence.
+  it("annonce « Illustrative » avant le corps de la réponse", () => {
+    expect(markup.indexOf("Illustrative")).toBeGreaterThan(-1);
+    expect(markup.indexOf("Illustrative")).toBeLessThan(
+      markup.indexOf(VALUE_STORY_ANSWER.before.text)
+    );
+    expect(markup).toContain('aria-labelledby="hero-answer-title"');
   });
 
-  // Le hero et le panneau « Authority Presence » sont sur la même page. Deux versions de panel
-  // affichées côte à côte diraient que ce ne sont pas les mêmes mesures.
-  it("lit la version du panel depuis la fixture de mesure, sans la redéclarer", () => {
-    expect(exampleAnswer.panelVersion).toBe(exampleMeasurement.panelVersion);
-    expect(markup).toContain(`panel ${exampleMeasurement.panelVersion}`);
+  // App-like, pas app-fake : rien à actionner, donc rien qui puisse laisser croire qu'un
+  // traitement se déclenche. Et pas une ligne de JavaScript envoyée pour un objet immobile.
+  it("n'expose aucun contrôle et reste un composant serveur", () => {
+    expect(markup).not.toContain("<button");
+    expect(markup).not.toContain("<input");
+    const source = readFileSync(
+      path.join(REPO_ROOT, "components/product/HeroAnswerCard.tsx"),
+      "utf8"
+    );
+    expect(source).not.toContain("use client");
   });
 });
 
 describe("carte de réponse — gates de surface", () => {
-  // Le même verrou que la homepage : une capacité non commercialisable SUR CETTE SURFACE n'a rien
-  // à faire dans une copy de hero, quel que soit son statut d'implémentation.
+  // Même verrou que la homepage : une capacité non commercialisable SUR CETTE SURFACE n'a rien à
+  // faire dans une copy de hero, quel que soit son statut d'implémentation.
   it("ne nomme aucune capacité non commercialisable en homepage", () => {
     const ids = Object.keys(CAPABILITY_REGISTRY) as CapabilityId[];
 
@@ -91,8 +79,7 @@ describe("carte de réponse — gates de surface", () => {
   // ambre d'absence sans passer par une ratification.
   it("n'introduit aucune couleur brute dans son bloc de styles", () => {
     const css = readFileSync(path.join(REPO_ROOT, "app/globals.css"), "utf8");
-    const marker = "CARTE DE RÉPONSE DU HERO";
-    const block = css.slice(css.indexOf(marker));
+    const block = css.slice(css.indexOf("CARTE DE RÉPONSE DU HERO"));
 
     expect(block.length).toBeGreaterThan(0);
     expect(block).not.toMatch(/#[0-9a-fA-F]{3,8}\b/);

@@ -336,6 +336,36 @@ a:hover { text-decoration: underline; }
 .site-header__nav a { color: var(--color-text-muted); }
 .site-header__nav a:hover { color: var(--color-text-secondary); text-decoration: none; }
 
+/* ── Pied de page public ────────────────────────────────────────────────────────────────────── */
+
+.site-footer {
+  border-top: var(--border-width-hairline) solid var(--color-border-default);
+  background: var(--color-bg-surface);
+}
+
+.site-footer__inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+}
+
+.site-footer__mark { color: var(--color-text-muted); margin: 0; }
+
+.site-footer__nav {
+  display: flex;
+  gap: var(--space-6);
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.site-footer__nav a { color: var(--color-text-muted); }
+.site-footer__nav a:hover { color: var(--color-text-secondary); text-decoration: none; }
+
 /* ══ SURFACES INSTRUMENT ═════════════════════════════════════════════════════════════════════
    À partir d'ici et jusqu'aux blocs éditoriaux : échelle produit (--font-size-*) et interlignes
    produit. Ce sont les surfaces qui montrent une MESURE, pas celles qui la racontent.
@@ -688,6 +718,97 @@ table.observations thead th:nth-child(5) { width: 15%; }
 
 .note strong { color: var(--color-text-secondary); }
 
+/* ── CTA commercial (measurement_request) ───────────────────────────────────────────────────────
+   Seul moment de conversion du site. Sans ce bloc, `ContentCta` rendait un titre, un paragraphe et
+   un lien bleu nu — même poids visuel qu'une phrase de prose, sur homepage comme sur chaque
+   article. Un bouton, une bordure d'accent et un fond distingué le séparent explicitement du
+   contenu éditorial qui l'entoure : la proposition commerciale ne doit jamais se lire comme une
+   phrase parmi d'autres. */
+.content-cta {
+  margin: var(--space-8) 0;
+  padding: var(--space-6);
+  background: var(--color-bg-subtle);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-left: 2px solid var(--color-action-primary);
+  border-radius: var(--radius-lg);
+}
+
+.content-cta__title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.content-cta__body { margin: 0 0 var(--space-4); color: var(--color-text-secondary); }
+
+.content-cta__disclaimer {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Bouton primaire — partagé par le CTA commercial et le formulaire de demande de mesure. Un lien
+   bleu nu et un `<button type="submit">` par défaut du navigateur portaient jusqu'ici le même
+   poids visuel que du texte : aucune des deux actions qui font réellement avancer un visiteur
+   n'avait de traitement distinct. */
+.content-cta__action,
+button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-6);
+  background: var(--color-action-primary);
+  color: var(--bg);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
+  border: none;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.content-cta__action:hover, button[type="submit"]:hover:not(:disabled) { text-decoration: none; opacity: 0.9; }
+button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Champs de formulaire — sans cette règle, les inputs restaient blancs (défaut du navigateur) sur
+   un fond quasi noir : le seul endroit du site où le thème sombre se rompait brutalement. */
+input[type="email"],
+input[type="text"] {
+  display: block;
+  width: 100%;
+  max-width: 28rem;
+  margin-top: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+input[type="email"]:disabled, input[type="text"]:disabled { opacity: 0.4; }
+
+button[type="button"] {
+  background: transparent;
+  color: var(--color-editorial-link);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+fieldset {
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+}
+
+legend { font-weight: var(--font-weight-medium); color: var(--color-text-primary); padding: 0 var(--space-1); }
+
 ul.measures {
   list-style: none;
   padding: 0;
@@ -790,6 +911,206 @@ article { overflow-wrap: break-word; }
 
 .hero__panel { margin: var(--space-8) 0 var(--space-12); }
 
+/* ── Récit de valeur (SITE-R1-VALUE-STORY-1) — ABSENCE → action éditoriale → PRÉSENCE ─────────
+   Un seul conteneur de hauteur FIXE (`--value-story-stage-h`) porte les quatre états : sans elle,
+   les deux états compacts (détection, rédaction) feraient reculer tout ce qui suit de plusieurs
+   centaines de pixels toutes les ~2 s — exactement le saut de mise en page que la vérification
+   « no layout shift from animation » interdit. Le contenu de chaque état se centre dedans plutôt
+   que de la redimensionner. */
+
+.value-story { margin: var(--space-12) 0; max-width: var(--wide); }
+
+.value-story__headline {
+  font-size: var(--text-2xl);
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+.value-story__stage-wrap { margin-top: var(--space-6); }
+
+:root { --value-story-stage-h: 21rem; }
+
+.value-story__stage {
+  min-height: var(--value-story-stage-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: var(--color-bg-subtle);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+}
+
+.value-story__steps {
+  display: flex;
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+.value-story__steps li {
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+}
+.value-story__steps li[data-active="true"] {
+  color: var(--color-text-primary);
+  border-color: var(--color-action-primary);
+}
+
+.value-story__disclaimer {
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  max-width: 42rem;
+}
+
+/* Rendu statique (`prefers-reduced-motion`) : les quatre états visibles à la fois, jamais un seul
+   frame figé en plein milieu d'une transition qui ne jouera pas. */
+.value-story__static {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.value-story__static-frame .value-story__label {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.value-story__static .value-story__stage,
+.value-story__static-frame > :first-child {
+  min-height: 14rem;
+  padding: var(--space-4);
+}
+@media (max-width: 64rem) {
+  .value-story__static { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 30rem) {
+  .value-story__static { grid-template-columns: 1fr; }
+}
+
+/* État "answer" — absence et présence, même carte. */
+.value-story__answer { width: 100%; max-width: 34rem; }
+.value-story__answer-head { margin-bottom: var(--space-2); }
+.value-story__question {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-2);
+}
+.value-story__answer-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-3);
+}
+.value-story__sources {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.value-story__source-chip {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-micro);
+  padding: var(--space-1) var(--space-2);
+  border: var(--border-width-hairline) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.value-story__source-chip[data-brand="true"] {
+  color: var(--color-text-primary);
+  border-color: var(--color-action-primary);
+  box-shadow: 0 0 0 1px var(--color-action-primary) inset;
+}
+.value-story__source-chip--ghost {
+  border-style: dashed;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+.value-story__presence-note {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Marqueur TextOS — pointe la citation manquante ou observée. Un rond, jamais une couleur d'état
+   non ratifiée : `--color-action-primary` (bleu unique) sert ici, ambre/rouge restent hors surface
+   publique (cf. doctrine de tonalité en tête de fichier). */
+.value-story__marker {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-action-primary);
+  background: transparent;
+  flex-shrink: 0;
+}
+.value-story__marker--found { background: var(--color-action-primary); }
+
+/* États compacts — détection, rédaction. Volontairement plus petits que la carte de réponse : la
+   mission demande explicitement de ne pas exposer l'architecture interne à cette étape. */
+.value-story__compact {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  max-width: 26rem;
+  color: var(--color-text-secondary);
+}
+.value-story__compact .value-story__marker { margin-top: var(--space-1); width: 1rem; height: 1rem; }
+.value-story__pen {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--color-action-primary);
+  flex-shrink: 0;
+}
+.value-story__draft-lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: var(--space-3) 0;
+  width: 12rem;
+}
+.value-story__draft-lines span {
+  height: 0.4rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-border-emphasis);
+}
+.value-story__draft-lines span:nth-child(1) { width: 100%; }
+.value-story__draft-lines span:nth-child(2) { width: 85%; }
+.value-story__draft-lines span:nth-child(3) { width: 60%; }
+.value-story__status-badge {
+  display: inline-block;
+  font-size: var(--font-size-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-action-primary);
+  border: var(--border-width-hairline) solid var(--color-action-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+}
+
+/* Transition douce entre états — jamais de mouvement quand `prefers-reduced-motion` est actif : le
+   rendu statique (§ ci-dessus) ne monte même pas ce chemin, `animation`/`transition` n'y figurent
+   donc jamais. */
+.value-story__answer, .value-story__compact {
+  animation: value-story-fade-in 0.4s ease-out;
+}
+@keyframes value-story-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* ── Pages de documentation (méthodologie, FAQ) ─────────────────────────────────────────────── */
 
 .doc__head { margin-bottom: var(--space-8); }
@@ -858,17 +1179,18 @@ article { overflow-wrap: break-word; }
   .panel__note { padding: var(--space-3) var(--space-4) var(--space-4); }
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════════════════════════════════
    CARTE DE RÉPONSE DU HERO — components/product/HeroAnswerCard.tsx
 
    Aucune primitive nouvelle, aucun alias nouveau. C'est volontaire : la doctrine de tonalité (§2)
    rend l'ABSENCE OBSERVÉE en NEUTRE, et `--color-status-pending` reste une valeur non résolue.
-   Une carte qui aurait peint l'absence en ambre aurait donc contredit le contrat en image, et
-   aurait exigé d'inventer la palette sombre du produit pour le faire.
+   Une carte qui aurait peint l'absence en ambre aurait contredit le contrat en image, et aurait
+   exigé d'inventer la palette sombre du produit pour le faire.
 
-   La distinction se porte autrement, et mieux : l'absence est un filet POINTILLÉ neutre, la
-   présence un filet PLEIN à l'accent. Le trait dit le constat, la couleur dit qu'un lien existe.
-   ═══════════════════════════════════════════════════════════════════════════════════════════ */
+   AUCUNE ANIMATION NON PLUS. `ValueStory` cycle juste en dessous ; deux objets en mouvement sur le
+   premier écran se voleraient l'attention. La carte se tient immobile et laisse la storyboard
+   porter le temps.
+   ════════════════════════════════════════════════════════════════════════════════════════════ */
 
 /* Le hero par défaut est une colonne de prose bornée à 46rem. Avec une carte à droite, la
    contrainte n'est plus la longueur de ligne mais l'équilibre des deux colonnes : on repasse en
@@ -877,10 +1199,6 @@ article { overflow-wrap: break-word; }
 .hero--split {
   max-width: none;
   display: grid;
-  /* Deux colonnes ÉGALES. Mesuré : à 1.3fr / 1fr, la carte tombait sous 455 px, ses sources
-     passaient sur deux lignes et elle dépassait la colonne de texte de près de 300 px — le titre
-     flottait au milieu d'un vide et le panneau de mesure sortait de l'écran. À parts égales, les
-     sources tiennent sur une ligne et les deux colonnes se répondent. */
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--space-8);
   align-items: center;
@@ -895,8 +1213,7 @@ article { overflow-wrap: break-word; }
 
 /* Le panneau de mesure est le sujet de la page ; la carte de réponse n'est qu'une illustration.
    Son titre se tient donc un cran plus bas dans la hiérarchie, et son rembourrage un cran plus
-   serré — elle doit rester au-dessus de la ligne de flottaison avec le titre, ce que le
-   rembourrage de panneau (--panel-pad) ne permettait pas. */
+   serré — elle doit rester au-dessus de la ligne de flottaison avec le titre. */
 .answer .panel__title { font-size: var(--font-size-base); }
 .answer .panel__head,
 .answer .panel__body { padding: var(--space-4); }
@@ -924,15 +1241,6 @@ article { overflow-wrap: break-word; }
 
 .answer__query span { color: var(--color-editorial-rule); }
 
-/* Le bloc est remonté par React à chaque bascule : l'animation d'entrée rejoue, et c'est elle qui
-   signale qu'on regarde une AUTRE réponse. Sans ce signal, le texte changerait en silence. */
-.answer__result {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  animation: answer-rise 320ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-}
-
 .answer__text {
   margin: 0;
   font-size: var(--font-size-base);
@@ -959,23 +1267,10 @@ article { overflow-wrap: break-word; }
   border: var(--border-width-hairline) solid var(--color-border-default);
   border-radius: var(--radius-sm);
   padding: var(--space-1) var(--space-2);
-  animation: answer-rise 300ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
-.answer__sources li:nth-child(1) { animation-delay: 120ms; }
-.answer__sources li:nth-child(2) { animation-delay: 200ms; }
-.answer__sources li:nth-child(3) { animation-delay: 280ms; }
-.answer__sources li:nth-child(4) { animation-delay: 360ms; }
-
-/* Après les nth-child, et de même spécificité, pour gagner : la source de la marque arrive en
-   DERNIER quel que soit son rang dans la liste. C'est la nouvelle, elle ne se noie pas. */
-.answer__sources li.answer__chip--brand {
-  color: var(--color-editorial-link);
-  border-color: var(--color-editorial-rule);
-  animation-delay: 520ms;
-}
-
-/* Filet pointillé et neutre : un constat de mesure, pas une alerte. */
+/* Filet POINTILLÉ et neutre : un constat de mesure, pas une alerte. C'est le trait qui porte le
+   sens, jamais une couleur d'état — le contrat n'en a pas résolu pour le sombre. */
 .answer__verdict {
   margin: 0;
   display: flex;
@@ -987,14 +1282,6 @@ article { overflow-wrap: break-word; }
   border: var(--border-width-hairline) dashed var(--color-border-emphasis);
   border-radius: var(--radius-md);
   padding: var(--space-3);
-  animation: answer-rise 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 640ms both;
-}
-
-/* Filet plein et accent : quelque chose existe maintenant, et c'est un lien. */
-.answer__verdict--cited {
-  border-style: solid;
-  border-color: var(--color-editorial-rule);
-  color: var(--color-editorial-link);
 }
 
 .answer__dot {
@@ -1005,53 +1292,7 @@ article { overflow-wrap: break-word; }
   flex-shrink: 0;
 }
 
-.answer__note {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-}
-
 .answer__note-strong {
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
-}
-
-/* WCAG 2.2.2 : le contenu se met à jour seul au-delà de 5 s, il faut pouvoir l'arrêter. Cible
-   44 px, comme toute commande de cette surface. */
-.answer__toggle {
-  min-height: 44px;
-  padding: 0 var(--space-4);
-  background: transparent;
-  border: var(--border-width-hairline) solid var(--color-border-default);
-  border-radius: var(--radius-md);
-  color: var(--color-text-muted);
-  font: inherit;
-  font-size: var(--font-size-sm);
-  cursor: pointer;
-  transition: color 200ms ease, border-color 200ms ease;
-}
-
-.answer__toggle:hover {
-  color: var(--color-text-secondary);
-  border-color: var(--color-border-emphasis);
-}
-
-@keyframes answer-rise {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
-}
-
-/* L'état d'arrivée EST le design : le mouvement ne fait que séquencer. Le réduire à néant ne
-   retire donc aucune information. L'alternance automatique, elle, ne démarre pas du tout — c'est
-   le composant qui le décide, pas cette feuille. */
-@media (prefers-reduced-motion: reduce) {
-  .answer__result,
-  .answer__chip,
-  .answer__sources li,
-  .answer__verdict {
-    animation-duration: 1ms;
-    animation-delay: 0ms;
-  }
 }

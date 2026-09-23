@@ -42,7 +42,7 @@ describe("périmètre du manifeste", () => {
       expect(faq?.ctaVersion).toBeNull();
     } else {
       expect(faq?.resolvedCtaVariant).toBe("measurement_request");
-      expect(faq?.ctaVersion).toBe(1);
+      expect(faq?.ctaVersion).toBe(2);
     }
     expect(faq?.clusterId).toBe("measurement-trust");
     expect(faq?.contentType).toBe("faq_entry");

@@ -5,6 +5,7 @@ import { loadCollection } from "@/lib/content/content-loader";
 import { ExampleMeasurement } from "@/components/product/ExampleMeasurement";
 import { HeroAnswerCard } from "@/components/product/HeroAnswerCard";
 import { ProductProof } from "@/components/product/ProductProof";
+import { ValueStory } from "@/components/product/ValueStory";
 import { ContentCta } from "@/components/content/ContentCta";
 import {
   assertConfiguredCtaPublishable,
@@ -14,9 +15,17 @@ import { deliveryContext } from "@/lib/conversion/delivery-context";
 
 // Homepage : surface "homepage" (page-map.spec.md §1) → uniquement public_marketable (§3).
 //
-// ORDRE DE LECTURE : objet de mesure → interprétation → méthode → état du produit. La page montre
-// d'abord CE QUI EST MESURÉ, et seulement ensuite ce qu'on en dit. Une suite de cartes de
-// fonctionnalités suivie d'un bouton dirait l'inverse : que la promesse précède l'instrument.
+// ORDRE DE LECTURE — révisé par SITE-R1-VALUE-STORY-1. L'ordre tenait jusqu'ici : objet de mesure
+// → interprétation → méthode → état du produit, l'instrument montré avant toute promesse. Il
+// restait néanmoins « architecture d'abord » : la toute première chose vue après le titre était un
+// panneau d'instrument (mesures, panel versionné), pas la transformation qu'il rend possible. Un
+// visiteur pressé n'a que quelques secondes ; comprendre exige de voir le PROBLÈME (absence) et la
+// TRANSFORMATION (publication → nouvelle mesure) avant l'appareil qui les mesure.
+//
+// Nouvel ordre : problème (hero) → transformation (ValueStory) → preuve/méthode (le panneau
+// Authority Presence, désormais « comment ça marche » plutôt que première explication, suivi de
+// ProductProof) → état du produit → CTA. Rien n'est supprimé : le panneau qui ouvrait la page
+// jusqu'ici garde tout son contenu, simplement plus bas — comme preuve, pas comme introduction.
 //
 // LE CTA PASSE PAR LE RESOLVER, comme sur n'importe quelle page de contenu. Le registre exprime
 // désormais `homepage` parmi les surfaces autorisées de `measurement_request` — mais la page ne
@@ -67,25 +76,40 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* HERO EN DEUX COLONNES. La carte de réponse ne répète pas la promesse, elle la MONTRE :
-          une réponse de moteur sans la marque, puis la même avec elle. Le texte pose l'objet de
-          mesure, la carte montre ce qu'on mesure — c'est le même ordre de lecture que le reste de
-          la page, à l'échelle d'un écran. Sous 56rem la grille retombe en une colonne et la carte
-          passe sous le titre : elle l'illustre, elle ne le comprime jamais. */}
+      {/* HERO EN DEUX COLONNES. La colonne de texte pose le problème en mots ; la carte le pose
+          en objet — une vraie réponse de moteur, sur la question même que la storyboard reprend
+          juste en dessous, et où la marque suivie n'apparaît pas. Elle ne raconte PAS la
+          transformation : `ValueStory` la porte, et la dire deux fois sur un écran l'affaiblirait.
+          Sous 56rem la grille retombe en une colonne et la carte passe sous le titre : elle
+          l'illustre, elle ne le comprime jamais. */}
       <section className="hero hero--split">
         <div>
-          <p className="kicker">Authority Intelligence System</p>
+          {/* HD-2 (SITE-R1-HUMAN-DECISIONS-AND-PREVIEW-1) : catégorie resserrée sur ce que le produit
+              fait réellement — "for AI answer engines" nomme la surface mesurée, sans "system"
+              générique. Aucune claim comparative, aucun "best/first/leading" : la seule affirmation
+              est la boucle mesure → compréhension → action, et "as shown below" la rattache
+              explicitement à l'illustration qui suit plutôt que d'en faire une promesse de produit
+              self-serve. */}
+          <p className="kicker">Authority Intelligence for AI answer engines</p>
           <h1>Measure how AI answer engines cite your brand.</h1>
           <p className="lede">
             TextOS observes what answer engines say about a market and measures a brand&rsquo;s
             authority presence &mdash; reproducibly, on a versioned query panel, with dispersion
             and completeness. <span className="muted">Not a score. A measurement.</span>
           </p>
+          <p className="lede">
+            It measures where a brand is absent, present or cited, helps identify which gaps
+            matter, and &mdash; as shown below &mdash; turns a worthwhile gap into published,
+            evidence-backed content.
+          </p>
         </div>
 
         <HeroAnswerCard />
       </section>
 
+      <ValueStory />
+
+      <h2>How it works</h2>
       <section className="hero__panel" aria-label="What a measurement looks like">
         <ExampleMeasurement />
       </section>
@@ -171,10 +195,12 @@ export default function Home() {
           qui n'existe pas — ni login, ni authentification, ni destination produit. C'est
           exactement le faux chrome applicatif que la règle « app-shaped, not app-fake » interdit.
           Rien ne le remplace : ni « Log in », ni « Coming soon », ni « Open TextOS ». Un accès
-          s'affiche le jour où il existe. */}
-      <footer>
-        <span>Product in active development. This site publishes only what is measured and validated.</span>
-      </footer>
+          s'affiche le jour où il existe.
+
+          Pas de second `<footer>` ici : le pied de page global (`SiteFooter`, monté par le
+          layout racine) clôt désormais toutes les pages, et la disclosure "produit en
+          développement actif" était déjà portée par le bloc `.note` ci-dessus — la répéter ici
+          aurait affiché deux fois la même phrase, dans deux landmarks `footer` empilés. */}
     </main>
   );
 }

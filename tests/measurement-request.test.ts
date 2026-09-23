@@ -251,6 +251,34 @@ describe("la copy ne peut pas venir d'ailleurs que du repo", () => {
   });
 });
 
+// ── Panel de questions acheteur — CAPTURE-1A restauré : valeurs RÉPÉTÉES, jamais concatenées. ──
+describe("panel de questions acheteur — valeurs répétées, jamais concatenées", () => {
+  const formComponent = path.join(ROOT, "components", "conversion", "MeasurementRequestForm.tsx");
+  const src = readFileSync(formComponent, "utf8");
+
+  test("jusqu'à dix champs buyer_questions distincts, plus de zone de texte unique", () => {
+    expect(src).toContain("MAX_QUESTIONS = 10");
+    expect(src).not.toContain("<textarea");
+    expect(src).toMatch(/<input[^>]*name="buyer_questions"/);
+  });
+
+  test("seule la première question est requise, les suivantes naissent désactivées", () => {
+    expect(src).toContain("required={index === 0}");
+    expect(src).toContain("disabled={!active}");
+  });
+
+  test("une question blanche est rejetée avant soumission, sans réseau", () => {
+    expect(src).toContain(".trim() === \"\"");
+    expect(src).toContain("event.preventDefault()");
+  });
+
+  test("la copy du panel expose l'ajout, le retrait et le message d'erreur", () => {
+    expect(MEASUREMENT_REQUEST_COPY.form.addQuestionLabel).toBeTruthy();
+    expect(MEASUREMENT_REQUEST_COPY.form.removeQuestionLabel).toBeTruthy();
+    expect(MEASUREMENT_REQUEST_COPY.form.emptyQuestionError).toBeTruthy();
+  });
+});
+
 // ── Invariant : le mode vient du BUILD, jamais de l'URL. ──────────────────────────────────────
 //
 // `?mode=demo` est une trace de navigation. S'il décidait de la copy, une production réelle

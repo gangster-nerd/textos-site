@@ -44,6 +44,14 @@ if (mode === "live" && missing.length > 0) {
   );
 }
 
+export interface LegalNotice {
+  controllerName: string;
+  controllerAddress: string;
+  privacyContactEmail: string;
+  dataRetentionPeriod: string;
+  formProviderName: string;
+}
+
 export const conversionConfig = {
   mode,
   isOff: mode === "off",
@@ -53,4 +61,19 @@ export const conversionConfig = {
   formEndpoint: mode === "live" ? (process.env.MEASUREMENT_FORM_ENDPOINT as string) : null,
   /** Mentions légales publiables : vrai uniquement quand toutes les valeurs existent. */
   legalNoticePublished: missing.length === 0,
+  /**
+   * Contenu réel des mentions légales — même garde que `legalNoticePublished`, mais sous forme
+   * consommable par `/privacy`. `null` tant qu'une seule valeur manque : la page ne doit jamais
+   * afficher un champ vide comme s'il avait été renseigné.
+   */
+  legalNotice:
+    missing.length === 0
+      ? ({
+          controllerName: process.env.LEGAL_CONTROLLER_NAME as string,
+          controllerAddress: process.env.LEGAL_CONTROLLER_ADDRESS as string,
+          privacyContactEmail: process.env.PRIVACY_CONTACT_EMAIL as string,
+          dataRetentionPeriod: process.env.DATA_RETENTION_PERIOD as string,
+          formProviderName: process.env.FORM_PROVIDER_NAME as string,
+        } satisfies LegalNotice)
+      : null,
 } as const;
