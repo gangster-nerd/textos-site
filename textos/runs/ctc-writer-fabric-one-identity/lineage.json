@@ -1,0 +1,161 @@
+{
+  "slotProvenance": [
+    {
+      "slotId": "title",
+      "role": "title",
+      "headingLevel": null,
+      "heading": null,
+      "text": "At TextOS, a writing-model outage no longer kills an article",
+      "statementIds": [
+        "stmt:5:title:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-wf-01"
+      ],
+      "usableEvidenceIds": [
+        "ev-wf-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "meta",
+      "role": "meta_description",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.",
+      "statementIds": [
+        "stmt:4:meta:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-wf-02",
+        "ev-wf-03"
+      ],
+      "usableEvidenceIds": [
+        "ev-wf-02",
+        "ev-wf-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "lead",
+      "role": "lead",
+      "headingLevel": null,
+      "heading": null,
+      "text": "Long articles are written piece by piece, and a model provider can fail in the middle of one. In TextOS, a provider outage no longer kills an article that is being written. What changed is not the number of models so much as the rules for moving from one to the next.",
+      "statementIds": [
+        "stmt:4:lead:2:s1",
+        "stmt:4:lead:2:s2",
+        "stmt:4:lead:2:s3"
+      ],
+      "evidenceIdsUsed": [
+        "ev-wf-01"
+      ],
+      "usableEvidenceIds": [
+        "ev-wf-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "answer",
+      "role": "answer",
+      "headingLevel": 2,
+      "heading": "What happens to an article when the writing model fails?",
+      "text": "When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines. Each attempt covers the whole article under one writer identity, never a switch from one section to the next. As a result, a single provider outage no longer stops a TextOS article.",
+      "statementIds": [
+        "stmt:6:answer:2:s1",
+        "stmt:6:answer:2:s2",
+        "stmt:6:answer:2:s3"
+      ],
+      "evidenceIdsUsed": [
+        "ev-wf-02",
+        "ev-wf-03",
+        "ev-wf-01"
+      ],
+      "usableEvidenceIds": [
+        "ev-wf-01",
+        "ev-wf-02",
+        "ev-wf-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-1",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "One writer per article, never a patchwork",
+      "text": "Mixing two models inside one article would make it hard to say who wrote what. TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.\n\nThe article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added. For a reader of the finished page, that means one consistent voice per article.",
+      "statementIds": [
+        "stmt:9:section-1:2:s1",
+        "stmt:9:section-1:2:s2",
+        "stmt:9:section-1:2:s3",
+        "stmt:9:section-1:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-wf-03",
+        "ev-wf-06"
+      ],
+      "usableEvidenceIds": [
+        "ev-wf-03",
+        "ev-wf-06"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-2",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What a fallback is not allowed to do",
+      "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
+      "statementIds": [
+        "stmt:9:section-2:2:s1",
+        "stmt:9:section-2:2:s2",
+        "stmt:9:section-2:2:s3",
+        "stmt:9:section-2:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-wf-05",
+        "ev-wf-04"
+      ],
+      "usableEvidenceIds": [
+        "ev-wf-04",
+        "ev-wf-05"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-3",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Switched on with an exit and a human hand",
+      "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+      "statementIds": [
+        "stmt:9:section-3:2:s1",
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:s3",
+        "stmt:9:section-3:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-wf-07",
+        "ev-wf-09",
+        "ev-wf-08"
+      ],
+      "usableEvidenceIds": [
+        "ev-wf-07",
+        "ev-wf-08",
+        "ev-wf-09"
+      ],
+      "excludedEvidence": []
+    }
+  ],
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "c23c402d8e3f8103deb39e57a4137dd411d4acbc854691f0ad202861f59f7255",
+  "truthCheck": {
+    "verdict": "pass",
+    "contradictions": []
+  },
+  "planId": "what happens to an ai written article when the model provider fails",
+  "planHash": "d8938ce823a6dc451d4964f9e87a16f616d69dbc9ce6710f660403162bbe5723",
+  "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+}

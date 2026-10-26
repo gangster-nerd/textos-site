@@ -1,0 +1,44 @@
+{
+  "receiptVersion": 1,
+  "articleId": "ctc-every-change-a-content-decision",
+  "textos": {
+    "repository": "gangster-nerd/textos-v0",
+    "sha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+  },
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "executionPlanHash": "8b2817fed0ce042570ea8cfe93795e393a37a53051fb79f8afdcfaae12b422a4",
+  "ctcHandoffHash": "acde4cd2adc94fe437f0fc2ed092b7bfd6d2d1dc989ada2c7c843c339a59f4a7",
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "15f0a9d27c5a42029b8a70e64c9359cb1fc03f3261fb0aa94a18d8bfcd8fdb3f",
+  "truthCheckVerdict": "pass",
+  "editorialQuality": {
+    "gateVersion": "editorial-quality@0.3",
+    "verdict": "fail",
+    "findings": 12
+  },
+  "publicationChannel": "controlled_preview",
+  "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "promptHashes": {
+    "title": "e78efe1e4252748951adfd149629f4fe6a70eba10f9bb6aca55885be44aebf19",
+    "meta": "cfb9ec09217a45233525e08cd4475f92297abf4bce3b60667a040427a4b65fd6",
+    "lead": "1360e693b2c3beb3d870426395910cb2d47bfc7504442c3da832451bd58b67c5",
+    "answer": "36f3fe4a1ce61da27adeed52fd3b10087af723d2ea6265da41a85206d77873da",
+    "section-1": "a9874581138ebc360b4fcfa545be45e0f424bdc27f06ecd28ad32ee948e1feee",
+    "section-2": "7b0f7403e9b27dbee7d7cdacd284c024f13579fe614f1b3601ca7108d3c65b96",
+    "section-3": "92c1167ed863e28438f812d999f6eb6ca8ba840f251d85c2ef690e8fe643eb7b"
+  },
+  "responseHashes": {
+    "title": "905f46e92812b7bfa74ced8d81304e350ff1c3558ee6a9dccbfb64a94cee3b3d",
+    "meta": "cc7bedbd4f8880a755df0b283a919674424591ac0e3a912f824fccea0f96e05d",
+    "lead": "be5839691dbc6eea6cf2afa526ad4c5e859f1e561204b3ff868ac13a0e6bb96b",
+    "answer": "d4e6e48a1791255faa65c17e7631f9ce91e7d35c93aa94c0e9a1e5847a204c47",
+    "section-1": "5debfba983ebd48b44d01c6c6262978623eb48d8b857d3526d169435ff7436e9",
+    "section-2": "e212c4bf215643319f64dfc718acc9bc26224f56fb4e53c487a305d9ea76fa98",
+    "section-3": "7dc453bdc120c46ff2caeab3732f5930ba4cd737f3426049811a6a1337dc022a"
+  },
+  "contentDocumentSha256": "b3b90fa93ca9ef310f2af65d298920f1269ae4edfac40fa9f0a89ca6e99ff98a",
+  "lineageSha256": "0dc4e758f066e6afebd6f1402e9d64c60281261505046f275bc79310219d8cb0",
+  "resolvedSurfaceSha256": "d17f76bb643a1882168b42167b3b71c7d01734e1bb6d46497f9bca84969d9c9a"
+}

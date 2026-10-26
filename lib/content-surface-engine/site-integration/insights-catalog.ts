@@ -9,9 +9,14 @@
 // SurfacePolicy owns visibility. This catalog only decides which documents *exist* in the
 // insight surface (all 12 unconditionally; policy layer then hides/shows in Production
 // vs Preview).
+//
+// Commit-to-Content client: the articles TextOS wrote for this site (textos/runs/**) join the
+// same catalogue once lib/textos-client has verified their receipts and projected them. A run
+// that does not check throws here, at build time.
 
 import type { ContentDocument } from "../contract/content-document";
 import { loadManagedCorpus } from "../conformance/corpus-loader";
+import { loadCtcArticles } from "@/lib/textos-client/ctc-articles";
 
 export interface InsightEntry {
   slug: string;
@@ -23,7 +28,12 @@ let cache: readonly InsightEntry[] | null = null;
 
 function build(): readonly InsightEntry[] {
   if (cache) return cache;
-  const docs = loadManagedCorpus();
+  const docs = [...loadManagedCorpus(), ...loadCtcArticles().map((a) => a.document)];
+  const slugs = new Set<string>();
+  for (const d of docs) {
+    if (slugs.has(d.identity.slug)) throw new Error(`insights-catalog: duplicate slug ${d.identity.slug}.`);
+    slugs.add(d.identity.slug);
+  }
   cache = docs.map((document) => ({
     slug: document.identity.slug,
     document,

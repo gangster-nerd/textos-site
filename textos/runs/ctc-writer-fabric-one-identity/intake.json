@@ -1,0 +1,564 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "writer-fabric-p0a-2026-10-23",
+        "sourceCommits": [
+          "a5b62412f98f590d9947c9a21aa4e57146da819c"
+        ]
+      },
+      {
+        "groupId": "writer-fabric-migration-guard-2026-10-23",
+        "sourceCommits": [
+          "4c2010b9d684fcf5ad39330a77feb7fc488c463a"
+        ]
+      }
+    ],
+    "buyerQuestion": "If the AI model behind my content tool goes down halfway through an article, what happens to the article?",
+    "targetQuery": "what happens to an ai written article when the model provider fails",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "writer-reliability",
+    "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-writer-fabric-one-identity",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-wf-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T17:04:00+00:00",
+      "contentHash": "5fb9f6ae942d2b43985137ba4eadd8beff62bcd41df9164029611c4d69da7cc0",
+      "excerpt": "A provider outage no longer kills an article.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-wf-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T17:04:00+00:00",
+      "contentHash": "47ca5efd28ccd3f9ee0545aa0ccaeceaf096be557fcae7ae028ad36de936b106",
+      "excerpt": "A server-side ordered chain of registered writer profiles",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-wf-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T17:04:00+00:00",
+      "contentHash": "42271c456e9caa639ce8a7f32763ecda8d2d5b6e49b7e8103132e57a8c1dc1e9",
+      "excerpt": "one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-wf-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T17:04:00+00:00",
+      "contentHash": "73c3dc20e0a27f325735c553d95dc11556e34083f9c6ab81407ca3be2da0bff8",
+      "excerpt": "content refusals never bypassed",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-wf-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T17:04:00+00:00",
+      "contentHash": "ba4a060b0b1d9795786c89ef50b49d747b5d9e4dcf8e8592fa06d9e470177b34",
+      "excerpt": "Closed failure taxonomy, bounded retries (Retry-After <= 10 s, timeout, unknown)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-wf-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T17:04:00+00:00",
+      "contentHash": "3b4fa9bc47e1cc0f510f2673853439246f42b1e94486ce690d94f262dee41aca",
+      "excerpt": "Resumable article state stays opportunity_brief.accepted; the writer state lives in writer_runs.status. No new article status.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-wf-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T17:04:00+00:00",
+      "contentHash": "55c7287aa756bf11aacb0b54ddb3394ff45ac366edbb21e58b09fb4fbec7ca87",
+      "excerpt": "restores the single-profile path, unchanged.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-wf-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T17:04:00+00:00",
+      "contentHash": "6513dd99b8c9640c0432a4745e9799a37f292bb71a952b3ba9f10bb5989b1b31",
+      "excerpt": "Release gate: offline replay of a SYNTHETIC fixture; no route certified live yet.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "States the release gate of 2026-10-23; later certification work is not covered by this evidence."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-wf-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4c2010b: feat(writer): guarded release tool for migration 0029",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-23T18:30:03+00:00",
+      "contentHash": "74149364dc3500d3b5f6a2071e69c317ba06f68e5bae345f414d6bf41a097d19",
+      "excerpt": "remains a human release decision.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-writer-fabric-one-identity"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that a writing-model outage no longer kills an article.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-wf-01"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS falls back along an ordered chain of writers, one writer per article attempt, never mixing writers inside one article.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-wf-02",
+        "ev-wf-03"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's experience — an article stopped halfway because a model provider failed — and say what TextOS changed in October 2026, without the mechanism yet.",
+      "buyerIntent": "What happens when the model fails?",
+      "allowedEvidenceIds": [
+        "ev-wf-01"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 150,
+      "maxChars": 600,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What happens to an article when the writing model fails?",
+      "writingObjective": "Answer directly: an ordered chain of writers is tried in turn, and each attempt writes the whole article under one writer.",
+      "buyerIntent": "Does the article survive?",
+      "allowedEvidenceIds": [
+        "ev-wf-01",
+        "ev-wf-02",
+        "ev-wf-03"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 250,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "One writer per article, never a patchwork",
+      "writingObjective": "Explain why a writer is never switched halfway: saved progress stays tied to the writer that produced it, so an article is never stitched from two models.",
+      "buyerIntent": "Could my article mix two models?",
+      "allowedEvidenceIds": [
+        "ev-wf-03",
+        "ev-wf-06"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What a fallback is not allowed to do",
+      "writingObjective": "Show the limits: a closed list of failures, bounded retries, and a model's refusal to write never bypassed by trying another one.",
+      "buyerIntent": "Will a fallback get around a refusal?",
+      "allowedEvidenceIds": [
+        "ev-wf-04",
+        "ev-wf-05"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Switched on with an exit and a human hand",
+      "writingObjective": "Close on release discipline: a switch restores the previous single-writer path, the database change stays a human release decision, and the first release gate was an offline replay with no route certified live.",
+      "buyerIntent": "How was it rolled out?",
+      "allowedEvidenceIds": [
+        "ev-wf-07",
+        "ev-wf-08",
+        "ev-wf-09"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    }
+  ]
+}

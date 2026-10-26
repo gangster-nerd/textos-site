@@ -1,0 +1,135 @@
+{
+  "gateVersion": "editorial-quality@0.3",
+  "strategyVersion": "editorial-strategy@0.1",
+  "role": "satellite",
+  "roleBasis": "default_decision_guide",
+  "scope": "structural",
+  "verdict": "fail",
+  "findings": [
+    {
+      "code": "body_below_depth_guide",
+      "subject": null,
+      "message": "Corps de 1907 caractères, sous le repère d'un article « satellite » (2600) : profondeur à juger en revue.",
+      "measured": 1907,
+      "expected": 2600,
+      "severity": "signal"
+    },
+    {
+      "code": "planned_section_missing",
+      "subject": "criteria",
+      "message": "Section « Criteria to compare », prévue par la stratégie, absente.",
+      "measured": 0,
+      "expected": 500,
+      "severity": "blocking"
+    },
+    {
+      "code": "planned_section_missing",
+      "subject": "fit",
+      "message": "Section « Checking the fit with your situation », prévue par la stratégie, absente.",
+      "measured": 0,
+      "expected": 500,
+      "severity": "blocking"
+    },
+    {
+      "code": "planned_section_missing",
+      "subject": "pitfalls",
+      "message": "Section « Mistakes to avoid », prévue par la stratégie, absente.",
+      "measured": 0,
+      "expected": 500,
+      "severity": "blocking"
+    },
+    {
+      "code": "question_not_answered",
+      "subject": "how to decide which product changes deserve public content",
+      "message": "La question retenue « how to decide which product changes deserve public content » n'a pas de réponse.",
+      "measured": 0,
+      "expected": 120,
+      "severity": "blocking"
+    },
+    {
+      "code": "question_not_answered",
+      "subject": "Should every product release become a blog post, and who decides which ones do?",
+      "message": "La question retenue « Should every product release become a blog post, and who decides which ones do? » n'a pas de réponse.",
+      "measured": 0,
+      "expected": 120,
+      "severity": "blocking"
+    },
+    {
+      "code": "faq_too_small",
+      "subject": null,
+      "message": "1 entrée(s) de FAQ pour 2 question(s) retenue(s).",
+      "measured": 1,
+      "expected": 2,
+      "severity": "blocking"
+    },
+    {
+      "code": "information_object_missing",
+      "subject": null,
+      "message": "Aucun objet d'information (liste structurée, tableau, comparatif) dans un article qui en exige un.",
+      "measured": 0,
+      "expected": 1,
+      "severity": "blocking"
+    },
+    {
+      "code": "evidence_overused",
+      "subject": "ev-ci-01",
+      "message": "Une même preuve fonde 4 sections (title, meta, lead, answer) : l'article répète ce fait au lieu d'en apporter d'autres.",
+      "measured": 4,
+      "expected": 2,
+      "severity": "signal"
+    },
+    {
+      "code": "evidence_overused",
+      "subject": "ev-ci-02",
+      "message": "Une même preuve fonde 3 sections (meta, answer, section-1) : l'article répète ce fait au lieu d'en apporter d'autres.",
+      "measured": 3,
+      "expected": 2,
+      "severity": "signal"
+    },
+    {
+      "code": "article_draft_profile_failed",
+      "subject": "article.draft.heading-present",
+      "message": "TextOS article requires at least one `heading` block.",
+      "severity": "blocking"
+    },
+    {
+      "code": "article_draft_profile_failed",
+      "subject": "article.draft.claims-and-evidence",
+      "message": "TextOS article requires at least one claimId.",
+      "severity": "blocking"
+    }
+  ],
+  "measured": [
+    "language_consistency",
+    "planned_sections_present",
+    "retained_questions_answered",
+    "information_object_present",
+    "governed_sources_visible",
+    "no_repeated_sentence",
+    "no_near_duplicate_sentence",
+    "evidence_distribution",
+    "article_draft_profile",
+    "depth_against_guide"
+  ],
+  "notMeasured": [
+    "factual_usefulness",
+    "argument_quality",
+    "originality",
+    "source_authority",
+    "geo_seo_performance"
+  ],
+  "substantiveQuality": "not_demonstrated",
+  "measures": {
+    "bodyChars": 1907,
+    "sectionCount": 0,
+    "faqEntries": 1,
+    "questionsAnswered": 0,
+    "questionsRetained": 2,
+    "informationObjects": 0,
+    "sourceBlocks": 0,
+    "languageUnits": {
+      "en": 19,
+      "unknown": 1
+    }
+  }
+}

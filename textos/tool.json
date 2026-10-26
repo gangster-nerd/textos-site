@@ -1,0 +1,16 @@
+{
+  "toolRecordVersion": 1,
+  "usage": "textos-site uses TextOS as a client would: as a tool. The drivers under scripts/textos/** import TextOS modules from a separate, pinned, read-only checkout of textos-v0; nothing is ever written into that checkout. scripts/textos/run.ts refuses to start unless the checkout sits at exactly the pinned SHA with a clean working tree, and re-checks the tree is still clean after the step.",
+  "repository": "gangster-nerd/textos-v0",
+  "writer": {
+    "branch": "cert/textos-v1-e2e-20261023",
+    "sha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+    "committedAt": "2026-10-27T00:02:23+01:00",
+    "why": "Head of the TextOS V1 certification trunk (PR #51, merge #75): the API V1 path to a WordPress draft certified on 2026-10-26, the CTC intake seam (ctc-geo-writer-adapter@0.1), geo-writer@0.2 with the geo-writer-slot@0.5 prompt, grounded TruthCheck, governed evidence approval and public-use clearance, and the ContentDocument@1 bridge. textos-v0 main is still at 91b6180 (2026-10-01); every commit cited by this site's articles is in the history of this SHA."
+  },
+  "product": {
+    "sha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+    "truthLevel": "CERTIFIED_CANDIDATE",
+    "why": "The product truth an article may state is read at this same SHA: cited commits must be its ancestors, quoted files are read at it. It is the certification candidate, not textos-v0 main, so every article stays a draft until a human review records otherwise."
+  }
+}

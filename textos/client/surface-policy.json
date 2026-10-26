@@ -1,0 +1,18 @@
+{
+  "note": "textos-site's own SurfacePolicy for Commit-to-Content engineering notes (TextOS surface-policy@1 contract, validated with TextOS's SurfacePolicySchema at write time). A policy may only downgrade indexing and deny CTAs; it never changes what a document says. The site renders the projected document with its own reference policy; this one fixes what the writer's receipt was computed against.",
+  "policies": {
+    "how_we_build": {
+      "policyVersion": "surface-policy@1",
+      "surface": "reference",
+      "policyId": "textos-site.how-we-build.v1",
+      "blockVisibility": [],
+      "slotBindings": [],
+      "navigation": { "showBreadcrumbs": true, "showTableOfContents": true, "showRelatedContent": false },
+      "authorDisplay": { "showAuthor": false, "showReviewers": false },
+      "conversion": { "allowCta": false },
+      "metadata": { "emitSchemaOrg": true, "schemaTypeOverride": "TechArticle" },
+      "indexability": { "allowIndex": false },
+      "analytics": {}
+    }
+  }
+}

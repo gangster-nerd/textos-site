@@ -1,0 +1,21 @@
+{
+  "text": "TextOS's API keeps WordPress draft creation behind a human decision",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS's API keeps WordPress draft creation behind a human decision",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-hd-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

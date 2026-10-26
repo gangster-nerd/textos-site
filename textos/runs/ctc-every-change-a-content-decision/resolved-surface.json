@@ -1,0 +1,118 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "It is tempting to turn each release into a blog post. TextOS decides change by change instead: each product change carries an explicit decision about what public content it deserves, if any. The rule is small, but it changes what a team feels obliged to publish."
+        },
+        "id": "lead",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Automated checks in TextOS refuse a change that carries no content decision, but they never work that decision out themselves. One of the possible answers is simply that the change deserves no public content. That answer is also the usual one, and it costs a single line to give. In other words, people decide what is worth saying, and the tooling checks that they decided."
+        },
+        "id": "answer",
+        "kind": "answer"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nIf your team publishes release notes, look at what it costs to say that a release deserves none. Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers."
+        },
+        "id": "section-1",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The quietest failure TextOS found was one where nothing fails. The evidence cited for a capability still exists, yet the public description keeps telling a truth about a product that has changed underneath it.\n\nChanging a file that TextOS cites as evidence, without saying anything about the related capability, is now refused, and accepting that gap means signing a sentence about it. The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability."
+        },
+        "id": "section-2",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.\n\nBefore you let a tool draft articles from your release history, check which side of that order it sits on."
+        },
+        "id": "section-3",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-every-change-a-content-decision::why-most-product-changes-deserve-no-article::draft::reference::surface-policy@1::textos-site.how-we-build.v1::reference::0:lead:v|1:answer:v|2:section-1:v|3:section-2:v|4:section-3:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "ARTICLE",
+  "conversion": {
+    "ctaIntentId": null,
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "Every TextOS product change has to state whether it deserves public content, and the usual answer, which costs one line, is that it does not.",
+  "documentId": "textos-site:ctc:ctc-every-change-a-content-decision",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": null,
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "TechArticle"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": true,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-site.how-we-build.v1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 2,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "why-most-product-changes-deserve-no-article",
+  "surface": "reference",
+  "title": "At TextOS, every product change carries a written content decision",
+  "truth": {
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "paragraph",
+    "answer"
+  ]
+}

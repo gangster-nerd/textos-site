@@ -1,0 +1,321 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-every-change-a-content-decision",
+  "flow": "commit_to_content",
+  "slug": "why-most-product-changes-deserve-no-article",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "change-impact-contract-c0b-2026-08-05",
+        "sourceCommits": [
+          "4d37616453f5d0fed24a8054314d49651e33af6b"
+        ]
+      },
+      {
+        "groupId": "continuous-coverage-c0b1-2026-08-08",
+        "sourceCommits": [
+          "1ad90d0642574e4dc2e1019abe58ab27670a64a6"
+        ]
+      }
+    ],
+    "buyerQuestion": "Should every product release become a blog post, and who decides which ones do?",
+    "targetQuery": "how to decide which product changes deserve public content",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "content-governance"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+    "approvedAt": "2026-10-26"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness"
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-ci-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4d37616453f5d0fed24a8054314d49651e33af6b",
+        "quote": "Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ci-02",
+      "source": {
+        "kind": "product_file",
+        "path": "changes/content-impact/README.md",
+        "quote": "et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Refers to the no_public_content qualification; README in French."
+      ]
+    },
+    {
+      "id": "ev-ci-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4d37616453f5d0fed24a8054314d49651e33af6b",
+        "quote": "Le second est le plus insidieux : rien n'échoue. Les preuves citées existent toujours et restent ancêtres du snapshot. Le manifeste continue de dire vrai sur ce qu'il affirme, tout en décrivant un produit qui a changé sous lui."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-04",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4d37616453f5d0fed24a8054314d49651e33af6b",
+        "quote": "modifier un fichier cité en preuve sans rien dire de l'entité devient impossible, et assumer la dette devient une phrase signée plutôt qu'une absence."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-05",
+      "source": {
+        "kind": "product_commit",
+        "sha": "1ad90d0642574e4dc2e1019abe58ab27670a64a6",
+        "quote": "Le scanner répond à une seule question, mécanique : « ce fichier d'implémentation modifié est-il couvert par une preuve déclarée ? » Il ne déduit aucune capacité."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "1ad90d0642574e4dc2e1019abe58ab27670a64a6",
+        "quote": "Proposer un contenu sur un territoire dont la déclaration est encore à faire reviendrait à écrire d'abord et à gouverner ensuite — l'inversion exacte que cette chaîne interdit."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-07",
+      "source": {
+        "kind": "product_file",
+        "path": "changes/content-impact/README.md",
+        "quote": "Il ne rédige aucun contenu et n'ouvre aucune PR éditoriale."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-08",
+      "source": {
+        "kind": "product_file",
+        "path": "changes/content-impact/README.md",
+        "quote": "| `no_public_content` | Le changement ne mérite aucun contenu public |"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that every product change carries an explicit decision about public content.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: every TextOS change must say whether it deserves public content, and 'none' is the most frequent, cheapest answer.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-01",
+        "ev-ci-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the temptation to turn every release into marketing, then say that TextOS decides change by change, in writing, and that this note itself came out of that process.",
+      "buyerIntent": "Should every release be marketed?",
+      "allowedEvidenceIds": [
+        "ev-ci-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 150,
+      "maxChars": 600,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Who decides which product changes become content?",
+      "writingObjective": "Answer directly: a person records the decision for each change, automated checks require it but never infer it, and the most frequent answer is 'no public content'.",
+      "buyerIntent": "Who decides?",
+      "allowedEvidenceIds": [
+        "ev-ci-01",
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 250,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Why 'nothing to publish' has to be cheap",
+      "writingObjective": "Explain why the 'no public content' answer is designed to cost one line and why making it shameful would push teams to overstate their changes.",
+      "buyerIntent": "Isn't saying nothing a missed opportunity?",
+      "allowedEvidenceIds": [
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1000,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The quiet failure it closes",
+      "writingObjective": "Tell the insidious case: nothing fails, the cited evidence still exists, yet the public description no longer matches a product that changed underneath it — and how changing a cited file now forces a signed sentence.",
+      "buyerIntent": "What goes wrong without it?",
+      "allowedEvidenceIds": [
+        "ev-ci-03",
+        "ev-ci-04",
+        "ev-ci-05"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1200,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Govern first, write second",
+      "writingObjective": "Close on the order of operations: no content is proposed on territory whose public description is still owed, and the contract itself writes nothing and opens no editorial request.",
+      "buyerIntent": "What does the contract not do?",
+      "allowedEvidenceIds": [
+        "ev-ci-06",
+        "ev-ci-07"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1000,
+      "evidenceRequired": true
+    }
+  ]
+}

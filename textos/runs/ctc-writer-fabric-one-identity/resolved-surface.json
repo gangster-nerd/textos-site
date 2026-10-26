@@ -1,0 +1,118 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "Long articles are written piece by piece, and a model provider can fail in the middle of one. In TextOS, a provider outage no longer kills an article that is being written. What changed is not the number of models so much as the rules for moving from one to the next."
+        },
+        "id": "lead",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines. Each attempt covers the whole article under one writer identity, never a switch from one section to the next. As a result, a single provider outage no longer stops a TextOS article."
+        },
+        "id": "answer",
+        "kind": "answer"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Mixing two models inside one article would make it hard to say who wrote what. TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.\n\nThe article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added. For a reader of the finished page, that means one consistent voice per article."
+        },
+        "id": "section-1",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal."
+        },
+        "id": "section-2",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against."
+        },
+        "id": "section-3",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-writer-fabric-one-identity::a-writing-model-outage-should-not-kill-an-article::draft::reference::surface-policy@1::textos-site.how-we-build.v1::reference::0:lead:v|1:answer:v|2:section-1:v|3:section-2:v|4:section-3:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "ARTICLE",
+  "conversion": {
+    "ctaIntentId": null,
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.",
+  "documentId": "textos-site:ctc:ctc-writer-fabric-one-identity",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": null,
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "TechArticle"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": true,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-site.how-we-build.v1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 2,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "a-writing-model-outage-should-not-kill-an-article",
+  "surface": "reference",
+  "title": "At TextOS, a writing-model outage no longer kills an article",
+  "truth": {
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "paragraph",
+    "answer"
+  ]
+}

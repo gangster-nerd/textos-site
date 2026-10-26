@@ -1,0 +1,120 @@
+{
+  "ledgerVersion": 1,
+  "productRepository": "gangster-nerd/textos-v0",
+  "productRef": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "commitCount": 14,
+  "commits": [
+    {
+      "sha": "4d37616453f5d0fed24a8054314d49651e33af6b",
+      "date": "2026-08-05T12:30:59+02:00",
+      "subject": "feat(change-impact): contrat d'impact éditorial (C0B)",
+      "citedBy": [
+        "ctc-every-change-a-content-decision"
+      ]
+    },
+    {
+      "sha": "1ad90d0642574e4dc2e1019abe58ab27670a64a6",
+      "date": "2026-08-08T10:32:53+02:00",
+      "subject": "feat(change-impact): couverture continue du manifeste (C0B.1)",
+      "citedBy": [
+        "ctc-every-change-a-content-decision"
+      ]
+    },
+    {
+      "sha": "722f17731cbe0773b9db4583686cbd04f9cd043e",
+      "date": "2026-09-26T17:07:24+02:00",
+      "subject": "feat: bind wordpress draft through exact trust action subject",
+      "citedBy": [
+        "ctc-human-decision-exact-bytes"
+      ]
+    },
+    {
+      "sha": "8610b7b1dba1964268a0f6f2920205b6a678d134",
+      "date": "2026-09-26T17:08:16+02:00",
+      "subject": "fix: reject stale wordpress action hash before trust claim",
+      "citedBy": [
+        "ctc-human-decision-exact-bytes"
+      ]
+    },
+    {
+      "sha": "23d1ed3113b1bfdf2a1f24803751682b37e66226",
+      "date": "2026-09-26T18:14:05+02:00",
+      "subject": "feat: add canonical human review decision service",
+      "citedBy": [
+        "ctc-human-decision-exact-bytes"
+      ]
+    },
+    {
+      "sha": "7e0b459a82f771a9e8616021c0847e0f95c471fe",
+      "date": "2026-09-26T18:15:19+02:00",
+      "subject": "feat: preserve human decision identity during delegated execution",
+      "citedBy": [
+        "ctc-human-decision-exact-bytes"
+      ]
+    },
+    {
+      "sha": "cda781a44e6f0c9112ac9da1c2240c70c1ed6a47",
+      "date": "2026-09-26T18:18:13+02:00",
+      "subject": "fix: bind one durable job to one trust grant",
+      "citedBy": [
+        "ctc-human-decision-exact-bytes"
+      ]
+    },
+    {
+      "sha": "0222212ace8541ab30b2ecc2ee8b4a0ad1298f7e",
+      "date": "2026-09-26T18:20:11+02:00",
+      "subject": "feat: execute durable jobs under persisted trust grants",
+      "citedBy": [
+        "ctc-human-decision-exact-bytes"
+      ]
+    },
+    {
+      "sha": "6fe385e3e1de77e3ce248fa5e7cba3687e857db2",
+      "date": "2026-09-26T19:30:18+02:00",
+      "subject": "feat: add machine credential lifecycle and emergency api kill switches",
+      "citedBy": [
+        "ctc-credentials-expire-and-stop"
+      ]
+    },
+    {
+      "sha": "c9ccfe90ffc31c82017b210db132073d230e9ebb",
+      "date": "2026-09-26T19:53:55+02:00",
+      "subject": "feat: require bounded expiry for every new machine credential",
+      "citedBy": [
+        "ctc-credentials-expire-and-stop"
+      ]
+    },
+    {
+      "sha": "17523af459ecaad63b24c446723d6cf410d0105c",
+      "date": "2026-09-26T20:46:40+02:00",
+      "subject": "fix: enforce execution admission and kill switches inside durable workers",
+      "citedBy": [
+        "ctc-credentials-expire-and-stop"
+      ]
+    },
+    {
+      "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+      "date": "2026-10-23T17:04:00+00:00",
+      "subject": "feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
+      "citedBy": [
+        "ctc-writer-fabric-one-identity"
+      ]
+    },
+    {
+      "sha": "4c2010b9d684fcf5ad39330a77feb7fc488c463a",
+      "date": "2026-10-23T18:30:03+00:00",
+      "subject": "feat(writer): guarded release tool for migration 0029",
+      "citedBy": [
+        "ctc-writer-fabric-one-identity"
+      ]
+    },
+    {
+      "sha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+      "date": "2026-10-27T00:02:23+01:00",
+      "subject": "Merge #75: convergence Performances + PLG Lifecycle + dogfood TextOS Site + ENTRY-1 sur le tronc de certification",
+      "citedBy": [
+        "product-pin"
+      ]
+    }
+  ]
+}

@@ -25,6 +25,7 @@ import { evaluatePublicationPass } from "@/lib/content-surface-engine/publicatio
 import { evaluateLifecycle } from "@/lib/content-surface-engine/lifecycle";
 import { loadManagedCorpus } from "@/lib/content-surface-engine/conformance/corpus-loader";
 import { listInsightEntries, listInsightSlugs } from "@/lib/content-surface-engine/site-integration";
+import { loadCtcArticles } from "@/lib/textos-client/ctc-articles";
 
 const corpus = loadManagedCorpus();
 
@@ -87,11 +88,12 @@ describe("CTC-CSE-CONVERGENCE-1 — corpus × CSE pipeline", () => {
     }
   });
 
-  it("`listInsightSlugs` exactly matches the loaded corpus", () => {
+  it("`listInsightSlugs` exactly matches the loaded corpus plus the verified Commit-to-Content runs", () => {
     const catalog = new Set(listInsightSlugs());
-    const corpusSlugs = new Set(corpus.map((d) => d.identity.slug));
-    expect(catalog).toEqual(corpusSlugs);
-    expect(listInsightEntries().length).toBe(12);
+    const ctc = loadCtcArticles();
+    const expected = new Set([...corpus, ...ctc.map((a) => a.document)].map((d) => d.identity.slug));
+    expect(catalog).toEqual(expected);
+    expect(listInsightEntries().length).toBe(12 + ctc.length);
   });
 
   it("SEO invariant: draft cannot request indexingIntent=index (contract-level rejection)", () => {

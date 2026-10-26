@@ -1,0 +1,44 @@
+{
+  "receiptVersion": 1,
+  "articleId": "ctc-credentials-expire-and-stop",
+  "textos": {
+    "repository": "gangster-nerd/textos-v0",
+    "sha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+  },
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "executionPlanHash": "9516a437164a75d934e2d9b2fa17f58945fd62664ef0ba7683c0f12fb659ae56",
+  "ctcHandoffHash": "9b014846cd36b2dec45ed9755eaedffc5b147fecf97b4370a65b8535622af047",
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "9d60c498ac92346a98bb2ff32cf799b30b733b952323970529cc5eb3b663925c",
+  "truthCheckVerdict": "pass",
+  "editorialQuality": {
+    "gateVersion": "editorial-quality@0.3",
+    "verdict": "fail",
+    "findings": 11
+  },
+  "publicationChannel": "controlled_preview",
+  "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "promptHashes": {
+    "title": "e66c27fe3a08778ae298c13665d9f31cc5153112d6261d1d5ee032498d610f16",
+    "meta": "64527902134cad39bb9baf2114f8415fb71597128bb1e253354da4e25e4e7637",
+    "lead": "42f339849f30c64b870f2964b13ce333d89eebc6426b8d641dc271ae5becc037",
+    "answer": "ecf91f97feca0241982aa97634cd332ca1166dafde8f09c08d146b475026e157",
+    "section-1": "5d4c78aedd2ccce508f5039385eb70f98724df4c9687634a53f4fe229f6ed584",
+    "section-2": "8086e9e22586af46e642e4c7814c810e44f135237b7d8dfc731a47bec87013f7",
+    "section-3": "e1093f20496140715c0f076d1d81e76ed59c77434522f0259174242578ce854d"
+  },
+  "responseHashes": {
+    "title": "c37cf9bcd33489f48a6e4758014c3d4f3d423425d31d86c1230f443f0e3d7fe7",
+    "meta": "f1795ed856f2b19cf5add19e9550bfab8170b6b3cf261f0620f575844b956f31",
+    "lead": "e2c82c13e11070d8ea58af578497c5ee7f42b7b44bdd2a96a4923e19ab120804",
+    "answer": "e9f24367d87184992ca9d10c6e73675def2a209efab5b37ccca0966ecc9fe9f5",
+    "section-1": "9fb913c91e93e5d1df44ba7635de3ac8dd9337e5a23a11d986e1d0c1dfbe7695",
+    "section-2": "d5991c40ad66ab6c0c6d819289a3b9fd5cd325b21fd01d98a78ee3e64914954e",
+    "section-3": "37e2719ef2084407c11210d0ad230dbe7be523fe8bf92dc2424b7714e01715c3"
+  },
+  "contentDocumentSha256": "4d9160f54c948cdf7327a8d01391b2e854f2fa91a5b74dadbf93f9878eff667f",
+  "lineageSha256": "4d3b767177a3e4cf3ff85bf0f15f1f835533ed879809d3cbae32c76257f4b4c8",
+  "resolvedSurfaceSha256": "b82ca70c2c07ba88bf7bbaaf5e5af51fae6602c2c59f4a6383576daec8bd513d"
+}

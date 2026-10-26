@@ -1,0 +1,56 @@
+{
+  "clientProfileVersion": 1,
+  "client": "textos-site",
+  "relationship": "TextOS's public site is onboarded as a production client of TextOS's Commit-to-Content input source, under the same rules as any client: TextOS is used strictly as a tool (textos/tool.json), and this file is the site's own onboarding record. Nothing here is written into TextOS.",
+  "ownedSurface": {
+    "site": "textos-site",
+    "repository": "gangster-nerd/textos-site",
+    "surfaceKind": "source_controlled_components",
+    "materialization": "A TextOS ContentDocument@1, its lineage and its receipt are committed under textos/runs/**; lib/textos-client projects them into the site's insight catalogue and refuses any run whose hashes, citations or entities do not check.",
+    "effectiveChannel": "controlled_preview",
+    "effectiveChannelReason": "Commit-derived evidence carries no human public-use clearance yet, and the product truth is the certification candidate, not textos-v0 main. Every article stays a draft (Preview only, noindex) until a human review is recorded in its brief."
+  },
+  "trackedSubject": {
+    "trackedEntityId": "textos",
+    "name": "TextOS",
+    "aliases": ["TextOS"]
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": ["TextOS"],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "competitors": [],
+  "generationPolicy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": ["TextOS"],
+    "forbiddenProductNames": []
+  },
+  "evidencePolicy": "TextOS CONSERVATIVE_EVIDENCE_POLICY, not relaxed: on controlled_preview, operator-supplied evidence approved for the brief is usable; on public_web every statement class needs client_validated or public_source evidence with an explicit public-use clearance.",
+  "claimProfile": {
+    "file": "textos/client/claim-profile.json",
+    "governance": "Client-supplied data passed in the CTC intake. It is NOT a TextOS-governed catalog profile."
+  },
+  "productTruth": {
+    "manifest": "product-manifest/textos-v0.capability-manifest.json",
+    "commitLedger": "textos/ledger/product-commits.json",
+    "canonicalProductShaSource": "textos/tool.json#product.sha"
+  },
+  "measurement": {
+    "status": "not_run",
+    "reason": "No question panel has been approved for textos-site and no live observation key is available here. Following TextOS's own rule, no article is presented as coming from a measured opportunity: every target query is HUMAN_CMO with demand NOT_MEASURED."
+  },
+  "articleFlows": {
+    "commit_to_content": {
+      "route": "/insights/<slug>",
+      "surfacePolicy": "how_we_build",
+      "editorialClass": "COMPANY_TECHNOLOGY",
+      "disclosureAuthority": "docs/decisions/CPO-2026-09-12-commit-to-content-disclosure.md",
+      "why": "A product change + product truth + CMO interpretation → buyer question → target query (TextOS CTC seam). How-we-build engineering record; no capability claim, no CTA."
+    }
+  }
+}
