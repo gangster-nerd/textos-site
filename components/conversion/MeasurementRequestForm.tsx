@@ -1,9 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { ConversionMode } from "@/lib/conversion/conversion-config";
+import {
+  LANDING_ATTRIBUTION_FIELDS,
+  parseLandingAttribution,
+  type LandingAttribution,
+} from "@/lib/conversion/landing-attribution";
 import type { MeasurementRequestCopy } from "@/lib/conversion/measurement-request-copy";
 
 type Props = {
@@ -32,6 +37,12 @@ export function MeasurementRequestForm({ mode, endpoint, copy, copyVersion }: Pr
   const [submitting, setSubmitting] = useState(false);
   const [questionCount, setQuestionCount] = useState(1);
   const [emptyQuestionError, setEmptyQuestionError] = useState(false);
+  // Attribution d'arrivée (article → formulaire) : lue une fois, après hydratation, depuis la seule
+  // URL. L'export étant statique, elle ne peut pas venir du serveur ; invalide ou absente → `null`.
+  const [arrival, setArrival] = useState<LandingAttribution | null>(null);
+  useEffect(() => {
+    setArrival(parseLandingAttribution(window.location.search));
+  }, []);
 
   const isDemo = mode === "demo";
 
@@ -74,6 +85,15 @@ export function MeasurementRequestForm({ mode, endpoint, copy, copyVersion }: Pr
       <input type="hidden" name="content_ref" value="request-measurement" />
       <input type="hidden" name="cta_id" value="measurement_request" />
       <input type="hidden" name="copy_version" value={copyVersion} />
+      {/* Attribution d'arrivée : l'article et la position du CTA qui ont mené ici (liste blanche
+          stricte, tout ou rien). Rien n'est rendu sans attribution valide. */}
+      {arrival
+        ? (Object.keys(LANDING_ATTRIBUTION_FIELDS) as (keyof LandingAttribution)[])
+            .filter((key) => arrival[key] !== null)
+            .map((key) => (
+              <input key={key} type="hidden" name={LANDING_ATTRIBUTION_FIELDS[key]} value={arrival[key] ?? ""} />
+            ))
+        : null}
 
       <p>
         <label htmlFor="email">{copy.emailLabel}</label>
