@@ -7,6 +7,8 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 
+import { conversionConfig } from "@/lib/conversion/conversion-config";
+
 const OUT_DIR = path.resolve("out/insights");
 
 if (!fs.existsSync(OUT_DIR)) {
@@ -104,7 +106,19 @@ describe("A2R — author identity across all 12 articles", () => {
   );
 });
 
-describe("A2R — CTA counts + positions", () => {
+// Insights CTAs go through the same delivery gate as every other surface : in `off` mode the
+// build renders none (the destination says "not accepting submissions").
+const CTA_DELIVERED = !conversionConfig.isOff;
+
+describe.runIf(!CTA_DELIVERED)("A2R — CTA delivery gate (mode off)", () => {
+  it.each([...CTA_ARTICLES, ...NO_CTA_ARTICLES])("%s : zero CTAs in mode off", (slug) => {
+    const html = readHtml(slug);
+    expect((html.match(/data-cse-cta-position=/g) ?? []).length).toBe(0);
+    expect(html).not.toContain("cse-surface__cta-action");
+  });
+});
+
+describe.runIf(CTA_DELIVERED)("A2R — CTA counts + positions", () => {
   it.each(CTA_ARTICLES)("%s : exactly 1 contextual + 1 final CTA", (slug) => {
     const html = readHtml(slug);
     const contextual = (html.match(/data-cse-cta-position="contextual"/g) ?? []).length;
@@ -125,7 +139,7 @@ describe("A2R — CTA counts + positions", () => {
   });
 });
 
-describe("A2R — CTA attribution URL", () => {
+describe.runIf(CTA_DELIVERED)("A2R — CTA attribution URL", () => {
   it.each(CTA_ARTICLES)("%s : href contains source, contentId, ctaVariant, ctaVersion, position, contentRevision", (slug) => {
     const html = readHtml(slug);
     // Extract every anchor and pick the ones whose class list mentions

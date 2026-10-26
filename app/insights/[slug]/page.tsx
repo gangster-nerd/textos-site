@@ -29,6 +29,7 @@ import { textosArticleReferencePolicy } from "@/lib/content-surface-engine/surfa
 import { serializeJsonLd } from "@/lib/schema-org/serialize";
 import { siteConfig } from "@/lib/config/site";
 import { previewVisibility } from "@/lib/config/preview-visibility";
+import { deliveryContext } from "@/lib/conversion/delivery-context";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -171,6 +172,7 @@ export default async function Page({
   const cta = resolveReferenceCta({
     resolved,
     intent: entry.document.conversion.ctaIntentId ?? "",
+    delivery: deliveryContext(),
   });
   const contentRevision = String(entry.document.lifecycle.revisionNumber ?? 0);
   const compiled = compileAuthority({

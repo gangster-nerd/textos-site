@@ -46,6 +46,9 @@ function renderSnapshot(
   const cta = resolveReferenceCta({
     resolved,
     intent: doc.conversion.ctaIntentId ?? "",
+    // Design snapshots render the delivered surface (demo): the delivery gate itself is tested
+    // in tests/a2-reference-surface.test.tsx (#11b).
+    delivery: { mode: "demo", routeExists: () => true, endpointConfigured: false, legalNoticePublished: false },
   });
   const compiled = compileAuthority({
     resolved,
