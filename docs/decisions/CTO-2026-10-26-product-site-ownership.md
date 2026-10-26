@@ -46,14 +46,15 @@ uniquement depuis le manifeste de capacités (INV-5).
    **Corrigé le 26/10** : le formulaire transmet désormais l'attribution d'arrivée (liste blanche
    stricte, tout ou rien, champs `source_*`), et les CTA des articles respectent la porte de
    livraison (`CONVERSION_MODE=off` ne rend plus aucun CTA).
-3. **Site → produit, entrée self-serve** : **fermé côté site**. L'URL de passage existe côté produit
-   (ENTRY-1, gangster-nerd/textos-v0#75) : `GET https://<app>/auth/start?intent=measure` suivi de la même
-   attribution que `buildCtaAttributionHref` (validée tout ou rien, journalisée sans donnée
-   personnelle). Elle répond 503 tant que le produit tourne en `AUTH_MODE=off`. Restent : (a) Marc
-   publie `self-serve-onboarding`, `authenticated-product-entry` et `ui-measurement-launch` en
-   `public_marketable` avec une surface commerciale ; (b) un manifeste ré-importé depuis `main` porte
-   ces statuts ; (c) `AUTH_MODE=required` en production. Le site n'aura alors qu'un CTA et une URL —
-   aucune logique d'identité.
+3. **Site → produit, entrée self-serve** : **câblée, fermée par défaut.** `ProductEntryCta` (page
+   d'accueil) mène à `https://<app>/auth/start?intent=measure` avec l'attribution de
+   `buildCtaAttributionHref` (ENTRY-1, gangster-nerd/textos-v0#75). Elle vit hors du registre CTA, qui
+   refuse par conception les destinations externes, et ne s'affiche que si : (a) le manifeste épinglé
+   publie `self-serve-onboarding`, `authenticated-product-entry` et `ui-measurement-launch`
+   (`public_marketable`, surface commerciale) — décision de Marc côté produit, puis ré-import depuis
+   `main` ; (b) `PRODUCT_ENTRY_URL` est posée (`https://…/auth/start` exactement) ; (c)
+   `CONVERSION_MODE≠off`. Le produit doit être en `AUTH_MODE=required` avant (b), sinon il répond 503.
+   Aucune logique d'identité côté site.
 4. **Site → produit, signaux** (Search Console, mentions IA) : non implémenté ; à brancher côté
    produit, jamais par un appel runtime depuis le site.
 
