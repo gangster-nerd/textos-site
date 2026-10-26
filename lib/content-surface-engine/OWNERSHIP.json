@@ -1,0 +1,135 @@
+{
+  "manifestVersion": "cse-ownership@1",
+  "productRepository": "gangster-nerd/textos-v0",
+  "productRef": "cert/textos-v1-e2e-20261023@77994b66f440c3645061407eedbdfccc45dc30d2",
+  "rule": "product_owned files are vendored byte-for-byte from the product portable kernel: never edit them here — change textos-v0 first, then re-vendor (pnpm cse:ownership --product <path> --refresh). site_adapted files are the site's identity forks of a product file: editable here, but every change is a deliberate re-pin. Every other file under lib/content-surface-engine is site_owned (renderer, site integration, site surface policy, conversion, instrumentation, render/surface conformance).",
+  "productOwned": [
+    {
+      "path": "composition/provenance-authority.ts",
+      "sha256": "b830fec7e74d7bf5b397414210605a6e800ea98529aeacd51d2a1653618ed7e7",
+      "productPath": "src/content-surface-engine/composition/provenance-authority.ts"
+    },
+    {
+      "path": "composition/resolve-content-surface.ts",
+      "sha256": "4f6df87888efa997e081b59ec3f6dabd4430612d554bc08a38209cb8c945cd48",
+      "productPath": "src/content-surface-engine/composition/resolve-content-surface.ts"
+    },
+    {
+      "path": "conformance/fidelity-pass/index.ts",
+      "sha256": "c6d12e861ff6660df3014383d8725ffd19bea65f7dd186c6b7712593b005f74b",
+      "productPath": "src/content-surface-engine/conformance/fidelity-pass/index.ts"
+    },
+    {
+      "path": "conformance/fidelity-pass/markdown-evaluator.ts",
+      "sha256": "5f844b72ecd2efaa1911ddaa1e44c394d2a789b9c2c5f3a6960470995fb5f0ee",
+      "productPath": "src/content-surface-engine/conformance/fidelity-pass/markdown-evaluator.ts"
+    },
+    {
+      "path": "conformance/fidelity-pass/result.ts",
+      "sha256": "c77a3410d223ef08e25b4d3a88583c31220f748ae2f3ebea0ed8422dde4dc0aa",
+      "productPath": "src/content-surface-engine/conformance/fidelity-pass/result.ts"
+    },
+    {
+      "path": "conformance/fixtures.ts",
+      "sha256": "657c486b24da689ddd3ee9620b368ef4c07a558926f9a4820443ebe5d5dac610",
+      "productPath": "src/content-surface-engine/conformance/fixtures.ts"
+    },
+    {
+      "path": "contract/content-document.ts",
+      "sha256": "033d43ae6daf4100522fee236f0c5350d26ee0c1b9f020d5f50440ce60199629",
+      "productPath": "src/content-surface-engine/contract/content-document.ts"
+    },
+    {
+      "path": "contract/mdast-semantic.ts",
+      "sha256": "d15b44494a9b001d963e4a30332bad0ce673bc94dd0e81ea1ce8c887b3c17f51",
+      "productPath": "src/content-surface-engine/contract/mdast-semantic.ts"
+    },
+    {
+      "path": "contract/resolved-content-surface.ts",
+      "sha256": "1af4a868430393c164b8a8a08e01a97ce65fcbba356dfaebd3fee149c4b64d3c",
+      "productPath": "src/content-surface-engine/contract/resolved-content-surface.ts"
+    },
+    {
+      "path": "contract/surface-policy.ts",
+      "sha256": "3c9373777d7f7f75a3dde6f80320a4ce9efaef5d508638b828ad0bb3b0b02cbd",
+      "productPath": "src/content-surface-engine/contract/surface-policy.ts"
+    },
+    {
+      "path": "lifecycle/lifecycle.ts",
+      "sha256": "758e95c6d6d928b4f45cfc02827c1ec4ce0e00151764284fe940be48e1bd0254",
+      "productPath": "src/content-surface-engine/lifecycle/lifecycle.ts"
+    },
+    {
+      "path": "link-graph/link-graph.ts",
+      "sha256": "477286f19f2ec23cdfd42bb2130651570b64e98a461839db7b382a5acf1cf978",
+      "productPath": "src/content-surface-engine/link-graph/link-graph.ts"
+    },
+    {
+      "path": "producers/markdown/content-document-to-mdast.ts",
+      "sha256": "0f8d1eea94e9fdf2f9e2849eb583233b4419020a7938e489fe1845672877d2f3",
+      "productPath": "src/content-surface-engine/producers/markdown/content-document-to-mdast.ts"
+    },
+    {
+      "path": "producers/markdown/fidelity-oracle.ts",
+      "sha256": "3eef032d9c24080061be01f9ddc644351939c15332bf6d142e79b28152aec89a",
+      "productPath": "src/content-surface-engine/producers/markdown/fidelity-oracle.ts"
+    },
+    {
+      "path": "producers/markdown/mdast-to-content-document.ts",
+      "sha256": "ff2f0be32ea6bfa7cada90cfc5bb3b68bbea02274f92045edcc1096f4aa9af15",
+      "productPath": "src/content-surface-engine/producers/markdown/mdast-to-content-document.ts"
+    },
+    {
+      "path": "producers/markdown/normalize-mdast.ts",
+      "sha256": "2e92ff4f7e68b751facd90f7efc1af8c0ee26357fd5907077f080ddd2f805b44",
+      "productPath": "src/content-surface-engine/producers/markdown/normalize-mdast.ts"
+    },
+    {
+      "path": "producers/markdown/parse-markdown.ts",
+      "sha256": "f6d6503f93f62d243f964c7f1ebe483b18b53b93a3baaf3eea034d880198c7d6",
+      "productPath": "src/content-surface-engine/producers/markdown/parse-markdown.ts"
+    },
+    {
+      "path": "publication/indexable.ts",
+      "sha256": "614344529581622d5007cce72e8e72673943050298e417e0ae2e47730934a895",
+      "productPath": "src/content-surface-engine/publication/indexable.ts"
+    },
+    {
+      "path": "publication/publication-pass.ts",
+      "sha256": "2476d2e7ad1bd3fe120b6e7b1bdace37e244e22c386ef6be19ba8e36deffad72",
+      "productPath": "src/content-surface-engine/publication/publication-pass.ts"
+    },
+    {
+      "path": "receipt/receipt.ts",
+      "sha256": "2ec68d4e42e511410d53221be11f5e66201d1394f47bfdb6ea96ae12544e07b4",
+      "productPath": "src/content-surface-engine/receipt/receipt.ts"
+    }
+  ],
+  "siteAdapted": [
+    {
+      "path": "authority/compile-authority.ts",
+      "sha256": "96d24f67c86be63d2b4239ec87520b0c2979bb56d9d6fd436d7838bb1ccf0dba",
+      "productPath": "src/content-surface-engine/authority/compile-authority.ts",
+      "productSha256": "2525c20648ed4290d11f45916c9b3c2cb2dd241d7252a6f63c313ad7a0e88b3f"
+    },
+    {
+      "path": "authority/editorial-identity-policy.ts",
+      "sha256": "761d0390c56deac71aa2e627f3139b85ec5ae622e4e844fd61a2bb93d267b74d",
+      "productPath": "src/content-surface-engine/authority/editorial-identity-policy.ts",
+      "productSha256": "7ab76607399007957aece81c41f1d25e4658d2830b6df896c43e497b268d07f1"
+    },
+    {
+      "path": "conformance/content-pass.ts",
+      "sha256": "690f4565b44e61e40901eab80fcb46ec07d57b0c982046860aa08dc7e2c16e42",
+      "productPath": "src/content-surface-engine/conformance/content-pass.ts",
+      "productSha256": "db8d8fbba29673cb32c56830a5f82e205440dee221e0ea0e869bb7fd09fe6cb3"
+    }
+  ],
+  "productOwnedContracts": [
+    {
+      "path": "contracts/content-document@1.schema.json",
+      "sha256": "4cefe8c6ed8917180870a37a3f3dbf5d2ff3d9395563dc683fc189b4e47b7e7b",
+      "productPath": "packages/content-surface/schema/content-document@1.schema.json"
+    }
+  ]
+}

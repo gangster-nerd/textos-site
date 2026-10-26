@@ -19,6 +19,7 @@ import {
 } from "@/lib/content-surface-engine/surface-policy";
 import { compileAuthority } from "@/lib/content-surface-engine/authority";
 import { resolveReferenceCta } from "@/lib/content-surface-engine/conversion";
+import type { CtaDeliveryContext } from "@/lib/conversion/cta-resolver";
 import {
   buildAttributedUrl,
   createEmitter,
@@ -36,11 +37,21 @@ import type { ResolvedContentSurface } from "@/lib/content-surface-engine/contra
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 
+// Contexte de livraison explicite : le rendu de référence est éprouvé en `demo` (CTA livrable) ;
+// le refus en `off` / `live` incomplet est éprouvé séparément (#11b).
+const DEMO_DELIVERY: CtaDeliveryContext = {
+  mode: "demo",
+  routeExists: () => true,
+  endpointConfigured: false,
+  legalNoticePublished: false,
+};
+
 function compose(fixture: typeof surfacePassArticleFixture, policy = textosArticleReferencePolicy) {
   const resolved = resolveContentSurface(fixture, policy);
   const cta = resolveReferenceCta({
     resolved,
     intent: fixture.conversion.ctaIntentId ?? "",
+    delivery: DEMO_DELIVERY,
   });
   return { resolved, cta };
 }
@@ -201,16 +212,30 @@ describe("A2 — REFERENCE surface", () => {
   it("(#11) CTA resolution fails closed", () => {
     // Unknown intent → null.
     const { resolved } = compose(surfacePassArticleFixture);
-    expect(resolveReferenceCta({ resolved, intent: "DOES_NOT_EXIST" })).toBeNull();
+    expect(resolveReferenceCta({ resolved, intent: "DOES_NOT_EXIST", delivery: DEMO_DELIVERY })).toBeNull();
     // Disabled registry variants → null.
-    expect(resolveReferenceCta({ resolved, intent: "EXPLORE_PRODUCT" })).toBeNull();
-    expect(resolveReferenceCta({ resolved, intent: "READ_DEEPER" })).toBeNull();
+    expect(resolveReferenceCta({ resolved, intent: "EXPLORE_PRODUCT", delivery: DEMO_DELIVERY })).toBeNull();
+    expect(resolveReferenceCta({ resolved, intent: "READ_DEEPER", delivery: DEMO_DELIVERY })).toBeNull();
     // Policy denies CTA → null.
     const minimal = resolveContentSurface(
       surfacePassArticleFixture,
       textosMinimalReferencePolicy,
     );
-    expect(resolveReferenceCta({ resolved: minimal, intent: "MEASURE_BRAND" })).toBeNull();
+    expect(resolveReferenceCta({ resolved: minimal, intent: "MEASURE_BRAND", delivery: DEMO_DELIVERY })).toBeNull();
+  });
+
+  it("(#11b) CTA resolution honours the delivery gate (same as homepage / FAQ / methodology)", () => {
+    const { resolved } = compose(surfacePassArticleFixture);
+    expect(resolveReferenceCta({ resolved, intent: "MEASURE_BRAND", delivery: DEMO_DELIVERY })).not.toBeNull();
+    // Mode off : nothing is deliverable, nothing is rendered.
+    expect(resolveReferenceCta({ resolved, intent: "MEASURE_BRAND", delivery: { ...DEMO_DELIVERY, mode: "off" } })).toBeNull();
+    // Destination not exported : no dead link.
+    expect(resolveReferenceCta({ resolved, intent: "MEASURE_BRAND", delivery: { ...DEMO_DELIVERY, routeExists: () => false } })).toBeNull();
+    // Live without endpoint or legal notice : no collection without prior information.
+    expect(resolveReferenceCta({ resolved, intent: "MEASURE_BRAND", delivery: { ...DEMO_DELIVERY, mode: "live" } })).toBeNull();
+    expect(
+      resolveReferenceCta({ resolved, intent: "MEASURE_BRAND", delivery: { ...DEMO_DELIVERY, mode: "live", endpointConfigured: true, legalNoticePublished: true } }),
+    ).not.toBeNull();
   });
 
   it("(#12) instrumentation no-ops outside live mode", async () => {

@@ -11,6 +11,8 @@ import {
   resolveCtaForSurface,
 } from "@/lib/conversion/cta-resolver";
 import { deliveryContext } from "@/lib/conversion/delivery-context";
+import { productEntryForHomepage } from "@/lib/conversion/product-entry-context";
+import { ProductEntryCta } from "@/components/conversion/ProductEntryCta";
 
 // Homepage : surface "homepage" (page-map.spec.md §1) → uniquement public_marketable (§3).
 //
@@ -66,6 +68,10 @@ export default function Home() {
     surface: "homepage",
     delivery: deliveryContext(),
   });
+
+  // Entrée self-serve (ENTRY-1) : rendue seulement si le produit l'a publiée ET si l'URL de passage
+  // est configurée — voir lib/conversion/product-entry.ts. Sinon rien.
+  const productEntry = productEntryForHomepage();
 
   return (
     <main className="wide">
@@ -174,6 +180,7 @@ export default function Home() {
 
       {/* Variante RÉSOLUE, jamais celle demandée : la page rend une décision, elle ne la prend pas. */}
       <ContentCta variant={cta.resolvedVariant} contentId="homepage" position="end" />
+      <ProductEntryCta decision={productEntry} />
 
       <p style={{ marginTop: "var(--space-8)" }}>
         <Link href="/faq">Questions about how TextOS measures &rarr;</Link>
@@ -184,7 +191,8 @@ export default function Home() {
           qui n'existe pas — ni login, ni authentification, ni destination produit. C'est
           exactement le faux chrome applicatif que la règle « app-shaped, not app-fake » interdit.
           Rien ne le remplace : ni « Log in », ni « Coming soon », ni « Open TextOS ». Un accès
-          s'affiche le jour où il existe.
+          s'affiche le jour où il existe : c'est `ProductEntryCta` ci-dessus, rendu seulement quand le
+          produit a publié l'entrée self-serve et que l'URL de passage `/auth/start` est configurée.
 
           Pas de second `<footer>` ici : le pied de page global (`SiteFooter`, monté par le
           layout racine) clôt désormais toutes les pages, et la disclosure "produit en

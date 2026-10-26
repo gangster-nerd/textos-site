@@ -12,9 +12,16 @@
 //   * READ_DEEPER     → currently no approved variant (fail-closed placeholder)
 //
 // The bridge NEVER hardcodes a product URL. Every destination comes from the registry.
+//
+// DELIVERY GATE — the same one the homepage, FAQ and methodology CTAs go through
+// (`ctaDeliveryViolations`): `CONVERSION_MODE=off` renders no CTA, the destination must be an
+// exported route, and `live` requires the endpoint and the published legal notice. The context is
+// INJECTED (required) so this module stays pure and no caller can forget it: before this gate,
+// insights articles rendered CTAs pointing to a page that said "not accepting submissions".
 
 import type { CtaVariant } from "@/lib/conversion/cta-registry";
 import { getCtaVariant } from "@/lib/conversion/cta-registry";
+import { ctaDeliveryViolations, type CtaDeliveryContext } from "@/lib/conversion/cta-resolver";
 import type { ResolvedContentSurface } from "../contract/resolved-content-surface";
 
 export type SemanticCtaIntent =
@@ -42,6 +49,8 @@ export interface ResolvedReferenceCta {
 export interface ResolveReferenceCtaInput {
   resolved: ResolvedContentSurface;
   intent: string;
+  /** Delivery context (`deliveryContext()` at the edge, an explicit one in tests). */
+  delivery: CtaDeliveryContext;
 }
 
 function isSemanticIntent(candidate: string): candidate is SemanticCtaIntent {
@@ -63,6 +72,8 @@ function acceptable(variant: CtaVariant | undefined): variant is CtaVariant & { 
  *   - the intent is not recognized
  *   - the registry variant is not `approved` or has no destination
  *   - the variant is not authorized on the reference `product_article` surface
+ *   - the variant is not deliverable (`ctaDeliveryViolations`: mode `off`, missing route, `live`
+ *     without endpoint or legal notice)
  *
  * Never throws. The renderer must accept `null` as "no CTA rendered" — no grey button, no
  * "coming soon", no dead link.
@@ -78,6 +89,7 @@ export function resolveReferenceCta(input: ResolveReferenceCtaInput): ResolvedRe
 
   // Reference is a product_article surface (per TextOS policy); the variant must permit it.
   if (!variant.allowedSurfaces.includes("product_article")) return null;
+  if (ctaDeliveryViolations(variant, input.delivery).length > 0) return null;
 
   return {
     intent,

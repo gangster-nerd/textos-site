@@ -103,6 +103,27 @@ pourrait afficher « aucune information n'a été transmise » sur simple modifi
 La CI exécute les **deux** contrats (`off` et `demo`) par matrice — ils ne promettent pas la même
 chose, et un seul ne prouverait que la moitié.
 
+## Entrée self-serve vers le produit (`PRODUCT_ENTRY_URL`)
+
+La page d'accueil peut porter une entrée vers le produit (ENTRY-1, `lib/conversion/product-entry.ts`).
+Elle n'est rendue que si **les trois** conditions sont réunies :
+
+1. le manifeste produit épinglé publie `self-serve-onboarding`, `authenticated-product-entry` et
+   `ui-measurement-launch` en `public_marketable` avec une surface commerciale (décision produit,
+   ré-import depuis un artefact `main`) ;
+2. `PRODUCT_ENTRY_URL` vaut l'URL de passage du produit, exactement `https://<hôte app>/auth/start`
+   (https, sans requête ni fragment) ;
+3. `CONVERSION_MODE` n'est pas `off`.
+
+| Environnement | `PRODUCT_ENTRY_URL` |
+|---|---|
+| Development | non définie (ou l'URL d'une preview produit pour tester) |
+| Preview | non définie |
+| Production | `https://<hôte app>/auth/start`, une fois le produit en `AUTH_MODE=required` |
+
+Le produit répond 503 à `/auth/start` tant qu'il tourne en `AUTH_MODE=off` : ne poser la variable en
+production qu'après cette bascule.
+
 ## Provenance des déploiements
 
 L'intégration Git Vercel est active : un push sur une branche produit un **Preview Deployment**, un

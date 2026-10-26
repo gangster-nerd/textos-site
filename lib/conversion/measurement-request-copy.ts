@@ -111,5 +111,6 @@ export const FORBIDDEN_CONVERSION_PHRASES = [
   "instant",
 ] as const;
 
-/** Endpoint du sous-traitant. Absent = formulaire non soumissible, jamais un POST dans le vide. */
-export const MEASUREMENT_FORM_ENDPOINT = process.env.MEASUREMENT_FORM_ENDPOINT ?? null;
+// L'endpoint du sous-traitant n'est lu QUE par `conversion-config.ts` (`formEndpoint`, `live`
+// seulement). Une seconde lecture ici, sans la porte de mode, a été retirée : elle n'avait aucun
+// appelant et aurait permis de poster hors `live`.

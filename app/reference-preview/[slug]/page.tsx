@@ -18,6 +18,7 @@ import {
 } from "@/lib/content-surface-engine/site-integration";
 import { serializeJsonLd } from "@/lib/schema-org/serialize";
 import { siteConfig } from "@/lib/config/site";
+import { deliveryContext } from "@/lib/conversion/delivery-context";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -97,6 +98,7 @@ export default async function Page({
   const cta = resolveReferenceCta({
     resolved,
     intent: entry.document.conversion.ctaIntentId ?? "",
+    delivery: deliveryContext(),
   });
 
   const compiled = compileAuthority({
