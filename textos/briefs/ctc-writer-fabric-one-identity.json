@@ -43,7 +43,11 @@
       "how-we-build"
     ],
     "audience": "reader-technical",
-    "funnelStage": "awareness"
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-produced-is-not-validated",
+      "textos-site:ctc:ctc-human-decision-exact-bytes"
+    ]
   },
   "publication": {
     "humanReview": {

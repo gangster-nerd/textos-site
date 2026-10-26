@@ -1,0 +1,57 @@
+{
+  "text": "To write about your brand with sources, a tool has to read other people's pages. How it behaves on those pages says a lot about how it will behave with yours. TextOS treats reading a cited source as its own action, kept out of writing and run within a budget of requests and time. This note sets out the rules of that step, one by one.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "To write about your brand with sources, a tool has to read other people's pages.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "How it behaves on those pages says a lot about how it will behave with yours.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "TextOS treats reading a cited source as its own action, kept out of writing and run within a budget of requests and time.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-rs-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note sets out the rules of that step, one by one.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

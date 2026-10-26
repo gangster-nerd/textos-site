@@ -1,0 +1,89 @@
+{
+  "text": "A TextOS decision about a source lapses as soon as the quoted passage changes. The person agreed to specific words, so new words call for a new decision. Those decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another.\n\nWithdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress. A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand. Before you trust any tool with brand facts, check what happens to a published sentence when the source behind it changes.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A TextOS decision about a source lapses as soon as the quoted passage changes.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The person agreed to specific words, so new words call for a new decision.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Those decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Withdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Before you trust any tool with brand facts, check what happens to a published sentence when the source behind it changes.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

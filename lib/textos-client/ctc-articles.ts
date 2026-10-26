@@ -179,7 +179,7 @@ export function projectCtcDocument(input: {
     },
     provenance: { ...writerDocument.provenance, sourceRepository: "gangster-nerd/textos-v0" },
     body,
-    relationships: { relatedContentIds: [] },
+    relationships: { relatedContentIds: brief.editorial.relatedDocumentIds ?? [] },
     conversion: { conversionAllowed: false },
     lifecycle: published
       ? { firstPublishedAt: review.reviewedOn, publishedAt: review.reviewedOn, lastReviewedAt: review.reviewedOn, revisionNumber: 0 }

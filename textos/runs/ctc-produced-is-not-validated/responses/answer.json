@@ -1,0 +1,65 @@
+{
+  "text": "The fact-check verdict produced while writing is no longer rewritten into a pass. When TextOS raises a truth alert, a person can read and correct the article, but no WordPress draft can be prepared from it. A single rule decides whether a TextOS article may go to WordPress: the fact-check passes and the article conforms to the marketing review policy, and anything else stays closed. A label on the screen is therefore the end of a check, not just the end of a draft.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The fact-check verdict produced while writing is no longer rewritten into a pass.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "When TextOS raises a truth alert, a person can read and correct the article, but no WordPress draft can be prepared from it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "A single rule decides whether a TextOS article may go to WordPress: the fact-check passes and the article conforms to the marketing review policy, and anything else stays closed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "A label on the screen is therefore the end of a check, not just the end of a draft.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

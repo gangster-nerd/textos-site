@@ -1,0 +1,131 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "A content dashboard that says an article is ready invites you to stop reading. That label is only worth something if it means the article was checked, and not simply that a model finished writing. TextOS no longer presents an article as validated just because it was technically produced. Here is what changed, and what a passing result still does not tell you."
+        },
+        "id": "lead",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The fact-check verdict produced while writing is no longer rewritten into a pass. When TextOS raises a truth alert, a person can read and correct the article, but no WordPress draft can be prepared from it. A single rule decides whether a TextOS article may go to WordPress: the fact-check passes and the article conforms to the marketing review policy, and anything else stays closed. A label on the screen is therefore the end of a check, not just the end of a draft."
+        },
+        "id": "answer",
+        "kind": "answer"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it. Ask any AI writing vendor whether its status labels are computed from stored results or written into the interface."
+        },
+        "id": "section-1",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick. Ask whether the rule that lets content reach your website is written in one place or spread across screens."
+        },
+        "id": "section-2",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at."
+        },
+        "id": "section-3",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it."
+        },
+        "id": "section-4",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 5,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-produced-is-not-validated::an-article-that-was-produced-is-not-an-article-that-was-checked::draft::reference::surface-policy@1::textos-site.how-we-build.v1::reference::0:lead:v|1:answer:v|2:section-1:v|3:section-2:v|4:section-3:v|5:section-4:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "ARTICLE",
+  "conversion": {
+    "ctaIntentId": null,
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "In TextOS only an article that passes its fact-check and conforms may reach WordPress, and a pass is no longer read as proof of excellence.",
+  "documentId": "textos-site:ctc:ctc-produced-is-not-validated",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": null,
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "TechArticle"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": true,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-site.how-we-build.v1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 3,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "an-article-that-was-produced-is-not-an-article-that-was-checked",
+  "surface": "reference",
+  "title": "TextOS no longer presents a produced article as a validated one",
+  "truth": {
+    "allowedSurfaces": [
+      "reference"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "paragraph",
+    "answer"
+  ]
+}

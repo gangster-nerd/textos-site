@@ -1,0 +1,650 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "source-preparation-a1-2026-10-26",
+        "sourceCommits": [
+          "7fb96fe8c4efdeceeaa274d3faa8e373316612d2"
+        ]
+      },
+      {
+        "groupId": "source-candidates-a2-2026-10-26",
+        "sourceCommits": [
+          "cf5b34af83e5fd28a09a3bf1adf0fa19b8cc641c"
+        ]
+      },
+      {
+        "groupId": "public-network-transport-lot-c-2026-10-26",
+        "sourceCommits": [
+          "03fbdf9820aad628e6c1e64eebe9c36a95cb9ebf"
+        ]
+      },
+      {
+        "groupId": "www-alias-consultation-2026-10-26",
+        "sourceCommits": [
+          "55e3e8b7d3c3bf0736a37bdb2155de09f42b8e6b"
+        ]
+      }
+    ],
+    "buyerQuestion": "When an AI content tool reads the web pages it cites, what should it be allowed to do?",
+    "targetQuery": "what an ai content tool should do when it reads cited sources",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "evidence-governance",
+    "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-reading-cited-sources",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-rs-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:28:22+00:00",
+      "contentHash": "58dc314826fed8274da5e348486b3fb7f2a81cb9d0f07167c90cb0f5ba2f21e0",
+      "excerpt": "action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:28:22+00:00",
+      "contentHash": "2297b7ed2c15eaaac7f22f32b7bc22b74a798f38ba532c9021b44b1f73ba0261",
+      "excerpt": "robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:28:22+00:00",
+      "contentHash": "3d478c59b4ef09b70ad8bbc17f6ef25c87a3a1eea7238f169786a133ad03aba1",
+      "excerpt": "fraîcheur exposée sans fausse garantie.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:50:05+00:00",
+      "contentHash": "00a89c2cb0f60180033d01cfcc116c3481e05448362b8a3e09461e37e3ceffb9",
+      "excerpt": "chaque page lue propose au plus 3 passages : occurrence démontrée, types, sujet et risques proposés",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:50:05+00:00",
+      "contentHash": "525a435f785240baeba36c6a42edd6f5dcf58081625c5be63bf4a49869fd44bd",
+      "excerpt": "qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 03fbdf9: fix: provenance des extraits et transport réseau public de consultation (lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T08:33:29+00:00",
+      "contentHash": "12b8aca6c5b985bfa602449e6f6cf862636a8518c5622f489414d0499c0f92e5",
+      "excerpt": "lookup de connexion qui refuse toute adresse non publique et rend l'adresse vérifiée à la socket (pas de seconde résolution, pas de TOCTOU)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 03fbdf9: fix: provenance des extraits et transport réseau public de consultation (lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T08:33:29+00:00",
+      "contentHash": "44b5893612f32cfbfe31196bbc53e32cee24ed0499a26ed5748613a9c678d9fb",
+      "excerpt": "deux sources au passage identique gardent deux extraits et deux provenances",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 55e3e8b: feat: suivre l'alias www d'une source citée lors de sa consultation",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T13:08:50+00:00",
+      "contentHash": "e6013af8ef10e168a4d4044f2374dea4d5bb1492e0ae4b31a8ea9230b920b888",
+      "excerpt": "la consultation d'une source citée suit site.fr ↔ www.site.fr (même port, jamais https → http) ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 55e3e8b: feat: suivre l'alias www d'une source citée lors de sa consultation",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T13:08:50+00:00",
+      "contentHash": "a7d67f56bfc570344858a5a8a2d756d8cbf946d5e4a9f0ce129c2f028dfe7883",
+      "excerpt": "le crawl de site intelligence reste same-origin.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-rs-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 308aa32",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-27T00:02:23+01:00",
+      "contentHash": "3ab941dc0922e9a2172818ae65cce74dca4582d5684d1773037dccae3d0c64bc",
+      "excerpt": "robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Describes the generic site crawler used for owned-surface observation."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-reading-cited-sources"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that reading cited sources is a separate, bounded step that reads robots.txt first.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, stays on the public web, and only proposes passages.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02",
+        "ev-rs-05"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's concern — a tool that pulls text from other people's pages to write about their brand — and say that TextOS treats reading a source as its own governed step.",
+      "buyerIntent": "What does the tool do on other people's sites?",
+      "allowedEvidenceIds": [
+        "ev-rs-01"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What should a content tool do when it reads the pages it cites?",
+      "writingObjective": "Answer directly: reading happens in a dedicated step outside writing, within a budget, one request at a time per site, robots.txt first, and every refused access recorded with its reason.",
+      "buyerIntent": "What are the rules?",
+      "allowedEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Reading is its own step, with a budget",
+      "writingObjective": "Explain the dedicated step: a request and time budget, one request at a time per origin, the same request not repeated, resumable and cancellable, and freshness shown without a false promise.",
+      "buyerIntent": "Will it hammer a site or run forever?",
+      "allowedEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-03"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Asking first, and saying why a page was not read",
+      "writingObjective": "Explain robots.txt read first, refusals recorded in an append-only log with their reason (forbidden, disallowed, undetermined, not found, redirect off site, network faults), and the same discipline in the site crawler: read-only, same origin, bounded, no script execution, 'not available' never turned into 'absent'.",
+      "buyerIntent": "What happens when a site says no?",
+      "allowedEvidenceIds": [
+        "ev-rs-02",
+        "ev-rs-10"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Staying on the public web",
+      "writingObjective": "Explain that connections refuse any non-public address and reuse the verified address, that a cited source may follow its www alias on the same port and never downgrade from https to http, while the site crawl stays on the same origin.",
+      "buyerIntent": "Could it be tricked into reading private systems?",
+      "allowedEvidenceIds": [
+        "ev-rs-06",
+        "ev-rs-08",
+        "ev-rs-09"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A passage proposed is not a fact accepted",
+      "writingObjective": "Explain that each page read proposes at most three passages with a demonstrated occurrence and proposed types, subject and risks, that identical passages from two sources keep two provenances, and that nothing is approved or offered to the writer until a person qualifies it.",
+      "buyerIntent": "Does reading a page make it a fact?",
+      "allowedEvidenceIds": [
+        "ev-rs-04",
+        "ev-rs-05",
+        "ev-rs-07"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    }
+  ]
+}

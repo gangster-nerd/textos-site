@@ -1,0 +1,22 @@
+{
+  "text": "TextOS reads cited sources in a separate, bounded step, robots.txt first",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS reads cited sources in a separate, bounded step, robots.txt first",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

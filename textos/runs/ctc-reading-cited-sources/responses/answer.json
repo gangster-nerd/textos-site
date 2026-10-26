@@ -1,0 +1,61 @@
+{
+  "text": "In TextOS, sources are read in a dedicated step that does not run inside writing, with a budget, one request at a time per site, and the option to resume or cancel. TextOS reads robots.txt first, and when a page cannot be read, the reason is recorded in a log that is only ever appended to. Nothing read this way turns into a statement by itself; it becomes material for a person to look at. That is the whole difference between reading the web and repeating it.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS, sources are read in a dedicated step that does not run inside writing, with a budget, one request at a time per site, and the option to resume or cancel.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-rs-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS reads robots.txt first, and when a page cannot be read, the reason is recorded in a log that is only ever appended to.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-rs-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Nothing read this way turns into a statement by itself; it becomes material for a person to look at.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "That is the whole difference between reading the web and repeating it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

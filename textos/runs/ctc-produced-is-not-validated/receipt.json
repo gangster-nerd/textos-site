@@ -1,0 +1,46 @@
+{
+  "receiptVersion": 1,
+  "articleId": "ctc-produced-is-not-validated",
+  "textos": {
+    "repository": "gangster-nerd/textos-v0",
+    "sha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+  },
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "executionPlanHash": "74ac9eceaf6331f714882b51164c3acb843a27089f996f5c73f347038c858c5e",
+  "ctcHandoffHash": "a3bc819f182f1b2d2e9ec7261190388f53203ca49de3a309f52008869176f545",
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "f89ac92f7ffff6bf3df4b3b1d9bf12ce2a5e30396fc9ad2f8093f19b0ff05acd",
+  "truthCheckVerdict": "pass",
+  "editorialQuality": {
+    "gateVersion": "editorial-quality@0.3",
+    "verdict": "fail",
+    "findings": 11
+  },
+  "publicationChannel": "controlled_preview",
+  "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "promptHashes": {
+    "title": "6fef642080838e02538cb69c6ba726ba287499d9f3b53fe9dc698f0301db55db",
+    "meta": "e0493bd89aed08133366aeb067d3a1401c607810188720eff5a176551e02f498",
+    "lead": "773630235099b0167a7d489a761edeca812886a77ff9aa234323fc94c2a016f8",
+    "answer": "e4b0d496ebf074d801ed2c81ea1eb2da9452637cd5ea26add2cdecf6b4449097",
+    "section-1": "1f2379041b096c6173c638a0a77fc1b17d06c392708a20e386398d350db86e86",
+    "section-2": "d0f0f0883177b56c180117377333b388b91e52f540d78b6a6db57d0f982674f6",
+    "section-3": "4cd3b97d84bc329f9c674b24447e62de5e57a50e5e398cc1ffc455df3bc56cee",
+    "section-4": "b3b72ed6f61e3e1f12000ed3fb453ea2eb94d9474617b2028b09413e1df1f601"
+  },
+  "responseHashes": {
+    "title": "65488a01c7862a4d7faa03184d156a86d6e91add3f41ad42be5e5876d16b0950",
+    "meta": "2911702821a8b64be93a86ac88ebcb4f3e1b87028bb2c5e8da6ba8d3eee3bf58",
+    "lead": "91a473d95894e47320f7457320b595fbcdff8377a510beaf2e42fb71f2ebf680",
+    "answer": "a7e74c6483c9ecaccc922ed99738813bd3226a159efc504807b88a96ef9bf411",
+    "section-1": "9039b893d398180130fbbca9c4526f91945728946fac76e8284de1e086dc2942",
+    "section-2": "170a40cc3ba67103a408a22d75df64f128bbfec148b70470530e715dc03a8fc8",
+    "section-3": "7e2bc18781e3399b2ecc6209d79e3866b16663e479a24bfaf7885c6c1f3c1094",
+    "section-4": "674e66bb93eaea4a55f78ec63e43cd04ffdf906ed9a1b407125fc1700b1dc92f"
+  },
+  "contentDocumentSha256": "4c61bbec4245ee4000b888834c24e28fcd50838ab285c99c836d22d532b33e70",
+  "lineageSha256": "fb6f49e4e04337b3386c26d59098e4388cff9c26d4127ad5a5c5a67fae39439d",
+  "resolvedSurfaceSha256": "b2ade8c5f441b4d0e0ff1b5d8c942d5d5429314d94487f0dff22883613e6e8a0"
+}

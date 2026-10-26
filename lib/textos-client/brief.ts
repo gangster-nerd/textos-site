@@ -54,6 +54,9 @@ export interface BriefSiteEditorial {
   topicIds: string[];
   audience: string;
   funnelStage: string;
+  /** Explicit related articles (catalogue documentIds), ranked first by the related-content
+   *  resolver. Site-owned navigation, never text. */
+  relatedDocumentIds?: string[];
 }
 
 /** Publication record kept by the site, not by TextOS: per-article human review. Until it is

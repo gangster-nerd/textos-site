@@ -43,7 +43,12 @@
       "how-we-build"
     ],
     "audience": "reader-technical",
-    "funnelStage": "awareness"
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-evidence-approved-per-article",
+      "textos-insight:no-affirmation-without-evidence",
+      "textos-insight:agent-protocol-immutable-frontiers"
+    ]
   },
   "publication": {
     "humanReview": {

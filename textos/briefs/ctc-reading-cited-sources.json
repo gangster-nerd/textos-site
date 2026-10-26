@@ -1,0 +1,406 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-reading-cited-sources",
+  "flow": "commit_to_content",
+  "slug": "how-an-ai-content-tool-should-read-your-sources",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "source-preparation-a1-2026-10-26",
+        "sourceCommits": [
+          "7fb96fe8c4efdeceeaa274d3faa8e373316612d2"
+        ]
+      },
+      {
+        "groupId": "source-candidates-a2-2026-10-26",
+        "sourceCommits": [
+          "cf5b34af83e5fd28a09a3bf1adf0fa19b8cc641c"
+        ]
+      },
+      {
+        "groupId": "public-network-transport-lot-c-2026-10-26",
+        "sourceCommits": [
+          "03fbdf9820aad628e6c1e64eebe9c36a95cb9ebf"
+        ]
+      },
+      {
+        "groupId": "www-alias-consultation-2026-10-26",
+        "sourceCommits": [
+          "55e3e8b7d3c3bf0736a37bdb2155de09f42b8e6b"
+        ]
+      }
+    ],
+    "buyerQuestion": "When an AI content tool reads the web pages it cites, what should it be allowed to do?",
+    "targetQuery": "what an ai content tool should do when it reads cited sources",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "evidence-governance"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+    "approvedAt": "2026-10-26"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-evidence-approved-per-article",
+      "textos-site:ctc:ctc-produced-is-not-validated"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-rs-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "7fb96fe8c4efdeceeaa274d3faa8e373316612d2",
+        "quote": "action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable."
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-02",
+      "source": {
+        "kind": "product_commit",
+        "sha": "7fb96fe8c4efdeceeaa274d3faa8e373316612d2",
+        "quote": "robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...)."
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "7fb96fe8c4efdeceeaa274d3faa8e373316612d2",
+        "quote": "fraîcheur exposée sans fausse garantie."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-04",
+      "source": {
+        "kind": "product_commit",
+        "sha": "cf5b34af83e5fd28a09a3bf1adf0fa19b8cc641c",
+        "quote": "chaque page lue propose au plus 3 passages : occurrence démontrée, types, sujet et risques proposés"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-05",
+      "source": {
+        "kind": "product_commit",
+        "sha": "cf5b34af83e5fd28a09a3bf1adf0fa19b8cc641c",
+        "quote": "qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur."
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "03fbdf9820aad628e6c1e64eebe9c36a95cb9ebf",
+        "quote": "lookup de connexion qui refuse toute adresse non publique et rend l'adresse vérifiée à la socket (pas de seconde résolution, pas de TOCTOU)"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-07",
+      "source": {
+        "kind": "product_commit",
+        "sha": "03fbdf9820aad628e6c1e64eebe9c36a95cb9ebf",
+        "quote": "deux sources au passage identique gardent deux extraits et deux provenances"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-08",
+      "source": {
+        "kind": "product_commit",
+        "sha": "55e3e8b7d3c3bf0736a37bdb2155de09f42b8e6b",
+        "quote": "la consultation d'une source citée suit site.fr ↔ www.site.fr (même port, jamais https → http) ;"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-09",
+      "source": {
+        "kind": "product_commit",
+        "sha": "55e3e8b7d3c3bf0736a37bdb2155de09f42b8e6b",
+        "quote": "le crawl de site intelligence reste same-origin."
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-rs-10",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md",
+        "quote": "robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence."
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Describes the generic site crawler used for owned-surface observation."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that reading cited sources is a separate, bounded step that reads robots.txt first.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, stays on the public web, and only proposes passages.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02",
+        "ev-rs-05"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's concern — a tool that pulls text from other people's pages to write about their brand — and say that TextOS treats reading a source as its own governed step.",
+      "buyerIntent": "What does the tool do on other people's sites?",
+      "allowedEvidenceIds": [
+        "ev-rs-01"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What should a content tool do when it reads the pages it cites?",
+      "writingObjective": "Answer directly: reading happens in a dedicated step outside writing, within a budget, one request at a time per site, robots.txt first, and every refused access recorded with its reason.",
+      "buyerIntent": "What are the rules?",
+      "allowedEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Reading is its own step, with a budget",
+      "writingObjective": "Explain the dedicated step: a request and time budget, one request at a time per origin, the same request not repeated, resumable and cancellable, and freshness shown without a false promise.",
+      "buyerIntent": "Will it hammer a site or run forever?",
+      "allowedEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-03"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Asking first, and saying why a page was not read",
+      "writingObjective": "Explain robots.txt read first, refusals recorded in an append-only log with their reason (forbidden, disallowed, undetermined, not found, redirect off site, network faults), and the same discipline in the site crawler: read-only, same origin, bounded, no script execution, 'not available' never turned into 'absent'.",
+      "buyerIntent": "What happens when a site says no?",
+      "allowedEvidenceIds": [
+        "ev-rs-02",
+        "ev-rs-10"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Staying on the public web",
+      "writingObjective": "Explain that connections refuse any non-public address and reuse the verified address, that a cited source may follow its www alias on the same port and never downgrade from https to http, while the site crawl stays on the same origin.",
+      "buyerIntent": "Could it be tricked into reading private systems?",
+      "allowedEvidenceIds": [
+        "ev-rs-06",
+        "ev-rs-08",
+        "ev-rs-09"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A passage proposed is not a fact accepted",
+      "writingObjective": "Explain that each page read proposes at most three passages with a demonstrated occurrence and proposed types, subject and risks, that identical passages from two sources keep two provenances, and that nothing is approved or offered to the writer until a person qualifies it.",
+      "buyerIntent": "Does reading a page make it a fact?",
+      "allowedEvidenceIds": [
+        "ev-rs-04",
+        "ev-rs-05",
+        "ev-rs-07"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    }
+  ]
+}

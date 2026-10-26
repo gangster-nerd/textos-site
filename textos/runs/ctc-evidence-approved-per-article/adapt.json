@@ -1,0 +1,17 @@
+{
+  "textosRef": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to make an ai writer use only approved facts",
+  "executionPlanHash": "2fb6e64aa054ac7f06a140a52470564b01e1251545677113c7088b8943627cd2",
+  "ctcHandoffHash": "6ef9fb377725b8b2575b94e50de3c425026b762f4a372a3dd9bf4f252090abda",
+  "promptHashes": {
+    "title": "2c0ab8033e595cb5e95e1ed697ac70de085203d842802cdd9c8a00d22e299212",
+    "meta": "ae6cb0eb90feb4fc60dd1446db2e7ec515dbad07f9053aa56edfd5553c71f381",
+    "lead": "8a8ec56b94642bf19667ac81e7c07d5c97aae3767649b74568fdf5c0ff50c273",
+    "answer": "58cc5dd9e619c79f7caa6799c6b049d9e362051fa9f9ccd8be894f0cb3fdc565",
+    "section-1": "403cb84e46d85b3890cfce0b3717f184a2c184afc9325c3427cef94e087cfda2",
+    "section-2": "78a701c3d788d9ec9b179806d268c24656b717bd26934ef3d85bb7665a9c0688",
+    "section-3": "cfa5eb2dc16a156b4497cac08d57e36bde23b499b3a43b1ea75ed0329395b0a6",
+    "section-4": "20220a14d750e4083b2d49c8ca1ae3654f1acf7962b39a00c09fea90d4e6a32c"
+  }
+}

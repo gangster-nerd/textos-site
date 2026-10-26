@@ -1,0 +1,22 @@
+{
+  "text": "In TextOS only an article that passes its fact-check and conforms may reach WordPress, and a pass is no longer read as proof of excellence.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS only an article that passes its fact-check and conforms may reach WordPress, and a pass is no longer read as proof of excellence.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-03",
+        "ev-pv-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

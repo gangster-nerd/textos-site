@@ -1,0 +1,77 @@
+{
+  "text": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "When no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-pv-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

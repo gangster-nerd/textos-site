@@ -15,7 +15,7 @@ import { evaluateContentPass } from "@/lib/content-surface-engine/conformance/co
 import { evaluateLifecycle } from "@/lib/content-surface-engine/lifecycle";
 import { evaluatePublicationPass } from "@/lib/content-surface-engine/publication";
 import { textosArticleReferencePolicy } from "@/lib/content-surface-engine/surface-policy";
-import { findInsightEntry } from "@/lib/content-surface-engine/site-integration";
+import { findInsightEntry, listInsightEntries } from "@/lib/content-surface-engine/site-integration";
 import { collectCitations, ledgerIssues } from "@/lib/textos-client/commit-ledger";
 import {
   loadBriefs,
@@ -133,6 +133,14 @@ describe("Commit-to-Content client — site projection", () => {
     }
   });
 
+  it("explicit related articles exist in the catalogue", () => {
+    const ids = new Set(listInsightEntries().map((e) => e.document.identity.documentId));
+    for (const a of articles) {
+      for (const id of a.brief.editorial.relatedDocumentIds ?? []) expect(ids.has(id), `${a.brief.articleId} → ${id}`).toBe(true);
+      expect(a.document.relationships.relatedContentIds).toEqual(a.brief.editorial.relatedDocumentIds ?? []);
+    }
+  });
+
   it("a recorded human review publishes the projection, never before", () => {
     const a = articles[0]!;
     const lineage = JSON.parse(readFileSync(`textos/runs/${a.brief.articleId}/lineage.json`, "utf8"));
@@ -215,5 +223,39 @@ describe("Commit-to-Content client — public repository hygiene", () => {
     };
     walk("textos");
     for (const f of files) expect(readFileSync(f, "utf8"), f).not.toMatch(/\bTEXTOS_[A-Z0-9_]{3,}/);
+  });
+});
+
+describe("Commit-to-Content client — measurement prepared, not run", () => {
+  // Closed vocabularies of TextOS's panel composition (query-intelligence/demand/panel-composition.ts
+  // and approval.ts at the writer pin), mirrored as a client would.
+  const INTENTS = ["brand_presence", "local_purchase", "comparison", "alternative", "proof_seeking", "customer_pain", "market_mapping"];
+  const STAGES = ["problem_aware", "solution_aware", "supplier_shortlist", "vendor_validation"];
+  const COMMERCIAL = ["high", "medium", "low"];
+  const TRANSITIONS = ["absent_to_cited", "cited_to_recommended", "hold_recommended"];
+
+  it("operator question proposals use TextOS's closed vocabularies", () => {
+    const p = JSON.parse(readFileSync("textos/client/operator-question-proposals.json", "utf8"));
+    expect(p.scopeAliases.length).toBeGreaterThan(0);
+    expect(p.questions.length).toBeGreaterThan(0);
+    for (const q of p.questions) {
+      expect(q.question.length && q.rationale.length && q.demandExpression.length).toBeTruthy();
+      expect(INTENTS).toContain(q.intent);
+      expect(STAGES).toContain(q.buyerStage);
+      expect(COMMERCIAL).toContain(q.commercialIntent);
+      expect(TRANSITIONS).toContain(q.targetTransition);
+    }
+  });
+
+  it("demand expressions cover every brief's target query and every proposal, and nothing is claimed measured", () => {
+    const d = JSON.parse(readFileSync("textos/client/demand-queries.json", "utf8"));
+    const p = JSON.parse(readFileSync("textos/client/operator-question-proposals.json", "utf8"));
+    expect(d.status).toBe("not_run");
+    const all = new Set<string>(d.groups.flatMap((g: { expressions: string[] }) => g.expressions));
+    for (const b of loadBriefs()) {
+      expect(all.has(b.provenance.targetQuery), b.articleId).toBe(true);
+      expect(b.provenance.demandEvidenceStatus).toBe("NOT_MEASURED");
+    }
+    for (const q of p.questions) expect(all.has(q.demandExpression), q.question).toBe(true);
   });
 });

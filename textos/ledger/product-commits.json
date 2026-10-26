@@ -2,7 +2,7 @@
   "ledgerVersion": 1,
   "productRepository": "gangster-nerd/textos-v0",
   "productRef": "308aa3276f9d0f80035478545e34f4885c0349e0",
-  "commitCount": 14,
+  "commitCount": 28,
   "commits": [
     {
       "sha": "4d37616453f5d0fed24a8054314d49651e33af6b",
@@ -106,6 +106,119 @@
       "subject": "feat(writer): guarded release tool for migration 0029",
       "citedBy": [
         "ctc-writer-fabric-one-identity"
+      ]
+    },
+    {
+      "sha": "16faee404184d31e40d907e885d3bf0867c7eea4",
+      "date": "2026-10-25T12:09:13+00:00",
+      "subject": "feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)",
+      "citedBy": [
+        "ctc-produced-is-not-validated"
+      ]
+    },
+    {
+      "sha": "01b0babf50422eaf6f3fe2c02ef979b54684ff0c",
+      "date": "2026-10-25T13:03:09+00:00",
+      "subject": "feat: stratégie éditoriale et quality gate des articles (article quality v1, lot b)",
+      "citedBy": [
+        "ctc-produced-is-not-validated"
+      ]
+    },
+    {
+      "sha": "8463e78b5bbd2a3d86f2f278598dd03ba491c944",
+      "date": "2026-10-25T13:30:39+00:00",
+      "subject": "fix: qualifier rôles, repères de profondeur et portée du quality gate (lot b)",
+      "citedBy": [
+        "ctc-produced-is-not-validated"
+      ]
+    },
+    {
+      "sha": "d1dfde75cc9632771d057ad40ff2356c1d27660d",
+      "date": "2026-10-25T13:59:10+00:00",
+      "subject": "feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "citedBy": [
+        "ctc-evidence-approved-per-article"
+      ]
+    },
+    {
+      "sha": "c137a99faffe2fa0a298d78c7fba41289f617164",
+      "date": "2026-10-25T15:56:24+00:00",
+      "subject": "fix: décisions révisables, identité vérifiée et extraits vérifiés des preuves (lot c)",
+      "citedBy": [
+        "ctc-evidence-approved-per-article"
+      ]
+    },
+    {
+      "sha": "03fbdf9820aad628e6c1e64eebe9c36a95cb9ebf",
+      "date": "2026-10-26T08:33:29+00:00",
+      "subject": "fix: provenance des extraits et transport réseau public de consultation (lot c)",
+      "citedBy": [
+        "ctc-reading-cited-sources"
+      ]
+    },
+    {
+      "sha": "e2e40e58a9c2af7dd96b7572f41534067f172c59",
+      "date": "2026-10-26T11:45:26+00:00",
+      "subject": "feat: preuves offertes sans être imposées et signaux de répétition (article quality v1, lot d)",
+      "citedBy": [
+        "ctc-evidence-approved-per-article"
+      ]
+    },
+    {
+      "sha": "683e90adcef1a05fa7c4ccb10e727ec57e751b5f",
+      "date": "2026-10-26T11:55:41+00:00",
+      "subject": "feat: dire qu'une rédaction attend au lieu d'échouer (r1)",
+      "citedBy": [
+        "ctc-produced-is-not-validated"
+      ]
+    },
+    {
+      "sha": "55e3e8b7d3c3bf0736a37bdb2155de09f42b8e6b",
+      "date": "2026-10-26T13:08:50+00:00",
+      "subject": "feat: suivre l'alias www d'une source citée lors de sa consultation",
+      "citedBy": [
+        "ctc-reading-cited-sources"
+      ]
+    },
+    {
+      "sha": "a36d47992cc90840bf0c8488ac292e7381564860",
+      "date": "2026-10-26T15:13:16+00:00",
+      "subject": "feat: e1 — sélection explicable des preuves autorisées avec reçu",
+      "citedBy": [
+        "ctc-evidence-approved-per-article"
+      ]
+    },
+    {
+      "sha": "7fb96fe8c4efdeceeaa274d3faa8e373316612d2",
+      "date": "2026-10-26T15:28:22+00:00",
+      "subject": "feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes",
+      "citedBy": [
+        "ctc-reading-cited-sources"
+      ]
+    },
+    {
+      "sha": "cf5b34af83e5fd28a09a3bf1adf0fa19b8cc641c",
+      "date": "2026-10-26T15:50:05+00:00",
+      "subject": "feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés",
+      "citedBy": [
+        "ctc-evidence-approved-per-article",
+        "ctc-reading-cited-sources"
+      ]
+    },
+    {
+      "sha": "3e6277df2a0ec2c1a97cd22c5691e24c62e6e8f4",
+      "date": "2026-10-26T18:53:19+01:00",
+      "subject": "feat(continuity): verify persisted article activation independently",
+      "citedBy": [
+        "ctc-produced-is-not-validated"
+      ]
+    },
+    {
+      "sha": "38568f2971d6f0f461724674783873003c8fd1a0",
+      "date": "2026-10-26T20:29:56+01:00",
+      "subject": "test(continuity): verify original brief contributions independently",
+      "citedBy": [
+        "ctc-produced-is-not-validated"
       ]
     },
     {

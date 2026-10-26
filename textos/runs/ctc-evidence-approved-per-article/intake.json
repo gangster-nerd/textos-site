@@ -1,0 +1,751 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "evidence-activation-lot-c-2026-10-25",
+        "sourceCommits": [
+          "d1dfde75cc9632771d057ad40ff2356c1d27660d",
+          "c137a99faffe2fa0a298d78c7fba41289f617164"
+        ]
+      },
+      {
+        "groupId": "evidence-offered-not-imposed-lot-d-2026-10-26",
+        "sourceCommits": [
+          "e2e40e58a9c2af7dd96b7572f41534067f172c59"
+        ]
+      },
+      {
+        "groupId": "evidence-selection-e1-2026-10-26",
+        "sourceCommits": [
+          "a36d47992cc90840bf0c8488ac292e7381564860"
+        ]
+      },
+      {
+        "groupId": "source-candidates-a2-2026-10-26",
+        "sourceCommits": [
+          "cf5b34af83e5fd28a09a3bf1adf0fa19b8cc641c"
+        ]
+      }
+    ],
+    "buyerQuestion": "How do I make sure an AI writer only uses facts that someone actually approved for my article?",
+    "targetQuery": "how to make an ai writer use only approved facts",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "evidence-governance",
+    "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-evidence-approved-per-article",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-ea-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:59:10+00:00",
+      "contentHash": "a84dd67b7da9a5f5c5a1028f4f54bd92eef416658eb6e6976eddc9b2d4c2942d",
+      "excerpt": "une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:59:10+00:00",
+      "contentHash": "5a09715ae9e0f7c1c1bef9907ad02d9148ed4ebf9705a1aad349416d60556c65",
+      "excerpt": "identité non humaine refusée, décision validée par les primitives existantes approveEvidenceForUse + clearEvidenceForPublicUse AVANT écriture ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:59:10+00:00",
+      "contentHash": "6a377d66dba9ba627057b00065f0da200c89039007fabb2462bf0c344ac2071f",
+      "excerpt": "seules les preuves approuvées ET utilisables (policy centrale) sont offertes aux sections de fond, sous le libellé public approuvé (projection existante) ; sources gouvernées visibles ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:59:10+00:00",
+      "contentHash": "c16a00b4d26d2374530515515a05e90c7dbdfc2bbacbae8e582995fd650b2c4f",
+      "excerpt": "décision périmée si l'extrait change ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:59:10+00:00",
+      "contentHash": "9f134fbcd35b6803f8919d1d3c3705d15f1c5ec194ec6d97e7ad1ab02d8eab22",
+      "excerpt": "table exclue du transfert de workspace (décision humaine non recopiable).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit c137a99: fix: décisions révisables, identité vérifiée et extraits vérifiés des preuves (lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T15:56:24+00:00",
+      "contentHash": "f187ffb300898a3f676d57ad17925e70a733eadc424fc4467c3662980834a54e",
+      "excerpt": "révocation qui retire l'usage à la rédaction et à la sortie WordPress",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit c137a99: fix: décisions révisables, identité vérifiée et extraits vérifiés des preuves (lot c)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T15:56:24+00:00",
+      "contentHash": "00f044cf1c13139bedad5141563f970762e88b5ef75b2b788be2130aa6d77635",
+      "excerpt": "aucune identité reçue en paramètre ; bypass opérateur et absence de session refusés ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit e2e40e5: feat: preuves offertes sans être imposées et signaux de répétition (article quality v1, lot d)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T11:45:26+00:00",
+      "contentHash": "4f690c3af99a88f45e93518c89a78f406e7d767917190d2f33f73d20e1a22c3b",
+      "excerpt": "une preuve approuvée est offerte à la réponse courte et à UNE section de fond (pertinence avec le titre et l'objectif, charge équilibrée), jamais à l'ouverture ni à la prochaine étape ; aucun type d'affirmation imposé ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit e2e40e5: feat: preuves offertes sans être imposées et signaux de répétition (article quality v1, lot d)",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T11:45:26+00:00",
+      "contentHash": "6d9ad93935b0879b9ed58afe148b6d8298d5eb6a8c819d2fd026bcbda603ff02",
+      "excerpt": "signaux non bloquants, doublons exacts toujours bloquants.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:13:16+00:00",
+      "contentHash": "17d205ad2dd1372b6c2cea436fe1b37eaa6677368ed13c651bf72c552f47329b",
+      "excerpt": "sélection d'ensemble déterministe parmi les preuves approuvées et utilisables : pertinence, couverture et spécificité guident ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:13:16+00:00",
+      "contentHash": "4363687e31a59f2d293f757cdce41a580c5d66108652987529d37c577caebe55",
+      "excerpt": "corroboration entre sources indépendantes conservée, répétition d'une même source écartée, plafonds, manque explicite.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:13:16+00:00",
+      "contentHash": "b7f031522d1fee420b35f195edb4f5d4ac02524315530eaa9f7719a2bfc30138",
+      "excerpt": "projection « pourquoi ces preuves » sans identifiant interne.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ea-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T15:50:05+00:00",
+      "contentHash": "525a435f785240baeba36c6a42edd6f5dcf58081625c5be63bf4a49869fd44bd",
+      "excerpt": "qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-evidence-approved-per-article"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that an observed source becomes usable evidence only after a person approves it for that article.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ea-01"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: in TextOS a person approves each piece of evidence for one article, under wording they validate, and can withdraw it.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ea-01",
+        "ev-ea-06"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the CMO's worry — an AI writer that treats anything it found online as a fact about their brand — and say how TextOS answered it in October 2026, without the mechanism yet.",
+      "buyerIntent": "Will the writer use facts I never checked?",
+      "allowedEvidenceIds": [
+        "ev-ea-01"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How does an AI writer end up using only facts you approved?",
+      "writingObjective": "Answer directly: a source the system observed is never presented as evidence; an identified person approves it for this article under wording they validate; only approved and usable evidence is offered to the writer.",
+      "buyerIntent": "What is the rule?",
+      "allowedEvidenceIds": [
+        "ev-ea-01",
+        "ev-ea-03"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Only a person can say yes",
+      "writingObjective": "Explain who may approve: a non-human identity is refused, the identity comes from the signed-in session and is never passed in by a caller, operator shortcuts are refused, and the approval is validated before anything is written.",
+      "buyerIntent": "Could an automated process approve on my behalf?",
+      "allowedEvidenceIds": [
+        "ev-ea-02",
+        "ev-ea-07"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "An approval belongs to one article and one wording",
+      "writingObjective": "Explain why an approval is narrow: it lapses when the quoted passage changes, it is not copied when a workspace is transferred, and withdrawing it removes the fact from writing and from the draft sent to WordPress.",
+      "buyerIntent": "What if the source changes or I change my mind?",
+      "allowedEvidenceIds": [
+        "ev-ea-04",
+        "ev-ea-05",
+        "ev-ea-06"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Offered to the writer, never imposed",
+      "writingObjective": "Explain how approved evidence is used: offered to the short answer and to one body section that it fits, never to the opening or the next step, with no claim type forced on the writer; repeated wording is flagged and exact duplicates blocked.",
+      "buyerIntent": "Will one approved fact be repeated everywhere?",
+      "allowedEvidenceIds": [
+        "ev-ea-03",
+        "ev-ea-08",
+        "ev-ea-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Choosing among approved facts, and saying why",
+      "writingObjective": "Explain the selection among approved evidence: deterministic, guided by relevance, coverage and specificity, keeping corroboration between independent sources, setting aside repetition of one source, stating gaps, and showing the reader why these facts were used without internal identifiers. End with what a candidate passage is: proposed, never approved or offered by itself.",
+      "buyerIntent": "How are approved facts chosen?",
+      "allowedEvidenceIds": [
+        "ev-ea-10",
+        "ev-ea-11",
+        "ev-ea-12",
+        "ev-ea-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    }
+  ]
+}

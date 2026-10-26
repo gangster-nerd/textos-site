@@ -1,0 +1,195 @@
+{
+  "slotProvenance": [
+    {
+      "slotId": "title",
+      "role": "title",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS no longer presents a produced article as a validated one",
+      "statementIds": [
+        "stmt:5:title:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-pv-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-pv-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "meta",
+      "role": "meta_description",
+      "headingLevel": null,
+      "heading": null,
+      "text": "In TextOS only an article that passes its fact-check and conforms may reach WordPress, and a pass is no longer read as proof of excellence.",
+      "statementIds": [
+        "stmt:4:meta:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-pv-03",
+        "ev-pv-08"
+      ],
+      "usableEvidenceIds": [
+        "ev-pv-03",
+        "ev-pv-08"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "lead",
+      "role": "lead",
+      "headingLevel": null,
+      "heading": null,
+      "text": "A content dashboard that says an article is ready invites you to stop reading. That label is only worth something if it means the article was checked, and not simply that a model finished writing. TextOS no longer presents an article as validated just because it was technically produced. Here is what changed, and what a passing result still does not tell you.",
+      "statementIds": [
+        "stmt:4:lead:2:s1",
+        "stmt:4:lead:2:s2",
+        "stmt:4:lead:2:s3",
+        "stmt:4:lead:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-pv-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-pv-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "answer",
+      "role": "answer",
+      "headingLevel": 2,
+      "heading": "How can you tell an AI article was really checked?",
+      "text": "The fact-check verdict produced while writing is no longer rewritten into a pass. When TextOS raises a truth alert, a person can read and correct the article, but no WordPress draft can be prepared from it. A single rule decides whether a TextOS article may go to WordPress: the fact-check passes and the article conforms to the marketing review policy, and anything else stays closed. A label on the screen is therefore the end of a check, not just the end of a draft.",
+      "statementIds": [
+        "stmt:6:answer:2:s1",
+        "stmt:6:answer:2:s2",
+        "stmt:6:answer:2:s3",
+        "stmt:6:answer:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-pv-01",
+        "ev-pv-02",
+        "ev-pv-03"
+      ],
+      "usableEvidenceIds": [
+        "ev-pv-01",
+        "ev-pv-02",
+        "ev-pv-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-1",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "The label on the screen tells the truth",
+      "text": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it. Ask any AI writing vendor whether its status labels are computed from stored results or written into the interface.",
+      "statementIds": [
+        "stmt:9:section-1:2:s1",
+        "stmt:9:section-1:2:s2",
+        "stmt:9:section-1:2:s3",
+        "stmt:9:section-1:2:s4",
+        "stmt:9:section-1:2:s5",
+        "stmt:9:section-1:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-pv-04",
+        "ev-pv-05"
+      ],
+      "usableEvidenceIds": [
+        "ev-pv-04",
+        "ev-pv-05"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-2",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "One rule for what may reach your website",
+      "text": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick. Ask whether the rule that lets content reach your website is written in one place or spread across screens.",
+      "statementIds": [
+        "stmt:9:section-2:2:s1",
+        "stmt:9:section-2:2:s2",
+        "stmt:9:section-2:2:s3",
+        "stmt:9:section-2:2:s4",
+        "stmt:9:section-2:2:s5"
+      ],
+      "evidenceIdsUsed": [
+        "ev-pv-07",
+        "ev-pv-03",
+        "ev-pv-06"
+      ],
+      "usableEvidenceIds": [
+        "ev-pv-03",
+        "ev-pv-06",
+        "ev-pv-07"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-3",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What a pass does not prove",
+      "text": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.",
+      "statementIds": [
+        "stmt:9:section-3:2:s1",
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:s3",
+        "stmt:9:section-3:2:s4",
+        "stmt:9:section-3:2:s5"
+      ],
+      "evidenceIdsUsed": [
+        "ev-pv-08",
+        "ev-pv-09",
+        "ev-pv-13"
+      ],
+      "usableEvidenceIds": [
+        "ev-pv-08",
+        "ev-pv-09",
+        "ev-pv-13"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-4",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Checking that nothing was lost on the way",
+      "text": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
+      "statementIds": [
+        "stmt:9:section-4:2:s1",
+        "stmt:9:section-4:2:s2",
+        "stmt:9:section-4:2:s3",
+        "stmt:9:section-4:2:s4",
+        "stmt:9:section-4:2:s5",
+        "stmt:9:section-4:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-pv-10",
+        "ev-pv-11",
+        "ev-pv-12"
+      ],
+      "usableEvidenceIds": [
+        "ev-pv-10",
+        "ev-pv-11",
+        "ev-pv-12"
+      ],
+      "excludedEvidence": []
+    }
+  ],
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "f89ac92f7ffff6bf3df4b3b1d9bf12ce2a5e30396fc9ad2f8093f19b0ff05acd",
+  "truthCheck": {
+    "verdict": "pass",
+    "contradictions": []
+  },
+  "planId": "how to know if an ai written article was checked before it is published",
+  "planHash": "74ac9eceaf6331f714882b51164c3acb843a27089f996f5c73f347038c858c5e",
+  "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+}

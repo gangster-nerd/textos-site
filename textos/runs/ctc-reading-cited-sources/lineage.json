@@ -1,0 +1,196 @@
+{
+  "slotProvenance": [
+    {
+      "slotId": "title",
+      "role": "title",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS reads cited sources in a separate, bounded step, robots.txt first",
+      "statementIds": [
+        "stmt:5:title:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "meta",
+      "role": "meta_description",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, and only proposes passages for a person to qualify.",
+      "statementIds": [
+        "stmt:4:meta:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-01",
+        "ev-rs-02",
+        "ev-rs-05"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02",
+        "ev-rs-05"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "lead",
+      "role": "lead",
+      "headingLevel": null,
+      "heading": null,
+      "text": "To write about your brand with sources, a tool has to read other people's pages. How it behaves on those pages says a lot about how it will behave with yours. TextOS treats reading a cited source as its own action, kept out of writing and run within a budget of requests and time. This note sets out the rules of that step, one by one.",
+      "statementIds": [
+        "stmt:4:lead:2:s1",
+        "stmt:4:lead:2:s2",
+        "stmt:4:lead:2:s3",
+        "stmt:4:lead:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-01"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "answer",
+      "role": "answer",
+      "headingLevel": 2,
+      "heading": "What should a content tool do when it reads the pages it cites?",
+      "text": "In TextOS, sources are read in a dedicated step that does not run inside writing, with a budget, one request at a time per site, and the option to resume or cancel. TextOS reads robots.txt first, and when a page cannot be read, the reason is recorded in a log that is only ever appended to. Nothing read this way turns into a statement by itself; it becomes material for a person to look at. That is the whole difference between reading the web and repeating it.",
+      "statementIds": [
+        "stmt:6:answer:2:s1",
+        "stmt:6:answer:2:s2",
+        "stmt:6:answer:2:s3",
+        "stmt:6:answer:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-1",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Reading is its own step, with a budget",
+      "text": "The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief. It can be resumed after an interruption or cancelled. A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.\n\nThe date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read. Ask a vendor how many requests its tool can send to one site, and whether you can stop a reading job halfway.",
+      "statementIds": [
+        "stmt:9:section-1:2:s1",
+        "stmt:9:section-1:2:s2",
+        "stmt:9:section-1:2:s3",
+        "stmt:9:section-1:2:s4",
+        "stmt:9:section-1:2:s5",
+        "stmt:9:section-1:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-01",
+        "ev-rs-03"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-01",
+        "ev-rs-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-2",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Asking first, and saying why a page was not read",
+      "text": "Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault. A refusal is a result to report, not an obstacle to get around.\n\nThe crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent. If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.",
+      "statementIds": [
+        "stmt:9:section-2:2:s1",
+        "stmt:9:section-2:2:s2",
+        "stmt:9:section-2:2:s3",
+        "stmt:9:section-2:2:s4",
+        "stmt:9:section-2:2:s5"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-02",
+        "ev-rs-10"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-02",
+        "ev-rs-10"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-3",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Staying on the public web",
+      "text": "When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere. That closes a known trick in which a public name is made to point at an internal system after the check.\n\nFollowing a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin. Ask any vendor whether its tool can be pointed at internal addresses, and how it knows.",
+      "statementIds": [
+        "stmt:9:section-3:2:s1",
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:s3",
+        "stmt:9:section-3:2:s4",
+        "stmt:9:section-3:2:s5",
+        "stmt:9:section-3:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-06",
+        "ev-rs-08",
+        "ev-rs-09"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-06",
+        "ev-rs-08",
+        "ev-rs-09"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-4",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "A passage proposed is not a fact accepted",
+      "text": "Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks. When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.\n\nNone of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person. Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.",
+      "statementIds": [
+        "stmt:9:section-4:2:s1",
+        "stmt:9:section-4:2:s2",
+        "stmt:9:section-4:2:s3",
+        "stmt:9:section-4:2:s4",
+        "stmt:9:section-4:2:s5",
+        "stmt:9:section-4:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-04",
+        "ev-rs-07",
+        "ev-rs-05"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-04",
+        "ev-rs-05",
+        "ev-rs-07"
+      ],
+      "excludedEvidence": []
+    }
+  ],
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "83bbb63439bfb844c94023a6201a3d46a928fbe2e3e00cec0ccb2e941d0dc80c",
+  "truthCheck": {
+    "verdict": "pass",
+    "contradictions": []
+  },
+  "planId": "what an ai content tool should do when it reads cited sources",
+  "planHash": "1422f3177b9a4a8318872f7f3af1c7c67d2f64d52d01b655bbbb73c793514e27",
+  "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+}
