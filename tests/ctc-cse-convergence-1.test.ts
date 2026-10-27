@@ -112,8 +112,16 @@ describe("CTC-CSE-CONVERGENCE-1 — corpus × CSE pipeline", () => {
     // slot somewhere in the body (contextual placement). This prevents the "final-only"
     // regression — a CTA that only appears at the foot would be a regression to the
     // original PR #19 shape.
+    //
+    // PR #22 (CMO-CONVERSION-SURFACE-2) : la surface gérée rend désormais un emplacement `header`
+    // en tête d'article. authority-intelligence-not-ai-seo a reçu l'intention MEASURE_BRAND dans
+    // PR #22 sans `cta_slot` dans son corps (le corps ne se retouche pas à la main) : elle porte
+    // header + final, jamais final seul — asserté sur le HTML par a2r-mutation-tests.test.ts.
+    // Toute autre absence reste une régression.
+    const HEADER_AND_FINAL_ONLY = new Set(["authority-intelligence-not-ai-seo"]);
     for (const doc of corpus) {
       if (!doc.conversion.ctaIntentId) continue;
+      if (HEADER_AND_FINAL_ONLY.has(doc.identity.slug)) continue;
       const hasPrimary = doc.body.some(
         (b: ContentDocument["body"][number]) => b.slot === "primary-cta",
       );
