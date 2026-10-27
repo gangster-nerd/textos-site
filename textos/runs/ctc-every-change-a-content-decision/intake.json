@@ -372,6 +372,161 @@
         "locale": "en-US",
         "channel": "controlled_preview"
       }
+    },
+    {
+      "id": "ev-ci-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4d37616, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:30:59+02:00",
+      "contentHash": "2c454ed3d13d1557c206e589c0a8fb97c3bb6b3eb5c28bdb6ea00222963d863d",
+      "excerpt": "capacité livrée, jamais déclarée",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4d37616, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:30:59+02:00",
+      "contentHash": "f366b8a59f5314d723ab69136e2be202e02d1d1a5117a17b1926d2dc2a605e35",
+      "excerpt": "Le contrôle porte sur push ET pull_request : l'historique ne contient aucun commit de fusion — tout arrive par push direct sur main",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1ad90d0, 8 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-08T10:32:53+02:00",
+      "contentHash": "0e24394b620de4d5476848490937c1b9421689978960e9673814ca1724714551",
+      "excerpt": "chaque chemin non couvert est expliqué par EXACTEMENT une disposition — zéro est le silence qu'on ferme, plus d'une est une ambiguïté.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1ad90d0, 8 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-08T10:32:53+02:00",
+      "contentHash": "8a813af5aad2d14df05b535ae3d5908e695c88ef93921e19031b6b217b6b6acb",
+      "excerpt": "Une dette de couverture bloque un CANDIDAT, pas la CI",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-14",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 308aa32",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-27T00:02:23+01:00",
+      "contentHash": "199e8ed9b5b1974a31f40ee06df2ade65c98af5c983dfdb23a271b2814a38968",
+      "excerpt": "Aucun outil ne lit le code pour deviner qu'un changement mérite un article.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
     }
   ],
   "slots": [
@@ -516,7 +671,8 @@
       "allowedEvidenceIds": [
         "ev-ci-03",
         "ev-ci-04",
-        "ev-ci-05"
+        "ev-ci-05",
+        "ev-ci-09"
       ],
       "requiredClaimTypes": [
         "content_governance"
@@ -529,6 +685,27 @@
       "evidenceRequired": true
     },
     {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Content and coverage are two questions",
+      "writingObjective": "Develop: Content and coverage are two questions. One mechanism per paragraph, each factual sentence grounded in the evidence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-12",
+        "ev-ci-13",
+        "ev-ci-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 400,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
       "id": "section-3",
       "role": "section",
       "blockKind": "multi_paragraph",
@@ -538,7 +715,8 @@
       "buyerIntent": "What does the contract not do?",
       "allowedEvidenceIds": [
         "ev-ci-06",
-        "ev-ci-07"
+        "ev-ci-07",
+        "ev-ci-11"
       ],
       "requiredClaimTypes": [
         "content_governance"

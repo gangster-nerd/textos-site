@@ -7,12 +7,12 @@
   },
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "articleReviewMethodVersion": "ctc-article-review@0.1",
-  "executionPlanHash": "529adc47384bed62378f563e8757ec0e9e3340570043e2d7a04eee8bdad94f46",
-  "ctcHandoffHash": "4292b6500723efea497b8b036491582081efd24923150dd80bf6badfb9bb3861",
+  "executionPlanHash": "7e9102fb678a3d86cf099a5fb5f02dd2682b45d6e8ce26e4e0fcdf33813fb475",
+  "ctcHandoffHash": "2b8bb1d0dc8d8ea0e2403ced93210ba403f968a374e0c624397923365c097561",
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "a11abfb4ebb59aa6dc4056a82e52110b689d1bdfc5b29ffecc06e32f294a362b",
+  "structuredContentHash": "c5de1e53f3c2f962d30165a38769b2f982f8a530110fd5feb94589295d21e6f4",
   "truthCheckVerdict": "pass",
   "cmoV2": {
     "version": "article-cmo-v2@1",
@@ -33,7 +33,8 @@
     "section-1": "84e8e07acb37d8220de3f1d8ca2be7845693883efc5b55076114f377aeb6219e",
     "writer-fails-caption": "1f9a8e6bed8bdc1b76026d7919414c0bd9e876046e1799ec18990f238bff7ff2",
     "section-2": "7d0691fef8aa1d4d155b6693016f59ffcb60396d159815e241284eea208b5392",
-    "section-3": "d8dd0afcda1140840dd9e5081b0cf93fa6c7cc7f60b908389e9ba5236619fb06",
+    "section-3": "d7231da9e3c9afe1d026384fd4dc7a53d7d5cc65d89240dca8a4dad6800e4e0a",
+    "section-4": "73ecb228e88c5e668b553e7360c07ead48ed28ad417d2f387256cf85c97229ce",
     "verify": "250274bac24f09386122b8e1ec586a93b66161bf9c7d74fa1f7d890c0703c758",
     "editorial-next-step": "1e12f64ead77d0122067707e96c8199e7290afe29f1da8aa36ab1a16e36b7c59"
   },
@@ -45,15 +46,16 @@
     "section-1": "d530979195002642760c91d21dadb05f3578fef6ab1c58f63cb48fdbfd335edd",
     "writer-fails-caption": "583ecb3f8de1754218abed22e832e421e821f3269dc9c4d71e6432f71151eaeb",
     "section-2": "1eb25cd059617dd2b6f89b3f51ff45cd98b94a3e7e0c48eead2eccebbbb11722",
-    "section-3": "d64fbe3aafce44a2bc4c0e6b34719ef5c7333d43517866edae14f8558583cf2e",
-    "verify": "e63b2c710aecb397fae00896ab1097d12eb6f300e1e7445a988c91bac5e0e31c",
+    "section-3": "cdc4f77f9f0d71415800d878935d044770c8547dd2eaf5c4657dd33107340700",
+    "section-4": "a3b0d807f584c3c85054292bca25f4d664651ac5f89d16b15cd401c1dcee3534",
+    "verify": "172b5818ed7392b3ca64e917c40ee4bbb6bf531b777d80255ecb95b139af0543",
     "editorial-next-step": "e7388856e084d3b5c06c07b348ee7a5c0102559a14f79226cf9a2a92c1726f9b"
   },
   "figureHashes": {
     "writer-fails": "66262073c3a6b8056c7dd77aa674ef31332f550de35607a2709e3c640d95df0d"
   },
-  "contentDocumentSha256": "a2cf937ea80ac255b8308f4412b415e459be7bb9c0859064c2411683b278211e",
-  "lineageSha256": "c5b4cabe5cd69b3fc6acbc0d343dc67891658f569c13d25eeed1563c8c27faff",
-  "resolvedSurfaceSha256": "12e89ba4041de492ffdeb516e8c75470ef922af98ad686802cf3761431894f2f",
-  "articleReviewSha256": "a15d62b5480301a271d1efa64c18ff44afc2442c045f078f5afc6613a18afb5b"
+  "contentDocumentSha256": "a89ea77eda89cdf71ff5d764aef90948ef62262991152d3b880ecae83d448301",
+  "lineageSha256": "f33a589f1ffa621b43842da30cc860697bd1dd2d7223250eb9b9fc2696e1f514",
+  "resolvedSurfaceSha256": "d61fa685400848a24386ec5d3acfa7b43b22147333de4f3fe481b6d483d90e66",
+  "articleReviewSha256": "d94e3844d319f566e41c43a15e3d283e619f36c5974e8a816c8096b851b3e286"
 }

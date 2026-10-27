@@ -1,5 +1,5 @@
 {
-  "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.",
+  "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nIn TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests.",
   "statements": [
     {
       "id": "s1",
@@ -27,6 +27,22 @@
       },
       "claimTypes": [],
       "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "x1",
+      "text": "In TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-cr-21"
+      ],
       "evidenceStrengthRequired": "descriptive"
     }
   ]

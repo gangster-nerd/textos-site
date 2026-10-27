@@ -9,14 +9,12 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Target query: how to make ai agent api credentials expire and stop them in an emergency (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
-- CTC editorial contract (ctc-editorial-quality@0.1): pass (8 finding(s))
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (6 finding(s))
 - Sources shown: 3 (withheld: 0); figures: access-that-ends 17b913ea98d9
 - Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
 ## CTC editorial-contract findings
 
-- `body_below_depth_guide` (signal): Corps de 2287 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.
-- `section_below_depth_guide` (signal) on `section-1`: Section « Replacing a key without a gap » plus courte que son repère : développement à juger en revue.
 - `section_below_depth_guide` (signal) on `section-2`: Section « Three switches for a bad day » plus courte que son repère : développement à juger en revue.
 - `section_below_depth_guide` (signal) on `section-3`: Section « What older keys keep doing » plus courte que son repère : développement à juger en revue.
 - `section_below_depth_guide` (signal) on `verify`: Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.
@@ -74,6 +72,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 
 > Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.
 > Revoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.
+> A single key can also be revoked explicitly in TextOS. When a key is issued or replaced, the output shows its exact end date next to the key that is displayed only that one time.
 
 - **factual** — Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction.
   - `ev-cr-02` (TextOS product commit 6fe385e, 26 Sep 2026): «add atomic credential rotation: old active credential is revoked and the replacement hash is inserted in one DB transaction;»
@@ -83,6 +82,10 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
   - `ev-cr-03` (TextOS product commit 6fe385e, 26 Sep 2026): «add principal revoke that also revokes every active credential;»
 - **factual** — Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.
   - `ev-cr-07` (TextOS product commit 6fe385e, 26 Sep 2026): «add api:v1:identity CLI so emergency operations never require manual SQL.»
+- **factual** — A single key can also be revoked explicitly in TextOS.
+  - `ev-cr-19` (TextOS product commit 6fe385e, 26 Sep 2026): «add explicit credential revoke;»
+- **factual** — When a key is issued or replaced, the output shows its exact end date next to the key that is displayed only that one time.
+  - `ev-cr-20` (TextOS product commit c9ccfe9, 26 Sep 2026): «output includes the exact expiresAt persisted alongside the one-time raw token.»
 
 ### access-that-ends-caption (caption)
 
@@ -112,19 +115,40 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 ### section-3 (section) — What older keys keep doing
 
 > Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.
+> In TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests.
 
 - **factual** — Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage.
   - `ev-cr-11` (TextOS product commit c9ccfe9, 26 Sep 2026): «remain readable until deliberately rotated, avoiding an unannounced outage;»
 - **editorial** — That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.
+- **factual** — In TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests.
+  - `ev-cr-21` (TextOS product commit c9ccfe9, 26 Sep 2026): «Docs/tests cover default, bounds and null semantics.»
+
+### section-4 (section) — When the queue fills up or an account changes
+
+> In TextOS, a queued job passes a second admission check before it starts running. When the running limits are reached, the job stays in the queue and is marked as deferred. A backlog of queued work in TextOS cannot burst past those limits.
+> At the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace. An account removed after its work was queued therefore cannot start that work in TextOS. Access is judged when the work runs, not only when it was submitted.
+
+- **factual** — In TextOS, a queued job passes a second admission check before it starts running.
+  - `ev-cr-16` (TextOS product commit 17523af, 26 Sep 2026): «queued Jobs now pass a second authoritative execution-admission gate before queued -> running;»
+- **factual** — When the running limits are reached, the job stays in the queue and is marked as deferred.
+  - `ev-cr-17` (TextOS product commit 17523af, 26 Sep 2026): «capacity exhaustion leaves the Job queued and returns disposition=deferred.»
+- **factual** — A backlog of queued work in TextOS cannot burst past those limits.
+  - `ev-cr-22` (TextOS product commit 17523af, 26 Sep 2026): «Backlog cannot burst past running limits»
+- **factual** — At the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace.
+  - `ev-cr-18` (TextOS product commit 17523af, 26 Sep 2026): «still be active, still belong to the expected Organization and still hold the workspace binding in that statement.»
+- **factual** — An account removed after its work was queued therefore cannot start that work in TextOS.
+  - `ev-cr-18` (TextOS product commit 17523af, 26 Sep 2026): «still be active, still belong to the expected Organization and still hold the workspace binding in that statement.»
+- **editorial** — Access is judged when the work runs, not only when it was submitted.
 
 ### verify (section) — What to ask any AI writing vendor
 
-> When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand.
+> When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand. Ask whether a job that waited in a queue is checked again before it runs.
 
 - **recommendation** — When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.
 - **recommendation** — Ask whether switching the API off also stops jobs that are already queued.
 - **recommendation** — Ask whether a replacement key can be displayed a second time, and where it is kept.
 - **recommendation** — Ask whether emergency steps can be taken without editing the database by hand.
+- **recommendation** — Ask whether a job that waited in a queue is checked again before it runs.
 
 ### editorial-next-step (section) — Where to go next
 

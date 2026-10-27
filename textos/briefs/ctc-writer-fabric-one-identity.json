@@ -177,6 +177,98 @@
       ],
       "maxSupportStrength": "descriptive",
       "limitations": []
+    },
+    {
+      "id": "ev-wf-10",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "append-only writer_attempts (trigger)."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-11",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "a provider exception now releases the slot claim under fencing."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-12",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "additive writerChain (static, no network, no secret values);"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "certification script refuses any editorial result other than article_ready."
+      },
+      "claimTypes": [
+        "writer_resilience",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-14",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4c2010b9d684fcf5ad39330a77feb7fc488c463a",
+        "quote": "Nothing is applied by this commit;"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-15",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4c2010b9d684fcf5ad39330a77feb7fc488c463a",
+        "quote": "unpinned target refused; already-migrated / lagging target refused."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-16",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "atomic admission with a fencing token,"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
     }
   ],
   "slots": [
@@ -342,7 +434,10 @@
       "allowedEvidenceIds": [
         "ev-wf-07",
         "ev-wf-08",
-        "ev-wf-09"
+        "ev-wf-09",
+        "ev-wf-13",
+        "ev-wf-15",
+        "ev-wf-14"
       ],
       "requiredClaimTypes": [
         "writer_resilience"
@@ -351,6 +446,28 @@
         "availability"
       ],
       "minChars": 280,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What each attempt leaves behind",
+      "writingObjective": "Develop: What each attempt leaves behind. One mechanism per paragraph, each factual sentence grounded in the evidence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-wf-10",
+        "ev-wf-11",
+        "ev-wf-12",
+        "ev-wf-16"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 400,
       "maxChars": 1100,
       "evidenceRequired": true
     },

@@ -12,7 +12,7 @@
     "passed": true,
     "issues": [],
     "observed": {
-      "visibleBlockCount": 16,
+      "visibleBlockCount": 18,
       "informationObjectCount": 2,
       "informationObjectCounts": {
         "steps": 1,
@@ -54,6 +54,7 @@
         "section-1:heading",
         "section-2:heading",
         "section-3:heading",
+        "section-4:heading",
         "verify:heading",
         "editorial-next-step:heading",
         "sources:heading"
@@ -136,14 +137,6 @@
     "verdict": "pass",
     "findings": [
       {
-        "code": "body_below_depth_guide",
-        "subject": null,
-        "message": "Corps de 2086 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.",
-        "measured": 2086,
-        "expected": 2400,
-        "severity": "signal"
-      },
-      {
         "code": "section_below_depth_guide",
         "subject": "section-1",
         "message": "Section « One writer per article, never a patchwork » plus courte que son repère : développement à juger en revue.",
@@ -161,17 +154,9 @@
       },
       {
         "code": "section_below_depth_guide",
-        "subject": "section-3",
-        "message": "Section « Switched on with an exit and a human hand » plus courte que son repère : développement à juger en revue.",
-        "measured": 292,
-        "expected": 500,
-        "severity": "signal"
-      },
-      {
-        "code": "section_below_depth_guide",
         "subject": "verify",
         "message": "Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.",
-        "measured": 357,
+        "measured": 444,
         "expected": 500,
         "severity": "signal"
       },
@@ -209,13 +194,13 @@
       }
     ],
     "measures": {
-      "bodyChars": 2086,
-      "sectionCount": 5,
-      "groundedSectionCount": 3,
+      "bodyChars": 3042,
+      "sectionCount": 6,
+      "groundedSectionCount": 4,
       "answerCount": 1,
       "languageUnits": {
-        "unknown": 5,
-        "en": 25
+        "unknown": 6,
+        "en": 35
       }
     },
     "depthGuide": {

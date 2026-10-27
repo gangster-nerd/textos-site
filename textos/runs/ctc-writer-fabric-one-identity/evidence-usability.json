@@ -43,5 +43,40 @@
     "evidenceId": "ev-wf-09",
     "usable": true,
     "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-wf-10",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-wf-11",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-wf-12",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-wf-13",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-wf-14",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-wf-15",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-wf-16",
+    "usable": true,
+    "reason": "utilisable"
   }
 ]

@@ -1,0 +1,98 @@
+{
+  "text": "In TextOS, a queued job passes a second admission check before it starts running. When the running limits are reached, the job stays in the queue and is marked as deferred. A backlog of queued work in TextOS cannot burst past those limits.\n\nAt the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace. An account removed after its work was queued therefore cannot start that work in TextOS. Access is judged when the work runs, not only when it was submitted.",
+  "statements": [
+    {
+      "id": "s11",
+      "text": "In TextOS, a queued job passes a second admission check before it starts running.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-cr-16"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s12",
+      "text": "When the running limits are reached, the job stays in the queue and is marked as deferred.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-cr-17"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s13",
+      "text": "A backlog of queued work in TextOS cannot burst past those limits.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-cr-22"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s21",
+      "text": "At the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle",
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-cr-18"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s22",
+      "text": "An account removed after its work was queued therefore cannot start that work in TextOS.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-cr-18"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s23",
+      "text": "Access is judged when the work runs, not only when it was submitted.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

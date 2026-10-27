@@ -1,5 +1,5 @@
 {
-  "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.",
+  "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.\n\nThe check runs on direct pushes as well as on pull requests, since changes reached the TextOS product by direct push.",
   "statements": [
     {
       "id": "s1",
@@ -30,6 +30,22 @@
       ],
       "evidenceIds": [
         "ev-ci-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "x1",
+      "text": "The check runs on direct pushes as well as on pull requests, since changes reached the TextOS product by direct push.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-11"
       ],
       "evidenceStrengthRequired": "descriptive"
     }

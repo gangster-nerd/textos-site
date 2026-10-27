@@ -2,8 +2,8 @@
   "textosRef": "101292687b5081a06a611d3853a956d3552e0643",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "what happens to an ai written article when the model provider fails",
-  "executionPlanHash": "529adc47384bed62378f563e8757ec0e9e3340570043e2d7a04eee8bdad94f46",
-  "ctcHandoffHash": "4292b6500723efea497b8b036491582081efd24923150dd80bf6badfb9bb3861",
+  "executionPlanHash": "7e9102fb678a3d86cf099a5fb5f02dd2682b45d6e8ce26e4e0fcdf33813fb475",
+  "ctcHandoffHash": "2b8bb1d0dc8d8ea0e2403ced93210ba403f968a374e0c624397923365c097561",
   "promptHashes": {
     "title": "e5be6c1d11d200aa744fdc86efdefeef8dbc31bf4ddc9287058b50463a50d722",
     "meta": "94a87b2feaeeffb756ce335985cc9858a98fbe03cac48b9ac0df75dc442a4710",
@@ -12,7 +12,8 @@
     "section-1": "84e8e07acb37d8220de3f1d8ca2be7845693883efc5b55076114f377aeb6219e",
     "writer-fails-caption": "1f9a8e6bed8bdc1b76026d7919414c0bd9e876046e1799ec18990f238bff7ff2",
     "section-2": "7d0691fef8aa1d4d155b6693016f59ffcb60396d159815e241284eea208b5392",
-    "section-3": "d8dd0afcda1140840dd9e5081b0cf93fa6c7cc7f60b908389e9ba5236619fb06",
+    "section-3": "d7231da9e3c9afe1d026384fd4dc7a53d7d5cc65d89240dca8a4dad6800e4e0a",
+    "section-4": "73ecb228e88c5e668b553e7360c07ead48ed28ad417d2f387256cf85c97229ce",
     "verify": "250274bac24f09386122b8e1ec586a93b66161bf9c7d74fa1f7d890c0703c758",
     "editorial-next-step": "1e12f64ead77d0122067707e96c8199e7290afe29f1da8aa36ab1a16e36b7c59"
   }

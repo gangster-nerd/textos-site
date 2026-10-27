@@ -1,6 +1,6 @@
 {
   "planId": "how to decide which product changes deserve public content",
-  "planHash": "8012f63f37f76ebfe908893283d2a0b8544eff28a4754700f7e6a80474445fa8",
+  "planHash": "bac0370fe9a1b65f1561277d9f5899b08654f5fdd3862e2e06b89ff918f8ee32",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -128,22 +128,50 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "The quiet failure it closes",
-      "text": "The quietest failure TextOS found was one where nothing fails. The evidence cited for a capability still exists, yet the public description keeps telling a truth about a product that has changed underneath it.\n\nChanging a file that TextOS cites as evidence, without saying anything about the related capability, is now refused, and accepting that gap means signing a sentence about it. The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability.",
+      "text": "The quietest failure TextOS found was one where nothing fails. The evidence cited for a capability still exists, yet the public description keeps telling a truth about a product that has changed underneath it.\n\nChanging a file that TextOS cites as evidence, without saying anything about the related capability, is now refused, and accepting that gap means signing a sentence about it. The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability.\n\nTextOS found that gap next to a plainer one: a capability shipped but never declared.",
       "statementIds": [
         "stmt:9:section-2:2:s1",
         "stmt:9:section-2:2:s2",
         "stmt:9:section-2:2:s3",
-        "stmt:9:section-2:2:s4"
+        "stmt:9:section-2:2:s4",
+        "stmt:9:section-2:2:x1"
       ],
       "evidenceIdsUsed": [
         "ev-ci-03",
         "ev-ci-04",
-        "ev-ci-05"
+        "ev-ci-05",
+        "ev-ci-09"
       ],
       "usableEvidenceIds": [
         "ev-ci-03",
         "ev-ci-04",
-        "ev-ci-05"
+        "ev-ci-05",
+        "ev-ci-09"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-4",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Content and coverage are two questions",
+      "text": "No tool at TextOS reads the code to guess that a change deserves an article. Whether a change deserves an article and whether it belongs to the described product are separate questions, answered separately.\n\nEach changed path that no declared evidence covers has to be explained by exactly one disposition in TextOS: none would be the silence the rule closes, and two or more would be ambiguous. A coverage debt does not turn the build red, but it stops a content candidate from becoming ready. Writing about a part of the product before it is described would put the article ahead of the facts.",
+      "statementIds": [
+        "stmt:9:section-4:3:s11",
+        "stmt:9:section-4:3:s12",
+        "stmt:9:section-4:3:s21",
+        "stmt:9:section-4:3:s22",
+        "stmt:9:section-4:3:s23"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ci-14",
+        "ev-ci-12",
+        "ev-ci-13"
+      ],
+      "usableEvidenceIds": [
+        "ev-ci-12",
+        "ev-ci-13",
+        "ev-ci-14"
       ],
       "excludedEvidence": []
     },
@@ -152,18 +180,21 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "Govern first, write second",
-      "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.",
+      "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.\n\nThe check runs on direct pushes as well as on pull requests, since changes reached the TextOS product by direct push.",
       "statementIds": [
         "stmt:9:section-3:2:s1",
-        "stmt:9:section-3:2:s2"
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:x1"
       ],
       "evidenceIdsUsed": [
         "ev-ci-06",
-        "ev-ci-07"
+        "ev-ci-07",
+        "ev-ci-11"
       ],
       "usableEvidenceIds": [
         "ev-ci-06",
-        "ev-ci-07"
+        "ev-ci-07",
+        "ev-ci-11"
       ],
       "excludedEvidence": []
     },
@@ -172,12 +203,13 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "What to ask any AI writing vendor",
-      "text": "If your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on.",
+      "text": "If your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on. Ask whether the check that guards your public pages also runs on changes that skip review.",
       "statementIds": [
         "stmt:6:verify:2:s1",
         "stmt:6:verify:2:s2",
         "stmt:6:verify:2:s3",
-        "stmt:6:verify:2:s4"
+        "stmt:6:verify:2:s4",
+        "stmt:6:verify:2:s5"
       ],
       "evidenceIdsUsed": [],
       "usableEvidenceIds": [],
@@ -201,7 +233,7 @@
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "a1345a8e9d4e7e9cbe378b2501703f5c71a9ca7c29df55408d50a94aca856ee1",
+  "structuredContentHash": "ca9d555876f24b0a039d0ce4d63ba37721306a335e42d8fda1801126da05f393",
   "truthCheck": {
     "verdict": "pass",
     "contradictions": []

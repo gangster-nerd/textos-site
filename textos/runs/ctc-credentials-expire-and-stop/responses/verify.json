@@ -1,5 +1,5 @@
 {
-  "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand.",
+  "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand. Ask whether a job that waited in a queue is checked again before it runs.",
   "statements": [
     {
       "id": "s1",
@@ -40,6 +40,18 @@
     {
       "id": "s4",
       "text": "Ask whether emergency steps can be taken without editing the database by hand.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask whether a job that waited in a queue is checked again before it runs.",
       "kind": "recommendation",
       "subject": {
         "kind": "general_domain",

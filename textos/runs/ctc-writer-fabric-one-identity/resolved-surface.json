@@ -119,13 +119,40 @@
     {
       "block": {
         "data": {
-          "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live."
+          "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.\n\nThe certification script refuses any editorial result other than an article ready for review. The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind. The commit that added that tool applied nothing by itself."
         },
         "id": "section-3:body",
         "kind": "paragraph"
       },
       "hiddenReason": null,
       "order": 8,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What each attempt leaves behind"
+        },
+        "id": "section-4:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 9,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Each writing run in TextOS is admitted in one atomic step and carries a fencing token. A fencing token is a counter that lets a system ignore a worker whose turn has already passed. Each attempt is written to a log in TextOS that only accepts additions.\n\nIf a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule. The readiness view lists the chain of writers without calling the network and without showing any secret value. Someone running the system can see which writers are lined up without exposing a single key."
+        },
+        "id": "section-4:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 10,
       "region": null,
       "visible": true
     },
@@ -139,7 +166,7 @@
         "level": 2
       },
       "hiddenReason": null,
-      "order": 9,
+      "order": 11,
       "region": null,
       "visible": true
     },
@@ -150,14 +177,15 @@
             "Ask whether one article can end up written by two different models.",
             "If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
             "Ask what the article's status shows while it waits for a model to answer.",
-            "When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against."
+            "When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+            "Ask whether you can see which models are lined up for your content, and in what order."
           ]
         },
         "id": "verify:decision-points",
         "kind": "steps"
       },
       "hiddenReason": null,
-      "order": 10,
+      "order": 12,
       "region": null,
       "visible": true
     },
@@ -171,7 +199,7 @@
         "level": 2
       },
       "hiddenReason": null,
-      "order": 11,
+      "order": 13,
       "region": null,
       "visible": true
     },
@@ -185,7 +213,7 @@
         "slot": "editorial-next-step"
       },
       "hiddenReason": null,
-      "order": 12,
+      "order": 14,
       "region": "editorial-next-step",
       "visible": true
     },
@@ -199,7 +227,7 @@
         "level": 2
       },
       "hiddenReason": null,
-      "order": 13,
+      "order": 15,
       "region": null,
       "visible": true
     },
@@ -213,7 +241,7 @@
         "kind": "source"
       },
       "hiddenReason": null,
-      "order": 14,
+      "order": 16,
       "region": null,
       "visible": true
     },
@@ -227,12 +255,12 @@
         "kind": "source"
       },
       "hiddenReason": null,
-      "order": 15,
+      "order": 17,
       "region": null,
       "visible": true
     }
   ],
-  "compositionSignature": "content-document@1::textos-site:ctc:ctc-writer-fabric-one-identity::a-writing-model-outage-should-not-kill-an-article::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:figure:writer-fails:v|5:section-2:heading:v|6:section-2:body:v|7:section-3:heading:v|8:section-3:body:v|9:verify:heading:v|10:verify:decision-points:v|11:editorial-next-step:heading:v|12:editorial-next-step:body:v|13:sources:heading:v|14:source:1:ev-wf-01:v|15:source:2:ev-wf-09:v",
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-writer-fabric-one-identity::a-writing-model-outage-should-not-kill-an-article::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:figure:writer-fails:v|5:section-2:heading:v|6:section-2:body:v|7:section-3:heading:v|8:section-3:body:v|9:section-4:heading:v|10:section-4:body:v|11:verify:heading:v|12:verify:decision-points:v|13:editorial-next-step:heading:v|14:editorial-next-step:body:v|15:sources:heading:v|16:source:1:ev-wf-01:v|17:source:2:ev-wf-09:v",
   "contentSchemaVersion": "content-document@1",
   "contentType": "product_article",
   "conversion": {

@@ -9,16 +9,14 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Target query: what happens to an ai written article when the model provider fails (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
-- CTC editorial contract (ctc-editorial-quality@0.1): pass (9 finding(s))
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (7 finding(s))
 - Sources shown: 2 (withheld: 0); figures: writer-fails 66262073c3a6
 - Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
 ## CTC editorial-contract findings
 
-- `body_below_depth_guide` (signal): Corps de 2086 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.
 - `section_below_depth_guide` (signal) on `section-1`: Section « One writer per article, never a patchwork » plus courte que son repère : développement à juger en revue.
 - `section_below_depth_guide` (signal) on `section-2`: Section « What a fallback is not allowed to do » plus courte que son repère : développement à juger en revue.
-- `section_below_depth_guide` (signal) on `section-3`: Section « Switched on with an exit and a human hand » plus courte que son repère : développement à juger en revue.
 - `section_below_depth_guide` (signal) on `verify`: Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.
 - `section_below_depth_guide` (signal) on `editorial-next-step`: Section « Where to go next » plus courte que son repère : développement à juger en revue.
 - `section_without_grounded_statement` (signal) on `verify`: Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.
@@ -103,6 +101,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 
 > The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.
 > At release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.
+> The certification script refuses any editorial result other than an article ready for review. The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind. The commit that added that tool applied nothing by itself.
 
 - **factual** — The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged.
   - `ev-wf-07` (TextOS product commit a5b6241, 23 Oct 2026): «restores the single-profile path, unchanged.»
@@ -110,15 +109,38 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
   - `ev-wf-09` (TextOS product commit 4c2010b, 23 Oct 2026): «remains a human release decision.»
 - **factual** — At release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.
   - `ev-wf-08` (TextOS product commit a5b6241, 23 Oct 2026): «Release gate: offline replay of a SYNTHETIC fixture; no route certified live yet.»
+- **factual** — The certification script refuses any editorial result other than an article ready for review.
+  - `ev-wf-13` (TextOS product commit a5b6241, 23 Oct 2026): «certification script refuses any editorial result other than article_ready.»
+- **factual** — The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind.
+  - `ev-wf-15` (TextOS product commit 4c2010b, 23 Oct 2026): «unpinned target refused; already-migrated / lagging target refused.»
+- **factual** — The commit that added that tool applied nothing by itself.
+  - `ev-wf-14` (TextOS product commit 4c2010b, 23 Oct 2026): «Nothing is applied by this commit;»
+
+### section-4 (section) — What each attempt leaves behind
+
+> Each writing run in TextOS is admitted in one atomic step and carries a fencing token. A fencing token is a counter that lets a system ignore a worker whose turn has already passed. Each attempt is written to a log in TextOS that only accepts additions.
+> If a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule. The readiness view lists the chain of writers without calling the network and without showing any secret value. Someone running the system can see which writers are lined up without exposing a single key.
+
+- **factual** — Each writing run in TextOS is admitted in one atomic step and carries a fencing token.
+  - `ev-wf-16` (TextOS product commit a5b6241, 23 Oct 2026): «atomic admission with a fencing token,»
+- **editorial** — A fencing token is a counter that lets a system ignore a worker whose turn has already passed.
+- **factual** — Each attempt is written to a log in TextOS that only accepts additions.
+  - `ev-wf-10` (TextOS product commit a5b6241, 23 Oct 2026): «append-only writer_attempts (trigger).»
+- **factual** — If a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule.
+  - `ev-wf-11` (TextOS product commit a5b6241, 23 Oct 2026): «a provider exception now releases the slot claim under fencing.»
+- **factual** — The readiness view lists the chain of writers without calling the network and without showing any secret value.
+  - `ev-wf-12` (TextOS product commit a5b6241, 23 Oct 2026): «additive writerChain (static, no network, no secret values);»
+- **editorial** — Someone running the system can see which writers are lined up without exposing a single key.
 
 ### verify (section) — What to ask any AI writing vendor
 
-> Ask whether one article can end up written by two different models. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal. Ask what the article's status shows while it waits for a model to answer. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.
+> Ask whether one article can end up written by two different models. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal. Ask what the article's status shows while it waits for a model to answer. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against. Ask whether you can see which models are lined up for your content, and in what order.
 
 - **recommendation** — Ask whether one article can end up written by two different models.
 - **recommendation** — If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.
 - **recommendation** — Ask what the article's status shows while it waits for a model to answer.
 - **recommendation** — When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.
+- **recommendation** — Ask whether you can see which models are lined up for your content, and in what order.
 
 ### editorial-next-step (section) — Where to go next
 

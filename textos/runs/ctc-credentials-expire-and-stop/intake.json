@@ -589,6 +589,224 @@
         "locale": "en-US",
         "channel": "controlled_preview"
       }
+    },
+    {
+      "id": "ev-cr-16",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 17523af, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T20:46:40+02:00",
+      "contentHash": "4e67eb01dedd7f0f868a29e5a2eb8885570a9e6f6e3f8d1405a7335dc23c6d82",
+      "excerpt": "queued Jobs now pass a second authoritative execution-admission gate before queued -> running;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-credentials-expire-and-stop"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cr-17",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 17523af, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T20:46:40+02:00",
+      "contentHash": "d43d43562efb6d435294330a7851227927db9fe0c2221f39938be821a6cb8e43",
+      "excerpt": "capacity exhaustion leaves the Job queued and returns disposition=deferred.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-credentials-expire-and-stop"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cr-18",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 17523af, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T20:46:40+02:00",
+      "contentHash": "9c578c473cd08ac0716413048678eea35ca23a49e0bd13ed18ae8c8fbe07c476",
+      "excerpt": "still be active, still belong to the expected Organization and still hold the workspace binding in that statement.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle",
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-credentials-expire-and-stop"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cr-19",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 6fe385e, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T19:30:18+02:00",
+      "contentHash": "978c86dd245c165c1cad809009c5a29fc9ac7d7e18b0aca8954d59b76b1dc294",
+      "excerpt": "add explicit credential revoke;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-credentials-expire-and-stop"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cr-20",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit c9ccfe9, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T19:53:55+02:00",
+      "contentHash": "d10ba8e0bd98ff541002019ccb1028ad53c9dca2ec8a370de8123b447b605b2f",
+      "excerpt": "output includes the exact expiresAt persisted alongside the one-time raw token.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-credentials-expire-and-stop"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cr-21",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit c9ccfe9, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T19:53:55+02:00",
+      "contentHash": "88cecec472623477d6679688ab82db564486dcdc1fdb111517db679fec177e9e",
+      "excerpt": "Docs/tests cover default, bounds and null semantics.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-credentials-expire-and-stop"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cr-22",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 17523af, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T20:46:40+02:00",
+      "contentHash": "a4cd5c3576bff76c8988bf70ae1c6a12a8fed8d6ef32d0f7c8fff15335f14746",
+      "excerpt": "Backlog cannot burst past running limits",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-credentials-expire-and-stop"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
     }
   ],
   "slots": [
@@ -694,7 +912,9 @@
         "ev-cr-02",
         "ev-cr-03",
         "ev-cr-04",
-        "ev-cr-07"
+        "ev-cr-07",
+        "ev-cr-19",
+        "ev-cr-20"
       ],
       "requiredClaimTypes": [
         "credential_lifecycle"
@@ -762,7 +982,8 @@
       "writingObjective": "Explain the compatibility choice for keys issued before expiry existed — they keep working until deliberately rotated, to avoid an unannounced outage — and turn it into a question the reader can ask any vendor.",
       "buyerIntent": "What about keys already issued?",
       "allowedEvidenceIds": [
-        "ev-cr-11"
+        "ev-cr-11",
+        "ev-cr-21"
       ],
       "requiredClaimTypes": [
         "credential_lifecycle"
@@ -772,6 +993,28 @@
       ],
       "minChars": 220,
       "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "When the queue fills up or an account changes",
+      "writingObjective": "Develop: When the queue fills up or an account changes. One mechanism per paragraph, each factual sentence grounded in the evidence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cr-16",
+        "ev-cr-17",
+        "ev-cr-18",
+        "ev-cr-22"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 400,
+      "maxChars": 1100,
       "evidenceRequired": true
     },
     {

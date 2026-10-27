@@ -9,13 +9,12 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Target query: how to decide which product changes deserve public content (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
-- CTC editorial contract (ctc-editorial-quality@0.1): pass (10 finding(s))
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (9 finding(s))
 - Sources shown: 3 (withheld: 0); figures: change-to-decision 16df45598024
 - Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
 ## CTC editorial-contract findings
 
-- `body_below_depth_guide` (signal): Corps de 2258 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.
 - `section_below_depth_guide` (signal) on `section-1`: Section « Why 'nothing to publish' has to be cheap » plus courte que son repère : développement à juger en revue.
 - `section_below_depth_guide` (signal) on `section-3`: Section « Govern first, write second » plus courte que son repère : développement à juger en revue.
 - `section_below_depth_guide` (signal) on `verify`: Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.
@@ -93,6 +92,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 
 > The quietest failure TextOS found was one where nothing fails. The evidence cited for a capability still exists, yet the public description keeps telling a truth about a product that has changed underneath it.
 > Changing a file that TextOS cites as evidence, without saying anything about the related capability, is now refused, and accepting that gap means signing a sentence about it. The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability.
+> TextOS found that gap next to a plainer one: a capability shipped but never declared.
 
 - **factual** — The quietest failure TextOS found was one where nothing fails.
   - `ev-ci-03` (TextOS product commit 4d37616, 5 Aug 2026): «Le second est le plus insidieux : rien n'échoue. Les preuves citées existent toujours et restent ancêtres du snapshot. Le manifeste continue de dire vrai sur ce qu'il affirme, tout en décrivant un produit qui a changé sous lui.»
@@ -102,24 +102,44 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
   - `ev-ci-04` (TextOS product commit 4d37616, 5 Aug 2026): «modifier un fichier cité en preuve sans rien dire de l'entité devient impossible, et assumer la dette devient une phrase signée plutôt qu'une absence.»
 - **factual** — The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability.
   - `ev-ci-05` (TextOS product commit 1ad90d0, 8 Aug 2026): «Le scanner répond à une seule question, mécanique : « ce fichier d'implémentation modifié est-il couvert par une preuve déclarée ? » Il ne déduit aucune capacité.»
+- **factual** — TextOS found that gap next to a plainer one: a capability shipped but never declared.
+  - `ev-ci-09` (TextOS product commit 4d37616, 5 Aug 2026): «capacité livrée, jamais déclarée»
+
+### section-4 (section) — Content and coverage are two questions
+
+> No tool at TextOS reads the code to guess that a change deserves an article. Whether a change deserves an article and whether it belongs to the described product are separate questions, answered separately.
+> Each changed path that no declared evidence covers has to be explained by exactly one disposition in TextOS: none would be the silence the rule closes, and two or more would be ambiguous. A coverage debt does not turn the build red, but it stops a content candidate from becoming ready. Writing about a part of the product before it is described would put the article ahead of the facts.
+
+- **factual** — No tool at TextOS reads the code to guess that a change deserves an article.
+  - `ev-ci-14` (TextOS product repository file changes/content-impact/README.md at 308aa32): «Aucun outil ne lit le code pour deviner qu'un changement mérite un article.»
+- **editorial** — Whether a change deserves an article and whether it belongs to the described product are separate questions, answered separately.
+- **factual** — Each changed path that no declared evidence covers has to be explained by exactly one disposition in TextOS: none would be the silence the rule closes, and two or more would be ambiguous.
+  - `ev-ci-12` (TextOS product commit 1ad90d0, 8 Aug 2026): «chaque chemin non couvert est expliqué par EXACTEMENT une disposition — zéro est le silence qu'on ferme, plus d'une est une ambiguïté.»
+- **factual** — A coverage debt does not turn the build red, but it stops a content candidate from becoming ready.
+  - `ev-ci-13` (TextOS product commit 1ad90d0, 8 Aug 2026): «Une dette de couverture bloque un CANDIDAT, pas la CI»
+- **editorial** — Writing about a part of the product before it is described would put the article ahead of the facts.
 
 ### section-3 (section) — Govern first, write second
 
 > TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.
+> The check runs on direct pushes as well as on pull requests, since changes reached the TextOS product by direct push.
 
 - **factual** — TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second.
   - `ev-ci-06` (TextOS product commit 1ad90d0, 8 Aug 2026): «Proposer un contenu sur un territoire dont la déclaration est encore à faire reviendrait à écrire d'abord et à gouverner ensuite — l'inversion exacte que cette chaîne interdit.»
 - **factual** — The contract itself writes no content and opens no editorial request.
   - `ev-ci-07` (TextOS product repository file changes/content-impact/README.md at 308aa32): «Il ne rédige aucun contenu et n'ouvre aucune PR éditoriale.»
+- **factual** — The check runs on direct pushes as well as on pull requests, since changes reached the TextOS product by direct push.
+  - `ev-ci-11` (TextOS product commit 4d37616, 5 Aug 2026): «Le contrôle porte sur push ET pull_request : l'historique ne contient aucun commit de fusion — tout arrive par push direct sur main»
 
 ### verify (section) — What to ask any AI writing vendor
 
-> If your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on.
+> If your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on. Ask whether the check that guards your public pages also runs on changes that skip review.
 
 - **recommendation** — If your team publishes release notes, look at what it costs to say that a release deserves none.
 - **recommendation** — Ask who decides that a change is worth an article, and whether that choice is written down.
 - **recommendation** — Ask what happens to a published page when the product feature it describes changes.
 - **recommendation** — Before you let a tool draft articles from your release history, check which side of that order it sits on.
+- **recommendation** — Ask whether the check that guards your public pages also runs on changes that skip review.
 
 ### editorial-next-step (section) — Where to go next
 

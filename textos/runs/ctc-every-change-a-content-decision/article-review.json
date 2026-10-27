@@ -12,7 +12,7 @@
     "passed": true,
     "issues": [],
     "observed": {
-      "visibleBlockCount": 17,
+      "visibleBlockCount": 19,
       "informationObjectCount": 2,
       "informationObjectCounts": {
         "steps": 1,
@@ -53,6 +53,7 @@
       "headingBlockIds": [
         "section-1:heading",
         "section-2:heading",
+        "section-4:heading",
         "section-3:heading",
         "verify:heading",
         "editorial-next-step:heading",
@@ -137,14 +138,6 @@
     "verdict": "pass",
     "findings": [
       {
-        "code": "body_below_depth_guide",
-        "subject": null,
-        "message": "Corps de 2258 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.",
-        "measured": 2258,
-        "expected": 2400,
-        "severity": "signal"
-      },
-      {
         "code": "section_below_depth_guide",
         "subject": "section-1",
         "message": "Section « Why 'nothing to publish' has to be cheap » plus courte que son repère : développement à juger en revue.",
@@ -156,7 +149,7 @@
         "code": "section_below_depth_guide",
         "subject": "section-3",
         "message": "Section « Govern first, write second » plus courte que son repère : développement à juger en revue.",
-        "measured": 229,
+        "measured": 348,
         "expected": 500,
         "severity": "signal"
       },
@@ -164,7 +157,7 @@
         "code": "section_below_depth_guide",
         "subject": "verify",
         "message": "Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.",
-        "measured": 379,
+        "measured": 470,
         "expected": 500,
         "severity": "signal"
       },
@@ -218,12 +211,12 @@
       }
     ],
     "measures": {
-      "bodyChars": 2258,
-      "sectionCount": 5,
-      "groundedSectionCount": 3,
+      "bodyChars": 3150,
+      "sectionCount": 6,
+      "groundedSectionCount": 4,
       "answerCount": 1,
       "languageUnits": {
-        "en": 25,
+        "en": 34,
         "unknown": 5
       }
     },

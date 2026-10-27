@@ -12,7 +12,7 @@
     "passed": true,
     "issues": [],
     "observed": {
-      "visibleBlockCount": 17,
+      "visibleBlockCount": 19,
       "informationObjectCount": 2,
       "informationObjectCounts": {
         "steps": 1,
@@ -54,6 +54,7 @@
         "section-1:heading",
         "section-2:heading",
         "section-3:heading",
+        "section-4:heading",
         "verify:heading",
         "editorial-next-step:heading",
         "sources:heading"
@@ -127,7 +128,7 @@
     ],
     "readingTimeMinutes": {
       "class": "POLICY_COMPUTED",
-      "value": 3
+      "value": 4
     }
   },
   "editorialQuality": {
@@ -136,22 +137,6 @@
     "scope": "structural",
     "verdict": "pass",
     "findings": [
-      {
-        "code": "body_below_depth_guide",
-        "subject": null,
-        "message": "Corps de 2287 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.",
-        "measured": 2287,
-        "expected": 2400,
-        "severity": "signal"
-      },
-      {
-        "code": "section_below_depth_guide",
-        "subject": "section-1",
-        "message": "Section « Replacing a key without a gap » plus courte que son repère : développement à juger en revue.",
-        "measured": 390,
-        "expected": 500,
-        "severity": "signal"
-      },
       {
         "code": "section_below_depth_guide",
         "subject": "section-2",
@@ -164,7 +149,7 @@
         "code": "section_below_depth_guide",
         "subject": "section-3",
         "message": "Section « What older keys keep doing » plus courte que son repère : développement à juger en revue.",
-        "measured": 239,
+        "measured": 363,
         "expected": 500,
         "severity": "signal"
       },
@@ -172,7 +157,7 @@
         "code": "section_below_depth_guide",
         "subject": "verify",
         "message": "Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.",
-        "measured": 397,
+        "measured": 471,
         "expected": 500,
         "severity": "signal"
       },
@@ -202,12 +187,12 @@
       }
     ],
     "measures": {
-      "bodyChars": 2287,
-      "sectionCount": 5,
-      "groundedSectionCount": 3,
+      "bodyChars": 3234,
+      "sectionCount": 6,
+      "groundedSectionCount": 4,
       "answerCount": 1,
       "languageUnits": {
-        "en": 24,
+        "en": 35,
         "unknown": 6
       }
     },
@@ -256,5 +241,5 @@
     }
   ],
   "sourcesWithheld": [],
-  "readingTimeMinutes": 3
+  "readingTimeMinutes": 4
 }

@@ -44,10 +44,20 @@
       "stmt:9:section-3:2:s1",
       "stmt:9:section-3:2:s2",
       "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:x1",
+      "stmt:9:section-3:2:x2",
+      "stmt:9:section-3:2:x3",
+      "stmt:9:section-4:3:s11",
+      "stmt:9:section-4:3:s12",
+      "stmt:9:section-4:3:s13",
+      "stmt:9:section-4:3:s21",
+      "stmt:9:section-4:3:s22",
+      "stmt:9:section-4:3:s23",
       "stmt:6:verify:2:s1",
       "stmt:6:verify:2:s2",
       "stmt:6:verify:2:s3",
       "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
       "stmt:19:editorial-next-step:2:s1",
       "stmt:19:editorial-next-step:2:s2"
     ],
@@ -60,13 +70,20 @@
       "ev-wf-04",
       "ev-wf-07",
       "ev-wf-09",
-      "ev-wf-08"
+      "ev-wf-08",
+      "ev-wf-13",
+      "ev-wf-15",
+      "ev-wf-14",
+      "ev-wf-16",
+      "ev-wf-10",
+      "ev-wf-11",
+      "ev-wf-12"
     ],
     "capabilityIds": []
   },
   "provenance": {
     "sourceAuthority": "UNCERTIFIED",
-    "sourceEvidenceDigest": "a11abfb4ebb59aa6dc4056a82e52110b689d1bdfc5b29ffecc06e32f294a362b"
+    "sourceEvidenceDigest": "c5de1e53f3c2f962d30165a38769b2f982f8a530110fd5feb94589295d21e6f4"
   },
   "body": [
     {
@@ -135,7 +152,22 @@
       "id": "section-3:body",
       "kind": "paragraph",
       "data": {
-        "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live."
+        "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.\n\nThe certification script refuses any editorial result other than an article ready for review. The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind. The commit that added that tool applied nothing by itself."
+      }
+    },
+    {
+      "id": "section-4:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What each attempt leaves behind"
+      }
+    },
+    {
+      "id": "section-4:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Each writing run in TextOS is admitted in one atomic step and carries a fencing token. A fencing token is a counter that lets a system ignore a worker whose turn has already passed. Each attempt is written to a log in TextOS that only accepts additions.\n\nIf a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule. The readiness view lists the chain of writers without calling the network and without showing any secret value. Someone running the system can see which writers are lined up without exposing a single key."
       }
     },
     {
@@ -154,7 +186,8 @@
           "Ask whether one article can end up written by two different models.",
           "If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
           "Ask what the article's status shows while it waits for a model to answer.",
-          "When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against."
+          "When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+          "Ask whether you can see which models are lined up for your content, and in what order."
         ]
       }
     },

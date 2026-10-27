@@ -73,5 +73,40 @@
     "evidenceId": "ev-cr-13",
     "usable": true,
     "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-cr-16",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-cr-17",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-cr-18",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-cr-19",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-cr-20",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-cr-21",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-cr-22",
+    "usable": true,
+    "reason": "utilisable"
   }
 ]

@@ -38,5 +38,30 @@
     "evidenceId": "ev-ci-08",
     "usable": true,
     "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-ci-09",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-ci-11",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-ci-12",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-ci-13",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-ci-14",
+    "usable": true,
+    "reason": "utilisable"
   }
 ]

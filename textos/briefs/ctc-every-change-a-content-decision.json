@@ -165,6 +165,71 @@
       ],
       "maxSupportStrength": "descriptive",
       "limitations": []
+    },
+    {
+      "id": "ev-ci-09",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4d37616453f5d0fed24a8054314d49651e33af6b",
+        "quote": "capacité livrée, jamais déclarée"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-11",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4d37616453f5d0fed24a8054314d49651e33af6b",
+        "quote": "Le contrôle porte sur push ET pull_request : l'historique ne contient aucun commit de fusion — tout arrive par push direct sur main"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-12",
+      "source": {
+        "kind": "product_commit",
+        "sha": "1ad90d0642574e4dc2e1019abe58ab27670a64a6",
+        "quote": "chaque chemin non couvert est expliqué par EXACTEMENT une disposition — zéro est le silence qu'on ferme, plus d'une est une ambiguïté."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "1ad90d0642574e4dc2e1019abe58ab27670a64a6",
+        "quote": "Une dette de couverture bloque un CANDIDAT, pas la CI"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ci-14",
+      "source": {
+        "kind": "product_file",
+        "path": "changes/content-impact/README.md",
+        "quote": "Aucun outil ne lit le code pour deviner qu'un changement mérite un article."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
     }
   ],
   "slots": [
@@ -309,7 +374,8 @@
       "allowedEvidenceIds": [
         "ev-ci-03",
         "ev-ci-04",
-        "ev-ci-05"
+        "ev-ci-05",
+        "ev-ci-09"
       ],
       "requiredClaimTypes": [
         "content_governance"
@@ -322,6 +388,27 @@
       "evidenceRequired": true
     },
     {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Content and coverage are two questions",
+      "writingObjective": "Develop: Content and coverage are two questions. One mechanism per paragraph, each factual sentence grounded in the evidence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-12",
+        "ev-ci-13",
+        "ev-ci-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 400,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
       "id": "section-3",
       "role": "section",
       "blockKind": "multi_paragraph",
@@ -331,7 +418,8 @@
       "buyerIntent": "What does the contract not do?",
       "allowedEvidenceIds": [
         "ev-ci-06",
-        "ev-ci-07"
+        "ev-ci-07",
+        "ev-ci-11"
       ],
       "requiredClaimTypes": [
         "content_governance"

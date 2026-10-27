@@ -7,12 +7,12 @@
   },
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "articleReviewMethodVersion": "ctc-article-review@0.1",
-  "executionPlanHash": "8012f63f37f76ebfe908893283d2a0b8544eff28a4754700f7e6a80474445fa8",
-  "ctcHandoffHash": "05a3f44a83167e9efaf10f9b349dd44405ce5d57078a7cfb8d901c91cb6e1a63",
+  "executionPlanHash": "bac0370fe9a1b65f1561277d9f5899b08654f5fdd3862e2e06b89ff918f8ee32",
+  "ctcHandoffHash": "651797e68a733ac66c588d12616e513dcdcd9728f976f0b17fb8cdc4d082b5bf",
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "a1345a8e9d4e7e9cbe378b2501703f5c71a9ca7c29df55408d50a94aca856ee1",
+  "structuredContentHash": "ca9d555876f24b0a039d0ce4d63ba37721306a335e42d8fda1801126da05f393",
   "truthCheckVerdict": "pass",
   "cmoV2": {
     "version": "article-cmo-v2@1",
@@ -32,8 +32,9 @@
     "answer": "36f3fe4a1ce61da27adeed52fd3b10087af723d2ea6265da41a85206d77873da",
     "section-1": "a9874581138ebc360b4fcfa545be45e0f424bdc27f06ecd28ad32ee948e1feee",
     "change-to-decision-caption": "6a1e59bfeb1139d12dacfb4be0207af7251b68ee661c6be93cd10613cc753b8d",
-    "section-2": "7b0f7403e9b27dbee7d7cdacd284c024f13579fe614f1b3601ca7108d3c65b96",
-    "section-3": "05b0aac9c20aa6d3796dc27decd6f21e9f1310370c04b69835953b6cf8fb0207",
+    "section-2": "4ca2b03c190e2a41b46058e57af064a398699dbed042ee93a6d41f9a7d6666b6",
+    "section-4": "b291d7e18b82a2c558c9df6a28e0db0f1b2adc324d4ef15215b24786927157fc",
+    "section-3": "17cd869e224458f1bd5f86c33bca72a985598380e2133a53a0d28da78a6c152f",
     "verify": "7ed13f503c42fcf73d44f51c18141834c08fda5b81f3591da7508e2fff9d8477",
     "editorial-next-step": "adc8aa04ae387f2678fb947de3a055d08702bb7281565741c7af33c0df34bf7d"
   },
@@ -44,16 +45,17 @@
     "answer": "d4e6e48a1791255faa65c17e7631f9ce91e7d35c93aa94c0e9a1e5847a204c47",
     "section-1": "7a72afe227f91e780959f1961f91c18e92679d594c45946fcd53a62a075486e8",
     "change-to-decision-caption": "37de9d13329013d74a7e5a91dbfe93d245a6d7e61fa2b33a7cea3ddb75ea6ce7",
-    "section-2": "e212c4bf215643319f64dfc718acc9bc26224f56fb4e53c487a305d9ea76fa98",
-    "section-3": "91aa3a3a6b075548a2211cb91d7dfa5e0a7d389c6ae5c5326a63f156e33d7b20",
-    "verify": "f11d6febb8e91458afd0bfcd769812857ed614ac7ae1251a258421a0c797eea8",
+    "section-2": "b6a4f5ea7812e9fd7f4b3a7cafb4434ce39354edea929eff7386e62fd67afb08",
+    "section-4": "1d0498f7df068dbcb1377d17460f0c11703186bc92f36c5959d0f6e83e7a1a22",
+    "section-3": "4273f322f3aeef0f4d87c549f5b150322cbafeaa16a774f744ea09a05b3715bf",
+    "verify": "9c5082e78d723b1a6011dad5b6150947f50c23f8d58711aa6a9a55b3c25f6489",
     "editorial-next-step": "032f70bd2902f8511efddf99b88bbbe5f6ff0616499d926990edb66faf4378ca"
   },
   "figureHashes": {
     "change-to-decision": "16df455980245c9a31005cbed107035963846c99c1c24a16dc2a53acdaa34a9b"
   },
-  "contentDocumentSha256": "78bc0a2e69dc02991b60468ab45027331041c11e6923ad053bf27567f471cd66",
-  "lineageSha256": "80b64ec1342fdeefbe6ce0ba2d7e9137590e57930e46ab0d8510579062642e27",
-  "resolvedSurfaceSha256": "400df4e5d85c825420cc6e632cbb2b1eb3cff6167d1744f5b36e558aa4f439a6",
-  "articleReviewSha256": "11cfc1240b88931eaa2761de747baecd81b7cc71e458b420c2dd92f0c25d7411"
+  "contentDocumentSha256": "c96d44ad4abaf8856d4f0608d2916836469c09ab13160d2c31a6659d98e2556b",
+  "lineageSha256": "8f7bb71ccee3886df681d65ca80f196063f28a76133f68de54bd8700beda8709",
+  "resolvedSurfaceSha256": "f57c04bbb8e82e147b48dd29a5593e1620e2bc8a91317464e6b7613c2a16ebf9",
+  "articleReviewSha256": "60e765250956716d88875ee691fa8e378fb4945a22fffed2e16b486a1a5ec0d6"
 }

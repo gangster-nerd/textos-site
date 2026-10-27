@@ -1,6 +1,6 @@
 {
   "planId": "how to make ai agent api credentials expire and stop them in an emergency",
-  "planHash": "3b27b8f28ee9f16f77475bdfb5ad14200be36dfeef409f1459a8656ca707a082",
+  "planHash": "974cf757c1e021b9016ace37bc1a469c90ef11d1847791fafe53d1e44733ff41",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -91,24 +91,30 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "Replacing a key without a gap",
-      "text": "Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.",
+      "text": "Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.\n\nA single key can also be revoked explicitly in TextOS. When a key is issued or replaced, the output shows its exact end date next to the key that is displayed only that one time.",
       "statementIds": [
         "stmt:9:section-1:2:s1",
         "stmt:9:section-1:2:s2",
         "stmt:9:section-1:2:s3",
-        "stmt:9:section-1:2:s4"
+        "stmt:9:section-1:2:s4",
+        "stmt:9:section-1:2:x1",
+        "stmt:9:section-1:2:x2"
       ],
       "evidenceIdsUsed": [
         "ev-cr-02",
         "ev-cr-04",
         "ev-cr-03",
-        "ev-cr-07"
+        "ev-cr-07",
+        "ev-cr-19",
+        "ev-cr-20"
       ],
       "usableEvidenceIds": [
         "ev-cr-02",
         "ev-cr-03",
         "ev-cr-04",
-        "ev-cr-07"
+        "ev-cr-07",
+        "ev-cr-19",
+        "ev-cr-20"
       ],
       "excludedEvidence": []
     },
@@ -168,16 +174,47 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "What older keys keep doing",
-      "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.",
+      "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nIn TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests.",
       "statementIds": [
         "stmt:9:section-3:2:s1",
-        "stmt:9:section-3:2:s2"
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:x1"
       ],
       "evidenceIdsUsed": [
-        "ev-cr-11"
+        "ev-cr-11",
+        "ev-cr-21"
       ],
       "usableEvidenceIds": [
-        "ev-cr-11"
+        "ev-cr-11",
+        "ev-cr-21"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-4",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "When the queue fills up or an account changes",
+      "text": "In TextOS, a queued job passes a second admission check before it starts running. When the running limits are reached, the job stays in the queue and is marked as deferred. A backlog of queued work in TextOS cannot burst past those limits.\n\nAt the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace. An account removed after its work was queued therefore cannot start that work in TextOS. Access is judged when the work runs, not only when it was submitted.",
+      "statementIds": [
+        "stmt:9:section-4:3:s11",
+        "stmt:9:section-4:3:s12",
+        "stmt:9:section-4:3:s13",
+        "stmt:9:section-4:3:s21",
+        "stmt:9:section-4:3:s22",
+        "stmt:9:section-4:3:s23"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cr-16",
+        "ev-cr-17",
+        "ev-cr-22",
+        "ev-cr-18"
+      ],
+      "usableEvidenceIds": [
+        "ev-cr-16",
+        "ev-cr-17",
+        "ev-cr-18",
+        "ev-cr-22"
       ],
       "excludedEvidence": []
     },
@@ -186,12 +223,13 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "What to ask any AI writing vendor",
-      "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand.",
+      "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand. Ask whether a job that waited in a queue is checked again before it runs.",
       "statementIds": [
         "stmt:6:verify:2:s1",
         "stmt:6:verify:2:s2",
         "stmt:6:verify:2:s3",
-        "stmt:6:verify:2:s4"
+        "stmt:6:verify:2:s4",
+        "stmt:6:verify:2:s5"
       ],
       "evidenceIdsUsed": [],
       "usableEvidenceIds": [],
@@ -215,7 +253,7 @@
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "02d2a570f6093aea861f147ce1f38acd21a4a359c56bb37c39b958443af40ab8",
+  "structuredContentHash": "78f04cec9dfafd6752715d9b75f154f8b1531f8eaf98d9f305ee357db6e24026",
   "truthCheck": {
     "verdict": "pass",
     "contradictions": []
