@@ -49,10 +49,20 @@ export interface RenderParityResult {
 export function evaluateRenderParity(input: {
   document: ContentDocument;
   html: string;
+  /**
+   * CMO-SURFACE-VERTICAL-SLICE-1 REVIEW FIX : block ids that the managed
+   * surface intentionally consumes (re-projects outside of the body — the
+   * "Related …" heading + following list). Parity treats these as neither
+   * "missing in HTML" nor "extra in HTML". Preservation of their substantive
+   * content (governed links) is the responsibility of the projection tests,
+   * not this exact-parity check.
+   */
+  consumedBlockIds?: ReadonlySet<string>;
 }): RenderParityResult {
   const $ = loadArticleFragment(input.html);
   const diffs: RenderParityLocatedDiff[] = [];
   let blocksChecked = 0;
+  const consumed = input.consumedBlockIds ?? new Set<string>();
 
   // Detect EXTRA blocks in HTML that source no longer knows about (e.g. the
   // caller deleted a paragraph from the ContentDocument but the HTML still
@@ -71,6 +81,7 @@ export function evaluateRenderParity(input: {
     // slot/related placeholders, which the ManagedTextosSurface renders WITHIN
     // the body flow with their own data-cse-block-id but no mdast payload).
     if (id.startsWith("cta-") || id === "related" || id === "answer") return;
+    if (consumed.has(id)) return;
     htmlBodyBlockIds.add(id);
   });
   for (const htmlId of htmlBodyBlockIds) {
@@ -90,6 +101,7 @@ export function evaluateRenderParity(input: {
   for (const block of input.document.body) {
     const mdast = (block.data as { mdast?: unknown } | undefined)?.mdast;
     if (!mdast || typeof mdast !== "object") continue; // synthetic block; skip
+    if (consumed.has(block.id)) continue; // projected outside body flow
     blocksChecked += 1;
     const expected = projectMdastBlock(mdast as BlockNode);
     if (expected === null) continue; // e.g. html marker → nothing rendered
