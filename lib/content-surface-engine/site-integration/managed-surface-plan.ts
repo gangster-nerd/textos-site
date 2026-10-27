@@ -11,7 +11,7 @@
 // projected outside the body, not duplicated.
 
 import type { ResolvedContentSurface } from "../contract/resolved-content-surface";
-import { findSourceRelatedSectionFromResolved } from "./related-source-links";
+import { collectBodyLinkHrefs, findSourceRelatedSectionFromResolved } from "./related-source-links";
 
 export interface ManagedSurfacePlan {
   /** Block ids that must NOT be rendered in the body — they are re-projected. */
@@ -26,8 +26,9 @@ export function computeManagedSurfacePlan(
     /**
      * Hrefs the surface actually re-projects outside the body (Related module, editorial next
      * step). Port of PR #22 onto main : the source section is consumed ONLY when every one of its
-     * governed links is re-projected. Otherwise it stays in the body flow untouched, so no
-     * governed link the article carries can disappear from the page (exact-parity guarantee).
+     * governed links stays on the page — re-projected, or carried by another body block.
+     * Otherwise it stays in the body flow untouched, so no governed link the article carries can
+     * disappear from the page (exact-parity guarantee, and this module's own stated intent).
      */
     reprojectedHrefs: ReadonlySet<string>;
   },
@@ -36,7 +37,13 @@ export function computeManagedSurfacePlan(
   const skipHeadings = new Set<string>();
 
   const src = findSourceRelatedSectionFromResolved(resolved);
-  if (src && src.links.every((l) => options.reprojectedHrefs.has(l.href))) {
+  const elsewhere = src
+    ? collectBodyLinkHrefs(resolved, new Set([src.headingBlockId, src.listBlockId]))
+    : new Set<string>();
+  if (
+    src &&
+    src.links.every((l) => options.reprojectedHrefs.has(l.href) || elsewhere.has(l.href))
+  ) {
     consumed.add(src.headingBlockId);
     consumed.add(src.listBlockId);
     skipHeadings.add(src.headingBlockId);

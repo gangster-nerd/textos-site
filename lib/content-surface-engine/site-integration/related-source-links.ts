@@ -108,3 +108,20 @@ export function findSourceRelatedSectionFromResolved(
     .map((rb) => rb.block);
   return findSourceRelatedIn(body);
 }
+
+/**
+ * Hrefs carried by the visible body blocks, except `excludeBlockIds`. Lets the managed surface
+ * check that a governed link of the trailing "Related …" section is still present elsewhere in
+ * the body before consuming that section.
+ */
+export function collectBodyLinkHrefs(
+  resolved: ResolvedContentSurface,
+  excludeBlockIds: ReadonlySet<string>,
+): Set<string> {
+  const out: { href: string; title: string }[] = [];
+  for (const rb of resolved.blocks) {
+    if (!rb.visible || excludeBlockIds.has(rb.block.id)) continue;
+    collectLinks((rb.block.data as { mdast?: MdastNode } | undefined)?.mdast, out);
+  }
+  return new Set(out.map((l) => l.href));
+}
