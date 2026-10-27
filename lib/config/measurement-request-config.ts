@@ -1,55 +1,49 @@
-// MEASUREMENT-REQUEST-CAPTURE-1 — governed capability for the public
-// measurement-request capture surface.
+// MEASUREMENT-REQUEST-CAPTURE-1 — capacité de capture de la demande de mesure, vue par la
+// surface article (porte stricte du plan de conversion, voir conversion-plan.ts).
 //
-// Public, non-secret configuration. The Formspree endpoint id is public by
-// design (Formspree forms are addressed by a shareable id, not a credential),
-// so the values live here — not in .env, not in a secret store. If the
-// endpoint fails validation, the capability resolves fail-closed as
-// `unconfigured` so the commercial CTA never links to a non-submittable page.
+// Portage PR #22 sur la gouvernance de conversion de main (Merge #24) : cette capacité n'est
+// plus une configuration propre codée en dur (endpoint, responsable de traitement, contact). Elle
+// est DÉRIVÉE de `conversionConfig`, seule source de vérité de la livraison :
+//   - `off`  → `unconfigured` : aucune capture, aucun CTA commercial.
+//   - `demo` → `configured`   : parcours complet, soumission simulée (rien n'est transmis).
+//   - `live` → `configured` seulement si l'endpoint ET les mentions légales existent ; le build
+//              échoue déjà sinon (conversion-config), ceci n'est que le filet de sécurité.
+// Aucune identité, adresse ou endpoint n'est écrit ici : en `live`, tout vient de la
+// configuration de déploiement ; ailleurs, ces champs valent `null`.
 
-export type MeasurementRequestProvider = "formspree";
+import { conversionConfig } from "@/lib/conversion/conversion-config";
+
 export type MeasurementRequestState = "configured" | "unconfigured";
 
 export interface MeasurementRequestCapability {
-  provider: MeasurementRequestProvider;
-  endpoint: string;
   state: MeasurementRequestState;
-  controllerName: string;
-  privacyContactEmail: string;
-  privacyUrl: string;
+  /** Endpoint du sous-traitant — `null` hors `live`. */
+  endpoint: string | null;
+  /** Responsable de traitement publié — `null` tant que les mentions légales ne le sont pas. */
+  controllerName: string | null;
+  /** Contact des droits publié — `null` tant que les mentions légales ne le sont pas. */
+  privacyContactEmail: string | null;
+  privacyUrl: "/privacy";
 }
 
-const RAW_ENDPOINT = "https://formspree.io/f/meaoonqy";
-const CONTROLLER_NAME = "Marc Prp - TextOS";
-const PRIVACY_CONTACT_EMAIL = "marcprp@gmail.com";
-const PRIVACY_URL = "/privacy";
-
-export function isValidFormspreeEndpoint(raw: string): boolean {
-  try {
-    const url = new URL(raw);
-    if (url.protocol !== "https:") return false;
-    if (url.hostname !== "formspree.io") return false;
-    const parts = url.pathname.split("/").filter(Boolean);
-    if (parts.length !== 2) return false;
-    if (parts[0] !== "f") return false;
-    if (parts[1].length === 0) return false;
-    return true;
-  } catch {
-    return false;
-  }
-}
+type ConversionConfigView = Pick<
+  typeof conversionConfig,
+  "mode" | "formEndpoint" | "legalNotice"
+>;
 
 export function resolveMeasurementRequestCapability(
-  raw: string = RAW_ENDPOINT,
+  cfg: ConversionConfigView = conversionConfig,
 ): MeasurementRequestCapability {
-  const configured = isValidFormspreeEndpoint(raw);
+  const legal = cfg.legalNotice;
+  const configured =
+    cfg.mode === "demo" ||
+    (cfg.mode === "live" && Boolean(cfg.formEndpoint) && legal !== null);
   return {
-    provider: "formspree",
-    endpoint: configured ? raw : "",
     state: configured ? "configured" : "unconfigured",
-    controllerName: CONTROLLER_NAME,
-    privacyContactEmail: PRIVACY_CONTACT_EMAIL,
-    privacyUrl: PRIVACY_URL,
+    endpoint: cfg.mode === "live" ? cfg.formEndpoint : null,
+    controllerName: legal?.controllerName ?? null,
+    privacyContactEmail: legal?.privacyContactEmail ?? null,
+    privacyUrl: "/privacy",
   };
 }
 

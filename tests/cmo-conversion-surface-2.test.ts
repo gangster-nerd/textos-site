@@ -5,15 +5,26 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 
+import { conversionConfig } from "@/lib/conversion/conversion-config";
+import { listInsightEntries } from "@/lib/content-surface-engine/site-integration/insights-catalog";
+
 const OUT_DIR = path.resolve("out/insights");
 const hasBuild = fs.existsSync(OUT_DIR);
 
-const NO_COMMERCIAL_SLUGS = new Set<string>([
-  // Documents whose canonical `conversion.ctaIntentId` is null → no CTA.
-  "agent-protocol-immutable-frontiers",
-  "north-star-brief-acceptance",
-  "observation-not-optimization",
-]);
+// Portage PR #22 sur main : la cohorte commerciale est tirée des documents (et non plus d'une liste
+// figée de 12 articles) et soumise à la porte de livraison de main. En mode `off`, aucun article ne
+// porte de CTA commercial ; les notes Commit-to-Content (`textos-site:ctc:`) n'en portent jamais
+// (décision CPO-2026-09-12 : cta = none, conversionAllowed = false).
+const CTA_DELIVERED = !conversionConfig.isOff;
+const ENTRIES = listInsightEntries();
+const COMMERCIAL_SLUGS = new Set<string>(
+  ENTRIES.filter(
+    (e) => e.document.conversion.conversionAllowed && Boolean(e.document.conversion.ctaIntentId),
+  ).map((e) => e.slug),
+);
+const CTC_SLUGS = ENTRIES.filter((e) =>
+  e.document.identity.documentId.startsWith("textos-site:ctc:"),
+).map((e) => e.slug);
 
 function articles(): string[] {
   return fs
@@ -42,7 +53,7 @@ describe.skipIf(!hasBuild)("CMO-CONVERSION-SURFACE-2 — 12/12 acceptance", () =
       const header = countMatches(html, /data-cse-cta-slot="header"/g);
       const contextual = countMatches(html, /data-cse-cta-slot="contextual"/g);
       const final = countMatches(html, /data-cse-cta-slot="final"/g);
-      if (NO_COMMERCIAL_SLUGS.has(slug)) {
+      if (!CTA_DELIVERED || !COMMERCIAL_SLUGS.has(slug)) {
         expect(header, `${slug} header`).toBe(0);
         expect(contextual, `${slug} contextual`).toBe(0);
         expect(final, `${slug} final`).toBe(0);
@@ -67,14 +78,26 @@ describe.skipIf(!hasBuild)("CMO-CONVERSION-SURFACE-2 — 12/12 acceptance", () =
     }
   });
 
-  it("authority-intelligence article now carries a first-measurement CTA", () => {
+  it("Commit-to-Content notes never carry a commercial CTA (any mode)", () => {
+    expect(CTC_SLUGS.length).toBeGreaterThan(0);
+    for (const slug of CTC_SLUGS) {
+      const entry = ENTRIES.find((e) => e.slug === slug)!;
+      expect(entry.document.conversion.conversionAllowed, slug).toBe(false);
+      const html = fs.readFileSync(path.join(OUT_DIR, `${slug}.html`), "utf8");
+      expect(countMatches(html, /data-cse-cta-slot=/g), `${slug} cta slots`).toBe(0);
+      expect(countMatches(html, /data-cse-cta-position=/g), `${slug} cta positions`).toBe(0);
+      expect(html, slug).not.toContain("/request-measurement");
+    }
+  });
+
+  it.runIf(CTA_DELIVERED)("authority-intelligence article now carries a first-measurement CTA", () => {
     const html = fs.readFileSync(
       path.join(OUT_DIR, "authority-intelligence-not-ai-seo.html"),
       "utf8",
     );
     expect(html).toMatch(/data-cse-cta-slot="header"/);
     expect(html).toMatch(/data-cse-cta-slot="final"/);
-    expect(html).toMatch(/href="\/request-measurement"/);
+    expect(html).toMatch(/href="\/request-measurement\?source=textos-site&amp;/);
   });
 
   it("CMO-CONVERSION-TRUTH-FIX-2A : MEASURE_BRAND + /request-measurement → honest 'Request' label", () => {
@@ -95,19 +118,20 @@ describe.skipIf(!hasBuild)("CMO-CONVERSION-SURFACE-2 — 12/12 acceptance", () =
         expect(html, `${f}: forbidden CTA copy "${stale}"`).not.toContain(stale);
       }
     }
-    // At least the 9 commercial articles carry the honest label + the real
-    // destination side-by-side. Neither ever appears with the stale label.
+    // Every commercial article carries the honest label + the real
+    // destination side-by-side (attributed href). Neither ever appears with the stale label.
+    if (!CTA_DELIVERED) return;
     let hits = 0;
     for (const f of articles()) {
       const html = fs.readFileSync(path.join(OUT_DIR, f), "utf8");
       if (
         html.includes("Request your first measurement") &&
-        html.includes('href="/request-measurement"')
+        html.includes('href="/request-measurement?source=textos-site&amp;')
       ) {
         hits += 1;
       }
     }
-    expect(hits, "commercial articles binding label ↔ destination").toBeGreaterThanOrEqual(9);
+    expect(hits, "commercial articles binding label ↔ destination").toBe(COMMERCIAL_SLUGS.size);
   });
 
   it("at most one newsletter box per article", () => {
@@ -146,9 +170,9 @@ describe.skipIf(!hasBuild)("CMO-CONVERSION-SURFACE-2 — 12/12 acceptance", () =
     }
   });
 
-  it("all 12 articles remain noindex/nofollow", () => {
+  it("every insights page (managed corpus + CTC notes) remains noindex/nofollow", () => {
     const files = articles();
-    expect(files.length).toBe(12);
+    expect(files.length).toBe(ENTRIES.length);
     for (const f of files) {
       const html = fs.readFileSync(path.join(OUT_DIR, f), "utf8");
       expect(html).toMatch(/<meta name="robots" content="noindex[,\s]*nofollow"/i);

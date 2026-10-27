@@ -20,6 +20,7 @@ import {
 import { compileAuthority } from "@/lib/content-surface-engine/authority";
 import { resolveReferenceCta } from "@/lib/content-surface-engine/conversion";
 import type { CtaDeliveryContext } from "@/lib/conversion/cta-resolver";
+import { resolveMeasurementRequestCapability } from "@/lib/config/measurement-request-config";
 import {
   buildAttributedUrl,
   createEmitter,
@@ -64,6 +65,11 @@ function renderFull(resolved: ResolvedContentSurface, cta = null as ReturnType<t
       resolveAuthor={(id) => resolveReferenceAuthor(id)}
       kicker="Preview"
       contentRevision="0"
+      // PR #22 : la surface ferme les CTA commerciaux sans capacité de capture « configured ».
+      // Le rendu de référence est éprouvé en `demo` (cf. DEMO_DELIVERY) : capacité dérivée du même mode.
+      commercialCapability={
+        resolveMeasurementRequestCapability({ mode: "demo", formEndpoint: null, legalNotice: null }).state
+      }
     />,
   );
 }

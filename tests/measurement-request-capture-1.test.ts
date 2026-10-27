@@ -6,11 +6,12 @@ import fs from "node:fs";
 import path from "node:path";
 
 import {
-  isValidFormspreeEndpoint,
   resolveMeasurementRequestCapability,
   measurementRequestCapability,
 } from "@/lib/config/measurement-request-config";
 import { deriveResolvedConversionPlan } from "@/lib/content-surface-engine/site-integration/conversion-plan";
+import { conversionConfig } from "@/lib/conversion/conversion-config";
+import { listInsightEntries } from "@/lib/content-surface-engine/site-integration/insights-catalog";
 
 const OUT_DIR = path.resolve("out");
 const hasBuild = fs.existsSync(path.join(OUT_DIR, "request-measurement.html"));
@@ -19,33 +20,61 @@ const FORM_SOURCE = fs.readFileSync(
   "utf8",
 );
 
-describe("MEASUREMENT-REQUEST-CAPTURE-1 — capability resolution", () => {
-  it("valid Formspree endpoint resolves configured", () => {
-    const cap = resolveMeasurementRequestCapability("https://formspree.io/f/meaoonqy");
-    expect(cap.state).toBe("configured");
-    expect(cap.endpoint).toBe("https://formspree.io/f/meaoonqy");
-    expect(cap.controllerName).toBe("Marc Prp - TextOS");
-    expect(cap.privacyContactEmail).toBe("marcprp@gmail.com");
+// Portage PR #22 sur main (Merge #24) : la capacité n'est plus codée en dur (endpoint, identité du
+// responsable, contact) ; elle est dérivée de `conversionConfig`, seule source de la livraison.
+describe("MEASUREMENT-REQUEST-CAPTURE-1 — capability derived from conversionConfig", () => {
+  const legal = {
+    controllerName: "controller",
+    controllerAddress: "address",
+    privacyContactEmail: "contact",
+    dataRetentionPeriod: "retention",
+    formProviderName: "provider",
+  };
+
+  it("mode off → unconfigured, no endpoint, no identity", () => {
+    const cap = resolveMeasurementRequestCapability({ mode: "off", formEndpoint: null, legalNotice: null });
+    expect(cap.state).toBe("unconfigured");
+    expect(cap.endpoint).toBeNull();
+    expect(cap.controllerName).toBeNull();
+    expect(cap.privacyContactEmail).toBeNull();
     expect(cap.privacyUrl).toBe("/privacy");
   });
 
-  it("malformed / missing endpoints resolve unconfigured", () => {
-    const cases = [
-      "",
-      "not-a-url",
-      "http://formspree.io/f/xyz",       // http, not https
-      "https://formspree.io/xyz",        // missing /f/
-      "https://formspree.io/f/",         // empty id
-      "https://formspreeXio/f/xyz",      // wrong host
-      "https://evil.example.com/f/xyz",  // wrong host
-      "https://formspree.io/foo/bar",    // wrong prefix
-    ];
-    for (const raw of cases) {
-      expect(isValidFormspreeEndpoint(raw), `expected invalid: ${raw}`).toBe(false);
-      const cap = resolveMeasurementRequestCapability(raw);
-      expect(cap.state, `unconfigured for ${raw}`).toBe("unconfigured");
-      expect(cap.endpoint).toBe("");
+  it("mode demo → configured (simulated submission), still no endpoint", () => {
+    const cap = resolveMeasurementRequestCapability({ mode: "demo", formEndpoint: null, legalNotice: null });
+    expect(cap.state).toBe("configured");
+    expect(cap.endpoint).toBeNull();
+  });
+
+  it("mode live → configured only with endpoint AND published legal notice", () => {
+    const ok = resolveMeasurementRequestCapability({
+      mode: "live",
+      formEndpoint: "https://receiver.invalid/f/x",
+      legalNotice: legal,
+    });
+    expect(ok.state).toBe("configured");
+    expect(ok.endpoint).toBe("https://receiver.invalid/f/x");
+    expect(ok.controllerName).toBe("controller");
+    expect(ok.privacyContactEmail).toBe("contact");
+    for (const broken of [
+      { mode: "live" as const, formEndpoint: null, legalNotice: legal },
+      { mode: "live" as const, formEndpoint: "", legalNotice: legal },
+      { mode: "live" as const, formEndpoint: "https://receiver.invalid/f/x", legalNotice: null },
+    ]) {
+      expect(resolveMeasurementRequestCapability(broken).state).toBe("unconfigured");
     }
+  });
+
+  it("the module-level capability follows the build's conversion mode", () => {
+    expect(measurementRequestCapability.state).toBe(
+      conversionConfig.isOff ? "unconfigured" : "configured",
+    );
+  });
+
+  it("no endpoint, identity or contact is hard-coded in the capability module", () => {
+    const src = fs.readFileSync(path.resolve("lib/config/measurement-request-config.ts"), "utf8");
+    expect(src).not.toMatch(/https?:\/\//);
+    expect(src).not.toMatch(/@[a-z0-9-]+\./i);
   });
 });
 
@@ -230,139 +259,11 @@ describe("MEASUREMENT-REQUEST-QUESTIONS-1 — source-level invariants", () => {
   });
 });
 
-describe.skipIf(!hasBuild)("MEASUREMENT-REQUEST-CAPTURE-1 — built HTML", () => {
-  const html = fs.readFileSync(path.join(OUT_DIR, "request-measurement.html"), "utf8");
-
-  it("renders the four governed fields", () => {
-    expect(html).toMatch(/name="name"/);
-    expect(html).toMatch(/name="email"/);
-    expect(html).toMatch(/name="company_domain"/);
-    expect(html).toMatch(/name="measurement_context"/);
-  });
-
-  it("renders exactly one buyer_questions control on initial load, required and length-capped", () => {
-    const inputs = [...html.matchAll(/<input[^>]*name="buyer_questions"[^>]*>/gi)];
-    expect(inputs.length).toBe(1);
-    const tag = inputs[0][0].toLowerCase();
-    expect(tag).toMatch(/required(=""|=")/);
-    expect(tag).toMatch(/maxlength="300"/);
-  });
-
-  it("questions fieldset is present with the buyer-question semantic hook", () => {
-    expect(html).toMatch(/data-role="measurement-request-questions"/);
-    expect(html).toContain("What questions do your buyers ask?");
-    expect(html).toContain(
-      "Do not include confidential, personal or sensitive information.",
-    );
-  });
-
-  it("email and company_domain are required", () => {
-    for (const n of ["email", "company_domain"]) {
-      const m = html.match(new RegExp(`<input[^>]*name="${n}"[^>]*/?>`, "i"));
-      expect(m, `input for ${n}`).not.toBeNull();
-      expect(m![0]).toMatch(/required(=""|=")/);
-    }
-  });
-
-  it("maxlengths match the provider contract", () => {
-    // DOM attribute order isn't guaranteed by React; validate by inspecting
-    // the tag that carries each `name=` attribute, in either order.
-    function tagOf(name: string): string {
-      const m = html.match(new RegExp(`<(input|textarea)[^>]*name="${name}"[^>]*/?>`, "i"));
-      return m ? m[0] : "";
-    }
-    const cases: [string, number][] = [
-      ["name", 100],
-      ["email", 254],
-      ["company_domain", 255],
-      ["measurement_context", 2000],
-    ];
-    for (const [n, max] of cases) {
-      const tag = tagOf(n);
-      expect(tag, `tag for ${n}`).not.toBe("");
-      expect(tag.toLowerCase(), `maxlength=${max} on ${n}`).toMatch(
-        new RegExp(`maxlength="${max}"`),
-      );
-    }
-  });
-
-  it("form action and POST method match the governed endpoint", () => {
-    expect(html).toMatch(/action="https:\/\/formspree\.io\/f\/meaoonqy"/);
-    expect(html).toMatch(/method="POST"|method="post"/);
-  });
-
-  it("submit label uses request semantics (no instant-delivery promise)", () => {
-    expect(html).toContain("Send measurement request");
-    for (const stale of ["instant", "immediately", "self-serve measurement", "run now", "Start measurement"]) {
-      expect(html).not.toContain(stale);
-    }
-  });
-
-  it("privacy notice and /privacy link exist on the page", () => {
-    expect(html).toMatch(/data-role="measurement-request-privacy"/);
-    expect(html).toMatch(/href="\/privacy"/);
-    expect(html).toContain("Marc Prp - TextOS");
-    expect(html).toContain("marcprp@gmail.com");
-  });
-
-  it("no newsletter consent is implied", () => {
-    expect(html).toContain("does not subscribe you to marketing or the newsletter");
-  });
-
-  it("no PII appears in instrumentation attributes", () => {
-    for (const m of html.matchAll(/data-cse-instrument-event="([^"]+)"/g)) {
-      expect(m[1]).toMatch(/^[a-z_]+$/);
-      expect(m[1]).not.toContain("@");
-    }
-  });
-
-  it("robots noindex/nofollow", () => {
-    expect(html).toMatch(/<meta name="robots" content="noindex[,\s]*nofollow"/i);
-  });
-
-  it("CAPTURE-1A visual contract : exactly 4 stacked field groups + 1 submit + 1 privacy link + no unconfigured warning", () => {
-    const fieldGroups = (html.match(/data-role="measurement-request-field"/g) ?? []).length;
-    expect(fieldGroups, "field group hooks").toBe(4);
-    const submits = (html.match(/data-role="measurement-request-submit"/g) ?? []).length;
-    expect(submits, "single submit control").toBe(1);
-    const privacyLinks = (html.match(/href="\/privacy"/g) ?? []).length;
-    expect(privacyLinks, "single /privacy link").toBe(1);
-    const configuredForms = (html.match(/data-provider-state="configured"/g) ?? []).length;
-    expect(configuredForms, "exactly one configured Formspree form").toBe(1);
-    expect(html).not.toContain('data-state="unavailable"');
-    expect(html).not.toContain('data-provider-state="unconfigured"');
-  });
-
-  it("CAPTURE-1A visual contract : governed layout hooks exist and are token-scoped (no hard-coded light surface, no positional CSS)", () => {
-    // Each field must own its independent label-row + control.
-    for (const name of ["name", "email", "company_domain", "measurement_context"]) {
-      const tag = html.match(new RegExp(`<(input|textarea)[^>]*name="${name}"[^>]*>`, "i"));
-      expect(tag, `control for ${name}`).not.toBeNull();
-      expect(tag![0], `control ${name} uses governed class`).toContain(
-        "measurement-request__control",
-      );
-    }
-    // Label rows are structural, not inline-with-controls.
-    const labelRows = (html.match(/class="measurement-request__label-row"/g) ?? []).length;
-    expect(labelRows).toBe(4);
-    // Submit uses the site's governed primary CTA style + measurement submit class.
-    expect(html).toMatch(
-      /class="cse-surface__cta-primary measurement-request__submit"/,
-    );
-  });
-});
-
-describe.skipIf(!hasBuild)("MEASUREMENT-REQUEST-CAPTURE-1 — /privacy page", () => {
-  const privacyPath = path.join(OUT_DIR, "privacy.html");
-  it("exists and mentions Formspree + controller", () => {
-    expect(fs.existsSync(privacyPath)).toBe(true);
-    const html = fs.readFileSync(privacyPath, "utf8");
-    expect(html).toContain("Marc Prp - TextOS");
-    expect(html).toContain("marcprp@gmail.com");
-    expect(html).toContain("Formspree");
-    expect(html).toContain("does not subscribe you");
-  });
-});
+// Les blocs « built HTML » (/request-measurement) et « /privacy » de PR #22 décrivaient la page de
+// capture câblée en dur sur un endpoint et une identité fixes. Au portage, /request-measurement et
+// /privacy restent ceux de main (gouvernés par conversionConfig : off / demo / live, mentions
+// légales issues de la configuration) ; leurs invariants HTML vivent dans exported-html.test.ts,
+// measurement-request.test.ts, landing-attribution.test.ts et privacy-footer.test.ts.
 
 describe.skipIf(!hasBuild)("MEASUREMENT-REQUEST-CAPTURE-1 — configured cohort", () => {
   const OUT_INSIGHTS = path.resolve("out/insights");
@@ -370,27 +271,40 @@ describe.skipIf(!hasBuild)("MEASUREMENT-REQUEST-CAPTURE-1 — configured cohort"
     .readdirSync(OUT_INSIGHTS)
     .filter((f) => f.endsWith(".html") && !f.startsWith("__"))
     .sort();
+  // Cohorte commerciale tirée des documents, pas d'une liste figée.
+  const measureBrandSlugs = listInsightEntries()
+    .filter(
+      (e) =>
+        e.document.conversion.conversionAllowed &&
+        e.document.conversion.ctaIntentId === "MEASURE_BRAND",
+    )
+    .map((e) => e.slug);
 
-  it("all 9 MEASURE_BRAND articles resolve an actionable /request-measurement destination", () => {
-    if (measurementRequestCapability.state !== "configured") {
-      // Test-time capability is configured because raw endpoint is baked in.
-      throw new Error("capability unexpectedly unconfigured at test time");
-    }
-    let hits = 0;
-    for (const f of files) {
-      const html = fs.readFileSync(path.join(OUT_INSIGHTS, f), "utf8");
-      if (
-        html.includes('href="/request-measurement"') &&
-        html.includes("Request your first measurement")
-      ) {
-        hits += 1;
+  it.runIf(measurementRequestCapability.state === "configured")(
+    "every MEASURE_BRAND article resolves an actionable /request-measurement destination",
+    () => {
+      expect(measureBrandSlugs.length).toBe(9);
+      for (const slug of measureBrandSlugs) {
+        const html = fs.readFileSync(path.join(OUT_INSIGHTS, `${slug}.html`), "utf8");
+        expect(html, slug).toMatch(/href="\/request-measurement\?source=textos-site&amp;/);
+        expect(html, slug).toContain("Request your first measurement");
       }
-    }
-    expect(hits).toBeGreaterThanOrEqual(9);
-  });
+    },
+  );
 
-  it("all 12 articles remain noindex/nofollow", () => {
-    expect(files.length).toBe(12);
+  it.runIf(measurementRequestCapability.state !== "configured")(
+    "capability unconfigured → no article links to /request-measurement",
+    () => {
+      for (const f of files) {
+        const html = fs.readFileSync(path.join(OUT_INSIGHTS, f), "utf8");
+        expect(html, f).not.toContain('href="/request-measurement');
+        expect(html, f).not.toContain("Request your first measurement");
+      }
+    },
+  );
+
+  it("every insights page (managed corpus + CTC notes) remains noindex/nofollow", () => {
+    expect(files.length).toBe(listInsightEntries().length);
     for (const f of files) {
       const html = fs.readFileSync(path.join(OUT_INSIGHTS, f), "utf8");
       expect(html).toMatch(/<meta name="robots" content="noindex[,\s]*nofollow"/i);
