@@ -312,6 +312,19 @@ export default async function Page({
                 })
               : null
           }
+          ctaHeaderHref={
+            cta
+              ? buildCtaAttributionHref({
+                  destination: cta.destination,
+                  contentId: entry.document.identity.documentId,
+                  clusterId: (entry.document as { clusterId?: string }).clusterId ?? null,
+                  ctaVariant: cta.variantId,
+                  ctaVersion: cta.version,
+                  position: "header",
+                  contentRevision,
+                })
+              : null
+          }
           relatedEntries={resolveRelatedContent({
             target: entry.document,
             publicOnly: !previewVisibility.showDraftContent,

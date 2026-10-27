@@ -12,6 +12,7 @@ import path from "node:path";
 
 import { loadManagedCorpus } from "@/lib/content-surface-engine/conformance/corpus-loader";
 import { evaluateRenderParity } from "@/lib/content-surface-engine/conformance/render-parity";
+import { findSourceRelatedSection } from "@/lib/content-surface-engine/site-integration/related-source-links";
 
 const OUT_DIR = path.resolve("out/insights");
 
@@ -29,7 +30,17 @@ describe("A2R — EXACT ContentDocument → HTML semantic parity", () => {
     "%s : exact semantic equality per source-backed block",
     (slug, doc) => {
       const html = fs.readFileSync(path.join(OUT_DIR, `${slug}.html`), "utf8");
-      const r = evaluateRenderParity({ document: doc, html });
+      // PR #22 : la section source « Related … » (titre + liste) est projetée hors du corps, dans
+      // le module Related. Elle est exclue de la parité de corps (option prévue par l'évaluateur),
+      // mais chacun de ses liens gouvernés doit rester présent dans la page.
+      const src = findSourceRelatedSection(doc);
+      const consumedBlockIds = new Set<string>(
+        src ? [src.headingBlockId, src.listBlockId] : [],
+      );
+      for (const l of src?.links ?? []) {
+        expect(html, `${slug}: governed related link ${l.href} lost`).toContain(`href="${l.href}"`);
+      }
+      const r = evaluateRenderParity({ document: doc, html, consumedBlockIds });
       if (!r.passed) {
         const preview = r.diffs
           .slice(0, 6)

@@ -22,12 +22,21 @@ export interface ManagedSurfacePlan {
 
 export function computeManagedSurfacePlan(
   resolved: ResolvedContentSurface,
+  options: {
+    /**
+     * Hrefs the surface actually re-projects outside the body (Related module, editorial next
+     * step). Port of PR #22 onto main : the source section is consumed ONLY when every one of its
+     * governed links is re-projected. Otherwise it stays in the body flow untouched, so no
+     * governed link the article carries can disappear from the page (exact-parity guarantee).
+     */
+    reprojectedHrefs: ReadonlySet<string>;
+  },
 ): ManagedSurfacePlan {
   const consumed = new Set<string>();
   const skipHeadings = new Set<string>();
 
   const src = findSourceRelatedSectionFromResolved(resolved);
-  if (src) {
+  if (src && src.links.every((l) => options.reprojectedHrefs.has(l.href))) {
     consumed.add(src.headingBlockId);
     consumed.add(src.listBlockId);
     skipHeadings.add(src.headingBlockId);

@@ -57,6 +57,11 @@ export interface ManagedSurfaceProps {
    */
   ctaContextualHref?: string | null;
   ctaFinalHref?: string | null;
+  /**
+   * Header slot (CMO-CONVERSION-SURFACE-2) : same strict-allowlist attribution as contextual and
+   * final, with `position=header`, so a request started from the header stays attributable.
+   */
+  ctaHeaderHref?: string | null;
   contentRevision?: string;
   /**
    * Optional : resolved related-content entries. When provided, the managed surface
@@ -198,6 +203,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
     document,
     ctaContextualHref,
     ctaFinalHref,
+    ctaHeaderHref,
     contentRevision,
     relatedEntries,
     newsletter,
@@ -208,7 +214,6 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
   const breadcrumbInsights = props.breadcrumbInsights ?? Boolean(document);
   const readingTimeMinutes = computeReadingTimeMinutes(resolved);
   const metadataDates = computeMetadataDates(document);
-  const plan = computeManagedSurfacePlan(resolved);
   const sourceRelated = findSourceRelatedSectionFromResolved(resolved);
   const computedRelated = (relatedEntries ?? []).slice(0, RELATED_MAX);
   // Fallback : governed outbound links from the source "Related …" section
@@ -260,6 +265,12 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
     // Fail-closed default : if the caller omits the state, treat as unconfigured.
     commercialCapability: commercialCapability ?? "unconfigured",
   });
+
+  // The source "Related …" section leaves the body only if all its governed links are rendered
+  // elsewhere on the page (Related module or editorial next step).
+  const reprojectedHrefs = new Set<string>(relatedForRender.map((r) => r.href));
+  if (conversionPlan.editorialNextStep) reprojectedHrefs.add(conversionPlan.editorialNextStep.href);
+  const plan = computeManagedSurfacePlan(resolved, { reprojectedHrefs });
 
   // CMO-SURFACE-VISUAL-CORRECTION-1 : promote the first visible Short Answer
   // block above the ToC so it lives in the first viewport, and consume its
@@ -395,7 +406,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
         >
           <a
             className="cse-surface__cta-primary"
-            href={conversionPlan.commercial.header.destination}
+            href={ctaHeaderHref ?? conversionPlan.commercial.header.destination}
             data-cse-cta-destination={conversionPlan.commercial.header.destination}
             data-cse-instrument-event="commercial_cta_click"
           >
