@@ -80,10 +80,14 @@ export interface ManagedSurfaceProps {
    * rendered ONLY in a preview build and cannot submit.
    */
   newsletter?: {
-    provider: "buttondown";
-    username: string | null;
+    /** Décision CPO du 27/10/2026 : la newsletter vit dans le PLG du produit, jamais chez un
+     *  fournisseur branché sur le site. Le site ne collecte aucune adresse : il ne porte que le
+     *  lien de passage vers l'inscription produit. */
+    provider: "textos_plg";
+    /** Passage vers l'inscription produit (consentement marketing PLG). `null` tant que le lot
+     *  PLG n'existe pas : le bloc ne peut rien soumettre. */
+    handoffUrl: string | null;
     sourceTag: string;
-    privacyUrl: string | null;
     /** True if this build is an editorial preview (drafts visible). */
     isPreview: boolean;
   };
@@ -254,7 +258,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
   // CMO-CONVERSION-SURFACE-2 : derived conversion plan (commercial CTA at
   // three placements, editorial next step, retention).
   const newsletterEnabled = Boolean(
-    newsletter && (newsletter.isPreview || (newsletter.username && newsletter.privacyUrl)),
+    newsletter && (newsletter.isPreview || Boolean(newsletter.handoffUrl)),
   );
   const conversionPlan: ResolvedConversionPlan = deriveResolvedConversionPlan({
     resolved,
@@ -542,9 +546,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
           data-role="newsletter"
           data-cse-instrument-event="newsletter_impression"
           data-provider={newsletter.provider}
-          data-provider-state={
-            newsletter.username && newsletter.privacyUrl ? "configured" : "unconfigured"
-          }
+          data-provider-state={newsletter.handoffUrl ? "configured" : "unconfigured"}
           aria-labelledby={`${resolved.documentId}-newsletter-title`}
         >
           <p
@@ -556,44 +558,19 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
           <p className="cse-surface__newsletter-copy">
             One evidence-led note on how brands earn visibility in answer engines. No rankings. No noise.
           </p>
-          {newsletter.username && newsletter.privacyUrl ? (
-            <form
-              className="cse-surface__newsletter-form"
-              method="post"
-              action={`https://buttondown.com/api/emails/embed-subscribe/${encodeURIComponent(newsletter.username)}`}
-              target="popupwindow"
+          {newsletter.handoffUrl ? (
+            <a
+              className="cse-surface__newsletter-submit"
+              href={newsletter.handoffUrl}
+              data-cse-instrument-event="newsletter_submit_attempt"
             >
-              <label className="cse-surface__newsletter-label" htmlFor={`${resolved.documentId}-newsletter-email`}>
-                Work email
-              </label>
-              <input
-                id={`${resolved.documentId}-newsletter-email`}
-                type="email"
-                name="email"
-                autoComplete="email"
-                required
-                placeholder="Work email"
-                className="cse-surface__newsletter-input"
-              />
-              <input type="hidden" name="tag" value={newsletter.sourceTag} />
-              <input type="hidden" name="embed" value="1" />
-              <button
-                type="submit"
-                className="cse-surface__newsletter-submit"
-                data-cse-instrument-event="newsletter_submit_attempt"
-              >
-                Get the brief
-              </button>
-              <p className="cse-surface__newsletter-consent">
-                By subscribing you consent to receive the brief.{" "}
-                <a href={newsletter.privacyUrl}>Privacy notice</a>.
-              </p>
-            </form>
+              Get the brief
+            </a>
           ) : (
             <>
               {newsletter.isPreview ? (
                 <p className="cse-surface__newsletter-preview-label" data-role="newsletter-preview-label">
-                  Preview — provider connection required
+                  Preview — subscription opens in the TextOS product
                 </p>
               ) : null}
               <div className="cse-surface__newsletter-form" aria-disabled="true">
@@ -616,7 +593,7 @@ export function ManagedTextosSurface(props: ManagedSurfaceProps): ReactElement {
                   Get the brief
                 </button>
                 <p className="cse-surface__newsletter-consent">
-                  Newsletter provider is not configured — no submission possible.
+                  Subscription is not open yet — no submission possible.
                 </p>
               </div>
             </>

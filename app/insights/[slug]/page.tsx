@@ -281,9 +281,8 @@ export default async function Page({
           commercialCapability={measurementRequestCapability.state}
           newsletter={{
             provider: newsletterConfig.provider,
-            username: newsletterConfig.username,
+            handoffUrl: newsletterConfig.handoffUrl,
             sourceTag: newsletterConfig.sourceTag,
-            privacyUrl: newsletterConfig.privacyUrl,
             isPreview: previewVisibility.showDraftContent,
           }}
           ctaContextualHref={
