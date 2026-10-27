@@ -1,4 +1,6 @@
 {
+  "planId": "what happens to an ai written article when the model provider fails",
+  "planHash": "529adc47384bed62378f563e8757ec0e9e3340570043e2d7a04eee8bdad94f46",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -101,16 +103,34 @@
       "excludedEvidence": []
     },
     {
+      "slotId": "writer-fails-caption",
+      "role": "caption",
+      "headingLevel": null,
+      "heading": null,
+      "text": "In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt.",
+      "statementIds": [
+        "stmt:20:writer-fails-caption:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-wf-03",
+        "ev-wf-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-wf-03",
+        "ev-wf-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
       "slotId": "section-2",
       "role": "section",
       "headingLevel": 2,
       "heading": "What a fallback is not allowed to do",
-      "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
+      "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal.",
       "statementIds": [
         "stmt:9:section-2:2:s1",
         "stmt:9:section-2:2:s2",
-        "stmt:9:section-2:2:s3",
-        "stmt:9:section-2:2:s4"
+        "stmt:9:section-2:2:s3"
       ],
       "evidenceIdsUsed": [
         "ev-wf-05",
@@ -127,12 +147,11 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "Switched on with an exit and a human hand",
-      "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+      "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.",
       "statementIds": [
         "stmt:9:section-3:2:s1",
         "stmt:9:section-3:2:s2",
-        "stmt:9:section-3:2:s3",
-        "stmt:9:section-3:2:s4"
+        "stmt:9:section-3:2:s3"
       ],
       "evidenceIdsUsed": [
         "ev-wf-07",
@@ -145,17 +164,45 @@
         "ev-wf-09"
       ],
       "excludedEvidence": []
+    },
+    {
+      "slotId": "verify",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "text": "Ask whether one article can end up written by two different models. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal. Ask what the article's status shows while it waits for a model to answer. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+      "statementIds": [
+        "stmt:6:verify:2:s1",
+        "stmt:6:verify:2:s2",
+        "stmt:6:verify:2:s3",
+        "stmt:6:verify:2:s4"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "editorial-next-step",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "text": "Another note explains who may say yes to a source before an article can rely on it. A second note shows how an article that was produced is told apart from one that was checked.",
+      "statementIds": [
+        "stmt:19:editorial-next-step:2:s1",
+        "stmt:19:editorial-next-step:2:s2"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
     }
   ],
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "c23c402d8e3f8103deb39e57a4137dd411d4acbc854691f0ad202861f59f7255",
+  "structuredContentHash": "a11abfb4ebb59aa6dc4056a82e52110b689d1bdfc5b29ffecc06e32f294a362b",
   "truthCheck": {
     "verdict": "pass",
     "contradictions": []
   },
-  "planId": "what happens to an ai written article when the model provider fails",
-  "planHash": "d8938ce823a6dc451d4964f9e87a16f616d69dbc9ce6710f660403162bbe5723",
   "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
 }

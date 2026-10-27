@@ -1,0 +1,65 @@
+{
+  "text": "Ask whether status labels are computed from stored results or written into the interface. Ask whether the rule that lets content reach your website is written in one place or spread across screens. Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Ask whether status labels are computed from stored results or written into the interface.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask whether the rule that lets content reach your website is written in one place or spread across screens.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

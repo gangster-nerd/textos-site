@@ -2,7 +2,7 @@
   "contentSchemaVersion": "content-document@1",
   "identity": {
     "documentId": "textos-site:ctc:ctc-evidence-approved-per-article",
-    "contentType": "ARTICLE",
+    "contentType": "product_article",
     "slug": "a-source-is-not-evidence-until-someone-approves-it",
     "language": "en-US",
     "title": "In TextOS, a source becomes evidence only once a person approves it for the article",
@@ -11,21 +11,68 @@
   "editorial": {
     "authorIds": [],
     "reviewerIds": [],
-    "topicIds": []
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
   },
   "truth": {
     "statusVocabulary": "geo-writer",
     "statusVocabularyVersion": "geo-writer@0.2",
-    "sourceStatus": "truthCheck:pass",
+    "sourceStatus": "ARTICLE_GUIDE",
     "publicationStatus": "draft",
     "allowedSurfaces": [
-      "reference"
+      "reference",
+      "native"
     ],
-    "claimIds": [],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:6:answer:2:s4",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:4:lead:2:s4",
+      "stmt:21:evidence-path-caption:2:s1",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:3:s3b",
+      "stmt:9:section-1:3:s3c",
+      "stmt:9:section-1:2:s4",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:3:s2b",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:9:section-2:2:s5",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:3:s2b",
+      "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:s4",
+      "stmt:9:section-3:2:s5",
+      "stmt:9:section-3:2:s6",
+      "stmt:9:section-4:2:s1",
+      "stmt:9:section-4:2:s2",
+      "stmt:9:section-4:2:s3",
+      "stmt:9:section-4:2:s4",
+      "stmt:9:section-4:3:s4b",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
     "evidenceRefs": [
       "ev-ea-01",
       "ev-ea-06",
       "ev-ea-03",
+      "ev-ea-13",
       "ev-ea-02",
       "ev-ea-07",
       "ev-ea-04",
@@ -34,56 +81,182 @@
       "ev-ea-09",
       "ev-ea-10",
       "ev-ea-11",
-      "ev-ea-12",
-      "ev-ea-13"
+      "ev-ea-12"
     ],
     "capabilityIds": []
   },
   "provenance": {
     "sourceAuthority": "UNCERTIFIED",
-    "sourceEvidenceDigest": "1e04e450d52ecd30e3200be77e8e10dabca0a5d2a055aad61f5478a99e39492a"
+    "sourceEvidenceDigest": "042767846d8b97f5dc4f86033b6d8702ed6b50c2c82b898edc703f38c5942949"
   },
   "body": [
     {
-      "id": "lead",
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "TextOS treats an observed source and an approved fact as two different things. A named person approves each source for one specific article, under wording they validate, and only then can the article lean on that fact and show where it came from. When the article is written, only sources that are both approved and usable under TextOS's central rules are offered to its body sections, in the public wording that was approved. Put simply, the writer works from a short list that a person drew up, not from whatever the system happened to read."
+      }
+    },
+    {
+      "id": "lead:body",
       "kind": "paragraph",
       "data": {
         "text": "Most worries about AI writing are not about style. They are about a sentence that states something about your brand which nobody on your side ever checked. In TextOS, a source the system has merely observed is not presented as a fact: an identified person approves it for one article, under wording that person validates, before the article may rely on it. This note walks through how that rule works and what it changes for the person signing off."
       }
     },
     {
-      "id": "answer",
-      "kind": "answer",
+      "id": "figure:evidence-path",
+      "kind": "figure",
       "data": {
-        "text": "TextOS treats an observed source and an approved fact as two different things. A named person approves each source for one specific article, under wording they validate, and only then can the article lean on that fact and show where it came from. When the article is written, only sources that are both approved and usable under TextOS's central rules are offered to its body sections, in the public wording that was approved. Put simply, the writer works from a short list that a person drew up, not from whatever the system happened to read."
+        "src": "/diagrams/ctc/evidence-path-e94b60e60fc4.svg",
+        "alt": "From observed source to usable evidence. A 4-step flow: Candidate passage, then Approved for this article, then Offered to the writer, then Withdrawn from drafts. A dashed boundary after \"Candidate passage\" is labelled Human decision: A named person approves; a non-human identity cannot.",
+        "caption": "In TextOS a passage found in a source stays a candidate until a named person approves it for one article; only then is it offered to the writer, and withdrawing that decision takes it back out of future drafts."
       }
     },
     {
-      "id": "section-1",
-      "kind": "paragraph",
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
       "data": {
-        "text": "The first question is who is allowed to say yes. In TextOS, a non-human identity cannot record that a source may be used, and the decision is checked by the product's existing rules before anything is written. The identity behind the decision comes from the signed-in session: a caller cannot pass a name in, and shortcuts that skip the session are refused.\n\nA sign-off that a script can fake is only a formality. When you assess an AI content tool, ask who can mark a source as usable, and whether that action is tied to a real signed-in person. Ask as well whether an administrator or an automated job can do it on someone's behalf."
+        "text": "Only a person can say yes"
       }
     },
     {
-      "id": "section-2",
+      "id": "section-1:body",
       "kind": "paragraph",
       "data": {
-        "text": "A TextOS decision about a source lapses as soon as the quoted passage changes. The person agreed to specific words, so new words call for a new decision. Those decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another.\n\nWithdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress. A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand. Before you trust any tool with brand facts, check what happens to a published sentence when the source behind it changes."
+        "text": "The first question is who is allowed to say yes. In TextOS, a non-human identity cannot record that a source may be used, and the decision is checked by the product's existing rules before anything is written. The identity behind the decision comes from the signed-in session: a caller cannot pass a name in, and shortcuts that skip the session are refused.\n\nIn TextOS, two separate checks run before any writing starts: one for using the source in the article, and one for showing it in public. The split matters because a fact can be fine to rely on and still not be ready to quote on a public page. A sign-off that a script can fake is only a formality."
       }
     },
     {
-      "id": "section-3",
-      "kind": "paragraph",
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
       "data": {
-        "text": "Once a fact is approved, TextOS offers it to the short answer and to one body section that fits it, by heading and purpose, and not to the opening or to the suggested next step. No type of claim is forced onto the writer. The aim is an article that brings a different fact into each section instead of repeating the same one in new words.\n\nNear repetition is flagged for the person reviewing, and an exact duplicate sentence is blocked outright. A reader notices the difference within two paragraphs. If a tool repeats your strongest proof point in each paragraph, take it as a sign that it has run out of real material."
+        "text": "An approval belongs to one article and one wording"
       }
     },
     {
-      "id": "section-4",
+      "id": "section-2:body",
       "kind": "paragraph",
       "data": {
-        "text": "When several approved facts could serve, TextOS picks the set deterministically, guided by relevance, coverage and specificity. It keeps corroboration between independent sources, sets aside the same source repeated, applies limits and says plainly when something is missing. The reader can see why these sources were chosen, without any internal identifier.\n\nA passage that TextOS finds while reading a source is only a candidate: it is neither approved nor offered to the writer until a person qualifies it. Ask any vendor to show you, for one article, which facts were used, which were left out and why."
+        "text": "A TextOS decision about a source lapses as soon as the quoted passage changes. The person agreed to specific words, so new words call for a new decision. Nothing carries over silently: the same source with a reworded passage starts again from the beginning.\n\nThose decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another. Withdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress. A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Offered to the writer, never imposed"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Once a fact is approved, TextOS offers it to the short answer and to one body section that fits it, by heading and purpose, and not to the opening or to the suggested next step. No type of claim is forced onto the writer. The sources behind those facts are shown with the article, under the wording that was approved. The aim is an article that brings a different fact into each section instead of repeating the same one in new words.\n\nNear repetition is flagged for the person reviewing, and an exact duplicate sentence is blocked outright. A reader notices the difference within two paragraphs. If a tool repeats your strongest proof point in each paragraph, take it as a sign that it has run out of real material."
+      }
+    },
+    {
+      "id": "section-4:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Choosing among approved facts, and saying why"
+      }
+    },
+    {
+      "id": "section-4:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "When several approved facts could serve, TextOS picks the set deterministically, guided by relevance, coverage and specificity. It keeps corroboration between independent sources, sets aside the same source repeated, applies limits and says plainly when something is missing. The reader can see why these sources were chosen, without any internal identifier.\n\nA passage that TextOS finds while reading a source is only a candidate: it is neither approved nor offered to the writer until a person qualifies it. Choosing is a separate step from saying yes: a fact can be cleared for use and still be left out of an article where it adds nothing new."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI writing vendor"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "Ask who may mark a source as usable for an article, and whether that action is tied to a signed-in person.",
+          "Ask whether an administrator or a scheduled job can act on someone's behalf.",
+          "Ask whether a changed quote needs a fresh decision before the writer can use it again.",
+          "Ask what happens to a sentence that already sits in a draft when its source is withdrawn.",
+          "Ask to see, for one article, which facts were used, which were left out and why."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "The next note covers the step that follows this one: why an article that was produced is not yet an article that was checked. A second note describes how cited pages are read in a bounded step, before any passage is put forward for qualification."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-ea-01",
+      "kind": "source",
+      "data": {
+        "ref": "ev-ea-01",
+        "title": "TextOS product commit d1dfde7, 25 Oct 2026"
+      }
+    },
+    {
+      "id": "source:2:ev-ea-06",
+      "kind": "source",
+      "data": {
+        "ref": "ev-ea-06",
+        "title": "TextOS product commit c137a99, 25 Oct 2026"
+      }
+    },
+    {
+      "id": "source:3:ev-ea-13",
+      "kind": "source",
+      "data": {
+        "ref": "ev-ea-13",
+        "title": "TextOS product commit cf5b34a, 26 Oct 2026"
+      }
+    },
+    {
+      "id": "source:4:ev-ea-08",
+      "kind": "source",
+      "data": {
+        "ref": "ev-ea-08",
+        "title": "TextOS product commit e2e40e5, 26 Oct 2026"
+      }
+    },
+    {
+      "id": "source:5:ev-ea-10",
+      "kind": "source",
+      "data": {
+        "ref": "ev-ea-10",
+        "title": "TextOS product commit a36d479, 26 Oct 2026"
       }
     }
   ],
@@ -95,6 +268,8 @@
   },
   "lifecycle": {},
   "seo": {
-    "indexingIntent": "noindex"
+    "indexingIntent": "noindex",
+    "targetQuery": "how to make an ai writer use only approved facts",
+    "searchIntent": "buyer_decision"
   }
 }

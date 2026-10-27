@@ -39,7 +39,17 @@ function sandbox(): string {
   const dir = mkdtempSync(path.join(tmpdir(), "textos-client-"));
   cpSync(path.join(ROOT, "textos"), path.join(dir, "textos"), { recursive: true });
   cpSync(path.join(ROOT, "product-manifest"), path.join(dir, "product-manifest"), { recursive: true });
+  cpSync(path.join(ROOT, "public", "diagrams", "ctc"), path.join(dir, "public", "diagrams", "ctc"), { recursive: true });
   return dir;
+}
+
+/** What `loadCtcArticles` passes to the projection: intake titles and receipt figure hashes. */
+function projectionInputs(articleId: string) {
+  const run = `textos/runs/${articleId}`;
+  const lineage = JSON.parse(readFileSync(`${run}/lineage.json`, "utf8"));
+  const intake = JSON.parse(readFileSync(`${run}/intake.json`, "utf8")) as { evidence: { id: string; sourceTitle: string }[] };
+  const receipt = JSON.parse(readFileSync(`${run}/receipt.json`, "utf8")) as { figureHashes: Record<string, string> };
+  return { lineage, sourceTitles: new Map(intake.evidence.map((e) => [e.id, e.sourceTitle])), figureHashes: receipt.figureHashes };
 }
 
 describe("Commit-to-Content client — committed runs", () => {
@@ -48,9 +58,9 @@ describe("Commit-to-Content client — committed runs", () => {
     expect(articles.map((a) => a.brief.articleId).sort()).toEqual(loadBriefs().map((b) => b.articleId).sort());
   });
 
-  it("writer and product pins are the same certified-candidate SHA", () => {
+  it("the writer runs at its pin, and product truth is read at the certified-candidate pin", () => {
     expect(tool.writer.sha).toMatch(/^[0-9a-f]{40}$/);
-    expect(tool.product.sha).toBe(tool.writer.sha);
+    expect(tool.product.sha).toMatch(/^[0-9a-f]{40}$/);
     for (const a of articles) {
       expect(a.receipt.textos.sha).toBe(tool.writer.sha);
       expect(a.receipt.canonicalProductSha).toBe(tool.product.sha);
@@ -81,9 +91,29 @@ describe("Commit-to-Content client — committed runs", () => {
 });
 
 describe("Commit-to-Content client — site projection", () => {
+  it("went through TextOS's common article review: CMO V2 pass, release allowed, a figure, a list and Sources", () => {
+    for (const a of articles) {
+      const review = JSON.parse(readFileSync(`textos/runs/${a.brief.articleId}/article-review.json`, "utf8"));
+      expect(a.receipt.cmoV2).toEqual({ version: "article-cmo-v2@1", passed: true });
+      expect(review.release).toEqual({ allowed: true, blockers: [], cmoV2Issues: [] });
+      const kinds = new Set(a.document.body.map((b) => b.kind));
+      for (const kind of ["answer", "heading", "figure", "steps", "source"]) expect(kinds.has(kind as never), `${a.brief.articleId}: ${kind}`).toBe(true);
+      expect(a.document.body.some((b) => b.slot === "editorial-next-step")).toBe(true);
+    }
+  });
+
+  it("cites each document once, by reference and date, without a link", () => {
+    for (const a of articles) {
+      const titles = a.document.body.filter((b) => b.kind === "source").map((b) => String(b.data.title));
+      expect(new Set(titles).size).toBe(titles.length);
+      for (const b of a.document.body.filter((x) => x.kind === "source")) expect(b.data.href).toBeUndefined();
+      for (const t of titles.filter((x) => x.startsWith("TextOS product commit"))) expect(t).toMatch(/^TextOS product commit [0-9a-f]{7}, \d{1,2} [A-Z][a-z]{2} \d{4}$/);
+    }
+  });
+
   it("never changes a word the writer wrote", () => {
     for (const a of articles) {
-      for (const block of a.writerDocument.body) {
+      for (const block of a.writerDocument.body.filter((b) => typeof b.data.text === "string")) {
         const projected = a.document.body
           .filter((b) => b.id === block.id || b.id.startsWith(`${block.id}--p`))
           .map((b) => String(b.data.text));
@@ -94,11 +124,11 @@ describe("Commit-to-Content client — site projection", () => {
     }
   });
 
-  it("adds only the section headings fixed by the brief's plan", () => {
+  it("shows only the section headings fixed by the brief's plan, plus TextOS's own Sources heading", () => {
     for (const a of articles) {
       const headings = a.document.body.filter((b) => b.kind === "heading").map((b) => String(b.data.text));
-      const planned = a.brief.slots.flatMap((s) => (s.heading && s.headingLevel ? [s.heading] : []));
-      expect(headings).toEqual(planned);
+      const planned = a.brief.slots.flatMap((s) => (s.role === "section" && s.heading && s.headingLevel ? [s.heading] : []));
+      expect(headings).toEqual([...planned, "Sources"]);
     }
   });
 
@@ -145,12 +175,12 @@ describe("Commit-to-Content client — site projection", () => {
 
   it("a recorded human review publishes the projection, never before", () => {
     const a = articles[0]!;
-    const lineage = JSON.parse(readFileSync(`textos/runs/${a.brief.articleId}/lineage.json`, "utf8"));
+    const inputs = projectionInputs(a.brief.articleId);
     const reviewed = {
       ...a.brief,
       publication: { humanReview: { status: "done" as const, reviewer: "marc-prempain", reviewedOn: "2026-10-27" } },
     };
-    const doc = projectCtcDocument({ brief: reviewed, writerDocument: a.writerDocument, lineage });
+    const doc = projectCtcDocument({ brief: reviewed, writerDocument: a.writerDocument, ...inputs });
     expect(doc.truth.publicationStatus).toBe("published");
     expect(doc.editorial.reviewerIds).toEqual(["marc-prempain"]);
     expect(doc.lifecycle.firstPublishedAt).toBe("2026-10-27");
@@ -189,11 +219,25 @@ describe("Commit-to-Content client — guards fire on tampering", () => {
     expect(verify(root).join("\n")).toMatch(/the writer pin is 0{40}/);
   });
 
-  it("a projection that alters the writer's text throws", () => {
+  it("a projection that alters the writer's text, a caption or a Source title throws", () => {
     const a = articles[0]!;
-    const lineage = JSON.parse(readFileSync(`textos/runs/${a.brief.articleId}/lineage.json`, "utf8"));
-    const altered = { ...a.writerDocument, body: a.writerDocument.body.map((b, i) => (i === 0 ? { ...b, data: { text: "Rewritten." } } : b)) };
-    expect(() => projectCtcDocument({ brief: a.brief, writerDocument: altered, lineage })).toThrow(/not the writer's slot text/);
+    const inputs = projectionInputs(a.brief.articleId);
+    const alter = (kind: string, data: Record<string, unknown>) => ({
+      ...a.writerDocument,
+      body: a.writerDocument.body.map((b) => (b.kind === kind ? { ...b, data: { ...b.data, ...data } } : b)),
+    });
+    expect(() => projectCtcDocument({ brief: a.brief, writerDocument: alter("paragraph", { text: "Rewritten." }), ...inputs })).toThrow(/not the writer's slot text/);
+    expect(() => projectCtcDocument({ brief: a.brief, writerDocument: alter("figure", { caption: "Rewritten." }), ...inputs })).toThrow(/caption is not the writer's caption slot/);
+    expect(() => projectCtcDocument({ brief: a.brief, writerDocument: alter("source", { title: "Another title" }), ...inputs })).toThrow(/is not a Source TextOS recorded/);
+  });
+
+  it("a tampered figure SVG is refused", () => {
+    const root = sandbox();
+    const receipt = JSON.parse(readFileSync(path.join(root, "textos/runs", first.articleId, "receipt.json"), "utf8"));
+    const [id, hash] = Object.entries(receipt.figureHashes as Record<string, string>)[0]!;
+    const file = path.join(root, "public/diagrams/ctc", `${id}-${hash.slice(0, 12)}.svg`);
+    writeFileSync(file, readFileSync(file, "utf8").replace("</svg>", "<!-- edited --></svg>"));
+    expect(verify(root).join("\n")).toMatch(new RegExp(`figure ${id} does not match the receipt`));
   });
 
   it("a cited commit missing from the ledger, or an uncited one in it, is refused", () => {

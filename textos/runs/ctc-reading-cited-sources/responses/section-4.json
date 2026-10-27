@@ -1,5 +1,5 @@
 {
-  "text": "Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks. When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.\n\nNone of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person. Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.",
+  "text": "Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks. When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.\n\nNone of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person.",
   "statements": [
     {
       "id": "s1",
@@ -65,18 +65,6 @@
       "id": "s5",
       "text": "The first is mechanical work for a machine; the second is a judgement for a person.",
       "kind": "editorial",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s6",
-      "text": "Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.",
-      "kind": "recommendation",
       "subject": {
         "kind": "general_domain",
         "name": null

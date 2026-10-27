@@ -47,6 +47,37 @@ export interface BriefSlot {
   evidenceRequired: boolean;
 }
 
+/**
+ * A governed figure (TextOS `ctc-figure-svg@0.1`, act/ctc/figure.ts). The labels are the CMO's
+ * editorial decision, like section headings, and every node is tied to evidence the article uses;
+ * the caption is the text of a `caption` slot written by TextOS and checked by TruthCheck. TextOS
+ * renders the SVG; the site only serves it under /diagrams/ctc/.
+ */
+export interface BriefFigure {
+  id: string;
+  template: "flow" | "states";
+  title: string;
+  subtitle?: string;
+  nodes: { tag: string; label: string; detail?: string; evidenceIds: string[] }[];
+  highlightNode?: number;
+  boundary?: { afterNode: number; title: string; lines: string[]; evidenceIds: string[] };
+  anchorSectionKey: string;
+  captionSlotId: string;
+}
+
+/**
+ * Public-use clearance of the brief's evidence, applied through TextOS `clearEvidenceForPublicUse`.
+ * Required for the article's Sources: TextOS cites a piece of evidence only once its public use is
+ * `allowed` (commits of a private repository are cited without a link, CPO decision 2026-10-27).
+ */
+export interface BriefPublicUseClearance {
+  decision: "APPROVE_PUBLIC_USE";
+  actor: string;
+  actorCapacity: string;
+  decidedAt: string;
+  reason: string;
+}
+
 /** Site-owned editorial metadata — never text: who signs, where the page files, when. */
 export interface BriefSiteEditorial {
   authorIds: string[];
@@ -90,7 +121,14 @@ export interface ArticleBrief {
   editorial: BriefSiteEditorial;
   publication: BriefPublication;
   evidence: BriefEvidence[];
+  publicUseClearance: BriefPublicUseClearance;
   slots: BriefSlot[];
+  figures: BriefFigure[];
+}
+
+/** Public path a TextOS-rendered figure is served under (content-addressed: id + hash prefix). */
+export function figurePublicPath(figureId: string, sha256: string): string {
+  return `/diagrams/ctc/${figureId}-${sha256.slice(0, 12)}.svg`;
 }
 
 /** File name a slot's prompt/response is stored under (slot ids are plain identifiers). */

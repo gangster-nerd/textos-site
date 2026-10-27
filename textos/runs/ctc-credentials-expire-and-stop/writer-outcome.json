@@ -2,7 +2,7 @@
   "status": "written",
   "result": {
     "planId": "how to make ai agent api credentials expire and stop them in an emergency",
-    "planHash": "9516a437164a75d934e2d9b2fa17f58945fd62664ef0ba7683c0f12fb659ae56",
+    "planHash": "3b27b8f28ee9f16f77475bdfb5ad14200be36dfeef409f1459a8656ca707a082",
     "slots": [
       {
         "slotId": "title",
@@ -115,6 +115,27 @@
         "excludedEvidence": []
       },
       {
+        "slotId": "access-that-ends-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.",
+        "statementIds": [
+          "stmt:24:access-that-ends-caption:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-09",
+          "ev-cr-02",
+          "ev-cr-03"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-09",
+          "ev-cr-02",
+          "ev-cr-03"
+        ],
+        "excludedEvidence": []
+      },
+      {
         "slotId": "section-2",
         "role": "section",
         "headingLevel": 2,
@@ -149,11 +170,10 @@
         "role": "section",
         "headingLevel": 2,
         "heading": "What older keys keep doing",
-        "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nWhen you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
+        "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.",
         "statementIds": [
           "stmt:9:section-3:2:s1",
-          "stmt:9:section-3:2:s2",
-          "stmt:9:section-3:2:s3"
+          "stmt:9:section-3:2:s2"
         ],
         "evidenceIdsUsed": [
           "ev-cr-11"
@@ -162,13 +182,43 @@
           "ev-cr-11"
         ],
         "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI writing vendor",
+        "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
       }
     ],
     "document": {
       "title": "Every new TextOS API credential now expires, after 30 days by default",
       "slug": "every-new-textos-api-credential-now-expires-after-30-days-by-default",
       "metaDescription": "TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.",
-      "body": "An access key handed to an outside agent tends to outlive the job it was created for. TextOS treated that permanent key as a gap to close before its first customer trial of the API. It also closed the operational control gap that a first customer would face.\n\nReplacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.\n\nTextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability. A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.\n\nThe switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run.\n\nKeys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nWhen you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
+      "body": "An access key handed to an outside agent tends to outlive the job it was created for. TextOS treated that permanent key as a gap to close before its first customer trial of the API. It also closed the operational control gap that a first customer would face.\n\nReplacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.\n\nIn TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.\n\nTextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability. A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.\n\nThe switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run.\n\nKeys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nWhen you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand.\n\nAnother note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure.",
       "faq": [
         {
           "question": "How long does an agent's API access last?",
@@ -369,6 +419,24 @@
           "evidenceStrengthRequired": "descriptive"
         },
         {
+          "id": "stmt:24:access-that-ends-caption:2:s1",
+          "text": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-09",
+            "ev-cr-02",
+            "ev-cr-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
           "id": "stmt:9:section-2:2:s1",
           "text": "TextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability.",
           "kind": "factual",
@@ -463,9 +531,69 @@
           "evidenceStrengthRequired": "descriptive"
         },
         {
-          "id": "stmt:9:section-3:2:s3",
+          "id": "stmt:6:verify:2:s1",
           "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
           "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask whether switching the API off also stops jobs that are already queued.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask whether a replacement key can be displayed a second time, and where it is kept.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "Ask whether emergency steps can be taken without editing the database by hand.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "A second note follows an article through a writing-model failure.",
+          "kind": "editorial",
           "subject": {
             "kind": "general_domain",
             "name": null
@@ -488,6 +616,11 @@
           "body": "Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure."
         },
         {
+          "key": "access-that-ends-caption",
+          "heading": "",
+          "body": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked."
+        },
+        {
           "key": "section-2",
           "heading": "Three switches for a bad day",
           "body": "TextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability. A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.\n\nThe switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run."
@@ -495,11 +628,21 @@
         {
           "key": "section-3",
           "heading": "What older keys keep doing",
-          "body": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nWhen you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled."
+          "body": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI writing vendor",
+          "body": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure."
         }
       ]
     },
-    "structuredContentHash": "9d60c498ac92346a98bb2ff32cf799b30b733b952323970529cc5eb3b663925c",
+    "structuredContentHash": "02d2a570f6093aea861f147ce1f38acd21a4a359c56bb37c39b958443af40ab8",
     "writerMethodVersion": "geo-writer@0.2",
     "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
     "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",

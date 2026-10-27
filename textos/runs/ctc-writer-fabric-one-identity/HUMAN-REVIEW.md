@@ -8,25 +8,27 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Buyer question: If the AI model behind my content tool goes down halfway through an article, what happens to the article?
 - Target query: what happens to an ai written article when the model provider fails (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
-- Editorial quality (editorial-quality@0.3, structural, opportunity-article strategy — a signal here, not a gate): fail (12 finding(s))
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `308aa3276f9d0f80035478545e34f4885c0349e0`
+- Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (9 finding(s))
+- Sources shown: 2 (withheld: 0); figures: writer-fails 66262073c3a6
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
-## Editorial-quality signals
+## CTC editorial-contract findings
 
-Measured against TextOS's opportunity-article strategy, which this engineering note does not follow by design. Read them as prompts for the reviewer, not as verdicts.
+- `body_below_depth_guide` (signal): Corps de 2086 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.
+- `section_below_depth_guide` (signal) on `section-1`: Section « One writer per article, never a patchwork » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `section-2`: Section « What a fallback is not allowed to do » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `section-3`: Section « Switched on with an exit and a human hand » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `verify`: Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `editorial-next-step`: Section « Where to go next » plus courte que son repère : développement à juger en revue.
+- `section_without_grounded_statement` (signal) on `verify`: Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `section_without_grounded_statement` (signal) on `editorial-next-step`: Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `evidence_overused` (signal) on `ev-wf-03`: Une même preuve fonde 3 slots du corps (answer, section-1, writer-fails-caption) : la note répète ce fait au lieu d'en apporter d'autres.
 
-- `body_below_depth_guide` (signal): Corps de 1768 caractères, sous le repère d'un article « satellite » (2600) : profondeur à juger en revue.
-- `planned_section_missing` (blocking) on `criteria`: Section « Criteria to compare », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `fit`: Section « Checking the fit with your situation », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `pitfalls`: Section « Mistakes to avoid », prévue par la stratégie, absente.
-- `question_not_answered` (blocking) on `what happens to an ai written article when the model provider fails`: La question retenue « what happens to an ai written article when the model provider fails » n'a pas de réponse.
-- `question_not_answered` (blocking) on `If the AI model behind my content tool goes down halfway through an article, what happens to the article?`: La question retenue « If the AI model behind my content tool goes down halfway through an article, what happens to the article? » n'a pas de réponse.
-- `faq_too_small` (blocking): 1 entrée(s) de FAQ pour 2 question(s) retenue(s).
-- `information_object_missing` (blocking): Aucun objet d'information (liste structurée, tableau, comparatif) dans un article qui en exige un.
-- `evidence_overused` (signal) on `ev-wf-01`: Une même preuve fonde 3 sections (title, lead, answer) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `evidence_overused` (signal) on `ev-wf-03`: Une même preuve fonde 3 sections (meta, answer, section-1) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `article_draft_profile_failed` (blocking) on `article.draft.heading-present`: TextOS article requires at least one `heading` block.
-- `article_draft_profile_failed` (blocking) on `article.draft.claims-and-evidence`: TextOS article requires at least one claimId.
+## Figures (rendered by TextOS — check labels, caption and alt text)
+
+- `writer-fails` (flow) — alt: What happens when a writer fails. A 4-step flow: First writer, whole article, then Technical failure, then Next writer, whole article, then Article not lost. A dashed boundary after "Technical failure" is labelled Closed list: Only listed technical failures move to the next writer.
+  - evidence: ev-wf-01, ev-wf-02, ev-wf-03, ev-wf-05
 
 ## Slots, statements and the evidence each one cites
 
@@ -35,15 +37,15 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > At TextOS, a writing-model outage no longer kills an article
 
 - **factual** — At TextOS, a writing-model outage no longer kills an article
-  - `ev-wf-01` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «A provider outage no longer kills an article.»
+  - `ev-wf-01` (TextOS product commit a5b6241, 23 Oct 2026): «A provider outage no longer kills an article.»
 
 ### meta (meta_description)
 
 > TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.
 
 - **factual** — TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.
-  - `ev-wf-02` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «A server-side ordered chain of registered writer profiles»
-  - `ev-wf-03` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them.»
+  - `ev-wf-02` (TextOS product commit a5b6241, 23 Oct 2026): «A server-side ordered chain of registered writer profiles»
+  - `ev-wf-03` (TextOS product commit a5b6241, 23 Oct 2026): «one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them.»
 
 ### lead (lead)
 
@@ -51,7 +53,7 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 
 - **editorial** — Long articles are written piece by piece, and a model provider can fail in the middle of one.
 - **factual** — In TextOS, a provider outage no longer kills an article that is being written.
-  - `ev-wf-01` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «A provider outage no longer kills an article.»
+  - `ev-wf-01` (TextOS product commit a5b6241, 23 Oct 2026): «A provider outage no longer kills an article.»
 - **editorial** — What changed is not the number of models so much as the rules for moving from one to the next.
 
 ### answer (answer) — What happens to an article when the writing model fails?
@@ -59,11 +61,11 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines. Each attempt covers the whole article under one writer identity, never a switch from one section to the next. As a result, a single provider outage no longer stops a TextOS article.
 
 - **factual** — When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines.
-  - `ev-wf-02` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «A server-side ordered chain of registered writer profiles»
+  - `ev-wf-02` (TextOS product commit a5b6241, 23 Oct 2026): «A server-side ordered chain of registered writer profiles»
 - **factual** — Each attempt covers the whole article under one writer identity, never a switch from one section to the next.
-  - `ev-wf-03` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them.»
+  - `ev-wf-03` (TextOS product commit a5b6241, 23 Oct 2026): «one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them.»
 - **factual** — As a result, a single provider outage no longer stops a TextOS article.
-  - `ev-wf-01` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «A provider outage no longer kills an article.»
+  - `ev-wf-01` (TextOS product commit a5b6241, 23 Oct 2026): «A provider outage no longer kills an article.»
 
 ### section-1 (section) — One writer per article, never a patchwork
 
@@ -72,36 +74,58 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 
 - **editorial** — Mixing two models inside one article would make it hard to say who wrote what.
 - **factual** — TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.
-  - `ev-wf-03` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them.»
+  - `ev-wf-03` (TextOS product commit a5b6241, 23 Oct 2026): «one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them.»
 - **factual** — The article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added.
-  - `ev-wf-06` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «Resumable article state stays opportunity_brief.accepted; the writer state lives in writer_runs.status. No new article status.»
+  - `ev-wf-06` (TextOS product commit a5b6241, 23 Oct 2026): «Resumable article state stays opportunity_brief.accepted; the writer state lives in writer_runs.status. No new article status.»
 - **editorial** — For a reader of the finished page, that means one consistent voice per article.
+
+### writer-fails-caption (caption)
+
+> In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt.
+
+- **factual** — In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt.
+  - `ev-wf-03` (TextOS product commit a5b6241, 23 Oct 2026): «one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them.»
+  - `ev-wf-02` (TextOS product commit a5b6241, 23 Oct 2026): «A server-side ordered chain of registered writer profiles»
 
 ### section-2 (section) — What a fallback is not allowed to do
 
 > A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.
-> When a model refuses to write something, TextOS does not try another model to get around the refusal. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.
+> When a model refuses to write something, TextOS does not try another model to get around the refusal.
 
 - **factual** — A fallback in TextOS only answers technical failures from a closed list, with bounded retries.
-  - `ev-wf-05` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «Closed failure taxonomy, bounded retries (Retry-After <= 10 s, timeout, unknown)»
+  - `ev-wf-05` (TextOS product commit a5b6241, 23 Oct 2026): «Closed failure taxonomy, bounded retries (Retry-After <= 10 s, timeout, unknown)»
 - **factual** — Retries honour a provider's request to pause only up to ten seconds.
-  - `ev-wf-05` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «Closed failure taxonomy, bounded retries (Retry-After <= 10 s, timeout, unknown)»
+  - `ev-wf-05` (TextOS product commit a5b6241, 23 Oct 2026): «Closed failure taxonomy, bounded retries (Retry-After <= 10 s, timeout, unknown)»
 - **factual** — When a model refuses to write something, TextOS does not try another model to get around the refusal.
-  - `ev-wf-04` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «content refusals never bypassed»
-- **recommendation** — If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.
+  - `ev-wf-04` (TextOS product commit a5b6241, 23 Oct 2026): «content refusals never bypassed»
 
 ### section-3 (section) — Switched on with an exit and a human hand
 
 > The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.
-> At release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.
+> At release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.
 
 - **factual** — The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged.
-  - `ev-wf-07` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «restores the single-profile path, unchanged.»
+  - `ev-wf-07` (TextOS product commit a5b6241, 23 Oct 2026): «restores the single-profile path, unchanged.»
 - **factual** — Applying its database change remains a human release decision.
-  - `ev-wf-09` (TextOS product commit 4c2010b: feat(writer): guarded release tool for migration 0029): «remains a human release decision.»
+  - `ev-wf-09` (TextOS product commit 4c2010b, 23 Oct 2026): «remains a human release decision.»
 - **factual** — At release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.
-  - `ev-wf-08` (TextOS product commit a5b6241: feat(writer): Writer Fabric P0a — governed fallback between writer profiles): «Release gate: offline replay of a SYNTHETIC fixture; no route certified live yet.»
+  - `ev-wf-08` (TextOS product commit a5b6241, 23 Oct 2026): «Release gate: offline replay of a SYNTHETIC fixture; no route certified live yet.»
+
+### verify (section) — What to ask any AI writing vendor
+
+> Ask whether one article can end up written by two different models. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal. Ask what the article's status shows while it waits for a model to answer. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.
+
+- **recommendation** — Ask whether one article can end up written by two different models.
+- **recommendation** — If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.
+- **recommendation** — Ask what the article's status shows while it waits for a model to answer.
 - **recommendation** — When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.
+
+### editorial-next-step (section) — Where to go next
+
+> Another note explains who may say yes to a source before an article can rely on it. A second note shows how an article that was produced is told apart from one that was checked.
+
+- **editorial** — Another note explains who may say yes to a source before an article can rely on it.
+- **editorial** — A second note shows how an article that was produced is told apart from one that was checked.
 
 ## Prohibited claims to check by hand
 

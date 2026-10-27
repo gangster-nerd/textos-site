@@ -8,24 +8,24 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Buyer question: When an AI content tool reads the web pages it cites, what should it be allowed to do?
 - Target query: what an ai content tool should do when it reads cited sources (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
-- Editorial quality (editorial-quality@0.3, structural, opportunity-article strategy — a signal here, not a gate): fail (11 finding(s))
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `308aa3276f9d0f80035478545e34f4885c0349e0`
+- Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (6 finding(s))
+- Sources shown: 5 (withheld: 0); figures: cited-page-path 6fdd7aa99ebe
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
-## Editorial-quality signals
+## CTC editorial-contract findings
 
-Measured against TextOS's opportunity-article strategy, which this engineering note does not follow by design. Read them as prompts for the reviewer, not as verdicts.
+- `section_below_depth_guide` (signal) on `verify`: Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `editorial-next-step`: Section « Where to go next » plus courte que son repère : développement à juger en revue.
+- `section_without_grounded_statement` (signal) on `verify`: Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `section_without_grounded_statement` (signal) on `editorial-next-step`: Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `evidence_overused` (signal) on `ev-rs-01`: Une même preuve fonde 4 slots du corps (lead, answer, section-1, cited-page-path-caption) : la note répète ce fait au lieu d'en apporter d'autres.
+- `evidence_overused` (signal) on `ev-rs-02`: Une même preuve fonde 3 slots du corps (answer, cited-page-path-caption, section-2) : la note répète ce fait au lieu d'en apporter d'autres.
 
-- `planned_section_missing` (blocking) on `criteria`: Section « Criteria to compare », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `fit`: Section « Checking the fit with your situation », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `pitfalls`: Section « Mistakes to avoid », prévue par la stratégie, absente.
-- `question_not_answered` (blocking) on `what an ai content tool should do when it reads cited sources`: La question retenue « what an ai content tool should do when it reads cited sources » n'a pas de réponse.
-- `question_not_answered` (blocking) on `When an AI content tool reads the web pages it cites, what should it be allowed to do?`: La question retenue « When an AI content tool reads the web pages it cites, what should it be allowed to do? » n'a pas de réponse.
-- `faq_too_small` (blocking): 1 entrée(s) de FAQ pour 2 question(s) retenue(s).
-- `information_object_missing` (blocking): Aucun objet d'information (liste structurée, tableau, comparatif) dans un article qui en exige un.
-- `evidence_overused` (signal) on `ev-rs-01`: Une même preuve fonde 5 sections (title, meta, lead, answer, section-1) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `evidence_overused` (signal) on `ev-rs-02`: Une même preuve fonde 4 sections (title, meta, answer, section-2) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `article_draft_profile_failed` (blocking) on `article.draft.heading-present`: TextOS article requires at least one `heading` block.
-- `article_draft_profile_failed` (blocking) on `article.draft.claims-and-evidence`: TextOS article requires at least one claimId.
+## Figures (rendered by TextOS — check labels, caption and alt text)
+
+- `cited-page-path` (flow) — alt: From a cited page to a proposed passage. A 4-step flow: robots.txt first, then Bounded reading, then Up to three passages, then Person qualifies. A dashed boundary after "Up to three passages" is labelled Human step: Nothing proposed reaches the writer before a person decides.
+  - evidence: ev-rs-01, ev-rs-02, ev-rs-04, ev-rs-05
 
 ## Slots, statements and the evidence each one cites
 
@@ -34,17 +34,17 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > TextOS reads cited sources in a separate, bounded step, robots.txt first
 
 - **factual** — TextOS reads cited sources in a separate, bounded step, robots.txt first
-  - `ev-rs-01` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
-  - `ev-rs-02` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
+  - `ev-rs-01` (TextOS product commit 7fb96fe, 26 Oct 2026): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
+  - `ev-rs-02` (TextOS product commit 7fb96fe, 26 Oct 2026): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
 
 ### meta (meta_description)
 
 > TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, and only proposes passages for a person to qualify.
 
 - **factual** — TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, and only proposes passages for a person to qualify.
-  - `ev-rs-01` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
-  - `ev-rs-02` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
-  - `ev-rs-05` (TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés): «qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.»
+  - `ev-rs-01` (TextOS product commit 7fb96fe, 26 Oct 2026): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
+  - `ev-rs-02` (TextOS product commit 7fb96fe, 26 Oct 2026): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
+  - `ev-rs-05` (TextOS product commit cf5b34a, 26 Oct 2026): «qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.»
 
 ### lead (lead)
 
@@ -53,7 +53,7 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 - **editorial** — To write about your brand with sources, a tool has to read other people's pages.
 - **editorial** — How it behaves on those pages says a lot about how it will behave with yours.
 - **factual** — TextOS treats reading a cited source as its own action, kept out of writing and run within a budget of requests and time.
-  - `ev-rs-01` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
+  - `ev-rs-01` (TextOS product commit 7fb96fe, 26 Oct 2026): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
 - **editorial** — This note sets out the rules of that step, one by one.
 
 ### answer (answer) — What should a content tool do when it reads the pages it cites?
@@ -61,70 +61,92 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > In TextOS, sources are read in a dedicated step that does not run inside writing, with a budget, one request at a time per site, and the option to resume or cancel. TextOS reads robots.txt first, and when a page cannot be read, the reason is recorded in a log that is only ever appended to. Nothing read this way turns into a statement by itself; it becomes material for a person to look at. That is the whole difference between reading the web and repeating it.
 
 - **factual** — In TextOS, sources are read in a dedicated step that does not run inside writing, with a budget, one request at a time per site, and the option to resume or cancel.
-  - `ev-rs-01` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
+  - `ev-rs-01` (TextOS product commit 7fb96fe, 26 Oct 2026): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
 - **factual** — TextOS reads robots.txt first, and when a page cannot be read, the reason is recorded in a log that is only ever appended to.
-  - `ev-rs-02` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
+  - `ev-rs-02` (TextOS product commit 7fb96fe, 26 Oct 2026): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
 - **editorial** — Nothing read this way turns into a statement by itself; it becomes material for a person to look at.
 - **editorial** — That is the whole difference between reading the web and repeating it.
 
 ### section-1 (section) — Reading is its own step, with a budget
 
 > The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief. It can be resumed after an interruption or cancelled. A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.
-> The date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read. Ask a vendor how many requests its tool can send to one site, and whether you can stop a reading job halfway.
+> The date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read.
 
 - **factual** — The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief.
-  - `ev-rs-01` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
+  - `ev-rs-01` (TextOS product commit 7fb96fe, 26 Oct 2026): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
 - **factual** — It can be resumed after an interruption or cancelled.
-  - `ev-rs-01` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
+  - `ev-rs-01` (TextOS product commit 7fb96fe, 26 Oct 2026): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
 - **editorial** — A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.
 - **factual** — The date a page was read is shown without promising that the page is still current.
-  - `ev-rs-03` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «fraîcheur exposée sans fausse garantie.»
+  - `ev-rs-03` (TextOS product commit 7fb96fe, 26 Oct 2026): «fraîcheur exposée sans fausse garantie.»
 - **editorial** — A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read.
-- **recommendation** — Ask a vendor how many requests its tool can send to one site, and whether you can stop a reading job halfway.
+
+### cited-page-path-caption (caption)
+
+> TextOS checks robots.txt before reading a cited page, reads it in a separate step within a budget, and only proposes passages, which a person then qualifies.
+
+- **factual** — TextOS checks robots.txt before reading a cited page, reads it in a separate step within a budget, and only proposes passages, which a person then qualifies.
+  - `ev-rs-02` (TextOS product commit 7fb96fe, 26 Oct 2026): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
+  - `ev-rs-01` (TextOS product commit 7fb96fe, 26 Oct 2026): «action dédiée (jamais dans la génération) : budget de requêtes et de durée, une requête à la fois par origine, idempotente par (brief, clé), reprenable, annulable.»
+  - `ev-rs-05` (TextOS product commit cf5b34a, 26 Oct 2026): «qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.»
 
 ### section-2 (section) — Asking first, and saying why a page was not read
 
 > Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault. A refusal is a result to report, not an obstacle to get around.
-> The crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent. If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.
+> The crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent.
 
 - **factual** — Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault.
-  - `ev-rs-02` (TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
+  - `ev-rs-02` (TextOS product commit 7fb96fe, 26 Oct 2026): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
 - **editorial** — A refusal is a result to report, not an obstacle to get around.
 - **factual** — The crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts.
   - `ev-rs-10` (TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 308aa32): «robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence.»
 - **factual** — A page it could not observe is reported as not available, never as absent.
   - `ev-rs-10` (TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 308aa32): «robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence.»
-- **recommendation** — If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.
 
 ### section-3 (section) — Staying on the public web
 
 > When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere. That closes a known trick in which a public name is made to point at an internal system after the check.
-> Following a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin. Ask any vendor whether its tool can be pointed at internal addresses, and how it knows.
+> Following a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin.
 
 - **factual** — When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere.
-  - `ev-rs-06` (TextOS product commit 03fbdf9: fix: provenance des extraits et transport réseau public de consultation (lot c)): «lookup de connexion qui refuse toute adresse non publique et rend l'adresse vérifiée à la socket (pas de seconde résolution, pas de TOCTOU)»
+  - `ev-rs-06` (TextOS product commit 03fbdf9, 26 Oct 2026): «lookup de connexion qui refuse toute adresse non publique et rend l'adresse vérifiée à la socket (pas de seconde résolution, pas de TOCTOU)»
 - **editorial** — That closes a known trick in which a public name is made to point at an internal system after the check.
 - **editorial** — Following a link to a source is not a licence to wander into private networks.
 - **factual** — A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http.
-  - `ev-rs-08` (TextOS product commit 55e3e8b: feat: suivre l'alias www d'une source citée lors de sa consultation): «la consultation d'une source citée suit site.fr ↔ www.site.fr (même port, jamais https → http) ;»
+  - `ev-rs-08` (TextOS product commit 55e3e8b, 26 Oct 2026): «la consultation d'une source citée suit site.fr ↔ www.site.fr (même port, jamais https → http) ;»
 - **factual** — The site crawl itself stays on a single origin.
-  - `ev-rs-09` (TextOS product commit 55e3e8b: feat: suivre l'alias www d'une source citée lors de sa consultation): «le crawl de site intelligence reste same-origin.»
-- **recommendation** — Ask any vendor whether its tool can be pointed at internal addresses, and how it knows.
+  - `ev-rs-09` (TextOS product commit 55e3e8b, 26 Oct 2026): «le crawl de site intelligence reste same-origin.»
 
 ### section-4 (section) — A passage proposed is not a fact accepted
 
 > Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks. When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.
-> None of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person. Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.
+> None of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person.
 
 - **factual** — Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks.
-  - `ev-rs-04` (TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés): «chaque page lue propose au plus 3 passages : occurrence démontrée, types, sujet et risques proposés»
+  - `ev-rs-04` (TextOS product commit cf5b34a, 26 Oct 2026): «chaque page lue propose au plus 3 passages : occurrence démontrée, types, sujet et risques proposés»
 - **factual** — When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.
-  - `ev-rs-07` (TextOS product commit 03fbdf9: fix: provenance des extraits et transport réseau public de consultation (lot c)): «deux sources au passage identique gardent deux extraits et deux provenances»
+  - `ev-rs-07` (TextOS product commit 03fbdf9, 26 Oct 2026): «deux sources au passage identique gardent deux extraits et deux provenances»
 - **factual** — None of these passages is approved or offered to the writer until a person qualifies it.
-  - `ev-rs-05` (TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés): «qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.»
+  - `ev-rs-05` (TextOS product commit cf5b34a, 26 Oct 2026): «qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.»
 - **editorial** — Reading a page and accepting what it says are two separate acts, done by two different actors.
 - **editorial** — The first is mechanical work for a machine; the second is a judgement for a person.
+
+### verify (section) — What to ask any AI writing vendor
+
+> Ask how many requests the tool can send to one site, and whether you can stop a reading job halfway. Ask what the tool records when it is refused access to a page. If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question. Ask whether the tool can be pointed at internal addresses, and how it knows. Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.
+
+- **recommendation** — Ask how many requests the tool can send to one site, and whether you can stop a reading job halfway.
+- **recommendation** — Ask what the tool records when it is refused access to a page.
+- **recommendation** — If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.
+- **recommendation** — Ask whether the tool can be pointed at internal addresses, and how it knows.
 - **recommendation** — Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.
+
+### editorial-next-step (section) — Where to go next
+
+> The previous note explains who may say yes to a passage before an article can rely on it. Another note shows how an article that was produced is told apart from one that was checked.
+
+- **editorial** — The previous note explains who may say yes to a passage before an article can rely on it.
+- **editorial** — Another note shows how an article that was produced is told apart from one that was checked.
 
 ## Prohibited claims to check by hand
 

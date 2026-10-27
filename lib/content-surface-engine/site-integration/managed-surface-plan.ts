@@ -3,6 +3,10 @@
 // Only two things are ever consumed from the article body :
 //   (a) the "Related …" heading + its immediately following list block, when
 //       recognised by related-source-links.ts ;
+//   (b) the governed `source` blocks, which the surface's own Sources module
+//       renders (collectSources), and the "Sources" heading TextOS's article
+//       review places immediately before them — otherwise every Source would
+//       be shown twice (CTC-CHAIN-1 notes carry their Sources in the body).
 // That's it. No sweep-until-next-H2. No generic "Related" swallow. No
 // heuristic hiding of Sources/Author/Revision.
 //
@@ -47,6 +51,17 @@ export function computeManagedSurfacePlan(
     consumed.add(src.headingBlockId);
     consumed.add(src.listBlockId);
     skipHeadings.add(src.headingBlockId);
+  }
+
+  const visible = resolved.blocks.filter((rb) => rb.visible).map((rb) => rb.block);
+  const firstSource = visible.findIndex((block) => block.kind === "source");
+  if (firstSource >= 0) {
+    for (const block of visible) if (block.kind === "source") consumed.add(block.id);
+    const before = visible[firstSource - 1];
+    if (before && before.kind === "heading" && before.data.text === "Sources") {
+      consumed.add(before.id);
+      skipHeadings.add(before.id);
+    }
   }
 
   return { consumedBlockIds: consumed, skipHeadingIds: skipHeadings };

@@ -2,7 +2,7 @@
   "status": "written",
   "result": {
     "planId": "how to know if an ai written article was checked before it is published",
-    "planHash": "74ac9eceaf6331f714882b51164c3acb843a27089f996f5c73f347038c858c5e",
+    "planHash": "325695eb34e1814b55f7a93e248f54f52dd26941c458bf0cbce3d3691b6b88b6",
     "slots": [
       {
         "slotId": "title",
@@ -89,14 +89,13 @@
         "role": "section",
         "headingLevel": 2,
         "heading": "The label on the screen tells the truth",
-        "text": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it. Ask any AI writing vendor whether its status labels are computed from stored results or written into the interface.",
+        "text": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it.",
         "statementIds": [
           "stmt:9:section-1:2:s1",
           "stmt:9:section-1:2:s2",
           "stmt:9:section-1:2:s3",
           "stmt:9:section-1:2:s4",
-          "stmt:9:section-1:2:s5",
-          "stmt:9:section-1:2:s6"
+          "stmt:9:section-1:2:s5"
         ],
         "evidenceIdsUsed": [
           "ev-pv-04",
@@ -113,13 +112,12 @@
         "role": "section",
         "headingLevel": 2,
         "heading": "One rule for what may reach your website",
-        "text": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick. Ask whether the rule that lets content reach your website is written in one place or spread across screens.",
+        "text": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick.",
         "statementIds": [
           "stmt:9:section-2:2:s1",
           "stmt:9:section-2:2:s2",
           "stmt:9:section-2:2:s3",
-          "stmt:9:section-2:2:s4",
-          "stmt:9:section-2:2:s5"
+          "stmt:9:section-2:2:s4"
         ],
         "evidenceIdsUsed": [
           "ev-pv-07",
@@ -134,17 +132,37 @@
         "excludedEvidence": []
       },
       {
+        "slotId": "written-to-eligible-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "In TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked.",
+        "statementIds": [
+          "stmt:27:written-to-eligible-caption:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-pv-01",
+          "ev-pv-03",
+          "ev-pv-07"
+        ],
+        "usableEvidenceIds": [
+          "ev-pv-01",
+          "ev-pv-03",
+          "ev-pv-07"
+        ],
+        "excludedEvidence": []
+      },
+      {
         "slotId": "section-3",
         "role": "section",
         "headingLevel": 2,
         "heading": "What a pass does not prove",
-        "text": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.",
+        "text": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure.",
         "statementIds": [
           "stmt:9:section-3:2:s1",
           "stmt:9:section-3:2:s2",
           "stmt:9:section-3:2:s3",
-          "stmt:9:section-3:2:s4",
-          "stmt:9:section-3:2:s5"
+          "stmt:9:section-3:2:s4"
         ],
         "evidenceIdsUsed": [
           "ev-pv-08",
@@ -163,14 +181,13 @@
         "role": "section",
         "headingLevel": 2,
         "heading": "Checking that nothing was lost on the way",
-        "text": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
+        "text": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article.",
         "statementIds": [
           "stmt:9:section-4:2:s1",
           "stmt:9:section-4:2:s2",
           "stmt:9:section-4:2:s3",
           "stmt:9:section-4:2:s4",
-          "stmt:9:section-4:2:s5",
-          "stmt:9:section-4:2:s6"
+          "stmt:9:section-4:2:s5"
         ],
         "evidenceIdsUsed": [
           "ev-pv-10",
@@ -183,13 +200,44 @@
           "ev-pv-12"
         ],
         "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI writing vendor",
+        "text": "Ask whether status labels are computed from stored results or written into the interface. Ask whether the rule that lets content reach your website is written in one place or spread across screens. Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4",
+          "stmt:6:verify:2:s5"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "The previous note explains who may say yes to a source before an article can rely on it. Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
       }
     ],
     "document": {
       "title": "TextOS no longer presents a produced article as a validated one",
       "slug": "textos-no-longer-presents-a-produced-article-as-a-validated-one",
       "metaDescription": "In TextOS only an article that passes its fact-check and conforms may reach WordPress, and a pass is no longer read as proof of excellence.",
-      "body": "A content dashboard that says an article is ready invites you to stop reading. That label is only worth something if it means the article was checked, and not simply that a model finished writing. TextOS no longer presents an article as validated just because it was technically produced. Here is what changed, and what a passing result still does not tell you.\n\nTextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it. Ask any AI writing vendor whether its status labels are computed from stored results or written into the interface.\n\nOnly a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick. Ask whether the rule that lets content reach your website is written in one place or spread across screens.\n\nIn TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.\n\nTextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
+      "body": "A content dashboard that says an article is ready invites you to stop reading. That label is only worth something if it means the article was checked, and not simply that a model finished writing. TextOS no longer presents an article as validated just because it was technically produced. Here is what changed, and what a passing result still does not tell you.\n\nTextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it.\n\nOnly a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick.\n\nIn TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked.\n\nIn TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure.\n\nTextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article.\n\nAsk whether status labels are computed from stored results or written into the interface. Ask whether the rule that lets content reach your website is written in one place or spread across screens. Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.\n\nThe previous note explains who may say yes to a source before an article can rely on it. Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line.",
       "faq": [
         {
           "question": "How can you tell an AI article was really checked?",
@@ -411,18 +459,6 @@
           "evidenceStrengthRequired": "descriptive"
         },
         {
-          "id": "stmt:9:section-1:2:s6",
-          "text": "Ask any AI writing vendor whether its status labels are computed from stored results or written into the interface.",
-          "kind": "recommendation",
-          "subject": {
-            "kind": "general_domain",
-            "name": null
-          },
-          "claimTypes": [],
-          "evidenceIds": [],
-          "evidenceStrengthRequired": "descriptive"
-        },
-        {
           "id": "stmt:9:section-2:2:s1",
           "text": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code.",
           "kind": "factual",
@@ -483,15 +519,21 @@
           "evidenceStrengthRequired": "descriptive"
         },
         {
-          "id": "stmt:9:section-2:2:s5",
-          "text": "Ask whether the rule that lets content reach your website is written in one place or spread across screens.",
-          "kind": "recommendation",
+          "id": "stmt:27:written-to-eligible-caption:2:s1",
+          "text": "In TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked.",
+          "kind": "factual",
           "subject": {
-            "kind": "general_domain",
-            "name": null
+            "kind": "tracked_brand",
+            "name": "TextOS"
           },
-          "claimTypes": [],
-          "evidenceIds": [],
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-pv-01",
+            "ev-pv-03",
+            "ev-pv-07"
+          ],
           "evidenceStrengthRequired": "descriptive"
         },
         {
@@ -552,18 +594,6 @@
           "evidenceIds": [
             "ev-pv-13"
           ],
-          "evidenceStrengthRequired": "descriptive"
-        },
-        {
-          "id": "stmt:9:section-3:2:s5",
-          "text": "Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.",
-          "kind": "recommendation",
-          "subject": {
-            "kind": "general_domain",
-            "name": null
-          },
-          "claimTypes": [],
-          "evidenceIds": [],
           "evidenceStrengthRequired": "descriptive"
         },
         {
@@ -643,9 +673,81 @@
           "evidenceStrengthRequired": "descriptive"
         },
         {
-          "id": "stmt:9:section-4:2:s6",
+          "id": "stmt:6:verify:2:s1",
+          "text": "Ask whether status labels are computed from stored results or written into the interface.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask whether the rule that lets content reach your website is written in one place or spread across screens.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s5",
           "text": "When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
           "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "The previous note explains who may say yes to a source before an article can rely on it.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line.",
+          "kind": "editorial",
           "subject": {
             "kind": "general_domain",
             "name": null
@@ -665,26 +767,41 @@
         {
           "key": "section-1",
           "heading": "The label on the screen tells the truth",
-          "body": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it. Ask any AI writing vendor whether its status labels are computed from stored results or written into the interface."
+          "body": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it."
         },
         {
           "key": "section-2",
           "heading": "One rule for what may reach your website",
-          "body": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick. Ask whether the rule that lets content reach your website is written in one place or spread across screens."
+          "body": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick."
+        },
+        {
+          "key": "written-to-eligible-caption",
+          "heading": "",
+          "body": "In TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked."
         },
         {
           "key": "section-3",
           "heading": "What a pass does not prove",
-          "body": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at."
+          "body": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure."
         },
         {
           "key": "section-4",
           "heading": "Checking that nothing was lost on the way",
-          "body": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it."
+          "body": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI writing vendor",
+          "body": "Ask whether status labels are computed from stored results or written into the interface. Ask whether the rule that lets content reach your website is written in one place or spread across screens. Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "The previous note explains who may say yes to a source before an article can rely on it. Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line."
         }
       ]
     },
-    "structuredContentHash": "f89ac92f7ffff6bf3df4b3b1d9bf12ce2a5e30396fc9ad2f8093f19b0ff05acd",
+    "structuredContentHash": "b796fd952f18258b7d56dff4e8fbb754390c871e6cf0530201998e67bf280b84",
     "writerMethodVersion": "geo-writer@0.2",
     "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
     "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",

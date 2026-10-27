@@ -8,23 +8,23 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Buyer question: If an AI agent can call a content API, what stops it from putting something nobody approved into my CMS?
 - Target query: how to require human approval before an ai agent creates a cms draft (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
-- Editorial quality (editorial-quality@0.3, structural, opportunity-article strategy — a signal here, not a gate): fail (10 finding(s))
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `308aa3276f9d0f80035478545e34f4885c0349e0`
+- Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (5 finding(s))
+- Sources shown: 6 (withheld: 0); figures: prepared-to-draft c8b6aaf2f535
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
-## Editorial-quality signals
+## CTC editorial-contract findings
 
-Measured against TextOS's opportunity-article strategy, which this engineering note does not follow by design. Read them as prompts for the reviewer, not as verdicts.
+- `section_below_depth_guide` (signal) on `section-3`: Section « Whose name is on the decision » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `editorial-next-step`: Section « Where to go next » plus courte que son repère : développement à juger en revue.
+- `section_without_grounded_statement` (signal) on `verify`: Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `section_without_grounded_statement` (signal) on `editorial-next-step`: Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `evidence_overused` (signal) on `ev-hd-08`: Une même preuve fonde 3 slots du corps (answer, prepared-to-draft-caption, section-2) : la note répète ce fait au lieu d'en apporter d'autres.
 
-- `planned_section_missing` (blocking) on `criteria`: Section « Criteria to compare », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `fit`: Section « Checking the fit with your situation », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `pitfalls`: Section « Mistakes to avoid », prévue par la stratégie, absente.
-- `question_not_answered` (blocking) on `how to require human approval before an ai agent creates a cms draft`: La question retenue « how to require human approval before an ai agent creates a cms draft » n'a pas de réponse.
-- `question_not_answered` (blocking) on `If an AI agent can call a content API, what stops it from putting something nobody approved into my CMS?`: La question retenue « If an AI agent can call a content API, what stops it from putting something nobody approved into my CMS? » n'a pas de réponse.
-- `faq_too_small` (blocking): 1 entrée(s) de FAQ pour 2 question(s) retenue(s).
-- `information_object_missing` (blocking): Aucun objet d'information (liste structurée, tableau, comparatif) dans un article qui en exige un.
-- `evidence_overused` (signal) on `ev-hd-06`: Une même preuve fonde 4 sections (title, meta, lead, answer) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `article_draft_profile_failed` (blocking) on `article.draft.heading-present`: TextOS article requires at least one `heading` block.
-- `article_draft_profile_failed` (blocking) on `article.draft.claims-and-evidence`: TextOS article requires at least one claimId.
+## Figures (rendered by TextOS — check labels, caption and alt text)
+
+- `prepared-to-draft` (flow) — alt: From a prepared action to a WordPress draft. A 4-step flow: Agent prepares, then Person signs off, then Checked again at run time, then Used once, then spent. A dashed boundary after "Agent prepares" is labelled Human gate: No machine account can switch it to automatic execution.
+  - evidence: ev-hd-01, ev-hd-06, ev-hd-07, ev-hd-08, ev-hd-10
 
 ## Slots, statements and the evidence each one cites
 
@@ -33,15 +33,15 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > TextOS's API keeps WordPress draft creation behind a human decision
 
 - **factual** — TextOS's API keeps WordPress draft creation behind a human decision
-  - `ev-hd-06` (TextOS product commit 23d1ed3: feat: add canonical human review decision service): «these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.»
+  - `ev-hd-06` (TextOS product commit 23d1ed3, 26 Sep 2026): «these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.»
 
 ### meta (meta_description)
 
 > TextOS keeps three API effects, WordPress draft creation among them, under human review, and no machine identity can switch that gate to automatic execution.
 
 - **factual** — TextOS keeps three API effects, WordPress draft creation among them, under human review, and no machine identity can switch that gate to automatic execution.
-  - `ev-hd-05` (TextOS product commit 23d1ed3: feat: add canonical human review decision service): «Add a transport-neutral API V1.1 Decision service for the three governed effects: - approve Query Panel; - accept Opportunity Brief; - create WordPress draft.»
-  - `ev-hd-06` (TextOS product commit 23d1ed3: feat: add canonical human review decision service): «these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.»
+  - `ev-hd-05` (TextOS product commit 23d1ed3, 26 Sep 2026): «Add a transport-neutral API V1.1 Decision service for the three governed effects: - approve Query Panel; - accept Opportunity Brief; - create WordPress draft.»
+  - `ev-hd-06` (TextOS product commit 23d1ed3, 26 Sep 2026): «these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.»
 
 ### lead (lead)
 
@@ -49,7 +49,7 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 
 - **editorial** — Handing an AI agent the keys to a content API raises a plain worry: what keeps it from putting text nobody signed off into your website?
 - **factual** — In TextOS's API, the answer is a human gate that no machine account is allowed to turn into automatic execution.
-  - `ev-hd-06` (TextOS product commit 23d1ed3: feat: add canonical human review decision service): «these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.»
+  - `ev-hd-06` (TextOS product commit 23d1ed3, 26 Sep 2026): «these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.»
 - **editorial** — The rest of this note explains what the agent may do alone, what needs a person's sign-off, and how that sign-off is spent.
 
 ### answer (answer) — What stops an agent from creating an unapproved draft?
@@ -57,27 +57,35 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > TextOS's API names three effects that need a human decision: approving a question panel, accepting an opportunity brief and creating a WordPress draft. Those effects stay under review, and no service account calling the API can switch them to automatic execution. When a person approves, TextOS records that person's identity on the decision and issues a one-hour permission to act. At run time that permission is checked against the action again, claimed, used for that action and then consumed.
 
 - **factual** — TextOS's API names three effects that need a human decision: approving a question panel, accepting an opportunity brief and creating a WordPress draft.
-  - `ev-hd-05` (TextOS product commit 23d1ed3: feat: add canonical human review decision service): «Add a transport-neutral API V1.1 Decision service for the three governed effects: - approve Query Panel; - accept Opportunity Brief; - create WordPress draft.»
+  - `ev-hd-05` (TextOS product commit 23d1ed3, 26 Sep 2026): «Add a transport-neutral API V1.1 Decision service for the three governed effects: - approve Query Panel; - accept Opportunity Brief; - create WordPress draft.»
 - **factual** — Those effects stay under review, and no service account calling the API can switch them to automatic execution.
-  - `ev-hd-06` (TextOS product commit 23d1ed3: feat: add canonical human review decision service): «these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.»
+  - `ev-hd-06` (TextOS product commit 23d1ed3, 26 Sep 2026): «these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.»
 - **factual** — When a person approves, TextOS records that person's identity on the decision and issues a one-hour permission to act.
-  - `ev-hd-07` (TextOS product commit 23d1ed3: feat: add canonical human review decision service): «approval atomically resolves Decision and creates a one-hour human-decision TrustGrant; - human identity is preserved on the Decision.»
+  - `ev-hd-07` (TextOS product commit 23d1ed3, 26 Sep 2026): «approval atomically resolves Decision and creates a one-hour human-decision TrustGrant; - human identity is preserved on the Decision.»
 - **factual** — At run time that permission is checked against the action again, claimed, used for that action and then consumed.
-  - `ev-hd-08` (TextOS product commit 0222212: feat: execute durable jobs under persisted trust grants): «shared dispatcher re-derives the authorization subject, atomically claims the grant, executes, then consumes it;»
+  - `ev-hd-08` (TextOS product commit 0222212, 26 Sep 2026): «shared dispatcher re-derives the authorization subject, atomically claims the grant, executes, then consumes it;»
 
 ### section-1 (section) — Preparing is not doing
 
 > On its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step. A fingerprint here is a short code computed from the content, which changes as soon as a single character changes. The website's login secrets are not part of that fingerprint and are not exposed by it.
-> Creating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler. If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are.
+> Creating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler.
 
 - **factual** — On its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step.
-  - `ev-hd-01` (TextOS product commit 722f177: feat: bind wordpress draft through exact trust action subject): «derives the exact ActionEnvelope/hash from canonical workspace draft + TruthCheck + destination state; - no credential material is hashed or exposed; - no external effect.»
+  - `ev-hd-01` (TextOS product commit 722f177, 26 Sep 2026): «derives the exact ActionEnvelope/hash from canonical workspace draft + TruthCheck + destination state; - no credential material is hashed or exposed; - no external effect.»
 - **editorial** — A fingerprint here is a short code computed from the content, which changes as soon as a single character changes.
 - **factual** — The website's login secrets are not part of that fingerprint and are not exposed by it.
-  - `ev-hd-01` (TextOS product commit 722f177: feat: bind wordpress draft through exact trust action subject): «derives the exact ActionEnvelope/hash from canonical workspace draft + TruthCheck + destination state; - no credential material is hashed or exposed; - no external effect.»
+  - `ev-hd-01` (TextOS product commit 722f177, 26 Sep 2026): «derives the exact ActionEnvelope/hash from canonical workspace draft + TruthCheck + destination state; - no credential material is hashed or exposed; - no external effect.»
 - **factual** — Creating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler.
-  - `ev-hd-03` (TextOS product commit 722f177: feat: bind wordpress draft through exact trust action subject): «draft creation must not be mislabeled as an internal proposal merely to simplify the API;»
-- **recommendation** — If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are.
+  - `ev-hd-03` (TextOS product commit 722f177, 26 Sep 2026): «draft creation must not be mislabeled as an internal proposal merely to simplify the API;»
+
+### prepared-to-draft-caption (caption)
+
+> In TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent.
+
+- **factual** — In TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent.
+  - `ev-hd-01` (TextOS product commit 722f177, 26 Sep 2026): «derives the exact ActionEnvelope/hash from canonical workspace draft + TruthCheck + destination state; - no credential material is hashed or exposed; - no external effect.»
+  - `ev-hd-07` (TextOS product commit 23d1ed3, 26 Sep 2026): «approval atomically resolves Decision and creates a one-hour human-decision TrustGrant; - human identity is preserved on the Decision.»
+  - `ev-hd-08` (TextOS product commit 0222212, 26 Sep 2026): «shared dispatcher re-derives the authorization subject, atomically claims the grant, executes, then consumes it;»
 
 ### section-2 (section) — An approval covers exact bytes, once
 
@@ -86,27 +94,43 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 
 - **editorial** — Suppose the draft is edited after you signed it off.
 - **factual** — TextOS then treats the approval as stale and makes it fail before any request reaches WordPress, and the same happens if the fact-check record or the destination has changed.
-  - `ev-hd-02` (TextOS product commit 722f177: feat: bind wordpress draft through exact trust action subject): «stale approval must fail before the remote POST if draft content, TruthCheck lineage or destination state changed.»
+  - `ev-hd-02` (TextOS product commit 722f177, 26 Sep 2026): «stale approval must fail before the remote POST if draft content, TruthCheck lineage or destination state changed.»
 - **factual** — An attempt that carries a fingerprint which does not match uses up nothing from the approval, since no action could run anyway.
-  - `ev-hd-04` (TextOS product commit 8610b7b: fix: reject stale wordpress action hash before trust claim): «a mismatched payload hash must not consume/claim authorization capacity when no effect can execute;»
+  - `ev-hd-04` (TextOS product commit 8610b7b, 26 Sep 2026): «a mismatched payload hash must not consume/claim authorization capacity when no effect can execute;»
 - **factual** — One approval also backs one job only: two separate requests cannot queue two jobs under the same permission and leave a race to decide which one runs.
-  - `ev-hd-10` (TextOS product commit cda781a: fix: bind one durable job to one trust grant): «A durable TrustGrant is a single execution authority. Two different Idempotency-Keys must not be able to queue two Jobs under the same grant and leave claim-race semantics to decide which one wins.»
+  - `ev-hd-10` (TextOS product commit cda781a, 26 Sep 2026): «A durable TrustGrant is a single execution authority. Two different Idempotency-Keys must not be able to queue two Jobs under the same grant and leave claim-race semantics to decide which one wins.»
 - **factual** — When the job starts, TextOS works out the subject of the permission afresh, claims the permission, carries out the action and only then marks the permission as spent.
-  - `ev-hd-08` (TextOS product commit 0222212: feat: execute durable jobs under persisted trust grants): «shared dispatcher re-derives the authorization subject, atomically claims the grant, executes, then consumes it;»
+  - `ev-hd-08` (TextOS product commit 0222212, 26 Sep 2026): «shared dispatcher re-derives the authorization subject, atomically claims the grant, executes, then consumes it;»
 
 ### section-3 (section) — Whose name is on the decision
 
 > Accountability follows the person, not the machine. When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.
-> One moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did. For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically. When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.
+> One moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did. For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically.
 
 - **editorial** — Accountability follows the person, not the machine.
 - **factual** — When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.
-  - `ev-hd-11` (TextOS product commit 7e0b459: feat: preserve human decision identity during delegated execution): «approvedByHumanPrincipalId receives the real human resolver identity, never the service principal id.»
+  - `ev-hd-11` (TextOS product commit 7e0b459, 26 Sep 2026): «approvedByHumanPrincipalId receives the real human resolver identity, never the service principal id.»
 - **factual** — One moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did.
-  - `ev-hd-09` (TextOS product commit 0222212: feat: execute durable jobs under persisted trust grants): «create_wordpress_draft@1 is explicitly reconcile_on_reclaim because remote WordPress creation can succeed before preview_receipt persistence; - no automatic retry is allowed through that ambiguous window.»
+  - `ev-hd-09` (TextOS product commit 0222212, 26 Sep 2026): «create_wordpress_draft@1 is explicitly reconcile_on_reclaim because remote WordPress creation can succeed before preview_receipt persistence; - no automatic retry is allowed through that ambiguous window.»
 - **factual** — For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically.
-  - `ev-hd-09` (TextOS product commit 0222212: feat: execute durable jobs under persisted trust grants): «create_wordpress_draft@1 is explicitly reconcile_on_reclaim because remote WordPress creation can succeed before preview_receipt persistence; - no automatic retry is allowed through that ambiguous window.»
+  - `ev-hd-09` (TextOS product commit 0222212, 26 Sep 2026): «create_wordpress_draft@1 is explicitly reconcile_on_reclaim because remote WordPress creation can succeed before preview_receipt persistence; - no automatic retry is allowed through that ambiguous window.»
+
+### verify (section) — What to ask any AI writing vendor
+
+> If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are. Ask what happens to a sign-off when the draft is edited after it was given. Ask whether one sign-off can be used twice, or by two jobs at once. Ask whose name is recorded when a machine account carries out a job that a person signed off. When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.
+
+- **recommendation** — If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are.
+- **recommendation** — Ask what happens to a sign-off when the draft is edited after it was given.
+- **recommendation** — Ask whether one sign-off can be used twice, or by two jobs at once.
+- **recommendation** — Ask whose name is recorded when a machine account carries out a job that a person signed off.
 - **recommendation** — When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.
+
+### editorial-next-step (section) — Where to go next
+
+> Another note explains how long an agent's access key lasts, and how it can be cut off in one step. A second note covers why a draft that was produced is not yet a draft that was checked.
+
+- **editorial** — Another note explains how long an agent's access key lasts, and how it can be cut off in one step.
+- **editorial** — A second note covers why a draft that was produced is not yet a draft that was checked.
 
 ## Prohibited claims to check by hand
 

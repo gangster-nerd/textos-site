@@ -1,4 +1,6 @@
 {
+  "planId": "what an ai content tool should do when it reads cited sources",
+  "planHash": "f2a2fa3313a5245e6fb3ce80c352cf8e269cca032e64b6177911cf0b5b0c4f88",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -87,14 +89,13 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "Reading is its own step, with a budget",
-      "text": "The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief. It can be resumed after an interruption or cancelled. A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.\n\nThe date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read. Ask a vendor how many requests its tool can send to one site, and whether you can stop a reading job halfway.",
+      "text": "The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief. It can be resumed after an interruption or cancelled. A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.\n\nThe date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read.",
       "statementIds": [
         "stmt:9:section-1:2:s1",
         "stmt:9:section-1:2:s2",
         "stmt:9:section-1:2:s3",
         "stmt:9:section-1:2:s4",
-        "stmt:9:section-1:2:s5",
-        "stmt:9:section-1:2:s6"
+        "stmt:9:section-1:2:s5"
       ],
       "evidenceIdsUsed": [
         "ev-rs-01",
@@ -107,17 +108,37 @@
       "excludedEvidence": []
     },
     {
+      "slotId": "cited-page-path-caption",
+      "role": "caption",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS checks robots.txt before reading a cited page, reads it in a separate step within a budget, and only proposes passages, which a person then qualifies.",
+      "statementIds": [
+        "stmt:23:cited-page-path-caption:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-rs-02",
+        "ev-rs-01",
+        "ev-rs-05"
+      ],
+      "usableEvidenceIds": [
+        "ev-rs-02",
+        "ev-rs-01",
+        "ev-rs-05"
+      ],
+      "excludedEvidence": []
+    },
+    {
       "slotId": "section-2",
       "role": "section",
       "headingLevel": 2,
       "heading": "Asking first, and saying why a page was not read",
-      "text": "Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault. A refusal is a result to report, not an obstacle to get around.\n\nThe crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent. If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.",
+      "text": "Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault. A refusal is a result to report, not an obstacle to get around.\n\nThe crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent.",
       "statementIds": [
         "stmt:9:section-2:2:s1",
         "stmt:9:section-2:2:s2",
         "stmt:9:section-2:2:s3",
-        "stmt:9:section-2:2:s4",
-        "stmt:9:section-2:2:s5"
+        "stmt:9:section-2:2:s4"
       ],
       "evidenceIdsUsed": [
         "ev-rs-02",
@@ -134,14 +155,13 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "Staying on the public web",
-      "text": "When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere. That closes a known trick in which a public name is made to point at an internal system after the check.\n\nFollowing a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin. Ask any vendor whether its tool can be pointed at internal addresses, and how it knows.",
+      "text": "When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere. That closes a known trick in which a public name is made to point at an internal system after the check.\n\nFollowing a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin.",
       "statementIds": [
         "stmt:9:section-3:2:s1",
         "stmt:9:section-3:2:s2",
         "stmt:9:section-3:2:s3",
         "stmt:9:section-3:2:s4",
-        "stmt:9:section-3:2:s5",
-        "stmt:9:section-3:2:s6"
+        "stmt:9:section-3:2:s5"
       ],
       "evidenceIdsUsed": [
         "ev-rs-06",
@@ -160,14 +180,13 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "A passage proposed is not a fact accepted",
-      "text": "Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks. When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.\n\nNone of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person. Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.",
+      "text": "Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks. When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.\n\nNone of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person.",
       "statementIds": [
         "stmt:9:section-4:2:s1",
         "stmt:9:section-4:2:s2",
         "stmt:9:section-4:2:s3",
         "stmt:9:section-4:2:s4",
-        "stmt:9:section-4:2:s5",
-        "stmt:9:section-4:2:s6"
+        "stmt:9:section-4:2:s5"
       ],
       "evidenceIdsUsed": [
         "ev-rs-04",
@@ -180,17 +199,46 @@
         "ev-rs-07"
       ],
       "excludedEvidence": []
+    },
+    {
+      "slotId": "verify",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "text": "Ask how many requests the tool can send to one site, and whether you can stop a reading job halfway. Ask what the tool records when it is refused access to a page. If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question. Ask whether the tool can be pointed at internal addresses, and how it knows. Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.",
+      "statementIds": [
+        "stmt:6:verify:2:s1",
+        "stmt:6:verify:2:s2",
+        "stmt:6:verify:2:s3",
+        "stmt:6:verify:2:s4",
+        "stmt:6:verify:2:s5"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "editorial-next-step",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "text": "The previous note explains who may say yes to a passage before an article can rely on it. Another note shows how an article that was produced is told apart from one that was checked.",
+      "statementIds": [
+        "stmt:19:editorial-next-step:2:s1",
+        "stmt:19:editorial-next-step:2:s2"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
     }
   ],
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "83bbb63439bfb844c94023a6201a3d46a928fbe2e3e00cec0ccb2e941d0dc80c",
+  "structuredContentHash": "be8073c52c0f4ef7d68ceec8ef93bf443540efe9a14c8a553c2d1c0dce3d1972",
   "truthCheck": {
     "verdict": "pass",
     "contradictions": []
   },
-  "planId": "what an ai content tool should do when it reads cited sources",
-  "planHash": "1422f3177b9a4a8318872f7f3af1c7c67d2f64d52d01b655bbbb73c793514e27",
   "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
 }

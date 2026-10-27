@@ -1,5 +1,5 @@
 {
-  "text": "The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief. It can be resumed after an interruption or cancelled. A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.\n\nThe date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read. Ask a vendor how many requests its tool can send to one site, and whether you can stop a reading job halfway.",
+  "text": "The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief. It can be resumed after an interruption or cancelled. A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.\n\nThe date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read.",
   "statements": [
     {
       "id": "s1",
@@ -65,18 +65,6 @@
       "id": "s5",
       "text": "A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read.",
       "kind": "editorial",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s6",
-      "text": "Ask a vendor how many requests its tool can send to one site, and whether you can stop a reading job halfway.",
-      "kind": "recommendation",
       "subject": {
         "kind": "general_domain",
         "name": null

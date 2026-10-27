@@ -8,24 +8,26 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Buyer question: Before I give an outside agent an API key to my content system, how do I make sure that access expires and can be stopped at once?
 - Target query: how to make ai agent api credentials expire and stop them in an emergency (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
-- Editorial quality (editorial-quality@0.3, structural, opportunity-article strategy — a signal here, not a gate): fail (11 finding(s))
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `308aa3276f9d0f80035478545e34f4885c0349e0`
+- Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (8 finding(s))
+- Sources shown: 3 (withheld: 0); figures: access-that-ends 17b913ea98d9
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
-## Editorial-quality signals
+## CTC editorial-contract findings
 
-Measured against TextOS's opportunity-article strategy, which this engineering note does not follow by design. Read them as prompts for the reviewer, not as verdicts.
+- `body_below_depth_guide` (signal): Corps de 2287 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.
+- `section_below_depth_guide` (signal) on `section-1`: Section « Replacing a key without a gap » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `section-2`: Section « Three switches for a bad day » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `section-3`: Section « What older keys keep doing » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `verify`: Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `editorial-next-step`: Section « Where to go next » plus courte que son repère : développement à juger en revue.
+- `section_without_grounded_statement` (signal) on `verify`: Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `section_without_grounded_statement` (signal) on `editorial-next-step`: Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.
 
-- `body_below_depth_guide` (signal): Corps de 1886 caractères, sous le repère d'un article « satellite » (2600) : profondeur à juger en revue.
-- `planned_section_missing` (blocking) on `criteria`: Section « Criteria to compare », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `fit`: Section « Checking the fit with your situation », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `pitfalls`: Section « Mistakes to avoid », prévue par la stratégie, absente.
-- `question_not_answered` (blocking) on `how to make ai agent api credentials expire and stop them in an emergency`: La question retenue « how to make ai agent api credentials expire and stop them in an emergency » n'a pas de réponse.
-- `question_not_answered` (blocking) on `Before I give an outside agent an API key to my content system, how do I make sure that access expires and can be stopped at once?`: La question retenue « Before I give an outside agent an API key to my content system, how do I make sure that access expires and can be stopped at once? » n'a pas de réponse.
-- `faq_too_small` (blocking): 1 entrée(s) de FAQ pour 2 question(s) retenue(s).
-- `information_object_missing` (blocking): Aucun objet d'information (liste structurée, tableau, comparatif) dans un article qui en exige un.
-- `evidence_overused` (signal) on `ev-cr-09`: Une même preuve fonde 3 sections (title, meta, answer) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `article_draft_profile_failed` (blocking) on `article.draft.heading-present`: TextOS article requires at least one `heading` block.
-- `article_draft_profile_failed` (blocking) on `article.draft.claims-and-evidence`: TextOS article requires at least one claimId.
+## Figures (rendered by TextOS — check labels, caption and alt text)
+
+- `access-that-ends` (states) — alt: Access that ends, and switches that stop it. 4 distinct states: 30 days by default (90 days at most; 60 minutes left when issued.); Replaced in one step (Old key revoked; the new one shown once.); Three switches (API off, writes frozen, one capability denied.); The backlog stops too (Queued jobs are authorized again first.).
+  - evidence: ev-cr-02, ev-cr-04, ev-cr-05, ev-cr-09, ev-cr-12, ev-cr-13, ev-cr-14, ev-cr-15
 
 ## Slots, statements and the evidence each one cites
 
@@ -34,18 +36,18 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > Every new TextOS API credential now expires, after 30 days by default
 
 - **factual** — Every new TextOS API credential now expires, after 30 days by default
-  - `ev-cr-08` (TextOS product commit c9ccfe9: feat: require bounded expiry for every new machine credential): «Close the permanent-bearer gap before first-customer dogfood.»
-  - `ev-cr-09` (TextOS product commit c9ccfe9: feat: require bounded expiry for every new machine credential): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
+  - `ev-cr-08` (TextOS product commit c9ccfe9, 26 Sep 2026): «Close the permanent-bearer gap before first-customer dogfood.»
+  - `ev-cr-09` (TextOS product commit c9ccfe9, 26 Sep 2026): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
 
 ### meta (meta_description)
 
 > TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.
 
 - **factual** — TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.
-  - `ev-cr-09` (TextOS product commit c9ccfe9: feat: require bounded expiry for every new machine credential): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
-  - `ev-cr-03` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «add principal revoke that also revokes every active credential;»
-  - `ev-cr-05` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «disables the API;»
-  - `ev-cr-14` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «provides a write freeze while preserving read/diagnostic paths;»
+  - `ev-cr-09` (TextOS product commit c9ccfe9, 26 Sep 2026): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
+  - `ev-cr-03` (TextOS product commit 6fe385e, 26 Sep 2026): «add principal revoke that also revokes every active credential;»
+  - `ev-cr-05` (TextOS product commit 6fe385e, 26 Sep 2026): «disables the API;»
+  - `ev-cr-14` (TextOS product commit 6fe385e, 26 Sep 2026): «provides a write freeze while preserving read/diagnostic paths;»
 
 ### lead (lead)
 
@@ -53,20 +55,20 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 
 - **editorial** — An access key handed to an outside agent tends to outlive the job it was created for.
 - **factual** — TextOS treated that permanent key as a gap to close before its first customer trial of the API.
-  - `ev-cr-08` (TextOS product commit c9ccfe9: feat: require bounded expiry for every new machine credential): «Close the permanent-bearer gap before first-customer dogfood.»
+  - `ev-cr-08` (TextOS product commit c9ccfe9, 26 Sep 2026): «Close the permanent-bearer gap before first-customer dogfood.»
 - **factual** — It also closed the operational control gap that a first customer would face.
-  - `ev-cr-01` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «Close the first-customer operational control gap.»
+  - `ev-cr-01` (TextOS product commit 6fe385e, 26 Sep 2026): «Close the first-customer operational control gap.»
 
 ### answer (answer) — How long does an agent's API access last?
 
 > Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days. A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends. These limits are enforced by the TextOS service itself, not only by its command-line tool.
 
 - **factual** — Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days.
-  - `ev-cr-09` (TextOS product commit c9ccfe9: feat: require bounded expiry for every new machine credential): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
+  - `ev-cr-09` (TextOS product commit c9ccfe9, 26 Sep 2026): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
 - **factual** — A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends.
-  - `ev-cr-09` (TextOS product commit c9ccfe9: feat: require bounded expiry for every new machine credential): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
+  - `ev-cr-09` (TextOS product commit c9ccfe9, 26 Sep 2026): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
 - **factual** — These limits are enforced by the TextOS service itself, not only by its command-line tool.
-  - `ev-cr-10` (TextOS product commit c9ccfe9: feat: require bounded expiry for every new machine credential): «Enforcement lives in the service layer, not only the CLI:»
+  - `ev-cr-10` (TextOS product commit c9ccfe9, 26 Sep 2026): «Enforcement lives in the service layer, not only the CLI:»
 
 ### section-1 (section) — Replacing a key without a gap
 
@@ -74,13 +76,22 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > Revoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.
 
 - **factual** — Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction.
-  - `ev-cr-02` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «add atomic credential rotation: old active credential is revoked and the replacement hash is inserted in one DB transaction;»
+  - `ev-cr-02` (TextOS product commit 6fe385e, 26 Sep 2026): «add atomic credential rotation: old active credential is revoked and the replacement hash is inserted in one DB transaction;»
 - **factual** — The new key is shown once and is not stored in readable form.
-  - `ev-cr-04` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «raw replacement token is returned once and never stored in plaintext;»
+  - `ev-cr-04` (TextOS product commit 6fe385e, 26 Sep 2026): «raw replacement token is returned once and never stored in plaintext;»
 - **factual** — Revoking an account in TextOS also revokes every active credential it holds.
-  - `ev-cr-03` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «add principal revoke that also revokes every active credential;»
+  - `ev-cr-03` (TextOS product commit 6fe385e, 26 Sep 2026): «add principal revoke that also revokes every active credential;»
 - **factual** — Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.
-  - `ev-cr-07` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «add api:v1:identity CLI so emergency operations never require manual SQL.»
+  - `ev-cr-07` (TextOS product commit 6fe385e, 26 Sep 2026): «add api:v1:identity CLI so emergency operations never require manual SQL.»
+
+### access-that-ends-caption (caption)
+
+> In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.
+
+- **factual** — In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.
+  - `ev-cr-09` (TextOS product commit c9ccfe9, 26 Sep 2026): «default TTL = 30 days; - maximum TTL = 90 days; - minimum remaining lifetime at issuance = 60 minutes; - omitted/null expiry resolves to the 30-day default instead of creating an eternal credential.»
+  - `ev-cr-02` (TextOS product commit 6fe385e, 26 Sep 2026): «add atomic credential rotation: old active credential is revoked and the replacement hash is inserted in one DB transaction;»
+  - `ev-cr-03` (TextOS product commit 6fe385e, 26 Sep 2026): «add principal revoke that also revokes every active credential;»
 
 ### section-2 (section) — Three switches for a bad day
 
@@ -88,25 +99,39 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > The switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run.
 
 - **factual** — TextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability.
-  - `ev-cr-05` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «disables the API;»
-  - `ev-cr-14` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «provides a write freeze while preserving read/diagnostic paths;»
-  - `ev-cr-15` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «supports an exact capability denylist;»
+  - `ev-cr-05` (TextOS product commit 6fe385e, 26 Sep 2026): «disables the API;»
+  - `ev-cr-14` (TextOS product commit 6fe385e, 26 Sep 2026): «provides a write freeze while preserving read/diagnostic paths;»
+  - `ev-cr-15` (TextOS product commit 6fe385e, 26 Sep 2026): «supports an exact capability denylist;»
 - **factual** — A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.
-  - `ev-cr-06` (TextOS product commit 6fe385e: feat: add machine credential lifecycle and emergency api kill switches): «disabled paths map to 503 + Retry-After instead of an ambiguous internal error.»
+  - `ev-cr-06` (TextOS product commit 6fe385e, 26 Sep 2026): «disabled paths map to 503 + Retry-After instead of an ambiguous internal error.»
 - **factual** — The switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests.
-  - `ev-cr-12` (TextOS product commit 17523af: fix: enforce execution admission and kill switches inside durable workers): «disabling the API therefore stops the backlog, not only new HTTP submissions.»
+  - `ev-cr-12` (TextOS product commit 17523af, 26 Sep 2026): «disabling the API therefore stops the backlog, not only new HTTP submissions.»
 - **factual** — Queued work is authorized again before it takes a place to run.
-  - `ev-cr-13` (TextOS product commit 17523af: fix: enforce execution admission and kill switches inside durable workers): «queued work is re-authorized before consuming a slot;»
+  - `ev-cr-13` (TextOS product commit 17523af, 26 Sep 2026): «queued work is re-authorized before consuming a slot;»
 
 ### section-3 (section) — What older keys keep doing
 
 > Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.
-> When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.
 
 - **factual** — Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage.
-  - `ev-cr-11` (TextOS product commit c9ccfe9: feat: require bounded expiry for every new machine credential): «remain readable until deliberately rotated, avoiding an unannounced outage;»
+  - `ev-cr-11` (TextOS product commit c9ccfe9, 26 Sep 2026): «remain readable until deliberately rotated, avoiding an unannounced outage;»
 - **editorial** — That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.
+
+### verify (section) — What to ask any AI writing vendor
+
+> When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand.
+
 - **recommendation** — When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.
+- **recommendation** — Ask whether switching the API off also stops jobs that are already queued.
+- **recommendation** — Ask whether a replacement key can be displayed a second time, and where it is kept.
+- **recommendation** — Ask whether emergency steps can be taken without editing the database by hand.
+
+### editorial-next-step (section) — Where to go next
+
+> Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure.
+
+- **editorial** — Another note explains what stops an agent from putting a draft nobody signed off into your website.
+- **editorial** — A second note follows an article through a writing-model failure.
 
 ## Prohibited claims to check by hand
 

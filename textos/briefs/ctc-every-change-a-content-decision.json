@@ -278,6 +278,27 @@
       "evidenceRequired": true
     },
     {
+      "id": "change-to-decision-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-01",
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
       "id": "section-2",
       "role": "section",
       "blockKind": "multi_paragraph",
@@ -318,9 +339,98 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 300,
+      "minChars": 210,
       "maxChars": 1000,
       "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-27",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "change-to-decision",
+      "template": "flow",
+      "title": "How a product change gets its content decision",
+      "subtitle": "Illustrative path for one change. People decide; the tooling checks.",
+      "nodes": [
+        {
+          "tag": "change",
+          "label": "Product change",
+          "evidenceIds": [
+            "ev-ci-01"
+          ]
+        },
+        {
+          "tag": "decide",
+          "label": "Content decision written",
+          "evidenceIds": [
+            "ev-ci-01"
+          ]
+        },
+        {
+          "tag": "check",
+          "label": "Checks require it",
+          "evidenceIds": [
+            "ev-ci-05"
+          ]
+        },
+        {
+          "tag": "answer",
+          "label": "Usually: no article",
+          "evidenceIds": [
+            "ev-ci-02"
+          ]
+        }
+      ],
+      "highlightNode": 1,
+      "boundary": {
+        "afterNode": 1,
+        "title": "People decide",
+        "lines": [
+          "The tooling checks that a",
+          "decision exists, not what it is."
+        ],
+        "evidenceIds": [
+          "ev-ci-05"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "change-to-decision-caption"
     }
   ]
 }

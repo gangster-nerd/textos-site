@@ -16,62 +16,29 @@
  * boundaries and declared statements; TextOS's TruthCheck decides pass / alert / block. A refused
  * outcome is written to disk and the step fails. Only a `pass` is packaged for the site.
  *
- * TextOS's structural editorial-quality gate (Article Quality V1) is also run and its findings are
- * recorded next to the receipt and in the human review packet — as SIGNALS, not as a gate. It
- * measures an article against the strategy TextOS derives for opportunity articles (buyer-guide
- * sections, FAQ, comparison object), which a Commit-to-Content engineering note does not follow by
- * design; TextOS has no CTC-specific strategy yet. Its verdict therefore never decides here.
+ * HOW IT IS PACKAGED (TextOS CTC-CHAIN-1). The writer's result goes through TextOS's own article
+ * review (`composeCtcArticleReview` → `buildArticleReviewSurface`), exactly as every TextOS article:
+ * short answer, sections, information objects, Sources, editorial next step, reading time, the
+ * `article-cmo-v2@1` verdict, TextOS's CTC editorial contract and its governed figures. Its release
+ * gate is fail-closed: a note that does not pass CMO V2 is written to `article-review.json` for the
+ * reviewer and never packaged for the site.
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { pathToFileURL } from "node:url";
 
 import { SITE_ROOT, TEXTOS_DIR, TEXTOS_REF, TEXTOS_ROOT, argValue, loadTextos, readJson, sha256, writeJson, writeText } from "./lib";
-import type { GeoWriterOutcome, SlotWriteRequest } from "./lib";
+import type { CtcArticleReview, GeoWriterOutcome, SlotWriteRequest } from "./lib";
 import type { CtcGeoWriterIntake, GeoWriterSlot } from "./textos-contracts";
-import { FLOW_SURFACE_POLICY, responseFileName, type ArticleBrief } from "../../../lib/textos-client/brief";
-
-const CONTENT_TYPE = "ARTICLE";
-
-interface EditorialQualityLike {
-  gateVersion: string;
-  verdict: "pass" | "fail";
-  findings: { code: string; severity: string; subject: string | null; message: string }[];
-}
-
-/** TextOS's structural editorial-quality gate (Article Quality V1), on the packaged document. */
-async function editorialQuality(params: {
-  document: unknown;
-  draft: unknown;
-  targetQuery: string;
-  locale: string;
-  buyerQuestion: string;
-  headings: string[];
-}): Promise<EditorialQualityLike> {
-  const load = async (rel: string) => (await import(pathToFileURL(join(TEXTOS_ROOT, rel)).href)) as Record<string, unknown>;
-  const strategyMod = await load("src/server/textos/act/editorial-strategy.ts");
-  const gateMod = await load("src/server/textos/act/editorial-quality-gate.ts");
-  const derive = strategyMod.deriveEditorialStrategy as (input: Record<string, unknown>) => unknown;
-  const evaluate = gateMod.evaluateEditorialQuality as (input: Record<string, unknown>) => EditorialQualityLike;
-  const strategy = derive({
-    targetQuery: params.targetQuery,
-    locale: params.locale,
-    briefQuestions: [params.buyerQuestion],
-    briefObjective: null,
-    briefPlanSteps: params.headings,
-    buyerIntent: null,
-  });
-  return evaluate({ document: params.document, draft: params.draft, strategy, governedSourceCount: 0 });
-}
+import { FLOW_SURFACE_POLICY, figurePublicPath, responseFileName, type ArticleBrief } from "../../../lib/textos-client/brief";
 
 function renderHumanReview(params: {
   brief: ArticleBrief;
   intake: CtcGeoWriterIntake;
   outcome: Extract<GeoWriterOutcome, { status: "written" }>;
   prohibitedByEntity: { id: string; prohibitedClaims: string[] }[];
-  quality: EditorialQualityLike;
+  note: CtcArticleReview;
 }): string {
-  const { brief, intake, outcome, prohibitedByEntity, quality } = params;
+  const { brief, intake, outcome, prohibitedByEntity, note } = params;
   const evidenceById = new Map(intake.evidence.map((e) => [e.id, e]));
   const ledgerById = new Map(outcome.result.document.statementLedger.map((s) => [s.id, s]));
   const lines: string[] = [
@@ -85,18 +52,20 @@ function renderHumanReview(params: {
     `- Buyer question: ${brief.provenance.buyerQuestion}`,
     `- Target query: ${brief.provenance.targetQuery} (${brief.provenance.targetQueryProvenance}; demand ${brief.provenance.demandEvidenceStatus})`,
     `- TruthCheck: **${outcome.result.truthCheck.verdict}** (${outcome.result.truthCheck.contradictions.length} finding(s))`,
-    `- Editorial quality (${quality.gateVersion}, structural, opportunity-article strategy — a signal here, not a gate): ${quality.verdict} (${quality.findings.length} finding(s))`,
+    `- Article review (${note.methodVersion}): CMO V2 **${note.review.cmoV2Conformance.passed ? "pass" : "fail"}** (${note.review.cmoV2Conformance.version}), CONTENT_PASS ${note.review.contentPass.passed ? "pass" : "fail"}, release ${note.release.allowed ? "allowed" : `refused (${note.release.blockers.join(", ")})`}`,
+    `- CTC editorial contract (${note.editorialQuality.gateVersion}): ${note.editorialQuality.verdict} (${note.editorialQuality.findings.length} finding(s))`,
+    `- Sources shown: ${note.sources.length} (withheld: ${note.sourcesWithheld.length}); figures: ${note.figures.map((f) => `${f.id} ${f.sha256.slice(0, 12)}`).join(", ") || "none"}`,
     `- Writer: \`${outcome.result.derivationIdentity}\` — TextOS \`${TEXTOS_REF}\``,
     "",
   ];
-  if (quality.findings.length > 0) {
-    lines.push(
-      "## Editorial-quality signals",
-      "",
-      "Measured against TextOS's opportunity-article strategy, which this engineering note does not follow by design. Read them as prompts for the reviewer, not as verdicts.",
-      "",
-    );
-    for (const f of quality.findings) lines.push(`- \`${f.code}\` (${f.severity})${f.subject ? ` on \`${f.subject}\`` : ""}: ${f.message}`);
+  if (note.editorialQuality.findings.length > 0) {
+    lines.push("## CTC editorial-contract findings", "");
+    for (const f of note.editorialQuality.findings) lines.push(`- \`${f.code}\` (${f.severity})${f.subject ? ` on \`${f.subject}\`` : ""}: ${f.message}`);
+    lines.push("");
+  }
+  if (note.figures.length > 0) {
+    lines.push("## Figures (rendered by TextOS — check labels, caption and alt text)", "");
+    for (const f of note.figures) lines.push(`- \`${f.id}\` (${f.template}) — alt: ${f.alt}`, `  - evidence: ${f.evidenceIds.join(", ")}`);
     lines.push("");
   }
   lines.push("## Slots, statements and the evidence each one cites", "");
@@ -191,37 +160,63 @@ async function main(): Promise<void> {
     );
   }
 
-  const bridge = textos.bridgeGeoWriterResultToContentDocument({
-    outcome,
+  // ── The common article chain (TextOS CTC-CHAIN-1): same article review as every TextOS article ──
+  const note = textos.composeCtcArticleReview({
+    adapted,
+    result: outcome.result,
     documentId: `textos-site:ctc:${articleId}`,
+    briefId: articleId,
     slug: brief.slug,
-    language: brief.locale,
-    contentType: CONTENT_TYPE,
-    provenance: adapted.provenance,
-    allowedSurfaces: ["reference"],
+    figures: brief.figures,
+    figureHref: (figure) => figurePublicPath(figure.id, figure.sha256),
   });
 
-  const policies = readJson<{ policies: Record<string, unknown> }>(join(TEXTOS_DIR, "client", "surface-policy.json")).policies;
-  const policy = textos.SurfacePolicySchema.parse(policies[FLOW_SURFACE_POLICY[brief.flow]]);
-  const resolved = textos.resolveContentSurface(bridge.document, policy, []);
-  const withReadingTime = textos.withReadingTime(resolved, bridge.document);
-  const structure = textos.computeContentTypePolicy(CONTENT_TYPE, bridge.document);
-  const resolvedJson = `${textos.serializeResolvedContentSurfaceToJson(withReadingTime)}\n`;
+  const review = note.review;
+  const document = review.contentDocument;
+  const resolvedJson = `${textos.serializeResolvedContentSurfaceToJson(review.resolvedSurface)}\n`;
+  const articleReview = {
+    methodVersion: note.methodVersion,
+    reviewSchemaVersion: review.schemaVersion,
+    release: note.release,
+    cmoV2Conformance: review.cmoV2Conformance,
+    contentPass: review.contentPass,
+    surfacePlan: review.surfacePlan,
+    articleStructure: review.articleStructure,
+    editorialQuality: note.editorialQuality,
+    sources: note.sources,
+    sourcesWithheld: note.sourcesWithheld,
+    readingTimeMinutes: review.resolvedSurface.readingTimeMinutes,
+  };
+  const lineage = {
+    planId: outcome.result.planId,
+    planHash: outcome.result.planHash,
+    slotProvenance: outcome.result.slots,
+    writerMethodVersion: outcome.result.writerMethodVersion,
+    slotProviderMethodVersion: outcome.result.slotProviderMethodVersion,
+    derivationIdentity: outcome.result.derivationIdentity,
+    structuredContentHash: outcome.result.structuredContentHash,
+    truthCheck: outcome.result.truthCheck,
+    canonicalProductSha: adapted.provenance.canonicalProductSha,
+  };
 
-  const quality = await editorialQuality({
-    document: bridge.document,
-    draft: outcome.result.document,
-    targetQuery: brief.provenance.targetQuery,
-    locale: brief.locale,
-    buyerQuestion: brief.provenance.buyerQuestion,
-    headings: outcome.result.slots.flatMap((s) => (s.heading ? [s.heading] : [])),
-  });
-  writeJson(join(runDir, "editorial-quality.json"), quality);
+  writeJson(join(runDir, "article-review.json"), articleReview);
+  if (!note.release.allowed) {
+    throw new Error(
+      `write: TextOS's article review refused ${articleId} — ${note.release.blockers.join(", ")}` +
+        (note.release.cmoV2Issues.length ? ` (CMO V2: ${note.release.cmoV2Issues.join(", ")})` : "") +
+        `. See ${join(runDir, "article-review.json")}.`,
+    );
+  }
 
-  const { document, ...lineage } = bridge;
+  const figureHashes: Record<string, string> = {};
+  for (const figure of note.figures) {
+    const file = join(SITE_ROOT, "public", figurePublicPath(figure.id, figure.sha256));
+    writeText(file, figure.svg);
+    figureHashes[figure.id] = figure.sha256;
+  }
+
   writeJson(join(runDir, "content-document.json"), document);
   writeText(join(runDir, "resolved-surface.json"), resolvedJson);
-  writeJson(join(runDir, "article-structure.json"), structure);
   writeJson(join(runDir, "lineage.json"), lineage);
 
   const manifest = readJson<{ entities: { id: string; prohibitedClaims: string[] }[] }>(
@@ -230,13 +225,14 @@ async function main(): Promise<void> {
   const prohibitedByEntity = brief.entityIds
     .map((id) => manifest.entities.find((e) => e.id === id))
     .filter((e): e is { id: string; prohibitedClaims: string[] } => Boolean(e && e.prohibitedClaims.length > 0));
-  writeText(join(runDir, "HUMAN-REVIEW.md"), renderHumanReview({ brief, intake, outcome, prohibitedByEntity, quality }));
+  writeText(join(runDir, "HUMAN-REVIEW.md"), renderHumanReview({ brief, intake, outcome, prohibitedByEntity, note }));
 
   writeJson(join(runDir, "receipt.json"), {
-    receiptVersion: 1,
+    receiptVersion: 2,
     articleId,
     textos: { repository: "gangster-nerd/textos-v0", sha: TEXTOS_REF },
     adapterMethodVersion: adapted.adapterMethodVersion,
+    articleReviewMethodVersion: note.methodVersion,
     executionPlanHash: adapted.executionPlanHash,
     ctcHandoffHash: adapted.ctcHandoffHash,
     writerMethodVersion: outcome.result.writerMethodVersion,
@@ -244,21 +240,27 @@ async function main(): Promise<void> {
     derivationIdentity: outcome.result.derivationIdentity,
     structuredContentHash: outcome.result.structuredContentHash,
     truthCheckVerdict: outcome.result.truthCheck.verdict,
-    editorialQuality: { gateVersion: quality.gateVersion, verdict: quality.verdict, findings: quality.findings.length },
+    cmoV2: { version: review.cmoV2Conformance.version, passed: review.cmoV2Conformance.passed },
+    ctcEditorialQuality: { gateVersion: note.editorialQuality.gateVersion, verdict: note.editorialQuality.verdict },
+    releaseAllowed: note.release.allowed,
     publicationChannel: brief.publicationChannel,
-    canonicalProductSha: bridge.canonicalProductSha,
+    canonicalProductSha: adapted.provenance.canonicalProductSha,
     promptHashes: prepared.promptHashes,
     responseHashes,
+    figureHashes,
     contentDocumentSha256: sha256(`${JSON.stringify(document, null, 2)}\n`),
     lineageSha256: sha256(`${JSON.stringify(lineage, null, 2)}\n`),
     resolvedSurfaceSha256: sha256(resolvedJson),
+    articleReviewSha256: sha256(`${JSON.stringify(articleReview, null, 2)}\n`),
   });
 
   console.log(`write: ${articleId} written.`);
   console.log(`  TruthCheck:  ${outcome.result.truthCheck.verdict}`);
-  console.log(`  quality:     ${quality.verdict} against the opportunity-article strategy (${quality.findings.length} signal(s), not a gate)`);
+  console.log(`  CMO V2:      ${review.cmoV2Conformance.passed ? "pass" : "fail"} (${review.cmoV2Conformance.version})`);
+  console.log(`  CTC quality: ${note.editorialQuality.verdict} (${note.editorialQuality.findings.length} finding(s))`);
+  console.log(`  sources:     ${note.sources.length}, figures: ${note.figures.length}`);
   console.log(`  derivation:  ${outcome.result.derivationIdentity}`);
-  console.log(`  reading:     ${withReadingTime.readingTimeMinutes} min`);
+  console.log(`  reading:     ${review.resolvedSurface.readingTimeMinutes} min`);
   console.log(`  slots:       ${outcome.result.slots.length}`);
 }
 

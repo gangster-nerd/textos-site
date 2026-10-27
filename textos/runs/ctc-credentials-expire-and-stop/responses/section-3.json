@@ -1,5 +1,5 @@
 {
-  "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nWhen you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
+  "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.",
   "statements": [
     {
       "id": "s1",
@@ -21,18 +21,6 @@
       "id": "s2",
       "text": "That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.",
       "kind": "editorial",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s3",
-      "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
-      "kind": "recommendation",
       "subject": {
         "kind": "general_domain",
         "name": null

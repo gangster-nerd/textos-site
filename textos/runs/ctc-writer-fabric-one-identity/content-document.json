@@ -2,7 +2,7 @@
   "contentSchemaVersion": "content-document@1",
   "identity": {
     "documentId": "textos-site:ctc:ctc-writer-fabric-one-identity",
-    "contentType": "ARTICLE",
+    "contentType": "product_article",
     "slug": "a-writing-model-outage-should-not-kill-an-article",
     "language": "en-US",
     "title": "At TextOS, a writing-model outage no longer kills an article",
@@ -11,17 +11,46 @@
   "editorial": {
     "authorIds": [],
     "reviewerIds": [],
-    "topicIds": []
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
   },
   "truth": {
     "statusVocabulary": "geo-writer",
     "statusVocabularyVersion": "geo-writer@0.2",
-    "sourceStatus": "truthCheck:pass",
+    "sourceStatus": "ARTICLE_GUIDE",
     "publicationStatus": "draft",
     "allowedSurfaces": [
-      "reference"
+      "reference",
+      "native"
     ],
-    "claimIds": [],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:20:writer-fails-caption:2:s1",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:2:s3",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
     "evidenceRefs": [
       "ev-wf-01",
       "ev-wf-02",
@@ -37,42 +66,136 @@
   },
   "provenance": {
     "sourceAuthority": "UNCERTIFIED",
-    "sourceEvidenceDigest": "c23c402d8e3f8103deb39e57a4137dd411d4acbc854691f0ad202861f59f7255"
+    "sourceEvidenceDigest": "a11abfb4ebb59aa6dc4056a82e52110b689d1bdfc5b29ffecc06e32f294a362b"
   },
   "body": [
     {
-      "id": "lead",
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines. Each attempt covers the whole article under one writer identity, never a switch from one section to the next. As a result, a single provider outage no longer stops a TextOS article."
+      }
+    },
+    {
+      "id": "lead:body",
       "kind": "paragraph",
       "data": {
         "text": "Long articles are written piece by piece, and a model provider can fail in the middle of one. In TextOS, a provider outage no longer kills an article that is being written. What changed is not the number of models so much as the rules for moving from one to the next."
       }
     },
     {
-      "id": "answer",
-      "kind": "answer",
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
       "data": {
-        "text": "When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines. Each attempt covers the whole article under one writer identity, never a switch from one section to the next. As a result, a single provider outage no longer stops a TextOS article."
+        "text": "One writer per article, never a patchwork"
       }
     },
     {
-      "id": "section-1",
+      "id": "section-1:body",
       "kind": "paragraph",
       "data": {
         "text": "Mixing two models inside one article would make it hard to say who wrote what. TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.\n\nThe article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added. For a reader of the finished page, that means one consistent voice per article."
       }
     },
     {
-      "id": "section-2",
-      "kind": "paragraph",
+      "id": "figure:writer-fails",
+      "kind": "figure",
       "data": {
-        "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal."
+        "src": "/diagrams/ctc/writer-fails-66262073c3a6.svg",
+        "alt": "What happens when a writer fails. A 4-step flow: First writer, whole article, then Technical failure, then Next writer, whole article, then Article not lost. A dashed boundary after \"Technical failure\" is labelled Closed list: Only listed technical failures move to the next writer.",
+        "caption": "In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt."
       }
     },
     {
-      "id": "section-3",
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What a fallback is not allowed to do"
+      }
+    },
+    {
+      "id": "section-2:body",
       "kind": "paragraph",
       "data": {
-        "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against."
+        "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Switched on with an exit and a human hand"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI writing vendor"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "Ask whether one article can end up written by two different models.",
+          "If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
+          "Ask what the article's status shows while it waits for a model to answer.",
+          "When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "Another note explains who may say yes to a source before an article can rely on it. A second note shows how an article that was produced is told apart from one that was checked."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-wf-01",
+      "kind": "source",
+      "data": {
+        "ref": "ev-wf-01",
+        "title": "TextOS product commit a5b6241, 23 Oct 2026"
+      }
+    },
+    {
+      "id": "source:2:ev-wf-09",
+      "kind": "source",
+      "data": {
+        "ref": "ev-wf-09",
+        "title": "TextOS product commit 4c2010b, 23 Oct 2026"
       }
     }
   ],
@@ -84,6 +207,8 @@
   },
   "lifecycle": {},
   "seo": {
-    "indexingIntent": "noindex"
+    "indexingIntent": "noindex",
+    "targetQuery": "what happens to an ai written article when the model provider fails",
+    "searchIntent": "buyer_decision"
   }
 }

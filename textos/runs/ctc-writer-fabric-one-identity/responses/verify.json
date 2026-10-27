@@ -1,0 +1,53 @@
+{
+  "text": "Ask whether one article can end up written by two different models. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal. Ask what the article's status shows while it waits for a model to answer. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Ask whether one article can end up written by two different models.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask what the article's status shows while it waits for a model to answer.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

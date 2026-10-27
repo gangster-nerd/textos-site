@@ -290,6 +290,26 @@
       "evidenceRequired": true
     },
     {
+      "id": "writer-fails-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-wf-03",
+        "ev-wf-02"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
       "id": "section-2",
       "role": "section",
       "blockKind": "multi_paragraph",
@@ -307,7 +327,7 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 300,
+      "minChars": 250,
       "maxChars": 1100,
       "evidenceRequired": true
     },
@@ -330,9 +350,99 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 300,
+      "minChars": 280,
       "maxChars": 1100,
       "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-27",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "writer-fails",
+      "template": "flow",
+      "title": "What happens when a writer fails",
+      "subtitle": "Illustrative path for one article. A refusal is not a failure to route around.",
+      "nodes": [
+        {
+          "tag": "attempt",
+          "label": "First writer, whole article",
+          "evidenceIds": [
+            "ev-wf-03"
+          ]
+        },
+        {
+          "tag": "fail",
+          "label": "Technical failure",
+          "evidenceIds": [
+            "ev-wf-05"
+          ]
+        },
+        {
+          "tag": "next",
+          "label": "Next writer, whole article",
+          "evidenceIds": [
+            "ev-wf-02",
+            "ev-wf-03"
+          ]
+        },
+        {
+          "tag": "done",
+          "label": "Article not lost",
+          "evidenceIds": [
+            "ev-wf-01"
+          ]
+        }
+      ],
+      "highlightNode": 2,
+      "boundary": {
+        "afterNode": 1,
+        "title": "Closed list",
+        "lines": [
+          "Only listed technical failures",
+          "move to the next writer."
+        ],
+        "evidenceIds": [
+          "ev-wf-05"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "writer-fails-caption"
     }
   ]
 }

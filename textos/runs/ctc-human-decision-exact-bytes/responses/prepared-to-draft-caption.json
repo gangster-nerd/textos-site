@@ -1,0 +1,24 @@
+{
+  "text": "In TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-hd-01",
+        "ev-hd-07",
+        "ev-hd-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

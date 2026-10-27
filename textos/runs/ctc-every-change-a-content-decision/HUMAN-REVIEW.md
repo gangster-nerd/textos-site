@@ -8,25 +8,28 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Buyer question: Should every product release become a blog post, and who decides which ones do?
 - Target query: how to decide which product changes deserve public content (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
-- Editorial quality (editorial-quality@0.3, structural, opportunity-article strategy — a signal here, not a gate): fail (12 finding(s))
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `308aa3276f9d0f80035478545e34f4885c0349e0`
+- Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (10 finding(s))
+- Sources shown: 3 (withheld: 0); figures: change-to-decision 16df45598024
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
-## Editorial-quality signals
+## CTC editorial-contract findings
 
-Measured against TextOS's opportunity-article strategy, which this engineering note does not follow by design. Read them as prompts for the reviewer, not as verdicts.
+- `body_below_depth_guide` (signal): Corps de 2258 caractères, sous le repère d'une note CTC (2400) : profondeur à juger en revue.
+- `section_below_depth_guide` (signal) on `section-1`: Section « Why 'nothing to publish' has to be cheap » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `section-3`: Section « Govern first, write second » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `verify`: Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `editorial-next-step`: Section « Where to go next » plus courte que son repère : développement à juger en revue.
+- `section_without_grounded_statement` (signal) on `verify`: Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `section_without_grounded_statement` (signal) on `editorial-next-step`: Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `evidence_overused` (signal) on `ev-ci-01`: Une même preuve fonde 3 slots du corps (lead, answer, change-to-decision-caption) : la note répète ce fait au lieu d'en apporter d'autres.
+- `evidence_overused` (signal) on `ev-ci-08`: Une même preuve fonde 3 slots du corps (answer, section-1, change-to-decision-caption) : la note répète ce fait au lieu d'en apporter d'autres.
+- `evidence_overused` (signal) on `ev-ci-02`: Une même preuve fonde 3 slots du corps (answer, section-1, change-to-decision-caption) : la note répète ce fait au lieu d'en apporter d'autres.
 
-- `body_below_depth_guide` (signal): Corps de 1907 caractères, sous le repère d'un article « satellite » (2600) : profondeur à juger en revue.
-- `planned_section_missing` (blocking) on `criteria`: Section « Criteria to compare », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `fit`: Section « Checking the fit with your situation », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `pitfalls`: Section « Mistakes to avoid », prévue par la stratégie, absente.
-- `question_not_answered` (blocking) on `how to decide which product changes deserve public content`: La question retenue « how to decide which product changes deserve public content » n'a pas de réponse.
-- `question_not_answered` (blocking) on `Should every product release become a blog post, and who decides which ones do?`: La question retenue « Should every product release become a blog post, and who decides which ones do? » n'a pas de réponse.
-- `faq_too_small` (blocking): 1 entrée(s) de FAQ pour 2 question(s) retenue(s).
-- `information_object_missing` (blocking): Aucun objet d'information (liste structurée, tableau, comparatif) dans un article qui en exige un.
-- `evidence_overused` (signal) on `ev-ci-01`: Une même preuve fonde 4 sections (title, meta, lead, answer) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `evidence_overused` (signal) on `ev-ci-02`: Une même preuve fonde 3 sections (meta, answer, section-1) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `article_draft_profile_failed` (blocking) on `article.draft.heading-present`: TextOS article requires at least one `heading` block.
-- `article_draft_profile_failed` (blocking) on `article.draft.claims-and-evidence`: TextOS article requires at least one claimId.
+## Figures (rendered by TextOS — check labels, caption and alt text)
+
+- `change-to-decision` (flow) — alt: How a product change gets its content decision. A 4-step flow: Product change, then Content decision written, then Checks require it, then Usually: no article. A dashed boundary after "Content decision written" is labelled People decide: The tooling checks that a decision exists, not what it is.
+  - evidence: ev-ci-01, ev-ci-02, ev-ci-05
 
 ## Slots, statements and the evidence each one cites
 
@@ -35,14 +38,14 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > At TextOS, every product change carries a written content decision
 
 - **factual** — At TextOS, every product change carries a written content decision
-  - `ev-ci-01` (TextOS product commit 4d37616: feat(change-impact): contrat d'impact éditorial (C0B)): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
+  - `ev-ci-01` (TextOS product commit 4d37616, 5 Aug 2026): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
 
 ### meta (meta_description)
 
 > Every TextOS product change has to state whether it deserves public content, and the usual answer, which costs one line, is that it does not.
 
 - **factual** — Every TextOS product change has to state whether it deserves public content, and the usual answer, which costs one line, is that it does not.
-  - `ev-ci-01` (TextOS product commit 4d37616: feat(change-impact): contrat d'impact éditorial (C0B)): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
+  - `ev-ci-01` (TextOS product commit 4d37616, 5 Aug 2026): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
   - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 308aa32): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
 
 ### lead (lead)
@@ -51,7 +54,7 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 
 - **editorial** — It is tempting to turn each release into a blog post.
 - **factual** — TextOS decides change by change instead: each product change carries an explicit decision about what public content it deserves, if any.
-  - `ev-ci-01` (TextOS product commit 4d37616: feat(change-impact): contrat d'impact éditorial (C0B)): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
+  - `ev-ci-01` (TextOS product commit 4d37616, 5 Aug 2026): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
 - **editorial** — The rule is small, but it changes what a team feels obliged to publish.
 
 ### answer (answer) — Who decides which product changes become content?
@@ -59,7 +62,7 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > Automated checks in TextOS refuse a change that carries no content decision, but they never work that decision out themselves. One of the possible answers is simply that the change deserves no public content. That answer is also the usual one, and it costs a single line to give. In other words, people decide what is worth saying, and the tooling checks that they decided.
 
 - **factual** — Automated checks in TextOS refuse a change that carries no content decision, but they never work that decision out themselves.
-  - `ev-ci-01` (TextOS product commit 4d37616: feat(change-impact): contrat d'impact éditorial (C0B)): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
+  - `ev-ci-01` (TextOS product commit 4d37616, 5 Aug 2026): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
 - **factual** — One of the possible answers is simply that the change deserves no public content.
   - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 308aa32): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
 - **factual** — That answer is also the usual one, and it costs a single line to give.
@@ -69,14 +72,22 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 ### section-1 (section) — Why 'nothing to publish' has to be cheap
 
 > A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.
-> If your team publishes release notes, look at what it costs to say that a release deserves none. Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.
+> Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.
 
 - **factual** — A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive.
   - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 308aa32): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
 - **factual** — The TextOS decision file says it plainly: the change deserves no public content.
   - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 308aa32): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
-- **recommendation** — If your team publishes release notes, look at what it costs to say that a release deserves none.
 - **editorial** — Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.
+
+### change-to-decision-caption (caption)
+
+> Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.
+
+- **factual** — Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.
+  - `ev-ci-01` (TextOS product commit 4d37616, 5 Aug 2026): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
+  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 308aa32): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
+  - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 308aa32): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
 
 ### section-2 (section) — The quiet failure it closes
 
@@ -84,24 +95,38 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > Changing a file that TextOS cites as evidence, without saying anything about the related capability, is now refused, and accepting that gap means signing a sentence about it. The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability.
 
 - **factual** — The quietest failure TextOS found was one where nothing fails.
-  - `ev-ci-03` (TextOS product commit 4d37616: feat(change-impact): contrat d'impact éditorial (C0B)): «Le second est le plus insidieux : rien n'échoue. Les preuves citées existent toujours et restent ancêtres du snapshot. Le manifeste continue de dire vrai sur ce qu'il affirme, tout en décrivant un produit qui a changé sous lui.»
+  - `ev-ci-03` (TextOS product commit 4d37616, 5 Aug 2026): «Le second est le plus insidieux : rien n'échoue. Les preuves citées existent toujours et restent ancêtres du snapshot. Le manifeste continue de dire vrai sur ce qu'il affirme, tout en décrivant un produit qui a changé sous lui.»
 - **factual** — The evidence cited for a capability still exists, yet the public description keeps telling a truth about a product that has changed underneath it.
-  - `ev-ci-03` (TextOS product commit 4d37616: feat(change-impact): contrat d'impact éditorial (C0B)): «Le second est le plus insidieux : rien n'échoue. Les preuves citées existent toujours et restent ancêtres du snapshot. Le manifeste continue de dire vrai sur ce qu'il affirme, tout en décrivant un produit qui a changé sous lui.»
+  - `ev-ci-03` (TextOS product commit 4d37616, 5 Aug 2026): «Le second est le plus insidieux : rien n'échoue. Les preuves citées existent toujours et restent ancêtres du snapshot. Le manifeste continue de dire vrai sur ce qu'il affirme, tout en décrivant un produit qui a changé sous lui.»
 - **factual** — Changing a file that TextOS cites as evidence, without saying anything about the related capability, is now refused, and accepting that gap means signing a sentence about it.
-  - `ev-ci-04` (TextOS product commit 4d37616: feat(change-impact): contrat d'impact éditorial (C0B)): «modifier un fichier cité en preuve sans rien dire de l'entité devient impossible, et assumer la dette devient une phrase signée plutôt qu'une absence.»
+  - `ev-ci-04` (TextOS product commit 4d37616, 5 Aug 2026): «modifier un fichier cité en preuve sans rien dire de l'entité devient impossible, et assumer la dette devient une phrase signée plutôt qu'une absence.»
 - **factual** — The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability.
-  - `ev-ci-05` (TextOS product commit 1ad90d0: feat(change-impact): couverture continue du manifeste (C0B.1)): «Le scanner répond à une seule question, mécanique : « ce fichier d'implémentation modifié est-il couvert par une preuve déclarée ? » Il ne déduit aucune capacité.»
+  - `ev-ci-05` (TextOS product commit 1ad90d0, 8 Aug 2026): «Le scanner répond à une seule question, mécanique : « ce fichier d'implémentation modifié est-il couvert par une preuve déclarée ? » Il ne déduit aucune capacité.»
 
 ### section-3 (section) — Govern first, write second
 
 > TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.
-> Before you let a tool draft articles from your release history, check which side of that order it sits on.
 
 - **factual** — TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second.
-  - `ev-ci-06` (TextOS product commit 1ad90d0: feat(change-impact): couverture continue du manifeste (C0B.1)): «Proposer un contenu sur un territoire dont la déclaration est encore à faire reviendrait à écrire d'abord et à gouverner ensuite — l'inversion exacte que cette chaîne interdit.»
+  - `ev-ci-06` (TextOS product commit 1ad90d0, 8 Aug 2026): «Proposer un contenu sur un territoire dont la déclaration est encore à faire reviendrait à écrire d'abord et à gouverner ensuite — l'inversion exacte que cette chaîne interdit.»
 - **factual** — The contract itself writes no content and opens no editorial request.
   - `ev-ci-07` (TextOS product repository file changes/content-impact/README.md at 308aa32): «Il ne rédige aucun contenu et n'ouvre aucune PR éditoriale.»
+
+### verify (section) — What to ask any AI writing vendor
+
+> If your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on.
+
+- **recommendation** — If your team publishes release notes, look at what it costs to say that a release deserves none.
+- **recommendation** — Ask who decides that a change is worth an article, and whether that choice is written down.
+- **recommendation** — Ask what happens to a published page when the product feature it describes changes.
 - **recommendation** — Before you let a tool draft articles from your release history, check which side of that order it sits on.
+
+### editorial-next-step (section) — Where to go next
+
+> Another note shows how an article that was produced is told apart from one that was checked. A second note explains who may say yes to a source before an article can rely on it.
+
+- **editorial** — Another note shows how an article that was produced is told apart from one that was checked.
+- **editorial** — A second note explains who may say yes to a source before an article can rely on it.
 
 ## Prohibited claims to check by hand
 

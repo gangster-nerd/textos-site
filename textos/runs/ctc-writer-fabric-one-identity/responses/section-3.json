@@ -1,5 +1,5 @@
 {
-  "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+  "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.",
   "statements": [
     {
       "id": "s1",
@@ -47,18 +47,6 @@
       "evidenceIds": [
         "ev-wf-08"
       ],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s4",
-      "text": "When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
-      "kind": "recommendation",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
       "evidenceStrengthRequired": "descriptive"
     }
   ]

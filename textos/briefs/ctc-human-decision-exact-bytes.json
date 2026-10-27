@@ -326,6 +326,27 @@
       "evidenceRequired": true
     },
     {
+      "id": "prepared-to-draft-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-hd-01",
+        "ev-hd-07",
+        "ev-hd-08"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
       "id": "section-2",
       "role": "section",
       "blockKind": "multi_paragraph",
@@ -372,6 +393,95 @@
       "minChars": 300,
       "maxChars": 1100,
       "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-27",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "prepared-to-draft",
+      "template": "flow",
+      "title": "From a prepared action to a WordPress draft",
+      "subtitle": "Illustrative path for one draft. The agent prepares; a person decides.",
+      "nodes": [
+        {
+          "tag": "prepare",
+          "label": "Agent prepares",
+          "evidenceIds": [
+            "ev-hd-01"
+          ]
+        },
+        {
+          "tag": "decide",
+          "label": "Person signs off",
+          "evidenceIds": [
+            "ev-hd-07"
+          ]
+        },
+        {
+          "tag": "check",
+          "label": "Checked again at run time",
+          "evidenceIds": [
+            "ev-hd-08"
+          ]
+        },
+        {
+          "tag": "spend",
+          "label": "Used once, then spent",
+          "evidenceIds": [
+            "ev-hd-10"
+          ]
+        }
+      ],
+      "highlightNode": 1,
+      "boundary": {
+        "afterNode": 0,
+        "title": "Human gate",
+        "lines": [
+          "No machine account can switch",
+          "it to automatic execution."
+        ],
+        "evidenceIds": [
+          "ev-hd-06"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "prepared-to-draft-caption"
     }
   ]
 }

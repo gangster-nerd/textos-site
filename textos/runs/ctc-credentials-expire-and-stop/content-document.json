@@ -2,7 +2,7 @@
   "contentSchemaVersion": "content-document@1",
   "identity": {
     "documentId": "textos-site:ctc:ctc-credentials-expire-and-stop",
-    "contentType": "ARTICLE",
+    "contentType": "product_article",
     "slug": "api-credentials-that-expire-and-a-switch-to-stop-them",
     "language": "en-US",
     "title": "Every new TextOS API credential now expires, after 30 days by default",
@@ -11,17 +11,46 @@
   "editorial": {
     "authorIds": [],
     "reviewerIds": [],
-    "topicIds": []
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
   },
   "truth": {
     "statusVocabulary": "geo-writer",
     "statusVocabularyVersion": "geo-writer@0.2",
-    "sourceStatus": "truthCheck:pass",
+    "sourceStatus": "ARTICLE_GUIDE",
     "publicationStatus": "draft",
     "allowedSurfaces": [
-      "reference"
+      "reference",
+      "native"
     ],
-    "claimIds": [],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:24:access-that-ends-caption:2:s1",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
     "evidenceRefs": [
       "ev-cr-08",
       "ev-cr-09",
@@ -43,42 +72,144 @@
   },
   "provenance": {
     "sourceAuthority": "UNCERTIFIED",
-    "sourceEvidenceDigest": "9d60c498ac92346a98bb2ff32cf799b30b733b952323970529cc5eb3b663925c"
+    "sourceEvidenceDigest": "02d2a570f6093aea861f147ce1f38acd21a4a359c56bb37c39b958443af40ab8"
   },
   "body": [
     {
-      "id": "lead",
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days. A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends. These limits are enforced by the TextOS service itself, not only by its command-line tool."
+      }
+    },
+    {
+      "id": "lead:body",
       "kind": "paragraph",
       "data": {
         "text": "An access key handed to an outside agent tends to outlive the job it was created for. TextOS treated that permanent key as a gap to close before its first customer trial of the API. It also closed the operational control gap that a first customer would face."
       }
     },
     {
-      "id": "answer",
-      "kind": "answer",
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
       "data": {
-        "text": "Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days. A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends. These limits are enforced by the TextOS service itself, not only by its command-line tool."
+        "text": "Replacing a key without a gap"
       }
     },
     {
-      "id": "section-1",
+      "id": "section-1:body",
       "kind": "paragraph",
       "data": {
         "text": "Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure."
       }
     },
     {
-      "id": "section-2",
+      "id": "figure:access-that-ends",
+      "kind": "figure",
+      "data": {
+        "src": "/diagrams/ctc/access-that-ends-17b913ea98d9.svg",
+        "alt": "Access that ends, and switches that stop it. 4 distinct states: 30 days by default (90 days at most; 60 minutes left when issued.); Replaced in one step (Old key revoked; the new one shown once.); Three switches (API off, writes frozen, one capability denied.); The backlog stops too (Queued jobs are authorized again first.).",
+        "caption": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked."
+      }
+    },
+    {
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Three switches for a bad day"
+      }
+    },
+    {
+      "id": "section-2:body",
       "kind": "paragraph",
       "data": {
         "text": "TextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability. A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.\n\nThe switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run."
       }
     },
     {
-      "id": "section-3",
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What older keys keep doing"
+      }
+    },
+    {
+      "id": "section-3:body",
       "kind": "paragraph",
       "data": {
-        "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nWhen you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled."
+        "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI writing vendor"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
+          "Ask whether switching the API off also stops jobs that are already queued.",
+          "Ask whether a replacement key can be displayed a second time, and where it is kept.",
+          "Ask whether emergency steps can be taken without editing the database by hand."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-cr-08",
+      "kind": "source",
+      "data": {
+        "ref": "ev-cr-08",
+        "title": "TextOS product commit c9ccfe9, 26 Sep 2026"
+      }
+    },
+    {
+      "id": "source:2:ev-cr-03",
+      "kind": "source",
+      "data": {
+        "ref": "ev-cr-03",
+        "title": "TextOS product commit 6fe385e, 26 Sep 2026"
+      }
+    },
+    {
+      "id": "source:3:ev-cr-12",
+      "kind": "source",
+      "data": {
+        "ref": "ev-cr-12",
+        "title": "TextOS product commit 17523af, 26 Sep 2026"
       }
     }
   ],
@@ -90,6 +221,8 @@
   },
   "lifecycle": {},
   "seo": {
-    "indexingIntent": "noindex"
+    "indexingIntent": "noindex",
+    "targetQuery": "how to make ai agent api credentials expire and stop them in an emergency",
+    "searchIntent": "buyer_decision"
   }
 }

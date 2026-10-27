@@ -1,5 +1,5 @@
 {
-  "text": "Accountability follows the person, not the machine. When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.\n\nOne moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did. For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically. When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.",
+  "text": "Accountability follows the person, not the machine. When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.\n\nOne moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did. For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically.",
   "statements": [
     {
       "id": "s1",
@@ -59,18 +59,6 @@
       "evidenceIds": [
         "ev-hd-09"
       ],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s5",
-      "text": "When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.",
-      "kind": "recommendation",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
       "evidenceStrengthRequired": "descriptive"
     }
   ]

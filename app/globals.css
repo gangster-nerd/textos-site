@@ -1797,3 +1797,44 @@ article { overflow-wrap: break-word; }
   .measurement-request__question-row { flex-wrap: wrap; }
   .measurement-request__question-remove { width: 100%; }
 }
+
+/* Objets d'information du corps — règles reprises à l'identique du rendu de référence CMO V2
+   (archive du 21/09, fixtures/cmo-v2-golden de textos-v0), absentes de PR #22 : sans elles, une
+   figure garde sa largeur native et déborde de la colonne. */
+.cse-block--figure {
+  margin: var(--space-8) 0;
+}
+.cse-block--figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-bg-subtle);
+}
+.cse-block--figure .cse-block__caption {
+  display: block;
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-prose);
+}
+.cse-block--table {
+  margin: var(--space-8) 0;
+  overflow-x: auto;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-bg-subtle);
+}
+.cse-block--table:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.cse-block--table table {
+  min-width: 38rem;
+  margin: 0;
+}
+.cse-block--table td,
+.cse-block--table th {
+  vertical-align: top;
+}

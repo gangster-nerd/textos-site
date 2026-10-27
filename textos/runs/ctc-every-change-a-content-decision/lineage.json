@@ -1,4 +1,6 @@
 {
+  "planId": "how to decide which product changes deserve public content",
+  "planHash": "8012f63f37f76ebfe908893283d2a0b8544eff28a4754700f7e6a80474445fa8",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -84,11 +86,10 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "Why 'nothing to publish' has to be cheap",
-      "text": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nIf your team publishes release notes, look at what it costs to say that a release deserves none. Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.",
+      "text": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nCounting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.",
       "statementIds": [
         "stmt:9:section-1:2:s1",
         "stmt:9:section-1:2:s2",
-        "stmt:9:section-1:2:s3",
         "stmt:9:section-1:2:s4"
       ],
       "evidenceIdsUsed": [
@@ -96,6 +97,27 @@
         "ev-ci-08"
       ],
       "usableEvidenceIds": [
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "change-to-decision-caption",
+      "role": "caption",
+      "headingLevel": null,
+      "heading": null,
+      "text": "Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.",
+      "statementIds": [
+        "stmt:26:change-to-decision-caption:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ci-01",
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "usableEvidenceIds": [
+        "ev-ci-01",
         "ev-ci-02",
         "ev-ci-08"
       ],
@@ -130,11 +152,10 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "Govern first, write second",
-      "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.\n\nBefore you let a tool draft articles from your release history, check which side of that order it sits on.",
+      "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.",
       "statementIds": [
         "stmt:9:section-3:2:s1",
-        "stmt:9:section-3:2:s2",
-        "stmt:9:section-3:2:s3"
+        "stmt:9:section-3:2:s2"
       ],
       "evidenceIdsUsed": [
         "ev-ci-06",
@@ -145,17 +166,45 @@
         "ev-ci-07"
       ],
       "excludedEvidence": []
+    },
+    {
+      "slotId": "verify",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "text": "If your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on.",
+      "statementIds": [
+        "stmt:6:verify:2:s1",
+        "stmt:6:verify:2:s2",
+        "stmt:6:verify:2:s3",
+        "stmt:6:verify:2:s4"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "editorial-next-step",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "text": "Another note shows how an article that was produced is told apart from one that was checked. A second note explains who may say yes to a source before an article can rely on it.",
+      "statementIds": [
+        "stmt:19:editorial-next-step:2:s1",
+        "stmt:19:editorial-next-step:2:s2"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
     }
   ],
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "15f0a9d27c5a42029b8a70e64c9359cb1fc03f3261fb0aa94a18d8bfcd8fdb3f",
+  "structuredContentHash": "a1345a8e9d4e7e9cbe378b2501703f5c71a9ca7c29df55408d50a94aca856ee1",
   "truthCheck": {
     "verdict": "pass",
     "contradictions": []
   },
-  "planId": "how to decide which product changes deserve public content",
-  "planHash": "8b2817fed0ce042570ea8cfe93795e393a37a53051fb79f8afdcfaae12b422a4",
   "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
 }

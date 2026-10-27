@@ -138,7 +138,7 @@
       "id": "ev-ea-01",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourceTitle": "TextOS product commit d1dfde7, 25 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-25T13:59:10+00:00",
       "contentHash": "a84dd67b7da9a5f5c5a1028f4f54bd92eef416658eb6e6976eddc9b2d4c2942d",
@@ -156,7 +156,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -172,7 +172,7 @@
       "id": "ev-ea-02",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourceTitle": "TextOS product commit d1dfde7, 25 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-25T13:59:10+00:00",
       "contentHash": "5a09715ae9e0f7c1c1bef9907ad02d9148ed4ebf9705a1aad349416d60556c65",
@@ -189,7 +189,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -205,7 +205,7 @@
       "id": "ev-ea-03",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourceTitle": "TextOS product commit d1dfde7, 25 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-25T13:59:10+00:00",
       "contentHash": "6a377d66dba9ba627057b00065f0da200c89039007fabb2462bf0c344ac2071f",
@@ -222,7 +222,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -238,7 +238,7 @@
       "id": "ev-ea-04",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourceTitle": "TextOS product commit d1dfde7, 25 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-25T13:59:10+00:00",
       "contentHash": "c16a00b4d26d2374530515515a05e90c7dbdfc2bbacbae8e582995fd650b2c4f",
@@ -256,7 +256,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -272,7 +272,7 @@
       "id": "ev-ea-05",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)",
+      "sourceTitle": "TextOS product commit d1dfde7, 25 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-25T13:59:10+00:00",
       "contentHash": "9f134fbcd35b6803f8919d1d3c3705d15f1c5ec194ec6d97e7ad1ab02d8eab22",
@@ -289,7 +289,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -305,7 +305,7 @@
       "id": "ev-ea-06",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit c137a99: fix: décisions révisables, identité vérifiée et extraits vérifiés des preuves (lot c)",
+      "sourceTitle": "TextOS product commit c137a99, 25 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-25T15:56:24+00:00",
       "contentHash": "f187ffb300898a3f676d57ad17925e70a733eadc424fc4467c3662980834a54e",
@@ -323,7 +323,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -339,7 +339,7 @@
       "id": "ev-ea-07",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit c137a99: fix: décisions révisables, identité vérifiée et extraits vérifiés des preuves (lot c)",
+      "sourceTitle": "TextOS product commit c137a99, 25 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-25T15:56:24+00:00",
       "contentHash": "00f044cf1c13139bedad5141563f970762e88b5ef75b2b788be2130aa6d77635",
@@ -356,7 +356,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -372,7 +372,7 @@
       "id": "ev-ea-08",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit e2e40e5: feat: preuves offertes sans être imposées et signaux de répétition (article quality v1, lot d)",
+      "sourceTitle": "TextOS product commit e2e40e5, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T11:45:26+00:00",
       "contentHash": "4f690c3af99a88f45e93518c89a78f406e7d767917190d2f33f73d20e1a22c3b",
@@ -389,7 +389,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -405,7 +405,7 @@
       "id": "ev-ea-09",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit e2e40e5: feat: preuves offertes sans être imposées et signaux de répétition (article quality v1, lot d)",
+      "sourceTitle": "TextOS product commit e2e40e5, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T11:45:26+00:00",
       "contentHash": "6d9ad93935b0879b9ed58afe148b6d8298d5eb6a8c819d2fd026bcbda603ff02",
@@ -422,7 +422,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -438,7 +438,7 @@
       "id": "ev-ea-10",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu",
+      "sourceTitle": "TextOS product commit a36d479, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:13:16+00:00",
       "contentHash": "17d205ad2dd1372b6c2cea436fe1b37eaa6677368ed13c651bf72c552f47329b",
@@ -455,7 +455,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -471,7 +471,7 @@
       "id": "ev-ea-11",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu",
+      "sourceTitle": "TextOS product commit a36d479, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:13:16+00:00",
       "contentHash": "4363687e31a59f2d293f757cdce41a580c5d66108652987529d37c577caebe55",
@@ -488,7 +488,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -504,7 +504,7 @@
       "id": "ev-ea-12",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu",
+      "sourceTitle": "TextOS product commit a36d479, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:13:16+00:00",
       "contentHash": "b7f031522d1fee420b35f195edb4f5d4ac02524315530eaa9f7719a2bfc30138",
@@ -521,7 +521,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -537,7 +537,7 @@
       "id": "ev-ea-13",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés",
+      "sourceTitle": "TextOS product commit cf5b34a, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:50:05+00:00",
       "contentHash": "525a435f785240baeba36c6a42edd6f5dcf58081625c5be63bf4a49869fd44bd",
@@ -555,7 +555,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -613,6 +613,28 @@
       "evidenceRequired": true
     },
     {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How does an AI writer end up using only facts you approved?",
+      "writingObjective": "Answer directly: a source the system observed is never presented as evidence; an identified person approves it for this article under wording they validate; only approved and usable evidence is offered to the writer.",
+      "buyerIntent": "What is the rule?",
+      "allowedEvidenceIds": [
+        "ev-ea-01",
+        "ev-ea-03"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
       "id": "lead",
       "role": "lead",
       "blockKind": "paragraph",
@@ -634,25 +656,24 @@
       "evidenceRequired": false
     },
     {
-      "id": "answer",
-      "role": "answer",
+      "id": "evidence-path-caption",
+      "role": "caption",
       "blockKind": "paragraph",
-      "headingLevel": 2,
-      "heading": "How does an AI writer end up using only facts you approved?",
-      "writingObjective": "Answer directly: a source the system observed is never presented as evidence; an identified person approves it for this article under wording they validate; only approved and usable evidence is offered to the writer.",
-      "buyerIntent": "What is the rule?",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure that shows the path of a source in one article: candidate, approved by a named person, offered to the writer, withdrawn. One factual sentence, grounded in the evidence.",
+      "buyerIntent": null,
       "allowedEvidenceIds": [
         "ev-ea-01",
-        "ev-ea-03"
+        "ev-ea-06",
+        "ev-ea-13"
       ],
       "requiredClaimTypes": [
         "human_authorization"
       ],
-      "unsupportedClaimTypes": [
-        "availability"
-      ],
-      "minChars": 450,
-      "maxChars": 900,
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 280,
       "evidenceRequired": true
     },
     {
@@ -746,6 +767,36 @@
       "minChars": 600,
       "maxChars": 1400,
       "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor of AI-written content, one question per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the two related notes: the difference between an article that was produced and one that was checked, and how cited pages are read before any passage is proposed. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
     }
   ]
 }

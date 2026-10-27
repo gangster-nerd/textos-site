@@ -15,14 +15,24 @@
 //
 // A failing check throws: a broken run fails the build instead of quietly rendering.
 //
-// The site then PROJECTS the writer's document into its own catalogue: it adds the section
-// headings the brief's plan fixed (they are part of the hashed execution plan), splits a
-// multi-paragraph slot into paragraph blocks, and fills site-owned metadata (authors, topic,
-// canonical path). It never changes a word the writer wrote. Its claimIds are the statements the
-// writer declared and TextOS's TruthCheck checked, namespaced by article; they are not entries of
-// the site's claims registry. Until the brief records a human review, the projected article is a
-// draft: Preview only, noindex, and the page emits no publication date (lifecycle dates carry the
-// editorial approval date of the draft, which CONTENT_PASS requires and the route ignores).
+// Since TextOS CTC-CHAIN-1 the committed document is the output of TextOS's own article review
+// (`composeCtcArticleReview`): short answer, sections, information objects, governed figures, Sources
+// and the editorial next step, with an `article-cmo-v2@1` verdict and a release decision recorded in
+// `article-review.json`. The build also checks:
+//
+//   - the receipt records a passing CMO V2 verdict and an allowed release;
+//   - every figure SVG under public/ hash-matches the receipt and is the one the document points at;
+//   - every text a reader sees is the writer's own slot text, verbatim (answer, sections, list items,
+//     figure captions, FAQ), every heading is a heading the plan fixed, and every Source title is the
+//     title TextOS recorded for that evidence.
+//
+// The site then PROJECTS the document into its catalogue: it splits a multi-paragraph section into
+// paragraph blocks and fills site-owned metadata (authors, topic, canonical path). It never changes a
+// word. Its claimIds are the statements the writer declared and TextOS's TruthCheck checked,
+// namespaced by article; they are not entries of the site's claims registry. Until the brief records
+// a human review, the projected article is a draft: Preview only, noindex, and the page emits no
+// publication date (lifecycle dates carry the editorial approval date of the draft, which
+// CONTENT_PASS requires and the route ignores).
 
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
@@ -31,7 +41,7 @@ import path from "node:path";
 import type { ContentBlock, ContentDocument } from "@/lib/content-surface-engine/contract/content-document";
 import { ContentDocumentSchema } from "@/lib/content-surface-engine/contract/content-document";
 
-import { headingBlockId, paragraphBlockId, responseFileName, type ArticleBrief } from "./brief";
+import { figurePublicPath, paragraphBlockId, responseFileName, type ArticleBrief } from "./brief";
 import { collectCitations, ledgerIssues, type ProductCommitLedger } from "./commit-ledger";
 
 export const CTC_SOURCE_STATUS_PREFIX = "COMMIT_TO_CONTENT";
@@ -57,7 +67,22 @@ interface Receipt {
   contentDocumentSha256: string;
   lineageSha256: string;
   resolvedSurfaceSha256: string;
+  receiptVersion: number;
+  articleReviewMethodVersion: string;
+  cmoV2: { version: string; passed: boolean };
+  releaseAllowed: boolean;
+  figureHashes: Record<string, string>;
+  articleReviewSha256: string;
 }
+
+interface ArticleReviewRecord {
+  release: { allowed: boolean; blockers: string[] };
+  cmoV2Conformance: { passed: boolean };
+}
+
+/** Section headings TextOS's article review adds itself (never writer text, never a claim). */
+const REVIEW_HEADINGS = new Set(["Sources", "Frequently asked questions"]);
+const normalizeWs = (text: string) => text.replace(/\s+/g, " ").trim();
 
 interface WrittenSlotRecord {
   slotId: string;
@@ -123,34 +148,78 @@ export function loadLedger(root: string = process.cwd()): ProductCommitLedger | 
 }
 
 /**
- * Pure projection: writer document + lineage + brief → the document the site renders. Throws if
- * a block of the writer's document is not the writer's own slot text.
+ * Pure projection: article-review document + lineage + brief → the document the site renders.
+ * Throws if any text a reader sees is not the writer's own slot text, or a Source title is not the
+ * one TextOS recorded for its evidence.
  */
 export function projectCtcDocument(input: {
   brief: ArticleBrief;
   writerDocument: ContentDocument;
   lineage: Pick<Lineage, "slotProvenance">;
+  /** Evidence titles as TextOS recorded them in the intake (`id` → `sourceTitle`). */
+  sourceTitles: ReadonlyMap<string, string>;
+  /** Figure hashes recorded in the receipt (`id` → sha256). */
+  figureHashes: Readonly<Record<string, string>>;
 }): ContentDocument {
   const { brief, writerDocument, lineage } = input;
   const slots = new Map(lineage.slotProvenance.map((s) => [s.slotId, s]));
+  const fail = (blockId: string, why: string): never => {
+    throw new Error(`textos-client: ${brief.articleId} block ${blockId} ${why}.`);
+  };
+  const answers = lineage.slotProvenance.filter((s) => s.role === "answer");
+  const headings = new Set([...REVIEW_HEADINGS, ...lineage.slotProvenance.flatMap((s) => (s.heading ? [s.heading] : []))]);
+  const sectionKey = (blockId: string, suffix: string) => (blockId.endsWith(suffix) ? blockId.slice(0, -suffix.length) : null);
+
   const body: ContentBlock[] = [];
   for (const block of writerDocument.body) {
-    const slot = slots.get(block.id);
-    if (!slot) throw new Error(`textos-client: ${brief.articleId} block ${block.id} has no written slot in the lineage.`);
-    if (block.data.text !== slot.text) {
-      throw new Error(`textos-client: ${brief.articleId} block ${block.id} is not the writer's slot text.`);
-    }
-    if (slot.heading && slot.headingLevel) {
-      body.push({ id: headingBlockId(slot.slotId), kind: "heading", level: slot.headingLevel, data: { text: slot.heading } });
-    }
-    if (block.kind === "paragraph") {
-      slot.text
-        .split(/\n\s*\n/)
-        .map((p) => p.trim())
-        .filter((p) => p.length > 0)
-        .forEach((p, i) => body.push({ id: paragraphBlockId(slot.slotId, i + 1), kind: "paragraph", data: { text: p } }));
-    } else {
-      body.push({ id: block.id, kind: block.kind, data: { text: slot.text } });
+    const data = block.data as Record<string, unknown>;
+    switch (block.kind) {
+      case "answer":
+        if (data.text !== answers[0]?.text) fail(block.id, "is not the writer's short answer");
+        body.push(block);
+        break;
+      case "heading":
+        if (!headings.has(String(data.text))) fail(block.id, "is not a heading the plan fixed");
+        body.push(block);
+        break;
+      case "paragraph": {
+        const key = sectionKey(block.id, ":body");
+        const faq = /^faq-(\d+):answer$/.exec(block.id);
+        const expected = key ? slots.get(key)?.text : faq ? answers[Number(faq[1]) - 1]?.text : undefined;
+        if (expected === undefined || data.text !== expected) fail(block.id, "is not the writer's slot text");
+        String(data.text)
+          .split(/\n\s*\n/)
+          .map((p) => p.trim())
+          .filter((p) => p.length > 0)
+          .forEach((p, i) => body.push({ ...block, id: paragraphBlockId(block.id, i + 1), data: { text: p } }));
+        break;
+      }
+      case "steps": {
+        const key = sectionKey(block.id, ":decision-points");
+        const text = key ? slots.get(key)?.text : undefined;
+        const items = (data.items as string[] | undefined) ?? [];
+        if (text === undefined || normalizeWs(items.join(" ")) !== normalizeWs(text)) fail(block.id, "is not the writer's slot text");
+        body.push(block);
+        break;
+      }
+      case "figure": {
+        const id = block.id.replace(/^figure:/, "");
+        const spec = brief.figures.find((f) => f.id === id);
+        const hash = input.figureHashes[id];
+        if (!spec || !hash) fail(block.id, "is not a figure of the brief with a recorded hash");
+        if (data.src !== figurePublicPath(id, hash!)) fail(block.id, "does not point at its hashed SVG");
+        if (data.caption !== slots.get(spec!.captionSlotId)?.text) fail(block.id, "caption is not the writer's caption slot");
+        body.push(block);
+        break;
+      }
+      case "source": {
+        const title = input.sourceTitles.get(String(data.ref));
+        if (!title || data.title !== title || data.href !== undefined) fail(block.id, "is not a Source TextOS recorded");
+        body.push(block);
+        break;
+      }
+      default:
+        fail(block.id, `has an unexpected kind ${block.kind}`);
     }
   }
 
@@ -205,7 +274,7 @@ export function verifyCtcRun(input: {
   const runDir = path.join(textosDir(root), "runs", brief.articleId);
   const issues: string[] = [];
   const file = (name: string) => path.join(runDir, name);
-  for (const name of ["receipt.json", "content-document.json", "lineage.json", "resolved-surface.json", "adapt.json"]) {
+  for (const name of ["receipt.json", "content-document.json", "lineage.json", "resolved-surface.json", "adapt.json", "article-review.json", "intake.json"]) {
     if (!existsSync(file(name))) issues.push(`missing ${name}`);
   }
   if (issues.length > 0) return issues;
@@ -234,6 +303,17 @@ export function verifyCtcRun(input: {
   if (sha256(readText(file("content-document.json"))) !== receipt.contentDocumentSha256) issues.push("content-document.json does not match the receipt");
   if (sha256(readText(file("lineage.json"))) !== receipt.lineageSha256) issues.push("lineage.json does not match the receipt");
   if (sha256(readText(file("resolved-surface.json"))) !== receipt.resolvedSurfaceSha256) issues.push("resolved-surface.json does not match the receipt");
+  if (sha256(readText(file("article-review.json"))) !== receipt.articleReviewSha256) issues.push("article-review.json does not match the receipt");
+  const articleReview = readJson<ArticleReviewRecord>(file("article-review.json"));
+  if (receipt.receiptVersion !== 2) issues.push(`receipt version ${receipt.receiptVersion} predates the common article chain`);
+  if (!receipt.cmoV2?.passed || !articleReview.cmoV2Conformance.passed) issues.push("the CMO V2 verdict is not pass");
+  if (!receipt.releaseAllowed || !articleReview.release.allowed) issues.push("TextOS's article review did not allow release");
+  for (const [id, hash] of Object.entries(receipt.figureHashes ?? {})) {
+    const svg = path.join(root, "public", figurePublicPath(id, hash));
+    if (!existsSync(svg)) issues.push(`missing figure ${figurePublicPath(id, hash)}`);
+    else if (sha256(readText(svg)) !== hash) issues.push(`figure ${id} does not match the receipt`);
+  }
+  for (const figure of brief.figures ?? []) if (!receipt.figureHashes?.[figure.id]) issues.push(`figure ${figure.id} of the brief was not rendered`);
   for (const slotId of Object.keys(receipt.promptHashes)) {
     const response = path.join(runDir, "responses", responseFileName(slotId));
     if (!existsSync(response)) issues.push(`missing operator response for ${slotId}`);
@@ -270,7 +350,10 @@ export function loadCtcArticles(root: string = process.cwd()): readonly CtcArtic
     const writerDocument = ContentDocumentSchema.parse(readJson(path.join(runDir, "content-document.json"))) as ContentDocument;
     const lineage = readJson<Lineage>(path.join(runDir, "lineage.json"));
     const receipt = readJson<Receipt>(path.join(runDir, "receipt.json"));
-    return { brief, receipt, writerDocument, document: projectCtcDocument({ brief, writerDocument, lineage }) };
+    const intake = readJson<{ evidence: { id: string; sourceTitle: string }[] }>(path.join(runDir, "intake.json"));
+    const sourceTitles = new Map(intake.evidence.map((e) => [e.id, e.sourceTitle]));
+    const document = projectCtcDocument({ brief, writerDocument, lineage, sourceTitles, figureHashes: receipt.figureHashes });
+    return { brief, receipt, writerDocument, document };
   });
   if (root === process.cwd()) cache = articles;
   return articles;

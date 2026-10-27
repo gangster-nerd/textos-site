@@ -55,6 +55,13 @@ function productCommit(productRef: string, cited: string): ProductCommit {
   return { sha, date, subject };
 }
 
+/** "25 Oct 2026" — the commit's own calendar date (as its author dated it), in English. */
+function sourceDate(iso: string): string {
+  const [year, month, day] = iso.slice(0, 10).split("-").map(Number);
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${day} ${months[month! - 1]} ${year}`;
+}
+
 interface ManifestEntity {
   id: string;
   prohibitedClaims: string[];
@@ -70,8 +77,13 @@ async function main(): Promise<void> {
 
   const tool = readJson<{ writer: { sha: string }; product: { sha: string } }>(join(TEXTOS_DIR, "tool.json"));
   const productRef = tool.product.sha;
-  if (productRef !== TEXTOS_REF || tool.writer.sha !== TEXTOS_REF) {
-    throw new Error(`prepare: textos/tool.json pins writer ${tool.writer.sha} and product ${productRef}; the checkout is at ${TEXTOS_REF}. Both pins must be this SHA.`);
+  if (tool.writer.sha !== TEXTOS_REF) {
+    throw new Error(`prepare: textos/tool.json pins the writer at ${tool.writer.sha}; the checkout is at ${TEXTOS_REF}.`);
+  }
+  // Product truth is read at the product pin, which must be in the writer checkout's history: the
+  // writer may run newer TextOS code, never on product facts the product pin does not contain.
+  if (spawnSync("git", ["-C", TEXTOS_ROOT, "merge-base", "--is-ancestor", productRef, TEXTOS_REF]).status !== 0) {
+    throw new Error(`prepare: the product pin ${productRef} is not in the history of the writer checkout ${TEXTOS_REF}.`);
   }
   if (execFileSync("git", ["-C", TEXTOS_ROOT, "rev-parse", "--is-shallow-repository"], { encoding: "utf8" }).trim() !== "false") {
     throw new Error("prepare: the TextOS checkout is shallow; a truncated history would make real commits look unreachable.");
@@ -98,7 +110,9 @@ async function main(): Promise<void> {
       if (!body.includes(quote)) {
         throw new Error(`prepare: ${ev.id} quote is not verbatim in the message of ${commit.sha}:\n  «${quote}»`);
       }
-      sourceTitle = `TextOS product commit ${commit.sha.slice(0, 7)}: ${commit.subject}`;
+      // Reference and date only (CPO decision 2026-10-27): commit subjects are written in French, the
+      // notes in English; the subject stays readable in the site's public commit ledger.
+      sourceTitle = `TextOS product commit ${commit.sha.slice(0, 7)}, ${sourceDate(commit.date)}`;
       retrievedAt = commit.date;
     } else if (ev.source.kind === "product_file") {
       const content = normalizeWs(execFileSync("git", ["-C", TEXTOS_ROOT, "show", `${productRef}:${ev.source.path}`], { encoding: "utf8" }));
@@ -157,8 +171,30 @@ async function main(): Promise<void> {
     return approved.item;
   });
 
+  // ── 2b. Public-use clearance — TextOS's own transition, for the article's Sources ────────────
+  const clearance = brief.publicUseClearance;
+  const clearanceReceipts: unknown[] = [];
+  const clearedEvidence = evidence.map((item) => {
+    const outcome = textos.clearEvidenceForPublicUse(item, {
+      evidenceId: item.id,
+      decision: clearance.decision,
+      clientValidation: "DO_NOT_VALIDATE",
+      actor: clearance.actor,
+      actorCapacity: clearance.actorCapacity,
+      decidedAt: clearance.decidedAt,
+      scope: { channel: brief.publicationChannel, candidateId: brief.articleId },
+      canonicalProductSha: TEXTOS_REF,
+      reason: clearance.reason,
+    });
+    if (!outcome.cleared) throw new Error(`prepare: TextOS refused public-use clearance of ${item.id}: ${outcome.reason}`);
+    const violations = textos.clearanceInvariantViolations(item, outcome.item);
+    if (violations.length > 0) throw new Error(`prepare: clearance invariants broken for ${item.id}: ${violations.join("; ")}`);
+    clearanceReceipts.push(outcome.receipt);
+    return outcome.item;
+  });
+
   const publicationContext = { channel: brief.publicationChannel, briefId: brief.articleId, locale: brief.locale } as CtcGeoWriterIntake["publicationContext"];
-  const usability = evidence.map((item) => ({ evidenceId: item.id, ...textos.evaluateEvidenceUsability(item, publicationContext) }));
+  const usability = clearedEvidence.map((item) => ({ evidenceId: item.id, ...textos.evaluateEvidenceUsability(item, publicationContext) }));
   const unusable = usability.filter((u) => !u.usable);
   if (unusable.length > 0) {
     throw new Error(`prepare: evidence not usable on ${brief.publicationChannel}: ${unusable.map((u) => `${u.evidenceId} (${u.reason})`).join("; ")}`);
@@ -176,7 +212,7 @@ async function main(): Promise<void> {
     publicationContext,
     claimProfile,
     roster: client.roster,
-    evidence,
+    evidence: clearedEvidence,
     slots: brief.slots,
   };
   const adapted = textos.adaptCtcIntakeToExecutionPlan(intake);
@@ -184,6 +220,7 @@ async function main(): Promise<void> {
   const runDir = join(TEXTOS_DIR, "runs", brief.articleId);
   writeJson(join(runDir, "intake.json"), intake);
   writeJson(join(runDir, "evidence-usability.json"), usability);
+  writeJson(join(runDir, "evidence-clearance.json"), clearanceReceipts);
 
   // ── 4. Slot prompts, exactly as TextOS renders them ──────────────────────────────────────────
   const promptHashes: Record<string, string> = {};

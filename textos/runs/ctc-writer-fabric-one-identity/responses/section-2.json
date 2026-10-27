@@ -1,5 +1,5 @@
 {
-  "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
+  "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal.",
   "statements": [
     {
       "id": "s1",
@@ -47,18 +47,6 @@
       "evidenceIds": [
         "ev-wf-04"
       ],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s4",
-      "text": "If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
-      "kind": "recommendation",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
       "evidenceStrengthRequired": "descriptive"
     }
   ]

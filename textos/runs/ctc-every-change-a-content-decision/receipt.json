@@ -1,23 +1,28 @@
 {
-  "receiptVersion": 1,
+  "receiptVersion": 2,
   "articleId": "ctc-every-change-a-content-decision",
   "textos": {
     "repository": "gangster-nerd/textos-v0",
-    "sha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+    "sha": "101292687b5081a06a611d3853a956d3552e0643"
   },
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
-  "executionPlanHash": "8b2817fed0ce042570ea8cfe93795e393a37a53051fb79f8afdcfaae12b422a4",
-  "ctcHandoffHash": "acde4cd2adc94fe437f0fc2ed092b7bfd6d2d1dc989ada2c7c843c339a59f4a7",
+  "articleReviewMethodVersion": "ctc-article-review@0.1",
+  "executionPlanHash": "8012f63f37f76ebfe908893283d2a0b8544eff28a4754700f7e6a80474445fa8",
+  "ctcHandoffHash": "05a3f44a83167e9efaf10f9b349dd44405ce5d57078a7cfb8d901c91cb6e1a63",
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "15f0a9d27c5a42029b8a70e64c9359cb1fc03f3261fb0aa94a18d8bfcd8fdb3f",
+  "structuredContentHash": "a1345a8e9d4e7e9cbe378b2501703f5c71a9ca7c29df55408d50a94aca856ee1",
   "truthCheckVerdict": "pass",
-  "editorialQuality": {
-    "gateVersion": "editorial-quality@0.3",
-    "verdict": "fail",
-    "findings": 12
+  "cmoV2": {
+    "version": "article-cmo-v2@1",
+    "passed": true
   },
+  "ctcEditorialQuality": {
+    "gateVersion": "ctc-editorial-quality@0.1",
+    "verdict": "pass"
+  },
+  "releaseAllowed": true,
   "publicationChannel": "controlled_preview",
   "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0",
   "promptHashes": {
@@ -26,19 +31,29 @@
     "lead": "1360e693b2c3beb3d870426395910cb2d47bfc7504442c3da832451bd58b67c5",
     "answer": "36f3fe4a1ce61da27adeed52fd3b10087af723d2ea6265da41a85206d77873da",
     "section-1": "a9874581138ebc360b4fcfa545be45e0f424bdc27f06ecd28ad32ee948e1feee",
+    "change-to-decision-caption": "6a1e59bfeb1139d12dacfb4be0207af7251b68ee661c6be93cd10613cc753b8d",
     "section-2": "7b0f7403e9b27dbee7d7cdacd284c024f13579fe614f1b3601ca7108d3c65b96",
-    "section-3": "92c1167ed863e28438f812d999f6eb6ca8ba840f251d85c2ef690e8fe643eb7b"
+    "section-3": "05b0aac9c20aa6d3796dc27decd6f21e9f1310370c04b69835953b6cf8fb0207",
+    "verify": "7ed13f503c42fcf73d44f51c18141834c08fda5b81f3591da7508e2fff9d8477",
+    "editorial-next-step": "adc8aa04ae387f2678fb947de3a055d08702bb7281565741c7af33c0df34bf7d"
   },
   "responseHashes": {
     "title": "905f46e92812b7bfa74ced8d81304e350ff1c3558ee6a9dccbfb64a94cee3b3d",
     "meta": "cc7bedbd4f8880a755df0b283a919674424591ac0e3a912f824fccea0f96e05d",
     "lead": "be5839691dbc6eea6cf2afa526ad4c5e859f1e561204b3ff868ac13a0e6bb96b",
     "answer": "d4e6e48a1791255faa65c17e7631f9ce91e7d35c93aa94c0e9a1e5847a204c47",
-    "section-1": "5debfba983ebd48b44d01c6c6262978623eb48d8b857d3526d169435ff7436e9",
+    "section-1": "7a72afe227f91e780959f1961f91c18e92679d594c45946fcd53a62a075486e8",
+    "change-to-decision-caption": "37de9d13329013d74a7e5a91dbfe93d245a6d7e61fa2b33a7cea3ddb75ea6ce7",
     "section-2": "e212c4bf215643319f64dfc718acc9bc26224f56fb4e53c487a305d9ea76fa98",
-    "section-3": "7dc453bdc120c46ff2caeab3732f5930ba4cd737f3426049811a6a1337dc022a"
+    "section-3": "91aa3a3a6b075548a2211cb91d7dfa5e0a7d389c6ae5c5326a63f156e33d7b20",
+    "verify": "f11d6febb8e91458afd0bfcd769812857ed614ac7ae1251a258421a0c797eea8",
+    "editorial-next-step": "032f70bd2902f8511efddf99b88bbbe5f6ff0616499d926990edb66faf4378ca"
   },
-  "contentDocumentSha256": "b3b90fa93ca9ef310f2af65d298920f1269ae4edfac40fa9f0a89ca6e99ff98a",
-  "lineageSha256": "0dc4e758f066e6afebd6f1402e9d64c60281261505046f275bc79310219d8cb0",
-  "resolvedSurfaceSha256": "d17f76bb643a1882168b42167b3b71c7d01734e1bb6d46497f9bca84969d9c9a"
+  "figureHashes": {
+    "change-to-decision": "16df455980245c9a31005cbed107035963846c99c1c24a16dc2a53acdaa34a9b"
+  },
+  "contentDocumentSha256": "78bc0a2e69dc02991b60468ab45027331041c11e6923ad053bf27567f471cd66",
+  "lineageSha256": "80b64ec1342fdeefbe6ce0ba2d7e9137590e57930e46ab0d8510579062642e27",
+  "resolvedSurfaceSha256": "400df4e5d85c825420cc6e632cbb2b1eb3cff6167d1744f5b36e558aa4f439a6",
+  "articleReviewSha256": "11cfc1240b88931eaa2761de747baecd81b7cc71e458b420c2dd92f0c25d7411"
 }

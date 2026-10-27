@@ -1,0 +1,23 @@
+{
+  "text": "In TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-01",
+        "ev-pv-03",
+        "ev-pv-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

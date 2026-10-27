@@ -2,7 +2,7 @@
   "status": "written",
   "result": {
     "planId": "how to decide which product changes deserve public content",
-    "planHash": "8b2817fed0ce042570ea8cfe93795e393a37a53051fb79f8afdcfaae12b422a4",
+    "planHash": "8012f63f37f76ebfe908893283d2a0b8544eff28a4754700f7e6a80474445fa8",
     "slots": [
       {
         "slotId": "title",
@@ -88,11 +88,10 @@
         "role": "section",
         "headingLevel": 2,
         "heading": "Why 'nothing to publish' has to be cheap",
-        "text": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nIf your team publishes release notes, look at what it costs to say that a release deserves none. Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.",
+        "text": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nCounting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.",
         "statementIds": [
           "stmt:9:section-1:2:s1",
           "stmt:9:section-1:2:s2",
-          "stmt:9:section-1:2:s3",
           "stmt:9:section-1:2:s4"
         ],
         "evidenceIdsUsed": [
@@ -100,6 +99,27 @@
           "ev-ci-08"
         ],
         "usableEvidenceIds": [
+          "ev-ci-02",
+          "ev-ci-08"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "change-to-decision-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.",
+        "statementIds": [
+          "stmt:26:change-to-decision-caption:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-ci-01",
+          "ev-ci-02",
+          "ev-ci-08"
+        ],
+        "usableEvidenceIds": [
+          "ev-ci-01",
           "ev-ci-02",
           "ev-ci-08"
         ],
@@ -134,11 +154,10 @@
         "role": "section",
         "headingLevel": 2,
         "heading": "Govern first, write second",
-        "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.\n\nBefore you let a tool draft articles from your release history, check which side of that order it sits on.",
+        "text": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.",
         "statementIds": [
           "stmt:9:section-3:2:s1",
-          "stmt:9:section-3:2:s2",
-          "stmt:9:section-3:2:s3"
+          "stmt:9:section-3:2:s2"
         ],
         "evidenceIdsUsed": [
           "ev-ci-06",
@@ -149,13 +168,43 @@
           "ev-ci-07"
         ],
         "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI writing vendor",
+        "text": "If your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "Another note shows how an article that was produced is told apart from one that was checked. A second note explains who may say yes to a source before an article can rely on it.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
       }
     ],
     "document": {
       "title": "At TextOS, every product change carries a written content decision",
       "slug": "at-textos-every-product-change-carries-a-written-content-decision",
       "metaDescription": "Every TextOS product change has to state whether it deserves public content, and the usual answer, which costs one line, is that it does not.",
-      "body": "It is tempting to turn each release into a blog post. TextOS decides change by change instead: each product change carries an explicit decision about what public content it deserves, if any. The rule is small, but it changes what a team feels obliged to publish.\n\nA vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nIf your team publishes release notes, look at what it costs to say that a release deserves none. Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.\n\nThe quietest failure TextOS found was one where nothing fails. The evidence cited for a capability still exists, yet the public description keeps telling a truth about a product that has changed underneath it.\n\nChanging a file that TextOS cites as evidence, without saying anything about the related capability, is now refused, and accepting that gap means signing a sentence about it. The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability.\n\nTextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.\n\nBefore you let a tool draft articles from your release history, check which side of that order it sits on.",
+      "body": "It is tempting to turn each release into a blog post. TextOS decides change by change instead: each product change carries an explicit decision about what public content it deserves, if any. The rule is small, but it changes what a team feels obliged to publish.\n\nA vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nCounting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.\n\nEach TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.\n\nThe quietest failure TextOS found was one where nothing fails. The evidence cited for a capability still exists, yet the public description keeps telling a truth about a product that has changed underneath it.\n\nChanging a file that TextOS cites as evidence, without saying anything about the related capability, is now refused, and accepting that gap means signing a sentence about it. The check behind it answers one mechanical question, whether a changed file is covered by declared evidence, and it infers no capability.\n\nTextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.\n\nIf your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on.\n\nAnother note shows how an article that was produced is told apart from one that was checked. A second note explains who may say yes to a source before an article can rely on it.",
       "faq": [
         {
           "question": "Who decides which product changes become content?",
@@ -329,18 +378,6 @@
           "evidenceStrengthRequired": "descriptive"
         },
         {
-          "id": "stmt:9:section-1:2:s3",
-          "text": "If your team publishes release notes, look at what it costs to say that a release deserves none.",
-          "kind": "recommendation",
-          "subject": {
-            "kind": "general_domain",
-            "name": null
-          },
-          "claimTypes": [],
-          "evidenceIds": [],
-          "evidenceStrengthRequired": "descriptive"
-        },
-        {
           "id": "stmt:9:section-1:2:s4",
           "text": "Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.",
           "kind": "editorial",
@@ -350,6 +387,24 @@
           },
           "claimTypes": [],
           "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:26:change-to-decision-caption:2:s1",
+          "text": "Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-ci-01",
+            "ev-ci-02",
+            "ev-ci-08"
+          ],
           "evidenceStrengthRequired": "descriptive"
         },
         {
@@ -449,9 +504,69 @@
           "evidenceStrengthRequired": "descriptive"
         },
         {
-          "id": "stmt:9:section-3:2:s3",
+          "id": "stmt:6:verify:2:s1",
+          "text": "If your team publishes release notes, look at what it costs to say that a release deserves none.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask who decides that a change is worth an article, and whether that choice is written down.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask what happens to a published page when the product feature it describes changes.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
           "text": "Before you let a tool draft articles from your release history, check which side of that order it sits on.",
           "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "Another note shows how an article that was produced is told apart from one that was checked.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "A second note explains who may say yes to a source before an article can rely on it.",
+          "kind": "editorial",
           "subject": {
             "kind": "general_domain",
             "name": null
@@ -471,7 +586,12 @@
         {
           "key": "section-1",
           "heading": "Why 'nothing to publish' has to be cheap",
-          "body": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nIf your team publishes release notes, look at what it costs to say that a release deserves none. Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers."
+          "body": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nCounting that answer as a valid outcome keeps your public pages for the changes that matter to buyers."
+        },
+        {
+          "key": "change-to-decision-caption",
+          "heading": "",
+          "body": "Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content."
         },
         {
           "key": "section-2",
@@ -481,11 +601,21 @@
         {
           "key": "section-3",
           "heading": "Govern first, write second",
-          "body": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request.\n\nBefore you let a tool draft articles from your release history, check which side of that order it sits on."
+          "body": "TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second. The contract itself writes no content and opens no editorial request."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI writing vendor",
+          "body": "If your team publishes release notes, look at what it costs to say that a release deserves none. Ask who decides that a change is worth an article, and whether that choice is written down. Ask what happens to a published page when the product feature it describes changes. Before you let a tool draft articles from your release history, check which side of that order it sits on."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "Another note shows how an article that was produced is told apart from one that was checked. A second note explains who may say yes to a source before an article can rely on it."
         }
       ]
     },
-    "structuredContentHash": "15f0a9d27c5a42029b8a70e64c9359cb1fc03f3261fb0aa94a18d8bfcd8fdb3f",
+    "structuredContentHash": "a1345a8e9d4e7e9cbe378b2501703f5c71a9ca7c29df55408d50a94aca856ee1",
     "writerMethodVersion": "geo-writer@0.2",
     "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
     "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",

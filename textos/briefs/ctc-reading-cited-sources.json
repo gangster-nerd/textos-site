@@ -330,8 +330,29 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 600,
+      "minChars": 510,
       "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "cited-page-path-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-rs-02",
+        "ev-rs-01",
+        "ev-rs-05"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
       "evidenceRequired": true
     },
     {
@@ -352,7 +373,7 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 600,
+      "minChars": 490,
       "maxChars": 1300,
       "evidenceRequired": true
     },
@@ -375,7 +396,7 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 600,
+      "minChars": 520,
       "maxChars": 1300,
       "evidenceRequired": true
     },
@@ -398,9 +419,98 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 600,
+      "minChars": 490,
       "maxChars": 1300,
       "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-27",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "cited-page-path",
+      "template": "flow",
+      "title": "From a cited page to a proposed passage",
+      "subtitle": "Illustrative path for one source. Reading is bounded; accepting is human.",
+      "nodes": [
+        {
+          "tag": "ask",
+          "label": "robots.txt first",
+          "evidenceIds": [
+            "ev-rs-02"
+          ]
+        },
+        {
+          "tag": "read",
+          "label": "Bounded reading",
+          "evidenceIds": [
+            "ev-rs-01"
+          ]
+        },
+        {
+          "tag": "propose",
+          "label": "Up to three passages",
+          "evidenceIds": [
+            "ev-rs-04"
+          ]
+        },
+        {
+          "tag": "qualify",
+          "label": "Person qualifies",
+          "evidenceIds": [
+            "ev-rs-05"
+          ]
+        }
+      ],
+      "highlightNode": 3,
+      "boundary": {
+        "afterNode": 2,
+        "title": "Human step",
+        "lines": [
+          "Nothing proposed reaches the",
+          "writer before a person decides."
+        ],
+        "evidenceIds": [
+          "ev-rs-05"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "cited-page-path-caption"
     }
   ]
 }

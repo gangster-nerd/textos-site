@@ -1,5 +1,5 @@
 {
-  "text": "The first question is who is allowed to say yes. In TextOS, a non-human identity cannot record that a source may be used, and the decision is checked by the product's existing rules before anything is written. The identity behind the decision comes from the signed-in session: a caller cannot pass a name in, and shortcuts that skip the session are refused.\n\nA sign-off that a script can fake is only a formality. When you assess an AI content tool, ask who can mark a source as usable, and whether that action is tied to a real signed-in person. Ask as well whether an administrator or an automated job can do it on someone's behalf.",
+  "text": "The first question is who is allowed to say yes. In TextOS, a non-human identity cannot record that a source may be used, and the decision is checked by the product's existing rules before anything is written. The identity behind the decision comes from the signed-in session: a caller cannot pass a name in, and shortcuts that skip the session are refused.\n\nIn TextOS, two separate checks run before any writing starts: one for using the source in the article, and one for showing it in public. The split matters because a fact can be fine to rely on and still not be ready to quote on a public page. A sign-off that a script can fake is only a formality.",
   "statements": [
     {
       "id": "s1",
@@ -46,8 +46,24 @@
       "evidenceStrengthRequired": "descriptive"
     },
     {
-      "id": "s4",
-      "text": "A sign-off that a script can fake is only a formality.",
+      "id": "s3b",
+      "text": "In TextOS, two separate checks run before any writing starts: one for using the source in the article, and one for showing it in public.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3c",
+      "text": "The split matters because a fact can be fine to rely on and still not be ready to quote on a public page.",
       "kind": "editorial",
       "subject": {
         "kind": "general_domain",
@@ -58,21 +74,9 @@
       "evidenceStrengthRequired": "descriptive"
     },
     {
-      "id": "s5",
-      "text": "When you assess an AI content tool, ask who can mark a source as usable, and whether that action is tied to a real signed-in person.",
-      "kind": "recommendation",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s6",
-      "text": "Ask as well whether an administrator or an automated job can do it on someone's behalf.",
-      "kind": "recommendation",
+      "id": "s4",
+      "text": "A sign-off that a script can fake is only a formality.",
+      "kind": "editorial",
       "subject": {
         "kind": "general_domain",
         "name": null

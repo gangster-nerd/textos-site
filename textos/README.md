@@ -12,7 +12,7 @@ gates.
 ```
 textos-v0 commits ─┐
 product truth  ────┼─► brief (CMO: buyer question, target query, verbatim evidence, slot plan)
-                   │      └─► TextOS CTC intake → geo-writer → TruthCheck → ContentDocument@1
+                   │      └─► TextOS CTC intake → geo-writer → TruthCheck → article review (CMO V2)
                    │             └─► textos/runs/<id>/ (receipt + hashes)
                    └─► textos/ledger/product-commits.json (cited commits only)
                                     └─► lib/textos-client: verify without TextOS, project → /insights
@@ -27,8 +27,8 @@ product truth  ────┼─► brief (CMO: buyer question, target query, v
 
 | Pin | Ref | Role |
 |---|---|---|
-| writer | `cert/textos-v1-e2e-20261023` @ `308aa32` | CTC seam `ctc-geo-writer-adapter@0.1`, `geo-writer@0.2`, prompt `geo-writer-slot@0.5`, grounded TruthCheck, evidence approval, ContentDocument@1 bridge |
-| product | same SHA, `CERTIFIED_CANDIDATE` | the truth an article may state: cited commits are its ancestors, quoted files are read at it |
+| writer | `claude/compassionate-johnson-3kwq7g` @ `1012926` | the certification trunk plus CTC-CHAIN-1: CTC seam `ctc-geo-writer-adapter@0.1`, `geo-writer@0.2`, prompt `geo-writer-slot@0.5`, grounded TruthCheck, evidence approval and public-use clearance, and the **common article review** `ctc-article-review@0.1` (`buildArticleReviewSurface`, `article-cmo-v2@1`, governed figures `ctc-figure-svg@0.1`) |
+| product | `cert/textos-v1-e2e-20261023` @ `308aa32`, `CERTIFIED_CANDIDATE` | the truth an article may state: cited commits are its ancestors, quoted files are read at it; it must be in the writer pin's history |
 
 textos-v0 `main` is still at `91b6180` (2026-10-01); the V1 certification trunk carries the work
 these articles describe. Because the truth is the certification candidate and not `main`, every
@@ -37,8 +37,8 @@ article stays a **draft** until its human review is recorded.
 ## Commands
 
 ```bash
-# A pristine, full (non-shallow) checkout of textos-v0 at the pinned SHA, with its own deps:
-git -C <textos-v0 clone> worktree add --detach <path> 308aa3276f9d0f80035478545e34f4885c0349e0
+# A pristine, full (non-shallow) checkout of textos-v0 at the writer pin, with its own deps:
+git -C <textos-v0 clone> worktree add --detach <path> 101292687b5081a06a611d3853a956d3552e0643
 (cd <path> && pnpm install --frozen-lockfile)
 
 # 1. Brief → TextOS intake → plan → exported slot prompts (textos/runs/<id>/prompts/, git-ignored).
@@ -55,8 +55,11 @@ pnpm content:commits --product-repo-path <full textos-v0 clone>
 clean working tree, runs the step under TextOS's own `tsx`/`tsconfig.json`, and checks the tree is
 still clean afterwards. `prepare` refuses any evidence quote that is not verbatim in its source (a
 commit message, a file at the pin, a manifest field) and any commit outside the pin's history.
-`write` refuses any answer written against a prompt TextOS no longer renders identically, any
-writer refusal, and any TruthCheck verdict other than `pass`.
+`prepare` also applies the brief's `publicUseClearance` through TextOS's `clearEvidenceForPublicUse`
+(CPO decision `CPO-2026-10-27-ctc-sources-without-link`). `write` refuses any answer written against
+a prompt TextOS no longer renders identically, any writer refusal, any TruthCheck verdict other than
+`pass`, and any note TextOS's article review does not release (CMO V2, CONTENT_PASS, CTC editorial
+contract); the refused review is kept in `article-review.json` for the reviewer.
 
 ## Who wrote the slots
 
@@ -68,19 +71,24 @@ still built every prompt and parsed every answer. The recorded identity is
 live model, construct `ClaudeGeoWriterSlotProvider` without a transport in `steps/write.ts`, with a
 key and a call budget; nothing else changes.
 
-TextOS's structural editorial-quality gate (`editorial-quality@0.3`) is run and recorded in each
-run (`editorial-quality.json`, `HUMAN-REVIEW.md`) as **signals**: it measures an article against
-the strategy TextOS derives for opportunity articles (buyer-guide sections, FAQ, comparison
-object), which an engineering note does not follow by design. TextOS has no CTC-specific editorial
-strategy yet; that is product work, listed in `docs/decisions/CTO-CPO-2026-10-26-commit-to-content-input-source.md`.
+## The common article chain (since 2026-10-27)
+
+A note no longer goes from the writer to a ContentDocument through a direct bridge. TextOS composes
+it with the same article review as every TextOS article (`composeCtcArticleReview`): short answer,
+sections, a "What to ask" list (the `verify` section, rendered as steps), the editorial next step,
+Sources (each cited document once, by reference and date, without a link), a governed figure, the
+`article-cmo-v2@1` verdict and TextOS's CTC editorial contract (`ctc-editorial-quality@0.1`). Its
+release gate is fail-closed. A brief declares its figures (`figures`: template, labels tied to
+evidence, anchor section, caption slot); TextOS renders the SVG, which the site serves under
+`public/diagrams/ctc/<id>-<hash>.svg`.
 
 ## What each run commits (`runs/<articleId>/`)
 
 | File | Produced by |
 |---|---|
-| `intake.json`, `evidence-usability.json`, `adapt.json` (with the prompt hashes) | `prepare` |
+| `intake.json`, `evidence-usability.json`, `evidence-clearance.json`, `adapt.json` (with the prompt hashes) | `prepare` |
 | `responses/` | the operator |
-| `writer-outcome.json`, `lineage.json`, `content-document.json`, `resolved-surface.json`, `article-structure.json`, `editorial-quality.json`, `receipt.json`, `HUMAN-REVIEW.md` | `write` |
+| `writer-outcome.json`, `lineage.json`, `content-document.json`, `resolved-surface.json`, `article-review.json`, `receipt.json`, `HUMAN-REVIEW.md`, and `public/diagrams/ctc/*.svg` | `write` |
 
 ## What the site checks without TextOS (build, tests)
 
@@ -89,21 +97,25 @@ strategy yet; that is product work, listed in `docs/decisions/CTO-CPO-2026-10-26
 - the receipt names the pinned writer SHA and the product pin;
 - TruthCheck is `pass` in the receipt and in the lineage;
 - an operator transport never claims an API model identity;
-- the ContentDocument, lineage, resolved surface, plan and every response hash-match the receipt;
-- every text block is the writer's own slot text, verbatim;
+- the ContentDocument, lineage, resolved surface, article review, plan, every response and every
+  figure SVG hash-match the receipt;
+- the receipt and the article review record a passing CMO V2 verdict and an allowed release;
+- every text a reader sees is the writer's own slot text, verbatim (answer, sections, list items,
+  figure captions), every heading is one the plan fixed, every Source title is the one TextOS
+  recorded;
 - every cited commit is in the ledger, and the ledger holds nothing else;
 - every named product entity is in the pinned manifest.
 
-The site then projects the writer's document into its catalogue: it adds the section headings the
-plan fixed, splits multi-paragraph slots into paragraph blocks, and fills site-owned metadata
-(author, topic, canonical path). It never changes a word. Kicker: `commit to content`.
+The site then projects the document into its catalogue: it splits multi-paragraph sections into
+paragraph blocks and fills site-owned metadata (author, topic, canonical path). It never changes a
+word. Kicker: `Commit to content`.
 
 ## Publication
 
 Every article is a draft — Preview only, `noindex`, no publication date, no CTA — until
 `publication.humanReview` in its brief reads `done` with a reviewer and a date. `HUMAN-REVIEW.md`
-is the reviewer's packet: each slot, each statement, the evidence it cites, the editorial-quality
-signals, and a checklist (CPO-2026-09-12: how-we-build storytelling only, no customer feature, no
+is the reviewer's packet: each slot, each statement, the evidence it cites, the article-review
+verdicts, the CTC editorial findings, the figures and their alt text, and a checklist (CPO-2026-09-12: how-we-build storytelling only, no customer feature, no
 availability, no CTA).
 
 ## Measurement: prepared, not run

@@ -1,0 +1,65 @@
+{
+  "text": "Ask who may mark a source as usable for an article, and whether that action is tied to a signed-in person. Ask whether an administrator or a scheduled job can act on someone's behalf. Ask whether a changed quote needs a fresh decision before the writer can use it again. Ask what happens to a sentence that already sits in a draft when its source is withdrawn. Ask to see, for one article, which facts were used, which were left out and why.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Ask who may mark a source as usable for an article, and whether that action is tied to a signed-in person.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask whether an administrator or a scheduled job can act on someone's behalf.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether a changed quote needs a fresh decision before the writer can use it again.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask what happens to a sentence that already sits in a draft when its source is withdrawn.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask to see, for one article, which facts were used, which were left out and why.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

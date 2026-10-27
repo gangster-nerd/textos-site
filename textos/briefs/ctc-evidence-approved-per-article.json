@@ -316,6 +316,28 @@
       "evidenceRequired": true
     },
     {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How does an AI writer end up using only facts you approved?",
+      "writingObjective": "Answer directly: a source the system observed is never presented as evidence; an identified person approves it for this article under wording they validate; only approved and usable evidence is offered to the writer.",
+      "buyerIntent": "What is the rule?",
+      "allowedEvidenceIds": [
+        "ev-ea-01",
+        "ev-ea-03"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
       "id": "lead",
       "role": "lead",
       "blockKind": "paragraph",
@@ -337,25 +359,24 @@
       "evidenceRequired": false
     },
     {
-      "id": "answer",
-      "role": "answer",
+      "id": "evidence-path-caption",
+      "role": "caption",
       "blockKind": "paragraph",
-      "headingLevel": 2,
-      "heading": "How does an AI writer end up using only facts you approved?",
-      "writingObjective": "Answer directly: a source the system observed is never presented as evidence; an identified person approves it for this article under wording they validate; only approved and usable evidence is offered to the writer.",
-      "buyerIntent": "What is the rule?",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure that shows the path of a source in one article: candidate, approved by a named person, offered to the writer, withdrawn. One factual sentence, grounded in the evidence.",
+      "buyerIntent": null,
       "allowedEvidenceIds": [
         "ev-ea-01",
-        "ev-ea-03"
+        "ev-ea-06",
+        "ev-ea-13"
       ],
       "requiredClaimTypes": [
         "human_authorization"
       ],
-      "unsupportedClaimTypes": [
-        "availability"
-      ],
-      "minChars": 450,
-      "maxChars": 900,
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 280,
       "evidenceRequired": true
     },
     {
@@ -449,6 +470,95 @@
       "minChars": 600,
       "maxChars": 1400,
       "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor of AI-written content, one question per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the two related notes: the difference between an article that was produced and one that was checked, and how cited pages are read before any passage is proposed. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, without a link",
+    "decidedAt": "2026-10-27",
+    "reason": "The note cites these product commits; their short SHA and subject are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "evidence-path",
+      "template": "flow",
+      "title": "From observed source to usable evidence",
+      "subtitle": "Illustrative path for one article. A person decides at the boundary.",
+      "nodes": [
+        {
+          "tag": "qualify",
+          "label": "Candidate passage",
+          "evidenceIds": [
+            "ev-ea-13"
+          ]
+        },
+        {
+          "tag": "approve",
+          "label": "Approved for this article",
+          "evidenceIds": [
+            "ev-ea-01"
+          ]
+        },
+        {
+          "tag": "offer",
+          "label": "Offered to the writer",
+          "evidenceIds": [
+            "ev-ea-08"
+          ]
+        },
+        {
+          "tag": "withdraw",
+          "label": "Withdrawn from drafts",
+          "evidenceIds": [
+            "ev-ea-06"
+          ]
+        }
+      ],
+      "highlightNode": 1,
+      "boundary": {
+        "afterNode": 0,
+        "title": "Human decision",
+        "lines": [
+          "A named person approves;",
+          "a non-human identity cannot."
+        ],
+        "evidenceIds": [
+          "ev-ea-02"
+        ]
+      },
+      "anchorSectionKey": "lead",
+      "captionSlotId": "evidence-path-caption"
     }
   ]
 }

@@ -17,6 +17,7 @@ import type {
   GeoWriterExecutionPlan,
   GeoWriterSlot,
 } from "./textos-contracts";
+import type { BriefFigure } from "../../../lib/textos-client/brief";
 
 function requiredEnv(name: string): string {
   const value = process.env[name];
@@ -97,22 +98,67 @@ export interface TruthCheckResult {
   contradictions: { unit: string; reason: string; severity: "block" | "alert" }[];
 }
 
+export interface GeoWriterResult {
+  planId: string;
+  planHash: string;
+  slots: WrittenSlot[];
+  document: {
+    title: string;
+    metaDescription: string;
+    statementLedger: DraftStatement[];
+    faq: { question: string; answer: string }[];
+    sections?: { key: string; heading: string; body: string }[];
+  };
+  structuredContentHash: string;
+  writerMethodVersion: string;
+  slotProviderMethodVersion: string;
+  derivationIdentity: string;
+  truthCheck: TruthCheckResult;
+}
+
 export type GeoWriterOutcome =
-  | {
-      status: "written";
-      result: {
-        planId: string;
-        planHash: string;
-        slots: WrittenSlot[];
-        document: { title: string; metaDescription: string; statementLedger: DraftStatement[] };
-        structuredContentHash: string;
-        writerMethodVersion: string;
-        slotProviderMethodVersion: string;
-        derivationIdentity: string;
-        truthCheck: TruthCheckResult;
-      };
-    }
+  | { status: "written"; result: GeoWriterResult }
   | { status: "refused"; reason: string; slotId: string | null; detail: string; truthCheck?: TruthCheckResult };
+
+/** TextOS `CtcFigureSpec` (act/ctc/figure.ts) — mirrored by the brief's `figures`. */
+export type CtcFigureSpec = BriefFigure;
+
+export interface RenderedCtcFigure {
+  id: string;
+  rendererVersion: string;
+  template: string;
+  svg: string;
+  sha256: string;
+  alt: string;
+  width: number;
+  height: number;
+  anchorSectionKey: string;
+  captionSlotId: string;
+  evidenceIds: string[];
+}
+
+/** TextOS `CtcArticleReview` (act/ctc/article-review.ts, `ctc-article-review@0.1`). */
+export interface CtcArticleReview {
+  methodVersion: string;
+  review: {
+    schemaVersion: string;
+    contentDocument: ContentDocumentLike;
+    resolvedSurface: Record<string, unknown> & { readingTimeMinutes: number };
+    contentPass: { passed: boolean; issues: { code: string }[] };
+    surfacePlan: Record<string, unknown>;
+    cmoV2Conformance: { version: string; passed: boolean; issues: { code: string }[]; observed: Record<string, unknown> };
+    articleStructure: Record<string, unknown>;
+  };
+  editorialQuality: {
+    gateVersion: string;
+    verdict: "pass" | "fail";
+    findings: { code: string; severity: string; subject: string | null; message: string }[];
+  };
+  sources: { ref: string; title: string; href?: string }[];
+  sourcesWithheld: { ref: string; reason: string }[];
+  figures: RenderedCtcFigure[];
+  release: { allowed: boolean; blockers: string[]; cmoV2Issues: string[] };
+}
 
 export interface EvidenceApprovalDecision {
   briefIds: string[];
@@ -140,7 +186,7 @@ export interface ContentDocumentLike {
   identity: { documentId: string; contentType: string; slug: string; language: string; title: string; description: string };
   truth: { publicationStatus: string; allowedSurfaces: string[]; evidenceRefs: string[]; sourceStatus: string };
   provenance: { sourceEvidenceDigest?: string; sourceAuthority: string; sourceSha?: string };
-  body: { id: string; kind: string; data: { text?: string } }[];
+  body: { id: string; kind: string; slot?: string; data: Record<string, unknown> }[];
   seo: { indexingIntent: string };
 }
 
@@ -178,37 +224,22 @@ export interface TextosTool {
   CLAUDE_GEO_WRITER_SLOT_METHOD_VERSION: string;
   writeGroundedSlots(plan: GeoWriterExecutionPlan, provider: GeoWriterSlotProvider): Promise<GeoWriterOutcome>;
   GEO_WRITER_METHOD_VERSION: string;
-  // Content surface
-  bridgeGeoWriterResultToContentDocument(input: {
-    outcome: GeoWriterOutcome;
+  // Common article chain (CTC-CHAIN-1): the writer's result goes through TextOS's article review.
+  composeCtcArticleReview(input: {
+    adapted: ReturnType<TextosTool["adaptCtcIntakeToExecutionPlan"]>;
+    result: GeoWriterResult;
     documentId: string;
+    briefId: string;
     slug: string;
-    language: string;
-    contentType: string;
-    provenance: CtcGeoWriterProvenance;
-    allowedSurfaces: string[];
-  }): {
-    document: ContentDocumentLike;
-    slotProvenance: WrittenSlot[];
-    writerMethodVersion: string;
-    slotProviderMethodVersion: string;
-    derivationIdentity: string;
-    structuredContentHash: string;
-    truthCheck: TruthCheckResult;
-    planId: string;
-    planHash: string;
-    canonicalProductSha: string;
-  };
-  SurfacePolicySchema: { parse(value: unknown): unknown };
-  resolveContentSurface(document: ContentDocumentLike, policy: unknown, certifiedLineage: unknown[]): Record<string, unknown>;
-  withReadingTime(resolved: Record<string, unknown>, document: ContentDocumentLike): Record<string, unknown> & { readingTimeMinutes: number };
-  computeContentTypePolicy(policy: "ARTICLE", document: ContentDocumentLike): Record<string, unknown>;
+    figures?: readonly CtcFigureSpec[];
+    figureHref?: (figure: RenderedCtcFigure) => string;
+  }): CtcArticleReview;
   serializeResolvedContentSurfaceToJson(surface: Record<string, unknown>): string;
 }
 
 export async function loadTextos(): Promise<TextosTool> {
   type M = Record<string, unknown>;
-  const [approval, clearance, corpus, ctc, writer, prompt, claude, bridge, policy, resolver, articlePolicy, headless] =
+  const [approval, clearance, corpus, ctc, writer, prompt, claude, review, headless] =
     await Promise.all([
       textosModule<M>("src/server/textos/act/evidence-approval.ts"),
       textosModule<M>("src/server/textos/act/evidence-clearance.ts"),
@@ -217,10 +248,7 @@ export async function loadTextos(): Promise<TextosTool> {
       textosModule<M>("src/server/textos/act/geo-writer/writer.ts"),
       textosModule<M>("src/server/textos/act/geo-writer/providers/claude/slot-prompt.ts"),
       textosModule<M>("src/server/textos/act/geo-writer/providers/claude/slot-provider.ts"),
-      textosModule<M>("src/server/textos/act/geo-writer/to-content-document.ts"),
-      textosModule<M>("packages/content-surface/contract/surface-policy.ts"),
-      textosModule<M>("packages/content-surface/composition/resolve-content-surface.ts"),
-      textosModule<M>("packages/content-surface/policy/article-policy.ts"),
+      textosModule<M>("src/server/textos/act/ctc/article-review.ts"),
       textosModule<M>("packages/content-surface/adapters/headless-json.ts"),
     ]);
 
@@ -244,11 +272,7 @@ export async function loadTextos(): Promise<TextosTool> {
     CLAUDE_GEO_WRITER_SLOT_METHOD_VERSION: pick(claude, "CLAUDE_GEO_WRITER_SLOT_METHOD_VERSION"),
     writeGroundedSlots: pick(writer, "writeGroundedSlots"),
     GEO_WRITER_METHOD_VERSION: pick(writer, "GEO_WRITER_METHOD_VERSION"),
-    bridgeGeoWriterResultToContentDocument: pick(bridge, "bridgeGeoWriterResultToContentDocument"),
-    SurfacePolicySchema: pick(policy, "SurfacePolicySchema"),
-    resolveContentSurface: pick(resolver, "resolveContentSurface"),
-    withReadingTime: pick(articlePolicy, "withReadingTime"),
-    computeContentTypePolicy: pick(articlePolicy, "computeContentTypePolicy"),
+    composeCtcArticleReview: pick(review, "composeCtcArticleReview"),
     serializeResolvedContentSurfaceToJson: pick(headless, "serializeResolvedContentSurfaceToJson"),
   };
 }

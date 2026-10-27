@@ -1,16 +1,19 @@
 {
-  "textosRef": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "textosRef": "101292687b5081a06a611d3853a956d3552e0643",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "how to decide which product changes deserve public content",
-  "executionPlanHash": "8b2817fed0ce042570ea8cfe93795e393a37a53051fb79f8afdcfaae12b422a4",
-  "ctcHandoffHash": "acde4cd2adc94fe437f0fc2ed092b7bfd6d2d1dc989ada2c7c843c339a59f4a7",
+  "executionPlanHash": "8012f63f37f76ebfe908893283d2a0b8544eff28a4754700f7e6a80474445fa8",
+  "ctcHandoffHash": "05a3f44a83167e9efaf10f9b349dd44405ce5d57078a7cfb8d901c91cb6e1a63",
   "promptHashes": {
     "title": "e78efe1e4252748951adfd149629f4fe6a70eba10f9bb6aca55885be44aebf19",
     "meta": "cfb9ec09217a45233525e08cd4475f92297abf4bce3b60667a040427a4b65fd6",
     "lead": "1360e693b2c3beb3d870426395910cb2d47bfc7504442c3da832451bd58b67c5",
     "answer": "36f3fe4a1ce61da27adeed52fd3b10087af723d2ea6265da41a85206d77873da",
     "section-1": "a9874581138ebc360b4fcfa545be45e0f424bdc27f06ecd28ad32ee948e1feee",
+    "change-to-decision-caption": "6a1e59bfeb1139d12dacfb4be0207af7251b68ee661c6be93cd10613cc753b8d",
     "section-2": "7b0f7403e9b27dbee7d7cdacd284c024f13579fe614f1b3601ca7108d3c65b96",
-    "section-3": "92c1167ed863e28438f812d999f6eb6ca8ba840f251d85c2ef690e8fe643eb7b"
+    "section-3": "05b0aac9c20aa6d3796dc27decd6f21e9f1310370c04b69835953b6cf8fb0207",
+    "verify": "7ed13f503c42fcf73d44f51c18141834c08fda5b81f3591da7508e2fff9d8477",
+    "editorial-next-step": "adc8aa04ae387f2678fb947de3a055d08702bb7281565741c7af33c0df34bf7d"
   }
 }

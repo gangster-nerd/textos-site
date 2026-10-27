@@ -1,0 +1,65 @@
+{
+  "text": "Ask how many requests the tool can send to one site, and whether you can stop a reading job halfway. Ask what the tool records when it is refused access to a page. If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question. Ask whether the tool can be pointed at internal addresses, and how it knows. Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Ask how many requests the tool can send to one site, and whether you can stop a reading job halfway.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask what the tool records when it is refused access to a page.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask whether the tool can be pointed at internal addresses, and how it knows.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

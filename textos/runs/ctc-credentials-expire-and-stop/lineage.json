@@ -1,4 +1,6 @@
 {
+  "planId": "how to make ai agent api credentials expire and stop them in an emergency",
+  "planHash": "3b27b8f28ee9f16f77475bdfb5ad14200be36dfeef409f1459a8656ca707a082",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -111,6 +113,27 @@
       "excludedEvidence": []
     },
     {
+      "slotId": "access-that-ends-caption",
+      "role": "caption",
+      "headingLevel": null,
+      "heading": null,
+      "text": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.",
+      "statementIds": [
+        "stmt:24:access-that-ends-caption:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cr-09",
+        "ev-cr-02",
+        "ev-cr-03"
+      ],
+      "usableEvidenceIds": [
+        "ev-cr-09",
+        "ev-cr-02",
+        "ev-cr-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
       "slotId": "section-2",
       "role": "section",
       "headingLevel": 2,
@@ -145,11 +168,10 @@
       "role": "section",
       "headingLevel": 2,
       "heading": "What older keys keep doing",
-      "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nWhen you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
+      "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.",
       "statementIds": [
         "stmt:9:section-3:2:s1",
-        "stmt:9:section-3:2:s2",
-        "stmt:9:section-3:2:s3"
+        "stmt:9:section-3:2:s2"
       ],
       "evidenceIdsUsed": [
         "ev-cr-11"
@@ -158,17 +180,45 @@
         "ev-cr-11"
       ],
       "excludedEvidence": []
+    },
+    {
+      "slotId": "verify",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand.",
+      "statementIds": [
+        "stmt:6:verify:2:s1",
+        "stmt:6:verify:2:s2",
+        "stmt:6:verify:2:s3",
+        "stmt:6:verify:2:s4"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "editorial-next-step",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure.",
+      "statementIds": [
+        "stmt:19:editorial-next-step:2:s1",
+        "stmt:19:editorial-next-step:2:s2"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
     }
   ],
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
-  "structuredContentHash": "9d60c498ac92346a98bb2ff32cf799b30b733b952323970529cc5eb3b663925c",
+  "structuredContentHash": "02d2a570f6093aea861f147ce1f38acd21a4a359c56bb37c39b958443af40ab8",
   "truthCheck": {
     "verdict": "pass",
     "contradictions": []
   },
-  "planId": "how to make ai agent api credentials expire and stop them in an emergency",
-  "planHash": "9516a437164a75d934e2d9b2fa17f58945fd62664ef0ba7683c0f12fb659ae56",
   "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
 }

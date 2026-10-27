@@ -1,5 +1,5 @@
 {
-  "text": "Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault. A refusal is a result to report, not an obstacle to get around.\n\nThe crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent. If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.",
+  "text": "Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault. A refusal is a result to report, not an obstacle to get around.\n\nThe crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent.",
   "statements": [
     {
       "id": "s1",
@@ -59,18 +59,6 @@
       "evidenceIds": [
         "ev-rs-10"
       ],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s5",
-      "text": "If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.",
-      "kind": "recommendation",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
       "evidenceStrengthRequired": "descriptive"
     }
   ]

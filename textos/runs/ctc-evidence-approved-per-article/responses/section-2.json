@@ -1,5 +1,5 @@
 {
-  "text": "A TextOS decision about a source lapses as soon as the quoted passage changes. The person agreed to specific words, so new words call for a new decision. Those decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another.\n\nWithdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress. A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand. Before you trust any tool with brand facts, check what happens to a published sentence when the source behind it changes.",
+  "text": "A TextOS decision about a source lapses as soon as the quoted passage changes. The person agreed to specific words, so new words call for a new decision. Nothing carries over silently: the same source with a reworded passage starts again from the beginning.\n\nThose decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another. Withdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress. A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand.",
   "statements": [
     {
       "id": "s1",
@@ -20,6 +20,18 @@
     {
       "id": "s2",
       "text": "The person agreed to specific words, so new words call for a new decision.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2b",
+      "text": "Nothing carries over silently: the same source with a reworded passage starts again from the beginning.",
       "kind": "editorial",
       "subject": {
         "kind": "general_domain",
@@ -65,18 +77,6 @@
       "id": "s5",
       "text": "A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand.",
       "kind": "editorial",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s6",
-      "text": "Before you trust any tool with brand facts, check what happens to a published sentence when the source behind it changes.",
-      "kind": "recommendation",
       "subject": {
         "kind": "general_domain",
         "name": null

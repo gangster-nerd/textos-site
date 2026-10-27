@@ -1,5 +1,5 @@
 {
-  "text": "When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere. That closes a known trick in which a public name is made to point at an internal system after the check.\n\nFollowing a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin. Ask any vendor whether its tool can be pointed at internal addresses, and how it knows.",
+  "text": "When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere. That closes a known trick in which a public name is made to point at an internal system after the check.\n\nFollowing a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin.",
   "statements": [
     {
       "id": "s1",
@@ -71,18 +71,6 @@
       "evidenceIds": [
         "ev-rs-09"
       ],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s6",
-      "text": "Ask any vendor whether its tool can be pointed at internal addresses, and how it knows.",
-      "kind": "recommendation",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
       "evidenceStrengthRequired": "descriptive"
     }
   ]

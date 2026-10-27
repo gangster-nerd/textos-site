@@ -8,23 +8,23 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Buyer question: How do I make sure an AI writer only uses facts that someone actually approved for my article?
 - Target query: how to make an ai writer use only approved facts (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
-- Editorial quality (editorial-quality@0.3, structural, opportunity-article strategy — a signal here, not a gate): fail (10 finding(s))
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `308aa3276f9d0f80035478545e34f4885c0349e0`
+- Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (5 finding(s))
+- Sources shown: 5 (withheld: 0); figures: evidence-path e94b60e60fc4
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
-## Editorial-quality signals
+## CTC editorial-contract findings
 
-Measured against TextOS's opportunity-article strategy, which this engineering note does not follow by design. Read them as prompts for the reviewer, not as verdicts.
+- `section_below_depth_guide` (signal) on `verify`: Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.
+- `section_below_depth_guide` (signal) on `editorial-next-step`: Section « Where to go next » plus courte que son repère : développement à juger en revue.
+- `section_without_grounded_statement` (signal) on `verify`: Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `section_without_grounded_statement` (signal) on `editorial-next-step`: Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `evidence_overused` (signal) on `ev-ea-01`: Une même preuve fonde 3 slots du corps (answer, lead, evidence-path-caption) : la note répète ce fait au lieu d'en apporter d'autres.
 
-- `planned_section_missing` (blocking) on `criteria`: Section « Criteria to compare », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `fit`: Section « Checking the fit with your situation », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `pitfalls`: Section « Mistakes to avoid », prévue par la stratégie, absente.
-- `question_not_answered` (blocking) on `how to make an ai writer use only approved facts`: La question retenue « how to make an ai writer use only approved facts » n'a pas de réponse.
-- `question_not_answered` (blocking) on `How do I make sure an AI writer only uses facts that someone actually approved for my article?`: La question retenue « How do I make sure an AI writer only uses facts that someone actually approved for my article? » n'a pas de réponse.
-- `faq_too_small` (blocking): 1 entrée(s) de FAQ pour 2 question(s) retenue(s).
-- `information_object_missing` (blocking): Aucun objet d'information (liste structurée, tableau, comparatif) dans un article qui en exige un.
-- `evidence_overused` (signal) on `ev-ea-01`: Une même preuve fonde 4 sections (title, meta, lead, answer) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `article_draft_profile_failed` (blocking) on `article.draft.heading-present`: TextOS article requires at least one `heading` block.
-- `article_draft_profile_failed` (blocking) on `article.draft.claims-and-evidence`: TextOS article requires at least one claimId.
+## Figures (rendered by TextOS — check labels, caption and alt text)
+
+- `evidence-path` (flow) — alt: From observed source to usable evidence. A 4-step flow: Candidate passage, then Approved for this article, then Offered to the writer, then Withdrawn from drafts. A dashed boundary after "Candidate passage" is labelled Human decision: A named person approves; a non-human identity cannot.
+  - evidence: ev-ea-01, ev-ea-02, ev-ea-06, ev-ea-08, ev-ea-13
 
 ## Slots, statements and the evidence each one cites
 
@@ -33,15 +33,27 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > In TextOS, a source becomes evidence only once a person approves it for the article
 
 - **factual** — In TextOS, a source becomes evidence only once a person approves it for the article
-  - `ev-ea-01` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
+  - `ev-ea-01` (TextOS product commit d1dfde7, 25 Oct 2026): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
 
 ### meta (meta_description)
 
 > In TextOS a person approves each source for one article under wording they validate, and withdrawing it removes the fact from writing and from WordPress.
 
 - **factual** — In TextOS a person approves each source for one article under wording they validate, and withdrawing it removes the fact from writing and from WordPress.
-  - `ev-ea-01` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
-  - `ev-ea-06` (TextOS product commit c137a99: fix: décisions révisables, identité vérifiée et extraits vérifiés des preuves (lot c)): «révocation qui retire l'usage à la rédaction et à la sortie WordPress»
+  - `ev-ea-01` (TextOS product commit d1dfde7, 25 Oct 2026): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
+  - `ev-ea-06` (TextOS product commit c137a99, 25 Oct 2026): «révocation qui retire l'usage à la rédaction et à la sortie WordPress»
+
+### answer (answer) — How does an AI writer end up using only facts you approved?
+
+> TextOS treats an observed source and an approved fact as two different things. A named person approves each source for one specific article, under wording they validate, and only then can the article lean on that fact and show where it came from. When the article is written, only sources that are both approved and usable under TextOS's central rules are offered to its body sections, in the public wording that was approved. Put simply, the writer works from a short list that a person drew up, not from whatever the system happened to read.
+
+- **factual** — TextOS treats an observed source and an approved fact as two different things.
+  - `ev-ea-01` (TextOS product commit d1dfde7, 25 Oct 2026): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
+- **factual** — A named person approves each source for one specific article, under wording they validate, and only then can the article lean on that fact and show where it came from.
+  - `ev-ea-01` (TextOS product commit d1dfde7, 25 Oct 2026): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
+- **factual** — When the article is written, only sources that are both approved and usable under TextOS's central rules are offered to its body sections, in the public wording that was approved.
+  - `ev-ea-03` (TextOS product commit d1dfde7, 25 Oct 2026): «seules les preuves approuvées ET utilisables (policy centrale) sont offertes aux sections de fond, sous le libellé public approuvé (projection existante) ; sources gouvernées visibles ;»
+- **editorial** — Put simply, the writer works from a short list that a person drew up, not from whatever the system happened to read.
 
 ### lead (lead)
 
@@ -50,79 +62,96 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 - **editorial** — Most worries about AI writing are not about style.
 - **editorial** — They are about a sentence that states something about your brand which nobody on your side ever checked.
 - **factual** — In TextOS, a source the system has merely observed is not presented as a fact: an identified person approves it for one article, under wording that person validates, before the article may rely on it.
-  - `ev-ea-01` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
+  - `ev-ea-01` (TextOS product commit d1dfde7, 25 Oct 2026): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
 - **editorial** — This note walks through how that rule works and what it changes for the person signing off.
 
-### answer (answer) — How does an AI writer end up using only facts you approved?
+### evidence-path-caption (caption)
 
-> TextOS treats an observed source and an approved fact as two different things. A named person approves each source for one specific article, under wording they validate, and only then can the article lean on that fact and show where it came from. When the article is written, only sources that are both approved and usable under TextOS's central rules are offered to its body sections, in the public wording that was approved. Put simply, the writer works from a short list that a person drew up, not from whatever the system happened to read.
+> In TextOS a passage found in a source stays a candidate until a named person approves it for one article; only then is it offered to the writer, and withdrawing that decision takes it back out of future drafts.
 
-- **factual** — TextOS treats an observed source and an approved fact as two different things.
-  - `ev-ea-01` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
-- **factual** — A named person approves each source for one specific article, under wording they validate, and only then can the article lean on that fact and show where it came from.
-  - `ev-ea-01` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
-- **factual** — When the article is written, only sources that are both approved and usable under TextOS's central rules are offered to its body sections, in the public wording that was approved.
-  - `ev-ea-03` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «seules les preuves approuvées ET utilisables (policy centrale) sont offertes aux sections de fond, sous le libellé public approuvé (projection existante) ; sources gouvernées visibles ;»
-- **editorial** — Put simply, the writer works from a short list that a person drew up, not from whatever the system happened to read.
+- **factual** — In TextOS a passage found in a source stays a candidate until a named person approves it for one article; only then is it offered to the writer, and withdrawing that decision takes it back out of future drafts.
+  - `ev-ea-13` (TextOS product commit cf5b34a, 26 Oct 2026): «qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.»
+  - `ev-ea-01` (TextOS product commit d1dfde7, 25 Oct 2026): «une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source.»
+  - `ev-ea-06` (TextOS product commit c137a99, 25 Oct 2026): «révocation qui retire l'usage à la rédaction et à la sortie WordPress»
 
 ### section-1 (section) — Only a person can say yes
 
 > The first question is who is allowed to say yes. In TextOS, a non-human identity cannot record that a source may be used, and the decision is checked by the product's existing rules before anything is written. The identity behind the decision comes from the signed-in session: a caller cannot pass a name in, and shortcuts that skip the session are refused.
-> A sign-off that a script can fake is only a formality. When you assess an AI content tool, ask who can mark a source as usable, and whether that action is tied to a real signed-in person. Ask as well whether an administrator or an automated job can do it on someone's behalf.
+> In TextOS, two separate checks run before any writing starts: one for using the source in the article, and one for showing it in public. The split matters because a fact can be fine to rely on and still not be ready to quote on a public page. A sign-off that a script can fake is only a formality.
 
 - **editorial** — The first question is who is allowed to say yes.
 - **factual** — In TextOS, a non-human identity cannot record that a source may be used, and the decision is checked by the product's existing rules before anything is written.
-  - `ev-ea-02` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «identité non humaine refusée, décision validée par les primitives existantes approveEvidenceForUse + clearEvidenceForPublicUse AVANT écriture ;»
+  - `ev-ea-02` (TextOS product commit d1dfde7, 25 Oct 2026): «identité non humaine refusée, décision validée par les primitives existantes approveEvidenceForUse + clearEvidenceForPublicUse AVANT écriture ;»
 - **factual** — The identity behind the decision comes from the signed-in session: a caller cannot pass a name in, and shortcuts that skip the session are refused.
-  - `ev-ea-07` (TextOS product commit c137a99: fix: décisions révisables, identité vérifiée et extraits vérifiés des preuves (lot c)): «aucune identité reçue en paramètre ; bypass opérateur et absence de session refusés ;»
+  - `ev-ea-07` (TextOS product commit c137a99, 25 Oct 2026): «aucune identité reçue en paramètre ; bypass opérateur et absence de session refusés ;»
+- **factual** — In TextOS, two separate checks run before any writing starts: one for using the source in the article, and one for showing it in public.
+  - `ev-ea-02` (TextOS product commit d1dfde7, 25 Oct 2026): «identité non humaine refusée, décision validée par les primitives existantes approveEvidenceForUse + clearEvidenceForPublicUse AVANT écriture ;»
+- **editorial** — The split matters because a fact can be fine to rely on and still not be ready to quote on a public page.
 - **editorial** — A sign-off that a script can fake is only a formality.
-- **recommendation** — When you assess an AI content tool, ask who can mark a source as usable, and whether that action is tied to a real signed-in person.
-- **recommendation** — Ask as well whether an administrator or an automated job can do it on someone's behalf.
 
 ### section-2 (section) — An approval belongs to one article and one wording
 
-> A TextOS decision about a source lapses as soon as the quoted passage changes. The person agreed to specific words, so new words call for a new decision. Those decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another.
-> Withdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress. A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand. Before you trust any tool with brand facts, check what happens to a published sentence when the source behind it changes.
+> A TextOS decision about a source lapses as soon as the quoted passage changes. The person agreed to specific words, so new words call for a new decision. Nothing carries over silently: the same source with a reworded passage starts again from the beginning.
+> Those decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another. Withdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress. A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand.
 
 - **factual** — A TextOS decision about a source lapses as soon as the quoted passage changes.
-  - `ev-ea-04` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «décision périmée si l'extrait change ;»
+  - `ev-ea-04` (TextOS product commit d1dfde7, 25 Oct 2026): «décision périmée si l'extrait change ;»
 - **editorial** — The person agreed to specific words, so new words call for a new decision.
+- **editorial** — Nothing carries over silently: the same source with a reworded passage starts again from the beginning.
 - **factual** — Those decisions are also left out when a workspace is transferred, since a human decision is not something TextOS copies from one place to another.
-  - `ev-ea-05` (TextOS product commit d1dfde7: feat: activation des preuves par décision humaine contextualisée (article quality v1, lot c)): «table exclue du transfert de workspace (décision humaine non recopiable).»
+  - `ev-ea-05` (TextOS product commit d1dfde7, 25 Oct 2026): «table exclue du transfert de workspace (décision humaine non recopiable).»
 - **factual** — Withdrawing a decision in TextOS removes the fact from future writing and from the draft sent to WordPress.
-  - `ev-ea-06` (TextOS product commit c137a99: fix: décisions révisables, identité vérifiée et extraits vérifiés des preuves (lot c)): «révocation qui retire l'usage à la rédaction et à la sortie WordPress»
+  - `ev-ea-06` (TextOS product commit c137a99, 25 Oct 2026): «révocation qui retire l'usage à la rédaction et à la sortie WordPress»
 - **editorial** — A fact that was right last month can therefore be pulled back today, without anyone editing the article by hand.
-- **recommendation** — Before you trust any tool with brand facts, check what happens to a published sentence when the source behind it changes.
 
 ### section-3 (section) — Offered to the writer, never imposed
 
-> Once a fact is approved, TextOS offers it to the short answer and to one body section that fits it, by heading and purpose, and not to the opening or to the suggested next step. No type of claim is forced onto the writer. The aim is an article that brings a different fact into each section instead of repeating the same one in new words.
+> Once a fact is approved, TextOS offers it to the short answer and to one body section that fits it, by heading and purpose, and not to the opening or to the suggested next step. No type of claim is forced onto the writer. The sources behind those facts are shown with the article, under the wording that was approved. The aim is an article that brings a different fact into each section instead of repeating the same one in new words.
 > Near repetition is flagged for the person reviewing, and an exact duplicate sentence is blocked outright. A reader notices the difference within two paragraphs. If a tool repeats your strongest proof point in each paragraph, take it as a sign that it has run out of real material.
 
 - **factual** — Once a fact is approved, TextOS offers it to the short answer and to one body section that fits it, by heading and purpose, and not to the opening or to the suggested next step.
-  - `ev-ea-08` (TextOS product commit e2e40e5: feat: preuves offertes sans être imposées et signaux de répétition (article quality v1, lot d)): «une preuve approuvée est offerte à la réponse courte et à UNE section de fond (pertinence avec le titre et l'objectif, charge équilibrée), jamais à l'ouverture ni à la prochaine étape ; aucun type d'affirmation imposé ;»
+  - `ev-ea-08` (TextOS product commit e2e40e5, 26 Oct 2026): «une preuve approuvée est offerte à la réponse courte et à UNE section de fond (pertinence avec le titre et l'objectif, charge équilibrée), jamais à l'ouverture ni à la prochaine étape ; aucun type d'affirmation imposé ;»
 - **factual** — No type of claim is forced onto the writer.
-  - `ev-ea-08` (TextOS product commit e2e40e5: feat: preuves offertes sans être imposées et signaux de répétition (article quality v1, lot d)): «une preuve approuvée est offerte à la réponse courte et à UNE section de fond (pertinence avec le titre et l'objectif, charge équilibrée), jamais à l'ouverture ni à la prochaine étape ; aucun type d'affirmation imposé ;»
+  - `ev-ea-08` (TextOS product commit e2e40e5, 26 Oct 2026): «une preuve approuvée est offerte à la réponse courte et à UNE section de fond (pertinence avec le titre et l'objectif, charge équilibrée), jamais à l'ouverture ni à la prochaine étape ; aucun type d'affirmation imposé ;»
+- **factual** — The sources behind those facts are shown with the article, under the wording that was approved.
+  - `ev-ea-03` (TextOS product commit d1dfde7, 25 Oct 2026): «seules les preuves approuvées ET utilisables (policy centrale) sont offertes aux sections de fond, sous le libellé public approuvé (projection existante) ; sources gouvernées visibles ;»
 - **editorial** — The aim is an article that brings a different fact into each section instead of repeating the same one in new words.
 - **factual** — Near repetition is flagged for the person reviewing, and an exact duplicate sentence is blocked outright.
-  - `ev-ea-09` (TextOS product commit e2e40e5: feat: preuves offertes sans être imposées et signaux de répétition (article quality v1, lot d)): «signaux non bloquants, doublons exacts toujours bloquants.»
+  - `ev-ea-09` (TextOS product commit e2e40e5, 26 Oct 2026): «signaux non bloquants, doublons exacts toujours bloquants.»
 - **editorial** — A reader notices the difference within two paragraphs.
 - **recommendation** — If a tool repeats your strongest proof point in each paragraph, take it as a sign that it has run out of real material.
 
 ### section-4 (section) — Choosing among approved facts, and saying why
 
 > When several approved facts could serve, TextOS picks the set deterministically, guided by relevance, coverage and specificity. It keeps corroboration between independent sources, sets aside the same source repeated, applies limits and says plainly when something is missing. The reader can see why these sources were chosen, without any internal identifier.
-> A passage that TextOS finds while reading a source is only a candidate: it is neither approved nor offered to the writer until a person qualifies it. Ask any vendor to show you, for one article, which facts were used, which were left out and why.
+> A passage that TextOS finds while reading a source is only a candidate: it is neither approved nor offered to the writer until a person qualifies it. Choosing is a separate step from saying yes: a fact can be cleared for use and still be left out of an article where it adds nothing new.
 
 - **factual** — When several approved facts could serve, TextOS picks the set deterministically, guided by relevance, coverage and specificity.
-  - `ev-ea-10` (TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu): «sélection d'ensemble déterministe parmi les preuves approuvées et utilisables : pertinence, couverture et spécificité guident ;»
+  - `ev-ea-10` (TextOS product commit a36d479, 26 Oct 2026): «sélection d'ensemble déterministe parmi les preuves approuvées et utilisables : pertinence, couverture et spécificité guident ;»
 - **factual** — It keeps corroboration between independent sources, sets aside the same source repeated, applies limits and says plainly when something is missing.
-  - `ev-ea-11` (TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu): «corroboration entre sources indépendantes conservée, répétition d'une même source écartée, plafonds, manque explicite.»
+  - `ev-ea-11` (TextOS product commit a36d479, 26 Oct 2026): «corroboration entre sources indépendantes conservée, répétition d'une même source écartée, plafonds, manque explicite.»
 - **factual** — The reader can see why these sources were chosen, without any internal identifier.
-  - `ev-ea-12` (TextOS product commit a36d479: feat: e1 — sélection explicable des preuves autorisées avec reçu): «projection « pourquoi ces preuves » sans identifiant interne.»
+  - `ev-ea-12` (TextOS product commit a36d479, 26 Oct 2026): «projection « pourquoi ces preuves » sans identifiant interne.»
 - **factual** — A passage that TextOS finds while reading a source is only a candidate: it is neither approved nor offered to the writer until a person qualifies it.
-  - `ev-ea-13` (TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés): «qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.»
-- **recommendation** — Ask any vendor to show you, for one article, which facts were used, which were left out and why.
+  - `ev-ea-13` (TextOS product commit cf5b34a, 26 Oct 2026): «qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur.»
+- **editorial** — Choosing is a separate step from saying yes: a fact can be cleared for use and still be left out of an article where it adds nothing new.
+
+### verify (section) — What to ask any AI writing vendor
+
+> Ask who may mark a source as usable for an article, and whether that action is tied to a signed-in person. Ask whether an administrator or a scheduled job can act on someone's behalf. Ask whether a changed quote needs a fresh decision before the writer can use it again. Ask what happens to a sentence that already sits in a draft when its source is withdrawn. Ask to see, for one article, which facts were used, which were left out and why.
+
+- **recommendation** — Ask who may mark a source as usable for an article, and whether that action is tied to a signed-in person.
+- **recommendation** — Ask whether an administrator or a scheduled job can act on someone's behalf.
+- **recommendation** — Ask whether a changed quote needs a fresh decision before the writer can use it again.
+- **recommendation** — Ask what happens to a sentence that already sits in a draft when its source is withdrawn.
+- **recommendation** — Ask to see, for one article, which facts were used, which were left out and why.
+
+### editorial-next-step (section) — Where to go next
+
+> The next note covers the step that follows this one: why an article that was produced is not yet an article that was checked. A second note describes how cited pages are read in a bounded step, before any passage is put forward for qualification.
+
+- **editorial** — The next note covers the step that follows this one: why an article that was produced is not yet an article that was checked.
+- **editorial** — A second note describes how cited pages are read in a bounded step, before any passage is put forward for qualification.
 
 ## Prohibited claims to check by hand
 

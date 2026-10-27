@@ -1,5 +1,5 @@
 {
-  "text": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
+  "text": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article.",
   "statements": [
     {
       "id": "s1",
@@ -75,18 +75,6 @@
       "evidenceIds": [
         "ev-pv-12"
       ],
-      "evidenceStrengthRequired": "descriptive"
-    },
-    {
-      "id": "s6",
-      "text": "When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.",
-      "kind": "recommendation",
-      "subject": {
-        "kind": "general_domain",
-        "name": null
-      },
-      "claimTypes": [],
-      "evidenceIds": [],
       "evidenceStrengthRequired": "descriptive"
     }
   ]

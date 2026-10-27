@@ -8,24 +8,22 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Buyer question: How can I tell whether an AI-written article was actually checked before it reaches my website?
 - Target query: how to know if an ai written article was checked before it is published (HUMAN_CMO; demand NOT_MEASURED)
 - TruthCheck: **pass** (0 finding(s))
-- Editorial quality (editorial-quality@0.3, structural, opportunity-article strategy — a signal here, not a gate): fail (11 finding(s))
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `308aa3276f9d0f80035478545e34f4885c0349e0`
+- Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
+- CTC editorial contract (ctc-editorial-quality@0.1): pass (4 finding(s))
+- Sources shown: 6 (withheld: 0); figures: written-to-eligible 21cb10614a4b
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
 
-## Editorial-quality signals
+## CTC editorial-contract findings
 
-Measured against TextOS's opportunity-article strategy, which this engineering note does not follow by design. Read them as prompts for the reviewer, not as verdicts.
+- `section_below_depth_guide` (signal) on `editorial-next-step`: Section « Where to go next » plus courte que son repère : développement à juger en revue.
+- `section_without_grounded_statement` (signal) on `verify`: Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `section_without_grounded_statement` (signal) on `editorial-next-step`: Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.
+- `evidence_overused` (signal) on `ev-pv-03`: Une même preuve fonde 3 slots du corps (answer, section-2, written-to-eligible-caption) : la note répète ce fait au lieu d'en apporter d'autres.
 
-- `planned_section_missing` (blocking) on `criteria`: Section « Criteria to compare », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `fit`: Section « Checking the fit with your situation », prévue par la stratégie, absente.
-- `planned_section_missing` (blocking) on `pitfalls`: Section « Mistakes to avoid », prévue par la stratégie, absente.
-- `question_not_answered` (blocking) on `how to know if an ai written article was checked before it is published`: La question retenue « how to know if an ai written article was checked before it is published » n'a pas de réponse.
-- `question_not_answered` (blocking) on `How can I tell whether an AI-written article was actually checked before it reaches my website?`: La question retenue « How can I tell whether an AI-written article was actually checked before it reaches my website? » n'a pas de réponse.
-- `faq_too_small` (blocking): 1 entrée(s) de FAQ pour 2 question(s) retenue(s).
-- `information_object_missing` (blocking): Aucun objet d'information (liste structurée, tableau, comparatif) dans un article qui en exige un.
-- `evidence_overused` (signal) on `ev-pv-02`: Une même preuve fonde 3 sections (title, lead, answer) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `evidence_overused` (signal) on `ev-pv-03`: Une même preuve fonde 3 sections (meta, answer, section-2) : l'article répète ce fait au lieu d'en apporter d'autres.
-- `article_draft_profile_failed` (blocking) on `article.draft.heading-present`: TextOS article requires at least one `heading` block.
-- `article_draft_profile_failed` (blocking) on `article.draft.claims-and-evidence`: TextOS article requires at least one claimId.
+## Figures (rendered by TextOS — check labels, caption and alt text)
+
+- `written-to-eligible` (flow) — alt: From written to eligible for WordPress. A 4-step flow: Article written, then Fact-check verdict kept, then Quality check passed, then Eligible for WordPress. A dashed boundary after "Quality check passed" is labelled Single rule: Both checks pass, or the article stays out.
+  - evidence: ev-pv-01, ev-pv-02, ev-pv-03, ev-pv-07
 
 ## Slots, statements and the evidence each one cites
 
@@ -34,15 +32,15 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > TextOS no longer presents a produced article as a validated one
 
 - **factual** — TextOS no longer presents a produced article as a validated one
-  - `ev-pv-02` (TextOS product commit 16faee4: feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)): «un article techniquement produit n'est plus présenté comme validé. Une alerte de vérité permet la consultation et la correction humaine, jamais la préparation d'un brouillon WordPress.»
+  - `ev-pv-02` (TextOS product commit 16faee4, 25 Oct 2026): «un article techniquement produit n'est plus présenté comme validé. Une alerte de vérité permet la consultation et la correction humaine, jamais la préparation d'un brouillon WordPress.»
 
 ### meta (meta_description)
 
 > In TextOS only an article that passes its fact-check and conforms may reach WordPress, and a pass is no longer read as proof of excellence.
 
 - **factual** — In TextOS only an article that passes its fact-check and conforms may reach WordPress, and a pass is no longer read as proof of excellence.
-  - `ev-pv-03` (TextOS product commit 16faee4: feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)): «seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed»
-  - `ev-pv-08` (TextOS product commit 8463e78: fix: qualifier rôles, repères de profondeur et portée du quality gate (lot b)): «un `pass` n'est plus lisible comme une preuve d'excellence ; la revue humaine porte sur le fond, guidée par les constats et repères.»
+  - `ev-pv-03` (TextOS product commit 16faee4, 25 Oct 2026): «seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed»
+  - `ev-pv-08` (TextOS product commit 8463e78, 25 Oct 2026): «un `pass` n'est plus lisible comme une preuve d'excellence ; la revue humaine porte sur le fond, guidée par les constats et repères.»
 
 ### lead (lead)
 
@@ -51,7 +49,7 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 - **editorial** — A content dashboard that says an article is ready invites you to stop reading.
 - **editorial** — That label is only worth something if it means the article was checked, and not simply that a model finished writing.
 - **factual** — TextOS no longer presents an article as validated just because it was technically produced.
-  - `ev-pv-02` (TextOS product commit 16faee4: feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)): «un article techniquement produit n'est plus présenté comme validé. Une alerte de vérité permet la consultation et la correction humaine, jamais la préparation d'un brouillon WordPress.»
+  - `ev-pv-02` (TextOS product commit 16faee4, 25 Oct 2026): «un article techniquement produit n'est plus présenté comme validé. Une alerte de vérité permet la consultation et la correction humaine, jamais la préparation d'un brouillon WordPress.»
 - **editorial** — Here is what changed, and what a passing result still does not tell you.
 
 ### answer (answer) — How can you tell an AI article was really checked?
@@ -59,70 +57,92 @@ Measured against TextOS's opportunity-article strategy, which this engineering n
 > The fact-check verdict produced while writing is no longer rewritten into a pass. When TextOS raises a truth alert, a person can read and correct the article, but no WordPress draft can be prepared from it. A single rule decides whether a TextOS article may go to WordPress: the fact-check passes and the article conforms to the marketing review policy, and anything else stays closed. A label on the screen is therefore the end of a check, not just the end of a draft.
 
 - **factual** — The fact-check verdict produced while writing is no longer rewritten into a pass.
-  - `ev-pv-01` (TextOS product commit 16faee4: feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)): «le spine ne réécrit plus le verdict TruthCheck en « pass »»
+  - `ev-pv-01` (TextOS product commit 16faee4, 25 Oct 2026): «le spine ne réécrit plus le verdict TruthCheck en « pass »»
 - **factual** — When TextOS raises a truth alert, a person can read and correct the article, but no WordPress draft can be prepared from it.
-  - `ev-pv-02` (TextOS product commit 16faee4: feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)): «un article techniquement produit n'est plus présenté comme validé. Une alerte de vérité permet la consultation et la correction humaine, jamais la préparation d'un brouillon WordPress.»
+  - `ev-pv-02` (TextOS product commit 16faee4, 25 Oct 2026): «un article techniquement produit n'est plus présenté comme validé. Une alerte de vérité permet la consultation et la correction humaine, jamais la préparation d'un brouillon WordPress.»
 - **factual** — A single rule decides whether a TextOS article may go to WordPress: the fact-check passes and the article conforms to the marketing review policy, and anything else stays closed.
-  - `ev-pv-03` (TextOS product commit 16faee4: feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)): «seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed»
+  - `ev-pv-03` (TextOS product commit 16faee4, 25 Oct 2026): «seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed»
 - **editorial** — A label on the screen is therefore the end of a check, not just the end of a draft.
 
 ### section-1 (section) — The label on the screen tells the truth
 
 > TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.
-> TextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it. Ask any AI writing vendor whether its status labels are computed from stored results or written into the interface.
+> TextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it.
 
 - **factual** — TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert.
-  - `ev-pv-04` (TextOS product commit 16faee4: feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)): «page de revue : suppression du « TruthCheck : validé » codé en dur, verdict persisté via ValidationStateBadge, mention « non certifié » sur alerte ;»
+  - `ev-pv-04` (TextOS product commit 16faee4, 25 Oct 2026): «page de revue : suppression du « TruthCheck : validé » codé en dur, verdict persisté via ValidationStateBadge, mention « non certifié » sur alerte ;»
 - **editorial** — It is a small change on screen, and a large one for anyone who signs off on content.
 - **editorial** — Nobody has to guess whether 'ready' means written or checked.
 - **factual** — TextOS decides the strategy of each article, and the writer carries it out.
-  - `ev-pv-05` (TextOS product commit 01b0bab: feat: stratégie éditoriale et quality gate des articles (article quality v1, lot b)): «TextOS décide de la stratégie de l'article et le rédacteur l'exécute.»
+  - `ev-pv-05` (TextOS product commit 01b0bab, 25 Oct 2026): «TextOS décide de la stratégie de l'article et le rédacteur l'exécute.»
 - **editorial** — That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it.
-- **recommendation** — Ask any AI writing vendor whether its status labels are computed from stored results or written into the interface.
 
 ### section-2 (section) — One rule for what may reach your website
 
 > Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.
-> The quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick. Ask whether the rule that lets content reach your website is written in one place or spread across screens.
+> The quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick.
 
 - **factual** — Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code.
-  - `ev-pv-07` (TextOS product commit 01b0bab: feat: stratégie éditoriale et quality gate des articles (article quality v1, lot b)): «seul `pass` rend l'article apte (readiness, Décision, exécution WordPress) ; « non évalué » bloque avec un code distinct ;»
+  - `ev-pv-07` (TextOS product commit 01b0bab, 25 Oct 2026): «seul `pass` rend l'article apte (readiness, Décision, exécution WordPress) ; « non évalué » bloque avec un code distinct ;»
 - **factual** — That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.
-  - `ev-pv-03` (TextOS product commit 16faee4: feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)): «seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed»
+  - `ev-pv-03` (TextOS product commit 16faee4, 25 Oct 2026): «seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed»
 - **factual** — The quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile.
-  - `ev-pv-06` (TextOS product commit 01b0bab: feat: stratégie éditoriale et quality gate des articles (article quality v1, lot b)): «contrôle déterministe et indépendant du fournisseur (langue, profondeur, sections, questions, objet d'information, sources, répétitions, profil article.draft@1)»
+  - `ev-pv-06` (TextOS product commit 01b0bab, 25 Oct 2026): «contrôle déterministe et indépendant du fournisseur (langue, profondeur, sections, questions, objet d'information, sources, répétitions, profil article.draft@1)»
 - **editorial** — Since it does not depend on which model wrote the text, two articles are judged by the same yardstick.
-- **recommendation** — Ask whether the rule that lets content reach your website is written in one place or spread across screens.
+
+### written-to-eligible-caption (caption)
+
+> In TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked.
+
+- **factual** — In TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked.
+  - `ev-pv-01` (TextOS product commit 16faee4, 25 Oct 2026): «le spine ne réécrit plus le verdict TruthCheck en « pass »»
+  - `ev-pv-03` (TextOS product commit 16faee4, 25 Oct 2026): «seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed»
+  - `ev-pv-07` (TextOS product commit 01b0bab, 25 Oct 2026): «seul `pass` rend l'article apte (readiness, Décision, exécution WordPress) ; « non évalué » bloque avec un code distinct ;»
 
 ### section-3 (section) — What a pass does not prove
 
 > In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.
-> When no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.
+> When no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure.
 
 - **factual** — In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points.
-  - `ev-pv-08` (TextOS product commit 8463e78: fix: qualifier rôles, repères de profondeur et portée du quality gate (lot b)): «un `pass` n'est plus lisible comme une preuve d'excellence ; la revue humaine porte sur le fond, guidée par les constats et repères.»
+  - `ev-pv-08` (TextOS product commit 8463e78, 25 Oct 2026): «un `pass` n'est plus lisible comme une preuve d'excellence ; la revue humaine porte sur le fond, guidée par les constats et repères.»
 - **factual** — The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance.
-  - `ev-pv-09` (TextOS product commit 8463e78: fix: qualifier rôles, repères de profondeur et portée du quality gate (lot b)): «le gate déclare sa portée (scope: structural), ce qu'il mesure et ce qu'il ne mesure pas (utilité, argumentation, originalité, autorité des sources, performance GEO/SEO) ;»
+  - `ev-pv-09` (TextOS product commit 8463e78, 25 Oct 2026): «le gate déclare sa portée (scope: structural), ce qu'il mesure et ce qu'il ne mesure pas (utilité, argumentation, originalité, autorité des sources, performance GEO/SEO) ;»
 - **editorial** — Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.
 - **factual** — When no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure.
-  - `ev-pv-13` (TextOS product commit 683e90a: feat: dire qu'une rédaction attend au lieu d'échouer (r1)): «« rédaction en cours, relancez à partir de HH:MM » au lieu d'un diagnostic d'échec ;»
-- **recommendation** — Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.
+  - `ev-pv-13` (TextOS product commit 683e90a, 26 Oct 2026): «« rédaction en cours, relancez à partir de HH:MM » au lieu d'un diagnostic d'échec ;»
 
 ### section-4 (section) — Checking that nothing was lost on the way
 
 > TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.
-> It also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.
+> It also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article.
 
 - **factual** — TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous.
-  - `ev-pv-10` (TextOS product commit 3e6277d: feat(continuity): verify persisted article activation independently): «detect missing capability receipts, masked TruthCheck alerts and content drift before claiming journey continuity. A consistent receipt is not editorial excellence, GEO effect or publication permission.»
+  - `ev-pv-10` (TextOS product commit 3e6277d, 26 Oct 2026): «detect missing capability receipts, masked TruthCheck alerts and content drift before claiming journey continuity. A consistent receipt is not editorial excellence, GEO effect or publication permission.»
 - **factual** — A consistent record is not editorial excellence, an effect on search, or permission to publish.
-  - `ev-pv-10` (TextOS product commit 3e6277d: feat(continuity): verify persisted article activation independently): «detect missing capability receipts, masked TruthCheck alerts and content drift before claiming journey continuity. A consistent receipt is not editorial excellence, GEO effect or publication permission.»
+  - `ev-pv-10` (TextOS product commit 3e6277d, 26 Oct 2026): «detect missing capability receipts, masked TruthCheck alerts and content drift before claiming journey continuity. A consistent receipt is not editorial excellence, GEO effect or publication permission.»
 - **editorial** — Those are three different questions, and a single green tick answers none of them.
 - **factual** — It also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent.
-  - `ev-pv-11` (TextOS product commit 38568f2: test(continuity): verify original brief contributions independently): «detect a required claim, buyer context or governed evidence lost before writing even when the resulting activation receipts remain consistent.»
+  - `ev-pv-11` (TextOS product commit 38568f2, 26 Oct 2026): «detect a required claim, buyer context or governed evidence lost before writing even when the resulting activation receipts remain consistent.»
 - **factual** — Optional material is not forced into the article.
-  - `ev-pv-12` (TextOS product commit 38568f2: test(continuity): verify original brief contributions independently): «optional evidence is not forced into the article.»
+  - `ev-pv-12` (TextOS product commit 38568f2, 26 Oct 2026): «optional evidence is not forced into the article.»
+
+### verify (section) — What to ask any AI writing vendor
+
+> Ask whether status labels are computed from stored results or written into the interface. Ask whether the rule that lets content reach your website is written in one place or spread across screens. Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website. Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at. When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.
+
+- **recommendation** — Ask whether status labels are computed from stored results or written into the interface.
+- **recommendation** — Ask whether the rule that lets content reach your website is written in one place or spread across screens.
+- **recommendation** — Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website.
+- **recommendation** — Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.
 - **recommendation** — When you brief an AI writer, ask how you would find out if one of your instructions did not reach it.
+
+### editorial-next-step (section) — Where to go next
+
+> The previous note explains who may say yes to a source before an article can rely on it. Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line.
+
+- **editorial** — The previous note explains who may say yes to a source before an article can rely on it.
+- **editorial** — Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line.
 
 ## Prohibited claims to check by hand
 

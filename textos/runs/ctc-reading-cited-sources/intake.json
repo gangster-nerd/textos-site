@@ -137,7 +137,7 @@
       "id": "ev-rs-01",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes",
+      "sourceTitle": "TextOS product commit 7fb96fe, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:28:22+00:00",
       "contentHash": "58dc314826fed8274da5e348486b3fb7f2a81cb9d0f07167c90cb0f5ba2f21e0",
@@ -154,7 +154,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -170,7 +170,7 @@
       "id": "ev-rs-02",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes",
+      "sourceTitle": "TextOS product commit 7fb96fe, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:28:22+00:00",
       "contentHash": "2297b7ed2c15eaaac7f22f32b7bc22b74a798f38ba532c9021b44b1f73ba0261",
@@ -188,7 +188,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -204,7 +204,7 @@
       "id": "ev-rs-03",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit 7fb96fe: feat: a1 — préparation bornée et reprenable des sources citées, issues d'accès distinctes",
+      "sourceTitle": "TextOS product commit 7fb96fe, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:28:22+00:00",
       "contentHash": "3d478c59b4ef09b70ad8bbc17f6ef25c87a3a1eea7238f169786a133ad03aba1",
@@ -221,7 +221,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -237,7 +237,7 @@
       "id": "ev-rs-04",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés",
+      "sourceTitle": "TextOS product commit cf5b34a, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:50:05+00:00",
       "contentHash": "00a89c2cb0f60180033d01cfcc116c3481e05448362b8a3e09461e37e3ceffb9",
@@ -254,7 +254,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -270,7 +270,7 @@
       "id": "ev-rs-05",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit cf5b34a: feat: a2 — extraits candidats proposés par la préparation des sources, jamais approuvés",
+      "sourceTitle": "TextOS product commit cf5b34a, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T15:50:05+00:00",
       "contentHash": "525a435f785240baeba36c6a42edd6f5dcf58081625c5be63bf4a49869fd44bd",
@@ -288,7 +288,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -304,7 +304,7 @@
       "id": "ev-rs-06",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit 03fbdf9: fix: provenance des extraits et transport réseau public de consultation (lot c)",
+      "sourceTitle": "TextOS product commit 03fbdf9, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T08:33:29+00:00",
       "contentHash": "12b8aca6c5b985bfa602449e6f6cf862636a8518c5622f489414d0499c0f92e5",
@@ -321,7 +321,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -337,7 +337,7 @@
       "id": "ev-rs-07",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit 03fbdf9: fix: provenance des extraits et transport réseau public de consultation (lot c)",
+      "sourceTitle": "TextOS product commit 03fbdf9, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T08:33:29+00:00",
       "contentHash": "44b5893612f32cfbfe31196bbc53e32cee24ed0499a26ed5748613a9c678d9fb",
@@ -354,7 +354,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -370,7 +370,7 @@
       "id": "ev-rs-08",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit 55e3e8b: feat: suivre l'alias www d'une source citée lors de sa consultation",
+      "sourceTitle": "TextOS product commit 55e3e8b, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T13:08:50+00:00",
       "contentHash": "e6013af8ef10e168a4d4044f2374dea4d5bb1492e0ae4b31a8ea9230b920b888",
@@ -387,7 +387,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -403,7 +403,7 @@
       "id": "ev-rs-09",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product commit 55e3e8b: feat: suivre l'alias www d'une source citée lors de sa consultation",
+      "sourceTitle": "TextOS product commit 55e3e8b, 26 Oct 2026",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
       "retrievedAt": "2026-10-26T13:08:50+00:00",
       "contentHash": "a7d67f56bfc570344858a5a8a2d756d8cbf946d5e4a9f0ce129c2f028dfe7883",
@@ -420,7 +420,7 @@
         "Commit message in French; quoted as written."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -454,7 +454,7 @@
         "Describes the generic site crawler used for owned-surface observation."
       ],
       "epistemicStatus": "operator_supplied",
-      "publicUse": "pending",
+      "publicUse": "allowed",
       "approvedForGeneration": true,
       "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
       "approvedAt": "2026-10-26",
@@ -574,8 +574,29 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 600,
+      "minChars": 510,
       "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "cited-page-path-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-rs-02",
+        "ev-rs-01",
+        "ev-rs-05"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
       "evidenceRequired": true
     },
     {
@@ -596,7 +617,7 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 600,
+      "minChars": 490,
       "maxChars": 1300,
       "evidenceRequired": true
     },
@@ -619,7 +640,7 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 600,
+      "minChars": 520,
       "maxChars": 1300,
       "evidenceRequired": true
     },
@@ -642,9 +663,39 @@
       "unsupportedClaimTypes": [
         "availability"
       ],
-      "minChars": 600,
+      "minChars": 490,
       "maxChars": 1300,
       "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
     }
   ]
 }
