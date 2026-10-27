@@ -14,7 +14,7 @@ const ELIGIBLE = { eligible: true };
 const BASE = {
   mode: "live" as const,
   gate: ELIGIBLE,
-  entryUrl: "https://app.textos.io/auth/start",
+  entryUrl: "https://app.example.test/auth/start",
   contentId: "textos-homepage",
   position: "final" as const,
 };
@@ -24,7 +24,7 @@ describe("entrée self-serve — décision", () => {
     const decision = decideProductEntry(BASE);
     expect(decision.kind).toBe("render");
     const url = new URL((decision as { href: string }).href);
-    expect(url.origin + url.pathname).toBe("https://app.textos.io/auth/start");
+    expect(url.origin + url.pathname).toBe("https://app.example.test/auth/start");
     expect(Object.fromEntries(url.searchParams)).toEqual({
       intent: "measure",
       source: "textos-site",
@@ -45,17 +45,17 @@ describe("entrée self-serve — décision", () => {
     expect(decideProductEntry({ ...BASE, gate: { eligible: false } })).toEqual({ kind: "none", reason: "self_serve_not_published" });
     expect(decideProductEntry({ ...BASE, entryUrl: undefined })).toEqual({ kind: "none", reason: "entry_url_missing" });
     expect(decideProductEntry({ ...BASE, entryUrl: "   " })).toEqual({ kind: "none", reason: "entry_url_missing" });
-    expect(decideProductEntry({ ...BASE, entryUrl: "http://app.textos.io/auth/start" })).toEqual({ kind: "none", reason: "entry_url_invalid" });
+    expect(decideProductEntry({ ...BASE, entryUrl: "http://app.example.test/auth/start" })).toEqual({ kind: "none", reason: "entry_url_invalid" });
   });
 
   test("l'URL de passage respecte exactement le contrat", () => {
-    expect(parseProductEntryUrl("https://app.textos.io/auth/start")?.origin).toBe("https://app.textos.io");
+    expect(parseProductEntryUrl("https://app.example.test/auth/start")?.origin).toBe("https://app.example.test");
     for (const bad of [
-      "https://app.textos.io/auth/sign-in",
-      "https://app.textos.io/auth/start/",
-      "https://app.textos.io/auth/start?returnTo=/x",
-      "https://app.textos.io/auth/start#x",
-      "https://user:pass@app.textos.io/auth/start",
+      "https://app.example.test/auth/sign-in",
+      "https://app.example.test/auth/start/",
+      "https://app.example.test/auth/start?returnTo=/x",
+      "https://app.example.test/auth/start#x",
+      "https://user:pass@app.example.test/auth/start",
       "javascript:alert(1)",
       "/auth/start",
     ]) {
