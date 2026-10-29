@@ -27,7 +27,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { SITE_ROOT, TEXTOS_DIR, TEXTOS_REF, TEXTOS_ROOT, argValue, loadTextos, readJson, sha256, writeJson, writeText } from "./lib";
-import type { CtcArticleReview, GeoWriterOutcome, SlotWriteRequest } from "./lib";
+import type { CtcArticleReview, EarlyDisclosureInput, GeoWriterOutcome, SlotWriteRequest } from "./lib";
 import type { CtcGeoWriterIntake, GeoWriterSlot } from "./textos-contracts";
 import { FLOW_SURFACE_POLICY, figurePublicPath, responseFileName, type ArticleBrief } from "../../../lib/textos-client/brief";
 
@@ -160,6 +160,21 @@ async function main(): Promise<void> {
     );
   }
 
+  // ADR-032 : une note sur une capacité en bêta ou « bientôt » (manifeste ÉPINGLÉ) est revue AVEC sa
+  // divulgation — label, CTA d'accès, aucune date. Le site la revérifie au build (`earlyDisclosureIssues`).
+  const manifest = readJson<{ entities: { id: string; kind: string; publicationStatus: string; prohibitedClaims: string[] }[] }>(
+    join(SITE_ROOT, "product-manifest", "textos-v0.capability-manifest.json"),
+  );
+  const early = brief.entityIds
+    .map((id) => manifest.entities.find((e) => e.id === id))
+    .filter((e) => e !== undefined && e.kind === "capability" && (e.publicationStatus === "public_beta" || e.publicationStatus === "public_upcoming"));
+  if (early.length > 1) throw new Error(`write: ${articleId} speaks of several early-disclosure capabilities — one per note.`);
+  const earlyDisclosure: EarlyDisclosureInput | undefined = early[0]
+    ? early[0].publicationStatus === "public_beta"
+      ? { capabilityId: early[0].id, status: "public_beta", label: "beta", cta: "beta_access" }
+      : { capabilityId: early[0].id, status: "public_upcoming", label: "upcoming", cta: "notify_opening" }
+    : undefined;
+
   // ── The common article chain (TextOS CTC-CHAIN-1): same article review as every TextOS article ──
   const note = textos.composeCtcArticleReview({
     adapted,
@@ -169,6 +184,7 @@ async function main(): Promise<void> {
     slug: brief.slug,
     figures: brief.figures,
     figureHref: (figure) => figurePublicPath(figure.id, figure.sha256),
+    ...(earlyDisclosure ? { earlyDisclosure } : {}),
   });
 
   const review = note.review;
@@ -178,6 +194,7 @@ async function main(): Promise<void> {
     methodVersion: note.methodVersion,
     reviewSchemaVersion: review.schemaVersion,
     release: note.release,
+    earlyDisclosure: review.earlyDisclosure ?? null,
     cmoV2Conformance: review.cmoV2Conformance,
     contentPass: review.contentPass,
     surfacePlan: review.surfacePlan,
@@ -219,12 +236,9 @@ async function main(): Promise<void> {
   writeText(join(runDir, "resolved-surface.json"), resolvedJson);
   writeJson(join(runDir, "lineage.json"), lineage);
 
-  const manifest = readJson<{ entities: { id: string; prohibitedClaims: string[] }[] }>(
-    join(SITE_ROOT, "product-manifest", "textos-v0.capability-manifest.json"),
-  );
   const prohibitedByEntity = brief.entityIds
     .map((id) => manifest.entities.find((e) => e.id === id))
-    .filter((e): e is { id: string; prohibitedClaims: string[] } => Boolean(e && e.prohibitedClaims.length > 0));
+    .filter((e): e is (typeof manifest.entities)[number] => Boolean(e && e.prohibitedClaims.length > 0));
   writeText(join(runDir, "HUMAN-REVIEW.md"), renderHumanReview({ brief, intake, outcome, prohibitedByEntity, note }));
 
   writeJson(join(runDir, "receipt.json"), {

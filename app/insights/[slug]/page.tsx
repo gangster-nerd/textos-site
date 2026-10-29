@@ -18,6 +18,8 @@ import { resolveContentSurface } from "@/lib/content-surface-engine/composition/
 import { resolveReferenceCta } from "@/lib/content-surface-engine/conversion";
 import { buildCtaAttributionHref } from "@/lib/content-surface-engine/conversion/build-cta-attribution";
 import { ManagedTextosSurface } from "@/lib/content-surface-engine/renderer/managed-textos-surface";
+import { BetaAccessCta } from "@/components/conversion/BetaAccessCta";
+import { betaAccessForDocument } from "@/lib/conversion/beta-access-context";
 import {
   findInsightEntry,
   listInsightEntries,
@@ -269,6 +271,7 @@ export default async function Page({
         )}
         <ManagedTextosSurface
           resolved={resolved}
+          {...(entry.earlyDisclosure ? { kicker: entry.kicker } : {})}
           cta={cta}
           resolveAuthor={(id) => {
             const e = resolveReferenceEntity(id);
@@ -330,6 +333,10 @@ export default async function Page({
             limit: 6,
           })}
         />
+        {/* ADR-032 : une note sur une capacité en bêta porte le CTA d'accès bêta (entrée produit). */}
+        {entry.earlyDisclosure?.cta === "beta_access" && (
+          <BetaAccessCta decision={betaAccessForDocument(entry.earlyDisclosure.capabilityId, entry.document.identity.documentId)} />
+        )}
       </main>
     </>
   );

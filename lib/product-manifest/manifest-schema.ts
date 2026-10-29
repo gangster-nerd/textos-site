@@ -39,7 +39,10 @@ import {
   PUBLICATION_STATUSES,
   PUBLIC_SURFACES,
   SUPPORTED_SCHEMA_VERSION,
-  SUPPORTED_VOCABULARY_VERSION,
+  SUPPORTED_VOCABULARY_VERSIONS,
+  EARLY_DISCLOSURE_SURFACES,
+  isEarlyDisclosureStatus,
+  statusesOfVocabulary,
 } from "./status-axes";
 
 const FullSha = z.string().regex(/^[0-9a-f]{40}$/, "SHA complet attendu (40 hex)");
@@ -98,12 +101,35 @@ export const ProductManifestSchema = z
         message: `Schéma non supporté : ${manifest.schemaVersion} (attendu ${SUPPORTED_SCHEMA_VERSION}).`,
       });
     }
-    if (manifest.statusVocabularyVersion !== SUPPORTED_VOCABULARY_VERSION) {
+    if (!(SUPPORTED_VOCABULARY_VERSIONS as readonly number[]).includes(manifest.statusVocabularyVersion)) {
       ctx.addIssue({
         code: "custom",
         path: ["statusVocabularyVersion"],
-        message: `Vocabulaire non supporté : ${manifest.statusVocabularyVersion} (attendu ${SUPPORTED_VOCABULARY_VERSION}).`,
+        message: `Vocabulaire non supporté : ${manifest.statusVocabularyVersion} (attendu ${SUPPORTED_VOCABULARY_VERSIONS.join(" ou ")}).`,
       });
+    }
+    const vocabulary = new Set<string>(statusesOfVocabulary(manifest.statusVocabularyVersion));
+    for (const entity of manifest.entities) {
+      // Une version qui contredit son contenu n'est pas « à moitié lisible » : elle est refusée.
+      if (!vocabulary.has(entity.publicationStatus)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["entities"],
+          message: `${entity.id} : statut "${entity.publicationStatus}" absent du vocabulaire v${manifest.statusVocabularyVersion}.`,
+        });
+      }
+      // ADR-032 : une divulgation anticipée ne s'adosse jamais à pricing ni sales_copy (défense en
+      // profondeur — le produit refuse déjà de déclarer l'inverse).
+      if (isEarlyDisclosureStatus(entity.publicationStatus)) {
+        const outside = entity.allowedSurfaces.filter((surface) => !EARLY_DISCLOSURE_SURFACES.includes(surface));
+        if (outside.length > 0) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["entities"],
+            message: `${entity.id} : "${entity.publicationStatus}" n'ouvre pas ${outside.join(", ")}.`,
+          });
+        }
+      }
     }
 
     const seenEntities = new Set<string>();

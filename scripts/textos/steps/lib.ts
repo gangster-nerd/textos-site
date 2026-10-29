@@ -148,6 +148,8 @@ export interface CtcArticleReview {
     surfacePlan: Record<string, unknown>;
     cmoV2Conformance: { version: string; passed: boolean; issues: { code: string }[]; observed: Record<string, unknown> };
     articleStructure: Record<string, unknown>;
+    /** BÊTA-3 (ADR-032) : absent d'un rédacteur antérieur — la vérification du site refuse alors une note sur une bêta. */
+    earlyDisclosure?: EarlyDisclosureInput & { gateVersion: string; labelText: string; availabilityPromises: { rule: string; match: string; where: string }[] };
   };
   editorialQuality: {
     gateVersion: string;
@@ -158,6 +160,14 @@ export interface CtcArticleReview {
   sourcesWithheld: { ref: string; reason: string }[];
   figures: RenderedCtcFigure[];
   release: { allowed: boolean; blockers: string[]; cmoV2Issues: string[] };
+}
+
+/** TextOS `EarlyDisclosure` (act/early-disclosure.ts, ADR-032). */
+export interface EarlyDisclosureInput {
+  capabilityId: string;
+  status: "public_beta" | "public_upcoming";
+  label: "beta" | "upcoming";
+  cta: "beta_access" | "notify_opening";
 }
 
 export interface EvidenceApprovalDecision {
@@ -233,6 +243,7 @@ export interface TextosTool {
     slug: string;
     figures?: readonly CtcFigureSpec[];
     figureHref?: (figure: RenderedCtcFigure) => string;
+    earlyDisclosure?: EarlyDisclosureInput;
   }): CtcArticleReview;
   serializeResolvedContentSurfaceToJson(surface: Record<string, unknown>): string;
 }

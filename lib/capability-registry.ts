@@ -17,11 +17,13 @@
 // jamais plus permissif.
 // ─────────────────────────────────────────────────────────────────────────────────────────────
 
-import type {
-  ImplementationStatus,
-  ManifestEntityKind,
-  PublicSurface,
-  PublicationStatus,
+import {
+  EARLY_DISCLOSURE_SURFACES,
+  isEarlyDisclosureStatus,
+  type ImplementationStatus,
+  type ManifestEntityKind,
+  type PublicSurface,
+  type PublicationStatus,
 } from "@/lib/product-manifest/status-axes";
 
 export interface CapabilityDeclaration {
@@ -245,5 +247,14 @@ for (const id of ALL_IDS) {
     throw new Error(
       `Capacité "${id}" : publicationStatus "${declaration.publicationStatus}" n'autorise aucune surface, mais ${declaration.claimedSurfaces.length} sont revendiquées.`
     );
+  }
+  // ADR-032 : une bêta ou une capacité à venir ne se chiffre ni ne se vend.
+  if (isEarlyDisclosureStatus(declaration.publicationStatus)) {
+    const outside = declaration.claimedSurfaces.filter((surface) => !EARLY_DISCLOSURE_SURFACES.includes(surface));
+    if (outside.length > 0) {
+      throw new Error(
+        `Capacité "${id}" : "${declaration.publicationStatus}" ne revendique ni pricing ni sales_copy (reçu : ${outside.join(", ")}).`
+      );
+    }
   }
 }

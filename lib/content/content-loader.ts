@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import type { CtaResolution } from "@/lib/conversion/cta-resolver";
 import { ContentFrontmatterSchema, type ContentFrontmatter } from "./content-schema";
 import { runGates } from "./content-gates";
+import type { EarlyDisclosure } from "./early-disclosure";
 
 const ROOT = path.join(process.cwd(), "content");
 
@@ -26,6 +27,8 @@ export type ResolvedDocument = {
   frontmatter: ContentFrontmatter;
   body: string;
   maturityLabels: string[];
+  /** ADR-032 : capacités en bêta ou à venir dont parle la page — label et CTA d'accès bêta. */
+  earlyDisclosures: EarlyDisclosure[];
   /**
    * Résolution CTA faisant AUTORITÉ, décidée une fois par `runGates`. C'est ce que la page passe à
    * `ContentCta` — le composant ne résout rien, il rend une décision déjà prise.
@@ -75,7 +78,7 @@ export function loadDocument(collection: string, slug: string): ResolvedDocument
     );
   }
 
-  const { maturityLabels, ctaResolution } = runGates(parsed.data, slug);
+  const { maturityLabels, ctaResolution, earlyDisclosures } = runGates(parsed.data, slug, content);
 
   return {
     slug,
@@ -85,6 +88,7 @@ export function loadDocument(collection: string, slug: string): ResolvedDocument
     frontmatter: parsed.data,
     body: content,
     maturityLabels,
+    earlyDisclosures,
     ctaResolution,
   };
 }

@@ -43,6 +43,8 @@ import { ContentDocumentSchema } from "@/lib/content-surface-engine/contract/con
 
 import { figurePublicPath, paragraphBlockId, responseFileName, type ArticleBrief } from "./brief";
 import { collectCitations, ledgerIssues, type ProductCommitLedger } from "./commit-ledger";
+import { earlyDisclosureOf, type EarlyDisclosure } from "@/lib/content/early-disclosure";
+import type { PublicationStatus } from "@/lib/product-manifest/status-axes";
 
 export const CTC_SOURCE_STATUS_PREFIX = "COMMIT_TO_CONTENT";
 const OPERATOR_PROVIDER_PREFIX = "operator:";
@@ -78,6 +80,8 @@ interface Receipt {
 interface ArticleReviewRecord {
   release: { allowed: boolean; blockers: string[] };
   cmoV2Conformance: { passed: boolean };
+  /** BÊTA-3 (textos-v0) : présente quand la note parle d'une capacité en bêta ou « bientôt » ; absente d'un run antérieur. */
+  earlyDisclosure?: { capabilityId: string; label: string; cta: string; availabilityPromises: unknown[] } | null;
 }
 
 /** Section headings TextOS's article review adds itself (never writer text, never a claim). */
@@ -105,6 +109,8 @@ interface Lineage {
 export interface CtcArticle {
   brief: ArticleBrief;
   receipt: Receipt;
+  /** ADR-032 : capacité en bêta ou « bientôt » dont parle la note (label + CTA d'accès bêta). */
+  earlyDisclosure: EarlyDisclosure | null;
   /** The writer's document, exactly as committed. */
   writerDocument: ContentDocument;
   /** The site projection rendered under /insights. */
@@ -269,8 +275,11 @@ export function verifyCtcRun(input: {
   brief: ArticleBrief;
   tool: ToolRecord;
   manifestEntityIds: ReadonlySet<string>;
+  /** Statut de publication au manifeste épinglé (ADR-032) ; absent = aucune capacité anticipée. */
+  manifestStatuses?: ReadonlyMap<string, PublicationStatus>;
 }): string[] {
   const { root, brief, tool, manifestEntityIds } = input;
+  const manifestStatuses = input.manifestStatuses ?? new Map<string, PublicationStatus>();
   const runDir = path.join(textosDir(root), "runs", brief.articleId);
   const issues: string[] = [];
   const file = (name: string) => path.join(runDir, name);
@@ -324,6 +333,35 @@ export function verifyCtcRun(input: {
   if (writerDocument.identity.slug !== brief.slug) issues.push(`document slug ${writerDocument.identity.slug} is not the brief's ${brief.slug}`);
   if (writerDocument.provenance.sourceEvidenceDigest !== receipt.structuredContentHash) issues.push("document evidence digest is not the written content hash");
   for (const id of brief.entityIds) if (!manifestEntityIds.has(id)) issues.push(`entity ${id} is not in the pinned product manifest`);
+  issues.push(...earlyDisclosureIssues(brief, articleReview, manifestStatuses));
+  return issues;
+}
+
+/**
+ * ADR-032 — une note qui parle d'une capacité en bêta ou « bientôt » (statut du manifeste ÉPINGLÉ) doit
+ * avoir été revue AVEC sa divulgation : même capacité, même label, aucune date ni promesse. Une note
+ * sans divulgation sur une telle capacité est refusée — le label ne peut pas être oublié en amont.
+ */
+export function earlyDisclosureIssues(
+  brief: Pick<ArticleBrief, "entityIds">,
+  articleReview: ArticleReviewRecord,
+  manifestStatuses: ReadonlyMap<string, PublicationStatus>,
+): string[] {
+  const expected = brief.entityIds
+    .map((id) => earlyDisclosureOf(id, manifestStatuses.get(id) ?? "internal_only"))
+    .filter((disclosure): disclosure is EarlyDisclosure => disclosure !== null);
+  const carried = articleReview.earlyDisclosure ?? null;
+  if (expected.length === 0) {
+    return carried ? [`the review carries an early disclosure for ${carried.capabilityId}, which the pinned manifest does not declare`] : [];
+  }
+  if (expected.length > 1) return [`the note speaks of several early-disclosure capabilities (${expected.map((d) => d.capabilityId).join(", ")}) — one per note`];
+  const [want] = expected;
+  if (!carried) return [`entity ${want!.capabilityId} is ${want!.label === "beta" ? "in beta" : "upcoming"} but the review carries no early disclosure`];
+  const issues: string[] = [];
+  if (carried.capabilityId !== want!.capabilityId || carried.label !== want!.label || carried.cta !== want!.cta) {
+    issues.push(`the review's early disclosure (${carried.capabilityId}, ${carried.label}) does not match the pinned manifest (${want!.capabilityId}, ${want!.label})`);
+  }
+  if (carried.availabilityPromises.length > 0) issues.push("the review found a date or an availability promise");
   return issues;
 }
 
@@ -334,8 +372,11 @@ export function loadCtcArticles(root: string = process.cwd()): readonly CtcArtic
   if (cache && root === process.cwd()) return cache;
   const briefs = loadBriefs(root);
   const tool = loadToolRecord(root);
-  const manifest = readJson<{ entities: { id: string }[] }>(path.join(root, "product-manifest", "textos-v0.capability-manifest.json"));
+  const manifest = readJson<{ entities: { id: string; publicationStatus: PublicationStatus }[] }>(
+    path.join(root, "product-manifest", "textos-v0.capability-manifest.json"),
+  );
   const manifestEntityIds = new Set(manifest.entities.map((e) => e.id));
+  const manifestStatuses = new Map(manifest.entities.map((e) => [e.id, e.publicationStatus]));
 
   const ledger = loadLedger(root);
   if (briefs.length > 0) {
@@ -344,7 +385,7 @@ export function loadCtcArticles(root: string = process.cwd()): readonly CtcArtic
   }
 
   const articles = briefs.map((brief) => {
-    const issues = verifyCtcRun({ root, brief, tool, manifestEntityIds });
+    const issues = verifyCtcRun({ root, brief, tool, manifestEntityIds, manifestStatuses });
     if (issues.length > 0) throw new Error(`textos-client: run ${brief.articleId} refused:\n  - ${issues.join("\n  - ")}`);
     const runDir = path.join(textosDir(root), "runs", brief.articleId);
     const writerDocument = ContentDocumentSchema.parse(readJson(path.join(runDir, "content-document.json"))) as ContentDocument;
@@ -353,7 +394,11 @@ export function loadCtcArticles(root: string = process.cwd()): readonly CtcArtic
     const intake = readJson<{ evidence: { id: string; sourceTitle: string }[] }>(path.join(runDir, "intake.json"));
     const sourceTitles = new Map(intake.evidence.map((e) => [e.id, e.sourceTitle]));
     const document = projectCtcDocument({ brief, writerDocument, lineage, sourceTitles, figureHashes: receipt.figureHashes });
-    return { brief, receipt, writerDocument, document };
+    const earlyDisclosure =
+      brief.entityIds
+        .map((id) => earlyDisclosureOf(id, manifestStatuses.get(id) ?? "internal_only"))
+        .find((disclosure): disclosure is EarlyDisclosure => disclosure !== null) ?? null;
+    return { brief, receipt, earlyDisclosure, writerDocument, document };
   });
   if (root === process.cwd()) cache = articles;
   return articles;

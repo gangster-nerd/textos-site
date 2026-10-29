@@ -17,28 +17,36 @@
 import type { ContentDocument } from "../contract/content-document";
 import { loadManagedCorpus } from "../conformance/corpus-loader";
 import { loadCtcArticles } from "@/lib/textos-client/ctc-articles";
+import { earlyDisclosureLabel, type EarlyDisclosure } from "@/lib/content/early-disclosure";
 import { editorialEyebrowLabel } from "./editorial-eyebrow";
 
 export interface InsightEntry {
   slug: string;
   document: ContentDocument;
   kicker: string;
+  /** ADR-032 : la note parle d'une capacité en bêta ou « bientôt » — son label devient le kicker. */
+  earlyDisclosure: EarlyDisclosure | null;
 }
 
 let cache: readonly InsightEntry[] | null = null;
 
 function build(): readonly InsightEntry[] {
   if (cache) return cache;
-  const docs = [...loadManagedCorpus(), ...loadCtcArticles().map((a) => a.document)];
+  const sources = [
+    ...loadManagedCorpus().map((document) => ({ document, earlyDisclosure: null as EarlyDisclosure | null })),
+    ...loadCtcArticles().map((a) => ({ document: a.document, earlyDisclosure: a.earlyDisclosure })),
+  ];
+  const docs = sources.map((source) => source.document);
   const slugs = new Set<string>();
   for (const d of docs) {
     if (slugs.has(d.identity.slug)) throw new Error(`insights-catalog: duplicate slug ${d.identity.slug}.`);
     slugs.add(d.identity.slug);
   }
-  cache = docs.map((document) => ({
+  cache = sources.map(({ document, earlyDisclosure }) => ({
     slug: document.identity.slug,
     document,
-    kicker: kickerFor(document),
+    kicker: earlyDisclosure ? earlyDisclosureLabel(earlyDisclosure.label, document.identity.language) : kickerFor(document),
+    earlyDisclosure,
   }));
   return cache;
 }

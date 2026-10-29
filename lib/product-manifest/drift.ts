@@ -23,12 +23,13 @@
 import { CAPABILITY_REGISTRY, type CapabilityDeclaration } from "@/lib/capability-registry";
 
 import type { ProductManifest } from "./manifest-schema";
-import { implementationRank } from "./status-axes";
+import { implementationRank, isEarlyDisclosureStatus } from "./status-axes";
 
 export type FindingKind =
   | "site_surface_not_allowed"
   | "site_ahead_implementation"
   | "site_publication_more_permissive"
+  | "early_disclosure_divergence"
   | "capability_absent_from_manifest"
   | "entity_kind_divergence"
   | "product_ahead_implementation"
@@ -51,6 +52,9 @@ const SEVERITY: Record<FindingKind, Finding["severity"]> = {
   site_surface_not_allowed: "blocking",
   site_ahead_implementation: "blocking",
   site_publication_more_permissive: "blocking",
+  // Un label « Bêta » ou « Bientôt » et son CTA ne se décident qu'au produit : afficher l'un sans
+  // l'autre, ou un autre que celui du produit, serait une promesse que le produit n'a pas faite.
+  early_disclosure_divergence: "blocking",
   capability_absent_from_manifest: "blocking",
   // Incompatibilité ONTOLOGIQUE, pas écart de statut : un côté tient l'entité pour une capacité,
   // l'autre pour un concept refusé. Aucune comparaison de statut ou de surface n'a de sens tant que
@@ -87,6 +91,20 @@ function comparePublication(
   const productPub = product.publicationStatus;
 
   if (sitePub === productPub) return findings;
+
+  // ADR-032 : bêta et « bientôt » ne se déclarent qu'à l'identique des deux côtés.
+  if (isEarlyDisclosureStatus(sitePub) || isEarlyDisclosureStatus(productPub)) {
+    findings.push(
+      finding(
+        "early_disclosure_divergence",
+        capabilityId,
+        `publication:${sitePub}`,
+        `publication:${productPub}`,
+        `Divulgation anticipée divergente (site "${sitePub}", produit "${productPub}") — le label et le CTA d'une bêta ou d'une capacité à venir suivent exactement le produit.`
+      )
+    );
+    return findings;
+  }
 
   if (sitePub === "public_marketable") {
     findings.push(
