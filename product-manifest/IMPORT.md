@@ -13,7 +13,7 @@ cryptographique : le manifeste, son `.sha256` et ce document sont commités ense
 | | |
 |---|---|
 | Dépôt source | `gangster-nerd/textos-v0` |
-| Événement | `push` sur `main` |
+| Événement | `push` sur `main` (import antérieur à la décision du 2026-10-29) |
 | Run | [`31245044134`](https://github.com/gangster-nerd/textos-v0/actions/runs/31245044134) |
 | Artefact | `textos-v0-capability-manifest-d1b8b50552e1b42768a6bd0c0515675e139780d3` |
 | `snapshotCommit` | `d1b8b50552e1b42768a6bd0c0515675e139780d3` |
@@ -36,9 +36,12 @@ Puis mettre ce document à jour dans la même PR, et exécuter `pnpm verify:prod
 
 ## Règles
 
-- **Seul** un artefact du run `push` sur `main` est importable. Un artefact de pull request
-  (`validation-*`) porte un `snapshotCommit` de fusion synthétique — un commit éphémère qu'aucun
-  consommateur ne peut retrouver.
+- **Seul** un artefact d'un run `push` est importable : sur `main`, ou sur la branche de
+  certification `cert/textos-v1-e2e-20261023` (décision du Release Owner du 2026-10-29 : le site lit
+  la vérité produit du tronc de certification, d'où ses articles Commit-to-Content tirent déjà leur
+  vérité ; workflow `capability-manifest-cert.yml` de textos-v0). Le tableau d'import consigne la
+  branche source. Un artefact de pull request (`validation-*`) porte un `snapshotCommit` de fusion
+  synthétique — un commit éphémère qu'aucun consommateur ne peut retrouver.
 - Le manifeste peut être régénéré à l'identique depuis son `snapshotCommit` : `pnpm manifest:build`
   dans `textos-v0` à ce commit produit le même octet. C'est la vérification indépendante disponible
   aujourd'hui, et elle ne dépend d'aucune confiance envers ce dépôt.

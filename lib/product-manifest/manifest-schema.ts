@@ -10,8 +10,9 @@
 // et lire le nouveau champ que l'ignorer poliment.
 //
 // AUCUN ACCÈS AU DÉPÔT PRODUIT. Ce module lit deux fichiers de CE dépôt : la copie épinglée et son
-// checksum. La copie provient de l'artefact émis par le run `push` sur `main` du produit — jamais
-// d'un run de pull request, dont le `snapshotCommit` désigne un commit de fusion éphémère.
+// checksum. La copie provient de l'artefact émis par un run `push` du produit — sur `main` ou sur la
+// branche de certification (décision du 2026-10-29, `product-manifest/IMPORT.md`) — jamais d'un run
+// de pull request, dont le `snapshotCommit` désigne un commit de fusion éphémère.
 //
 // ─────────────────────────────────────────────────────────────────────────────────────────────
 // CE QUE LE CHECKSUM PROUVE, ET CE QU'IL NE PROUVE PAS
@@ -212,7 +213,7 @@ export function loadPinnedManifest(root: string): ProductManifest {
     throw new Error(
       `Le manifeste épinglé ne correspond pas au checksum épinglé.\n` +
         `  attendu ${expected}\n  obtenu  ${actual}\n` +
-        `  Réimporter ENSEMBLE le manifeste et son checksum depuis l'artefact push/main sélectionné.`
+        `  Réimporter ENSEMBLE le manifeste et son checksum depuis l'artefact push (main ou tronc de certification) sélectionné.`
     );
   }
 
