@@ -24,7 +24,7 @@ export interface InsightEntry {
   slug: string;
   document: ContentDocument;
   kicker: string;
-  /** ADR-032 : la note parle d'une capacité en bêta ou « bientôt » — son label devient le kicker. */
+  /** ADR-034 : la note parle d'une capacité en bêta ou « bientôt » — son label devient le kicker. */
   earlyDisclosure: EarlyDisclosure | null;
 }
 

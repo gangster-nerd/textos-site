@@ -81,7 +81,7 @@ export const MATURITY_COPY_CONTRACT: Record<PublicMaturity, {
       "universal compatibility",
       "production-scale SLA",
     ],
-    // ADR-032 : la demande d'accès par l'entrée produit est le CTA d'une bêta.
+    // ADR-034 : la demande d'accès par l'entrée produit est le CTA d'une bêta.
     ctaAllowed: ["contact", "labs_signup", "beta_access"],
   },
   PUBLIC_EARLY_ACCESS: {
@@ -155,7 +155,7 @@ export function manifestCeiling(
       return "PUBLIC_EARLY_ACCESS";
     case "public_marketable":
       return "PUBLIC_GA";
-    // ADR-032 (vocabulaire v4) : la bêta et la capacité à venir ont leur propre plafond public.
+    // ADR-034 (vocabulaire v4) : la bêta et la capacité à venir ont leur propre plafond public.
     case "public_beta":
       return "PUBLIC_BETA";
     case "public_upcoming":

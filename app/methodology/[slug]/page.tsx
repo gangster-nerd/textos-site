@@ -106,7 +106,7 @@ export default async function Page({
           contentId={doc.contentId}
           position="end"
         />
-        {/* ADR-032 : une capacité en bêta porte le CTA d'accès bêta (hors registre, vers l'entrée
+        {/* ADR-034 : une capacité en bêta porte le CTA d'accès bêta (hors registre, vers l'entrée
             produit) ; une capacité « bientôt » n'en porte aucun tant que le PLG n'existe pas. */}
         {doc.earlyDisclosures
           .filter((disclosure) => disclosure.cta === "beta_access")

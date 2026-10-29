@@ -133,7 +133,7 @@ export function runGates(fm: ContentFrontmatter, slug: string, body = "") {
     ),
   ];
 
-  // ADR-032 — DIVULGATION ANTICIPÉE. Une page qui parle d'une capacité en bêta ou à venir porte son
+  // ADR-034 — DIVULGATION ANTICIPÉE. Une page qui parle d'une capacité en bêta ou à venir porte son
   // label (rendu par la page), aucune proposition commerciale du registre (seul le CTA d'accès bêta,
   // hors registre, est rendu), et aucune date ni promesse de disponibilité.
   const earlyDisclosures: EarlyDisclosure[] = capabilities

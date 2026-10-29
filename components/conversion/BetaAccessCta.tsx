@@ -1,6 +1,6 @@
 import { BETA_ACCESS_COPY, BETA_ACCESS_COPY_VERSION, BETA_ACCESS_VARIANT, type BetaAccessDecision } from "@/lib/conversion/beta-access-entry";
 
-// Demande d'accès à une bêta (ADR-032) — RENDU SEUL. Reçoit une décision déjà prise
+// Demande d'accès à une bêta (ADR-034) — RENDU SEUL. Reçoit une décision déjà prise
 // (`betaAccessForDocument`) : `none` ne rend rien, jamais un bouton grisé.
 export function BetaAccessCta({ decision }: { decision: BetaAccessDecision }) {
   if (decision.kind !== "render") return null;

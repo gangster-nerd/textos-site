@@ -1,4 +1,4 @@
-// Divulgation anticipée (ADR-032 du produit) — label et contrôle des promesses de disponibilité.
+// Divulgation anticipée (ADR-034 du produit) — label et contrôle des promesses de disponibilité.
 //
 // Une page qui parle d'une capacité `public_beta` ou `public_upcoming` affiche son LABEL avant le
 // contenu, et ne porte AUCUNE date ni promesse de disponibilité : le produit maîtrise son calendrier,

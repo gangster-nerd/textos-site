@@ -160,7 +160,7 @@ async function main(): Promise<void> {
     );
   }
 
-  // ADR-032 : une note sur une capacité en bêta ou « bientôt » (manifeste ÉPINGLÉ) est revue AVEC sa
+  // ADR-034 : une note sur une capacité en bêta ou « bientôt » (manifeste ÉPINGLÉ) est revue AVEC sa
   // divulgation — label, CTA d'accès, aucune date. Le site la revérifie au build (`earlyDisclosureIssues`).
   const manifest = readJson<{ entities: { id: string; kind: string; publicationStatus: string; prohibitedClaims: string[] }[] }>(
     join(SITE_ROOT, "product-manifest", "textos-v0.capability-manifest.json"),

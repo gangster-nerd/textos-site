@@ -9,7 +9,7 @@ import { blocking, compareDeclarations } from "@/lib/product-manifest/drift";
 import { ProductManifestSchema, type ManifestEntity, type ProductManifest } from "@/lib/product-manifest/manifest-schema";
 import { earlyDisclosureIssues } from "@/lib/textos-client/ctc-articles";
 
-// ADR-032 du produit — divulgation anticipée (« Bêta », « Bientôt »), BÊTA-4 côté site.
+// ADR-034 du produit — divulgation anticipée (« Bêta », « Bientôt »), BÊTA-4 côté site.
 
 const SHA = "4d37616453f5d0fed24a8054314d49651e33af6b";
 

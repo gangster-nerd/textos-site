@@ -118,7 +118,7 @@ export const ProductManifestSchema = z
           message: `${entity.id} : statut "${entity.publicationStatus}" absent du vocabulaire v${manifest.statusVocabularyVersion}.`,
         });
       }
-      // ADR-032 : une divulgation anticipée ne s'adosse jamais à pricing ni sales_copy (défense en
+      // ADR-034 : une divulgation anticipée ne s'adosse jamais à pricing ni sales_copy (défense en
       // profondeur — le produit refuse déjà de déclarer l'inverse).
       if (isEarlyDisclosureStatus(entity.publicationStatus)) {
         const outside = entity.allowedSurfaces.filter((surface) => !EARLY_DISCLOSURE_SURFACES.includes(surface));

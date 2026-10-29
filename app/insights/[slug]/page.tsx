@@ -333,7 +333,7 @@ export default async function Page({
             limit: 6,
           })}
         />
-        {/* ADR-032 : une note sur une capacité en bêta porte le CTA d'accès bêta (entrée produit). */}
+        {/* ADR-034 : une note sur une capacité en bêta porte le CTA d'accès bêta (entrée produit). */}
         {entry.earlyDisclosure?.cta === "beta_access" && (
           <BetaAccessCta decision={betaAccessForDocument(entry.earlyDisclosure.capabilityId, entry.document.identity.documentId)} />
         )}

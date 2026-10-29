@@ -248,7 +248,7 @@ for (const id of ALL_IDS) {
       `Capacité "${id}" : publicationStatus "${declaration.publicationStatus}" n'autorise aucune surface, mais ${declaration.claimedSurfaces.length} sont revendiquées.`
     );
   }
-  // ADR-032 : une bêta ou une capacité à venir ne se chiffre ni ne se vend.
+  // ADR-034 : une bêta ou une capacité à venir ne se chiffre ni ne se vend.
   if (isEarlyDisclosureStatus(declaration.publicationStatus)) {
     const outside = declaration.claimedSurfaces.filter((surface) => !EARLY_DISCLOSURE_SURFACES.includes(surface));
     if (outside.length > 0) {

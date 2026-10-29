@@ -27,7 +27,7 @@ export type ResolvedDocument = {
   frontmatter: ContentFrontmatter;
   body: string;
   maturityLabels: string[];
-  /** ADR-032 : capacités en bêta ou à venir dont parle la page — label et CTA d'accès bêta. */
+  /** ADR-034 : capacités en bêta ou à venir dont parle la page — label et CTA d'accès bêta. */
   earlyDisclosures: EarlyDisclosure[];
   /**
    * Résolution CTA faisant AUTORITÉ, décidée une fois par `runGates`. C'est ce que la page passe à

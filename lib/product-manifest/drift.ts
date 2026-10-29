@@ -92,7 +92,7 @@ function comparePublication(
 
   if (sitePub === productPub) return findings;
 
-  // ADR-032 : bêta et « bientôt » ne se déclarent qu'à l'identique des deux côtés.
+  // ADR-034 : bêta et « bientôt » ne se déclarent qu'à l'identique des deux côtés.
   if (isEarlyDisclosureStatus(sitePub) || isEarlyDisclosureStatus(productPub)) {
     findings.push(
       finding(

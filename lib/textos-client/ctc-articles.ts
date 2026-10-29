@@ -109,7 +109,7 @@ interface Lineage {
 export interface CtcArticle {
   brief: ArticleBrief;
   receipt: Receipt;
-  /** ADR-032 : capacité en bêta ou « bientôt » dont parle la note (label + CTA d'accès bêta). */
+  /** ADR-034 : capacité en bêta ou « bientôt » dont parle la note (label + CTA d'accès bêta). */
   earlyDisclosure: EarlyDisclosure | null;
   /** The writer's document, exactly as committed. */
   writerDocument: ContentDocument;
@@ -275,7 +275,7 @@ export function verifyCtcRun(input: {
   brief: ArticleBrief;
   tool: ToolRecord;
   manifestEntityIds: ReadonlySet<string>;
-  /** Statut de publication au manifeste épinglé (ADR-032) ; absent = aucune capacité anticipée. */
+  /** Statut de publication au manifeste épinglé (ADR-034) ; absent = aucune capacité anticipée. */
   manifestStatuses?: ReadonlyMap<string, PublicationStatus>;
 }): string[] {
   const { root, brief, tool, manifestEntityIds } = input;
@@ -338,7 +338,7 @@ export function verifyCtcRun(input: {
 }
 
 /**
- * ADR-032 — une note qui parle d'une capacité en bêta ou « bientôt » (statut du manifeste ÉPINGLÉ) doit
+ * ADR-034 — une note qui parle d'une capacité en bêta ou « bientôt » (statut du manifeste ÉPINGLÉ) doit
  * avoir été revue AVEC sa divulgation : même capacité, même label, aucune date ni promesse. Une note
  * sans divulgation sur une telle capacité est refusée — le label ne peut pas être oublié en amont.
  */

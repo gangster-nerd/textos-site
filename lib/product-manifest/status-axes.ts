@@ -21,7 +21,7 @@ export const PUBLICATION_STATUSES = [
   "internal_only",
   "candidate",
   "public_marketable",
-  // Vocabulaire v4 (ADR-032 du produit) : divulgation anticipée.
+  // Vocabulaire v4 (ADR-034 du produit) : divulgation anticipée.
   "public_beta",
   "public_upcoming",
   "risky",
@@ -70,7 +70,7 @@ export function isEarlyDisclosureStatus(status: PublicationStatus): status is Ea
 }
 
 /**
- * Surfaces d'une divulgation anticipée — DUPLICATION ASSUMÉE de `textos-v0/src/manifest` (ADR-032),
+ * Surfaces d'une divulgation anticipée — DUPLICATION ASSUMÉE de `textos-v0/src/manifest` (ADR-034),
  * protégée par la version de vocabulaire. On ne chiffre ni ne vend ce qui n'est pas disponible :
  * `pricing` et `sales_copy` en sont exclues.
  */
@@ -82,7 +82,7 @@ export const EARLY_DISCLOSURE_SURFACES: readonly PublicSurface[] = [
   "changelog",
 ];
 
-/** Obligations de divulgation, portées par le statut (ADR-032 §2.3). */
+/** Obligations de divulgation, portées par le statut (ADR-034 §2.3). */
 export interface DisclosureObligations {
   label: "beta" | "upcoming";
   /** `beta_access` : demande d'accès par l'entrée produit. `notify_opening` : PLG — rien n'est rendu tant qu'il n'existe pas. */

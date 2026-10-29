@@ -1,4 +1,4 @@
-// Demande d'accès à une bêta — le seul CTA d'une page qui parle d'une capacité `public_beta` (ADR-032).
+// Demande d'accès à une bêta — le seul CTA d'une page qui parle d'une capacité `public_beta` (ADR-034).
 //
 // Même porte que l'entrée self-serve (`product-entry.ts`) et pour la même raison : la destination est
 // le produit, donc EXTERNE, hors du registre CTA (qui juge des propositions commerciales sur

@@ -148,7 +148,7 @@ export interface CtcArticleReview {
     surfacePlan: Record<string, unknown>;
     cmoV2Conformance: { version: string; passed: boolean; issues: { code: string }[]; observed: Record<string, unknown> };
     articleStructure: Record<string, unknown>;
-    /** BÊTA-3 (ADR-032) : absent d'un rédacteur antérieur — la vérification du site refuse alors une note sur une bêta. */
+    /** BÊTA-3 (ADR-034) : absent d'un rédacteur antérieur — la vérification du site refuse alors une note sur une bêta. */
     earlyDisclosure?: EarlyDisclosureInput & { gateVersion: string; labelText: string; availabilityPromises: { rule: string; match: string; where: string }[] };
   };
   editorialQuality: {
@@ -162,7 +162,7 @@ export interface CtcArticleReview {
   release: { allowed: boolean; blockers: string[]; cmoV2Issues: string[] };
 }
 
-/** TextOS `EarlyDisclosure` (act/early-disclosure.ts, ADR-032). */
+/** TextOS `EarlyDisclosure` (act/early-disclosure.ts, ADR-034). */
 export interface EarlyDisclosureInput {
   capabilityId: string;
   status: "public_beta" | "public_upcoming";
