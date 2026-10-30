@@ -10,3 +10,6 @@ next-env.d.ts
 # PR21 mobile cert artifacts (Playwright screenshots + JSON report). Regenerated
 # by scripts/pr21-real-mobile-cert.ts ; not source of truth.
 artifacts/
+
+# CI locale (scripts/local-ci.sh) : reçus et journaux, jamais commités.
+.artifacts/

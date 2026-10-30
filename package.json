@@ -18,6 +18,7 @@
     "a1r:emit-contract": "tsx scripts/a1r-emit-contract-schema.ts",
     "verify:a2r": "tsx scripts/verify-a2r.ts",
     "a3r:report": "tsx scripts/a3r-report.ts",
+    "ci:local": "bash scripts/local-ci.sh",
     "verify:a3r": "tsx scripts/verify-a3r.ts",
     "cse:ownership": "tsx scripts/cse-ownership.ts"
   },

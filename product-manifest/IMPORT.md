@@ -34,9 +34,37 @@ séparément produirait un couple incohérent que le chargement refuse.
 
 Puis mettre ce document à jour dans la même PR, et exécuter `pnpm verify:product-manifest`.
 
+## Import sans GitHub Actions (décision de Marc du 30/10/2026)
+
+GitHub Actions n'est plus payé : le run `push` sur `main` ne produit plus d'artefact. Le manifeste
+se génère alors en local, depuis le SHA exact de `main`, puisqu'il est reproductible à l'octet :
+
+```
+cd textos-v0
+```
+```
+git fetch origin main
+```
+```
+git checkout --detach origin/main
+```
+```
+pnpm install --frozen-lockfile
+```
+```
+pnpm manifest:build
+```
+
+Copier ensemble `.artifacts/capability-manifest.json` et son `.sha256` vers `product-manifest/`, comme
+ci-dessus. Dans le tableau « Import courant », remplacer « Run » et « Artefact » par « Génération
+locale : `pnpm manifest:build` sur `<sha>` », puis lancer `pnpm verify:product-manifest`.
+
+Le `snapshotCommit` doit être un commit de `main`. Un manifeste généré sur une branche ou une PR n'est
+pas importable, pour la même raison qu'un artefact `validation-*`.
+
 ## Règles
 
-- **Seul** un artefact du run `push` sur `main` est importable. Un artefact de pull request
+- **Seul** un manifeste dont le `snapshotCommit` est un commit de `main` est importable (artefact du run `push`, ou génération locale ci-dessus). Un artefact de pull request
   (`validation-*`) porte un `snapshotCommit` de fusion synthétique — un commit éphémère qu'aucun
   consommateur ne peut retrouver.
 - Le manifeste peut être régénéré à l'identique depuis son `snapshotCommit` : `pnpm manifest:build`
