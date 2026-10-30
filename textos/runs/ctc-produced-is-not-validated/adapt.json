@@ -1,9 +1,9 @@
 {
-  "textosRef": "101292687b5081a06a611d3853a956d3552e0643",
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "how to know if an ai written article was checked before it is published",
   "executionPlanHash": "325695eb34e1814b55f7a93e248f54f52dd26941c458bf0cbce3d3691b6b88b6",
-  "ctcHandoffHash": "7fa113cd82b23869600297b2926e060d1f8f3c399bb2c6a368ca71b3cade2a1d",
+  "ctcHandoffHash": "c8d648525bc277146ab639ae0bd47ef883e7cc09cfeecd133ed06956cec38dbd",
   "promptHashes": {
     "title": "6fef642080838e02538cb69c6ba726ba287499d9f3b53fe9dc698f0301db55db",
     "meta": "e0493bd89aed08133366aeb067d3a1401c607810188720eff5a176551e02f498",

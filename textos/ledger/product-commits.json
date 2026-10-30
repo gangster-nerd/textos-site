@@ -1,7 +1,7 @@
 {
   "ledgerVersion": 1,
   "productRepository": "gangster-nerd/textos-v0",
-  "productRef": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "productRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
   "commitCount": 28,
   "commits": [
     {
@@ -222,9 +222,9 @@
       ]
     },
     {
-      "sha": "308aa3276f9d0f80035478545e34f4885c0349e0",
-      "date": "2026-10-27T00:02:23+01:00",
-      "subject": "Merge #75: convergence Performances + PLG Lifecycle + dogfood TextOS Site + ENTRY-1 sur le tronc de certification",
+      "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+      "date": "2026-10-29T23:26:50+01:00",
+      "subject": "Merge pull request #84 from gangster-nerd/feat/github-editorial-source-20261027",
       "citedBy": [
         "product-pin"
       ]

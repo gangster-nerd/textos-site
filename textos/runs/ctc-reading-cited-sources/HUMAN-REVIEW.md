@@ -11,7 +11,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
 - CTC editorial contract (ctc-editorial-quality@0.1): pass (6 finding(s))
 - Sources shown: 5 (withheld: 0); figures: cited-page-path 6fdd7aa99ebe
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `2faf90e681c1b0ccf345a80ea6e637fd89be88ab`
 
 ## CTC editorial-contract findings
 
@@ -99,9 +99,9 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
   - `ev-rs-02` (TextOS product commit 7fb96fe, 26 Oct 2026): «robots.txt lu d'abord (fail-safe de site intelligence) ; issue d'accès fermée et journalisée en append-only (http_forbidden, robots_disallowed, robots_undetermined, not_found, redirect_off_site, défauts réseau...).»
 - **editorial** — A refusal is a result to report, not an obstacle to get around.
 - **factual** — The crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts.
-  - `ev-rs-10` (TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 308aa32): «robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence.»
+  - `ev-rs-10` (TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 2faf90e): «robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence.»
 - **factual** — A page it could not observe is reported as not available, never as absent.
-  - `ev-rs-10` (TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 308aa32): «robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence.»
+  - `ev-rs-10` (TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 2faf90e): «robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence.»
 
 ### section-3 (section) — Staying on the public web
 

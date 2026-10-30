@@ -77,7 +77,9 @@
       "ev-pv-11",
       "ev-pv-12"
     ],
-    "capabilityIds": []
+    "capabilityIds": [
+      "grounded-truth-check"
+    ]
   },
   "provenance": {
     "sourceAuthority": "UNCERTIFIED",
@@ -266,6 +268,7 @@
     "relatedContentIds": []
   },
   "conversion": {
+    "ctaIntentId": "beta_access",
     "conversionAllowed": false
   },
   "lifecycle": {},

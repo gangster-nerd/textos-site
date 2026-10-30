@@ -11,7 +11,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
 - CTC editorial contract (ctc-editorial-quality@0.1): pass (9 finding(s))
 - Sources shown: 3 (withheld: 0); figures: change-to-decision 16df45598024
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `101292687b5081a06a611d3853a956d3552e0643`
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `2faf90e681c1b0ccf345a80ea6e637fd89be88ab`
 
 ## CTC editorial-contract findings
 
@@ -45,7 +45,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 
 - **factual** — Every TextOS product change has to state whether it deserves public content, and the usual answer, which costs one line, is that it does not.
   - `ev-ci-01` (TextOS product commit 4d37616, 5 Aug 2026): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
-  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 308aa32): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
+  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
 
 ### lead (lead)
 
@@ -63,9 +63,9 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - **factual** — Automated checks in TextOS refuse a change that carries no content decision, but they never work that decision out themselves.
   - `ev-ci-01` (TextOS product commit 4d37616, 5 Aug 2026): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
 - **factual** — One of the possible answers is simply that the change deserves no public content.
-  - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 308aa32): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
+  - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
 - **factual** — That answer is also the usual one, and it costs a single line to give.
-  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 308aa32): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
+  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
 - **editorial** — In other words, people decide what is worth saying, and the tooling checks that they decided.
 
 ### section-1 (section) — Why 'nothing to publish' has to be cheap
@@ -74,9 +74,9 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.
 
 - **factual** — A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive.
-  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 308aa32): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
+  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
 - **factual** — The TextOS decision file says it plainly: the change deserves no public content.
-  - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 308aa32): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
+  - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
 - **editorial** — Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.
 
 ### change-to-decision-caption (caption)
@@ -85,8 +85,8 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 
 - **factual** — Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.
   - `ev-ci-01` (TextOS product commit 4d37616, 5 Aug 2026): «Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais»
-  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 308aa32): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
-  - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 308aa32): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
+  - `ev-ci-02` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.»
+  - `ev-ci-08` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «| `no_public_content` | Le changement ne mérite aucun contenu public |»
 
 ### section-2 (section) — The quiet failure it closes
 
@@ -111,7 +111,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > Each changed path that no declared evidence covers has to be explained by exactly one disposition in TextOS: none would be the silence the rule closes, and two or more would be ambiguous. A coverage debt does not turn the build red, but it stops a content candidate from becoming ready. Writing about a part of the product before it is described would put the article ahead of the facts.
 
 - **factual** — No tool at TextOS reads the code to guess that a change deserves an article.
-  - `ev-ci-14` (TextOS product repository file changes/content-impact/README.md at 308aa32): «Aucun outil ne lit le code pour deviner qu'un changement mérite un article.»
+  - `ev-ci-14` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «Aucun outil ne lit le code pour deviner qu'un changement mérite un article.»
 - **editorial** — Whether a change deserves an article and whether it belongs to the described product are separate questions, answered separately.
 - **factual** — Each changed path that no declared evidence covers has to be explained by exactly one disposition in TextOS: none would be the silence the rule closes, and two or more would be ambiguous.
   - `ev-ci-12` (TextOS product commit 1ad90d0, 8 Aug 2026): «chaque chemin non couvert est expliqué par EXACTEMENT une disposition — zéro est le silence qu'on ferme, plus d'une est une ambiguïté.»
@@ -127,7 +127,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - **factual** — TextOS refuses to propose content about a part of the product whose public description is still owed, since that would mean writing first and governing second.
   - `ev-ci-06` (TextOS product commit 1ad90d0, 8 Aug 2026): «Proposer un contenu sur un territoire dont la déclaration est encore à faire reviendrait à écrire d'abord et à gouverner ensuite — l'inversion exacte que cette chaîne interdit.»
 - **factual** — The contract itself writes no content and opens no editorial request.
-  - `ev-ci-07` (TextOS product repository file changes/content-impact/README.md at 308aa32): «Il ne rédige aucun contenu et n'ouvre aucune PR éditoriale.»
+  - `ev-ci-07` (TextOS product repository file changes/content-impact/README.md at 2faf90e): «Il ne rédige aucun contenu et n'ouvre aucune PR éditoriale.»
 - **factual** — The check runs on direct pushes as well as on pull requests, since changes reached the TextOS product by direct push.
   - `ev-ci-11` (TextOS product commit 4d37616, 5 Aug 2026): «Le contrôle porte sur push ET pull_request : l'historique ne contient aucun commit de fusion — tout arrive par push direct sur main»
 

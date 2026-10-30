@@ -1,9 +1,9 @@
 {
-  "textosRef": "101292687b5081a06a611d3853a956d3552e0643",
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "what an ai content tool should do when it reads cited sources",
-  "executionPlanHash": "f2a2fa3313a5245e6fb3ce80c352cf8e269cca032e64b6177911cf0b5b0c4f88",
-  "ctcHandoffHash": "e216eb4568bf1ed14394164005e918d3690be8fabafd1f5030934e4a958d2479",
+  "executionPlanHash": "f96861660fde524f1be52789633e96a01ad0503bb1bedf4e058edb8e4d44c7b5",
+  "ctcHandoffHash": "afcde548bebeb4a104e9c0f6028a6dd20796e6aa6b207d3643f560e05db77c27",
   "promptHashes": {
     "title": "bebe4e259a730b1b7dcaad62d2892d38a4fb329dd495cf890c36b335f645dcda",
     "meta": "600d534bc011637d1a32bb710dc0073b98490c8c2e0cbb0e9a301ed35806cab4",

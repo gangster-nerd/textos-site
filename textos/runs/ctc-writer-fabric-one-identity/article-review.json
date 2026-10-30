@@ -6,6 +6,7 @@
     "blockers": [],
     "cmoV2Issues": []
   },
+  "earlyDisclosure": null,
   "cmoV2Conformance": {
     "version": "article-cmo-v2@1",
     "documentId": "textos-site:ctc:ctc-writer-fabric-one-identity",

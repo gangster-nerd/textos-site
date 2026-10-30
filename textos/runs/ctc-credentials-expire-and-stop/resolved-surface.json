@@ -301,7 +301,7 @@
   },
   "policyId": "textos-article-review@0.1",
   "policyVersion": "surface-policy@1",
-  "readingTimeMinutes": 4,
+  "readingTimeMinutes": 3,
   "resolvedSchemaVersion": "resolved-content-surface@1",
   "slug": "api-credentials-that-expire-and-a-switch-to-stop-them",
   "surface": "reference",

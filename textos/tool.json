@@ -3,14 +3,14 @@
   "usage": "textos-site uses TextOS as a client would: as a tool. The drivers under scripts/textos/** import TextOS modules from a separate, pinned, read-only checkout of textos-v0; nothing is ever written into that checkout. scripts/textos/run.ts refuses to start unless the checkout sits at exactly the writer pin with a clean working tree, and prepare refuses a product pin that is not in that checkout's history, and re-checks the tree is still clean after the step.",
   "repository": "gangster-nerd/textos-v0",
   "writer": {
-    "branch": "claude/compassionate-johnson-3kwq7g",
-    "sha": "101292687b5081a06a611d3853a956d3552e0643",
-    "committedAt": "2026-10-27T19:51:03+00:00",
-    "why": "The V1 certification trunk (308aa32) plus CTC-CHAIN-1, validated by the CPO on 2026-10-27: a Commit-to-Content note goes through TextOS's common article review (buildArticleReviewSurface, article-cmo-v2@1 verdict, fail-closed release) with governed figures (ctc-figure-svg@0.1) and Sources cited without a link, one Source per cited document. Writer code only: the product truth an article may state stays at the product pin."
+    "branch": "cert/textos-v1-e2e-20261023",
+    "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "committedAt": "2026-10-29T23:26:50+01:00",
+    "why": "The V1 certification trunk after the integration of Commit-to-Content (#129: common article review, early disclosure in the article review — BÊTA-3 —, beta status vocabulary) and of the GitHub source (#84). A note on a capability the product declares in beta is reviewed with its early disclosure (label, beta access, no availability date). Writer code only: the product truth an article may state stays at the product pin."
   },
   "product": {
-    "sha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+    "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
     "truthLevel": "CERTIFIED_CANDIDATE",
-    "why": "The product truth an article may state is read at this same SHA: cited commits must be its ancestors, quoted files are read at it. It is the certification candidate, not textos-v0 main, so every article stays a draft until a human review records otherwise."
+    "why": "The product truth an article may state is read at this same SHA: cited commits must be its ancestors, quoted files are read at it. It is the certification trunk, not textos-v0 main, so every article stays a draft until a human review records otherwise. Same SHA as the pinned product manifest (product-manifest/IMPORT.md)."
   }
 }

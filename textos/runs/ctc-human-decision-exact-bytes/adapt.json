@@ -1,9 +1,9 @@
 {
-  "textosRef": "101292687b5081a06a611d3853a956d3552e0643",
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "how to require human approval before an ai agent creates a cms draft",
   "executionPlanHash": "080a3de15b5efe29824493db75e39470b3b38939b9c9d878bb351eea8837b30c",
-  "ctcHandoffHash": "a1415a471736c6bb3a8c63b83d9520f6bab1db95152bc3404f34950f8b298192",
+  "ctcHandoffHash": "8ff81efac2af1b2bd33afad0fdf3240b52774a4dd3f53fa58a650267aae334a0",
   "promptHashes": {
     "title": "83619f1e4e84494fe8166310bb57fb514a425f1ad41b6369317c7115939cf3e5",
     "meta": "2405a7410181a1ca9a5ac4c74d6f4d0886ef48bbf6017db567c42a3cf485d912",

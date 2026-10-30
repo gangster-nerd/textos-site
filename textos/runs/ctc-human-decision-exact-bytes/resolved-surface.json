@@ -316,7 +316,7 @@
   },
   "policyId": "textos-article-review@0.1",
   "policyVersion": "surface-policy@1",
-  "readingTimeMinutes": 4,
+  "readingTimeMinutes": 3,
   "resolvedSchemaVersion": "resolved-content-surface@1",
   "slug": "agent-can-prepare-a-draft-not-approve-it",
   "surface": "reference",

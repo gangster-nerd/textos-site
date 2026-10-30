@@ -3,12 +3,12 @@
   "articleId": "ctc-produced-is-not-validated",
   "textos": {
     "repository": "gangster-nerd/textos-v0",
-    "sha": "101292687b5081a06a611d3853a956d3552e0643"
+    "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
   },
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "articleReviewMethodVersion": "ctc-article-review@0.1",
   "executionPlanHash": "325695eb34e1814b55f7a93e248f54f52dd26941c458bf0cbce3d3691b6b88b6",
-  "ctcHandoffHash": "7fa113cd82b23869600297b2926e060d1f8f3c399bb2c6a368ca71b3cade2a1d",
+  "ctcHandoffHash": "c8d648525bc277146ab639ae0bd47ef883e7cc09cfeecd133ed06956cec38dbd",
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
@@ -24,7 +24,7 @@
   },
   "releaseAllowed": true,
   "publicationChannel": "controlled_preview",
-  "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
   "promptHashes": {
     "title": "6fef642080838e02538cb69c6ba726ba287499d9f3b53fe9dc698f0301db55db",
     "meta": "e0493bd89aed08133366aeb067d3a1401c607810188720eff5a176551e02f498",
@@ -54,8 +54,8 @@
   "figureHashes": {
     "written-to-eligible": "21cb10614a4b6e43c61d538d1447f3f6306ee679dada0da99bc0a2ff2ef22eb0"
   },
-  "contentDocumentSha256": "7e965ab839788eea4c6d138ed09404f4e4d2c78c981f1295050e172b658d56df",
-  "lineageSha256": "b95c0a317807b68f978233e9756ae8d96d81377e873408548dab6fa2991848cf",
-  "resolvedSurfaceSha256": "d682264c41212d6c28e30dd4034c2db71407cde9c7ede83e173871f6b5769583",
-  "articleReviewSha256": "69c52dd8229a8c6e682452e9af5a3124ecfbabc092097218972e5d4e5b42a29d"
+  "contentDocumentSha256": "6ab08d8b4cbdbb87851ff9392d917aea1fb9dc18528e6d4dd0d6451712a24479",
+  "lineageSha256": "d967c00eef204eca766d46bc7631fac1af9d089efe1c613aef4349c79cc3e681",
+  "resolvedSurfaceSha256": "7333835636070164775c243395ad9cec209a228650a692118709fc55f8cfdc54",
+  "articleReviewSha256": "49a00394d3c5ae8f119e9e6564da894317278fbbbd1b915fd28024116b778a56"
 }

@@ -320,7 +320,7 @@
   "contentSchemaVersion": "content-document@1",
   "contentType": "product_article",
   "conversion": {
-    "ctaIntentId": null,
+    "ctaIntentId": "beta_access",
     "ctaSuppressedReason": "document.conversionAllowed=false",
     "effectiveCtaAllowed": false
   },
@@ -343,7 +343,7 @@
   },
   "policyId": "textos-article-review@0.1",
   "policyVersion": "surface-policy@1",
-  "readingTimeMinutes": 4,
+  "readingTimeMinutes": 3,
   "resolvedSchemaVersion": "resolved-content-surface@1",
   "slug": "an-article-that-was-produced-is-not-an-article-that-was-checked",
   "surface": "reference",

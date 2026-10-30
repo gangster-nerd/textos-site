@@ -1,9 +1,9 @@
 {
-  "textosRef": "101292687b5081a06a611d3853a956d3552e0643",
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "how to make ai agent api credentials expire and stop them in an emergency",
   "executionPlanHash": "974cf757c1e021b9016ace37bc1a469c90ef11d1847791fafe53d1e44733ff41",
-  "ctcHandoffHash": "2db5808e19e0650baf18a1f6bcf08c7fcfe460e0cfe9a34c02636ca136e17e39",
+  "ctcHandoffHash": "52ef0198dbecc7c7803db3b862cd72b4e27514e62356a00699f58bd2f98dc62a",
   "promptHashes": {
     "title": "e66c27fe3a08778ae298c13665d9f31cc5153112d6261d1d5ee032498d610f16",
     "meta": "64527902134cad39bb9baf2114f8415fb71597128bb1e253354da4e25e4e7637",

@@ -22,7 +22,7 @@
     "keywordVolumeStatus": "UNKNOWN",
     "searchIntent": "informational",
     "topicCluster": "content-governance",
-    "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0"
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
   },
   "locale": "en-US",
   "policy": {
@@ -158,9 +158,9 @@
       "id": "ev-ci-02",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 308aa32",
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 2faf90e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-27T00:02:23+01:00",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
       "contentHash": "10e15c77d2304b6936476939d1f2a0f5c9ed4eee3fade579ff9b70f99785e44b",
       "excerpt": "et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.",
       "subject": {
@@ -315,9 +315,9 @@
       "id": "ev-ci-07",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 308aa32",
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 2faf90e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-27T00:02:23+01:00",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
       "contentHash": "518e3aba1c13c84ad4be1f40eab9d05f216392474b4fd2304e4e4811f41b4a8d",
       "excerpt": "Il ne rédige aucun contenu et n'ouvre aucune PR éditoriale.",
       "subject": {
@@ -346,9 +346,9 @@
       "id": "ev-ci-08",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 308aa32",
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 2faf90e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-27T00:02:23+01:00",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
       "contentHash": "3f5b32cb3cd3f81f9ef86009a8ec36f692309dc4678cddc20f9652aefe9e8ee0",
       "excerpt": "| `no_public_content` | Le changement ne mérite aucun contenu public |",
       "subject": {
@@ -501,9 +501,9 @@
       "id": "ev-ci-14",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 308aa32",
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 2faf90e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-27T00:02:23+01:00",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
       "contentHash": "199e8ed9b5b1974a31f40ee06df2ade65c98af5c983dfdb23a271b2814a38968",
       "excerpt": "Aucun outil ne lit le code pour deviner qu'un changement mérite un article.",
       "subject": {

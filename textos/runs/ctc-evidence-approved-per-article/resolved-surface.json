@@ -329,7 +329,7 @@
   },
   "policyId": "textos-article-review@0.1",
   "policyVersion": "surface-policy@1",
-  "readingTimeMinutes": 5,
+  "readingTimeMinutes": 4,
   "resolvedSchemaVersion": "resolved-content-surface@1",
   "slug": "a-source-is-not-evidence-until-someone-approves-it",
   "surface": "reference",

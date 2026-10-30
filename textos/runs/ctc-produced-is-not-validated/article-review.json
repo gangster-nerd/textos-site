@@ -6,6 +6,15 @@
     "blockers": [],
     "cmoV2Issues": []
   },
+  "earlyDisclosure": {
+    "capabilityId": "grounded-truth-check",
+    "status": "public_beta",
+    "label": "beta",
+    "cta": "beta_access",
+    "gateVersion": "early-disclosure-gate@1",
+    "labelText": "Beta",
+    "availabilityPromises": []
+  },
   "cmoV2Conformance": {
     "version": "article-cmo-v2@1",
     "documentId": "textos-site:ctc:ctc-produced-is-not-validated",
@@ -131,7 +140,7 @@
     ],
     "readingTimeMinutes": {
       "class": "POLICY_COMPUTED",
-      "value": 4
+      "value": 3
     }
   },
   "editorialQuality": {
@@ -240,5 +249,5 @@
     }
   ],
   "sourcesWithheld": [],
-  "readingTimeMinutes": 4
+  "readingTimeMinutes": 3
 }

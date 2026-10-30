@@ -3,12 +3,12 @@
   "articleId": "ctc-credentials-expire-and-stop",
   "textos": {
     "repository": "gangster-nerd/textos-v0",
-    "sha": "101292687b5081a06a611d3853a956d3552e0643"
+    "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
   },
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "articleReviewMethodVersion": "ctc-article-review@0.1",
   "executionPlanHash": "974cf757c1e021b9016ace37bc1a469c90ef11d1847791fafe53d1e44733ff41",
-  "ctcHandoffHash": "2db5808e19e0650baf18a1f6bcf08c7fcfe460e0cfe9a34c02636ca136e17e39",
+  "ctcHandoffHash": "52ef0198dbecc7c7803db3b862cd72b4e27514e62356a00699f58bd2f98dc62a",
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
@@ -24,7 +24,7 @@
   },
   "releaseAllowed": true,
   "publicationChannel": "controlled_preview",
-  "canonicalProductSha": "308aa3276f9d0f80035478545e34f4885c0349e0",
+  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
   "promptHashes": {
     "title": "e66c27fe3a08778ae298c13665d9f31cc5153112d6261d1d5ee032498d610f16",
     "meta": "64527902134cad39bb9baf2114f8415fb71597128bb1e253354da4e25e4e7637",
@@ -55,7 +55,7 @@
     "access-that-ends": "17b913ea98d91d4cf171aa9dcc071f993ad499051d3b57496d9db44e216827d0"
   },
   "contentDocumentSha256": "fc960a2501d3762a55c3e730e0375374c56516d1c7e59a87b53827430fc58f29",
-  "lineageSha256": "0dfb323ac0cf2a00cc38bc995f2216dda3f47d496b05f5919f4af58c6a15e9ef",
-  "resolvedSurfaceSha256": "3c4cdab15b443877132590da7591dc7b94aed2327ebe75419fcc1f7cea513f2f",
-  "articleReviewSha256": "75010aff871b9523caa27ea26ca197679fe4f838025e91a4a5b51d386da1f1a4"
+  "lineageSha256": "700dd64d06adc0cca421c5519a229791f62df783d298e4e5c28dabf78de61e36",
+  "resolvedSurfaceSha256": "f96a7e9f03c6827ebb526abd9b3cdde0a864d75450173f2cc1bde31a0f479f1d",
+  "articleReviewSha256": "2069344740710840cdf6b91cfd440eccbe3dc27888c34d8de53506ce8387fa4a"
 }

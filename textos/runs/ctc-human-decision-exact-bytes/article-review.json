@@ -6,6 +6,7 @@
     "blockers": [],
     "cmoV2Issues": []
   },
+  "earlyDisclosure": null,
   "cmoV2Conformance": {
     "version": "article-cmo-v2@1",
     "documentId": "textos-site:ctc:ctc-human-decision-exact-bytes",
@@ -130,7 +131,7 @@
     ],
     "readingTimeMinutes": {
       "class": "POLICY_COMPUTED",
-      "value": 4
+      "value": 3
     }
   },
   "editorialQuality": {
@@ -247,5 +248,5 @@
     }
   ],
   "sourcesWithheld": [],
-  "readingTimeMinutes": 4
+  "readingTimeMinutes": 3
 }

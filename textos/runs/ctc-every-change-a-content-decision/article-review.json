@@ -6,6 +6,7 @@
     "blockers": [],
     "cmoV2Issues": []
   },
+  "earlyDisclosure": null,
   "cmoV2Conformance": {
     "version": "article-cmo-v2@1",
     "documentId": "textos-site:ctc:ctc-every-change-a-content-decision",
@@ -257,7 +258,7 @@
     },
     {
       "ref": "ev-ci-02",
-      "title": "TextOS product repository file changes/content-impact/README.md at 308aa32"
+      "title": "TextOS product repository file changes/content-impact/README.md at 2faf90e"
     },
     {
       "ref": "ev-ci-05",

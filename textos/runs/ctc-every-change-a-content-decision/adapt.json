@@ -1,9 +1,9 @@
 {
-  "textosRef": "101292687b5081a06a611d3853a956d3552e0643",
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "how to decide which product changes deserve public content",
-  "executionPlanHash": "bac0370fe9a1b65f1561277d9f5899b08654f5fdd3862e2e06b89ff918f8ee32",
-  "ctcHandoffHash": "651797e68a733ac66c588d12616e513dcdcd9728f976f0b17fb8cdc4d082b5bf",
+  "executionPlanHash": "ba50567f65548a99e1a14def4ebab316e6604debc4ced80478e48f633d6790dd",
+  "ctcHandoffHash": "6b3b4a5dd4fa725ca20e7f5278add8a8a4bea00e296db25f1773b80b82b30a1e",
   "promptHashes": {
     "title": "e78efe1e4252748951adfd149629f4fe6a70eba10f9bb6aca55885be44aebf19",
     "meta": "cfb9ec09217a45233525e08cd4475f92297abf4bce3b60667a040427a4b65fd6",

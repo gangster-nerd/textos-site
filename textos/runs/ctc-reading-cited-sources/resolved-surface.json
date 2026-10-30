@@ -263,7 +263,7 @@
       "block": {
         "data": {
           "ref": "ev-rs-10",
-          "title": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 308aa32"
+          "title": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 2faf90e"
         },
         "id": "source:3:ev-rs-10",
         "kind": "source"
@@ -329,7 +329,7 @@
   },
   "policyId": "textos-article-review@0.1",
   "policyVersion": "surface-policy@1",
-  "readingTimeMinutes": 4,
+  "readingTimeMinutes": 3,
   "resolvedSchemaVersion": "resolved-content-surface@1",
   "slug": "how-an-ai-content-tool-should-read-your-sources",
   "surface": "reference",

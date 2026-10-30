@@ -6,6 +6,7 @@
     "blockers": [],
     "cmoV2Issues": []
   },
+  "earlyDisclosure": null,
   "cmoV2Conformance": {
     "version": "article-cmo-v2@1",
     "documentId": "textos-site:ctc:ctc-reading-cited-sources",
@@ -130,7 +131,7 @@
     ],
     "readingTimeMinutes": {
       "class": "POLICY_COMPUTED",
-      "value": 4
+      "value": 3
     }
   },
   "editorialQuality": {
@@ -239,7 +240,7 @@
     },
     {
       "ref": "ev-rs-10",
-      "title": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 308aa32"
+      "title": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 2faf90e"
     },
     {
       "ref": "ev-rs-06",
@@ -251,5 +252,5 @@
     }
   ],
   "sourcesWithheld": [],
-  "readingTimeMinutes": 4
+  "readingTimeMinutes": 3
 }
