@@ -1,0 +1,77 @@
+{
+  "text": "Ask whether the tool checks a draft against your brief separately from checking its facts. Ask what happens to a required point the draft does not cover, and who can accept leaving it out. Ask whether a passing mention with no source behind it counts as covering a topic. Ask what a blocked draft shows you: a single score, or a list of what is missing. Ask how the tool decides that your target search query was addressed, and what that test cannot see. Ask whether a point left out on purpose stays visible, with its reason, to the person who reviews the draft.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Ask whether the tool checks a draft against your brief separately from checking its facts.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask what happens to a required point the draft does not cover, and who can accept leaving it out.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether a passing mention with no source behind it counts as covering a topic.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask what a blocked draft shows you: a single score, or a list of what is missing.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask how the tool decides that your target search query was addressed, and what that test cannot see.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Ask whether a point left out on purpose stays visible, with its reason, to the person who reviews the draft.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

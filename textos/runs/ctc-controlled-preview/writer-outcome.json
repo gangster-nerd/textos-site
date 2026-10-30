@@ -1,0 +1,945 @@
+{
+  "status": "written",
+  "result": {
+    "planId": "how to preview an ai written article before it is published",
+    "planHash": "4f36ab52649830e3a964d7626320f74e11d49ded7cc9b38c7e139e8ab746d29b",
+    "slots": [
+      {
+        "slotId": "title",
+        "role": "title",
+        "headingLevel": null,
+        "heading": null,
+        "text": "A TextOS preview publishes nothing and shows only the draft that was handed over",
+        "statementIds": [
+          "stmt:5:title:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-01",
+          "ev-cp-06"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-01",
+          "ev-cp-06"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "meta",
+        "role": "meta_description",
+        "headingLevel": null,
+        "heading": null,
+        "text": "In TextOS a controlled preview is internal and kept out of search, not a publication, and it refuses a draft whose fingerprints do not match the handover.",
+        "statementIds": [
+          "stmt:4:meta:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-01",
+          "ev-cp-06"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-01",
+          "ev-cp-06"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "lead",
+        "role": "lead",
+        "headingLevel": null,
+        "heading": null,
+        "text": "Someone sends you a link to an AI-written draft and asks for your sign-off before anything goes live. Two questions come before the prose itself: is this page already visible to the public, and is it the version that was actually checked? In TextOS, a controlled preview is not a publication: it is an internal page that search engines are told not to index, and no public address is set for it. This note explains what that preview is, how the draft on it is tied to the one that passed the checks, and what it leaves to you.",
+        "statementIds": [
+          "stmt:4:lead:2:s1",
+          "stmt:4:lead:2:s2",
+          "stmt:4:lead:2:s3",
+          "stmt:4:lead:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-01"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-01"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "answer",
+        "role": "answer",
+        "headingLevel": 2,
+        "heading": "How do you review an AI draft before anything is published?",
+        "text": "In TextOS, a draft can be previewed only once it has passed both the fact-check and the check that it actually answers the brief it was written for. The preview then opens the exact draft named in the handover record, recalculates its fingerprints, the short codes computed from the text, and refuses to show anything if one of them does not match. What you then read is an internal page in a preview state of its own, distinct from published. Your review therefore starts from a draft that cleared two checks, on a page that is not published.",
+        "statementIds": [
+          "stmt:6:answer:2:s1",
+          "stmt:6:answer:2:s2",
+          "stmt:6:answer:2:s3",
+          "stmt:6:answer:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-12",
+          "ev-cp-06",
+          "ev-cp-01"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-01",
+          "ev-cp-06",
+          "ev-cp-12"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-1",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "A preview is not a publication",
+        "text": "The preview page carries an instruction asking search engines not to index it, follow its links, archive it or show a snippet of it. No publication date and no public address are recorded for a previewed draft, and the preview is marked as not public. Producing the preview involves no network call and no live publishing.\n\nTextOS keeps three states apart: whether the draft passed its fact-check, whether it was previewed, and whether it was published. A preview cannot be mistaken for a go-live, and a go-live cannot be read into a passing check. Previewing a draft leaves its checked status in place, so the same draft can be previewed again, which a test now covers.",
+        "statementIds": [
+          "stmt:9:section-1:2:s1",
+          "stmt:9:section-1:2:s2",
+          "stmt:9:section-1:2:s3",
+          "stmt:9:section-1:2:s4",
+          "stmt:9:section-1:2:s5",
+          "stmt:9:section-1:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-09",
+          "ev-cp-14",
+          "ev-cp-03",
+          "ev-cp-13",
+          "ev-cp-15"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-03",
+          "ev-cp-09",
+          "ev-cp-13",
+          "ev-cp-14",
+          "ev-cp-15"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-2",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "The page you read is the draft that was checked",
+        "text": "The preview step in TextOS no longer picks whichever draft is the latest one. Picking the latest draft is a quiet risk: if another version is saved in between, the page you sign off on may not be the one that was checked. Instead, the preview loads the draft by the identifier written in the handover record and recomputes its fingerprints, with no fallback to the latest version. The comparison stops at the first fingerprint that differs, with no tolerance.\n\nThe fingerprint of the content is computed with its fields in a fixed order, so the same draft gives the same fingerprint after it has been stored and read back. A draft written outside TextOS and imported by hand is rejected if it does not match the brief, the set of evidence or the instructions it was meant for. A mismatch is treated as a reason to stop, not as a detail to smooth over.",
+        "statementIds": [
+          "stmt:9:section-2:2:s1",
+          "stmt:9:section-2:2:s2",
+          "stmt:9:section-2:2:s3",
+          "stmt:9:section-2:2:s4",
+          "stmt:9:section-2:2:s5",
+          "stmt:9:section-2:2:s6",
+          "stmt:9:section-2:2:s7"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-05",
+          "ev-cp-06",
+          "ev-cp-10",
+          "ev-cp-07",
+          "ev-cp-19"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-05",
+          "ev-cp-06",
+          "ev-cp-07",
+          "ev-cp-10",
+          "ev-cp-19"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "checked-to-preview-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "In TextOS a draft reaches the internal preview only after both checks pass, any differing fingerprint stops it, and no public address is set.",
+        "statementIds": [
+          "stmt:26:checked-to-preview-caption:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-12",
+          "ev-cp-10",
+          "ev-cp-14"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-10",
+          "ev-cp-12",
+          "ev-cp-14"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-3",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "The page says how the draft was made",
+        "text": "The preview page opens with a banner that states where the draft came from. It says the draft was generated live only when a real live writing run took place; a draft imported by hand or replayed from a recorded example is shown as not generated live, and an origin TextOS cannot recognise stops the preview instead of being guessed. The same banner says the page is an internal preview, not a customer story.\n\nThe preview record keeps a fingerprint of the content, of the rendered page and of the file produced, along with the version of the template that laid the page out. After the preview file is written, its fingerprint on disk is compared with the one in that record. If someone later asks which page was approved, the answer is a fingerprint to compare, not a recollection.",
+        "statementIds": [
+          "stmt:9:section-3:2:s1",
+          "stmt:9:section-3:2:s2",
+          "stmt:9:section-3:2:s3",
+          "stmt:9:section-3:2:s4",
+          "stmt:9:section-3:2:s5",
+          "stmt:9:section-3:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-16",
+          "ev-cp-02",
+          "ev-cp-17",
+          "ev-cp-08",
+          "ev-cp-11"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-02",
+          "ev-cp-08",
+          "ev-cp-11",
+          "ev-cp-16",
+          "ev-cp-17"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-4",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What the preview does not decide",
+        "text": "The handover in TextOS carries a draft and its fingerprints from writing to preview, and by its own stated limit it vouches for nothing in the content itself. A matching fingerprint tells you the page was not swapped; it does not tell you the argument is sound or the examples are useful. A draft whose fact-check did not pass, or whose brief was not accepted, never reaches the preview. The preview comes after those checks; it is not a further check of quality.\n\nPublication is its own state in TextOS, distinct from the preview, so going live remains a separate step after your reading. Whether the article is useful, well argued and worth publishing under your name is still for the person reading the preview to judge.",
+        "statementIds": [
+          "stmt:9:section-4:2:s1",
+          "stmt:9:section-4:2:s2",
+          "stmt:9:section-4:2:s3",
+          "stmt:9:section-4:2:s4",
+          "stmt:9:section-4:2:s5",
+          "stmt:9:section-4:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cp-18",
+          "ev-cp-04",
+          "ev-cp-13"
+        ],
+        "usableEvidenceIds": [
+          "ev-cp-18",
+          "ev-cp-04",
+          "ev-cp-13"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI writing vendor",
+        "text": "Ask whether a preview of an AI draft has a public address, and whether search engines are told to ignore it. Ask how the tool knows that the draft on the preview page is the one that passed its checks, and what happens when the two differ. Ask whether the preview picks the latest draft or a draft named explicitly. Ask whether the page tells you how the text was produced, and what it shows when that origin is unknown. Ask which decisions a preview does not make for you, starting with publication.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4",
+          "stmt:6:verify:2:s5"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "A related note explains why an article that was produced is not yet an article that was checked. Another explains why an agent can prepare a draft for your website but cannot approve it.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      }
+    ],
+    "document": {
+      "title": "A TextOS preview publishes nothing and shows only the draft that was handed over",
+      "slug": "a-textos-preview-publishes-nothing-and-shows-only-the-draft-that-was-handed-over",
+      "metaDescription": "In TextOS a controlled preview is internal and kept out of search, not a publication, and it refuses a draft whose fingerprints do not match the handover.",
+      "body": "Someone sends you a link to an AI-written draft and asks for your sign-off before anything goes live. Two questions come before the prose itself: is this page already visible to the public, and is it the version that was actually checked? In TextOS, a controlled preview is not a publication: it is an internal page that search engines are told not to index, and no public address is set for it. This note explains what that preview is, how the draft on it is tied to the one that passed the checks, and what it leaves to you.\n\nThe preview page carries an instruction asking search engines not to index it, follow its links, archive it or show a snippet of it. No publication date and no public address are recorded for a previewed draft, and the preview is marked as not public. Producing the preview involves no network call and no live publishing.\n\nTextOS keeps three states apart: whether the draft passed its fact-check, whether it was previewed, and whether it was published. A preview cannot be mistaken for a go-live, and a go-live cannot be read into a passing check. Previewing a draft leaves its checked status in place, so the same draft can be previewed again, which a test now covers.\n\nThe preview step in TextOS no longer picks whichever draft is the latest one. Picking the latest draft is a quiet risk: if another version is saved in between, the page you sign off on may not be the one that was checked. Instead, the preview loads the draft by the identifier written in the handover record and recomputes its fingerprints, with no fallback to the latest version. The comparison stops at the first fingerprint that differs, with no tolerance.\n\nThe fingerprint of the content is computed with its fields in a fixed order, so the same draft gives the same fingerprint after it has been stored and read back. A draft written outside TextOS and imported by hand is rejected if it does not match the brief, the set of evidence or the instructions it was meant for. A mismatch is treated as a reason to stop, not as a detail to smooth over.\n\nIn TextOS a draft reaches the internal preview only after both checks pass, any differing fingerprint stops it, and no public address is set.\n\nThe preview page opens with a banner that states where the draft came from. It says the draft was generated live only when a real live writing run took place; a draft imported by hand or replayed from a recorded example is shown as not generated live, and an origin TextOS cannot recognise stops the preview instead of being guessed. The same banner says the page is an internal preview, not a customer story.\n\nThe preview record keeps a fingerprint of the content, of the rendered page and of the file produced, along with the version of the template that laid the page out. After the preview file is written, its fingerprint on disk is compared with the one in that record. If someone later asks which page was approved, the answer is a fingerprint to compare, not a recollection.\n\nThe handover in TextOS carries a draft and its fingerprints from writing to preview, and by its own stated limit it vouches for nothing in the content itself. A matching fingerprint tells you the page was not swapped; it does not tell you the argument is sound or the examples are useful. A draft whose fact-check did not pass, or whose brief was not accepted, never reaches the preview. The preview comes after those checks; it is not a further check of quality.\n\nPublication is its own state in TextOS, distinct from the preview, so going live remains a separate step after your reading. Whether the article is useful, well argued and worth publishing under your name is still for the person reading the preview to judge.\n\nAsk whether a preview of an AI draft has a public address, and whether search engines are told to ignore it. Ask how the tool knows that the draft on the preview page is the one that passed its checks, and what happens when the two differ. Ask whether the preview picks the latest draft or a draft named explicitly. Ask whether the page tells you how the text was produced, and what it shows when that origin is unknown. Ask which decisions a preview does not make for you, starting with publication.\n\nA related note explains why an article that was produced is not yet an article that was checked. Another explains why an agent can prepare a draft for your website but cannot approve it.",
+      "faq": [
+        {
+          "question": "How do you review an AI draft before anything is published?",
+          "answer": "In TextOS, a draft can be previewed only once it has passed both the fact-check and the check that it actually answers the brief it was written for. The preview then opens the exact draft named in the handover record, recalculates its fingerprints, the short codes computed from the text, and refuses to show anything if one of them does not match. What you then read is an internal page in a preview state of its own, distinct from published. Your review therefore starts from a draft that cleared two checks, on a page that is not published."
+        }
+      ],
+      "statementLedger": [
+        {
+          "id": "stmt:5:title:2:s1",
+          "text": "A TextOS preview publishes nothing and shows only the draft that was handed over",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-01",
+            "ev-cp-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:meta:2:s1",
+          "text": "In TextOS a controlled preview is internal and kept out of search, not a publication, and it refuses a draft whose fingerprints do not match the handover.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-01",
+            "ev-cp-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s1",
+          "text": "Someone sends you a link to an AI-written draft and asks for your sign-off before anything goes live.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s2",
+          "text": "Two questions come before the prose itself: is this page already visible to the public, and is it the version that was actually checked?",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s3",
+          "text": "In TextOS, a controlled preview is not a publication: it is an internal page that search engines are told not to index, and no public address is set for it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s4",
+          "text": "This note explains what that preview is, how the draft on it is tied to the one that passed the checks, and what it leaves to you.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s1",
+          "text": "In TextOS, a draft can be previewed only once it has passed both the fact-check and the check that it actually answers the brief it was written for.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-12"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s2",
+          "text": "The preview then opens the exact draft named in the handover record, recalculates its fingerprints, the short codes computed from the text, and refuses to show anything if one of them does not match.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s3",
+          "text": "What you then read is an internal page in a preview state of its own, distinct from published.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s4",
+          "text": "Your review therefore starts from a draft that cleared two checks, on a page that is not published.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s1",
+          "text": "The preview page carries an instruction asking search engines not to index it, follow its links, archive it or show a snippet of it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s2",
+          "text": "No publication date and no public address are recorded for a previewed draft, and the preview is marked as not public.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-14"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s3",
+          "text": "Producing the preview involves no network call and no live publishing.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s4",
+          "text": "TextOS keeps three states apart: whether the draft passed its fact-check, whether it was previewed, and whether it was published.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-13"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s5",
+          "text": "A preview cannot be mistaken for a go-live, and a go-live cannot be read into a passing check.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s6",
+          "text": "Previewing a draft leaves its checked status in place, so the same draft can be previewed again, which a test now covers.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-15"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s1",
+          "text": "The preview step in TextOS no longer picks whichever draft is the latest one.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-05"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s2",
+          "text": "Picking the latest draft is a quiet risk: if another version is saved in between, the page you sign off on may not be the one that was checked.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s3",
+          "text": "Instead, the preview loads the draft by the identifier written in the handover record and recomputes its fingerprints, with no fallback to the latest version.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s4",
+          "text": "The comparison stops at the first fingerprint that differs, with no tolerance.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s5",
+          "text": "The fingerprint of the content is computed with its fields in a fixed order, so the same draft gives the same fingerprint after it has been stored and read back.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-07"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s6",
+          "text": "A draft written outside TextOS and imported by hand is rejected if it does not match the brief, the set of evidence or the instructions it was meant for.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-19"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s7",
+          "text": "A mismatch is treated as a reason to stop, not as a detail to smooth over.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:26:checked-to-preview-caption:2:s1",
+          "text": "In TextOS a draft reaches the internal preview only after both checks pass, any differing fingerprint stops it, and no public address is set.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-12",
+            "ev-cp-10",
+            "ev-cp-14"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s1",
+          "text": "The preview page opens with a banner that states where the draft came from.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-16"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s2",
+          "text": "It says the draft was generated live only when a real live writing run took place; a draft imported by hand or replayed from a recorded example is shown as not generated live, and an origin TextOS cannot recognise stops the preview instead of being guessed.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s3",
+          "text": "The same banner says the page is an internal preview, not a customer story.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-17"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s4",
+          "text": "The preview record keeps a fingerprint of the content, of the rendered page and of the file produced, along with the version of the template that laid the page out.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s5",
+          "text": "After the preview file is written, its fingerprint on disk is compared with the one in that record.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-11"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s6",
+          "text": "If someone later asks which page was approved, the answer is a fingerprint to compare, not a recollection.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s1",
+          "text": "The handover in TextOS carries a draft and its fingerprints from writing to preview, and by its own stated limit it vouches for nothing in the content itself.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-18"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s2",
+          "text": "A matching fingerprint tells you the page was not swapped; it does not tell you the argument is sound or the examples are useful.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s3",
+          "text": "A draft whose fact-check did not pass, or whose brief was not accepted, never reaches the preview.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-04"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s4",
+          "text": "The preview comes after those checks; it is not a further check of quality.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s5",
+          "text": "Publication is its own state in TextOS, distinct from the preview, so going live remains a separate step after your reading.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-cp-13"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s6",
+          "text": "Whether the article is useful, well argued and worth publishing under your name is still for the person reading the preview to judge.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s1",
+          "text": "Ask whether a preview of an AI draft has a public address, and whether search engines are told to ignore it.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask how the tool knows that the draft on the preview page is the one that passed its checks, and what happens when the two differ.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask whether the preview picks the latest draft or a draft named explicitly.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "Ask whether the page tells you how the text was produced, and what it shows when that origin is unknown.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s5",
+          "text": "Ask which decisions a preview does not make for you, starting with publication.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "A related note explains why an article that was produced is not yet an article that was checked.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "Another explains why an agent can prepare a draft for your website but cannot approve it.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        }
+      ],
+      "claimsExcluded": [],
+      "sections": [
+        {
+          "key": "lead",
+          "heading": "",
+          "body": "Someone sends you a link to an AI-written draft and asks for your sign-off before anything goes live. Two questions come before the prose itself: is this page already visible to the public, and is it the version that was actually checked? In TextOS, a controlled preview is not a publication: it is an internal page that search engines are told not to index, and no public address is set for it. This note explains what that preview is, how the draft on it is tied to the one that passed the checks, and what it leaves to you."
+        },
+        {
+          "key": "section-1",
+          "heading": "A preview is not a publication",
+          "body": "The preview page carries an instruction asking search engines not to index it, follow its links, archive it or show a snippet of it. No publication date and no public address are recorded for a previewed draft, and the preview is marked as not public. Producing the preview involves no network call and no live publishing.\n\nTextOS keeps three states apart: whether the draft passed its fact-check, whether it was previewed, and whether it was published. A preview cannot be mistaken for a go-live, and a go-live cannot be read into a passing check. Previewing a draft leaves its checked status in place, so the same draft can be previewed again, which a test now covers."
+        },
+        {
+          "key": "section-2",
+          "heading": "The page you read is the draft that was checked",
+          "body": "The preview step in TextOS no longer picks whichever draft is the latest one. Picking the latest draft is a quiet risk: if another version is saved in between, the page you sign off on may not be the one that was checked. Instead, the preview loads the draft by the identifier written in the handover record and recomputes its fingerprints, with no fallback to the latest version. The comparison stops at the first fingerprint that differs, with no tolerance.\n\nThe fingerprint of the content is computed with its fields in a fixed order, so the same draft gives the same fingerprint after it has been stored and read back. A draft written outside TextOS and imported by hand is rejected if it does not match the brief, the set of evidence or the instructions it was meant for. A mismatch is treated as a reason to stop, not as a detail to smooth over."
+        },
+        {
+          "key": "checked-to-preview-caption",
+          "heading": "",
+          "body": "In TextOS a draft reaches the internal preview only after both checks pass, any differing fingerprint stops it, and no public address is set."
+        },
+        {
+          "key": "section-3",
+          "heading": "The page says how the draft was made",
+          "body": "The preview page opens with a banner that states where the draft came from. It says the draft was generated live only when a real live writing run took place; a draft imported by hand or replayed from a recorded example is shown as not generated live, and an origin TextOS cannot recognise stops the preview instead of being guessed. The same banner says the page is an internal preview, not a customer story.\n\nThe preview record keeps a fingerprint of the content, of the rendered page and of the file produced, along with the version of the template that laid the page out. After the preview file is written, its fingerprint on disk is compared with the one in that record. If someone later asks which page was approved, the answer is a fingerprint to compare, not a recollection."
+        },
+        {
+          "key": "section-4",
+          "heading": "What the preview does not decide",
+          "body": "The handover in TextOS carries a draft and its fingerprints from writing to preview, and by its own stated limit it vouches for nothing in the content itself. A matching fingerprint tells you the page was not swapped; it does not tell you the argument is sound or the examples are useful. A draft whose fact-check did not pass, or whose brief was not accepted, never reaches the preview. The preview comes after those checks; it is not a further check of quality.\n\nPublication is its own state in TextOS, distinct from the preview, so going live remains a separate step after your reading. Whether the article is useful, well argued and worth publishing under your name is still for the person reading the preview to judge."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI writing vendor",
+          "body": "Ask whether a preview of an AI draft has a public address, and whether search engines are told to ignore it. Ask how the tool knows that the draft on the preview page is the one that passed its checks, and what happens when the two differ. Ask whether the preview picks the latest draft or a draft named explicitly. Ask whether the page tells you how the text was produced, and what it shows when that origin is unknown. Ask which decisions a preview does not make for you, starting with publication."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "A related note explains why an article that was produced is not yet an article that was checked. Another explains why an agent can prepare a draft for your website but cannot approve it."
+        }
+      ]
+    },
+    "structuredContentHash": "6af5b23734620653de01361c4abcfe1a9800f65b987ad42032aac7b5b05c39ff",
+    "writerMethodVersion": "geo-writer@0.2",
+    "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+    "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+    "truthCheck": {
+      "verdict": "pass",
+      "contradictions": []
+    }
+  }
+}

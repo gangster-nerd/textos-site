@@ -1,0 +1,97 @@
+{
+  "text": "The preview page carries an instruction asking search engines not to index it, follow its links, archive it or show a snippet of it. No publication date and no public address are recorded for a previewed draft, and the preview is marked as not public. Producing the preview involves no network call and no live publishing.\n\nTextOS keeps three states apart: whether the draft passed its fact-check, whether it was previewed, and whether it was published. A preview cannot be mistaken for a go-live, and a go-live cannot be read into a passing check. Previewing a draft leaves its checked status in place, so the same draft can be previewed again, which a test now covers.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The preview page carries an instruction asking search engines not to index it, follow its links, archive it or show a snippet of it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "No publication date and no public address are recorded for a previewed draft, and the preview is marked as not public.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Producing the preview involves no network call and no live publishing.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "TextOS keeps three states apart: whether the draft passed its fact-check, whether it was previewed, and whether it was published.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "A preview cannot be mistaken for a go-live, and a go-live cannot be read into a passing check.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Previewing a draft leaves its checked status in place, so the same draft can be previewed again, which a test now covers.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

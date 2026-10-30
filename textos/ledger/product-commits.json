@@ -2,14 +2,87 @@
   "ledgerVersion": 1,
   "productRepository": "gangster-nerd/textos-v0",
   "productRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
-  "commitCount": 28,
+  "commitCount": 39,
   "commits": [
+    {
+      "sha": "a944097c401d066154719c2a09c882a9cc970e54",
+      "date": "2026-08-05T12:09:55+02:00",
+      "subject": "feat(textos): evidence-grounded TruthCheck V0 strict + structured draft (DEMO-GB-3 slice 2, offline)",
+      "citedBy": [
+        "ctc-structured-generation"
+      ]
+    },
     {
       "sha": "4d37616453f5d0fed24a8054314d49651e33af6b",
       "date": "2026-08-05T12:30:59+02:00",
       "subject": "feat(change-impact): contrat d'impact éditorial (C0B)",
       "citedBy": [
         "ctc-every-change-a-content-decision"
+      ]
+    },
+    {
+      "sha": "1a32727659c37d6991218e7ff2251691a5bc293a",
+      "date": "2026-08-05T12:31:00+02:00",
+      "subject": "feat(textos): structured Voie B generation pipeline + additive content_draft migration (DEMO-GB-3 slice 3a, offline)",
+      "citedBy": [
+        "ctc-structured-generation"
+      ]
+    },
+    {
+      "sha": "5b1dba979f964b330550562b457a6ebd1cae0740",
+      "date": "2026-08-06T12:29:12+02:00",
+      "subject": "feat(textos): add portable generation handoff (export prompt + import) with honest provenance",
+      "citedBy": [
+        "ctc-controlled-preview"
+      ]
+    },
+    {
+      "sha": "cbe25796510ba1bdf5bc3cf43f421401013ac1c1",
+      "date": "2026-08-06T12:53:43+02:00",
+      "subject": "feat(textos): add controlled preview (S12a) with honest provenance and noindex, no publication",
+      "citedBy": [
+        "ctc-controlled-preview"
+      ]
+    },
+    {
+      "sha": "865924aaf1c14ffaa8903c246cdd13272f518559",
+      "date": "2026-08-06T18:13:57+02:00",
+      "subject": "feat(textos): explicit generation→preview handoff + preview receipt integrity (DEMO-GB-4 Porte 1)",
+      "citedBy": [
+        "ctc-controlled-preview"
+      ]
+    },
+    {
+      "sha": "25b4c04658ef9764c027865a4b917cb923125193",
+      "date": "2026-08-07T10:17:21+02:00",
+      "subject": "feat(textos): add BriefFulfillment check + real 8-section fixture (DEMO-GB-4 Porte 2)",
+      "citedBy": [
+        "ctc-brief-fulfillment-check",
+        "ctc-controlled-preview"
+      ]
+    },
+    {
+      "sha": "7ac42fb6675e2a4fdded8bcb4224b21cc3d1f26a",
+      "date": "2026-08-07T11:54:58+02:00",
+      "subject": "feat(textos): materialize re-observation plan in a dedicated table (DEMO-GB-4 Porte 4)",
+      "citedBy": [
+        "ctc-re-observation-plan"
+      ]
+    },
+    {
+      "sha": "0191bcfa9c243b0361c1b87eb629669909c25d1e",
+      "date": "2026-08-07T13:22:05+02:00",
+      "subject": "fix(textos): make controlled preview orthogonal to the validation verdict (DEMO-GB-4)",
+      "citedBy": [
+        "ctc-controlled-preview"
+      ]
+    },
+    {
+      "sha": "2ff1e76c7dd8dc2cc48d14e41e0babb1b20e0a65",
+      "date": "2026-08-07T13:27:12+02:00",
+      "subject": "docs: add ADR-015 v2 for proven end-to-end generation flow",
+      "citedBy": [
+        "ctc-brief-fulfillment-check"
       ]
     },
     {
@@ -93,6 +166,14 @@
       ]
     },
     {
+      "sha": "a9b4c6377afb545d50d5b6e5b38aa0d05fc96e1d",
+      "date": "2026-10-01T21:10:19+00:00",
+      "subject": "fix(ux): never present a re-measurement window as scheduled",
+      "citedBy": [
+        "ctc-re-observation-plan"
+      ]
+    },
+    {
       "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
       "date": "2026-10-23T17:04:00+00:00",
       "subject": "feat(writer): Writer Fabric P0a — governed fallback between writer profiles",
@@ -113,6 +194,7 @@
       "date": "2026-10-25T12:09:13+00:00",
       "subject": "feat: verdicts réels et intégrité des décisions d'article (article quality v1, lot a)",
       "citedBy": [
+        "ctc-brief-fulfillment-check",
         "ctc-produced-is-not-validated"
       ]
     },
@@ -219,6 +301,14 @@
       "subject": "test(continuity): verify original brief contributions independently",
       "citedBy": [
         "ctc-produced-is-not-validated"
+      ]
+    },
+    {
+      "sha": "3fb731a02b57773658b4c270c32052e6c22eeec0",
+      "date": "2026-10-29T13:17:02+00:00",
+      "subject": "feat(truth): premier lot de divulgation anticipée — six capacités du pipeline Act en bêta (ADR-035)",
+      "citedBy": [
+        "ctc-brief-fulfillment-check"
       ]
     },
     {

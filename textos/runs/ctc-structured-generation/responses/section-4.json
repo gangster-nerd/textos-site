@@ -1,0 +1,89 @@
+{
+  "text": "In TextOS, the system rather than the writing model records the draft's provenance: which evidence set was used, which generation method produced it, and a fingerprint of the input. The recorded method reflects how the text was actually produced, and it never names a live model run that did not take place. That record is what lets someone audit a surprising draft later without relying on anyone's memory of how it was made.\n\nThe stated limit is plain: the result is a structured draft backed by evidence, and this step never publishes it. Whether and where a draft appears is decided at a later stage, so a draft that passes its checks is still a draft. Treat it as material for an editor's review, not as copy ready to go live.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS, the system rather than the writing model records the draft's provenance: which evidence set was used, which generation method produced it, and a fingerprint of the input.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The recorded method reflects how the text was actually produced, and it never names a live model run that did not take place.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "That record is what lets someone audit a surprising draft later without relying on anyone's memory of how it was made.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The stated limit is plain: the result is a structured draft backed by evidence, and this step never publishes it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Whether and where a draft appears is decided at a later stage, so a draft that passes its checks is still a draft.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Treat it as material for an editor's review, not as copy ready to go live.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

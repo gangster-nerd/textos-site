@@ -1,0 +1,827 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "brief-fulfillment-v1-2026-08-07",
+        "sourceCommits": [
+          "25b4c04658ef9764c027865a4b917cb923125193"
+        ]
+      },
+      {
+        "groupId": "generation-flow-adr-2026-08-07",
+        "sourceCommits": [
+          "2ff1e76c7dd8dc2cc48d14e41e0babb1b20e0a65"
+        ]
+      },
+      {
+        "groupId": "article-readiness-lot-a-2026-10-25",
+        "sourceCommits": [
+          "16faee404184d31e40d907e885d3bf0867c7eea4"
+        ]
+      },
+      {
+        "groupId": "early-disclosure-batch-2026-10-29",
+        "sourceCommits": [
+          "3fb731a02b57773658b4c270c32052e6c22eeec0"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I tell whether an AI-written draft actually answers the brief I gave it, and not just that its facts are right?",
+    "targetQuery": "how to check that an ai written draft answers the content brief",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "article-validation",
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-brief-fulfillment-check",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-bf-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 25b4c04, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T10:17:21+02:00",
+      "contentHash": "81c70ec72d18ac9e0cc037c12f9f514d671d9436bce1e04ef189d4a40e25d32c",
+      "excerpt": "\"true content\" is not \"useful content\". TruthCheck=pass only proves grounding, not that the draft answers the accepted brief.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 25b4c04, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T10:17:21+02:00",
+      "contentHash": "dd92d5e1a7b0a2e52e17706796bd6770ce4e1b1e35e5de49fc1a08c08cabe32c",
+      "excerpt": "add BriefFulfillmentCheck (distinct from TruthCheck): required claim types covered by grounded statements or human-accepted exclusions, required editorial sections, target query",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 25b4c04, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T10:17:21+02:00",
+      "contentHash": "920bee255fcc2938f4dc035ad8dd4bac8cf38d8a709ee98a708600b1c51c1d08",
+      "excerpt": "enforce invariant in preview: preview only if TruthCheck=pass AND BriefFulfillment=pass",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 25b4c04, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T10:17:21+02:00",
+      "contentHash": "61c2743ad19156cfdd7ccad61b1a834f9b450d6e37d35355af7b03eab033a380",
+      "excerpt": "the former 2-sentence fixture is now a BriefFulfillment BLOCK oracle",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Refers to a test sample: a two-sentence draft kept as the reference case the check must block."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "ec19c66655029f147b409710f4f22bec12bdea60b33c44f6bb06183032865fdc",
+      "excerpt": "un statement NON fondé ne couvre pas un claim (evidenceIds vide)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Test name in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "df30b87eb86f7ba168eb768d7f3fe45940e7b93790d69ff095f071d77ace1ade",
+      "excerpt": "La requête cible est « adressée » si tous ses mots-clés saillants apparaissent dans le contenu rendu.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Source-code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "71f8b8cb6d92bd946fe32e7762f099b210274b7e5bb18de5166123cbaeb6b341",
+      "excerpt": "**TruthCheck=pass prouve « fondé », pas « utile »**. Un draft peut être certifié vrai en ne couvrant qu'un des claims requis du brief → « vide certifié vrai ».",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product manifest, brief-fulfillment-check.knownLimits",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "98aaadb62a7013955f053a5d4fcdb0772645daee62a11690d24f2b9cd7b905fa",
+      "excerpt": "Distinct du TruthCheck : mesure si le brouillon répond au brief, pas s'il dit vrai.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest known limit, in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/article-readiness.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "d2f0594f8aa140e1274d4c4c39fa65d2cd21b345a80c94e18579374349f34cf1",
+      "excerpt": "Brief Fulfillment : un `article_ready` l'a franchi (sinon `fulfillment_blocked`).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Source-code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/article-creation-spine.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "fe3482987092b5c6097a96c98b66c47fcd336cc7f4fb17f806d1386702011e60",
+      "excerpt": "status: \"fulfillment_blocked\", missingSections: fulfillment.missingSections, uncoveredClaimTypes: fulfillment.uncoveredClaimTypes.map((x) => x.claimType), targetQueryAddressed: fulfillment.targetQueryAddressed,",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Source code: the fields of a blocked result."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "b5c0325092d99da13822551bc88b7199e3f39e62ab70346bbf32d5bc708a1aee",
+      "excerpt": "Grounded TruthCheck, Brief Fulfillment, preuves et décision humaine s'appliquent à l'identique quel que soit le rédacteur.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "66e15217c70bef36e2b0034b83ff0034f0886ed1f7ae8065f5d1d9f7714e50ee",
+      "excerpt": "claim requis EXCLU avec raison acceptée → pass (acceptedExcludedClaimTypes)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Test name in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "e8f611bc71379f70f92e364ee8e00b2da7de40e3cecb90ea60fc88659cc6aa2f",
+      "excerpt": "section requise manquante → block",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Test name in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-bf-14",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product manifest, brief-fulfillment-check.prohibitedClaims",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "86f161614d9cb8b3a8479e082a4e772816ee8d238535b7f1f3a8e8ea2ec657e5",
+      "excerpt": "guarantees the content is useful",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "A claim the product manifest forbids about this capability; it is cited as a limit, never asserted."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-brief-fulfillment-check"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that a draft is checked against the brief it was written for, not only for accuracy.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-bf-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS checks that every point the brief requires is covered by a sourced statement or a human-accepted exclusion, and a draft is previewed only when it is both accurate and complete against its brief.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: an AI draft whose facts all check out but that skips half of what the brief asked for. Say that, for TextOS, a fact-check pass only proves the draft is grounded, not that it answers the brief. No date.",
+      "buyerIntent": "Is an accurate draft a finished draft?",
+      "allowedEvidenceIds": [
+        "ev-bf-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How does TextOS know a draft answers its brief?",
+      "writingObjective": "Answer directly: a separate check, distinct from the fact-check, looks at three things (each point the brief requires is covered by a sourced statement or excluded with a reason a person accepted; the required sections are present; the target query is addressed), and a draft is previewed only if both checks pass.",
+      "buyerIntent": "What exactly is checked against my brief?",
+      "allowedEvidenceIds": [
+        "ev-bf-01",
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Accurate is not the same as complete",
+      "writingObjective": "Explain the failure this check exists for: a draft can be certified true while covering only one of the points the brief required, which TextOS calls an empty draft certified true; and that a two-sentence sample draft is now kept as the reference case the check must block.",
+      "buyerIntent": "How can a correct draft still fail me?",
+      "allowedEvidenceIds": [
+        "ev-bf-07",
+        "ev-bf-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What counts as answering the brief",
+      "writingObjective": "Explain the rules in plain language: a statement with no supporting source does not count as covering a required point; a required point may be left out only when a person accepted the reason, and then the draft can pass; a missing required section blocks the draft.",
+      "buyerIntent": "Can the writer just mention a topic to tick the box?",
+      "allowedEvidenceIds": [
+        "ev-bf-05",
+        "ev-bf-12",
+        "ev-bf-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1200,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What happens when a draft falls short",
+      "writingObjective": "Explain the consequence: an article is marked ready only after passing this check, otherwise it is blocked; the blocked result names the missing sections, the uncovered points and whether the target query was addressed; and the same check applies whichever writer produced the draft.",
+      "buyerIntent": "What do I see when a draft misses something?",
+      "allowedEvidenceIds": [
+        "ev-bf-09",
+        "ev-bf-10",
+        "ev-bf-11"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "brief-to-ready-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-bf-01",
+        "ev-bf-03",
+        "ev-bf-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What this check does not tell you",
+      "writingObjective": "Be honest about the limits: the target query counts as addressed when its key words appear in the rendered text, which is not a judgment of quality; the check measures whether the draft answers the brief, not whether it is true; and TextOS does not claim that a pass guarantees useful content, which stays a human judgment.",
+      "buyerIntent": "Does a pass mean the article is good?",
+      "allowedEvidenceIds": [
+        "ev-bf-06",
+        "ev-bf-08",
+        "ev-bf-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

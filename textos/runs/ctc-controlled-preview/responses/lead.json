@@ -1,0 +1,57 @@
+{
+  "text": "Someone sends you a link to an AI-written draft and asks for your sign-off before anything goes live. Two questions come before the prose itself: is this page already visible to the public, and is it the version that was actually checked? In TextOS, a controlled preview is not a publication: it is an internal page that search engines are told not to index, and no public address is set for it. This note explains what that preview is, how the draft on it is tied to the one that passed the checks, and what it leaves to you.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Someone sends you a link to an AI-written draft and asks for your sign-off before anything goes live.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Two questions come before the prose itself: is this page already visible to the public, and is it the version that was actually checked?",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "In TextOS, a controlled preview is not a publication: it is an internal page that search engines are told not to index, and no public address is set for it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note explains what that preview is, how the draft on it is tied to the one that passed the checks, and what it leaves to you.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

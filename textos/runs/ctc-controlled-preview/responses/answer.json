@@ -1,0 +1,65 @@
+{
+  "text": "In TextOS, a draft can be previewed only once it has passed both the fact-check and the check that it actually answers the brief it was written for. The preview then opens the exact draft named in the handover record, recalculates its fingerprints, the short codes computed from the text, and refuses to show anything if one of them does not match. What you then read is an internal page in a preview state of its own, distinct from published. Your review therefore starts from a draft that cleared two checks, on a page that is not published.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS, a draft can be previewed only once it has passed both the fact-check and the check that it actually answers the brief it was written for.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The preview then opens the exact draft named in the handover record, recalculates its fingerprints, the short codes computed from the text, and refuses to show anything if one of them does not match.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "What you then read is an internal page in a preview state of its own, distinct from published.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Your review therefore starts from a draft that cleared two checks, on a page that is not published.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

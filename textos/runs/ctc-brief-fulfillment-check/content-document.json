@@ -1,0 +1,304 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-site:ctc:ctc-brief-fulfillment-check",
+    "contentType": "product_article",
+    "slug": "an-accurate-draft-is-not-a-draft-that-answers-the-brief",
+    "language": "en-US",
+    "title": "TextOS checks a draft against the brief it was written for, not only for accuracy",
+    "description": "TextOS previews a draft only when its facts are grounded and each point its brief requires is covered by a sourced statement or a reason a person accepted."
+  },
+  "editorial": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "geo-writer",
+    "statusVocabularyVersion": "geo-writer@0.2",
+    "sourceStatus": "ARTICLE_GUIDE",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:4:lead:2:s4",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:6:answer:2:s4",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:9:section-1:2:s5",
+      "stmt:9:section-1:2:s6",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:9:section-2:2:s5",
+      "stmt:9:section-2:2:s6",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:s4",
+      "stmt:9:section-3:2:s5",
+      "stmt:22:brief-to-ready-caption:2:s1",
+      "stmt:9:section-4:2:s1",
+      "stmt:9:section-4:2:s2",
+      "stmt:9:section-4:2:s3",
+      "stmt:9:section-4:2:s4",
+      "stmt:9:section-4:2:s5",
+      "stmt:9:section-4:2:s6",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
+      "stmt:6:verify:2:s6",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
+    "evidenceRefs": [
+      "ev-bf-02",
+      "ev-bf-03",
+      "ev-bf-01",
+      "ev-bf-07",
+      "ev-bf-04",
+      "ev-bf-05",
+      "ev-bf-12",
+      "ev-bf-13",
+      "ev-bf-09",
+      "ev-bf-10",
+      "ev-bf-11",
+      "ev-bf-06",
+      "ev-bf-08",
+      "ev-bf-14"
+    ],
+    "capabilityIds": [
+      "brief-fulfillment-check"
+    ]
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "698143c57307644e1b7a373017f7c32c4deadc7a29cc483f48402b0704c9a609"
+  },
+  "body": [
+    {
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "Alongside its fact-check, TextOS runs a separate check that compares the draft with the brief it was written for. It looks at three things: each point the brief requires is either backed by a statement with a source or left out for a reason a person accepted, the sections the brief requires are present, and the target search query is addressed. A draft goes to preview only when both the fact-check and the brief check pass. Being right and being what you asked for are answered as two separate questions, instead of being blended into one score."
+      }
+    },
+    {
+      "id": "lead:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Picture an AI draft whose facts all check out against their sources, yet which leaves out half of what your brief asked for. Nothing in it is wrong, so a fact-check has nothing to flag. For TextOS, a passing fact-check only proves that a draft is grounded in its sources, not that it answers the brief it was written for. This note explains the second check that closes that gap, and what that second check does not measure."
+      }
+    },
+    {
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Accurate is not the same as complete"
+      }
+    },
+    {
+      "id": "section-1:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "A fact-check reads the sentences a draft contains and asks whether a source supports them. It does not ask whether the sentences that should be there are there. TextOS's design record describes this failure plainly: a draft can be certified true while covering only one of the required points of its brief, an outcome it calls an empty draft certified true.\n\nA short, two-sentence sample draft that TextOS once used in its tests is now kept as the reference case its brief check has to block. Such a draft can be accurate line by line and still leave the reader without the answer they came for. Keeping it as a test case means the gap between correct and complete is checked on purpose, not discovered by a disappointed reader."
+      }
+    },
+    {
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What counts as answering the brief"
+      }
+    },
+    {
+      "id": "section-2:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "The easy shortcut for any writer is to mention a topic in passing so that it looks covered. In TextOS, a statement that cites no source does not count as covering a required point, even when it talks about the right topic. Naming a subject is not the same as backing it up.\n\nA required point can still be left out on purpose: when a person has accepted the reason for excluding it, the draft can pass without it. A gap that someone chose and explained is treated differently from a gap nobody noticed. Structure is checked as well: if a section the brief requires is missing, the draft is blocked."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What happens when a draft falls short"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "In TextOS, an article is marked ready only after it has passed the brief check; otherwise it is stopped with a status that says the brief was not fulfilled. The blocked result lists the missing sections, the required points left uncovered and whether the target query was addressed. That turns a vague verdict of not good enough into a short list that a writer or an editor can work through.\n\nThe brief check, the fact-check, the approved sources and the human decision apply in the same way whichever writer produced the draft. Switching the AI model behind the writing does not change what a draft has to deliver against its brief."
+      }
+    },
+    {
+      "id": "figure:brief-to-ready",
+      "kind": "figure",
+      "data": {
+        "src": "/diagrams/ctc/brief-to-ready-53995d89d27f.svg",
+        "alt": "From written draft to ready article. A 4-step flow: Draft written, then Facts grounded, then Brief answered, then Marked ready. A dashed boundary after \"Facts grounded\" is labelled Second check: Accurate is not enough: the brief must be answered.",
+        "caption": "In TextOS a draft whose facts are grounded still has to answer its brief before it can be previewed, and only an article that passed that check is marked ready."
+      }
+    },
+    {
+      "id": "section-4:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What this check does not tell you"
+      }
+    },
+    {
+      "id": "section-4:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "The target query counts as addressed when its key words appear in the rendered text of the draft. That is a presence test, not a judgment of how well the question is answered. The check also says nothing about truth: it measures whether a draft answers its brief, not whether what it says is correct.\n\nTextOS's product record explicitly forbids describing this check as a promise that the content is useful. Whether an article is good for its reader remains a human judgment. A pass means the draft did what the brief asked; it does not mean the brief asked for the right things."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI writing vendor"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "Ask whether the tool checks a draft against your brief separately from checking its facts.",
+          "Ask what happens to a required point the draft does not cover, and who can accept leaving it out.",
+          "Ask whether a passing mention with no source behind it counts as covering a topic.",
+          "Ask what a blocked draft shows you: a single score, or a list of what is missing.",
+          "Ask how the tool decides that your target search query was addressed, and what that test cannot see.",
+          "Ask whether a point left out on purpose stays visible, with its reason, to the person who reviews the draft."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "The note on produced and checked articles explains why a draft that was written is not yet a draft that was verified. Another note covers who approves the sources an article may rely on before it is written."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-bf-02",
+      "kind": "source",
+      "data": {
+        "ref": "ev-bf-02",
+        "title": "TextOS product commit 25b4c04, 7 Aug 2026"
+      }
+    },
+    {
+      "id": "source:2:ev-bf-07",
+      "kind": "source",
+      "data": {
+        "ref": "ev-bf-07",
+        "title": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 2faf90e"
+      }
+    },
+    {
+      "id": "source:3:ev-bf-05",
+      "kind": "source",
+      "data": {
+        "ref": "ev-bf-05",
+        "title": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e"
+      }
+    },
+    {
+      "id": "source:4:ev-bf-09",
+      "kind": "source",
+      "data": {
+        "ref": "ev-bf-09",
+        "title": "TextOS product repository file src/server/textos/act/article-readiness.ts at 2faf90e"
+      }
+    },
+    {
+      "id": "source:5:ev-bf-10",
+      "kind": "source",
+      "data": {
+        "ref": "ev-bf-10",
+        "title": "TextOS product repository file src/server/textos/act/article-creation-spine.ts at 2faf90e"
+      }
+    },
+    {
+      "id": "source:6:ev-bf-06",
+      "kind": "source",
+      "data": {
+        "ref": "ev-bf-06",
+        "title": "TextOS product repository file src/server/textos/act/brief-fulfillment.ts at 2faf90e"
+      }
+    },
+    {
+      "id": "source:7:ev-bf-08",
+      "kind": "source",
+      "data": {
+        "ref": "ev-bf-08",
+        "title": "TextOS product manifest, brief-fulfillment-check.knownLimits"
+      }
+    },
+    {
+      "id": "source:8:ev-bf-14",
+      "kind": "source",
+      "data": {
+        "ref": "ev-bf-14",
+        "title": "TextOS product manifest, brief-fulfillment-check.prohibitedClaims"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "conversionAllowed": false
+  },
+  "lifecycle": {},
+  "seo": {
+    "indexingIntent": "noindex",
+    "targetQuery": "how to check that an ai written draft answers the content brief",
+    "searchIntent": "buyer_decision"
+  }
+}

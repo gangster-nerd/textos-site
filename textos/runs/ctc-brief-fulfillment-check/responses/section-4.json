@@ -1,0 +1,89 @@
+{
+  "text": "The target query counts as addressed when its key words appear in the rendered text of the draft. That is a presence test, not a judgment of how well the question is answered. The check also says nothing about truth: it measures whether a draft answers its brief, not whether what it says is correct.\n\nTextOS's product record explicitly forbids describing this check as a promise that the content is useful. Whether an article is good for its reader remains a human judgment. A pass means the draft did what the brief asked; it does not mean the brief asked for the right things.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The target query counts as addressed when its key words appear in the rendered text of the draft.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "That is a presence test, not a judgment of how well the question is answered.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The check also says nothing about truth: it measures whether a draft answers its brief, not whether what it says is correct.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "TextOS's product record explicitly forbids describing this check as a promise that the content is useful.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Whether an article is good for its reader remains a human judgment.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "A pass means the draft did what the brief asked; it does not mean the brief asked for the right things.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

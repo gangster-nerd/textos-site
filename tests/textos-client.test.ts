@@ -10,6 +10,8 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
+import type { PublicationStatus } from "@/lib/product-manifest/status-axes";
+
 import { resolveContentSurface } from "@/lib/content-surface-engine/composition/resolve-content-surface";
 import { evaluateContentPass } from "@/lib/content-surface-engine/conformance/content-pass";
 import { evaluateLifecycle } from "@/lib/content-surface-engine/lifecycle";
@@ -29,11 +31,12 @@ import {
 const ROOT = process.cwd();
 const articles = loadCtcArticles();
 const tool = loadToolRecord();
-const manifestIds = new Set(
-  (JSON.parse(readFileSync("product-manifest/textos-v0.capability-manifest.json", "utf8")) as { entities: { id: string }[] }).entities.map(
-    (e) => e.id,
-  ),
-);
+const pinnedEntities = (
+  JSON.parse(readFileSync("product-manifest/textos-v0.capability-manifest.json", "utf8")) as { entities: { id: string; publicationStatus: PublicationStatus }[] }
+).entities;
+const manifestIds = new Set(pinnedEntities.map((e) => e.id));
+// ADR-034 : une note sur une capacité en bêta porte sa divulgation ; la vérification lit le statut épinglé.
+const manifestStatuses = new Map(pinnedEntities.map((e) => [e.id, e.publicationStatus]));
 
 function sandbox(): string {
   const dir = mkdtempSync(path.join(tmpdir(), "textos-client-"));
@@ -191,7 +194,7 @@ describe("Commit-to-Content client — site projection", () => {
 describe("Commit-to-Content client — guards fire on tampering", () => {
   const first = articles[0]!.brief;
   const verify = (root: string) =>
-    verifyCtcRun({ root, brief: loadBriefs(root).find((b) => b.articleId === first.articleId)!, tool: loadToolRecord(root), manifestEntityIds: manifestIds });
+    verifyCtcRun({ root, brief: loadBriefs(root).find((b) => b.articleId === first.articleId)!, tool: loadToolRecord(root), manifestEntityIds: manifestIds, manifestStatuses });
 
   it("the untouched sandbox verifies", () => {
     expect(verify(sandbox())).toEqual([]);

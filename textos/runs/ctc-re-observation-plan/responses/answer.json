@@ -1,0 +1,65 @@
+{
+  "text": "TextOS questions AI answer engines with sets of questions that carry a version number. Before an article is published, at the moment it is previewed, TextOS freezes four things: the observation that serves as the starting point, the version of the question set, the version of the measurement method, and the target questions being followed. That is the before picture, fixed while nothing has changed yet. TextOS fills in the change only after a real period has passed since publication, and it describes that change rather than computing an effect.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS questions AI answer engines with sets of questions that carry a version number.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Before an article is published, at the moment it is previewed, TextOS freezes four things: the observation that serves as the starting point, the version of the question set, the version of the measurement method, and the target questions being followed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "That is the before picture, fixed while nothing has changed yet.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "TextOS fills in the change only after a real period has passed since publication, and it describes that change rather than computing an effect.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

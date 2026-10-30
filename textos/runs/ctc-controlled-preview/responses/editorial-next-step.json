@@ -1,0 +1,29 @@
+{
+  "text": "A related note explains why an article that was produced is not yet an article that was checked. Another explains why an agent can prepare a draft for your website but cannot approve it.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A related note explains why an article that was produced is not yet an article that was checked.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Another explains why an agent can prepare a draft for your website but cannot approve it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

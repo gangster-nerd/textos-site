@@ -1,0 +1,41 @@
+{
+  "text": "A related note on graduated publication explains how publishing is opened up step by step, and why any effect is traced as a descriptive change. Another explains why the work starts by observing answer engines rather than by optimising a score. A third shows why an article that was produced is not an article that was checked.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A related note on graduated publication explains how publishing is opened up step by step, and why any effect is traced as a descriptive change.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Another explains why the work starts by observing answer engines rather than by optimising a score.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "A third shows why an article that was produced is not an article that was checked.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

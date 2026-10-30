@@ -1,0 +1,77 @@
+{
+  "text": "The order in TextOS is set: accepted brief, stored evidence, drafting, then a fact check of the result. Drafting itself runs one declared part at a time. For whoever edits the draft, that means any paragraph can be traced back to one part and to the material that part was given. Only a passing fact check moves the draft forward; a draft that raises an alert or is blocked stays blocked, and it is kept for audit rather than thrown away. The sections below take these steps in turn, starting with the outline.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The order in TextOS is set: accepted brief, stored evidence, drafting, then a fact check of the result.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Drafting itself runs one declared part at a time.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "For whoever edits the draft, that means any paragraph can be traced back to one part and to the material that part was given.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Only a passing fact check moves the draft forward; a draft that raises an alert or is blocked stays blocked, and it is kept for audit rather than thrown away.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The sections below take these steps in turn, starting with the outline.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "text": "The note on produced and checked articles explains why a draft that was written is not yet a draft that was verified. Another note covers who approves the sources an article may rely on before it is written.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The note on produced and checked articles explains why a draft that was written is not yet a draft that was verified.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Another note covers who approves the sources an article may rely on before it is written.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

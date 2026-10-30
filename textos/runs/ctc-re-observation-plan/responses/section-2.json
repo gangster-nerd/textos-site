@@ -1,0 +1,93 @@
+{
+  "text": "When TextOS creates a re-observation plan, it writes only the initial state: awaiting publication, not measurable yet, with no publication record, no publication date and no planned window. Publishing or updating an article does not yet move that plan forward in TextOS, and wiring the two together was explicitly left out of scope. In plain terms, the second look is planned, not triggered.\n\nIn the version of TextOS described here, no scheduler runs re-observations, so the article card is not allowed to call a new measurement scheduled and shows the planned window as a recommendation instead. The end-to-end report TextOS produces labels the re-observation plan as planned and not yet measurable. If a dashboard shows you a scheduled follow-up measurement, it is fair to ask what will actually run it.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "When TextOS creates a re-observation plan, it writes only the initial state: awaiting publication, not measurable yet, with no publication record, no publication date and no planned window.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Publishing or updating an article does not yet move that plan forward in TextOS, and wiring the two together was explicitly left out of scope.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "In plain terms, the second look is planned, not triggered.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "In the version of TextOS described here, no scheduler runs re-observations, so the article card is not allowed to call a new measurement scheduled and shows the planned window as a recommendation instead.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The end-to-end report TextOS produces labels the re-observation plan as planned and not yet measurable.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "If a dashboard shows you a scheduled follow-up measurement, it is fair to ask what will actually run it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

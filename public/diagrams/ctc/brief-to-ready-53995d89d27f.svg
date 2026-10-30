@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-labelledby="brief-to-ready-title brief-to-ready-desc">
+  <title id="brief-to-ready-title">From written draft to ready article</title>
+  <desc id="brief-to-ready-desc">From written draft to ready article. A 4-step flow: Draft written, then Facts grounded, then Brief answered, then Marked ready. A dashed boundary after &quot;Facts grounded&quot; is labelled Second check: Accurate is not enough: the brief must be answered.</desc>
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="15" refY="8" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#4d7fa6"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="720" rx="24" fill="#101216"/>
+  <text x="72" y="82" fill="#f7f8f9" font-family="system-ui, sans-serif" font-size="34" font-weight="600">From written draft to ready article</text>
+  <text x="72" y="124" fill="#9aa0a6" font-family="system-ui, sans-serif" font-size="22">Illustrative path for one draft. Both checks must pass.</text>
+  <g font-family="system-ui, sans-serif">
+      <rect x="54" y="246" width="246" height="174" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="177" y="292" text-anchor="middle" fill="#7cc4ff" font-size="18" font-weight="600">1 · WRITE</text>
+    <text x="177" y="350" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">Draft written</text>
+    <rect x="336" y="246" width="246" height="174" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="459" y="292" text-anchor="middle" fill="#7cc4ff" font-size="18" font-weight="600">2 · FACTS</text>
+    <text x="459" y="350" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">Facts grounded</text>
+    <rect x="618" y="246" width="246" height="174" rx="18" fill="#0b0c0e" stroke="#7cc4ff" stroke-width="3"/>
+    <text x="741" y="292" text-anchor="middle" fill="#7cc4ff" font-size="18" font-weight="600">3 · BRIEF</text>
+    <text x="741" y="350" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">Brief answered</text>
+    <rect x="900" y="246" width="246" height="174" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="1023" y="292" text-anchor="middle" fill="#7cc4ff" font-size="18" font-weight="600">4 · READY</text>
+    <text x="1023" y="350" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">Marked ready</text>
+  </g>
+  <g stroke="#4d7fa6" stroke-width="3" marker-end="url(#arrow)">
+    <line x1="306" y1="333" x2="330" y2="333"/>
+    <line x1="588" y1="333" x2="612" y2="333"/>
+    <line x1="870" y1="333" x2="894" y2="333"/>
+</g>
+  <line x1="600" y1="194" x2="600" y2="484" stroke="#7cc4ff" stroke-width="3" stroke-dasharray="10 10"/>
+  <rect x="412" y="500" width="376" height="110" rx="16" fill="#0b0c0e" stroke="#4d7fa6" stroke-width="2"/>
+  <text x="600" y="540" text-anchor="middle" fill="#7cc4ff" font-family="system-ui, sans-serif" font-size="20" font-weight="600">SECOND CHECK</text>
+  <text x="600" y="570" text-anchor="middle" fill="#e9eaec" font-family="system-ui, sans-serif" font-size="18">Accurate is not enough:</text>
+    <text x="600" y="596" text-anchor="middle" fill="#e9eaec" font-family="system-ui, sans-serif" font-size="18">the brief must be answered.</text>
+</svg>

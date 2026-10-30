@@ -1,0 +1,20 @@
+{
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to check that an ai written draft answers the content brief",
+  "executionPlanHash": "46f579abba1c1ba243aafd08c41d63aacabebdf9c096945ae3fb275baf2065c2",
+  "ctcHandoffHash": "1c99b5848b2cc6daabfca37e857cf0ddbf879adc5a0d350c2c226190d5010fa9",
+  "promptHashes": {
+    "title": "2386bd637fb7994f48bbce1d3a14a4aa6c6495ee3f02e27a144153a6c9279799",
+    "meta": "0d4c1b6d8d2dd9e314dc1a437d9b46a78f60d809cc25471aed0019152ad3ac75",
+    "lead": "51a7d98f52f06ea9ac6b10b18c3c171c8e02f5f674c0e00e37f3c392312a53fb",
+    "answer": "b8ba087d1faad7c5a5bf20992739f10c35719946129b1dec5c9d164720bc223b",
+    "section-1": "be1a448cc78fc627289b73c0f9942740d4f29a219cd8bedef3ef432e0e5fbee2",
+    "section-2": "686b73a1fff615dd9dc67ac2549df2ef61966392677c435609a350525d96d387",
+    "section-3": "7b0425ff9917f90762f5669e0d1ede4039ddf53d7345b7717f688657240acbd8",
+    "brief-to-ready-caption": "1829f33c81d6b3b8c1c5e748c0e754b8d4ab44abff84844c313b5871a8204cf2",
+    "section-4": "1715c8fbe6e09a3722ab20fde9e26edd0257e169df6c56afff037a4988f54bec",
+    "verify": "bb30e53d892209a05685bc90ef012c4023323a859f617f6bad4e1e28af9b5bd1",
+    "editorial-next-step": "4aa5a98f014ee1ddddcdc0e4568c1109d079b7ae4d9f519b0f79f0ab7eb3f7d2"
+  }
+}

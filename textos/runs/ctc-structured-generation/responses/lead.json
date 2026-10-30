@@ -1,0 +1,58 @@
+{
+  "text": "An AI tool hands back an article that reads well, and nobody on your team can say which sentence came from your material and which one the model supplied. Editing it then means re-checking the whole text, because the draft leaves no trail to follow. In TextOS, no draft is written until a brief has been accepted and the approved evidence for it has been stored. The rest of this note follows one draft from its outline to its last sentence.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "An AI tool hands back an article that reads well, and nobody on your team can say which sentence came from your material and which one the model supplied.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Editing it then means re-checking the whole text, because the draft leaves no trail to follow.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "In TextOS, no draft is written until a brief has been accepted and the approved evidence for it has been stored.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-sg-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The rest of this note follows one draft from its outline to its last sentence.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

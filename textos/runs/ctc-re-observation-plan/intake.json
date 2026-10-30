@@ -1,0 +1,888 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "re-observation-plan-2026-08-07",
+        "sourceCommits": [
+          "7ac42fb6675e2a4fdded8bcb4224b21cc3d1f26a"
+        ]
+      },
+      {
+        "groupId": "re-measurement-window-wording-2026-10-01",
+        "sourceCommits": [
+          "a9b4c6377afb545d50d5b6e5b38aa0d05fc96e1d"
+        ]
+      }
+    ],
+    "buyerQuestion": "After I publish an article, how will I know whether AI answers about my topic changed, without being told the article caused it?",
+    "targetQuery": "how to measure whether ai answers changed after publishing an article",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "measurement-honesty",
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-re-observation-plan",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-ro-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 7ac42fb, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T11:54:58+02:00",
+      "contentHash": "b4adb206b143b582d4300bc6a80983740f8931afe212522d4c08aaeaa84ced56",
+      "excerpt": "Materialize the ReObservationPlanDraft in its own table (lifecycle continues after publication) instead of a minimal in-memory hint buried in the preview receipt.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 7ac42fb, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T11:54:58+02:00",
+      "contentHash": "3fd19ab650a5cbc6af4a8496ffe25379c012781c794615b7ff24d62651f4370c",
+      "excerpt": "freeze baseline at preview time: baselineRunId, queryPanelVersion, measurementMethodVersion, targetQueryHashes",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Names the recorded fields; the target questions are kept as fingerprints, not as text."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 7ac42fb, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T11:54:58+02:00",
+      "contentHash": "c09ee43e0ab39fe82d2274eb26fbd86e75315aaf67e1614b2a9305ef1f137149",
+      "excerpt": "No computeEffect: the descriptive delta is only filled after a real post-publication window.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/db/schema/enums.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "34776846453adb4d4cf33cdf7f03192efd27bdc6fb835200587e58682938a79f",
+      "excerpt": "\"not_measurable_yet\", // défaut — pas de publication, aucune fenêtre post-intervention \"window_open\", // fenêtre post-publication ouverte, ré-observation planifiée \"measured\", // delta DESCRIPTIF disponible (jamais causal)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comments in French; quoted as written. Declares the states a plan can hold, not that a plan has reached them."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 7ac42fb, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T11:54:58+02:00",
+      "contentHash": "4012a65246e84af79509d158a335f10eebe26425d60774222ec899b574b6ec50",
+      "excerpt": "createReObservationPlan (persist initial state only): awaiting_publication / not_measurable_yet; publicationReceiptId / publishedAt / plannedPostWindow null",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a9b4c63, 1 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-01T21:10:19+00:00",
+      "contentHash": "1db0790c7307d1a00bc79ff4e09270eccf77ef927aa448a462ff069db9ef17fe",
+      "excerpt": "No scheduler runs re-observations on this lineage, so the article card must not say a new measurement is « prévue ». The planned window is now shown as a recommendation (« Nouvelle mesure recommandée »), per the demo truth contract.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "The quoted screen labels are in French."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "4d207fd82172f5b0350154ad8174153d1d0a7ca282ba8c21e1b647fb61b76700",
+      "excerpt": "La publication ou l'update ne modifient pas encore `re_observation_plan`. Câbler ce lien est hors périmètre ici.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "4530032fb4867e405de8b75773ac0f0f84492e84b0a0cc041d013b808533f566",
+      "excerpt": "title: \"Re-observation Plan\", epistemicStatus: \"PLANNED — NOT YET MEASURABLE\"",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "85187ef935376be6fca48b787e45b0629b47affe9a76fe522fe701db098ef72d",
+      "excerpt": "Continuité : le receipt de preview ET le plan de ré-observation pointent le même draft + mêmes hashes.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/query-intelligence/demand/demand-authority-boundary.test.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "7ade5d3be043bfac38a326d30ddc22e39ae92177b08c0586e127edf6a22773a9",
+      "excerpt": "`re_observation_plan` conserve queryPanelVersion ET measurementMethodVersion",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Name of an automated test, in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "415fac4dab204bd3011c1ecef22639187894454ae59e01839a7d53650f65b576",
+      "excerpt": "Les formats de citation des moteurs changent ; les parsers seront corrigés. Une série temporelle n'est donc comparable que si la méthode de mesure est constante **ou explicitement versionnée**.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "7b6bc9f8c0e769fdbe14a6de86553f109bfcace7127f1283d36a5719c23aaa8f",
+      "excerpt": "interroger des moteurs de réponse sur des panels versionnés ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-005-query-panel-strategy.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "42001382b8b8d0fef9e5ebcdb3b01eaad1d7cc2dad3a34ccf937f69cdfcde9f1",
+      "excerpt": "il définit le périmètre de vérité observée, il est explicable, versionné, auditable et immuable une fois validé.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written. Describes the question panel."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-14",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "4433619e2fbb6c94cff7e936c287cfc37369ad754af328c4f93adef2ad5f566c",
+      "excerpt": "Une action d'update n'est jamais présentée comme cause d'une variation : un delta reste descriptif",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-15",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "68d97662b80033022918153f779ec60a81e204ebf45c285f843bc802728a88c7",
+      "excerpt": "Si plusieurs actions touchent un même `query_hash` dans une même fenêtre de réobservation, aucun effet n'est attribuable à l'une d'elles.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-16",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-016-graduated-publication.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "45c0c5b5fbd2275d52a74f9b3272599a3a397b0b386b409e41b2db840535a366",
+      "excerpt": "aucune affirmation causale (« la publication a fait progresser… »), aucune attribution. Un moteur évolue pour mille raisons (ADR-008).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written. A rule for how a change is reported, not a measurement."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ro-17",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product manifest, re-observation-plan.knownLimits",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "53bb87a798a5c892ecd77f470fceaa432a0613db638f102c59a3f4580f7bb0b7",
+      "excerpt": "Fige une baseline et un plan de re-mesure ; il ne démontre aucun effet par lui-même.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-re-observation-plan"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that, before an article goes live, it fixes what it will compare AI answers against later.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ro-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS freezes its starting point and plan before publishing, and the plan by itself demonstrates no effect.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ro-17"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation — someone asks months later whether an article changed what AI assistants say — and say that TextOS keeps a plan for looking again whose life continues after publication.",
+      "buyerIntent": "Will I be able to answer 'did it change anything?' honestly?",
+      "allowedEvidenceIds": [
+        "ev-ro-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can you tell whether AI answers changed after you publish?",
+      "writingObjective": "Answer directly: TextOS puts questions to AI answer engines on versioned question sets; at preview time, before anything is published, it freezes the starting observation, the question-set version, the measurement-method version and the target questions; a descriptive change is only filled in after a real window following publication.",
+      "buyerIntent": "What is compared with what, and when?",
+      "allowedEvidenceIds": [
+        "ev-ro-12",
+        "ev-ro-02",
+        "ev-ro-03"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Comparing like with like",
+      "writingObjective": "Explain comparability: engines change how they cite and parsers get fixed, so a series is comparable only if the method stays constant; the question set is a measuring instrument, versioned and unchangeable once validated; an automated test keeps both the question-set version and the method version in the plan; the preview record and the plan point to the same draft and the same fingerprints.",
+      "buyerIntent": "Will the 'after' be measured the same way as the 'before'?",
+      "allowedEvidenceIds": [
+        "ev-ro-11",
+        "ev-ro-13",
+        "ev-ro-10",
+        "ev-ro-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What the plan does not do yet",
+      "writingObjective": "Be candid about the current limits: only the initial state is written, with no effect measured; publishing does not yet move the plan forward; no scheduler runs the second look, so the planned window is shown as a recommendation rather than as scheduled; the end-to-end report labels the plan as planned and not yet measurable.",
+      "buyerIntent": "Is the second look automatic?",
+      "allowedEvidenceIds": [
+        "ev-ro-05",
+        "ev-ro-07",
+        "ev-ro-06",
+        "ev-ro-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "second-look-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites: the states a plan can hold, and that today only the first one is written.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ro-04",
+        "ev-ro-05"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A change observed is not a change caused",
+      "writingObjective": "Explain the uncertainty rules: an action is never presented as the cause of a variation and a change stays descriptive; no causal claim and no attribution, because an engine changes for many reasons; when several actions touch the same question in the same window, no effect is attributed to any one of them; the plan states only the possible endpoint of its life: a descriptive change, never a causal one.",
+      "buyerIntent": "Will anyone tell me the article 'worked'?",
+      "allowedEvidenceIds": [
+        "ev-ro-14",
+        "ev-ro-16",
+        "ev-ro-15",
+        "ev-ro-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI content vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor who reports on AI answers before and after publishing, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes: how publication is graduated and its effect traced as a descriptive change, why TextOS starts by observing answer engines, and why a produced article is not a checked one. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

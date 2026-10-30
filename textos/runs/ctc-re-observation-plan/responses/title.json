@@ -1,0 +1,21 @@
+{
+  "text": "TextOS freezes its starting point before an article goes live",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS freezes its starting point before an article goes live",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

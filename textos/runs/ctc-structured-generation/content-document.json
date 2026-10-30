@@ -1,0 +1,298 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-site:ctc:ctc-structured-generation",
+    "contentType": "product_article",
+    "slug": "how-an-ai-article-draft-is-assembled-part-by-part-from-evidence",
+    "language": "en-US",
+    "title": "TextOS writes an AI article draft one declared part at a time",
+    "description": "TextOS drafts an article one declared part at a time, and the structured, evidence-backed draft it produces is never published by that step."
+  },
+  "editorial": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "geo-writer",
+    "statusVocabularyVersion": "geo-writer@0.2",
+    "sourceStatus": "ARTICLE_GUIDE",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:4:lead:2:s4",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:6:answer:2:s4",
+      "stmt:6:answer:2:s5",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:9:section-1:2:s5",
+      "stmt:9:section-1:2:s6",
+      "stmt:23:assembled-draft-caption:2:s1",
+      "stmt:23:assembled-draft-caption:2:s2",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:9:section-2:2:s5",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:s4",
+      "stmt:9:section-3:2:s5",
+      "stmt:9:section-4:2:s1",
+      "stmt:9:section-4:2:s2",
+      "stmt:9:section-4:2:s3",
+      "stmt:9:section-4:2:s4",
+      "stmt:9:section-4:2:s5",
+      "stmt:9:section-4:2:s6",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
+      "stmt:6:verify:2:s6",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
+    "evidenceRefs": [
+      "ev-sg-09",
+      "ev-sg-15",
+      "ev-sg-01",
+      "ev-sg-02",
+      "ev-sg-13",
+      "ev-sg-14",
+      "ev-sg-10",
+      "ev-sg-11",
+      "ev-sg-12",
+      "ev-sg-04",
+      "ev-sg-06",
+      "ev-sg-07",
+      "ev-sg-05",
+      "ev-sg-03",
+      "ev-sg-08"
+    ],
+    "capabilityIds": [
+      "structured-generation"
+    ]
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "244a01d1804aabdc58397be205a247aa0b9273da6812a30bde35199152b4d36f"
+  },
+  "body": [
+    {
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "The order in TextOS is set: accepted brief, stored evidence, drafting, then a fact check of the result. Drafting itself runs one declared part at a time. For whoever edits the draft, that means any paragraph can be traced back to one part and to the material that part was given. Only a passing fact check moves the draft forward; a draft that raises an alert or is blocked stays blocked, and it is kept for audit rather than thrown away. The sections below take these steps in turn, starting with the outline."
+      }
+    },
+    {
+      "id": "lead:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "An AI tool hands back an article that reads well, and nobody on your team can say which sentence came from your material and which one the model supplied. Editing it then means re-checking the whole text, because the draft leaves no trail to follow. In TextOS, no draft is written until a brief has been accepted and the approved evidence for it has been stored. The rest of this note follows one draft from its outline to its last sentence."
+      }
+    },
+    {
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The outline is decided before a word is written"
+      }
+    },
+    {
+      "id": "section-1:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "When the writing model decides how an article is organised, the structure itself becomes something nobody chose. In TextOS, the heading of each part is imposed on the writer, and for the direct-answer part the heading is the question to be answered. Each part also carries an explicit writing objective, stated in plain words, saying what that part has to accomplish.\n\nThe parts are written in the order of the plan, and the body of the article is exactly those texts placed end to end. Because nothing sits between those parts, the outline written into the plan is the outline the reader gets. If you review AI drafts, read the plan first: it tells you what each section was supposed to do before you judge whether it did it."
+      }
+    },
+    {
+      "id": "figure:assembled-draft",
+      "kind": "figure",
+      "data": {
+        "src": "/diagrams/ctc/assembled-draft-78ee20b225ea.svg",
+        "alt": "How one draft is assembled. A 4-step flow: Accepted brief, then Headings and goals set, then Written part by part, then Passes or stays blocked. A dashed boundary after \"Headings and goals set\" is labelled Evidence boundary: Each part may cite only the evidence assigned to it.",
+        "caption": "The draft is written one declared part at a time, and each part may draw only on the evidence assigned to it. A draft that does not pass the fact check is blocked and kept for audit."
+      }
+    },
+    {
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Each part may only use the evidence assigned to it"
+      }
+    },
+    {
+      "id": "section-2:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "In TextOS, each part has a hard evidence boundary: the writer may use only the evidence assigned to that part, and nothing else can be brought in there. When a factual part has no usable evidence, the part is refused instead of being filled. A refused part shows exactly where material is missing, while a gap filled with invented text would read like any other sentence.\n\nThe writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again. That strictness matters because a loosely read answer is where unsupported material tends to slip in."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Every sentence is declared, and its strength is measured"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "In TextOS, the verifiable units of a draft are its title, its search description, each sentence of the body and each FAQ answer. Each of those units has to be covered by a declared statement, and a unit without one blocks the draft as an undeclared fact. For an editor, this is the missing trail: each sentence can be looked up in the list of declared statements to see what it rests on.\n\nHow strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say. A sentence that drifts from describing into asserting an effect is judged by that rule, not by how the model labelled it."
+      }
+    },
+    {
+      "id": "section-4:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What the draft records about itself, and what it does not do"
+      }
+    },
+    {
+      "id": "section-4:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "In TextOS, the system rather than the writing model records the draft's provenance: which evidence set was used, which generation method produced it, and a fingerprint of the input. The recorded method reflects how the text was actually produced, and it never names a live model run that did not take place. That record is what lets someone audit a surprising draft later without relying on anyone's memory of how it was made.\n\nThe stated limit is plain: the result is a structured draft backed by evidence, and this step never publishes it. Whether and where a draft appears is decided at a later stage, so a draft that passes its checks is still a draft. Treat it as material for an editor's review, not as copy ready to go live."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI writing vendor"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "Ask who decides the headings and the purpose of each section, the tool or your team, and whether that outline is fixed before writing starts.",
+          "Ask what the tool does when a section has no supporting material: does it refuse the section, or write something anyway?",
+          "Ask whether you can see, for a given sentence, which source it cites, and what happens to a sentence that cites nothing.",
+          "Ask how the tool judges whether a sentence overstates its source, and whether the model's own label can override that judgement.",
+          "Ask what the draft records about how it was produced, and whether that record could name a live model run that did not happen.",
+          "Ask whether drafting and publishing are separate steps, with a person deciding the second."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "The note on evidence explains who may approve the material an article is allowed to use, one article at a time. Another note shows how a written article is told apart from a checked one before it can reach a website."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-sg-09",
+      "kind": "source",
+      "data": {
+        "ref": "ev-sg-09",
+        "title": "TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e"
+      }
+    },
+    {
+      "id": "source:2:ev-sg-15",
+      "kind": "source",
+      "data": {
+        "ref": "ev-sg-15",
+        "title": "TextOS product manifest, structured-generation.knownLimits"
+      }
+    },
+    {
+      "id": "source:3:ev-sg-01",
+      "kind": "source",
+      "data": {
+        "ref": "ev-sg-01",
+        "title": "TextOS product commit 1a32727, 5 Aug 2026"
+      }
+    },
+    {
+      "id": "source:4:ev-sg-13",
+      "kind": "source",
+      "data": {
+        "ref": "ev-sg-13",
+        "title": "TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e"
+      }
+    },
+    {
+      "id": "source:5:ev-sg-06",
+      "kind": "source",
+      "data": {
+        "ref": "ev-sg-06",
+        "title": "TextOS product repository file src/server/textos/act/structured-content-draft.ts at 2faf90e"
+      }
+    },
+    {
+      "id": "source:6:ev-sg-05",
+      "kind": "source",
+      "data": {
+        "ref": "ev-sg-05",
+        "title": "TextOS product commit a944097, 5 Aug 2026"
+      }
+    },
+    {
+      "id": "source:7:ev-sg-08",
+      "kind": "source",
+      "data": {
+        "ref": "ev-sg-08",
+        "title": "TextOS product repository file src/server/textos/act/structured-generation.ts at 2faf90e"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "conversionAllowed": false
+  },
+  "lifecycle": {},
+  "seo": {
+    "indexingIntent": "noindex",
+    "targetQuery": "how an ai writer builds an article draft section by section from evidence",
+    "searchIntent": "buyer_decision"
+  }
+}

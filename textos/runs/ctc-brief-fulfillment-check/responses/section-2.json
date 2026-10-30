@@ -1,0 +1,90 @@
+{
+  "text": "The easy shortcut for any writer is to mention a topic in passing so that it looks covered. In TextOS, a statement that cites no source does not count as covering a required point, even when it talks about the right topic. Naming a subject is not the same as backing it up.\n\nA required point can still be left out on purpose: when a person has accepted the reason for excluding it, the draft can pass without it. A gap that someone chose and explained is treated differently from a gap nobody noticed. Structure is checked as well: if a section the brief requires is missing, the draft is blocked.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The easy shortcut for any writer is to mention a topic in passing so that it looks covered.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS, a statement that cites no source does not count as covering a required point, even when it talks about the right topic.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Naming a subject is not the same as backing it up.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "A required point can still be left out on purpose: when a person has accepted the reason for excluding it, the draft can pass without it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-bf-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "A gap that someone chose and explained is treated differently from a gap nobody noticed.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Structure is checked as well: if a section the brief requires is missing, the draft is blocked.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

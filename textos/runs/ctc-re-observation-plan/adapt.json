@@ -1,0 +1,19 @@
+{
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to measure whether ai answers changed after publishing an article",
+  "executionPlanHash": "205cf9f21d847e717589106edacc95982f77fcf0b1c382712dac511bcf53fb90",
+  "ctcHandoffHash": "78b66c951235d02225703a60ce0e1a41e87d678f0b9d45305a4907decf7b97e3",
+  "promptHashes": {
+    "title": "8e589236840880ce1d53b9243dd3daecafe06b7851f57059cda5ca4316863703",
+    "meta": "50a4c52f63421246c9e28c48e2d57fb5db568d8d056904b191657f33e3a38e94",
+    "lead": "b62a8e43525ceb5cd80a09be6c446c718aa4994b7ba0b9e7a922f8c1f46883f2",
+    "answer": "8c1b9e98584cfb9b93c760326bb3576242e6cbfa29bf2cc16da2f6489f1ea57f",
+    "section-1": "aa7101a98951febb9e984eb1de89d21fdf744662a16ac9631314df7a96765deb",
+    "section-2": "8fd662219a93bdc5b53a1b36874b44f28529b13ebf9185500ecb8968ebd3bb66",
+    "second-look-caption": "01fcb65ba20823bbe85d284a1285204aa9dc9fdcc0276b5eca018d134f9516f5",
+    "section-3": "fa17043d2eea5f57beab91a2c3c76d0d6cadd01085e403f225bd6bb679adba0b",
+    "verify": "92125683b0774e30f60ffbf8ee90736072e455be2f2ec63374bf54bf50addcaf",
+    "editorial-next-step": "13d41bada154edef51b26489e7578e4ec8678d239b4a18eb0c03279e2c622584"
+  }
+}

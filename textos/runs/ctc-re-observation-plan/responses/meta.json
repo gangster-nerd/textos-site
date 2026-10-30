@@ -1,0 +1,21 @@
+{
+  "text": "TextOS freezes a starting point and a plan to measure again, and that plan demonstrates no effect on its own.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS freezes a starting point and a plan to measure again, and that plan demonstrates no effect on its own.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-17"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

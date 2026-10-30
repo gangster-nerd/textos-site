@@ -1,0 +1,22 @@
+{
+  "text": "TextOS previews a draft only when its facts are grounded and each point its brief requires is covered by a sourced statement or a reason a person accepted.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS previews a draft only when its facts are grounded and each point its brief requires is covered by a sourced statement or a reason a person accepted.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

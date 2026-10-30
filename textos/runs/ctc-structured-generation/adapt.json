@@ -1,0 +1,20 @@
+{
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how an ai writer builds an article draft section by section from evidence",
+  "executionPlanHash": "625211e097896879f71c86eab56854c52f5bc6c55539f297c22c6835986e974e",
+  "ctcHandoffHash": "108f4a3961719dd9ca221eec78f573e225c770033202203b00f33d7d3c6329fa",
+  "promptHashes": {
+    "title": "07833e9bd30b531c1d2b7ca0df2d013a41c948e20a19adcf272e84681e4e07ed",
+    "meta": "d1706de799f71dc27868cf5f66fcbc71a71d19eb250211216ccf25b1d8d1e5bd",
+    "lead": "6c1034af466740aa5e4c41d7254557e31d12dae1e0f7fb6bc02ca98976d90f7d",
+    "answer": "68bca17f97cf84e060dcee7c2b0ce086c70bfc4c70137a83e231311c91568662",
+    "section-1": "90cb69b5991dc2c026ccc659837fd2e7ad59c6e06dda0f51be4d093b293027cc",
+    "assembled-draft-caption": "dc0216234ab93c51fce0cfb265ecd3b5f28e1227ea02f7d394d88ad8138261d9",
+    "section-2": "819f57669f34d8a607f1fcd8b8a1e17684b0efbac736ec56ff6fd4db4d284afe",
+    "section-3": "8a55148bd31aae38091cbd62e27bf7c2e9450577c886359d27d729cc0958ce5a",
+    "section-4": "971ab1cdcc66ba19ce09e4c9838298d9f837db526af84e15996556cdcdcac247",
+    "verify": "564c55771ea516e8e6e463c36d14eed5da805c1562951e60c6365fa6638b8c1b",
+    "editorial-next-step": "7e7e38500fe454afeff0748754d8bc8d77c8c84fc50f14cc6c50c30a06c1b405"
+  }
+}
