@@ -115,53 +115,55 @@ const DECLARATIONS = {
     claimedSurfaces: [],
   },
   // ───────────────────────────────────────────────────────────────────────────────────────────
-  // PIPELINE ACT — inscrites pour dire « le site connaît cette entité et n'en revendique rien ».
+  // PIPELINE ACT — en BÊTA par décision du Release Owner (lot de divulgation du 2026-10-29,
+  // ADR-035, `docs/governance/publication/2026-10-29-disclosure-proposals.md` de textos-v0).
   //
-  // C'est une information DIFFÉRENTE de `capability_absent_from_registry`, qui signifie « le site
-  // ignore que cette capacité existe ». La première est une position tenue, la seconde un angle
-  // mort. Le rapport distinguait déjà les deux ; le registre le dit maintenant explicitement.
-  //
-  // Aucune surface, donc aucun libellé public requis, aucune copy, aucun claim. Le produit les
-  // tient en `internal_only` et aucune n'est gouvernée par un ADR : leur granularité actuelle
-  // (`generation-handoff` tient peut-être du mécanisme interne, `grounded-truth-check` peut-être
-  // d'une spécialisation de `truth-check`) est sans risque public tant qu'elles n'autorisent rien.
-  // C'est au futur ADR Act de trancher quels concepts restent des capacités autonomes.
+  // ADR-034 : le statut suit EXACTEMENT le produit (la dérive `early_disclosure_divergence` bloque
+  // sinon). Les surfaces, elles, peuvent être plus restrictives que celles du produit : le site ne
+  // revendique que les notes produit et la FAQ, où ces capacités sont présentées avec le label
+  // « Beta » et la demande d'accès ; ni homepage ni changelog tant qu'aucune page ne les y présente.
   // ───────────────────────────────────────────────────────────────────────────────────────────
   "grounded-truth-check": {
     kind: "capability",
     implementationStatus: "implemented",
-    publicationStatus: "internal_only",
-    claimedSurfaces: [],
+    publicationStatus: "public_beta",
+    claimedSurfaces: ["product_article", "faq"],
+    label: "Evidence-grounded claim check",
   },
   "structured-generation": {
     kind: "capability",
     implementationStatus: "implemented",
-    publicationStatus: "internal_only",
-    claimedSurfaces: [],
+    publicationStatus: "public_beta",
+    claimedSurfaces: ["product_article", "faq"],
+    label: "Structured article drafting",
   },
   "brief-fulfillment-check": {
     kind: "capability",
     implementationStatus: "implemented",
-    publicationStatus: "internal_only",
-    claimedSurfaces: [],
+    publicationStatus: "public_beta",
+    claimedSurfaces: ["product_article", "faq"],
+    label: "Brief fulfillment check",
   },
   "controlled-preview": {
     kind: "capability",
     implementationStatus: "implemented",
-    publicationStatus: "internal_only",
-    claimedSurfaces: [],
+    publicationStatus: "public_beta",
+    claimedSurfaces: ["product_article", "faq"],
+    label: "Controlled draft preview",
   },
   "generation-handoff": {
     kind: "capability",
     implementationStatus: "implemented",
-    publicationStatus: "internal_only",
-    claimedSurfaces: [],
+    publicationStatus: "public_beta",
+    claimedSurfaces: ["product_article", "faq"],
+    label: "Integrity-checked draft handoff",
   },
   "re-observation-plan": {
     kind: "capability",
     implementationStatus: "implemented",
-    publicationStatus: "internal_only",
-    claimedSurfaces: [],
+    publicationStatus: "public_beta",
+    claimedSurfaces: ["product_article", "faq"],
+    label: "Re-observation plan",
   },
   "authority-score": {
     kind: "prohibited_concept",

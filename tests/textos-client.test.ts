@@ -160,8 +160,9 @@ describe("Commit-to-Content client — site projection", () => {
       const entry = findInsightEntry(a.brief.slug);
       expect(entry?.document.identity.documentId).toBe(`textos-site:ctc:${a.brief.articleId}`);
       // PR #22 (editorial eyebrow) : le kicker passe par editorialEyebrowLabel, qui met en casse de
-      // phrase le jeton de gouvernance (COMMIT_TO_CONTENT → « Commit to content »).
-      expect(entry?.kicker).toBe("Commit to content");
+      // phrase le jeton de gouvernance (COMMIT_TO_CONTENT → « Commit to content »). BÊTA-4 : une
+      // note sur une capacité en bêta porte le label de divulgation à la place (ADR-034).
+      expect(entry?.kicker).toBe(a.earlyDisclosure ? "Beta" : "Commit to content");
     }
   });
 

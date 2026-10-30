@@ -82,10 +82,13 @@ describe("entrée self-serve — copy et rendu", () => {
 });
 
 describe("entrée self-serve — état réel du site", () => {
-  test("le manifeste épinglé ne publie pas encore le self-serve : la porte est fermée", () => {
+  test("le manifeste épinglé publie le self-serve (ADR-027) : la porte ne s'ouvre qu'avec l'URL de passage configurée", () => {
+    // Décision de publication du 2026-10-27 : les trois capacités sont commercialisables en homepage
+    // et FAQ. L'éligibilité produit est acquise ; l'entrée ne se rend que si `PRODUCT_ENTRY_URL`
+    // est configurée (et la conversion active) — ce que `decideProductEntry` vérifie à part.
     const gate = selfServeCtaGate(loadPinnedManifest(process.cwd()));
-    expect(gate.eligible).toBe(false);
-    expect(gate.missingCapabilities.length).toBe(3);
+    expect(gate.eligible).toBe(true);
+    expect(gate.missingCapabilities).toEqual([]);
   });
 
   const HOME_HTML = path.resolve("out/index.html");

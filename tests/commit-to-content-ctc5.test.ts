@@ -247,14 +247,16 @@ describe("CTC-5 — commit-to-content n'est pas une capacité TextOS", () => {
 });
 
 describe("CTC-5 — self-serve fail-closed", () => {
-  it("truth-check, grounded-truth-check et structured-generation restent internal_only", () => {
-    for (const id of ["truth-check", "grounded-truth-check", "structured-generation"]) {
+  it("truth-check reste internal_only ; grounded-truth-check et structured-generation ne sont jamais commercialisables", () => {
+    // Lot de divulgation du 2026-10-29 (ADR-035, décision du Release Owner) : les deux capacités Act
+    // passent en bêta. Une bêta ne se vend pas (ADR-034 : ni pricing ni sales_copy) — le verrou
+    // self-serve tient : aucune des trois n'est `public_marketable`.
+    expect(pinnedManifest.entities.find((e) => e.id === "truth-check")?.publicationStatus).toBe("internal_only");
+    for (const id of ["grounded-truth-check", "structured-generation"]) {
       const entity = pinnedManifest.entities.find((e) => e.id === id);
-      // grounded-truth-check et structured-generation ne sont pas dans le manifeste (Gutenberg
-      // additions R2 non intégrées) — l'absence = PRIVATE aussi.
-      if (entity) {
-        expect(entity.publicationStatus, `${id} doit rester internal_only`).toBe("internal_only");
-      }
+      expect(entity?.publicationStatus, `${id} : bêta décidée par le Release Owner`).toBe("public_beta");
+      expect(entity?.allowedSurfaces).not.toContain("sales_copy");
+      expect(entity?.allowedSurfaces).not.toContain("pricing");
     }
   });
 
@@ -340,12 +342,16 @@ describe("CTC-5 — éditoriaux et bundles préservés", () => {
     }
   });
 
-  it("R2 bundle reste WAITING_FOR_PRODUCT_MAIN", () => {
+  it("R2 bundle n'est jamais publiable : en attente de main, ou bloqué dès que sa déclaration a divergé", () => {
+    // Depuis l'import du tronc de certification (2faf90e, 2026-10-30), la déclaration de la source
+    // R2 (3cfae58) diverge du manifeste épinglé : la resynchronisation la tient BLOCKED, ce qui est
+    // le verdict honnête. L'invariant protégé est qu'une source CANDIDATE ne devient jamais publiable.
     const abs = path.join(SITE_ROOT, "content-bundles/candidate-3cfae58/bundle.json");
     expect(existsSync(abs), `bundle absent : ${abs}`).toBe(true);
     const bundle = JSON.parse(readFileSync(abs, "utf8"));
     expect(bundle.truthLevel).toBe("CANDIDATE");
-    expect(bundle.overallStatus).toBe("WAITING_FOR_PRODUCT_MAIN");
+    expect(["WAITING_FOR_PRODUCT_MAIN", "BLOCKED"]).toContain(bundle.overallStatus);
+    expect(bundle.overallStatus).not.toBe("PUBLIC_SAFE");
   });
 
   it("Zendesk / Yext ne sont PAS dans le roster (evidence_insufficient)", () => {

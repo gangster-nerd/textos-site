@@ -3,19 +3,19 @@
   "capabilityDelta": {
     "addedEntityIds": [],
     "changedEntityIds": [],
-    "declarationDiverged": false,
+    "declarationDiverged": true,
     "publicationStatusChanges": [],
     "removedEntityIds": []
   },
   "editorialCandidates": [],
   "gates": {
     "declarationIntegrity": {
-      "detail": "Digest de la déclaration source conforme à l'épinglé.",
-      "status": "green"
+      "detail": "declarationDiverged=true — voir manifestDrift.",
+      "status": "red"
     },
     "manifestDrift": {
-      "detail": "La ref demandée est byte-identique au manifeste épinglé.",
-      "status": "green"
+      "detail": "La déclaration source a divergé du manifeste épinglé. Ré-import requis via `gh run download` (procédure IMPORT.md).",
+      "status": "red"
     },
     "maturityGate": {
       "detail": "Évaluées: 1 (commit-to-content). Quarantaine (proposition stockée, non publiable): 8 (wordpress-publication, native-composition-gutenberg, asset-spec, geo-writer, owned-surface-design, query-intelligence, opportunity-brief, repos-intersection).",
@@ -23,13 +23,9 @@
     },
     "selfServeCtaGate": {
       "activationProposed": false,
-      "detail": "Aucune activation self-serve n'est proposée. Capacités absentes/insuffisantes : self-serve-onboarding (absent du manifeste), authenticated-product-entry (absent du manifeste), ui-measurement-launch (absent du manifeste).",
-      "eligible": false,
-      "missingCapabilities": [
-        "self-serve-onboarding (absent du manifeste)",
-        "authenticated-product-entry (absent du manifeste)",
-        "ui-measurement-launch (absent du manifeste)"
-      ],
+      "detail": "Capacités requises complètes — aucune activation self-serve n'est proposée dans les bundles courants.",
+      "eligible": true,
+      "missingCapabilities": [],
       "status": "green"
     },
     "truthLevelGate": {
@@ -38,17 +34,6 @@
     }
   },
   "opportunities": [
-    {
-      "capabilityId": null,
-      "cta": null,
-      "effectiveMaturity": null,
-      "kind": "CAPABILITY_DELTA",
-      "proposedMaturity": null,
-      "publicWording": null,
-      "reason": "Aucun delta GA à cette ref. Le contenu peut néanmoins bouger via d'autres signaux.",
-      "surface": null,
-      "wasClamped": false
-    },
     {
       "capabilityId": "wordpress-publication",
       "cta": "contact",
@@ -149,6 +134,17 @@
       "wasClamped": false
     },
     {
+      "capabilityId": "authenticated-product-entry",
+      "cta": null,
+      "effectiveMaturity": "PUBLIC_GA",
+      "kind": "CONTENT_COVERAGE_GAP",
+      "proposedMaturity": "PUBLIC_GA",
+      "publicWording": null,
+      "reason": "Capacité GA \"authenticated-product-entry\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
+      "surface": null,
+      "wasClamped": false
+    },
+    {
       "capabilityId": "direct-share-of-model",
       "cta": null,
       "effectiveMaturity": "PUBLIC_GA",
@@ -193,6 +189,17 @@
       "wasClamped": false
     },
     {
+      "capabilityId": "self-serve-onboarding",
+      "cta": null,
+      "effectiveMaturity": "PUBLIC_GA",
+      "kind": "CONTENT_COVERAGE_GAP",
+      "proposedMaturity": "PUBLIC_GA",
+      "publicWording": null,
+      "reason": "Capacité GA \"self-serve-onboarding\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
+      "surface": null,
+      "wasClamped": false
+    },
+    {
       "capabilityId": "total-authority-presence",
       "cta": null,
       "effectiveMaturity": "PUBLIC_GA",
@@ -202,10 +209,21 @@
       "reason": "Capacité GA \"total-authority-presence\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
       "surface": null,
       "wasClamped": false
+    },
+    {
+      "capabilityId": "ui-measurement-launch",
+      "cta": null,
+      "effectiveMaturity": "PUBLIC_GA",
+      "kind": "CONTENT_COVERAGE_GAP",
+      "proposedMaturity": "PUBLIC_GA",
+      "publicWording": null,
+      "reason": "Capacité GA \"ui-measurement-launch\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
+      "surface": null,
+      "wasClamped": false
     }
   ],
-  "overallReason": "Source CANDIDATE (R2 non intégré à main). Bundle préparé et vérifié ; publication conditionnée à l'intégration produit main.",
-  "overallStatus": "WAITING_FOR_PRODUCT_MAIN",
+  "overallReason": "La déclaration source a divergé du manifeste épinglé. Aucun changement rédactionnel ne peut être proposé tant que le manifeste n'est pas ré-importé (procédure IMPORT.md).",
+  "overallStatus": "BLOCKED",
   "promotionRequests": [
     {
       "allowedCtas": [
@@ -498,8 +516,8 @@
       "blockingReason": "—",
       "capabilityId": "commit-to-content",
       "clamped": false,
-      "currentImplementationStatus": null,
-      "currentPublicationStatus": null,
+      "currentImplementationStatus": "wip_committed_tested",
+      "currentPublicationStatus": "internal_only",
       "customerDeliverableNow": false,
       "disclosureAuthority": "CPO_DISCLOSURE_APPROVED",
       "effectivePublicMaturity": "INTERNAL_LABS",
@@ -509,7 +527,7 @@
         "textos-site: scripts/content-{sync,verify,status}.ts",
         "textos-site: docs/commit-to-content-v1.md"
       ],
-      "manifestCeiling": "PRIVATE",
+      "manifestCeiling": "INTERNAL_LABS",
       "manualEngineeringRequired": false,
       "prohibitedWording": [
         "available",
@@ -530,14 +548,14 @@
     }
   ],
   "provenance": {
-    "generatedAt": "2026-09-12T15:47:46.408Z",
+    "generatedAt": "2026-10-30T11:11:18.514Z",
     "generatorVersion": "commit-to-content@v1",
-    "pinnedManifestChecksum": "4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251",
-    "pinnedManifestSha": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
-    "siteHead": "1ba4b7d1909be76c8f5d5337e3fd38a82b65781c",
+    "pinnedManifestChecksum": "61b1a83df6a0f84fc19e2ce705ca6e91131424355e6c79f75fdd61c68b44ca7a",
+    "pinnedManifestSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "siteHead": "9b4a295e6df05f5e87dcf5df0d9d1927a4f481cc",
     "sourceRef": {
       "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
-      "matchesPinnedManifest": true,
+      "matchesPinnedManifest": false,
       "sha": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
       "shortSha": "3cfae58",
       "truthLevel": "CANDIDATE"
@@ -552,8 +570,8 @@
       ],
       "candidateSkeletonPath": "candidates/homepage.md",
       "reason": "Refresh narrative candidate for homepage.",
-      "status": "WAITING_FOR_PRODUCT_MAIN",
-      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "status": "BLOCKED",
+      "statusReason": "Bloqué par declarationIntegrity — ré-import manifeste requis.",
       "surface": "homepage"
     },
     {
@@ -563,8 +581,8 @@
       ],
       "candidateSkeletonPath": "candidates/product_proof.md",
       "reason": "Refresh narrative candidate for product_proof.",
-      "status": "WAITING_FOR_PRODUCT_MAIN",
-      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "status": "BLOCKED",
+      "statusReason": "Bloqué par declarationIntegrity — ré-import manifeste requis.",
       "surface": "product_proof"
     },
     {
@@ -573,8 +591,8 @@
       ],
       "candidateSkeletonPath": "candidates/faq.md",
       "reason": "Refresh narrative candidate for faq.",
-      "status": "WAITING_FOR_PRODUCT_MAIN",
-      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "status": "BLOCKED",
+      "statusReason": "Bloqué par declarationIntegrity — ré-import manifeste requis.",
       "surface": "faq"
     },
     {
@@ -583,8 +601,8 @@
       ],
       "candidateSkeletonPath": "candidates/methodology.md",
       "reason": "Refresh narrative candidate for methodology.",
-      "status": "WAITING_FOR_PRODUCT_MAIN",
-      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "status": "BLOCKED",
+      "statusReason": "Bloqué par declarationIntegrity — ré-import manifeste requis.",
       "surface": "methodology"
     }
   ],

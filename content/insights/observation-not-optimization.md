@@ -24,7 +24,7 @@ topicIds:
 - authority-observation
 audience: reader-mixed
 funnelStage: awareness
-productSnapshotSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
+productSnapshotSha: 2faf90e681c1b0ccf345a80ea6e637fd89be88ab
 evidenceRefs:
 - observe-authority-presence:authority-presence-observation-v1
 - observe-authority-presence:observe-run-orchestration-v1

@@ -52,7 +52,7 @@ describe("commit-to-content publishability invariants", () => {
     expect(decision.overallStatus).not.toBe("PUBLIC_SAFE");
   });
 
-  it("invariant 4 : capacités self-serve internal_only ⇒ pas d'activation CTA publique proposée", () => {
+  it("invariant 4 : sans activation proposée, le gate self-serve reste vert et n'active rien", () => {
     const gate = selfServeCtaGate(pinnedManifest);
     // Le gate reste vert (aucune infraction observée), mais son détail énumère les capacités
     // internal_only à ne PAS activer publiquement. La formule doit citer au moins une capacité
@@ -62,7 +62,10 @@ describe("commit-to-content publishability invariants", () => {
     // via les trois capacités requises (self-serve-onboarding, authenticated-product-entry,
     // ui-measurement-launch). En l'absence d'activation proposée, il reste GREEN mais
     // eligible=false.
-    expect(gate.eligible).toBe(false);
+    // ADR-027 (décision de publication du 2026-10-27) : les trois capacités sont désormais
+    // commercialisables en homepage dans le manifeste épinglé — éligibles. L'activation d'un CTA
+    // public reste une décision distincte : sans elle, rien ne s'affiche.
+    expect(gate.eligible).toBe(true);
     expect(gate.activationProposed).toBe(false);
   });
 

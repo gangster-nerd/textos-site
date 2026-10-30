@@ -1,12 +1,12 @@
 {
   "gates": {
     "declarationIntegrity": {
-      "detail": "Digest de la déclaration source conforme à l'épinglé.",
-      "status": "green"
+      "detail": "declarationDiverged=true — voir manifestDrift.",
+      "status": "red"
     },
     "manifestDrift": {
-      "detail": "La ref demandée est byte-identique au manifeste épinglé.",
-      "status": "green"
+      "detail": "La déclaration source a divergé du manifeste épinglé. Ré-import requis via `gh run download` (procédure IMPORT.md).",
+      "status": "red"
     },
     "maturityGate": {
       "detail": "Évaluées: 1 (commit-to-content). Quarantaine (proposition stockée, non publiable): 8 (wordpress-publication, native-composition-gutenberg, asset-spec, geo-writer, owned-surface-design, query-intelligence, opportunity-brief, repos-intersection).",
@@ -14,13 +14,9 @@
     },
     "selfServeCtaGate": {
       "activationProposed": false,
-      "detail": "Aucune activation self-serve n'est proposée. Capacités absentes/insuffisantes : self-serve-onboarding (absent du manifeste), authenticated-product-entry (absent du manifeste), ui-measurement-launch (absent du manifeste).",
-      "eligible": false,
-      "missingCapabilities": [
-        "self-serve-onboarding (absent du manifeste)",
-        "authenticated-product-entry (absent du manifeste)",
-        "ui-measurement-launch (absent du manifeste)"
-      ],
+      "detail": "Capacités requises complètes — aucune activation self-serve n'est proposée dans les bundles courants.",
+      "eligible": true,
+      "missingCapabilities": [],
       "status": "green"
     },
     "truthLevelGate": {
@@ -28,8 +24,8 @@
       "status": "green"
     }
   },
-  "overallReason": "Source CANDIDATE (R2 non intégré à main). Bundle préparé et vérifié ; publication conditionnée à l'intégration produit main.",
-  "overallStatus": "WAITING_FOR_PRODUCT_MAIN",
+  "overallReason": "La déclaration source a divergé du manifeste épinglé. Aucun changement rédactionnel ne peut être proposé tant que le manifeste n'est pas ré-importé (procédure IMPORT.md).",
+  "overallStatus": "BLOCKED",
   "surfaces": [
     {
       "affectedFiles": [
@@ -38,8 +34,8 @@
       ],
       "candidateSkeletonPath": "candidates/homepage.md",
       "reason": "Refresh narrative candidate for homepage.",
-      "status": "WAITING_FOR_PRODUCT_MAIN",
-      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "status": "BLOCKED",
+      "statusReason": "Bloqué par declarationIntegrity — ré-import manifeste requis.",
       "surface": "homepage"
     },
     {
@@ -49,8 +45,8 @@
       ],
       "candidateSkeletonPath": "candidates/product_proof.md",
       "reason": "Refresh narrative candidate for product_proof.",
-      "status": "WAITING_FOR_PRODUCT_MAIN",
-      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "status": "BLOCKED",
+      "statusReason": "Bloqué par declarationIntegrity — ré-import manifeste requis.",
       "surface": "product_proof"
     },
     {
@@ -59,8 +55,8 @@
       ],
       "candidateSkeletonPath": "candidates/faq.md",
       "reason": "Refresh narrative candidate for faq.",
-      "status": "WAITING_FOR_PRODUCT_MAIN",
-      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "status": "BLOCKED",
+      "statusReason": "Bloqué par declarationIntegrity — ré-import manifeste requis.",
       "surface": "faq"
     },
     {
@@ -69,8 +65,8 @@
       ],
       "candidateSkeletonPath": "candidates/methodology.md",
       "reason": "Refresh narrative candidate for methodology.",
-      "status": "WAITING_FOR_PRODUCT_MAIN",
-      "statusReason": "Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.",
+      "status": "BLOCKED",
+      "statusReason": "Bloqué par declarationIntegrity — ré-import manifeste requis.",
       "surface": "methodology"
     }
   ]
