@@ -1,0 +1,70 @@
+{
+  "text": "TextOS's API names three effects that need a human decision: approving a question panel, accepting an opportunity brief and creating a WordPress draft. Those effects stay under review, and no service account calling the API can switch them to automatic execution. When a person approves, TextOS records that person's identity on the decision and issues a one-hour permission to act. At run time that permission is checked against the action again, claimed, used for that action and then consumed.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS's API names three effects that need a human decision: approving a question panel, accepting an opportunity brief and creating a WordPress draft.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-hd-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Those effects stay under review, and no service account calling the API can switch them to automatic execution.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-hd-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "When a person approves, TextOS records that person's identity on the decision and issues a one-hour permission to act.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-hd-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "At run time that permission is checked against the action again, claimed, used for that action and then consumed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-hd-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

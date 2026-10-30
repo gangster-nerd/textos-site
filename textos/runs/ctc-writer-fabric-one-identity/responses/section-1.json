@@ -1,0 +1,61 @@
+{
+  "text": "Mixing two models inside one article would make it hard to say who wrote what. TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.\n\nThe article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added. For a reader of the finished page, that means one consistent voice per article.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Mixing two models inside one article would make it hard to say who wrote what.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "For a reader of the finished page, that means one consistent voice per article.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "text": "Long articles are written piece by piece, and a model provider can fail in the middle of one. In TextOS, a provider outage no longer kills an article that is being written. What changed is not the number of models so much as the rules for moving from one to the next.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Long articles are written piece by piece, and a model provider can fail in the middle of one.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS, a provider outage no longer kills an article that is being written.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "What changed is not the number of models so much as the rules for moving from one to the next.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

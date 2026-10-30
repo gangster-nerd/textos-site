@@ -1,0 +1,689 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "api-v1.1-wordpress-draft-trust-subject-2026-09-26",
+        "sourceCommits": [
+          "722f17731cbe0773b9db4583686cbd04f9cd043e",
+          "8610b7b1dba1964268a0f6f2920205b6a678d134"
+        ]
+      },
+      {
+        "groupId": "api-v1.1-decision-and-trust-grant-2026-09-26",
+        "sourceCommits": [
+          "23d1ed3113b1bfdf2a1f24803751682b37e66226",
+          "0222212ace8541ab30b2ecc2ee8b4a0ad1298f7e",
+          "cda781a44e6f0c9112ac9da1c2240c70c1ed6a47",
+          "7e0b459a82f771a9e8616021c0847e0f95c471fe"
+        ]
+      }
+    ],
+    "buyerQuestion": "If an AI agent can call a content API, what stops it from putting something nobody approved into my CMS?",
+    "targetQuery": "how to require human approval before an ai agent creates a cms draft",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "agent-governance",
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-human-decision-exact-bytes",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-hd-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 722f177, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T17:07:24+02:00",
+      "contentHash": "e41a0b323e1309f48aea98cb9e8a88ee895a7e62e613eba2bbde328a6b71c2a8",
+      "excerpt": "derives the exact ActionEnvelope/hash from canonical workspace draft + TruthCheck + destination state; - no credential material is hashed or exposed; - no external effect.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Describes the design committed on 2026-09-26, not an audit of a production deployment."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 722f177, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T17:07:24+02:00",
+      "contentHash": "6195fd50bd98ad776e3ca566025ce1531380b23b3ed958db2c28adc1f72f3270",
+      "excerpt": "stale approval must fail before the remote POST if draft content, TruthCheck lineage or destination state changed.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 722f177, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T17:07:24+02:00",
+      "contentHash": "28911f4f6bf927e8a556a8f9ec5ce94e4d6cf0fccfdb19f25529d7d35919713d",
+      "excerpt": "draft creation must not be mislabeled as an internal proposal merely to simplify the API;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 8610b7b, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T17:08:16+02:00",
+      "contentHash": "100a028ca5a82b7d9b8144209d91771120655b605e4be3b4027419e2e3c34316",
+      "excerpt": "a mismatched payload hash must not consume/claim authorization capacity when no effect can execute;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 23d1ed3, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T18:14:05+02:00",
+      "contentHash": "d4075e4788cb0a9e65363a12cd4055b5bf1369164e14d74e7b891a4134385aee",
+      "excerpt": "Add a transport-neutral API V1.1 Decision service for the three governed effects: - approve Query Panel; - accept Opportunity Brief; - create WordPress draft.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 23d1ed3, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T18:14:05+02:00",
+      "contentHash": "3d77a4ef00999fd217c197edcefef4da6e83d688c36e96ee5f7b5418eaab595f",
+      "excerpt": "these governed effects remain REQUIRE_REVIEW; - no service principal may turn the human gate into AUTO_EXECUTE.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 23d1ed3, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T18:14:05+02:00",
+      "contentHash": "7c64efcbb5729cd1859d014c3367e697fb52ab64bf6577e3140a0c77fc8d95aa",
+      "excerpt": "approval atomically resolves Decision and creates a one-hour human-decision TrustGrant; - human identity is preserved on the Decision.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 0222212, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T18:20:11+02:00",
+      "contentHash": "683c18ebc760071fc8fa61ed5cee4878795ced523a83629fb68bf621ee5fa629",
+      "excerpt": "shared dispatcher re-derives the authorization subject, atomically claims the grant, executes, then consumes it;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 0222212, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T18:20:11+02:00",
+      "contentHash": "4d52708a3d15cb1968d310f733cafe038dd0222c4b6c6f048b23ede2e042df57",
+      "excerpt": "create_wordpress_draft@1 is explicitly reconcile_on_reclaim because remote WordPress creation can succeed before preview_receipt persistence; - no automatic retry is allowed through that ambiguous window.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit cda781a, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T18:18:13+02:00",
+      "contentHash": "748cc0ef3337428318a0c2efe0b57842ec33ef4fb563bb880d1855862c7b29ce",
+      "excerpt": "A durable TrustGrant is a single execution authority. Two different Idempotency-Keys must not be able to queue two Jobs under the same grant and leave claim-race semantics to decide which one wins.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-hd-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 7e0b459, 26 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-26T18:15:19+02:00",
+      "contentHash": "2eb94dc8a3ca08364ed9fdc34785ec57e006904f8af4771bc86704cbda0179be",
+      "excerpt": "approvedByHumanPrincipalId receives the real human resolver identity, never the service principal id.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-human-decision-exact-bytes"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State, as a fact about TextOS's API, that an agent can prepare a CMS draft but a human decision is required to create it.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-hd-05",
+        "ev-hd-06"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: the three governed effects stay under human review, and an approval is bound to an exact hash and consumed once.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-hd-05",
+        "ev-hd-06",
+        "ev-hd-08"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the buyer's worry — an agent with API access writing into a CMS — then say how TextOS's API answered it in September 2026, without listing the mechanism yet.",
+      "buyerIntent": "Can an agent put unapproved content into my CMS?",
+      "allowedEvidenceIds": [
+        "ev-hd-06"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 150,
+      "maxChars": 600,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What stops an agent from creating an unapproved draft?",
+      "writingObjective": "Answer directly: which effects require a human decision, that no machine identity can switch that to automatic execution, and that the approval is a single-use grant tied to an exact hash.",
+      "buyerIntent": "What exactly is gated?",
+      "allowedEvidenceIds": [
+        "ev-hd-05",
+        "ev-hd-06",
+        "ev-hd-07",
+        "ev-hd-08"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 250,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Preparing is not doing",
+      "writingObjective": "Explain the split between the prepare capability (derives the exact action and its hash, no external effect, no credentials hashed) and the create capability, and why draft creation was not relabelled as an internal proposal.",
+      "buyerIntent": "What can the agent do on its own?",
+      "allowedEvidenceIds": [
+        "ev-hd-01",
+        "ev-hd-03"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "prepared-to-draft-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-hd-01",
+        "ev-hd-07",
+        "ev-hd-08"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "An approval covers exact bytes, once",
+      "writingObjective": "Tell how the approval is spent: a stale approval fails before the WordPress request when content, TruthCheck lineage or destination changed; a mismatched hash consumes nothing; one grant can back one job only; the grant is claimed, used, then consumed.",
+      "buyerIntent": "What if the draft changed after I approved it?",
+      "allowedEvidenceIds": [
+        "ev-hd-02",
+        "ev-hd-04",
+        "ev-hd-08",
+        "ev-hd-10"
+      ],
+      "requiredClaimTypes": [
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1200,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Whose name is on the decision",
+      "writingObjective": "Show that the record keeps the real human who approved, never the machine identity that executed, and that the one ambiguous window — WordPress may have created the draft before TextOS recorded it — stops for reconciliation instead of retrying.",
+      "buyerIntent": "Who is accountable, and what happens on a crash?",
+      "allowedEvidenceIds": [
+        "ev-hd-07",
+        "ev-hd-09",
+        "ev-hd-11"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "note": "Expressions prepared for TextOS's demand measurement (textos.measure_demand@1) — NOT measured. Every Commit-to-Content article on this site carries a HUMAN_CMO target query with demand NOT_MEASURED; once these expressions are measured, a brief may move to DEMAND_EVIDENCE only by citing the measurement, never by assuming it. Running it needs: the en-US demand market (gangster-nerd/textos-v0#74, demand-market@2), a workspace for textos-site, a service principal with the authority:write scope, and the paid demand provider key. Each call is billed; the owner decides when to run it.",
+  "capabilityId": "textos.measure_demand@1",
+  "locale": "en-US",
+  "status": "not_run",
+  "groups": [
+    {
+      "source": "commit-to-content target queries",
+      "expressions": [
+        "how to require human approval before an ai agent creates a cms draft",
+        "how to make ai agent api credentials expire and stop them in an emergency",
+        "what happens to an ai written article when the model provider fails",
+        "how to decide which product changes deserve public content",
+        "how to make an ai writer use only approved facts",
+        "how to know if an ai written article was checked before it is published",
+        "what an ai content tool should do when it reads cited sources"
+      ]
+    },
+    {
+      "source": "operator question proposals (textos/client/operator-question-proposals.json)",
+      "expressions": [
+        "measure brand visibility in ai answers",
+        "check if chatgpt recommends my brand",
+        "ai visibility score alternative",
+        "ai content writer with sourced facts",
+        "ai content tool human approval wordpress",
+        "share of model measurement method"
+      ]
+    }
+  ]
+}

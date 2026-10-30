@@ -1,0 +1,565 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-writer-fabric-one-identity",
+  "flow": "commit_to_content",
+  "slug": "a-writing-model-outage-should-not-kill-an-article",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "writer-fabric-p0a-2026-10-23",
+        "sourceCommits": [
+          "a5b62412f98f590d9947c9a21aa4e57146da819c"
+        ]
+      },
+      {
+        "groupId": "writer-fabric-migration-guard-2026-10-23",
+        "sourceCommits": [
+          "4c2010b9d684fcf5ad39330a77feb7fc488c463a"
+        ]
+      }
+    ],
+    "buyerQuestion": "If the AI model behind my content tool goes down halfway through an article, what happens to the article?",
+    "targetQuery": "what happens to an ai written article when the model provider fails",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "writer-reliability"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+    "approvedAt": "2026-10-26"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-produced-is-not-validated",
+      "textos-site:ctc:ctc-human-decision-exact-bytes"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-wf-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "A provider outage no longer kills an article."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-02",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "A server-side ordered chain of registered writer profiles"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "one attempt is the whole article under ONE writer identity, never a per-slot switch, so checkpoints stay bound to the identity that produced them."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-04",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "content refusals never bypassed"
+      },
+      "claimTypes": [
+        "writer_resilience",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-05",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "Closed failure taxonomy, bounded retries (Retry-After <= 10 s, timeout, unknown)"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "Resumable article state stays opportunity_brief.accepted; the writer state lives in writer_runs.status. No new article status."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-07",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "restores the single-profile path, unchanged."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-08",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "Release gate: offline replay of a SYNTHETIC fixture; no route certified live yet."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "States the release gate of 2026-10-23; later certification work is not covered by this evidence."
+      ]
+    },
+    {
+      "id": "ev-wf-09",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4c2010b9d684fcf5ad39330a77feb7fc488c463a",
+        "quote": "remains a human release decision."
+      },
+      "claimTypes": [
+        "writer_resilience",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-10",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "append-only writer_attempts (trigger)."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-11",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "a provider exception now releases the slot claim under fencing."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-12",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "additive writerChain (static, no network, no secret values);"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "certification script refuses any editorial result other than article_ready."
+      },
+      "claimTypes": [
+        "writer_resilience",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-14",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4c2010b9d684fcf5ad39330a77feb7fc488c463a",
+        "quote": "Nothing is applied by this commit;"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-15",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4c2010b9d684fcf5ad39330a77feb7fc488c463a",
+        "quote": "unpinned target refused; already-migrated / lagging target refused."
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-wf-16",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a5b62412f98f590d9947c9a21aa4e57146da819c",
+        "quote": "atomic admission with a fencing token,"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that a writing-model outage no longer kills an article.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-wf-01"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS falls back along an ordered chain of writers, one writer per article attempt, never mixing writers inside one article.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-wf-02",
+        "ev-wf-03"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's experience — an article stopped halfway because a model provider failed — and say what TextOS changed in October 2026, without the mechanism yet.",
+      "buyerIntent": "What happens when the model fails?",
+      "allowedEvidenceIds": [
+        "ev-wf-01"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 150,
+      "maxChars": 600,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What happens to an article when the writing model fails?",
+      "writingObjective": "Answer directly: an ordered chain of writers is tried in turn, and each attempt writes the whole article under one writer.",
+      "buyerIntent": "Does the article survive?",
+      "allowedEvidenceIds": [
+        "ev-wf-01",
+        "ev-wf-02",
+        "ev-wf-03"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 250,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "One writer per article, never a patchwork",
+      "writingObjective": "Explain why a writer is never switched halfway: saved progress stays tied to the writer that produced it, so an article is never stitched from two models.",
+      "buyerIntent": "Could my article mix two models?",
+      "allowedEvidenceIds": [
+        "ev-wf-03",
+        "ev-wf-06"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "writer-fails-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-wf-03",
+        "ev-wf-02"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What a fallback is not allowed to do",
+      "writingObjective": "Show the limits: a closed list of failures, bounded retries, and a model's refusal to write never bypassed by trying another one.",
+      "buyerIntent": "Will a fallback get around a refusal?",
+      "allowedEvidenceIds": [
+        "ev-wf-04",
+        "ev-wf-05"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 250,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Switched on with an exit and a human hand",
+      "writingObjective": "Close on release discipline: a switch restores the previous single-writer path, the database change stays a human release decision, and the first release gate was an offline replay with no route certified live.",
+      "buyerIntent": "How was it rolled out?",
+      "allowedEvidenceIds": [
+        "ev-wf-07",
+        "ev-wf-08",
+        "ev-wf-09",
+        "ev-wf-13",
+        "ev-wf-15",
+        "ev-wf-14"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 280,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What each attempt leaves behind",
+      "writingObjective": "Develop: What each attempt leaves behind. One mechanism per paragraph, each factual sentence grounded in the evidence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-wf-10",
+        "ev-wf-11",
+        "ev-wf-12",
+        "ev-wf-16"
+      ],
+      "requiredClaimTypes": [
+        "writer_resilience"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 400,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-27",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "writer-fails",
+      "template": "flow",
+      "title": "What happens when a writer fails",
+      "subtitle": "Illustrative path for one article. A refusal is not a failure to route around.",
+      "nodes": [
+        {
+          "tag": "attempt",
+          "label": "First writer, whole article",
+          "evidenceIds": [
+            "ev-wf-03"
+          ]
+        },
+        {
+          "tag": "fail",
+          "label": "Technical failure",
+          "evidenceIds": [
+            "ev-wf-05"
+          ]
+        },
+        {
+          "tag": "next",
+          "label": "Next writer, whole article",
+          "evidenceIds": [
+            "ev-wf-02",
+            "ev-wf-03"
+          ]
+        },
+        {
+          "tag": "done",
+          "label": "Article not lost",
+          "evidenceIds": [
+            "ev-wf-01"
+          ]
+        }
+      ],
+      "highlightNode": 2,
+      "boundary": {
+        "afterNode": 1,
+        "title": "Closed list",
+        "lines": [
+          "Only listed technical failures",
+          "move to the next writer."
+        ],
+        "evidenceIds": [
+          "ev-wf-05"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "writer-fails-caption"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-12T15:47:46.408Z",
+  "generatedAt": "2026-10-30T11:11:18.514Z",
   "generatorVersion": "commit-to-content@v1",
-  "pinnedManifestChecksum": "4e0544e5db9826832f9069ac2903b74a586a135ce0604664d17254c45f400251",
-  "pinnedManifestSha": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
-  "siteHead": "1ba4b7d1909be76c8f5d5337e3fd38a82b65781c",
+  "pinnedManifestChecksum": "61b1a83df6a0f84fc19e2ce705ca6e91131424355e6c79f75fdd61c68b44ca7a",
+  "pinnedManifestSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "siteHead": "9b4a295e6df05f5e87dcf5df0d9d1927a4f481cc",
   "sourceRef": {
     "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
-    "matchesPinnedManifest": true,
+    "matchesPinnedManifest": false,
     "sha": "3cfae5830fed3f10fd35ed77e699a183162b6cbe",
     "shortSha": "3cfae58",
     "truthLevel": "CANDIDATE"

@@ -1,0 +1,815 @@
+{
+  "status": "written",
+  "result": {
+    "planId": "what happens to an ai written article when the model provider fails",
+    "planHash": "7e9102fb678a3d86cf099a5fb5f02dd2682b45d6e8ce26e4e0fcdf33813fb475",
+    "slots": [
+      {
+        "slotId": "title",
+        "role": "title",
+        "headingLevel": null,
+        "heading": null,
+        "text": "At TextOS, a writing-model outage no longer kills an article",
+        "statementIds": [
+          "stmt:5:title:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-01"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-01"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "meta",
+        "role": "meta_description",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.",
+        "statementIds": [
+          "stmt:4:meta:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-02",
+          "ev-wf-03"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-02",
+          "ev-wf-03"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "lead",
+        "role": "lead",
+        "headingLevel": null,
+        "heading": null,
+        "text": "Long articles are written piece by piece, and a model provider can fail in the middle of one. In TextOS, a provider outage no longer kills an article that is being written. What changed is not the number of models so much as the rules for moving from one to the next.",
+        "statementIds": [
+          "stmt:4:lead:2:s1",
+          "stmt:4:lead:2:s2",
+          "stmt:4:lead:2:s3"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-01"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-01"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "answer",
+        "role": "answer",
+        "headingLevel": 2,
+        "heading": "What happens to an article when the writing model fails?",
+        "text": "When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines. Each attempt covers the whole article under one writer identity, never a switch from one section to the next. As a result, a single provider outage no longer stops a TextOS article.",
+        "statementIds": [
+          "stmt:6:answer:2:s1",
+          "stmt:6:answer:2:s2",
+          "stmt:6:answer:2:s3"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-02",
+          "ev-wf-03",
+          "ev-wf-01"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-01",
+          "ev-wf-02",
+          "ev-wf-03"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-1",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "One writer per article, never a patchwork",
+        "text": "Mixing two models inside one article would make it hard to say who wrote what. TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.\n\nThe article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added. For a reader of the finished page, that means one consistent voice per article.",
+        "statementIds": [
+          "stmt:9:section-1:2:s1",
+          "stmt:9:section-1:2:s2",
+          "stmt:9:section-1:2:s3",
+          "stmt:9:section-1:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-03",
+          "ev-wf-06"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-03",
+          "ev-wf-06"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "writer-fails-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt.",
+        "statementIds": [
+          "stmt:20:writer-fails-caption:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-03",
+          "ev-wf-02"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-03",
+          "ev-wf-02"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-2",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What a fallback is not allowed to do",
+        "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal.",
+        "statementIds": [
+          "stmt:9:section-2:2:s1",
+          "stmt:9:section-2:2:s2",
+          "stmt:9:section-2:2:s3"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-05",
+          "ev-wf-04"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-04",
+          "ev-wf-05"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-3",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Switched on with an exit and a human hand",
+        "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.\n\nThe certification script refuses any editorial result other than an article ready for review. The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind. The commit that added that tool applied nothing by itself.",
+        "statementIds": [
+          "stmt:9:section-3:2:s1",
+          "stmt:9:section-3:2:s2",
+          "stmt:9:section-3:2:s3",
+          "stmt:9:section-3:2:x1",
+          "stmt:9:section-3:2:x2",
+          "stmt:9:section-3:2:x3"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-07",
+          "ev-wf-09",
+          "ev-wf-08",
+          "ev-wf-13",
+          "ev-wf-15",
+          "ev-wf-14"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-07",
+          "ev-wf-08",
+          "ev-wf-09",
+          "ev-wf-13",
+          "ev-wf-15",
+          "ev-wf-14"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-4",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What each attempt leaves behind",
+        "text": "Each writing run in TextOS is admitted in one atomic step and carries a fencing token. A fencing token is a counter that lets a system ignore a worker whose turn has already passed. Each attempt is written to a log in TextOS that only accepts additions.\n\nIf a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule. The readiness view lists the chain of writers without calling the network and without showing any secret value. Someone running the system can see which writers are lined up without exposing a single key.",
+        "statementIds": [
+          "stmt:9:section-4:3:s11",
+          "stmt:9:section-4:3:s12",
+          "stmt:9:section-4:3:s13",
+          "stmt:9:section-4:3:s21",
+          "stmt:9:section-4:3:s22",
+          "stmt:9:section-4:3:s23"
+        ],
+        "evidenceIdsUsed": [
+          "ev-wf-16",
+          "ev-wf-10",
+          "ev-wf-11",
+          "ev-wf-12"
+        ],
+        "usableEvidenceIds": [
+          "ev-wf-10",
+          "ev-wf-11",
+          "ev-wf-12",
+          "ev-wf-16"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI writing vendor",
+        "text": "Ask whether one article can end up written by two different models. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal. Ask what the article's status shows while it waits for a model to answer. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against. Ask whether you can see which models are lined up for your content, and in what order.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4",
+          "stmt:6:verify:2:s5"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "Another note explains who may say yes to a source before an article can rely on it. A second note shows how an article that was produced is told apart from one that was checked.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      }
+    ],
+    "document": {
+      "title": "At TextOS, a writing-model outage no longer kills an article",
+      "slug": "at-textos-a-writing-model-outage-no-longer-kills-an-article",
+      "metaDescription": "TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.",
+      "body": "Long articles are written piece by piece, and a model provider can fail in the middle of one. In TextOS, a provider outage no longer kills an article that is being written. What changed is not the number of models so much as the rules for moving from one to the next.\n\nMixing two models inside one article would make it hard to say who wrote what. TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.\n\nThe article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added. For a reader of the finished page, that means one consistent voice per article.\n\nIn TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt.\n\nA fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal.\n\nThe change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.\n\nThe certification script refuses any editorial result other than an article ready for review. The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind. The commit that added that tool applied nothing by itself.\n\nEach writing run in TextOS is admitted in one atomic step and carries a fencing token. A fencing token is a counter that lets a system ignore a worker whose turn has already passed. Each attempt is written to a log in TextOS that only accepts additions.\n\nIf a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule. The readiness view lists the chain of writers without calling the network and without showing any secret value. Someone running the system can see which writers are lined up without exposing a single key.\n\nAsk whether one article can end up written by two different models. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal. Ask what the article's status shows while it waits for a model to answer. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against. Ask whether you can see which models are lined up for your content, and in what order.\n\nAnother note explains who may say yes to a source before an article can rely on it. A second note shows how an article that was produced is told apart from one that was checked.",
+      "faq": [
+        {
+          "question": "What happens to an article when the writing model fails?",
+          "answer": "When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines. Each attempt covers the whole article under one writer identity, never a switch from one section to the next. As a result, a single provider outage no longer stops a TextOS article."
+        }
+      ],
+      "statementLedger": [
+        {
+          "id": "stmt:5:title:2:s1",
+          "text": "At TextOS, a writing-model outage no longer kills an article",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:meta:2:s1",
+          "text": "TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-02",
+            "ev-wf-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s1",
+          "text": "Long articles are written piece by piece, and a model provider can fail in the middle of one.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s2",
+          "text": "In TextOS, a provider outage no longer kills an article that is being written.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s3",
+          "text": "What changed is not the number of models so much as the rules for moving from one to the next.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s1",
+          "text": "When the writer in use fails, TextOS moves to the next writer in an ordered list that the server defines.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s2",
+          "text": "Each attempt covers the whole article under one writer identity, never a switch from one section to the next.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s3",
+          "text": "As a result, a single provider outage no longer stops a TextOS article.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s1",
+          "text": "Mixing two models inside one article would make it hard to say who wrote what.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s2",
+          "text": "TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s3",
+          "text": "The article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s4",
+          "text": "For a reader of the finished page, that means one consistent voice per article.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:20:writer-fails-caption:2:s1",
+          "text": "In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-03",
+            "ev-wf-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s1",
+          "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-05"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s2",
+          "text": "Retries honour a provider's request to pause only up to ten seconds.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-05"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s3",
+          "text": "When a model refuses to write something, TextOS does not try another model to get around the refusal.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-04"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s1",
+          "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-07"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s2",
+          "text": "Applying its database change remains a human release decision.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s3",
+          "text": "At release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:x1",
+          "text": "The certification script refuses any editorial result other than an article ready for review.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-13"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:x2",
+          "text": "The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-15"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:x3",
+          "text": "The commit that added that tool applied nothing by itself.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-14"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s11",
+          "text": "Each writing run in TextOS is admitted in one atomic step and carries a fencing token.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-16"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s12",
+          "text": "A fencing token is a counter that lets a system ignore a worker whose turn has already passed.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s13",
+          "text": "Each attempt is written to a log in TextOS that only accepts additions.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s21",
+          "text": "If a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-11"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s22",
+          "text": "The readiness view lists the chain of writers without calling the network and without showing any secret value.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "writer_resilience"
+          ],
+          "evidenceIds": [
+            "ev-wf-12"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s23",
+          "text": "Someone running the system can see which writers are lined up without exposing a single key.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s1",
+          "text": "Ask whether one article can end up written by two different models.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask what the article's status shows while it waits for a model to answer.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s5",
+          "text": "Ask whether you can see which models are lined up for your content, and in what order.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "Another note explains who may say yes to a source before an article can rely on it.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "A second note shows how an article that was produced is told apart from one that was checked.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        }
+      ],
+      "claimsExcluded": [],
+      "sections": [
+        {
+          "key": "lead",
+          "heading": "",
+          "body": "Long articles are written piece by piece, and a model provider can fail in the middle of one. In TextOS, a provider outage no longer kills an article that is being written. What changed is not the number of models so much as the rules for moving from one to the next."
+        },
+        {
+          "key": "section-1",
+          "heading": "One writer per article, never a patchwork",
+          "body": "Mixing two models inside one article would make it hard to say who wrote what. TextOS keeps saved progress tied to the writer identity that produced it, because an attempt never switches writer partway.\n\nThe article keeps the status it already had while it waits for a writer; the writer's own state is recorded separately, and no new article status was added. For a reader of the finished page, that means one consistent voice per article."
+        },
+        {
+          "key": "writer-fails-caption",
+          "heading": "",
+          "body": "In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt."
+        },
+        {
+          "key": "section-2",
+          "heading": "What a fallback is not allowed to do",
+          "body": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal."
+        },
+        {
+          "key": "section-3",
+          "heading": "Switched on with an exit and a human hand",
+          "body": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.\n\nThe certification script refuses any editorial result other than an article ready for review. The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind. The commit that added that tool applied nothing by itself."
+        },
+        {
+          "key": "section-4",
+          "heading": "What each attempt leaves behind",
+          "body": "Each writing run in TextOS is admitted in one atomic step and carries a fencing token. A fencing token is a counter that lets a system ignore a worker whose turn has already passed. Each attempt is written to a log in TextOS that only accepts additions.\n\nIf a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule. The readiness view lists the chain of writers without calling the network and without showing any secret value. Someone running the system can see which writers are lined up without exposing a single key."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI writing vendor",
+          "body": "Ask whether one article can end up written by two different models. If you buy an AI writing tool, ask whether switching models is ever used to get around a model's refusal. Ask what the article's status shows while it waits for a model to answer. When a vendor announces a reliability feature, ask how it can be switched off and what it was tested against. Ask whether you can see which models are lined up for your content, and in what order."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "Another note explains who may say yes to a source before an article can rely on it. A second note shows how an article that was produced is told apart from one that was checked."
+        }
+      ]
+    },
+    "structuredContentHash": "c5de1e53f3c2f962d30165a38769b2f982f8a530110fd5feb94589295d21e6f4",
+    "writerMethodVersion": "geo-writer@0.2",
+    "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+    "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+    "truthCheck": {
+      "verdict": "pass",
+      "contradictions": []
+    }
+  }
+}

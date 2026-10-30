@@ -1,0 +1,22 @@
+{
+  "text": "In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS each attempt writes the whole article under one writer, and when that writer fails, the next one in an ordered list defined by the server takes the next attempt.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-03",
+        "ev-wf-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

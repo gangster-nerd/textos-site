@@ -1,0 +1,23 @@
+{
+  "text": "Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Each TextOS product change carries an explicit content decision, which automated checks require but do not make, and the usual answer is that the change deserves no public content.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-01",
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

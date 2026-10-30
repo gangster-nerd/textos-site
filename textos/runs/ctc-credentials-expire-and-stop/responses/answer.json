@@ -1,0 +1,53 @@
+{
+  "text": "Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days. A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends. These limits are enforced by the TextOS service itself, not only by its command-line tool.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-cr-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-cr-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "These limits are enforced by the TextOS service itself, not only by its command-line tool.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-cr-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

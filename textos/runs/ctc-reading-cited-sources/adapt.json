@@ -1,0 +1,20 @@
+{
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "what an ai content tool should do when it reads cited sources",
+  "executionPlanHash": "f96861660fde524f1be52789633e96a01ad0503bb1bedf4e058edb8e4d44c7b5",
+  "ctcHandoffHash": "afcde548bebeb4a104e9c0f6028a6dd20796e6aa6b207d3643f560e05db77c27",
+  "promptHashes": {
+    "title": "bebe4e259a730b1b7dcaad62d2892d38a4fb329dd495cf890c36b335f645dcda",
+    "meta": "600d534bc011637d1a32bb710dc0073b98490c8c2e0cbb0e9a301ed35806cab4",
+    "lead": "4a10f5752a6979a5b16d989dc95a4ad7b88252888f948a61805b1a0a753b9283",
+    "answer": "d4420052fca5c3103cf35d0411119a22caee8b96f915ee8f9ba64b8b87f92e2b",
+    "section-1": "54b6657d7bb4d82a72ccfd8183d733ca79ac1c653c7d8377a21e52c512cf012f",
+    "cited-page-path-caption": "ec245c4a2a997dab078e27f5f72d5bf37ed07a5c9b172817b1c8e77b83a21aef",
+    "section-2": "31f252555decc416b40e546dfefffe099655249715ee2efab2a2c861ac84a5d1",
+    "section-3": "58e2a80386ce343ec314b38593505f72a11ae14b6aa8212f85b540c5e7d4a95c",
+    "section-4": "de29f1cfe47f9ab08fff61fe1acbda4e5c733af6bf26d4128d88ed8436a9387d",
+    "verify": "91b0a31d0b30f77c10362b5eb1a85c287092303fc6ff9467b5aad7f2d0294eac",
+    "editorial-next-step": "69c78d6c03e3a60dec95abd7f2f2d3483cc155d6096d5eb836177be41737bf86"
+  }
+}

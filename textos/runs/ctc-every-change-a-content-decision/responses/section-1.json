@@ -1,0 +1,49 @@
+{
+  "text": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive. The TextOS decision file says it plainly: the change deserves no public content.\n\nCounting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A vocabulary that made 'nothing to publish' feel shameful would push teams to over-qualify their work in order to look productive.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The TextOS decision file says it plainly: the change deserves no public content.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Counting that answer as a valid outcome keeps your public pages for the changes that matter to buyers.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

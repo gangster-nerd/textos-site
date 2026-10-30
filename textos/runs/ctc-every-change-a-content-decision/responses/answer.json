@@ -1,0 +1,65 @@
+{
+  "text": "Automated checks in TextOS refuse a change that carries no content decision, but they never work that decision out themselves. One of the possible answers is simply that the change deserves no public content. That answer is also the usual one, and it costs a single line to give. In other words, people decide what is worth saying, and the tooling checks that they decided.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Automated checks in TextOS refuse a change that carries no content decision, but they never work that decision out themselves.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "One of the possible answers is simply that the change deserves no public content.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "That answer is also the usual one, and it costs a single line to give.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "In other words, people decide what is worth saying, and the tooling checks that they decided.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

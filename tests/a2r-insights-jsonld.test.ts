@@ -12,6 +12,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
+import { loadCtcArticles } from "@/lib/textos-client/ctc-articles";
 
 const OUT_DIR = path.resolve("out/insights");
 if (!fs.existsSync(OUT_DIR)) {
@@ -27,7 +28,8 @@ const files = fs
 
 describe("A2R — 12/12 insight JSON-LD honest & consistent", () => {
   it("build produced 12 insight HTML files", () => {
-    expect(files.length).toBe(12);
+    // 12 managed-corpus insights + the verified Commit-to-Content drafts (lib/textos-client).
+    expect(files.length).toBe(12 + loadCtcArticles().length);
   });
 
   it.each(files)("%s : ld+json parses, draft-honest, identity-consistent", (file) => {

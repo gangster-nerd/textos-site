@@ -1,0 +1,45 @@
+{
+  "text": "Handing an AI agent the keys to a content API raises a plain worry: what keeps it from putting text nobody signed off into your website? In TextOS's API, the answer is a human gate that no machine account is allowed to turn into automatic execution. The rest of this note explains what the agent may do alone, what needs a person's sign-off, and how that sign-off is spent.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Handing an AI agent the keys to a content API raises a plain worry: what keeps it from putting text nobody signed off into your website?",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS's API, the answer is a human gate that no machine account is allowed to turn into automatic execution.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-hd-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The rest of this note explains what the agent may do alone, what needs a person's sign-off, and how that sign-off is spent.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

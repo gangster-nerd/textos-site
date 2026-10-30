@@ -1,0 +1,353 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "In TextOS, sources are read in a dedicated step that does not run inside writing, with a budget, one request at a time per site, and the option to resume or cancel. TextOS reads robots.txt first, and when a page cannot be read, the reason is recorded in a log that is only ever appended to. Nothing read this way turns into a statement by itself; it becomes material for a person to look at. That is the whole difference between reading the web and repeating it."
+        },
+        "id": "answer-1",
+        "kind": "answer",
+        "slot": "short-answer"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": "short-answer",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "To write about your brand with sources, a tool has to read other people's pages. How it behaves on those pages says a lot about how it will behave with yours. TextOS treats reading a cited source as its own action, kept out of writing and run within a budget of requests and time. This note sets out the rules of that step, one by one."
+        },
+        "id": "lead:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Reading is its own step, with a budget"
+        },
+        "id": "section-1:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief. It can be resumed after an interruption or cancelled. A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.\n\nThe date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read."
+        },
+        "id": "section-1:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "alt": "From a cited page to a proposed passage. A 4-step flow: robots.txt first, then Bounded reading, then Up to three passages, then Person qualifies. A dashed boundary after \"Up to three passages\" is labelled Human step: Nothing proposed reaches the writer before a person decides.",
+          "caption": "TextOS checks robots.txt before reading a cited page, reads it in a separate step within a budget, and only proposes passages, which a person then qualifies.",
+          "src": "/diagrams/ctc/cited-page-path-6fdd7aa99ebe.svg"
+        },
+        "id": "figure:cited-page-path",
+        "kind": "figure"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Asking first, and saying why a page was not read"
+        },
+        "id": "section-2:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 5,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault. A refusal is a result to report, not an obstacle to get around.\n\nThe crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent."
+        },
+        "id": "section-2:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 6,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Staying on the public web"
+        },
+        "id": "section-3:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 7,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere. That closes a known trick in which a public name is made to point at an internal system after the check.\n\nFollowing a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin."
+        },
+        "id": "section-3:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 8,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A passage proposed is not a fact accepted"
+        },
+        "id": "section-4:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 9,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks. When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.\n\nNone of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person."
+        },
+        "id": "section-4:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 10,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What to ask any AI writing vendor"
+        },
+        "id": "verify:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 11,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "items": [
+            "Ask how many requests the tool can send to one site, and whether you can stop a reading job halfway.",
+            "Ask what the tool records when it is refused access to a page.",
+            "If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.",
+            "Ask whether the tool can be pointed at internal addresses, and how it knows.",
+            "Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted."
+          ]
+        },
+        "id": "verify:decision-points",
+        "kind": "steps"
+      },
+      "hiddenReason": null,
+      "order": 12,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Where to go next"
+        },
+        "id": "editorial-next-step:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 13,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The previous note explains who may say yes to a passage before an article can rely on it. Another note shows how an article that was produced is told apart from one that was checked."
+        },
+        "id": "editorial-next-step:body",
+        "kind": "paragraph",
+        "slot": "editorial-next-step"
+      },
+      "hiddenReason": null,
+      "order": 14,
+      "region": "editorial-next-step",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Sources"
+        },
+        "id": "sources:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 15,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-rs-01",
+          "title": "TextOS product commit 7fb96fe, 26 Oct 2026"
+        },
+        "id": "source:1:ev-rs-01",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 16,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-rs-05",
+          "title": "TextOS product commit cf5b34a, 26 Oct 2026"
+        },
+        "id": "source:2:ev-rs-05",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 17,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-rs-10",
+          "title": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 2faf90e"
+        },
+        "id": "source:3:ev-rs-10",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 18,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-rs-06",
+          "title": "TextOS product commit 03fbdf9, 26 Oct 2026"
+        },
+        "id": "source:4:ev-rs-06",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 19,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-rs-08",
+          "title": "TextOS product commit 55e3e8b, 26 Oct 2026"
+        },
+        "id": "source:5:ev-rs-08",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 20,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-reading-cited-sources::how-an-ai-content-tool-should-read-your-sources::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:figure:cited-page-path:v|5:section-2:heading:v|6:section-2:body:v|7:section-3:heading:v|8:section-3:body:v|9:section-4:heading:v|10:section-4:body:v|11:verify:heading:v|12:verify:decision-points:v|13:editorial-next-step:heading:v|14:editorial-next-step:body:v|15:sources:heading:v|16:source:1:ev-rs-01:v|17:source:2:ev-rs-05:v|18:source:3:ev-rs-10:v|19:source:4:ev-rs-06:v|20:source:5:ev-rs-08:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "product_article",
+  "conversion": {
+    "ctaIntentId": null,
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, and only proposes passages for a person to qualify.",
+  "documentId": "textos-site:ctc:ctc-reading-cited-sources",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": "article-review",
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "Article"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": false,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-article-review@0.1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 3,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "how-an-ai-content-tool-should-read-your-sources",
+  "surface": "reference",
+  "title": "TextOS reads cited sources in a separate, bounded step, robots.txt first",
+  "truth": {
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "answer",
+    "paragraph",
+    "heading",
+    "figure",
+    "steps",
+    "source"
+  ]
+}

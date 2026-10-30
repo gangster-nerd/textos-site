@@ -10,8 +10,9 @@
 // et lire le nouveau champ que l'ignorer poliment.
 //
 // AUCUN ACCÈS AU DÉPÔT PRODUIT. Ce module lit deux fichiers de CE dépôt : la copie épinglée et son
-// checksum. La copie provient de l'artefact émis par le run `push` sur `main` du produit — jamais
-// d'un run de pull request, dont le `snapshotCommit` désigne un commit de fusion éphémère.
+// checksum. La copie provient de l'artefact émis par un run `push` du produit — sur `main` ou sur la
+// branche de certification (décision du 2026-10-29, `product-manifest/IMPORT.md`) — jamais d'un run
+// de pull request, dont le `snapshotCommit` désigne un commit de fusion éphémère.
 //
 // ─────────────────────────────────────────────────────────────────────────────────────────────
 // CE QUE LE CHECKSUM PROUVE, ET CE QU'IL NE PROUVE PAS
@@ -39,7 +40,10 @@ import {
   PUBLICATION_STATUSES,
   PUBLIC_SURFACES,
   SUPPORTED_SCHEMA_VERSION,
-  SUPPORTED_VOCABULARY_VERSION,
+  SUPPORTED_VOCABULARY_VERSIONS,
+  EARLY_DISCLOSURE_SURFACES,
+  isEarlyDisclosureStatus,
+  statusesOfVocabulary,
 } from "./status-axes";
 
 const FullSha = z.string().regex(/^[0-9a-f]{40}$/, "SHA complet attendu (40 hex)");
@@ -98,12 +102,35 @@ export const ProductManifestSchema = z
         message: `Schéma non supporté : ${manifest.schemaVersion} (attendu ${SUPPORTED_SCHEMA_VERSION}).`,
       });
     }
-    if (manifest.statusVocabularyVersion !== SUPPORTED_VOCABULARY_VERSION) {
+    if (!(SUPPORTED_VOCABULARY_VERSIONS as readonly number[]).includes(manifest.statusVocabularyVersion)) {
       ctx.addIssue({
         code: "custom",
         path: ["statusVocabularyVersion"],
-        message: `Vocabulaire non supporté : ${manifest.statusVocabularyVersion} (attendu ${SUPPORTED_VOCABULARY_VERSION}).`,
+        message: `Vocabulaire non supporté : ${manifest.statusVocabularyVersion} (attendu ${SUPPORTED_VOCABULARY_VERSIONS.join(" ou ")}).`,
       });
+    }
+    const vocabulary = new Set<string>(statusesOfVocabulary(manifest.statusVocabularyVersion));
+    for (const entity of manifest.entities) {
+      // Une version qui contredit son contenu n'est pas « à moitié lisible » : elle est refusée.
+      if (!vocabulary.has(entity.publicationStatus)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["entities"],
+          message: `${entity.id} : statut "${entity.publicationStatus}" absent du vocabulaire v${manifest.statusVocabularyVersion}.`,
+        });
+      }
+      // ADR-034 : une divulgation anticipée ne s'adosse jamais à pricing ni sales_copy (défense en
+      // profondeur — le produit refuse déjà de déclarer l'inverse).
+      if (isEarlyDisclosureStatus(entity.publicationStatus)) {
+        const outside = entity.allowedSurfaces.filter((surface) => !EARLY_DISCLOSURE_SURFACES.includes(surface));
+        if (outside.length > 0) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["entities"],
+            message: `${entity.id} : "${entity.publicationStatus}" n'ouvre pas ${outside.join(", ")}.`,
+          });
+        }
+      }
     }
 
     const seenEntities = new Set<string>();
@@ -186,7 +213,7 @@ export function loadPinnedManifest(root: string): ProductManifest {
     throw new Error(
       `Le manifeste épinglé ne correspond pas au checksum épinglé.\n` +
         `  attendu ${expected}\n  obtenu  ${actual}\n` +
-        `  Réimporter ENSEMBLE le manifeste et son checksum depuis l'artefact push/main sélectionné.`
+        `  Réimporter ENSEMBLE le manifeste et son checksum depuis l'artefact push (main ou tronc de certification) sélectionné.`
     );
   }
 

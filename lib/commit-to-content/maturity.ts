@@ -59,7 +59,7 @@ export type PublicMaturity = (typeof PUBLIC_MATURITY)[number];
 export const MATURITY_COPY_CONTRACT: Record<PublicMaturity, {
   mayImply: readonly string[];
   mustNotImply: readonly string[];
-  ctaAllowed: readonly ("measurement_request" | "contact" | "labs_signup" | "none")[];
+  ctaAllowed: readonly ("measurement_request" | "contact" | "labs_signup" | "beta_access" | "none")[];
 }> = {
   PUBLIC_GA: {
     mayImply: ["available", "supported", "documented"],
@@ -81,7 +81,8 @@ export const MATURITY_COPY_CONTRACT: Record<PublicMaturity, {
       "universal compatibility",
       "production-scale SLA",
     ],
-    ctaAllowed: ["contact", "labs_signup"],
+    // ADR-034 : la demande d'accès par l'entrée produit est le CTA d'une bêta.
+    ctaAllowed: ["contact", "labs_signup", "beta_access"],
   },
   PUBLIC_EARLY_ACCESS: {
     mayImply: [
@@ -154,10 +155,13 @@ export function manifestCeiling(
       return "PUBLIC_EARLY_ACCESS";
     case "public_marketable":
       return "PUBLIC_GA";
+    // ADR-034 (vocabulaire v4) : la bêta et la capacité à venir ont leur propre plafond public.
+    case "public_beta":
+      return "PUBLIC_BETA";
+    case "public_upcoming":
+      return "PUBLIC_ROADMAP";
     case "risky":
     case "unsupported":
-      return "PRIVATE";
-    default:
       return "PRIVATE";
   }
 }

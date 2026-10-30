@@ -20,6 +20,7 @@ import {
 import { compileAuthority } from "@/lib/content-surface-engine/authority";
 import { resolveReferenceCta } from "@/lib/content-surface-engine/conversion";
 import type { CtaDeliveryContext } from "@/lib/conversion/cta-resolver";
+import { resolveMeasurementRequestCapability } from "@/lib/config/measurement-request-config";
 import {
   buildAttributedUrl,
   createEmitter,
@@ -64,6 +65,11 @@ function renderFull(resolved: ResolvedContentSurface, cta = null as ReturnType<t
       resolveAuthor={(id) => resolveReferenceAuthor(id)}
       kicker="Preview"
       contentRevision="0"
+      // PR #22 : la surface ferme les CTA commerciaux sans capacité de capture « configured ».
+      // Le rendu de référence est éprouvé en `demo` (cf. DEMO_DELIVERY) : capacité dérivée du même mode.
+      commercialCapability={
+        resolveMeasurementRequestCapability({ mode: "demo", formEndpoint: null, legalNotice: null }).state
+      }
     />,
   );
 }
@@ -90,7 +96,12 @@ describe("A2 — REFERENCE surface", () => {
     // Fixture is a draft. Renderer must reflect (not upgrade) the publicationStatus.
     expect(resolved.truth.publicationStatus).toBe("draft");
     const html = renderFull(resolved, null);
-    expect(html).toContain("Status");
+    // CMO-SURFACE-VERTICAL-SLICE-1 : the visible "Status draft" line has been
+    // removed from the article header (the global preview DRAFT · NOT PUBLIC
+    // banner still lives outside the article). The invariant this test guards
+    // is that the renderer never *upgrades* draft to published or fabricates
+    // an authority — a DOM string check was a proxy, not the invariant.
+    expect(html).not.toContain(">published<");
     // Publication authority is opaque to the renderer — it never invents CERTIFIED_MAIN etc.
     expect(resolved.truth.sourceAuthority).toBe("CERTIFIED_MAIN");
   });

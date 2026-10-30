@@ -1,0 +1,560 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-produced-is-not-validated",
+  "flow": "commit_to_content",
+  "slug": "an-article-that-was-produced-is-not-an-article-that-was-checked",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "truth-check",
+    "grounded-truth-check"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "article-quality-lot-a-2026-10-25",
+        "sourceCommits": [
+          "16faee404184d31e40d907e885d3bf0867c7eea4"
+        ]
+      },
+      {
+        "groupId": "article-quality-lot-b-2026-10-25",
+        "sourceCommits": [
+          "01b0babf50422eaf6f3fe2c02ef979b54684ff0c",
+          "8463e78b5bbd2a3d86f2f278598dd03ba491c944"
+        ]
+      },
+      {
+        "groupId": "capability-continuity-2026-10-26",
+        "sourceCommits": [
+          "3e6277df2a0ec2c1a97cd22c5691e24c62e6e8f4",
+          "38568f2971d6f0f461724674783873003c8fd1a0"
+        ]
+      },
+      {
+        "groupId": "writer-run-status-r1-2026-10-26",
+        "sourceCommits": [
+          "683e90adcef1a05fa7c4ccb10e727ec57e751b5f"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I tell whether an AI-written article was actually checked before it reaches my website?",
+    "targetQuery": "how to know if an ai written article was checked before it is published",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "article-validation"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+    "approvedAt": "2026-10-26"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-evidence-approved-per-article",
+      "textos-insight:truthcheck-unmovable-gate",
+      "textos-insight:graduated-publication"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-pv-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "16faee404184d31e40d907e885d3bf0867c7eea4",
+        "quote": "le spine ne réécrit plus le verdict TruthCheck en « pass »"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-02",
+      "source": {
+        "kind": "product_commit",
+        "sha": "16faee404184d31e40d907e885d3bf0867c7eea4",
+        "quote": "un article techniquement produit n'est plus présenté comme validé. Une alerte de vérité permet la consultation et la correction humaine, jamais la préparation d'un brouillon WordPress."
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "16faee404184d31e40d907e885d3bf0867c7eea4",
+        "quote": "seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-04",
+      "source": {
+        "kind": "product_commit",
+        "sha": "16faee404184d31e40d907e885d3bf0867c7eea4",
+        "quote": "page de revue : suppression du « TruthCheck : validé » codé en dur, verdict persisté via ValidationStateBadge, mention « non certifié » sur alerte ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-05",
+      "source": {
+        "kind": "product_commit",
+        "sha": "01b0babf50422eaf6f3fe2c02ef979b54684ff0c",
+        "quote": "TextOS décide de la stratégie de l'article et le rédacteur l'exécute."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "01b0babf50422eaf6f3fe2c02ef979b54684ff0c",
+        "quote": "contrôle déterministe et indépendant du fournisseur (langue, profondeur, sections, questions, objet d'information, sources, répétitions, profil article.draft@1)"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-07",
+      "source": {
+        "kind": "product_commit",
+        "sha": "01b0babf50422eaf6f3fe2c02ef979b54684ff0c",
+        "quote": "seul `pass` rend l'article apte (readiness, Décision, exécution WordPress) ; « non évalué » bloque avec un code distinct ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-08",
+      "source": {
+        "kind": "product_commit",
+        "sha": "8463e78b5bbd2a3d86f2f278598dd03ba491c944",
+        "quote": "un `pass` n'est plus lisible comme une preuve d'excellence ; la revue humaine porte sur le fond, guidée par les constats et repères."
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-09",
+      "source": {
+        "kind": "product_commit",
+        "sha": "8463e78b5bbd2a3d86f2f278598dd03ba491c944",
+        "quote": "le gate déclare sa portée (scope: structural), ce qu'il mesure et ce qu'il ne mesure pas (utilité, argumentation, originalité, autorité des sources, performance GEO/SEO) ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-pv-10",
+      "source": {
+        "kind": "product_commit",
+        "sha": "3e6277df2a0ec2c1a97cd22c5691e24c62e6e8f4",
+        "quote": "detect missing capability receipts, masked TruthCheck alerts and content drift before claiming journey continuity. A consistent receipt is not editorial excellence, GEO effect or publication permission."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-pv-11",
+      "source": {
+        "kind": "product_commit",
+        "sha": "38568f2971d6f0f461724674783873003c8fd1a0",
+        "quote": "detect a required claim, buyer context or governed evidence lost before writing even when the resulting activation receipts remain consistent."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-pv-12",
+      "source": {
+        "kind": "product_commit",
+        "sha": "38568f2971d6f0f461724674783873003c8fd1a0",
+        "quote": "optional evidence is not forced into the article."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-pv-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "683e90adcef1a05fa7c4ccb10e727ec57e751b5f",
+        "quote": "« rédaction en cours, relancez à partir de HH:MM » au lieu d'un diagnostic d'échec ;"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that a produced article is no longer presented as a validated one.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-pv-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: in TextOS only a passing fact-check and a conforming article may reach WordPress, and a pass is not presented as proof of excellence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-pv-03",
+        "ev-pv-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation — a dashboard that says an AI article is ready — and say that TextOS stopped equating 'written' with 'checked' in October 2026.",
+      "buyerIntent": "Can I trust a 'ready' label?",
+      "allowedEvidenceIds": [
+        "ev-pv-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can you tell an AI article was really checked?",
+      "writingObjective": "Answer directly: the fact-check verdict is no longer rewritten to pass, a truth alert allows reading and correction but never a WordPress draft, and one rule decides eligibility.",
+      "buyerIntent": "What exactly is checked before my CMS?",
+      "allowedEvidenceIds": [
+        "ev-pv-01",
+        "ev-pv-02",
+        "ev-pv-03"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The label on the screen tells the truth",
+      "writingObjective": "Explain the review screen change: a hard-coded 'validated' label removed, the stored verdict shown, 'not certified' shown on an alert; and that TextOS decides the article's strategy while the writer executes it.",
+      "buyerIntent": "Does the interface say what really happened?",
+      "allowedEvidenceIds": [
+        "ev-pv-04",
+        "ev-pv-05"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1200,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "One rule for what may reach your website",
+      "writingObjective": "Explain the single eligibility rule (fact-check pass and a conforming article), that it fails closed, that only a quality-gate pass makes an article eligible while 'not evaluated' blocks with its own code, and what the structural check looks at.",
+      "buyerIntent": "What decides eligibility?",
+      "allowedEvidenceIds": [
+        "ev-pv-03",
+        "ev-pv-06",
+        "ev-pv-07"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "written-to-eligible-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-pv-01",
+        "ev-pv-03",
+        "ev-pv-07"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What a pass does not prove",
+      "writingObjective": "Explain that a pass is not presented as proof of excellence, that the gate states what it does not measure (usefulness, argument, originality, source authority, search performance), and that human review judges substance; add that waiting for a writer is shown as waiting, not as failure.",
+      "buyerIntent": "Does a pass mean the article is good?",
+      "allowedEvidenceIds": [
+        "ev-pv-08",
+        "ev-pv-09",
+        "ev-pv-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Checking that nothing was lost on the way",
+      "writingObjective": "Explain the continuity checks: missing receipts, masked alerts and drift detected before claiming continuity; a required claim, buyer context or approved fact lost before writing detected even when receipts look consistent; optional material not forced in; and that a consistent receipt is not quality, search effect or permission to publish.",
+      "buyerIntent": "Could something I asked for silently disappear?",
+      "allowedEvidenceIds": [
+        "ev-pv-10",
+        "ev-pv-11",
+        "ev-pv-12"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-27",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "written-to-eligible",
+      "template": "flow",
+      "title": "From written to eligible for WordPress",
+      "subtitle": "Illustrative path for one article. Anything unconfirmed stays closed.",
+      "nodes": [
+        {
+          "tag": "write",
+          "label": "Article written",
+          "evidenceIds": [
+            "ev-pv-02"
+          ]
+        },
+        {
+          "tag": "verdict",
+          "label": "Fact-check verdict kept",
+          "evidenceIds": [
+            "ev-pv-01"
+          ]
+        },
+        {
+          "tag": "quality",
+          "label": "Quality check passed",
+          "evidenceIds": [
+            "ev-pv-07"
+          ]
+        },
+        {
+          "tag": "eligible",
+          "label": "Eligible for WordPress",
+          "evidenceIds": [
+            "ev-pv-03"
+          ]
+        }
+      ],
+      "highlightNode": 3,
+      "boundary": {
+        "afterNode": 2,
+        "title": "Single rule",
+        "lines": [
+          "Both checks pass, or the",
+          "article stays out."
+        ],
+        "evidenceIds": [
+          "ev-pv-03"
+        ]
+      },
+      "anchorSectionKey": "section-2",
+      "captionSlotId": "written-to-eligible-caption"
+    }
+  ]
+}

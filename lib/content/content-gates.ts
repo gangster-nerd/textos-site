@@ -10,6 +10,7 @@ import {
 import { deliveryContext } from "@/lib/conversion/delivery-context";
 import { getVisual } from "@/lib/visuals/visual-registry";
 import { SURFACE_BY_CONTENT_TYPE } from "./content-types";
+import { earlyDisclosureOf, findAvailabilityPromises, type EarlyDisclosure } from "./early-disclosure";
 import type { ContentFrontmatter } from "./content-schema";
 
 // Plus de table `Record<Status, Surface[]>` : l'autorisation ne se déduit plus d'un statut, elle
@@ -28,7 +29,7 @@ const MATURITY_LABEL: Partial<Record<NonNullable<CapabilityDeclaration["implemen
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-export function runGates(fm: ContentFrontmatter, slug: string) {
+export function runGates(fm: ContentFrontmatter, slug: string, body = "") {
   if (!SLUG.test(slug)) {
     throw new Error(`Slug invalide (kebab-case strict attendu) : ${slug}`);
   }
@@ -132,5 +133,33 @@ export function runGates(fm: ContentFrontmatter, slug: string) {
     ),
   ];
 
-  return { capabilities, surface, maturityLabels, ctaResolution };
+  // ADR-034 — DIVULGATION ANTICIPÉE. Une page qui parle d'une capacité en bêta ou à venir porte son
+  // label (rendu par la page), aucune proposition commerciale du registre (seul le CTA d'accès bêta,
+  // hors registre, est rendu), et aucune date ni promesse de disponibilité.
+  const earlyDisclosures: EarlyDisclosure[] = capabilities
+    .map((cap) => earlyDisclosureOf(cap.id, cap.declaration.publicationStatus))
+    .filter((disclosure): disclosure is EarlyDisclosure => disclosure !== null);
+  if (earlyDisclosures.length > 0) {
+    const ids = earlyDisclosures.map((disclosure) => disclosure.capabilityId).join(", ");
+    if (fm.ctaVariant !== "none") {
+      throw new Error(
+        `${slug} : la page parle d'une capacité en divulgation anticipée (${ids}) — aucun CTA commercial (ctaVariant "${fm.ctaVariant}") ; seul le CTA d'accès bêta est rendu.`
+      );
+    }
+    const promises = findAvailabilityPromises([
+      { where: "title", text: fm.title },
+      { where: "description", text: fm.description },
+      { where: "shortAnswer", text: fm.shortAnswer.body },
+      { where: "body", text: body },
+    ]);
+    if (promises.length > 0) {
+      throw new Error(
+        `${slug} : date ou promesse de disponibilité sur une capacité en divulgation anticipée (${ids}) — ${promises
+          .map((promise) => `« ${promise.match} » (${promise.where})`)
+          .join(", ")}.`
+      );
+    }
+  }
+
+  return { capabilities, surface, maturityLabels, ctaResolution, earlyDisclosures };
 }

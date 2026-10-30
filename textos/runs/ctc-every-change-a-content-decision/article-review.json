@@ -1,0 +1,270 @@
+{
+  "methodVersion": "ctc-article-review@0.1",
+  "reviewSchemaVersion": "article-review@0.1",
+  "release": {
+    "allowed": true,
+    "blockers": [],
+    "cmoV2Issues": []
+  },
+  "earlyDisclosure": null,
+  "cmoV2Conformance": {
+    "version": "article-cmo-v2@1",
+    "documentId": "textos-site:ctc:ctc-every-change-a-content-decision",
+    "passed": true,
+    "issues": [],
+    "observed": {
+      "visibleBlockCount": 19,
+      "informationObjectCount": 2,
+      "informationObjectCounts": {
+        "steps": 1,
+        "table": 0,
+        "comparison": 0,
+        "figure": 1,
+        "statistic": 0,
+        "evidence": 0,
+        "definition": 0
+      },
+      "hasShortAnswer": true,
+      "hasSources": true,
+      "hasEditorialNextStep": true,
+      "hasRelated": false,
+      "hasContextualCta": false,
+      "tableOfContentsEnabled": true
+    }
+  },
+  "contentPass": {
+    "documentId": "textos-site:ctc:ctc-every-change-a-content-decision",
+    "profile": "default",
+    "passed": true,
+    "issues": [],
+    "checked": [
+      "default.title-present",
+      "default.description-present",
+      "default.at-least-one-surface",
+      "default.lifecycle-consistency"
+    ]
+  },
+  "surfacePlan": {
+    "version": "article-surface-planner@0.1",
+    "documentId": "textos-site:ctc:ctc-every-change-a-content-decision",
+    "observed": {
+      "shortAnswerBlockIds": [
+        "answer-1"
+      ],
+      "headingBlockIds": [
+        "section-1:heading",
+        "section-2:heading",
+        "section-4:heading",
+        "section-3:heading",
+        "verify:heading",
+        "editorial-next-step:heading",
+        "sources:heading"
+      ],
+      "sourceBlockIds": [
+        "source:1:ev-ci-01",
+        "source:2:ev-ci-02",
+        "source:3:ev-ci-05"
+      ],
+      "editorialNextStepBlockIds": [
+        "editorial-next-step:body"
+      ],
+      "contextualCtaBlockIds": [],
+      "relatedSlotBlockIds": [],
+      "informationObjects": [
+        {
+          "id": "figure:change-to-decision",
+          "kind": "figure"
+        },
+        {
+          "id": "verify:decision-points",
+          "kind": "steps"
+        }
+      ]
+    },
+    "requirements": {
+      "requireShortAnswer": true,
+      "requireTableOfContents": true,
+      "requireSources": true,
+      "requireEditorialNextStep": true,
+      "requireRelated": false,
+      "requireContextualCta": false,
+      "minInformationObjects": 1,
+      "requiredInformationCounts": {}
+    },
+    "needs": []
+  },
+  "articleStructure": {
+    "contentType": "ARTICLE",
+    "slotOrder": [
+      {
+        "slot": "short_answer",
+        "order": 0,
+        "present": true
+      },
+      {
+        "slot": "table_of_contents",
+        "order": 1,
+        "present": true
+      },
+      {
+        "slot": "body",
+        "order": 2,
+        "present": true
+      },
+      {
+        "slot": "related",
+        "order": 3,
+        "present": false
+      },
+      {
+        "slot": "editorial_next_step",
+        "order": 4,
+        "present": true
+      },
+      {
+        "slot": "cta",
+        "order": 5,
+        "present": false
+      }
+    ],
+    "readingTimeMinutes": {
+      "class": "POLICY_COMPUTED",
+      "value": 3
+    }
+  },
+  "editorialQuality": {
+    "gateVersion": "ctc-editorial-quality@0.1",
+    "contract": "ctc_engineering_note",
+    "scope": "structural",
+    "verdict": "pass",
+    "findings": [
+      {
+        "code": "section_below_depth_guide",
+        "subject": "section-1",
+        "message": "Section « Why 'nothing to publish' has to be cheap » plus courte que son repère : développement à juger en revue.",
+        "measured": 315,
+        "expected": 500,
+        "severity": "signal"
+      },
+      {
+        "code": "section_below_depth_guide",
+        "subject": "section-3",
+        "message": "Section « Govern first, write second » plus courte que son repère : développement à juger en revue.",
+        "measured": 348,
+        "expected": 500,
+        "severity": "signal"
+      },
+      {
+        "code": "section_below_depth_guide",
+        "subject": "verify",
+        "message": "Section « What to ask any AI writing vendor » plus courte que son repère : développement à juger en revue.",
+        "measured": 470,
+        "expected": 500,
+        "severity": "signal"
+      },
+      {
+        "code": "section_below_depth_guide",
+        "subject": "editorial-next-step",
+        "message": "Section « Where to go next » plus courte que son repère : développement à juger en revue.",
+        "measured": 177,
+        "expected": 500,
+        "severity": "signal"
+      },
+      {
+        "code": "section_without_grounded_statement",
+        "subject": "verify",
+        "message": "Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.",
+        "measured": 0,
+        "expected": 1,
+        "severity": "signal"
+      },
+      {
+        "code": "section_without_grounded_statement",
+        "subject": "editorial-next-step",
+        "message": "Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.",
+        "measured": 0,
+        "expected": 1,
+        "severity": "signal"
+      },
+      {
+        "code": "evidence_overused",
+        "subject": "ev-ci-01",
+        "message": "Une même preuve fonde 3 slots du corps (lead, answer, change-to-decision-caption) : la note répète ce fait au lieu d'en apporter d'autres.",
+        "measured": 3,
+        "expected": 2,
+        "severity": "signal"
+      },
+      {
+        "code": "evidence_overused",
+        "subject": "ev-ci-08",
+        "message": "Une même preuve fonde 3 slots du corps (answer, section-1, change-to-decision-caption) : la note répète ce fait au lieu d'en apporter d'autres.",
+        "measured": 3,
+        "expected": 2,
+        "severity": "signal"
+      },
+      {
+        "code": "evidence_overused",
+        "subject": "ev-ci-02",
+        "message": "Une même preuve fonde 3 slots du corps (answer, section-1, change-to-decision-caption) : la note répète ce fait au lieu d'en apporter d'autres.",
+        "measured": 3,
+        "expected": 2,
+        "severity": "signal"
+      }
+    ],
+    "measures": {
+      "bodyChars": 3150,
+      "sectionCount": 6,
+      "groundedSectionCount": 4,
+      "answerCount": 1,
+      "languageUnits": {
+        "en": 34,
+        "unknown": 5
+      }
+    },
+    "depthGuide": {
+      "bodyChars": 2400,
+      "sectionChars": 500,
+      "minSections": 2
+    },
+    "language": "en",
+    "provenance": {
+      "buyerQuestion": "Should every product release become a blog post, and who decides which ones do?",
+      "targetQuery": "how to decide which product changes deserve public content"
+    },
+    "measured": [
+      "language_consistency",
+      "required_slots_present",
+      "no_empty_slot",
+      "no_repeated_sentence",
+      "no_near_duplicate_sentence",
+      "evidence_distribution",
+      "section_grounding",
+      "depth_against_guide"
+    ],
+    "notMeasured": [
+      "buyer_question_fit",
+      "factual_usefulness",
+      "argument_quality",
+      "originality",
+      "source_authority",
+      "geo_seo_performance"
+    ],
+    "substantiveQuality": "not_demonstrated"
+  },
+  "sources": [
+    {
+      "ref": "ev-ci-01",
+      "title": "TextOS product commit 4d37616, 5 Aug 2026"
+    },
+    {
+      "ref": "ev-ci-02",
+      "title": "TextOS product repository file changes/content-impact/README.md at 2faf90e"
+    },
+    {
+      "ref": "ev-ci-05",
+      "title": "TextOS product commit 1ad90d0, 8 Aug 2026"
+    }
+  ],
+  "sourcesWithheld": [],
+  "readingTimeMinutes": 3
+}

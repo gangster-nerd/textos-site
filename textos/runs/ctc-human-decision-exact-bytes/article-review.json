@@ -1,0 +1,252 @@
+{
+  "methodVersion": "ctc-article-review@0.1",
+  "reviewSchemaVersion": "article-review@0.1",
+  "release": {
+    "allowed": true,
+    "blockers": [],
+    "cmoV2Issues": []
+  },
+  "earlyDisclosure": null,
+  "cmoV2Conformance": {
+    "version": "article-cmo-v2@1",
+    "documentId": "textos-site:ctc:ctc-human-decision-exact-bytes",
+    "passed": true,
+    "issues": [],
+    "observed": {
+      "visibleBlockCount": 20,
+      "informationObjectCount": 2,
+      "informationObjectCounts": {
+        "steps": 1,
+        "table": 0,
+        "comparison": 0,
+        "figure": 1,
+        "statistic": 0,
+        "evidence": 0,
+        "definition": 0
+      },
+      "hasShortAnswer": true,
+      "hasSources": true,
+      "hasEditorialNextStep": true,
+      "hasRelated": false,
+      "hasContextualCta": false,
+      "tableOfContentsEnabled": true
+    }
+  },
+  "contentPass": {
+    "documentId": "textos-site:ctc:ctc-human-decision-exact-bytes",
+    "profile": "default",
+    "passed": true,
+    "issues": [],
+    "checked": [
+      "default.title-present",
+      "default.description-present",
+      "default.at-least-one-surface",
+      "default.lifecycle-consistency"
+    ]
+  },
+  "surfacePlan": {
+    "version": "article-surface-planner@0.1",
+    "documentId": "textos-site:ctc:ctc-human-decision-exact-bytes",
+    "observed": {
+      "shortAnswerBlockIds": [
+        "answer-1"
+      ],
+      "headingBlockIds": [
+        "section-1:heading",
+        "section-2:heading",
+        "section-3:heading",
+        "verify:heading",
+        "editorial-next-step:heading",
+        "sources:heading"
+      ],
+      "sourceBlockIds": [
+        "source:1:ev-hd-06",
+        "source:2:ev-hd-08",
+        "source:3:ev-hd-01",
+        "source:4:ev-hd-04",
+        "source:5:ev-hd-10",
+        "source:6:ev-hd-11"
+      ],
+      "editorialNextStepBlockIds": [
+        "editorial-next-step:body"
+      ],
+      "contextualCtaBlockIds": [],
+      "relatedSlotBlockIds": [],
+      "informationObjects": [
+        {
+          "id": "figure:prepared-to-draft",
+          "kind": "figure"
+        },
+        {
+          "id": "verify:decision-points",
+          "kind": "steps"
+        }
+      ]
+    },
+    "requirements": {
+      "requireShortAnswer": true,
+      "requireTableOfContents": true,
+      "requireSources": true,
+      "requireEditorialNextStep": true,
+      "requireRelated": false,
+      "requireContextualCta": false,
+      "minInformationObjects": 1,
+      "requiredInformationCounts": {}
+    },
+    "needs": []
+  },
+  "articleStructure": {
+    "contentType": "ARTICLE",
+    "slotOrder": [
+      {
+        "slot": "short_answer",
+        "order": 0,
+        "present": true
+      },
+      {
+        "slot": "table_of_contents",
+        "order": 1,
+        "present": true
+      },
+      {
+        "slot": "body",
+        "order": 2,
+        "present": true
+      },
+      {
+        "slot": "related",
+        "order": 3,
+        "present": false
+      },
+      {
+        "slot": "editorial_next_step",
+        "order": 4,
+        "present": true
+      },
+      {
+        "slot": "cta",
+        "order": 5,
+        "present": false
+      }
+    ],
+    "readingTimeMinutes": {
+      "class": "POLICY_COMPUTED",
+      "value": 3
+    }
+  },
+  "editorialQuality": {
+    "gateVersion": "ctc-editorial-quality@0.1",
+    "contract": "ctc_engineering_note",
+    "scope": "structural",
+    "verdict": "pass",
+    "findings": [
+      {
+        "code": "section_below_depth_guide",
+        "subject": "section-3",
+        "message": "Section « Whose name is on the decision » plus courte que son repère : développement à juger en revue.",
+        "measured": 454,
+        "expected": 500,
+        "severity": "signal"
+      },
+      {
+        "code": "section_below_depth_guide",
+        "subject": "editorial-next-step",
+        "message": "Section « Where to go next » plus courte que son repère : développement à juger en revue.",
+        "measured": 186,
+        "expected": 500,
+        "severity": "signal"
+      },
+      {
+        "code": "section_without_grounded_statement",
+        "subject": "verify",
+        "message": "Section « What to ask any AI writing vendor » sans énoncé factuel fondé sur une preuve : à juger en revue.",
+        "measured": 0,
+        "expected": 1,
+        "severity": "signal"
+      },
+      {
+        "code": "section_without_grounded_statement",
+        "subject": "editorial-next-step",
+        "message": "Section « Where to go next » sans énoncé factuel fondé sur une preuve : à juger en revue.",
+        "measured": 0,
+        "expected": 1,
+        "severity": "signal"
+      },
+      {
+        "code": "evidence_overused",
+        "subject": "ev-hd-08",
+        "message": "Une même preuve fonde 3 slots du corps (answer, prepared-to-draft-caption, section-2) : la note répète ce fait au lieu d'en apporter d'autres.",
+        "measured": 3,
+        "expected": 2,
+        "severity": "signal"
+      }
+    ],
+    "measures": {
+      "bodyChars": 3278,
+      "sectionCount": 5,
+      "groundedSectionCount": 3,
+      "answerCount": 1,
+      "languageUnits": {
+        "unknown": 4,
+        "en": 31
+      }
+    },
+    "depthGuide": {
+      "bodyChars": 2400,
+      "sectionChars": 500,
+      "minSections": 2
+    },
+    "language": "en",
+    "provenance": {
+      "buyerQuestion": "If an AI agent can call a content API, what stops it from putting something nobody approved into my CMS?",
+      "targetQuery": "how to require human approval before an ai agent creates a cms draft"
+    },
+    "measured": [
+      "language_consistency",
+      "required_slots_present",
+      "no_empty_slot",
+      "no_repeated_sentence",
+      "no_near_duplicate_sentence",
+      "evidence_distribution",
+      "section_grounding",
+      "depth_against_guide"
+    ],
+    "notMeasured": [
+      "buyer_question_fit",
+      "factual_usefulness",
+      "argument_quality",
+      "originality",
+      "source_authority",
+      "geo_seo_performance"
+    ],
+    "substantiveQuality": "not_demonstrated"
+  },
+  "sources": [
+    {
+      "ref": "ev-hd-06",
+      "title": "TextOS product commit 23d1ed3, 26 Sep 2026"
+    },
+    {
+      "ref": "ev-hd-08",
+      "title": "TextOS product commit 0222212, 26 Sep 2026"
+    },
+    {
+      "ref": "ev-hd-01",
+      "title": "TextOS product commit 722f177, 26 Sep 2026"
+    },
+    {
+      "ref": "ev-hd-04",
+      "title": "TextOS product commit 8610b7b, 26 Sep 2026"
+    },
+    {
+      "ref": "ev-hd-10",
+      "title": "TextOS product commit cda781a, 26 Sep 2026"
+    },
+    {
+      "ref": "ev-hd-11",
+      "title": "TextOS product commit 7e0b459, 26 Sep 2026"
+    }
+  ],
+  "sourcesWithheld": [],
+  "readingTimeMinutes": 3
+}

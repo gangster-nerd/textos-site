@@ -73,8 +73,22 @@ describe("CTC-6 — selfServeCtaGate utilise les capacités explicites", () => {
     ]);
   });
 
-  it("capacités requises absentes + aucune activation proposée → GREEN eligible=false", () => {
+  // Le manifeste épinglé porte désormais les trois capacités (ADR-027, décision de publication du
+  // 2026-10-27) : les cas « absentes » se construisent en les retirant.
+  const withoutSelfServe = {
+    ...pinnedManifest,
+    entities: pinnedManifest.entities.filter((e) => !(SELF_SERVE_REQUIRED_CAPABILITIES as readonly string[]).includes(e.id)),
+  };
+
+  it("manifeste épinglé : les trois capacités sont commercialisables en homepage → eligible, GREEN sans activation proposée", () => {
     const gate = selfServeCtaGate({ manifest: pinnedManifest, activationProposed: false });
+    expect(gate.status).toBe("green");
+    expect(gate.eligible).toBe(true);
+    expect(gate.missingCapabilities).toEqual([]);
+  });
+
+  it("capacités requises absentes + aucune activation proposée → GREEN eligible=false", () => {
+    const gate = selfServeCtaGate({ manifest: withoutSelfServe, activationProposed: false });
     expect(gate.status).toBe("green");
     expect(gate.eligible).toBe(false);
     expect(gate.activationProposed).toBe(false);
@@ -82,7 +96,7 @@ describe("CTC-6 — selfServeCtaGate utilise les capacités explicites", () => {
   });
 
   it("capacités requises absentes + activation proposée → RED", () => {
-    const gate = selfServeCtaGate({ manifest: pinnedManifest, activationProposed: true });
+    const gate = selfServeCtaGate({ manifest: withoutSelfServe, activationProposed: true });
     expect(gate.status).toBe("red");
     expect(gate.eligible).toBe(false);
     expect(gate.activationProposed).toBe(true);

@@ -3,8 +3,8 @@ surface: product_proof
 truthLevel: CANDIDATE
 sourceProductRef: 3cfae5830fed3f10fd35ed77e699a183162b6cbe
 declarationDigest: c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae
-pinnedManifestSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
-publishabilityStatus: WAITING_FOR_PRODUCT_MAIN
+pinnedManifestSha: 2faf90e681c1b0ccf345a80ea6e637fd89be88ab
+publishabilityStatus: BLOCKED
 bundleId: candidate-3cfae58
 ---
 # Product Proof — refresh grammaire
@@ -19,8 +19,8 @@ Grammaire attendue : de quoi une mesure est faite, dans le vocabulaire réel.
 ## Provenance
 
 - Source ref: `3cfae5830fed3f10fd35ed77e699a183162b6cbe` (CANDIDATE)
-- Statut: **WAITING_FOR_PRODUCT_MAIN**
-- Raison: Source CANDIDATE — squelette candidat émis, publication conditionnée à l'intégration produit main.
+- Statut: **BLOCKED**
+- Raison: Bloqué par declarationIntegrity — ré-import manifeste requis.
 
 ## Bornes éditoriales actuelles
 

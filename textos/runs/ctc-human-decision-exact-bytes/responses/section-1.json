@@ -1,0 +1,65 @@
+{
+  "text": "On its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step. A fingerprint here is a short code computed from the content, which changes as soon as a single character changes. The website's login secrets are not part of that fingerprint and are not exposed by it.\n\nCreating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "On its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-hd-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A fingerprint here is a short code computed from the content, which changes as soon as a single character changes.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The website's login secrets are not part of that fingerprint and are not exposed by it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-hd-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Creating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-hd-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

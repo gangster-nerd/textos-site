@@ -1,0 +1,81 @@
+{
+  "text": "When several approved facts could serve, TextOS picks the set deterministically, guided by relevance, coverage and specificity. It keeps corroboration between independent sources, sets aside the same source repeated, applies limits and says plainly when something is missing. The reader can see why these sources were chosen, without any internal identifier.\n\nA passage that TextOS finds while reading a source is only a candidate: it is neither approved nor offered to the writer until a person qualifies it. Choosing is a separate step from saying yes: a fact can be cleared for use and still be left out of an article where it adds nothing new.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "When several approved facts could serve, TextOS picks the set deterministically, guided by relevance, coverage and specificity.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ea-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "It keeps corroboration between independent sources, sets aside the same source repeated, applies limits and says plainly when something is missing.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ea-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The reader can see why these sources were chosen, without any internal identifier.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ea-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "A passage that TextOS finds while reading a source is only a candidate: it is neither approved nor offered to the writer until a person qualifies it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4b",
+      "text": "Choosing is a separate step from saying yes: a fact can be cleared for use and still be left out of an article where it adds nothing new.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-site:ctc:ctc-reading-cited-sources",
+    "contentType": "product_article",
+    "slug": "how-an-ai-content-tool-should-read-your-sources",
+    "language": "en-US",
+    "title": "TextOS reads cited sources in a separate, bounded step, robots.txt first",
+    "description": "TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, and only proposes passages for a person to qualify."
+  },
+  "editorial": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "geo-writer",
+    "statusVocabularyVersion": "geo-writer@0.2",
+    "sourceStatus": "ARTICLE_GUIDE",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:4:lead:2:s4",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:6:answer:2:s4",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:9:section-1:2:s5",
+      "stmt:23:cited-page-path-caption:2:s1",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:s4",
+      "stmt:9:section-3:2:s5",
+      "stmt:9:section-4:2:s1",
+      "stmt:9:section-4:2:s2",
+      "stmt:9:section-4:2:s3",
+      "stmt:9:section-4:2:s4",
+      "stmt:9:section-4:2:s5",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
+    "evidenceRefs": [
+      "ev-rs-01",
+      "ev-rs-02",
+      "ev-rs-05",
+      "ev-rs-03",
+      "ev-rs-10",
+      "ev-rs-06",
+      "ev-rs-08",
+      "ev-rs-09",
+      "ev-rs-04",
+      "ev-rs-07"
+    ],
+    "capabilityIds": []
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "be8073c52c0f4ef7d68ceec8ef93bf443540efe9a14c8a553c2d1c0dce3d1972"
+  },
+  "body": [
+    {
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "In TextOS, sources are read in a dedicated step that does not run inside writing, with a budget, one request at a time per site, and the option to resume or cancel. TextOS reads robots.txt first, and when a page cannot be read, the reason is recorded in a log that is only ever appended to. Nothing read this way turns into a statement by itself; it becomes material for a person to look at. That is the whole difference between reading the web and repeating it."
+      }
+    },
+    {
+      "id": "lead:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "To write about your brand with sources, a tool has to read other people's pages. How it behaves on those pages says a lot about how it will behave with yours. TextOS treats reading a cited source as its own action, kept out of writing and run within a budget of requests and time. This note sets out the rules of that step, one by one."
+      }
+    },
+    {
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Reading is its own step, with a budget"
+      }
+    },
+    {
+      "id": "section-1:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "The reading step has its own limits on requests and duration, sends one request at a time to a given origin, and does not repeat a request it has already made for the same brief. It can be resumed after an interruption or cancelled. A tool that reads in a hurry tends to get blocked, and then reports gaps that are not real.\n\nThe date a page was read is shown without promising that the page is still current. A page that was right last week can change tomorrow, and the reader of an article deserves to know when it was read."
+      }
+    },
+    {
+      "id": "figure:cited-page-path",
+      "kind": "figure",
+      "data": {
+        "src": "/diagrams/ctc/cited-page-path-6fdd7aa99ebe.svg",
+        "alt": "From a cited page to a proposed passage. A 4-step flow: robots.txt first, then Bounded reading, then Up to three passages, then Person qualifies. A dashed boundary after \"Up to three passages\" is labelled Human step: Nothing proposed reaches the writer before a person decides.",
+        "caption": "TextOS checks robots.txt before reading a cited page, reads it in a separate step within a budget, and only proposes passages, which a person then qualifies."
+      }
+    },
+    {
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Asking first, and saying why a page was not read"
+      }
+    },
+    {
+      "id": "section-2:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Before reading a page, TextOS checks robots.txt, and each refused access is recorded with its reason: forbidden, disallowed, undetermined, not found, redirected off site, or a network fault. A refusal is a result to report, not an obstacle to get around.\n\nThe crawler TextOS uses to observe a site follows the same discipline: it respects robots rules, stays on the same origin, only reads, works within bounds and runs no scripts. A page it could not observe is reported as not available, never as absent."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Staying on the public web"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "When TextOS connects to a source, it refuses any address that is not public and connects to the exact address it has just checked, so a second lookup cannot send it elsewhere. That closes a known trick in which a public name is made to point at an internal system after the check.\n\nFollowing a link to a source is not a licence to wander into private networks. A cited source may be followed between its bare domain and its www version on the same port, and never from https down to http. The site crawl itself stays on a single origin."
+      }
+    },
+    {
+      "id": "section-4:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "A passage proposed is not a fact accepted"
+      }
+    },
+    {
+      "id": "section-4:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Each page TextOS reads can propose up to three passages, each with a shown occurrence and proposed types, subject and risks. When two sources contain the same passage, TextOS keeps two extracts and two origins rather than merging them.\n\nNone of these passages is approved or offered to the writer until a person qualifies it. Reading a page and accepting what it says are two separate acts, done by two different actors. The first is mechanical work for a machine; the second is a judgement for a person."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI writing vendor"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "Ask how many requests the tool can send to one site, and whether you can stop a reading job halfway.",
+          "Ask what the tool records when it is refused access to a page.",
+          "If a tool reports that your site says nothing on a topic, ask whether it could actually read the pages in question.",
+          "Ask whether the tool can be pointed at internal addresses, and how it knows.",
+          "Before you let a tool cite the web on your behalf, ask to see the passages it proposed and the ones a person accepted."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "The previous note explains who may say yes to a passage before an article can rely on it. Another note shows how an article that was produced is told apart from one that was checked."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-rs-01",
+      "kind": "source",
+      "data": {
+        "ref": "ev-rs-01",
+        "title": "TextOS product commit 7fb96fe, 26 Oct 2026"
+      }
+    },
+    {
+      "id": "source:2:ev-rs-05",
+      "kind": "source",
+      "data": {
+        "ref": "ev-rs-05",
+        "title": "TextOS product commit cf5b34a, 26 Oct 2026"
+      }
+    },
+    {
+      "id": "source:3:ev-rs-10",
+      "kind": "source",
+      "data": {
+        "ref": "ev-rs-10",
+        "title": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 2faf90e"
+      }
+    },
+    {
+      "id": "source:4:ev-rs-06",
+      "kind": "source",
+      "data": {
+        "ref": "ev-rs-06",
+        "title": "TextOS product commit 03fbdf9, 26 Oct 2026"
+      }
+    },
+    {
+      "id": "source:5:ev-rs-08",
+      "kind": "source",
+      "data": {
+        "ref": "ev-rs-08",
+        "title": "TextOS product commit 55e3e8b, 26 Oct 2026"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "conversionAllowed": false
+  },
+  "lifecycle": {},
+  "seo": {
+    "indexingIntent": "noindex",
+    "targetQuery": "what an ai content tool should do when it reads cited sources",
+    "searchIntent": "buyer_decision"
+  }
+}

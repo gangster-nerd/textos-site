@@ -3,8 +3,8 @@ surface: faq
 truthLevel: AUTHORITATIVE_MAIN
 sourceProductRef: a0efa146a8691938b624c156d99f4663f6f92218
 declarationDigest: c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae
-pinnedManifestSha: d1b8b50552e1b42768a6bd0c0515675e139780d3
-publishabilityStatus: REQUIRES_HUMAN_REVIEW
+pinnedManifestSha: 2faf90e681c1b0ccf345a80ea6e637fd89be88ab
+publishabilityStatus: BLOCKED
 bundleId: authoritative-a0efa14
 ---
 # FAQ — mise à jour
@@ -18,8 +18,8 @@ Points candidats à revoir dans les bornes autoritatives :
 ## Provenance
 
 - Source ref: `a0efa146a8691938b624c156d99f4663f6f92218` (AUTHORITATIVE_MAIN)
-- Statut: **REQUIRES_HUMAN_REVIEW**
-- Raison: Squelette candidat émis dans les bornes commercialisables actuelles. PO doit approuver la rédaction éditoriale.
+- Statut: **BLOCKED**
+- Raison: Bloqué par declarationIntegrity — ré-import manifeste requis.
 
 ## Bornes éditoriales actuelles
 

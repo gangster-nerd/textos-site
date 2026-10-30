@@ -8,6 +8,9 @@ import { buildArticleJsonLd } from "@/lib/schema-org/build-article";
 import { serializeJsonLd } from "@/lib/schema-org/serialize";
 import { ContentVisual } from "@/components/content/ContentVisual";
 import { ContentCta } from "@/components/content/ContentCta";
+import { EarlyDisclosureLabel } from "@/components/content/EarlyDisclosureLabel";
+import { BetaAccessCta } from "@/components/conversion/BetaAccessCta";
+import { betaAccessForDocument } from "@/lib/conversion/beta-access-context";
 
 const COLLECTION = "methodology";
 
@@ -69,6 +72,9 @@ export default async function Page({
           <header className="doc__head">
             <p className="kicker">Methodology</p>
             <h1>{doc.frontmatter.title}</h1>
+            {doc.earlyDisclosures.map((disclosure) => (
+              <EarlyDisclosureLabel key={disclosure.capabilityId} disclosure={disclosure} language={doc.frontmatter.language} />
+            ))}
             {doc.maturityLabels.map((label) => (
               /* Étiquette de maturité : elle relativise TOUT ce qui suit, donc elle se lit avant
                  le contenu, pas en note de bas de page. */
@@ -100,6 +106,13 @@ export default async function Page({
           contentId={doc.contentId}
           position="end"
         />
+        {/* ADR-034 : une capacité en bêta porte le CTA d'accès bêta (hors registre, vers l'entrée
+            produit) ; une capacité « bientôt » n'en porte aucun tant que le PLG n'existe pas. */}
+        {doc.earlyDisclosures
+          .filter((disclosure) => disclosure.cta === "beta_access")
+          .map((disclosure) => (
+            <BetaAccessCta key={disclosure.capabilityId} decision={betaAccessForDocument(disclosure.capabilityId, doc.contentId)} />
+          ))}
 
         {/* Navigation LATÉRALE du cluster : les quatre pages se lisent ensemble, et n'en offrir
             que le retour à l'accueil obligeait à repasser par la homepage entre deux doctrines.

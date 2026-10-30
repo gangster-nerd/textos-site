@@ -1,0 +1,73 @@
+{
+  "text": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "It is a small change on screen, and a large one for anyone who signs off on content.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Nobody has to guess whether 'ready' means written or checked.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "TextOS decides the strategy of each article, and the writer carries it out.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

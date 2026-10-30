@@ -1,0 +1,22 @@
+{
+  "text": "In TextOS a person approves each source for one article under wording they validate, and withdrawing it removes the fact from writing and from WordPress.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS a person approves each source for one article under wording they validate, and withdrawing it removes the fact from writing and from WordPress.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-01",
+        "ev-ea-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

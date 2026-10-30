@@ -18,6 +18,8 @@ import { resolveContentSurface } from "@/lib/content-surface-engine/composition/
 import { resolveReferenceCta } from "@/lib/content-surface-engine/conversion";
 import { buildCtaAttributionHref } from "@/lib/content-surface-engine/conversion/build-cta-attribution";
 import { ManagedTextosSurface } from "@/lib/content-surface-engine/renderer/managed-textos-surface";
+import { BetaAccessCta } from "@/components/conversion/BetaAccessCta";
+import { betaAccessForDocument } from "@/lib/conversion/beta-access-context";
 import {
   findInsightEntry,
   listInsightEntries,
@@ -30,6 +32,8 @@ import { serializeJsonLd } from "@/lib/schema-org/serialize";
 import { siteConfig } from "@/lib/config/site";
 import { previewVisibility } from "@/lib/config/preview-visibility";
 import { deliveryContext } from "@/lib/conversion/delivery-context";
+import { newsletterConfig } from "@/lib/config/newsletter-config";
+import { measurementRequestCapability } from "@/lib/config/measurement-request-config";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -267,6 +271,7 @@ export default async function Page({
         )}
         <ManagedTextosSurface
           resolved={resolved}
+          {...(entry.earlyDisclosure ? { kicker: entry.kicker } : {})}
           cta={cta}
           resolveAuthor={(id) => {
             const e = resolveReferenceEntity(id);
@@ -274,9 +279,15 @@ export default async function Page({
               ? { name: e.name, role: e.role, profilePath: e.profilePath }
               : null;
           }}
-          kicker={entry.kicker}
+          document={entry.document}
           contentRevision={contentRevision}
-          breadcrumbInsights
+          commercialCapability={measurementRequestCapability.state}
+          newsletter={{
+            provider: newsletterConfig.provider,
+            handoffUrl: newsletterConfig.handoffUrl,
+            sourceTag: newsletterConfig.sourceTag,
+            isPreview: previewVisibility.showDraftContent,
+          }}
           ctaContextualHref={
             cta
               ? buildCtaAttributionHref({
@@ -303,12 +314,29 @@ export default async function Page({
                 })
               : null
           }
+          ctaHeaderHref={
+            cta
+              ? buildCtaAttributionHref({
+                  destination: cta.destination,
+                  contentId: entry.document.identity.documentId,
+                  clusterId: (entry.document as { clusterId?: string }).clusterId ?? null,
+                  ctaVariant: cta.variantId,
+                  ctaVersion: cta.version,
+                  position: "header",
+                  contentRevision,
+                })
+              : null
+          }
           relatedEntries={resolveRelatedContent({
             target: entry.document,
             publicOnly: !previewVisibility.showDraftContent,
             limit: 6,
           })}
         />
+        {/* ADR-034 : une note sur une capacité en bêta porte le CTA d'accès bêta (entrée produit). */}
+        {entry.earlyDisclosure?.cta === "beta_access" && (
+          <BetaAccessCta decision={betaAccessForDocument(entry.earlyDisclosure.capabilityId, entry.document.identity.documentId)} />
+        )}
       </main>
     </>
   );

@@ -1,0 +1,81 @@
+{
+  "text": "Suppose the draft is edited after you signed it off. TextOS then treats the approval as stale and makes it fail before any request reaches WordPress, and the same happens if the fact-check record or the destination has changed. An attempt that carries a fingerprint which does not match uses up nothing from the approval, since no action could run anyway.\n\nOne approval also backs one job only: two separate requests cannot queue two jobs under the same permission and leave a race to decide which one runs. When the job starts, TextOS works out the subject of the permission afresh, claims the permission, carries out the action and only then marks the permission as spent.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Suppose the draft is edited after you signed it off.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS then treats the approval as stale and makes it fail before any request reaches WordPress, and the same happens if the fact-check record or the destination has changed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-hd-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "An attempt that carries a fingerprint which does not match uses up nothing from the approval, since no action could run anyway.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-hd-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "One approval also backs one job only: two separate requests cannot queue two jobs under the same permission and leave a race to decide which one runs.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-hd-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "When the job starts, TextOS works out the subject of the permission afresh, claims the permission, carries out the action and only then marks the permission as spent.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-hd-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

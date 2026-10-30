@@ -1,0 +1,762 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "change-impact-contract-c0b-2026-08-05",
+        "sourceCommits": [
+          "4d37616453f5d0fed24a8054314d49651e33af6b"
+        ]
+      },
+      {
+        "groupId": "continuous-coverage-c0b1-2026-08-08",
+        "sourceCommits": [
+          "1ad90d0642574e4dc2e1019abe58ab27670a64a6"
+        ]
+      }
+    ],
+    "buyerQuestion": "Should every product release become a blog post, and who decides which ones do?",
+    "targetQuery": "how to decide which product changes deserve public content",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "content-governance",
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-every-change-a-content-decision",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-ci-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4d37616, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:30:59+02:00",
+      "contentHash": "b32a36d10bb7139783e55232b3fd5457aad1c12edcd5e3e03f956ebebb81bc62",
+      "excerpt": "Tout changement produit porte désormais une décision explicite sur ce qu'il mérite, ou non, comme contenu public. La CI EXIGE cette décision ; elle ne la DÉDUIT jamais",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "10e15c77d2304b6936476939d1f2a0f5c9ed4eee3fade579ff9b70f99785e44b",
+      "excerpt": "et la plus fréquente. Elle coûte une ligne. Un vocabulaire qui la rendrait honteuse pousserait à sur-qualifier pour paraître productif.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Refers to the no_public_content qualification; README in French."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4d37616, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:30:59+02:00",
+      "contentHash": "91ced5d78c36f60d81dac7f9c91241a72775b421914957ddc4718b0a5b80bb4b",
+      "excerpt": "Le second est le plus insidieux : rien n'échoue. Les preuves citées existent toujours et restent ancêtres du snapshot. Le manifeste continue de dire vrai sur ce qu'il affirme, tout en décrivant un produit qui a changé sous lui.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4d37616, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:30:59+02:00",
+      "contentHash": "dcaa7a3763558e02f3841799e498a1b8d33691376d49ad12eb94e668ad25910d",
+      "excerpt": "modifier un fichier cité en preuve sans rien dire de l'entité devient impossible, et assumer la dette devient une phrase signée plutôt qu'une absence.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1ad90d0, 8 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-08T10:32:53+02:00",
+      "contentHash": "a5ffdb6d15b3404eae51829f542f5858c5b55c5348d28a61544aefc0226a3485",
+      "excerpt": "Le scanner répond à une seule question, mécanique : « ce fichier d'implémentation modifié est-il couvert par une preuve déclarée ? » Il ne déduit aucune capacité.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1ad90d0, 8 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-08T10:32:53+02:00",
+      "contentHash": "311b93c40a28037b785fca0bc3007d8011f54bd7ea32a75a9f6b5b6c392d44fb",
+      "excerpt": "Proposer un contenu sur un territoire dont la déclaration est encore à faire reviendrait à écrire d'abord et à gouverner ensuite — l'inversion exacte que cette chaîne interdit.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "518e3aba1c13c84ad4be1f40eab9d05f216392474b4fd2304e4e4811f41b4a8d",
+      "excerpt": "Il ne rédige aucun contenu et n'ouvre aucune PR éditoriale.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "3f5b32cb3cd3f81f9ef86009a8ec36f692309dc4678cddc20f9652aefe9e8ee0",
+      "excerpt": "| `no_public_content` | Le changement ne mérite aucun contenu public |",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4d37616, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:30:59+02:00",
+      "contentHash": "2c454ed3d13d1557c206e589c0a8fb97c3bb6b3eb5c28bdb6ea00222963d863d",
+      "excerpt": "capacité livrée, jamais déclarée",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4d37616, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:30:59+02:00",
+      "contentHash": "f366b8a59f5314d723ab69136e2be202e02d1d1a5117a17b1926d2dc2a605e35",
+      "excerpt": "Le contrôle porte sur push ET pull_request : l'historique ne contient aucun commit de fusion — tout arrive par push direct sur main",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1ad90d0, 8 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-08T10:32:53+02:00",
+      "contentHash": "0e24394b620de4d5476848490937c1b9421689978960e9673814ca1724714551",
+      "excerpt": "chaque chemin non couvert est expliqué par EXACTEMENT une disposition — zéro est le silence qu'on ferme, plus d'une est une ambiguïté.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1ad90d0, 8 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-08T10:32:53+02:00",
+      "contentHash": "8a813af5aad2d14df05b535ae3d5908e695c88ef93921e19031b6b217b6b6acb",
+      "excerpt": "Une dette de couverture bloque un CANDIDAT, pas la CI",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-ci-14",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file changes/content-impact/README.md at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "199e8ed9b5b1974a31f40ee06df2ade65c98af5c983dfdb23a271b2814a38968",
+      "excerpt": "Aucun outil ne lit le code pour deviner qu'un changement mérite un article.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-every-change-a-content-decision"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that every product change carries an explicit decision about public content.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: every TextOS change must say whether it deserves public content, and 'none' is the most frequent, cheapest answer.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-01",
+        "ev-ci-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the temptation to turn every release into marketing, then say that TextOS decides change by change, in writing, and that this note itself came out of that process.",
+      "buyerIntent": "Should every release be marketed?",
+      "allowedEvidenceIds": [
+        "ev-ci-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 150,
+      "maxChars": 600,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Who decides which product changes become content?",
+      "writingObjective": "Answer directly: a person records the decision for each change, automated checks require it but never infer it, and the most frequent answer is 'no public content'.",
+      "buyerIntent": "Who decides?",
+      "allowedEvidenceIds": [
+        "ev-ci-01",
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 250,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Why 'nothing to publish' has to be cheap",
+      "writingObjective": "Explain why the 'no public content' answer is designed to cost one line and why making it shameful would push teams to overstate their changes.",
+      "buyerIntent": "Isn't saying nothing a missed opportunity?",
+      "allowedEvidenceIds": [
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1000,
+      "evidenceRequired": true
+    },
+    {
+      "id": "change-to-decision-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-01",
+        "ev-ci-02",
+        "ev-ci-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The quiet failure it closes",
+      "writingObjective": "Tell the insidious case: nothing fails, the cited evidence still exists, yet the public description no longer matches a product that changed underneath it — and how changing a cited file now forces a signed sentence.",
+      "buyerIntent": "What goes wrong without it?",
+      "allowedEvidenceIds": [
+        "ev-ci-03",
+        "ev-ci-04",
+        "ev-ci-05",
+        "ev-ci-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 1200,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Content and coverage are two questions",
+      "writingObjective": "Develop: Content and coverage are two questions. One mechanism per paragraph, each factual sentence grounded in the evidence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ci-12",
+        "ev-ci-13",
+        "ev-ci-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 400,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Govern first, write second",
+      "writingObjective": "Close on the order of operations: no content is proposed on territory whose public description is still owed, and the contract itself writes nothing and opens no editorial request.",
+      "buyerIntent": "What does the contract not do?",
+      "allowedEvidenceIds": [
+        "ev-ci-06",
+        "ev-ci-07",
+        "ev-ci-11"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 210,
+      "maxChars": 1000,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

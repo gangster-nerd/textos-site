@@ -253,10 +253,10 @@ describe("état réel du dépôt", () => {
     }
   });
 
-  it("connaît les six capacités Act et n'en revendique rien", () => {
-    // « Le site connaît cette entité et n'en revendique rien » est une position tenue ; c'est une
-    // information différente d'un angle mort (`capability_absent_from_registry`). L'inscription ne
-    // doit accorder AUCUNE surface : c'est tout l'intérêt de la distinction.
+  it("suit le produit sur les six capacités Act en bêta, sans jamais les vendre", () => {
+    // Lot de divulgation du 2026-10-29 (ADR-035) : les six capacités Act sont `public_beta` au
+    // produit. ADR-034 : le site suit exactement ce statut, revendique au plus les surfaces
+    // d'explication (ici note produit et FAQ), et aucune n'est commercialisable.
     const ACT = [
       "grounded-truth-check",
       "structured-generation",
@@ -269,13 +269,19 @@ describe("état réel du dépôt", () => {
     for (const id of ACT) {
       const declaration = findCapability(id);
       expect(declaration, id).toBeDefined();
-      expect(declaration!.publicationStatus, id).toBe("internal_only");
-      expect(declaration!.claimedSurfaces, id).toEqual([]);
+      expect(declaration!.publicationStatus, id).toBe("public_beta");
+      expect(declaration!.claimedSurfaces, id).toEqual(["product_article", "faq"]);
+      expect(declaration!.label, id).toBeTruthy();
       expect(isMarketable(declaration!), id).toBe(false);
+      expect(manifest.entities.find((e) => e.id === id)?.publicationStatus, id).toBe("public_beta");
     }
 
-    const kinds = compareDeclarations(CAPABILITY_REGISTRY, manifest).map((f) => f.kind);
-    expect(kinds).not.toContain("capability_absent_from_registry");
+    // Les entités déclarées depuis (entrée self-serve, DECL-1) restent rapportées comme absentes du
+    // registre : c'est le rapport qui demande la décision éditoriale, pas ce test.
+    const absent = compareDeclarations(CAPABILITY_REGISTRY, manifest)
+      .filter((f) => f.kind === "capability_absent_from_registry")
+      .map((f) => f.capabilityId);
+    for (const id of ACT) expect(absent, id).not.toContain(id);
   });
 
   it("tous les documents routés RÉELS portent le snapshot épinglé et résolvent leur provenance", () => {
