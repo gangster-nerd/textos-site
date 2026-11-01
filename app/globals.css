@@ -908,6 +908,15 @@ article { overflow-wrap: break-word; }
 /* ── Accueil ────────────────────────────────────────────────────────────────────────────────── */
 
 .hero { max-width: 46rem; }
+/* Actions du haut de page : rendues seulement quand une décision de conversion existe. */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.hero__secondary { text-decoration: underline; text-underline-offset: 3px; }
 
 .hero__panel { margin: var(--space-8) 0 var(--space-12); }
 

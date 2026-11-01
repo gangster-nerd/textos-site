@@ -11,8 +11,9 @@ import {
   resolveCtaForSurface,
 } from "@/lib/conversion/cta-resolver";
 import { deliveryContext } from "@/lib/conversion/delivery-context";
-import { productEntryForHomepage } from "@/lib/conversion/product-entry-context";
+import { productEntryForHero, productEntryForHomepage } from "@/lib/conversion/product-entry-context";
 import { ProductEntryCta } from "@/components/conversion/ProductEntryCta";
+import { HeroActions } from "@/components/conversion/HeroActions";
 
 // Homepage : surface "homepage" (page-map.spec.md §1) → uniquement public_marketable (§3).
 //
@@ -72,6 +73,18 @@ export default function Home() {
   // Entrée self-serve (ENTRY-1) : rendue seulement si le produit l'a publiée ET si l'URL de passage
   // est configurée — voir lib/conversion/product-entry.ts. Sinon rien.
   const productEntry = productEntryForHomepage();
+  // Haut de page (audit CMO du 01/11 : aucune action visible avant le bas de page). Mêmes décisions,
+  // copie ratifiée du registre pour la demande accompagnée : rien n'est rendu sans elles.
+  const heroEntry = productEntryForHero();
+  const assisted =
+    cta.resolvedVariant && cta.version !== null && cta.definition?.destination
+      ? {
+          variant: cta.resolvedVariant,
+          version: cta.version,
+          href: cta.definition.destination,
+          label: cta.definition.primaryLabel,
+        }
+      : null;
 
   return (
     <main className="wide">
@@ -97,9 +110,10 @@ export default function Home() {
         </p>
         <p className="lede">
           It measures where a brand is absent, present or cited, helps identify which gaps
-          matter, and &mdash; as shown below &mdash; turns a worthwhile gap into published,
-          evidence-backed content.
+          matter, and &mdash; as shown below &mdash; turns a worthwhile gap into an
+          evidence-backed draft that you review and publish.
         </p>
+        <HeroActions productEntry={heroEntry} assisted={assisted} />
       </section>
 
       <ValueStory />

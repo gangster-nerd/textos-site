@@ -22,7 +22,7 @@ export interface ValueStoryFrame {
 export const VALUE_STORY_FRAMES: readonly ValueStoryFrame[] = [
   { id: "absent", label: "Absent" },
   { id: "detect", label: "Opportunity detected" },
-  { id: "write", label: "Write & publish" },
+  { id: "write", label: "Draft & approve" },
   { id: "present", label: "Presence observed" },
 ];
 
@@ -51,8 +51,10 @@ export const VALUE_STORY_ANSWER = {
 export const VALUE_STORY_DETECT_TEXT =
   `TextOS flags the gap: no citation for ${TRACKED_BRAND} on this question.`;
 
+// TextOS rédige un brouillon ; le client le relit et le publie (« TextOS choisit, l'humain approuve ») :
+// la publication n'est jamais attribuée à TextOS.
 export const VALUE_STORY_WRITE_TEXT =
-  "An evidence-backed article addressing the gap is drafted and published.";
+  "TextOS drafts an evidence-backed article addressing the gap. You review it and publish it.";
 
 export const VALUE_STORY_HEADLINE = "From absent to cited.";
 
