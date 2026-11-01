@@ -67,4 +67,14 @@ describe("récit de valeur — aucune causalité garantie", () => {
     // donc jamais pour un utilisateur qui a demandé moins de mouvement.
     expect(src).toContain('if (reducedMotion !== false) return;');
   });
+
+  test("la publication n'est jamais attribuée à TextOS : il rédige, le client relit et publie", async () => {
+    const { VALUE_STORY_FRAMES, VALUE_STORY_WRITE_TEXT } = await import("@/lib/product-proof/value-story-example");
+    expect(VALUE_STORY_WRITE_TEXT).toMatch(/drafts/);
+    expect(VALUE_STORY_WRITE_TEXT).toMatch(/you review it and publish it/i);
+    expect(VALUE_STORY_FRAMES.map((f) => f.label)).not.toContain("Write & publish");
+    const home = readFileSync(path.join(ROOT, "app", "page.tsx"), "utf8");
+    expect(home).not.toMatch(/into published,/);
+    expect(home).toMatch(/draft that you review and publish/);
+  });
 });

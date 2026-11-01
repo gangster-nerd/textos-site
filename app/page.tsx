@@ -97,8 +97,8 @@ export default function Home() {
         </p>
         <p className="lede">
           It measures where a brand is absent, present or cited, helps identify which gaps
-          matter, and &mdash; as shown below &mdash; turns a worthwhile gap into published,
-          evidence-backed content.
+          matter, and &mdash; as shown below &mdash; turns a worthwhile gap into an
+          evidence-backed draft that you review and publish.
         </p>
       </section>
 
