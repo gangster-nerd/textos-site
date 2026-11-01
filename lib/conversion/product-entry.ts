@@ -67,8 +67,16 @@ export function parseProductEntryUrl(raw: string | undefined | null): URL | null
   return url;
 }
 
+/** Intention fermée du contrat `entry-handoff@1` : `measure` → nouvel espace, `sign_in` → espaces existants. */
+export type ProductEntryIntent = "measure" | "sign_in";
+
+/** Libellés des placements secondaires (haut de page, en-tête) — même porte, aucune promesse de plus. */
+export const PRODUCT_ENTRY_HERO_LABEL = "Run a measurement";
+export const PRODUCT_SIGN_IN_LABEL = "Sign in";
+
 export function decideProductEntry(input: {
   readonly mode: ConversionMode;
+  readonly intent?: ProductEntryIntent;
   readonly gate: Pick<SelfServeGateOutput, "eligible">;
   readonly entryUrl: string | undefined | null;
   readonly contentId: string;
@@ -82,7 +90,7 @@ export function decideProductEntry(input: {
   return {
     kind: "render",
     href: buildCtaAttributionHref({
-      destination: `${url.origin}${PRODUCT_ENTRY_PATH}?intent=measure`,
+      destination: `${url.origin}${PRODUCT_ENTRY_PATH}?intent=${input.intent ?? "measure"}`,
       contentId: input.contentId,
       ctaVariant: PRODUCT_ENTRY_VARIANT,
       ctaVersion: PRODUCT_ENTRY_COPY_VERSION,
