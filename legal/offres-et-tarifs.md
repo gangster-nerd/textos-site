@@ -7,8 +7,10 @@ Cette annexe est le document visé à l'article 2.1 (iv) des [conditions génér
 d'utilisation](/legal/cgv). Elle fait partie du contrat. L'article 3.2 lui donne sa portée : le
 contenu exact de chaque offre y est décrit, et **seul ce qui y figure est dû**.
 
-Tous les montants sont en euros, hors taxes. TextOS n'est pas assujetti à la taxe sur la valeur
-ajoutée (article 293 B du Code général des impôts) : les montants facturés sont donc ceux indiqués.
+Tous les montants sont en euros, hors taxes. TextOS bénéficie du régime de la franchise en base de
+TVA (TVA non applicable, article 293 B du Code général des impôts) : aucune TVA française n'est
+facturée en sus. Les taxes applicables restent régies par l'article 10.4 des conditions générales,
+notamment pour un Client établi hors de France.
 
 ---
 
