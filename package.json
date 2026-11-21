@@ -21,6 +21,7 @@
     "ci:local": "bash scripts/local-ci.sh",
     "verify:delivery": "tsx scripts/verify-delivery.ts",
     "verify:production": "tsx scripts/verify-production.ts",
+    "verify:http": "tsx scripts/verify-http-reception.ts",
     "verify:a3r": "tsx scripts/verify-a3r.ts",
     "cse:ownership": "tsx scripts/cse-ownership.ts"
   },

@@ -57,6 +57,17 @@ export function verifyProductionExport(root: string, entries: readonly Productio
   const published = entries.filter(e => e.status === "published");
   const privateEntries = entries.filter(e => e.status !== "published");
   const reject = (reason: string): never => { throw new Error(`production_export: ${reason}`); };
+  // Static HTML is served as 200 unless the distribution explicitly overrides it.
+  // Internal .meta status is not delivery evidence. HTTP reception remains mandatory.
+  if (["html", "txt", "rsc"].some(ext => existsSync(path.join(out, "insights", `__empty_insights__.${ext}`)))) {
+    const config = path.join(root, "vercel.json");
+    if (!existsSync(config)) reject("sentinel_http_rule_missing");
+    const rule = JSON.parse(readFileSync(config, "utf8")).routes?.[0];
+    const expected = "^/insights/__empty_insights__(?:\\.(?:html|txt|rsc))?/?$";
+    if (rule?.src !== expected || rule.status !== 404 || rule.dest || rule.continue || rule.methods
+      || rule.has || rule.missing || rule.headers?.Location || rule.headers?.location
+      || rule.headers?.["X-Robots-Tag"] !== "noindex, nofollow") reject("sentinel_http_rule_invalid");
+  }
   const articleLinks = index('main a[href^="/insights/"]').toArray().map(e => index(e).attr("href"));
   if (!published.length) {
     const empty = index('[data-empty-state="insights"]');

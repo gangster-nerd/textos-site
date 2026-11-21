@@ -140,7 +140,9 @@ const contentFiles = contentDirs.flatMap(({ name, dir }) =>
 );
 
 // Next exports the empty-corpus sentinel even though its route calls notFound().
-// Exempt only that attested 404, never a renamed article or all noindex pages.
+// This attests an INTERNAL build status, never the HTTP status delivered by a host.
+// Public HTTP reception is mandatory before promotion (verify:http).
+// Exempt only that build artefact, never a renamed article or all noindex pages.
 function isEmptyInsights404({ collection, file, p }) {
   if (collection !== "insights" || file !== "__empty_insights__.html") return false;
   try {
@@ -169,7 +171,7 @@ if (contentFiles.length === 0) {
 } else {
   for (const { collection, file, p } of contentFiles) {
     if (isEmptyInsights404({ collection, file, p })) {
-      console.log(`ℹ️  ${collection}/${file} : sentinelle 404 vérifiée, hors contenu éditorial`);
+      console.log(`ℹ️  ${collection}/${file} : sentinelle au statut INTERNE 404, HTTP livré non vérifié, hors contenu éditorial`);
       continue;
     }
     const nodes = readNodes(p);

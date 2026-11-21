@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    {
+      "src": "^/insights/__empty_insights__(?:\\.(?:html|txt|rsc))?/?$",
+      "status": 404,
+      "headers": { "X-Robots-Tag": "noindex, nofollow" }
+    }
+  ]
+}

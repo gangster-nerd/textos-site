@@ -58,3 +58,24 @@ test("a missing published export cannot be promised by the index", () => {
   const f = fixture('<main><a href="/insights/published">Published article</a></main>');
   expect(() => verifyProductionExport(f.root, [{ documentId: "public:insight", slug: "published", title: "Published article", status: "published" }])).toThrow("missing_published");
 });
+
+const sentinelRule = { src: "^/insights/__empty_insights__(?:\\.(?:html|txt|rsc))?/?$", status: 404,
+  headers: { "X-Robots-Tag": "noindex, nofollow" } };
+test("an internally attested 404 without a distribution rule is refused", () => {
+  const f = fixture(); f.put("out/insights/__empty_insights__.html", '<meta name="robots" content="noindex">');
+  f.put(".next/server/app/insights/__empty_insights__.meta", '{"status":404}');
+  expect(() => verifyProductionExport(f.root, [hidden])).toThrow("sentinel_http_rule_missing");
+});
+test("only an unconditional explicit 404 on the reserved path protects a static sentinel", () => {
+  const f = fixture(); f.put("out/insights/__empty_insights__.html", '<meta name="robots" content="noindex">');
+  f.put("vercel.json", JSON.stringify({ routes: [sentinelRule] }));
+  expect(verifyProductionExport(f.root, [hidden]).hidden).toBe(1); // Local configuration, NOT HTTP certification.
+});
+test.each([
+  { status: 200 }, { status: 307, headers: { Location: "/404" } }, { dest: "/404" },
+  { continue: true }, { src: "^/insights/.*$" }, { methods: ["POST"] }, { has: [] },
+])("an unsafe sentinel distribution rule %j is refused", change => {
+  const f = fixture(); f.put("out/insights/__empty_insights__.html", "");
+  f.put("vercel.json", JSON.stringify({ routes: [{ ...sentinelRule, ...change }] }));
+  expect(() => verifyProductionExport(f.root, [hidden])).toThrow("sentinel_http_rule_invalid");
+});

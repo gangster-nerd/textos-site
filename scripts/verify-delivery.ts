@@ -63,9 +63,10 @@ if (git(["rev-parse", "HEAD"]) !== source.sha || git(["status", "--porcelain"]))
   assessment.failures.push("parent_source_changed");
 }
 const receipt = { schemaVersion: "textos-site-local-ci@1", ...source, startedAt,
+  scope: "local_exports_only", httpReception: "required_before_promotion",
   finishedAt: new Date().toISOString(), node: process.version, ...assessment, modes: receipts, runRoot };
 const receiptPath = path.resolve(".artifacts", "local-ci", `${source.sha}.json`);
 fs.writeFileSync(path.join(runRoot, "receipt.json"), JSON.stringify(receipt, null, 2) + "\n");
 fs.writeFileSync(receiptPath, JSON.stringify(receipt, null, 2) + "\n");
-console.log(`Delivery ${assessment.result.toUpperCase()} — ${receiptPath}`);
+console.log(`Local exports ${assessment.result.toUpperCase()} — ${receiptPath}; HTTP reception REQUIRED before promotion (pnpm verify:http).`);
 process.exit(assessment.result === "pass" ? 0 : 1);
