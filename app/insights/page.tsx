@@ -38,8 +38,7 @@ export default function InsightsIndex() {
         <h1>How we think about authority observation</h1>
         <p className="lede">
           Product principles, architecture decisions, engineering notes and directions we
-          are exploring. Every article names the product SHA and source paths it was
-          written against.
+          are exploring. {visible.length > 0 && "Every article names the product SHA and source paths it was written against."}
         </p>
       </header>
 
@@ -47,8 +46,7 @@ export default function InsightsIndex() {
         <section aria-labelledby="empty-state" data-empty-state="insights">
           <h2 id="empty-state">Nothing to show yet</h2>
           <p>
-            The insights surface is scaffolded but no article has been published against
-            the current product SHA yet. When articles land they will appear here.
+            No articles are currently published in this section.
           </p>
         </section>
       ) : (

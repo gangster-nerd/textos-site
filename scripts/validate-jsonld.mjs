@@ -5,6 +5,7 @@
 
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
+import { load } from "cheerio";
 
 // Seules ces features (public_marketable) peuvent apparaître en featureList.
 const ALLOWED_FEATURES = new Set([
@@ -138,10 +139,39 @@ const contentFiles = contentDirs.flatMap(({ name, dir }) =>
     .map((file) => ({ collection: name, file, p: path.join(dir, file) }))
 );
 
+// Next exports the empty-corpus sentinel even though its route calls notFound().
+// Exempt only that attested 404, never a renamed article or all noindex pages.
+function isEmptyInsights404({ collection, file, p }) {
+  if (collection !== "insights" || file !== "__empty_insights__.html") return false;
+  try {
+    const built = path.join(".next", "server", "app", "insights", "__empty_insights__");
+    const metadata = JSON.parse(readFileSync(`${built}.meta`, "utf8"));
+    const html = readFileSync(p);
+    if (metadata?.status !== 404 || !html.equals(readFileSync(`${built}.html`))) return false;
+
+    const $ = load(html.toString("utf8"));
+    const robots = $('meta[name="robots" i]').toArray().flatMap((node) =>
+      ($(node).attr("content") ?? "").toLowerCase().split(/[,\s]+/),
+    );
+    return robots.includes("noindex") && !robots.includes("index")
+      && $('article, script[type="application/ld+json" i]').length === 0
+      && $("script:not([src])").toArray().some((node) =>
+        ($(node).html() ?? "").includes("NEXT_HTTP_ERROR_FALLBACK;404"),
+      );
+  } catch {
+    // Missing, unreadable or stale build evidence grants no exemption.
+    return false;
+  }
+}
+
 if (contentFiles.length === 0) {
   console.log("ℹ️  aucune page de contenu exportée (rien à valider).");
 } else {
   for (const { collection, file, p } of contentFiles) {
+    if (isEmptyInsights404({ collection, file, p })) {
+      console.log(`ℹ️  ${collection}/${file} : sentinelle 404 vérifiée, hors contenu éditorial`);
+      continue;
+    }
     const nodes = readNodes(p);
 
     // A3R : an insight page is either PUBLISHED (Article node) or DRAFT
