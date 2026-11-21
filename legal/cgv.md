@@ -5,7 +5,7 @@ Adresse permanente de cette version : https://textos-site.vercel.app/legal/cgv
 
 Les présentes conditions sont conclues entre :
 
-- **l'Éditeur** : Marc-Antoine PREMPAIN, entrepreneur individuel (EI), exerçant sous la marque TextOS, immatriculé sous le numéro SIREN 130 774 128, dont l'établissement est situé Station F, 5 Parvis Alan Turing, 75013 Paris, France, non assujetti à la taxe sur la valeur ajoutée (TVA non applicable, article 293 B du Code général des impôts), joignable à marcprp@gmail.com ; ci-après « TextOS » ;
+- **l'Éditeur** : Marc-Antoine PREMPAIN, entrepreneur individuel (EI), exerçant sous la marque TextOS, immatriculé sous le numéro SIREN 130 774 128, dont l'établissement est situé Station F, 5 Parvis Alan Turing, 75013 Paris, France, bénéficiant du régime de la franchise en base de TVA (TVA non applicable, article 293 B du Code général des impôts), joignable à marcprp@gmail.com ; ci-après « TextOS » ;
 - **le Client** : la personne, physique ou morale, qui ouvre un compte ou souscrit une offre pour les besoins de son activité professionnelle.
 
 ## 1. Objet et acceptation
