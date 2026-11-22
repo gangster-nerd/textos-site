@@ -1,0 +1,90 @@
+{
+  "text": "For a marketing lead, the useful part happens right after the merge. Each change carries a short record in which its author states which parts of the product it touches and what kind of change it is, or explains why it has nothing to say publicly. That record describes the change; it does not decide anything.\n\nHow far a change may be talked about in public is never left to the person who wrote it: TextOS derives that limit from what the product officially states about itself. This step uses no language model, and TextOS gets the same result each time it reruns the same record against the same product truth. In practice, an enthusiastic commit message cannot promote an internal feature, and two people looking at the same change see the same verdict.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "For a marketing lead, the useful part happens right after the merge.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Each change carries a short record in which its author states which parts of the product it touches and what kind of change it is, or explains why it has nothing to say publicly.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp2-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "That record describes the change; it does not decide anything.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "How far a change may be talked about in public is never left to the person who wrote it: TextOS derives that limit from what the product officially states about itself.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp2-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "This step uses no language model, and TextOS gets the same result each time it reruns the same record against the same product truth.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-cp2-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "In practice, an enthusiastic commit message cannot promote an internal feature, and two people looking at the same change see the same verdict.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

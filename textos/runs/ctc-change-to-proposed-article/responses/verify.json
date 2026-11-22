@@ -1,0 +1,89 @@
+{
+  "text": "If a tool offers to write articles from your changelog, ask who decides how much of a change may be said in public. Ask whether the same change judged twice gives the same answer. Ask whether a commit message can be copied onto your site as it stands. Ask what you see when the tool decides a change is not worth an article. Ask whether a topic you turned down will come back next week. Ask which sources a draft may quote, and whether an engineer's own wording can slip into the published text. Ask who signs off before anything reaches your website, and where that sign-off is recorded.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "If a tool offers to write articles from your changelog, ask who decides how much of a change may be said in public.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask whether the same change judged twice gives the same answer.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether a commit message can be copied onto your site as it stands.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask what you see when the tool decides a change is not worth an article.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask whether a topic you turned down will come back next week.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Ask which sources a draft may quote, and whether an engineer's own wording can slip into the published text.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "Ask who signs off before anything reaches your website, and where that sign-off is recorded.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

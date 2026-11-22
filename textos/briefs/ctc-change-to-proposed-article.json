@@ -1,0 +1,594 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-change-to-proposed-article",
+  "flow": "commit_to_content",
+  "slug": "from-a-merged-product-change-to-a-proposed-article",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "commit-to-content"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "canonical-filter-2026-10-28",
+        "sourceCommits": [
+          "41bf286d6e02e809d365af97f99d378f3941e11c"
+        ]
+      },
+      {
+        "groupId": "proposal-and-decision-2026-11-17",
+        "sourceCommits": [
+          "9f8ec08c039abbeb6921178980cbf33645ca4db0",
+          "97fad73527457d02cee94da8ad038b4fe978f44c"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I turn my product changes into articles without retyping them?",
+    "targetQuery": "how to turn product changes into articles without rewriting them",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "commit-to-content"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+    "approvedAt": "2026-11-22"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-every-change-a-content-decision",
+      "textos-site:ctc:ctc-evidence-approved-per-article",
+      "textos-site:ctc:ctc-human-decision-exact-bytes"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-cp2-01",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-029-ctc-filtre-canonique.md",
+        "quote": "Le filtre ne décide pas de publier."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text in French; quoted as written.",
+        "Accepted decision record (ADR-029)."
+      ]
+    },
+    {
+      "id": "ev-cp2-02",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-029-ctc-filtre-canonique.md",
+        "quote": "La dernière réponse ne vient jamais de l'auteur du changement : elle est dérivée de la vérité produit."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text in French; quoted as written.",
+        "'La dernière réponse' refers to how far a change may be talked about publicly."
+      ]
+    },
+    {
+      "id": "ev-cp2-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "41bf286d6e02e809d365af97f99d378f3941e11c",
+        "quote": "unités entité × nature déclarées, ou rejet motivé."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written.",
+        "Describes what a change record carries: the product units and their nature as declared by the author, or a reasoned rejection."
+      ]
+    },
+    {
+      "id": "ev-cp2-04",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-029-ctc-filtre-canonique.md",
+        "quote": "aucune LLM. Rejouer le même enregistrement à la même vérité produit donne la même sortie."
+      },
+      "claimTypes": [
+        "content_governance",
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text in French; quoted as written.",
+        "Describes the qualification step."
+      ]
+    },
+    {
+      "id": "ev-cp2-05",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-036-ctc-une-source-une-qualification.md",
+        "quote": "Un changement de dépôt entre dans TextOS par un seul chemin, est qualifié par une seule règle, et devient du contenu par une seule chaîne"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text in French; quoted as written.",
+        "Accepted decision record (ADR-036)."
+      ]
+    },
+    {
+      "id": "ev-cp2-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "9f8ec08c039abbeb6921178980cbf33645ca4db0",
+        "quote": "Les sujets naissent proposed : aucun n'est accepté sans décision humaine."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp2-07",
+      "source": {
+        "kind": "product_commit",
+        "sha": "9f8ec08c039abbeb6921178980cbf33645ca4db0",
+        "quote": "planProductChangeBriefs est déterministe, sans LLM ni appel payant ; la proposition reste idempotente"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written.",
+        "Describes the step that proposes topics after a qualification."
+      ]
+    },
+    {
+      "id": "ev-cp2-08",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-038-ctc-brief-changement-produit.md",
+        "quote": "Un changement produit peut devenir un sujet. Il ne devient un article que par le même brief accepté par un humain que tout autre sujet"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text in French; quoted as written.",
+        "Accepted decision record (ADR-038)."
+      ]
+    },
+    {
+      "id": "ev-cp2-09",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-029-ctc-filtre-canonique.md",
+        "quote": "Il signale un manque de vérité produit à combler dans le dépôt produit (déclaration, couverture), pas un candidat à trier dans TextOS."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text in French; quoted as written.",
+        "Applies to a change whose public status cannot be derived (UNKNOWN), which is never promoted automatically."
+      ]
+    },
+    {
+      "id": "ev-cp2-10",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/engineering/github-ctc-dogfood.md",
+        "quote": "Il ne transforme ni `qualified` ni `PUBLIC_SAFE` en acceptation de brief, autorisation de preuve ou de publication."
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text in French; quoted as written.",
+        "Operating procedure for the trial on TextOS's own repository."
+      ]
+    },
+    {
+      "id": "ev-cp2-11",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/product-change/proposals.ts",
+        "quote": "The author's change reason explains selection and is never a grant to publish it."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp2-12",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/product-change/proposals.ts",
+        "quote": "Only verbatim public bounds or approved profile claims enter the writing evidence."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp2-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "97fad73527457d02cee94da8ad038b4fe978f44c",
+        "quote": "Un sujet refusé n'est plus reproposé par une qualification suivante du même changement"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp2-14",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "commit-to-content",
+        "field": "knownLimits",
+        "quote": "Lit aujourd'hui le seul dépôt de TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp2-15",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "commit-to-content",
+        "field": "knownLimits",
+        "quote": "Chaque article passe par la revue d'article commune et une approbation humaine ; rien n'est publié automatiquement."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that a product change can become a proposed topic, and becomes an article only after a person accepts it.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp2-08",
+        "ev-cp2-06"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS turns merged product changes into proposed article topics a person accepts or refuses, and publishes nothing automatically.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp2-08",
+        "ev-cp2-15"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: the product ships every week, the website says nothing about it, and nobody has time to translate pull requests into articles. Set up the question: can the changes themselves become the starting point, without retyping them and without losing control of what is said?",
+      "buyerIntent": "Can my product changes feed my articles?",
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can I turn my product changes into articles without retyping them?",
+      "writingObjective": "Answer directly: a change from the repository enters TextOS by one path, is qualified by one rule and becomes content through one chain; topics are born as proposals and none is accepted without a human decision; a change becomes an article only through the same accepted brief as any other topic.",
+      "buyerIntent": "How can I turn my product changes into articles without retyping them?",
+      "allowedEvidenceIds": [
+        "ev-cp2-05",
+        "ev-cp2-06",
+        "ev-cp2-08"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What happens to a merged change",
+      "writingObjective": "Explain the qualification step for a non-technical reader: the author of the change declares what changed and its nature, or gives a reasoned rejection; how far the change may be talked about publicly is never left to the author but derived from what the product officially states; the step uses no language model and gives the same result when replayed on the same inputs. Say what that changes for a marketing lead.",
+      "buyerIntent": "Who decides what a change is worth saying?",
+      "allowedEvidenceIds": [
+        "ev-cp2-03",
+        "ev-cp2-02",
+        "ev-cp2-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "change-path-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one or two factual sentences, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp2-01",
+        "ev-cp2-07"
+      ],
+      "requiredClaimTypes": [
+        "content_governance",
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What a proposed topic is built from",
+      "writingObjective": "Explain the proposal step: it is deterministic, involves no language model and no paid call, and proposing twice gives the same result; only verbatim public bounds or approved profile claims enter the material the writer may use; the author's own explanation of a change explains why it was selected and never grants permission to publish it.",
+      "buyerIntent": "Will it repeat whatever the engineer wrote in the commit?",
+      "allowedEvidenceIds": [
+        "ev-cp2-07",
+        "ev-cp2-12",
+        "ev-cp2-11"
+      ],
+      "requiredClaimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "When TextOS says nothing, it says why",
+      "writingObjective": "Explain abstention: when the product's public status of a change cannot be established, the change is not promoted but flagged as a gap to fix in the product repository; being qualified, or even safe to mention, is never turned into acceptance or permission to publish; a topic a person refused is not proposed again for the same change.",
+      "buyerIntent": "What happens when a change is not publishable?",
+      "allowedEvidenceIds": [
+        "ev-cp2-09",
+        "ev-cp2-10",
+        "ev-cp2-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What stays with the person, and what this does not cover yet",
+      "writingObjective": "Explain that every article goes through the shared article review and a human approval and nothing is published automatically; state the current limit plainly: today the product reads only TextOS's own repository; close on what a buyer should expect from this kind of workflow, without promising dates or availability.",
+      "buyerIntent": "What do I still have to do?",
+      "allowedEvidenceIds": [
+        "ev-cp2-15",
+        "ev-cp2-14"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any tool that writes from your changelog",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-11-22",
+    "reason": "The note cites these product commits and files; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "change-path",
+      "template": "flow",
+      "title": "From a merged change to a proposed topic",
+      "subtitle": "Illustrative path for one change. TextOS proposes; a person decides.",
+      "nodes": [
+        {
+          "tag": "enter",
+          "label": "Change enters by one path",
+          "evidenceIds": [
+            "ev-cp2-05"
+          ]
+        },
+        {
+          "tag": "qualify",
+          "label": "Qualified by a fixed rule",
+          "evidenceIds": [
+            "ev-cp2-04"
+          ]
+        },
+        {
+          "tag": "propose",
+          "label": "Topic proposed",
+          "evidenceIds": [
+            "ev-cp2-07"
+          ]
+        },
+        {
+          "tag": "decide",
+          "label": "Person accepts or refuses",
+          "evidenceIds": [
+            "ev-cp2-06"
+          ]
+        }
+      ],
+      "highlightNode": 3,
+      "boundary": {
+        "afterNode": 1,
+        "title": "Not a publish decision",
+        "lines": [
+          "The rule never decides",
+          "to publish."
+        ],
+        "evidenceIds": [
+          "ev-cp2-01"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "change-path-caption"
+    }
+  ]
+}

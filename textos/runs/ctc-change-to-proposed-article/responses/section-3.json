@@ -1,0 +1,90 @@
+{
+  "text": "Silence is part of the design. When the public status of a change cannot be established, TextOS does not promote it; it flags a gap to fix in the product's own records rather than a candidate to sort through. Being judged, or even judged safe to mention, is never turned into an accepted brief or permission to publish.\n\nRefusals are remembered too. Once a person has refused a topic, TextOS does not propose it again for the same change. For a busy team, that means a short list of real proposals and a reason for each change left out, instead of a queue that keeps coming back.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Silence is part of the design.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "When the public status of a change cannot be established, TextOS does not promote it; it flags a gap to fix in the product's own records rather than a candidate to sort through.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp2-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Being judged, or even judged safe to mention, is never turned into an accepted brief or permission to publish.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp2-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Refusals are remembered too.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Once a person has refused a topic, TextOS does not propose it again for the same change.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-cp2-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "For a busy team, that means a short list of real proposals and a reason for each change left out, instead of a queue that keeps coming back.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

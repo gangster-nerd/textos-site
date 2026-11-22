@@ -1,0 +1,53 @@
+{
+  "text": "Your product team ships changes most weeks, and your website rarely mentions them. Turning those changes into articles usually means someone rereads the release notes, guesses what is worth saying and rewrites it from scratch. The obvious shortcut, letting a tool write straight from what engineers typed, raises a harder question: who decides what may be said in public? This note follows one change from the moment it is merged to the moment it becomes a topic someone can accept or refuse.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Your product team ships changes most weeks, and your website rarely mentions them.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Turning those changes into articles usually means someone rereads the release notes, guesses what is worth saying and rewrites it from scratch.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The obvious shortcut, letting a tool write straight from what engineers typed, raises a harder question: who decides what may be said in public?",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note follows one change from the moment it is merged to the moment it becomes a topic someone can accept or refuse.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

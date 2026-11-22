@@ -1,0 +1,37 @@
+{
+  "text": "TextOS's rule for judging a change never decides to publish anything. The step that proposes topics runs without a language model or a paid call, and proposing twice gives the same result.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS's rule for judging a change never decides to publish anything.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp2-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The step that proposes topics runs without a language model or a paid call, and proposing twice gives the same result.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-cp2-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

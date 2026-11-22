@@ -2,7 +2,7 @@
   "ledgerVersion": 1,
   "productRepository": "gangster-nerd/textos-v0",
   "productRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
-  "commitCount": 41,
+  "commitCount": 59,
   "commits": [
     {
       "sha": "a944097c401d066154719c2a09c882a9cc970e54",
@@ -94,6 +94,78 @@
       ]
     },
     {
+      "sha": "6c9d7fe53fcc1a0ba14cad74308f567c0cb72576",
+      "date": "2026-09-21T17:58:05+00:00",
+      "subject": "feat(p0a): la demande décide CE QU'ON MESURE, jamais le résultat",
+      "citedBy": [
+        "ctc-question-panel"
+      ]
+    },
+    {
+      "sha": "a6a41a702568d1ba13938dfc9367e12193252f9d",
+      "date": "2026-09-21T23:44:50+00:00",
+      "subject": "feat(questions): la surface qui refuse de figer un panel non mesurable",
+      "citedBy": [
+        "ctc-question-panel"
+      ]
+    },
+    {
+      "sha": "b66c3a845b26c0bf945ac55222a98ab6f152da00",
+      "date": "2026-09-22T00:07:18+00:00",
+      "subject": "feat(questions): composer un panel et le figer, en un seul geste",
+      "citedBy": [
+        "ctc-question-panel"
+      ]
+    },
+    {
+      "sha": "17086e46d747eb0e6ba03e7f3f7dd122cec0ebdc",
+      "date": "2026-09-22T00:39:37+00:00",
+      "subject": "fix(questions): la version mesurée est la version approuvée",
+      "citedBy": [
+        "ctc-question-panel"
+      ]
+    },
+    {
+      "sha": "db6da77773847e119daae91320c4c6762eeedc36",
+      "date": "2026-09-22T08:04:43+00:00",
+      "subject": "fix(questions): la force de demande n'est plus saisissable",
+      "citedBy": [
+        "ctc-question-panel"
+      ]
+    },
+    {
+      "sha": "e644a5da658588d346800eaabb6e0b1208cd5176",
+      "date": "2026-09-22T08:40:31+00:00",
+      "subject": "feat(demand): la force de demande est dérivée de preuves, ou absente",
+      "citedBy": [
+        "ctc-question-panel"
+      ]
+    },
+    {
+      "sha": "b230cbbb44038dc25aa496a84d134eab34a4e489",
+      "date": "2026-09-23T19:51:27+00:00",
+      "subject": "feat(performance): cœur par question, observateur de publication, contrôles, lecteur",
+      "citedBy": [
+        "ctc-question-performance"
+      ]
+    },
+    {
+      "sha": "d8df9cb84a99993dd5b0621159a9c201f40fe90f",
+      "date": "2026-09-24T08:57:07+00:00",
+      "subject": "feat(performance): garde d'isolation I1 et déclencheur planifié I5",
+      "citedBy": [
+        "ctc-question-performance"
+      ]
+    },
+    {
+      "sha": "2f6ed1c0d9bed0f7f966cbd83865a57e2f116491",
+      "date": "2026-09-24T10:57:12+00:00",
+      "subject": "feat(performance): huit appels planifiés par jour et « Relancer » absent d'un contrôle",
+      "citedBy": [
+        "ctc-question-performance"
+      ]
+    },
+    {
       "sha": "722f17731cbe0773b9db4583686cbd04f9cd043e",
       "date": "2026-09-26T17:07:24+02:00",
       "subject": "feat: bind wordpress draft through exact trust action subject",
@@ -171,6 +243,38 @@
       "subject": "fix(ux): never present a re-measurement window as scheduled",
       "citedBy": [
         "ctc-re-observation-plan"
+      ]
+    },
+    {
+      "sha": "4400c5b3a85f51c580ebeb25cf58666ef6aa4213",
+      "date": "2026-10-22T12:51:40+00:00",
+      "subject": "feat(competitor-source): cs-0 gate and cs-1 cited-surface-first foundation",
+      "citedBy": [
+        "ctc-competitor-source"
+      ]
+    },
+    {
+      "sha": "c77f43183d05c3487a19a09c8723cd70ab84f66b",
+      "date": "2026-10-22T13:57:23+00:00",
+      "subject": "feat(competitor-source): cs-2 temporal memory",
+      "citedBy": [
+        "ctc-competitor-source"
+      ]
+    },
+    {
+      "sha": "defc97bbdabd447f3afc8675cf8f20d68ca60ad5",
+      "date": "2026-10-22T14:41:49+00:00",
+      "subject": "feat(competitor-source): cs-3b coverage matrix and citability anatomy",
+      "citedBy": [
+        "ctc-competitor-source"
+      ]
+    },
+    {
+      "sha": "807f2d582112987d041f1499516c156de1dc6c5d",
+      "date": "2026-10-22T16:23:36+00:00",
+      "subject": "feat(competitor-source): cs-7 weekly brief, brief review and validation memory",
+      "citedBy": [
+        "ctc-competitor-source"
       ]
     },
     {
@@ -312,6 +416,14 @@
       ]
     },
     {
+      "sha": "41bf286d6e02e809d365af97f99d378f3941e11c",
+      "date": "2026-10-28T10:47:01+00:00",
+      "subject": "feat(ctc): filtre canonique Commit-to-Content à deux axes (ADR-029, sprint 1)",
+      "citedBy": [
+        "ctc-change-to-proposed-article"
+      ]
+    },
+    {
       "sha": "3fb731a02b57773658b4c270c32052e6c22eeec0",
       "date": "2026-10-29T13:17:02+00:00",
       "subject": "feat(truth): premier lot de divulgation anticipée — six capacités du pipeline Act en bêta (ADR-035)",
@@ -320,11 +432,43 @@
       ]
     },
     {
+      "sha": "4a1f6fe2629f999332aca104379a59351653bff2",
+      "date": "2026-11-03T19:13:38+01:00",
+      "subject": "feat: act-update-1 i5b approve the page update through the governed actions surface (#191)",
+      "citedBy": [
+        "ctc-action-lifecycle"
+      ]
+    },
+    {
+      "sha": "5b6737d2ecdf1a6d8eb6d6992eabe1521c0201af",
+      "date": "2026-11-03T23:33:47+01:00",
+      "subject": "feat: act-update-1 i6 record a human publication when verifying a deposited wordpress draft (#208)",
+      "citedBy": [
+        "ctc-action-lifecycle"
+      ]
+    },
+    {
       "sha": "ee5078e2e33301feaec42ece5cb76c1fffd47e98",
       "date": "2026-11-16T10:49:11+00:00",
       "subject": "feat: ajouter l'enregistrement dynamique restreint des clients mcp, fermé par défaut",
       "citedBy": [
         "ctc-assistant-connection"
+      ]
+    },
+    {
+      "sha": "9f8ec08c039abbeb6921178980cbf33645ca4db0",
+      "date": "2026-11-17T16:42:01+00:00",
+      "subject": "feat(product-change): proposer les sujets à la fin de chaque qualification github (c5)",
+      "citedBy": [
+        "ctc-change-to-proposed-article"
+      ]
+    },
+    {
+      "sha": "97fad73527457d02cee94da8ad038b4fe978f44c",
+      "date": "2026-11-17T16:52:26+00:00",
+      "subject": "feat(product-change): accepter ou refuser une nouveauté produit depuis l'interface (c5)",
+      "citedBy": [
+        "ctc-change-to-proposed-article"
       ]
     },
     {

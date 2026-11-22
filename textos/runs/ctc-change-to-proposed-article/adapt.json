@@ -1,0 +1,20 @@
+{
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to turn product changes into articles without rewriting them",
+  "executionPlanHash": "a7b6a9f9beaad7f7d83d3ebb9769610536bd53d6ba5e482fd0218e1156a29449",
+  "ctcHandoffHash": "fbbafb5f50a9423753b2c94e752364fb87244191d2ce39f9bfb81aae9714a922",
+  "promptHashes": {
+    "title": "1e1beb6ea15d019da79665560d5b237948f3334ef413a9d6f808291b22bd75e8",
+    "meta": "ed8c2918a27af8d4cedf9b31328ddf11e6a7a35ac1dfb948b5835b03287cf8f1",
+    "lead": "404b52cbdf3feed6453248a3ebf25c878ae8eda8fa0db74c552ca6176d0bf269",
+    "answer": "89d94c7e435e02888f30e070d44a588757474e30331fb3d647107a8bcf895171",
+    "section-1": "9536d8cd5d894aee95d66a6ab1993474db260e09340d43b00214413e555a2260",
+    "change-path-caption": "264042fea23be1140b726b77ee94a00f59e953b594296349cb6d6986ad4acf85",
+    "section-2": "5f3767602d813371c747089cf05d0ff97599b0b89e798825477f93fefd5fbdbf",
+    "section-3": "54fc5ebc5ec9c683e6c150e97efeb395369a4ef4ad1da07a967db29beb9a3352",
+    "section-4": "272c567ab7be09276087f5a6f95f5a6d21ae16a9fe309c08e3ba0fdd5ab32d9d",
+    "verify": "23e61480186e6ecd108301b4fceacd76d7a4c3913b17da9f78e932837b615317",
+    "editorial-next-step": "a2ede835a4f777c9a66423326ef42945b2b27f48077ea5fdb0bb76295d6c7b5c"
+  }
+}

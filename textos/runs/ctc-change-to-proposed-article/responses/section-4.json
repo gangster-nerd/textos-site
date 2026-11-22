@@ -1,0 +1,73 @@
+{
+  "text": "The decision to put words in front of readers stays with a person. Every article goes through the shared article review and a human approval, and TextOS publishes nothing automatically. What this workflow removes is the retyping and the guesswork about which changes are worth a line; what it keeps is your judgment on each topic.\n\nThe scope today is deliberately small: TextOS currently reads only its own repository. If you assess this kind of workflow for your own product, expect to spend your time accepting or refusing proposals, not writing them.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The decision to put words in front of readers stays with a person.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Every article goes through the shared article review and a human approval, and TextOS publishes nothing automatically.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-cp2-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "What this workflow removes is the retyping and the guesswork about which changes are worth a line; what it keeps is your judgment on each topic.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The scope today is deliberately small: TextOS currently reads only its own repository.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp2-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "If you assess this kind of workflow for your own product, expect to spend your time accepting or refusing proposals, not writing them.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

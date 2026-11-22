@@ -1,0 +1,411 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "Yes, but the changes become topics to decide on, not finished posts. In TextOS, a change from the repository enters by a single path, is judged by a single rule and becomes content through a single chain. The topics that come out of it start life as proposals, and TextOS accepts none of them without a human decision. From there, a change becomes an article only through the same accepted brief as any other subject, so a product update is held to the same standard as an article planned by your marketing team. You stop retyping release notes, and you keep the final say."
+        },
+        "id": "answer-1",
+        "kind": "answer",
+        "slot": "short-answer"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": "short-answer",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Your product team ships changes most weeks, and your website rarely mentions them. Turning those changes into articles usually means someone rereads the release notes, guesses what is worth saying and rewrites it from scratch. The obvious shortcut, letting a tool write straight from what engineers typed, raises a harder question: who decides what may be said in public? This note follows one change from the moment it is merged to the moment it becomes a topic someone can accept or refuse."
+        },
+        "id": "lead:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What happens to a merged change"
+        },
+        "id": "section-1:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "For a marketing lead, the useful part happens right after the merge. Each change carries a short record in which its author states which parts of the product it touches and what kind of change it is, or explains why it has nothing to say publicly. That record describes the change; it does not decide anything.\n\nHow far a change may be talked about in public is never left to the person who wrote it: TextOS derives that limit from what the product officially states about itself. This step uses no language model, and TextOS gets the same result each time it reruns the same record against the same product truth. In practice, an enthusiastic commit message cannot promote an internal feature, and two people looking at the same change see the same verdict."
+        },
+        "id": "section-1:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "alt": "From a merged change to a proposed topic. A 4-step flow: Change enters by one path, then Qualified by a fixed rule, then Topic proposed, then Person accepts or refuses. A dashed boundary after \"Qualified by a fixed rule\" is labelled Not a publish decision: The rule never decides to publish.",
+          "caption": "TextOS's rule for judging a change never decides to publish anything. The step that proposes topics runs without a language model or a paid call, and proposing twice gives the same result.",
+          "src": "/diagrams/ctc/change-path-f01ec000efa8.svg"
+        },
+        "id": "figure:change-path",
+        "kind": "figure"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What a proposed topic is built from"
+        },
+        "id": "section-2:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 5,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Once a change is judged, TextOS proposes topics in a fixed, repeatable way: no language model and no paid call are involved, and running the proposal again leaves it unchanged. That matters when the same change is looked at twice: you get the same suggestion, not a new one each time.\n\nWhat a future article may lean on is narrow on purpose. TextOS lets only word-for-word public limits or claims already approved in the product profile into the material the writer may use. The engineer's own explanation of a change is treated as the reason it was picked, and TextOS never reads it as permission to publish. So a confident line in a pull request does not end up, unchecked, on your website."
+        },
+        "id": "section-2:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 6,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "When TextOS says nothing, it says why"
+        },
+        "id": "section-3:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 7,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Silence is part of the design. When the public status of a change cannot be established, TextOS does not promote it; it flags a gap to fix in the product's own records rather than a candidate to sort through. Being judged, or even judged safe to mention, is never turned into an accepted brief or permission to publish.\n\nRefusals are remembered too. Once a person has refused a topic, TextOS does not propose it again for the same change. For a busy team, that means a short list of real proposals and a reason for each change left out, instead of a queue that keeps coming back."
+        },
+        "id": "section-3:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 8,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What stays with the person, and what this does not cover yet"
+        },
+        "id": "section-4:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 9,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The decision to put words in front of readers stays with a person. Every article goes through the shared article review and a human approval, and TextOS publishes nothing automatically. What this workflow removes is the retyping and the guesswork about which changes are worth a line; what it keeps is your judgment on each topic.\n\nThe scope today is deliberately small: TextOS currently reads only its own repository. If you assess this kind of workflow for your own product, expect to spend your time accepting or refusing proposals, not writing them."
+        },
+        "id": "section-4:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 10,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What to ask any tool that writes from your changelog"
+        },
+        "id": "verify:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 11,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "items": [
+            "If a tool offers to write articles from your changelog, ask who decides how much of a change may be said in public.",
+            "Ask whether the same change judged twice gives the same answer.",
+            "Ask whether a commit message can be copied onto your site as it stands.",
+            "Ask what you see when the tool decides a change is not worth an article.",
+            "Ask whether a topic you turned down will come back next week.",
+            "Ask which sources a draft may quote, and whether an engineer's own wording can slip into the published text.",
+            "Ask who signs off before anything reaches your website, and where that sign-off is recorded."
+          ]
+        },
+        "id": "verify:decision-points",
+        "kind": "steps"
+      },
+      "hiddenReason": null,
+      "order": 12,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Where to go next"
+        },
+        "id": "editorial-next-step:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 13,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Another note explains why most product changes deserve no article at all, and how that choice is recorded. A second note shows how a person's sign-off is tied to the exact draft it covers."
+        },
+        "id": "editorial-next-step:body",
+        "kind": "paragraph",
+        "slot": "editorial-next-step"
+      },
+      "hiddenReason": null,
+      "order": 14,
+      "region": "editorial-next-step",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Sources"
+        },
+        "id": "sources:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 15,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-06",
+          "title": "TextOS product commit 9f8ec08, 17 Nov 2026"
+        },
+        "id": "source:1:ev-cp2-06",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 16,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-08",
+          "title": "TextOS product repository file docs/adr/ADR-038-ctc-brief-changement-produit.md at 181d44e"
+        },
+        "id": "source:2:ev-cp2-08",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 17,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-15",
+          "title": "TextOS product manifest, commit-to-content.knownLimits"
+        },
+        "id": "source:3:ev-cp2-15",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 18,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-05",
+          "title": "TextOS product repository file docs/adr/ADR-036-ctc-une-source-une-qualification.md at 181d44e"
+        },
+        "id": "source:4:ev-cp2-05",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 19,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-03",
+          "title": "TextOS product commit 41bf286, 28 Oct 2026"
+        },
+        "id": "source:5:ev-cp2-03",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 20,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-02",
+          "title": "TextOS product repository file docs/adr/ADR-029-ctc-filtre-canonique.md at 181d44e"
+        },
+        "id": "source:6:ev-cp2-02",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 21,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-12",
+          "title": "TextOS product repository file src/server/textos/act/product-change/proposals.ts at 181d44e"
+        },
+        "id": "source:7:ev-cp2-12",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 22,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-10",
+          "title": "TextOS product repository file docs/engineering/github-ctc-dogfood.md at 181d44e"
+        },
+        "id": "source:8:ev-cp2-10",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 23,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cp2-13",
+          "title": "TextOS product commit 97fad73, 17 Nov 2026"
+        },
+        "id": "source:9:ev-cp2-13",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 24,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-change-to-proposed-article::from-a-merged-product-change-to-a-proposed-article::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:figure:change-path:v|5:section-2:heading:v|6:section-2:body:v|7:section-3:heading:v|8:section-3:body:v|9:section-4:heading:v|10:section-4:body:v|11:verify:heading:v|12:verify:decision-points:v|13:editorial-next-step:heading:v|14:editorial-next-step:body:v|15:sources:heading:v|16:source:1:ev-cp2-06:v|17:source:2:ev-cp2-08:v|18:source:3:ev-cp2-15:v|19:source:4:ev-cp2-05:v|20:source:5:ev-cp2-03:v|21:source:6:ev-cp2-02:v|22:source:7:ev-cp2-12:v|23:source:8:ev-cp2-10:v|24:source:9:ev-cp2-13:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "product_article",
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "TextOS can turn a product change into a topic, but it becomes an article only through a brief a person has accepted, and nothing is published automatically.",
+  "documentId": "textos-site:ctc:ctc-change-to-proposed-article",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": "article-review",
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "Article"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": false,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-article-review@0.1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 4,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "from-a-merged-product-change-to-a-proposed-article",
+  "surface": "reference",
+  "title": "TextOS turns a product change into a proposed topic, not a published article",
+  "truth": {
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "answer",
+    "paragraph",
+    "heading",
+    "figure",
+    "steps",
+    "source"
+  ]
+}

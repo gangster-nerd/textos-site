@@ -1,0 +1,29 @@
+{
+  "text": "Another note explains why most product changes deserve no article at all, and how that choice is recorded. A second note shows how a person's sign-off is tied to the exact draft it covers.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Another note explains why most product changes deserve no article at all, and how that choice is recorded.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A second note shows how a person's sign-off is tied to the exact draft it covers.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

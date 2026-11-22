@@ -1,0 +1,89 @@
+{
+  "text": "Once a change is judged, TextOS proposes topics in a fixed, repeatable way: no language model and no paid call are involved, and running the proposal again leaves it unchanged. That matters when the same change is looked at twice: you get the same suggestion, not a new one each time.\n\nWhat a future article may lean on is narrow on purpose. TextOS lets only word-for-word public limits or claims already approved in the product profile into the material the writer may use. The engineer's own explanation of a change is treated as the reason it was picked, and TextOS never reads it as permission to publish. So a confident line in a pull request does not end up, unchecked, on your website.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Once a change is judged, TextOS proposes topics in a fixed, repeatable way: no language model and no paid call are involved, and running the proposal again leaves it unchanged.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-cp2-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "That matters when the same change is looked at twice: you get the same suggestion, not a new one each time.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "What a future article may lean on is narrow on purpose.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "TextOS lets only word-for-word public limits or claims already approved in the product profile into the material the writer may use.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp2-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The engineer's own explanation of a change is treated as the reason it was picked, and TextOS never reads it as permission to publish.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-cp2-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "So a confident line in a pull request does not end up, unchecked, on your website.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

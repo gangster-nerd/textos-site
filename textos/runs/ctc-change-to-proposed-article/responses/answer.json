@@ -1,0 +1,77 @@
+{
+  "text": "Yes, but the changes become topics to decide on, not finished posts. In TextOS, a change from the repository enters by a single path, is judged by a single rule and becomes content through a single chain. The topics that come out of it start life as proposals, and TextOS accepts none of them without a human decision. From there, a change becomes an article only through the same accepted brief as any other subject, so a product update is held to the same standard as an article planned by your marketing team. You stop retyping release notes, and you keep the final say.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Yes, but the changes become topics to decide on, not finished posts.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS, a change from the repository enters by a single path, is judged by a single rule and becomes content through a single chain.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp2-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The topics that come out of it start life as proposals, and TextOS accepts none of them without a human decision.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-cp2-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "From there, a change becomes an article only through the same accepted brief as any other subject, so a product update is held to the same standard as an article planned by your marketing team.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-cp2-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "You stop retyping release notes, and you keep the final say.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}
