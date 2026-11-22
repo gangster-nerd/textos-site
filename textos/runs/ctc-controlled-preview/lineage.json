@@ -1,6 +1,6 @@
 {
   "planId": "how to preview an ai written article before it is published",
-  "planHash": "4f36ab52649830e3a964d7626320f74e11d49ded7cc9b38c7e139e8ab746d29b",
+  "planHash": "bc893b363922012011334760df5b05cff93685836c597ed2b7211cfee783ce1c",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -262,5 +262,5 @@
     "verdict": "pass",
     "contradictions": []
   },
-  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
 }

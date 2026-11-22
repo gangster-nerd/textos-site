@@ -80,11 +80,14 @@ describe("CTC-6 — selfServeCtaGate utilise les capacités explicites", () => {
     entities: pinnedManifest.entities.filter((e) => !(SELF_SERVE_REQUIRED_CAPABILITIES as readonly string[]).includes(e.id)),
   };
 
-  it("manifeste épinglé : les trois capacités sont commercialisables en homepage → eligible, GREEN sans activation proposée", () => {
+  // Décision du Release Owner du 2026-11-16 (textos-v0 `docs/governance/publication/2026-11-16-self-serve-onboarding-non-commercialisable.md`) :
+  // l'onboarding self-serve repasse `candidate`, FAQ seule. Le manifeste épinglé (181d44e) ne rend donc
+  // plus le CTA self-serve éligible ; les deux autres capacités restent commercialisables en homepage.
+  it("manifeste épinglé : self-serve-onboarding n'est plus commercialisable (décision du 2026-11-16) → GREEN, eligible=false sans activation proposée", () => {
     const gate = selfServeCtaGate({ manifest: pinnedManifest, activationProposed: false });
     expect(gate.status).toBe("green");
-    expect(gate.eligible).toBe(true);
-    expect(gate.missingCapabilities).toEqual([]);
+    expect(gate.eligible).toBe(false);
+    expect(gate.missingCapabilities).toEqual(["self-serve-onboarding (publicationStatus=candidate)"]);
   });
 
   it("capacités requises absentes + aucune activation proposée → GREEN eligible=false", () => {

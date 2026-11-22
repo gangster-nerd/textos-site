@@ -3,7 +3,7 @@ surface: product_proof
 truthLevel: CANDIDATE
 sourceProductRef: 3cfae5830fed3f10fd35ed77e699a183162b6cbe
 declarationDigest: c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae
-pinnedManifestSha: 2faf90e681c1b0ccf345a80ea6e637fd89be88ab
+pinnedManifestSha: 181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed
 publishabilityStatus: BLOCKED
 bundleId: candidate-3cfae58
 ---

@@ -11,7 +11,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
 - CTC editorial contract (ctc-editorial-quality@0.1): pass (5 finding(s))
 - Sources shown: 5 (withheld: 0); figures: evidence-path e94b60e60fc4
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `2faf90e681c1b0ccf345a80ea6e637fd89be88ab`
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed`
 
 ## CTC editorial-contract findings
 

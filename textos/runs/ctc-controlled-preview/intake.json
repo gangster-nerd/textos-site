@@ -25,7 +25,7 @@
     "keywordVolumeStatus": "UNKNOWN",
     "searchIntent": "informational",
     "topicCluster": "article-validation",
-    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+    "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
   },
   "locale": "en-US",
   "policy": {
@@ -221,9 +221,9 @@
       "id": "ev-cp-04",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "da6c6be0b89eecd828c4c954a45b06606c1cdbeb8c96cf99e489e8d37d55e837",
       "excerpt": "Gate d'aperçu : seul un draft `truthchecked` adossé à un brief `accepted` est prévisualisable.",
       "subject": {
@@ -413,9 +413,9 @@
       "id": "ev-cp-10",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/generation-handoff.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/generation-handoff.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "028cd1c8a2fb0c7a873946ec380a487cfd3d4564f3563694152cf79bdf12764d",
       "excerpt": "Lève à la première discordance — jamais de tolérance",
       "subject": {
@@ -447,9 +447,9 @@
       "id": "ev-cp-11",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file scripts/demo-run/gb/preview.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file scripts/demo-run/gb/preview.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "08a4ab0fb4ce0fe89e50999943b57065508262e0cfbcaa74b2c8d523d06f9db1",
       "excerpt": "Écrit l'artefact renommé, puis PROUVE que le fichier sur disque == artifactSha256 du receipt.",
       "subject": {
@@ -605,9 +605,9 @@
       "id": "ev-cp-16",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "e95ac51d2f9347e0bb8abe8bb133be6618bae2a38ac7242af41386706692947a",
       "excerpt": "Rend l'aperçu contrôlé : `<meta robots noindex,nofollow>` + bandeau de provenance HONNÊTE.",
       "subject": {
@@ -638,9 +638,9 @@
       "id": "ev-cp-17",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "9e8ab581bbc5626dfa3bd3974657c13b2964d4ef86ff821a8bc0ad7c37895012",
       "excerpt": "Internal preview, not a customer story",
       "subject": {
@@ -673,7 +673,7 @@
       "sourceUrl": null,
       "sourceTitle": "TextOS product manifest, generation-handoff.knownLimits",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "8fd24ef245294498980d9114fd31c4a0c99bd9ac109268e51a6a435216cc6b42",
       "excerpt": "Transporte un brouillon et ses empreintes entre génération et aperçu ; ne garantit rien sur le contenu lui-même.",
       "subject": {

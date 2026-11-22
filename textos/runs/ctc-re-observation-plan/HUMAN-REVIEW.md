@@ -11,7 +11,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
 - CTC editorial contract (ctc-editorial-quality@0.1): pass (3 finding(s))
 - Sources shown: 10 (withheld: 0); figures: second-look 5d2e4fcd91e1
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `2faf90e681c1b0ccf345a80ea6e637fd89be88ab`
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed`
 
 ## CTC editorial-contract findings
 
@@ -55,7 +55,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > TextOS questions AI answer engines with sets of questions that carry a version number. Before an article is published, at the moment it is previewed, TextOS freezes four things: the observation that serves as the starting point, the version of the question set, the version of the measurement method, and the target questions being followed. That is the before picture, fixed while nothing has changed yet. TextOS fills in the change only after a real period has passed since publication, and it describes that change rather than computing an effect.
 
 - **factual** — TextOS questions AI answer engines with sets of questions that carry a version number.
-  - `ev-ro-12` (TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 2faf90e): «interroger des moteurs de réponse sur des panels versionnés ;»
+  - `ev-ro-12` (TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 181d44e): «interroger des moteurs de réponse sur des panels versionnés ;»
 - **factual** — Before an article is published, at the moment it is previewed, TextOS freezes four things: the observation that serves as the starting point, the version of the question set, the version of the measurement method, and the target questions being followed.
   - `ev-ro-02` (TextOS product commit 7ac42fb, 7 Aug 2026): «freeze baseline at preview time: baselineRunId, queryPanelVersion, measurementMethodVersion, targetQueryHashes»
 - **editorial** — That is the before picture, fixed while nothing has changed yet.
@@ -68,14 +68,14 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > An automated test checks that the TextOS re-observation plan keeps both the version of the question set and the version of the measurement method. The preview record and the re-observation plan in TextOS point to the same draft and the same content fingerprints. That way, the article being followed is the one that was previewed, not a later variant of it.
 
 - **factual** — Answer engines change the way they cite sources, and the tools that read those citations get corrected, so in TextOS a series of observations can only be compared when the measurement method stays the same or carries an explicit version.
-  - `ev-ro-11` (TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 2faf90e): «Les formats de citation des moteurs changent ; les parsers seront corrigés. Une série temporelle n'est donc comparable que si la méthode de mesure est constante **ou explicitement versionnée**.»
+  - `ev-ro-11` (TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 181d44e): «Les formats de citation des moteurs changent ; les parsers seront corrigés. Une série temporelle n'est donc comparable que si la méthode de mesure est constante **ou explicitement versionnée**.»
 - **editorial** — Otherwise, a shift in the numbers may only mean that the ruler moved.
 - **factual** — In TextOS, the set of questions is treated as a measuring instrument: it defines what is observed, it can be explained and audited, it carries a version, and it cannot be changed once validated.
-  - `ev-ro-13` (TextOS product repository file docs/adr/ADR-005-query-panel-strategy.md at 2faf90e): «il définit le périmètre de vérité observée, il est explicable, versionné, auditable et immuable une fois validé.»
+  - `ev-ro-13` (TextOS product repository file docs/adr/ADR-005-query-panel-strategy.md at 181d44e): «il définit le périmètre de vérité observée, il est explicable, versionné, auditable et immuable une fois validé.»
 - **factual** — An automated test checks that the TextOS re-observation plan keeps both the version of the question set and the version of the measurement method.
-  - `ev-ro-10` (TextOS product repository file src/server/textos/query-intelligence/demand/demand-authority-boundary.test.ts at 2faf90e): «`re_observation_plan` conserve queryPanelVersion ET measurementMethodVersion»
+  - `ev-ro-10` (TextOS product repository file src/server/textos/query-intelligence/demand/demand-authority-boundary.test.ts at 181d44e): «`re_observation_plan` conserve queryPanelVersion ET measurementMethodVersion»
 - **factual** — The preview record and the re-observation plan in TextOS point to the same draft and the same content fingerprints.
-  - `ev-ro-09` (TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 2faf90e): «Continuité : le receipt de preview ET le plan de ré-observation pointent le même draft + mêmes hashes.»
+  - `ev-ro-09` (TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 181d44e): «Continuité : le receipt de preview ET le plan de ré-observation pointent le même draft + mêmes hashes.»
 - **editorial** — That way, the article being followed is the one that was previewed, not a later variant of it.
 
 ### section-2 (section) — What the plan does not do yet
@@ -86,12 +86,12 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - **factual** — When TextOS creates a re-observation plan, it writes only the initial state: awaiting publication, not measurable yet, with no publication record, no publication date and no planned window.
   - `ev-ro-05` (TextOS product commit 7ac42fb, 7 Aug 2026): «createReObservationPlan (persist initial state only): awaiting_publication / not_measurable_yet; publicationReceiptId / publishedAt / plannedPostWindow null»
 - **factual** — Publishing or updating an article does not yet move that plan forward in TextOS, and wiring the two together was explicitly left out of scope.
-  - `ev-ro-07` (TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 2faf90e): «La publication ou l'update ne modifient pas encore `re_observation_plan`. Câbler ce lien est hors périmètre ici.»
+  - `ev-ro-07` (TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 181d44e): «La publication ou l'update ne modifient pas encore `re_observation_plan`. Câbler ce lien est hors périmètre ici.»
 - **editorial** — In plain terms, the second look is planned, not triggered.
 - **factual** — In the version of TextOS described here, no scheduler runs re-observations, so the article card is not allowed to call a new measurement scheduled and shows the planned window as a recommendation instead.
   - `ev-ro-06` (TextOS product commit a9b4c63, 1 Oct 2026): «No scheduler runs re-observations on this lineage, so the article card must not say a new measurement is « prévue ». The planned window is now shown as a recommendation (« Nouvelle mesure recommandée »), per the demo truth contract.»
 - **factual** — The end-to-end report TextOS produces labels the re-observation plan as planned and not yet measurable.
-  - `ev-ro-08` (TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 2faf90e): «title: "Re-observation Plan", epistemicStatus: "PLANNED — NOT YET MEASURABLE"»
+  - `ev-ro-08` (TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 181d44e): «title: "Re-observation Plan", epistemicStatus: "PLANNED — NOT YET MEASURABLE"»
 - **editorial** — If a dashboard shows you a scheduled follow-up measurement, it is fair to ask what will actually run it.
 
 ### second-look-caption (caption)
@@ -99,7 +99,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > A TextOS re-observation plan can be not measurable yet, have a window open after publication, or hold a descriptive change that is not causal; today only the initial, not-measurable state is written.
 
 - **factual** — A TextOS re-observation plan can be not measurable yet, have a window open after publication, or hold a descriptive change that is not causal; today only the initial, not-measurable state is written.
-  - `ev-ro-04` (TextOS product repository file src/server/textos/db/schema/enums.ts at 2faf90e): «"not_measurable_yet", // défaut — pas de publication, aucune fenêtre post-intervention "window_open", // fenêtre post-publication ouverte, ré-observation planifiée "measured", // delta DESCRIPTIF disponible (jamais causal)»
+  - `ev-ro-04` (TextOS product repository file src/server/textos/db/schema/enums.ts at 181d44e): «"not_measurable_yet", // défaut — pas de publication, aucune fenêtre post-intervention "window_open", // fenêtre post-publication ouverte, ré-observation planifiée "measured", // delta DESCRIPTIF disponible (jamais causal)»
   - `ev-ro-05` (TextOS product commit 7ac42fb, 7 Aug 2026): «createReObservationPlan (persist initial state only): awaiting_publication / not_measurable_yet; publicationReceiptId / publishedAt / plannedPostWindow null»
 
 ### section-3 (section) — A change observed is not a change caused
@@ -108,14 +108,14 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > When several actions touch the same question within the same re-observation window, TextOS attributes no effect to any one of them. The furthest state a TextOS plan can reach is a measured change that is descriptive and explicitly not causal. What you get is an observed evolution, compared on the same terms, with its uncertainty stated, and not a verdict on the article's success.
 
 - **factual** — TextOS does not present an update to an article as the reason a variation happened; the change stays descriptive.
-  - `ev-ro-14` (TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 2faf90e): «Une action d'update n'est jamais présentée comme cause d'une variation : un delta reste descriptif»
+  - `ev-ro-14` (TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 181d44e): «Une action d'update n'est jamais présentée comme cause d'une variation : un delta reste descriptif»
 - **factual** — Its rules exclude any causal claim and any attribution, because an answer engine changes for a thousand reasons.
-  - `ev-ro-16` (TextOS product repository file docs/adr/ADR-016-graduated-publication.md at 2faf90e): «aucune affirmation causale (« la publication a fait progresser… »), aucune attribution. Un moteur évolue pour mille raisons (ADR-008).»
+  - `ev-ro-16` (TextOS product repository file docs/adr/ADR-016-graduated-publication.md at 181d44e): «aucune affirmation causale (« la publication a fait progresser… »), aucune attribution. Un moteur évolue pour mille raisons (ADR-008).»
 - **editorial** — The article is only one of the things that may have moved in the meantime.
 - **factual** — When several actions touch the same question within the same re-observation window, TextOS attributes no effect to any one of them.
-  - `ev-ro-15` (TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 2faf90e): «Si plusieurs actions touchent un même `query_hash` dans une même fenêtre de réobservation, aucun effet n'est attribuable à l'une d'elles.»
+  - `ev-ro-15` (TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 181d44e): «Si plusieurs actions touchent un même `query_hash` dans une même fenêtre de réobservation, aucun effet n'est attribuable à l'une d'elles.»
 - **factual** — The furthest state a TextOS plan can reach is a measured change that is descriptive and explicitly not causal.
-  - `ev-ro-04` (TextOS product repository file src/server/textos/db/schema/enums.ts at 2faf90e): «"not_measurable_yet", // défaut — pas de publication, aucune fenêtre post-intervention "window_open", // fenêtre post-publication ouverte, ré-observation planifiée "measured", // delta DESCRIPTIF disponible (jamais causal)»
+  - `ev-ro-04` (TextOS product repository file src/server/textos/db/schema/enums.ts at 181d44e): «"not_measurable_yet", // défaut — pas de publication, aucune fenêtre post-intervention "window_open", // fenêtre post-publication ouverte, ré-observation planifiée "measured", // delta DESCRIPTIF disponible (jamais causal)»
 - **editorial** — What you get is an observed evolution, compared on the same terms, with its uncertainty stated, and not a verdict on the article's success.
 
 ### verify (section) — What to ask any AI content vendor

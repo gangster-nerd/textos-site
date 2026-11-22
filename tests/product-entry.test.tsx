@@ -82,13 +82,13 @@ describe("entrée self-serve — copy et rendu", () => {
 });
 
 describe("entrée self-serve — état réel du site", () => {
-  test("le manifeste épinglé publie le self-serve (ADR-027) : la porte ne s'ouvre qu'avec l'URL de passage configurée", () => {
-    // Décision de publication du 2026-10-27 : les trois capacités sont commercialisables en homepage
-    // et FAQ. L'éligibilité produit est acquise ; l'entrée ne se rend que si `PRODUCT_ENTRY_URL`
-    // est configurée (et la conversion active) — ce que `decideProductEntry` vérifie à part.
+  test("le manifeste épinglé ne publie plus le self-serve (décision du 2026-11-16) : la porte reste fermée, URL ou non", () => {
+    // ADR-027 (2026-10-27) avait rendu les trois capacités commercialisables. Le 2026-11-16, le Release
+    // Owner a déclaré l'onboarding self-serve non commercialisable (`candidate`, FAQ seule) : au
+    // manifeste épinglé 181d44e, l'éligibilité produit n'est plus acquise et l'entrée ne se rend pas.
     const gate = selfServeCtaGate(loadPinnedManifest(process.cwd()));
-    expect(gate.eligible).toBe(true);
-    expect(gate.missingCapabilities).toEqual([]);
+    expect(gate.eligible).toBe(false);
+    expect(gate.missingCapabilities).toEqual(["self-serve-onboarding (publicationStatus=candidate)"]);
   });
 
   const HOME_HTML = path.resolve("out/index.html");

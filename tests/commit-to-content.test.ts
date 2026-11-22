@@ -62,10 +62,10 @@ describe("commit-to-content publishability invariants", () => {
     // via les trois capacités requises (self-serve-onboarding, authenticated-product-entry,
     // ui-measurement-launch). En l'absence d'activation proposée, il reste GREEN mais
     // eligible=false.
-    // ADR-027 (décision de publication du 2026-10-27) : les trois capacités sont désormais
-    // commercialisables en homepage dans le manifeste épinglé — éligibles. L'activation d'un CTA
-    // public reste une décision distincte : sans elle, rien ne s'affiche.
-    expect(gate.eligible).toBe(true);
+    // ADR-027 (décision de publication du 2026-10-27) avait rendu les trois capacités commercialisables ;
+    // la décision du 2026-11-16 (self-serve-onboarding non commercialisable, `candidate`, FAQ seule) les
+    // a retirées de l'éligibilité au manifeste épinglé 181d44e. Fail-closed : rien ne s'affiche.
+    expect(gate.eligible).toBe(false);
     expect(gate.activationProposed).toBe(false);
   });
 

@@ -34,7 +34,7 @@
     "keywordVolumeStatus": "UNKNOWN",
     "searchIntent": "informational",
     "topicCluster": "article-validation",
-    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+    "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
   },
   "locale": "en-US",
   "policy": {
@@ -264,9 +264,9 @@
       "id": "ev-bf-05",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "ec19c66655029f147b409710f4f22bec12bdea60b33c44f6bb06183032865fdc",
       "excerpt": "un statement NON fondé ne couvre pas un claim (evidenceIds vide)",
       "subject": {
@@ -297,9 +297,9 @@
       "id": "ev-bf-06",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "df30b87eb86f7ba168eb768d7f3fe45940e7b93790d69ff095f071d77ace1ade",
       "excerpt": "La requête cible est « adressée » si tous ses mots-clés saillants apparaissent dans le contenu rendu.",
       "subject": {
@@ -330,9 +330,9 @@
       "id": "ev-bf-07",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 2faf90e",
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "71f8b8cb6d92bd946fe32e7762f099b210274b7e5bb18de5166123cbaeb6b341",
       "excerpt": "**TruthCheck=pass prouve « fondé », pas « utile »**. Un draft peut être certifié vrai en ne couvrant qu'un des claims requis du brief → « vide certifié vrai ».",
       "subject": {
@@ -365,7 +365,7 @@
       "sourceUrl": null,
       "sourceTitle": "TextOS product manifest, brief-fulfillment-check.knownLimits",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "98aaadb62a7013955f053a5d4fcdb0772645daee62a11690d24f2b9cd7b905fa",
       "excerpt": "Distinct du TruthCheck : mesure si le brouillon répond au brief, pas s'il dit vrai.",
       "subject": {
@@ -396,9 +396,9 @@
       "id": "ev-bf-09",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/article-readiness.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/article-readiness.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "d2f0594f8aa140e1274d4c4c39fa65d2cd21b345a80c94e18579374349f34cf1",
       "excerpt": "Brief Fulfillment : un `article_ready` l'a franchi (sinon `fulfillment_blocked`).",
       "subject": {
@@ -429,9 +429,9 @@
       "id": "ev-bf-10",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/article-creation-spine.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/article-creation-spine.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "fe3482987092b5c6097a96c98b66c47fcd336cc7f4fb17f806d1386702011e60",
       "excerpt": "status: \"fulfillment_blocked\", missingSections: fulfillment.missingSections, uncoveredClaimTypes: fulfillment.uncoveredClaimTypes.map((x) => x.claimType), targetQueryAddressed: fulfillment.targetQueryAddressed,",
       "subject": {
@@ -462,9 +462,9 @@
       "id": "ev-bf-11",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 2faf90e",
+      "sourceTitle": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "b5c0325092d99da13822551bc88b7199e3f39e62ab70346bbf32d5bc708a1aee",
       "excerpt": "Grounded TruthCheck, Brief Fulfillment, preuves et décision humaine s'appliquent à l'identique quel que soit le rédacteur.",
       "subject": {
@@ -496,9 +496,9 @@
       "id": "ev-bf-12",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "66e15217c70bef36e2b0034b83ff0034f0886ed1f7ae8065f5d1d9f7714e50ee",
       "excerpt": "claim requis EXCLU avec raison acceptée → pass (acceptedExcludedClaimTypes)",
       "subject": {
@@ -530,9 +530,9 @@
       "id": "ev-bf-13",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e",
+      "sourceTitle": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "e8f611bc71379f70f92e364ee8e00b2da7de40e3cecb90ea60fc88659cc6aa2f",
       "excerpt": "section requise manquante → block",
       "subject": {
@@ -565,7 +565,7 @@
       "sourceUrl": null,
       "sourceTitle": "TextOS product manifest, brief-fulfillment-check.prohibitedClaims",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "86f161614d9cb8b3a8479e082a4e772816ee8d238535b7f1f3a8e8ea2ec657e5",
       "excerpt": "guarantees the content is useful",
       "subject": {

@@ -4,12 +4,12 @@
   "repository": "gangster-nerd/textos-v0",
   "writer": {
     "branch": "cert/textos-v1-e2e-20261023",
-    "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
-    "committedAt": "2026-10-29T23:26:50+01:00",
-    "why": "The V1 certification trunk after the integration of Commit-to-Content (#129: common article review, early disclosure in the article review — BÊTA-3 —, beta status vocabulary) and of the GitHub source (#84). A note on a capability the product declares in beta is reviewed with its early disclosure (label, beta access, no availability date). Writer code only: the product truth an article may state stays at the product pin."
+    "sha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+    "committedAt": "2026-11-22T18:33:04+00:00",
+    "why": "The V1 certification trunk after the disclosure batch of 2026-11-22 (sixteen capabilities moved to public_beta, ADR-035) and the F1 handover. It carries the common article review (CTC-CHAIN-1), early disclosure in the article review and the beta status vocabulary. Writer code only: the product truth an article may state stays at the product pin. Re-pinned from 2faf90e on 2026-11-22: every existing note was re-prepared and re-written at this SHA with identical prompt hashes."
   },
   "product": {
-    "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "sha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
     "truthLevel": "CERTIFIED_CANDIDATE",
     "why": "The product truth an article may state is read at this same SHA: cited commits must be its ancestors, quoted files are read at it. It is the certification trunk, not textos-v0 main, so every article stays a draft until a human review records otherwise. Same SHA as the pinned product manifest (product-manifest/IMPORT.md)."
   }

@@ -237,7 +237,7 @@
       "block": {
         "data": {
           "ref": "ev-ro-12",
-          "title": "TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 2faf90e"
+          "title": "TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 181d44e"
         },
         "id": "source:3:ev-ro-12",
         "kind": "source"
@@ -251,7 +251,7 @@
       "block": {
         "data": {
           "ref": "ev-ro-13",
-          "title": "TextOS product repository file docs/adr/ADR-005-query-panel-strategy.md at 2faf90e"
+          "title": "TextOS product repository file docs/adr/ADR-005-query-panel-strategy.md at 181d44e"
         },
         "id": "source:4:ev-ro-13",
         "kind": "source"
@@ -265,7 +265,7 @@
       "block": {
         "data": {
           "ref": "ev-ro-10",
-          "title": "TextOS product repository file src/server/textos/query-intelligence/demand/demand-authority-boundary.test.ts at 2faf90e"
+          "title": "TextOS product repository file src/server/textos/query-intelligence/demand/demand-authority-boundary.test.ts at 181d44e"
         },
         "id": "source:5:ev-ro-10",
         "kind": "source"
@@ -279,7 +279,7 @@
       "block": {
         "data": {
           "ref": "ev-ro-09",
-          "title": "TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 2faf90e"
+          "title": "TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 181d44e"
         },
         "id": "source:6:ev-ro-09",
         "kind": "source"
@@ -293,7 +293,7 @@
       "block": {
         "data": {
           "ref": "ev-ro-07",
-          "title": "TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 2faf90e"
+          "title": "TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 181d44e"
         },
         "id": "source:7:ev-ro-07",
         "kind": "source"
@@ -321,7 +321,7 @@
       "block": {
         "data": {
           "ref": "ev-ro-04",
-          "title": "TextOS product repository file src/server/textos/db/schema/enums.ts at 2faf90e"
+          "title": "TextOS product repository file src/server/textos/db/schema/enums.ts at 181d44e"
         },
         "id": "source:9:ev-ro-04",
         "kind": "source"
@@ -335,7 +335,7 @@
       "block": {
         "data": {
           "ref": "ev-ro-16",
-          "title": "TextOS product repository file docs/adr/ADR-016-graduated-publication.md at 2faf90e"
+          "title": "TextOS product repository file docs/adr/ADR-016-graduated-publication.md at 181d44e"
         },
         "id": "source:10:ev-ro-16",
         "kind": "source"

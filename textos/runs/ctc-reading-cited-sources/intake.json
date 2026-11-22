@@ -34,7 +34,7 @@
     "keywordVolumeStatus": "UNKNOWN",
     "searchIntent": "informational",
     "topicCluster": "evidence-governance",
-    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+    "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
   },
   "locale": "en-US",
   "policy": {
@@ -436,9 +436,9 @@
       "id": "ev-rs-10",
       "kind": "official_brand_evidence",
       "sourceUrl": null,
-      "sourceTitle": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 2faf90e",
+      "sourceTitle": "TextOS product repository file docs/inbox/TEXTOS-SITE-DOGFOOD-RUNBOOK-2026-09-26.md at 181d44e",
       "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
-      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
       "contentHash": "3ab941dc0922e9a2172818ae65cce74dca4582d5684d1773037dccae3d0c64bc",
       "excerpt": "robots-respecting; - same-origin only; - read-only GET/HEAD; - bounded pages/depth/bytes/rate/concurrency; - no JS execution; - `not_available` never converted to absence.",
       "subject": {

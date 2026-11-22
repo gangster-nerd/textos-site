@@ -250,7 +250,7 @@
       "block": {
         "data": {
           "ref": "ev-bf-07",
-          "title": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 2faf90e"
+          "title": "TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 181d44e"
         },
         "id": "source:2:ev-bf-07",
         "kind": "source"
@@ -264,7 +264,7 @@
       "block": {
         "data": {
           "ref": "ev-bf-05",
-          "title": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e"
+          "title": "TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 181d44e"
         },
         "id": "source:3:ev-bf-05",
         "kind": "source"
@@ -278,7 +278,7 @@
       "block": {
         "data": {
           "ref": "ev-bf-09",
-          "title": "TextOS product repository file src/server/textos/act/article-readiness.ts at 2faf90e"
+          "title": "TextOS product repository file src/server/textos/act/article-readiness.ts at 181d44e"
         },
         "id": "source:4:ev-bf-09",
         "kind": "source"
@@ -292,7 +292,7 @@
       "block": {
         "data": {
           "ref": "ev-bf-10",
-          "title": "TextOS product repository file src/server/textos/act/article-creation-spine.ts at 2faf90e"
+          "title": "TextOS product repository file src/server/textos/act/article-creation-spine.ts at 181d44e"
         },
         "id": "source:5:ev-bf-10",
         "kind": "source"
@@ -306,7 +306,7 @@
       "block": {
         "data": {
           "ref": "ev-bf-06",
-          "title": "TextOS product repository file src/server/textos/act/brief-fulfillment.ts at 2faf90e"
+          "title": "TextOS product repository file src/server/textos/act/brief-fulfillment.ts at 181d44e"
         },
         "id": "source:6:ev-bf-06",
         "kind": "source"

@@ -1,6 +1,6 @@
 {
   "planId": "how to measure whether ai answers changed after publishing an article",
-  "planHash": "205cf9f21d847e717589106edacc95982f77fcf0b1c382712dac511bcf53fb90",
+  "planHash": "2a6f7e3cecdeed538db69ef7c3a4b665392274b11156aec664c99d1ce8b5b16f",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -225,5 +225,5 @@
     "verdict": "pass",
     "contradictions": []
   },
-  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
 }

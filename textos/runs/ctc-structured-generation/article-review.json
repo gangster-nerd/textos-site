@@ -218,7 +218,7 @@
   "sources": [
     {
       "ref": "ev-sg-09",
-      "title": "TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e"
+      "title": "TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 181d44e"
     },
     {
       "ref": "ev-sg-15",
@@ -230,11 +230,11 @@
     },
     {
       "ref": "ev-sg-13",
-      "title": "TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e"
+      "title": "TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 181d44e"
     },
     {
       "ref": "ev-sg-06",
-      "title": "TextOS product repository file src/server/textos/act/structured-content-draft.ts at 2faf90e"
+      "title": "TextOS product repository file src/server/textos/act/structured-content-draft.ts at 181d44e"
     },
     {
       "ref": "ev-sg-05",
@@ -242,7 +242,7 @@
     },
     {
       "ref": "ev-sg-08",
-      "title": "TextOS product repository file src/server/textos/act/structured-generation.ts at 2faf90e"
+      "title": "TextOS product repository file src/server/textos/act/structured-generation.ts at 181d44e"
     }
   ],
   "sourcesWithheld": [],

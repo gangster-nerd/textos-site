@@ -13,22 +13,22 @@ cryptographique : le manifeste, son `.sha256` et ce document sont commités ense
 | | |
 |---|---|
 | Dépôt source | `gangster-nerd/textos-v0` |
-| Branche | `cert/textos-v1-e2e-20261023` (tronc de certification, tête après la fusion de #84) |
-| Construction | **locale**, par `pnpm manifest:build` dans un worktree détaché au `snapshotCommit`, dépendances installées par `pnpm install --frozen-lockfile` ; `pnpm manifest:verify` vert au même commit |
-| Pourquoi pas un artefact de run | les runners GitHub Actions n'étaient pas disponibles (le workflow `capability-manifest-cert.yml` échoue sans runner attribué) ; exception autorisée par le Release Owner le 2026-10-30 (« tu es autorisé à importer une fiche construite en local ») |
+| Branche | `cert/textos-v1-e2e-20261023` (tronc de certification, tête après le lot de divulgation du 22/11 et la passation F1) |
+| Construction | **locale**, par `pnpm manifest:build` dans un worktree détaché au `snapshotCommit`, dépendances installées par `pnpm install --frozen-lockfile` |
+| Pourquoi pas un artefact de run | GitHub Actions n'a plus de runner (décision de Marc du 30/10/2026, « Import sans GitHub Actions ») |
 | Reproductibilité | deux constructions successives au même commit produisent les mêmes octets ; quiconque peut la refaire (voir *Règles*) |
-| `snapshotCommit` | `2faf90e681c1b0ccf345a80ea6e637fd89be88ab` |
-| SHA-256 | `61b1a83df6a0f84fc19e2ce705ca6e91131424355e6c79f75fdd61c68b44ca7a` |
+| `snapshotCommit` | `181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed` |
+| SHA-256 | `1935091c76b3141b8717350165b6e67d4391b38b1fc21029b4ee3c300ae401f8` |
 | Vocabulaire de statut | v4 (`public_beta`, `public_upcoming`) |
-| Importé le | 2026-10-30 |
-| Entités | 34 (33 capacités, 1 concept prohibé) |
+| Importé le | 2026-11-22 |
+| Entités | 35 (34 capacités, 1 concept prohibé) ; 16 capacités passées en `public_beta` par le lot de divulgation du 22/11 |
 
 ### Import précédent
 
 | | |
 |---|---|
-| Événement | `push` sur `main`, run [`31245044134`](https://github.com/gangster-nerd/textos-v0/actions/runs/31245044134) |
-| `snapshotCommit` | `d1b8b50552e1b42768a6bd0c0515675e139780d3` (SHA-256 `4e0544e5…`, 16 entités, importé le 2026-08-08) |
+| `snapshotCommit` | `2faf90e681c1b0ccf345a80ea6e637fd89be88ab` (SHA-256 `61b1a83d…`, 34 entités, construction locale, importé le 2026-10-30) |
+| Avant | `d1b8b50552e1b42768a6bd0c0515675e139780d3` (run `push` sur `main` [`31245044134`](https://github.com/gangster-nerd/textos-v0/actions/runs/31245044134), SHA-256 `4e0544e5…`, 16 entités, importé le 2026-08-08) |
 
 ## Procédure de réimport
 

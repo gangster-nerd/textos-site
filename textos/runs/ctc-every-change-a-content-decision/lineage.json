@@ -1,6 +1,6 @@
 {
   "planId": "how to decide which product changes deserve public content",
-  "planHash": "ba50567f65548a99e1a14def4ebab316e6604debc4ced80478e48f633d6790dd",
+  "planHash": "201b06dd91a45bc6ff03729ff7304b0192ca7f65fd15e705b9909a69af8dec24",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -238,5 +238,5 @@
     "verdict": "pass",
     "contradictions": []
   },
-  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
 }

@@ -291,7 +291,7 @@
     "capabilityId": "commit-to-content",
     "clamped": false,
     "currentImplementationStatus": "wip_committed_tested",
-    "currentPublicationStatus": "internal_only",
+    "currentPublicationStatus": "public_beta",
     "customerDeliverableNow": false,
     "disclosureAuthority": "CPO_DISCLOSURE_APPROVED",
     "effectivePublicMaturity": "INTERNAL_LABS",
@@ -301,7 +301,7 @@
       "textos-site: scripts/content-{sync,verify,status}.ts",
       "textos-site: docs/commit-to-content-v1.md"
     ],
-    "manifestCeiling": "INTERNAL_LABS",
+    "manifestCeiling": "PUBLIC_BETA",
     "manualEngineeringRequired": false,
     "prohibitedWording": [
       "available",

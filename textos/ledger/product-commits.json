@@ -1,7 +1,7 @@
 {
   "ledgerVersion": 1,
   "productRepository": "gangster-nerd/textos-v0",
-  "productRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "productRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
   "commitCount": 39,
   "commits": [
     {
@@ -312,9 +312,9 @@
       ]
     },
     {
-      "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
-      "date": "2026-10-29T23:26:50+01:00",
-      "subject": "Merge pull request #84 from gangster-nerd/feat/github-editorial-source-20261027",
+      "sha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+      "date": "2026-11-22T18:33:04+00:00",
+      "subject": "merge: passation F1 du 22/11 et transfert du jeton de fusion",
       "citedBy": [
         "product-pin"
       ]

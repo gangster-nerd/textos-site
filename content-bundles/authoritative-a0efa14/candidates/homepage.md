@@ -3,7 +3,7 @@ surface: homepage
 truthLevel: AUTHORITATIVE_MAIN
 sourceProductRef: a0efa146a8691938b624c156d99f4663f6f92218
 declarationDigest: c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae
-pinnedManifestSha: 2faf90e681c1b0ccf345a80ea6e637fd89be88ab
+pinnedManifestSha: 181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed
 publishabilityStatus: BLOCKED
 bundleId: authoritative-a0efa14
 ---

@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "statusVocabularyVersion": 4,
   "productRepository": "textos-v0",
-  "snapshotCommit": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
-  "snapshotCommittedAt": "2026-10-29",
+  "snapshotCommit": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "snapshotCommittedAt": "2026-11-22",
   "coverage": {
     "kind": "partial",
-    "note": "34 entités déclarées. L'entrée self-serve (ADR-027) ajoute authenticated-product-entry, self-serve-onboarding et ui-measurement-launch. DECL-1 (29/10/2026) déclare, en internal_only non décidé, les quinze capacités annoncées par une disposition declare_now (Commit-to-Content, panel approuvé, demande gouvernée, Performances, distribution MCP, CLI, mandats, budget, actions, santé du système, brouillon WordPress, quality gate éditorial) ; les sujets annoncés qui ne sont pas des capacités produit sont tenus dans declaration-scope.ts avec leur raison. Le pipeline Act est désormais couvert (grounded-truth-check, structured-generation, brief-fulfillment-check, controlled-preview, generation-handoff, re-observation-plan), et les preuves de claim-evidence-layer et truth-check ont été rafraîchies : leurs bundles décrivent le comportement courant. RESTENT HORS PÉRIMÈTRE à ce snapshot : (1) deriveOpportunityEconomics — ADR-018, src/server/textos/decide/opportunity-economics.ts ; (2) deriveInterventionSet / MVIS — ADR-018 §7, src/server/textos/decide/intervention-set.ts ; (3) profils de claims et rôle owned_product ; (4) restitution des quatre dimensions d'autorité (readers). Ces absences sont des décisions non prises, pas des oublis. AVERTISSEMENT : aucune des six capacités Act n'est gouvernée par un ADR — ni ADR-015 ni ADR-016 ne les mentionnent. Le garde de tests interdit `public_marketable` sans ADR, donc aucune ne peut être commercialisée avant d'avoir le sien."
+    "note": "35 entités déclarées, dont Competitor Source en usage interne. L'entrée self-serve (ADR-027) ajoute authenticated-product-entry, self-serve-onboarding et ui-measurement-launch. DECL-1 (29/10/2026) déclare, en internal_only non décidé, les quinze capacités annoncées par une disposition declare_now (Commit-to-Content, panel approuvé, demande gouvernée, Performances, distribution MCP, CLI, mandats, budget, actions, santé du système, brouillon WordPress, quality gate éditorial) ; les sujets annoncés qui ne sont pas des capacités produit sont tenus dans declaration-scope.ts avec leur raison. Le pipeline Act est désormais couvert (grounded-truth-check, structured-generation, brief-fulfillment-check, controlled-preview, generation-handoff, re-observation-plan), et les preuves de claim-evidence-layer et truth-check ont été rafraîchies : leurs bundles décrivent le comportement courant. RESTENT HORS PÉRIMÈTRE à ce snapshot : (1) deriveOpportunityEconomics — ADR-018, src/server/textos/decide/opportunity-economics.ts ; (2) deriveInterventionSet / MVIS — ADR-018 §7, src/server/textos/decide/intervention-set.ts ; (3) profils de claims et rôle owned_product ; (4) restitution des quatre dimensions d'autorité (readers). Ces absences sont des décisions non prises, pas des oublis. AVERTISSEMENT : aucune des six capacités Act n'est gouvernée par un ADR — ni ADR-015 ni ADR-016 ne les mentionnent. Le garde de tests interdit `public_marketable` sans ADR, donc aucune ne peut être commercialisée avant d'avoir le sien."
   },
   "entities": [
     {
@@ -99,11 +99,17 @@
       "id": "bounded-autonomy-mandates",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -180,11 +186,17 @@
       "id": "business-approved-query-panel",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -310,11 +322,17 @@
       "id": "commit-to-content",
       "kind": "capability",
       "implementationStatus": "wip_committed_tested",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -337,18 +355,49 @@
           "adrs": []
         },
         {
+          "id": "ctc-accepted-brief-writer-v1",
+          "commits": [
+            "eb63c2871a42c3db5fc9071309f64eacca0fe4e0",
+            "e08aad7731cc50e384eb09b4424eba9981acbaaf",
+            "1f50d00c0ca52b06154dd27c61e10f3ff48c212a",
+            "d31eb329fa6cacddb8cf0a1c4da2a317abdee0ba"
+          ],
+          "paths": [
+            "src/server/textos/act/article-creation-planning.ts",
+            "src/server/textos/act/article-creation-spine.ts",
+            "src/server/textos/act/brief-editorial-inputs.ts",
+            "src/server/textos/act/ctc/accepted-brief-plan.ts",
+            "src/server/textos/act/ctc/types.ts",
+            "src/server/textos/act/ctc/writer-context.ts",
+            "src/server/textos/act/ctc/writer-source.ts",
+            "src/server/textos/act/evidence-use-reader.ts",
+            "src/server/textos/act/geo-writer/fabric/router.ts",
+            "src/server/textos/application/article-review-service.ts",
+            "src/server/textos/performance/scope-contents.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/ctc/accepted-brief-writer.db.test.ts",
+            "src/server/textos/performance/facts.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-038-ctc-brief-changement-produit.md"
+          ]
+        },
+        {
           "id": "ctc-canonical-qualification-v1",
           "commits": [
             "41bf286d6e02e809d365af97f99d378f3941e11c",
             "2223b9f1630c27cb66ed6f6edc30b1e2b5c729e3",
-            "f231c692eff07778940e03bfb8df1b9a5c6adc4d"
+            "f231c692eff07778940e03bfb8df1b9a5c6adc4d",
+            "8fa01f4f6084b2c5e747f83cb2628d3f13feca55"
           ],
           "paths": [
             "src/ctc-filter/core/run.ts",
             "src/ctc-filter/core/exposure.ts",
             "src/ctc-filter/core/record.ts",
             "src/server/textos/act/early-disclosure.ts",
-            "src/disclosure/proposals.ts"
+            "src/disclosure/proposals.ts",
+            "src/disclosure/qualification-signals.ts"
           ],
           "tests": [
             "src/ctc-filter/core/exposure.test.ts",
@@ -363,6 +412,114 @@
             "docs/adr/ADR-035-politique-divulgation-anticipee.md",
             "docs/adr/ADR-036-ctc-une-source-une-qualification.md"
           ]
+        },
+        {
+          "id": "ctc-client-product-profile-v1",
+          "commits": [
+            "f7de55c7491891e8865aeeea5e0923daf3620757"
+          ],
+          "paths": [
+            "src/server/textos/api-v1/decision-capability-map.ts",
+            "src/server/textos/api-v1/durable-job-policy.ts",
+            "src/server/textos/api-v1/rest-capabilities.ts",
+            "src/server/textos/api-v1/runtime-guard.ts",
+            "src/server/textos/distribution/review-content.ts",
+            "src/server/textos/integrations/github/app-client.ts",
+            "src/server/textos/integrations/github/product-profile.ts",
+            "src/server/textos/integrations/github/profile-capabilities.ts",
+            "src/server/textos/integrations/github/profile-qualification.ts",
+            "src/server/textos/integrations/github/profile-store.ts",
+            "src/server/textos/integrations/github/qualification-capability.ts",
+            "src/server/textos/integrations/github/qualification.ts",
+            "src/server/textos/integrations/github/runtime.ts",
+            "src/server/textos/mcp/capability-tools.ts"
+          ],
+          "tests": [
+            "src/server/textos/integrations/github/product-profile.test.ts",
+            "src/server/textos/mcp/mcp-rest-parity.db.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-036-ctc-une-source-une-qualification.md"
+          ]
+        },
+        {
+          "id": "ctc-github-source-qualification-v1",
+          "commits": [
+            "8feb31d34faf0840590cb4040eff9639c729e69e",
+            "e921e5509928a8c6c1aefb4d9d4667342360ef76",
+            "d6f44af01c61879207d8bc19534c44d7108c9845"
+          ],
+          "paths": [
+            "src/server/textos/api-v1/durable-job-policy.ts",
+            "src/server/textos/api-v1/rest-capabilities.ts",
+            "src/server/textos/api-v1/runtime-guard.ts",
+            "src/server/textos/integrations/github/app-client.ts",
+            "src/server/textos/integrations/github/change-comparison.ts",
+            "src/server/textos/integrations/github/activation-coverage.ts",
+            "src/server/textos/integrations/github/change-range.ts",
+            "src/server/textos/integrations/github/declaration-literals.ts",
+            "src/server/textos/integrations/github/inspection-reader.ts",
+            "src/server/textos/integrations/github/qualification-capability.ts",
+            "src/server/textos/integrations/github/qualification.ts",
+            "src/server/textos/integrations/github/repository-file.ts",
+            "src/server/textos/integrations/github/repository.ts",
+            "src/server/textos/integrations/github/runtime.ts",
+            "src/server/textos/integrations/github/webhook.ts",
+            "src/server/textos/mcp/capability-tools.ts"
+          ],
+          "tests": [
+            "src/server/textos/integrations/github/qualification.test.ts",
+            "src/server/textos/integrations/github/qualification-parity.test.ts",
+            "src/server/textos/integrations/github/activation-coverage.test.ts",
+            "src/server/textos/integrations/github/activation-parity.test.ts",
+            "src/server/textos/integrations/github/repository-file.test.ts",
+            "src/server/textos/integrations/github/repository.test.ts",
+            "src/server/textos/mcp/mcp-rest-parity.db.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-029-ctc-filtre-canonique.md",
+            "docs/adr/ADR-036-ctc-une-source-une-qualification.md"
+          ]
+        },
+        {
+          "id": "ctc-product-change-brief-api-v1",
+          "commits": [
+            "0287e77925c5eafc6300ce4a92e21a911f53875d",
+            "e08aad7731cc50e384eb09b4424eba9981acbaaf"
+          ],
+          "paths": [
+            "scripts/github/probe.ts",
+            "src/server/textos/act/brief-ownership.ts",
+            "src/server/textos/act/evidence-source-consultation.ts",
+            "src/server/textos/act/persisted-native-composition-basis.ts",
+            "src/server/textos/act/product-change/acceptance.ts",
+            "src/server/textos/act/product-change/proposals.ts",
+            "src/server/textos/act/product-change/questions.ts",
+            "src/server/textos/act/product-change/service.ts",
+            "src/server/textos/api-v1/http-support.ts",
+            "src/server/textos/api-v1/opportunity-brief-capability.ts",
+            "src/server/textos/api-v1/opportunity-brief-subject.ts",
+            "src/server/textos/api-v1/product-change-capability.ts",
+            "src/server/textos/api-v1/rest-capabilities.ts",
+            "src/server/textos/api-v1/runtime-guard.ts",
+            "src/server/textos/api-v1/runtime-registry.ts",
+            "src/server/textos/application/accepted-briefs-reader.ts",
+            "src/server/textos/application/brief-package.ts",
+            "src/server/textos/application/opportunity-lifecycle-service.ts",
+            "src/server/textos/distribution/output-contracts.ts",
+            "src/server/textos/distribution/review-content.ts",
+            "src/server/textos/integrations/github/qualification.ts",
+            "src/server/textos/mcp/capability-tools.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/product-change/proposals.test.ts",
+            "src/server/textos/distribution/brief-actions.test.ts",
+            "src/server/textos/mcp/mcp-rest-parity.db.test.ts",
+            "scripts/github/source-probe.integration.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-038-ctc-brief-changement-produit.md"
+          ]
         }
       ],
       "prohibitedClaims": [
@@ -374,6 +531,99 @@
       "knownLimits": [
         "Lit aujourd'hui le seul dépôt de TextOS ; les dépôts clients entreront par la source GitHub (ADR-036).",
         "Chaque article passe par la revue d'article commune et une approbation humaine ; rien n'est publié automatiquement."
+      ]
+    },
+    {
+      "id": "competitor-source",
+      "kind": "capability",
+      "implementationStatus": "wip_committed_tested",
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
+      },
+      "evidence": [
+        {
+          "id": "engine-observed-competitive-read-model-v1",
+          "commits": [
+            "4400c5b3a85f51c580ebeb25cf58666ef6aa4213",
+            "c77f43183d05c3487a19a09c8723cd70ab84f66b",
+            "defc97bbdabd447f3afc8675cf8f20d68ca60ad5",
+            "807f2d582112987d041f1499516c156de1dc6c5d"
+          ],
+          "paths": [
+            "src/server/textos/competitor-source/engine-observed.ts",
+            "src/server/textos/competitor-source/citation-memory.ts",
+            "src/server/textos/competitor-source/coverage-matrix.ts",
+            "src/server/textos/competitor-source/weekly-brief.ts",
+            "src/server/textos/workspace/competitor-source-reader.ts"
+          ],
+          "tests": [
+            "src/server/textos/competitor-source/engine-observed.test.ts",
+            "src/server/textos/workspace/competitor-source-reader.test.ts"
+          ],
+          "adrs": []
+        },
+        {
+          "id": "governed-page-acquisition-v1",
+          "commits": [
+            "4400c5b3a85f51c580ebeb25cf58666ef6aa4213",
+            "aaf574145af7ed5bac81e967ee2de983641b7c43",
+            "8b87c3af900a12fe0b989a83ecd5398a09dc68e9",
+            "96be1842e32e562b9495eff6848521e0d379e771"
+          ],
+          "paths": [
+            "src/server/textos/competitor-source/acquisition/governance.ts",
+            "src/server/textos/competitor-source/acquisition/governed-site-provider.ts",
+            "src/server/textos/competitor-source/persistence/drizzle-capture-store.ts",
+            "src/server/textos/application/competitor-capture-service.ts",
+            "src/server/textos/application/competitor-capture-scheduler.ts"
+          ],
+          "tests": [
+            "src/server/textos/competitor-source/persistence/drizzle-capture-store.test.ts",
+            "src/server/textos/api-v1/competitor-capture-capability.test.ts",
+            "src/server/textos/application/competitor-capture-scheduler.test.ts"
+          ],
+          "adrs": []
+        },
+        {
+          "id": "human-validation-memory-v1",
+          "commits": [
+            "807f2d582112987d041f1499516c156de1dc6c5d",
+            "876440ca8765f2a48030a69f526442c0757c5486"
+          ],
+          "paths": [
+            "src/server/textos/competitor-source/validation-memory.ts",
+            "src/server/textos/competitor-source/persistence/drizzle-validation-store.ts",
+            "src/server/textos/application/competitive-validation-service.ts"
+          ],
+          "tests": [
+            "src/server/textos/competitor-source/validation-brief.test.ts",
+            "src/server/textos/competitor-source/persistence/drizzle-validation-store.test.ts",
+            "src/server/textos/application/competitive-validation-service.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "spies on your competitors",
+        "crawls competitor websites",
+        "explains why competitors are cited",
+        "predicts competitor strategy",
+        "generally available"
+      ],
+      "knownLimits": [
+        "Constate qui les moteurs citent et ce que les pages publiques des concurrents disent, datés ; ne prête aucune intention ni causalité.",
+        "Une absence observée n'est pas une absence chez le concurrent : chaque absence porte sa couverture.",
+        "Aucune page tierce n'est lue tant que l'ADR-024 n'est pas ratifiée et que l'avis juridique TDM n'est pas rendu.",
+        "Les migrations additives sont vérifiées en base de test. La collecte réelle reste soumise à la politique d’acquisition."
       ]
     },
     {
@@ -423,11 +673,17 @@
       "id": "customer-cli",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -504,11 +760,17 @@
       "id": "editorial-quality-gate",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -584,11 +846,17 @@
       "id": "governed-demand-intake",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -710,13 +978,51 @@
       "id": "mcp-distribution",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
+        {
+          "id": "elementor-native-result-inventory-v1",
+          "commits": [
+            "ffaee2c5f6fc201eb275138e617dcfa40b16ee51",
+            "f6745894676b1f2bb3a5d85a57f66628cddd44c8"
+          ],
+          "paths": [
+            "src/server/textos/mcp/__inventory__/mcp-surface.json"
+          ],
+          "tests": [
+            "src/server/textos/mcp/surface-inventory.test.ts",
+            "src/server/textos/distribution/p0-actions.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-022-workspace-credential-storage.md"
+          ]
+        },
+        {
+          "id": "mcp-dcr-restreint-v1",
+          "commits": [
+            "ee5078e2e33301feaec42ece5cb76c1fffd47e98",
+            "f27e59c7e8b04726b8ee4fa62d42d199c5913c78"
+          ],
+          "paths": [
+            "src/server/textos/distribution/dcr.ts"
+          ],
+          "tests": [
+            "src/server/textos/distribution/lovable-dcr.contract.test.ts",
+            "src/server/textos/distribution/host-harness/harness.test.ts"
+          ],
+          "adrs": []
+        },
         {
           "id": "mcp-distribution-v1",
           "commits": [
@@ -775,6 +1081,36 @@
             "src/server/textos/distribution/markdown.test.ts",
             "src/server/textos/distribution/oauth.test.ts",
             "src/server/textos/distribution/tool-permissions.test.ts"
+          ],
+          "adrs": []
+        },
+        {
+          "id": "mcp-hosts-gate-v1",
+          "commits": [
+            "0d289e99c5918e74bcaceba01a322d4cb63b3b39",
+            "e9bca8aa7f38857aaef740dbf8ab2d245c3b8082"
+          ],
+          "paths": [
+            "src/server/textos/distribution/hosts.ts"
+          ],
+          "tests": [
+            "src/server/textos/distribution/hosts.test.ts",
+            "src/server/textos/distribution/chatgpt-host.contract.test.ts",
+            "src/server/textos/distribution/lovable-host.contract.test.ts",
+            "app/mcp/mcp-host-closure.test.ts"
+          ],
+          "adrs": []
+        },
+        {
+          "id": "mcp-observed-performance",
+          "commits": [
+            "c15d7450ba1e35b60507296543f2f6b709599855"
+          ],
+          "paths": [
+            "src/server/textos/distribution/performance.ts"
+          ],
+          "tests": [
+            "src/server/textos/distribution/oauth.test.ts"
           ],
           "adrs": []
         }
@@ -887,11 +1223,17 @@
       "id": "performance-checks",
       "kind": "capability",
       "implementationStatus": "wip_committed_tested",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -925,11 +1267,17 @@
       "id": "publication-observation",
       "kind": "capability",
       "implementationStatus": "wip_committed_tested",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -998,11 +1346,17 @@
       "id": "question-performance",
       "kind": "capability",
       "implementationStatus": "wip_committed_tested",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -1017,6 +1371,17 @@
             "src/server/textos/performance/chain-state.ts",
             "src/server/textos/performance/check-origin.ts",
             "src/server/textos/performance/contract.ts",
+            "src/server/textos/performance/comparison-admission-repository.ts",
+            "src/server/textos/performance/operational-comparison.ts",
+            "src/server/textos/performance/operational-facts.ts",
+            "src/server/textos/api-v1/performance-capability.ts",
+            "src/server/textos/api-v1/runtime-registry.ts",
+            "src/server/textos/api-v1/rest-capabilities.ts",
+            "src/server/textos/api-v1/http-support.ts",
+            "src/server/textos/mcp/capability-tools.ts",
+            "src/server/textos/distribution/operational-comparison-contract.ts",
+            "src/components/performance/question-portfolio.tsx",
+            "src/server/textos/workspace/operational-comparison-presentation.ts",
             "src/server/textos/performance/cron.ts",
             "src/server/textos/performance/facts.ts",
             "src/server/textos/performance/question-series.ts",
@@ -1033,6 +1398,12 @@
           ],
           "tests": [
             "src/server/textos/performance/cron.test.ts",
+            "src/server/textos/performance/operational-comparison.test.ts",
+            "src/server/textos/performance/operational-facts.test.ts",
+            "src/server/textos/performance/comparison-admission-repository.test.ts",
+            "src/server/textos/api-v1/performance-capability.test.ts",
+            "src/server/textos/api-v1/http-support.performance.test.ts",
+            "src/server/textos/distribution/operational-comparison-parity.test.ts",
             "src/server/textos/performance/facts.test.ts",
             "src/server/textos/performance/question-series.test.ts",
             "src/server/textos/performance/recommendation.test.ts",
@@ -1140,14 +1511,13 @@
       "id": "self-serve-onboarding",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "public_marketable",
+      "publicationStatus": "candidate",
       "allowedSurfaces": [
-        "homepage",
         "faq"
       ],
       "publicationDecision": {
-        "decidedIn": "docs/governance/publication/2026-10-27-self-serve-entry-publication.md",
-        "recordedAt": "2026-10-27"
+        "decidedIn": "docs/governance/publication/2026-11-16-self-serve-onboarding-non-commercialisable.md",
+        "recordedAt": "2026-11-16"
       },
       "evidence": [
         {
@@ -1187,11 +1557,17 @@
       "id": "site-derived-site-expressions",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -1419,13 +1795,35 @@
       "id": "workspace-action-lifecycle",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
+        {
+          "id": "elementor-native-result-projection-v1",
+          "commits": [
+            "ffaee2c5f6fc201eb275138e617dcfa40b16ee51",
+            "f6745894676b1f2bb3a5d85a57f66628cddd44c8"
+          ],
+          "paths": [
+            "src/server/textos/application/actions/job-result.ts"
+          ],
+          "tests": [
+            "src/server/textos/distribution/p0-actions.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-022-workspace-credential-storage.md"
+          ]
+        },
         {
           "id": "workspace-action-lifecycle-v1",
           "commits": [
@@ -1464,11 +1862,17 @@
       "id": "workspace-budget-policy",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {
@@ -1502,13 +1906,75 @@
       "id": "workspace-scoped-wordpress-draft",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
+        {
+          "id": "elementor-companion-client-v1",
+          "commits": [
+            "ffaee2c5f6fc201eb275138e617dcfa40b16ee51",
+            "f6745894676b1f2bb3a5d85a57f66628cddd44c8"
+          ],
+          "paths": [
+            "src/server/publication/elementor-companion.ts",
+            "src/server/publication/wordpress-native-network.ts",
+            "src/server/textos/act/article-draft-preview.ts",
+            "src/server/textos/act/elementor-draft-provider.ts",
+            "src/server/textos/act/publication-receipt.ts",
+            "src/server/textos/act/wordpress-draft-routing.ts",
+            "src/server/textos/application/wordpress-draft-readback-service.ts",
+            "src/server/textos/application/wordpress-draft-service.ts"
+          ],
+          "tests": [
+            "src/server/publication/elementor-companion.test.ts",
+            "src/server/publication/wordpress-native-network.test.ts",
+            "src/server/textos/act/elementor-draft-provider.db.test.ts",
+            "src/server/textos/act/article-draft-preview.test.ts",
+            "src/server/textos/application/wordpress-draft-readback-service.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-022-workspace-credential-storage.md"
+          ]
+        },
+        {
+          "id": "elementor-p2b-fields-v1",
+          "commits": [
+            "487e7760b79204c1e8d626096f23834b2c98b5c3",
+            "c20770110770a4343ec418edc8308bc0acba8d31"
+          ],
+          "paths": [
+            "src/server/textos/act/article-draft-preview.ts",
+            "src/server/textos/act/elementor-draft-provider.ts",
+            "src/server/publication/elementor-companion.ts",
+            "integrations/wordpress/textos-elementor-companion/src/CmsFields.php",
+            "integrations/wordpress/textos-elementor-companion/src/ElementorGateway.php",
+            "integrations/wordpress/textos-elementor-companion/src/NativePayload.php",
+            "integrations/wordpress/textos-elementor-companion/src/OperationStore.php",
+            "integrations/wordpress/textos-elementor-companion/src/Plugin.php"
+          ],
+          "tests": [
+            "src/server/publication/elementor-p2b.test.ts",
+            "src/server/textos/act/elementor-draft-provider.db.test.ts",
+            "src/server/textos/act/publication-choices.test.ts",
+            "src/server/textos/act/article-draft-preview.test.ts",
+            "src/server/textos/distribution/p0-actions.test.ts",
+            "integrations/wordpress/textos-elementor-companion/tests/p2b.php",
+            "integrations/wordpress/textos-elementor-companion/tests/verify-p2b-readbacks.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-022-workspace-credential-storage.md"
+          ]
+        },
         {
           "id": "workspace-scoped-wordpress-draft-v1",
           "commits": [
@@ -1542,11 +2008,17 @@
       "id": "workspace-system-health",
       "kind": "capability",
       "implementationStatus": "implemented",
-      "publicationStatus": "internal_only",
-      "allowedSurfaces": [],
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
       "publicationDecision": {
-        "decidedIn": null,
-        "recordedAt": null
+        "decidedIn": "docs/governance/publication/2026-11-22-disclosure-proposals.md",
+        "recordedAt": "2026-11-22"
       },
       "evidence": [
         {

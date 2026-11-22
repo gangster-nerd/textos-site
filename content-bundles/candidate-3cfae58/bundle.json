@@ -23,9 +23,11 @@
     },
     "selfServeCtaGate": {
       "activationProposed": false,
-      "detail": "Capacités requises complètes — aucune activation self-serve n'est proposée dans les bundles courants.",
-      "eligible": true,
-      "missingCapabilities": [],
+      "detail": "Aucune activation self-serve n'est proposée. Capacités absentes/insuffisantes : self-serve-onboarding (publicationStatus=candidate).",
+      "eligible": false,
+      "missingCapabilities": [
+        "self-serve-onboarding (publicationStatus=candidate)"
+      ],
       "status": "green"
     },
     "truthLevelGate": {
@@ -185,17 +187,6 @@
       "proposedMaturity": "PUBLIC_GA",
       "publicWording": null,
       "reason": "Capacité GA \"quality-ledger\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
-      "surface": null,
-      "wasClamped": false
-    },
-    {
-      "capabilityId": "self-serve-onboarding",
-      "cta": null,
-      "effectiveMaturity": "PUBLIC_GA",
-      "kind": "CONTENT_COVERAGE_GAP",
-      "proposedMaturity": "PUBLIC_GA",
-      "publicWording": null,
-      "reason": "Capacité GA \"self-serve-onboarding\" sans entrée maturity-declarations. Non bloquant — signale une couverture Labs/roadmap à compléter si utile.",
       "surface": null,
       "wasClamped": false
     },
@@ -517,7 +508,7 @@
       "capabilityId": "commit-to-content",
       "clamped": false,
       "currentImplementationStatus": "wip_committed_tested",
-      "currentPublicationStatus": "internal_only",
+      "currentPublicationStatus": "public_beta",
       "customerDeliverableNow": false,
       "disclosureAuthority": "CPO_DISCLOSURE_APPROVED",
       "effectivePublicMaturity": "INTERNAL_LABS",
@@ -527,7 +518,7 @@
         "textos-site: scripts/content-{sync,verify,status}.ts",
         "textos-site: docs/commit-to-content-v1.md"
       ],
-      "manifestCeiling": "INTERNAL_LABS",
+      "manifestCeiling": "PUBLIC_BETA",
       "manualEngineeringRequired": false,
       "prohibitedWording": [
         "available",
@@ -548,11 +539,11 @@
     }
   ],
   "provenance": {
-    "generatedAt": "2026-10-30T11:11:18.514Z",
+    "generatedAt": "2026-11-22T19:24:51.914Z",
     "generatorVersion": "commit-to-content@v1",
-    "pinnedManifestChecksum": "61b1a83df6a0f84fc19e2ce705ca6e91131424355e6c79f75fdd61c68b44ca7a",
-    "pinnedManifestSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
-    "siteHead": "9b4a295e6df05f5e87dcf5df0d9d1927a4f481cc",
+    "pinnedManifestChecksum": "1935091c76b3141b8717350165b6e67d4391b38b1fc21029b4ee3c300ae401f8",
+    "pinnedManifestSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+    "siteHead": "86e5a0558c85a3c782c187c53a333ef4e35e6633",
     "sourceRef": {
       "declarationDigest": "c532c5e68299da2cbc8bf1dfce86cd504aaf6780a4586df6edff403c0da215ae",
       "matchesPinnedManifest": false,

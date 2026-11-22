@@ -11,7 +11,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
 - CTC editorial contract (ctc-editorial-quality@0.1): pass (3 finding(s))
 - Sources shown: 7 (withheld: 0); figures: assembled-draft 78ee20b225ea
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `2faf90e681c1b0ccf345a80ea6e637fd89be88ab`
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed`
 
 ## CTC editorial-contract findings
 
@@ -31,14 +31,14 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > TextOS writes an AI article draft one declared part at a time
 
 - **factual** — TextOS writes an AI article draft one declared part at a time
-  - `ev-sg-09` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e): «La génération s'exécute PAR SLOT DÉCLARÉ.»
+  - `ev-sg-09` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 181d44e): «La génération s'exécute PAR SLOT DÉCLARÉ.»
 
 ### meta (meta_description)
 
 > TextOS drafts an article one declared part at a time, and the structured, evidence-backed draft it produces is never published by that step.
 
 - **factual** — TextOS drafts an article one declared part at a time, and the structured, evidence-backed draft it produces is never published by that step.
-  - `ev-sg-09` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e): «La génération s'exécute PAR SLOT DÉCLARÉ.»
+  - `ev-sg-09` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 181d44e): «La génération s'exécute PAR SLOT DÉCLARÉ.»
   - `ev-sg-15` (TextOS product manifest, structured-generation.knownLimits): «Produit un brouillon structuré adossé à des preuves ; il n'est jamais publié par cette couche.»
 
 ### lead (lead)
@@ -58,7 +58,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - **factual** — The order in TextOS is set: accepted brief, stored evidence, drafting, then a fact check of the result.
   - `ev-sg-01` (TextOS product commit 1a32727, 5 Aug 2026): «brief accepté requis → corpus approuvé persisté → génération → groundedTruthCheck (profil du run)»
 - **factual** — Drafting itself runs one declared part at a time.
-  - `ev-sg-09` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e): «La génération s'exécute PAR SLOT DÉCLARÉ.»
+  - `ev-sg-09` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 181d44e): «La génération s'exécute PAR SLOT DÉCLARÉ.»
 - **editorial** — For whoever edits the draft, that means any paragraph can be traced back to one part and to the material that part was given.
 - **factual** — Only a passing fact check moves the draft forward; a draft that raises an alert or is blocked stays blocked, and it is kept for audit rather than thrown away.
   - `ev-sg-02` (TextOS product commit 1a32727, 5 Aug 2026): «gate SEUL pass→truthchecked, alert/block→blocked (draft CONSERVÉ pour audit).»
@@ -71,11 +71,11 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 
 - **editorial** — When the writing model decides how an article is organised, the structure itself becomes something nobody chose.
 - **factual** — In TextOS, the heading of each part is imposed on the writer, and for the direct-answer part the heading is the question to be answered.
-  - `ev-sg-13` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e): «Libellé de titre IMPOSÉ (ou question, pour un slot `answer`).»
+  - `ev-sg-13` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 181d44e): «Libellé de titre IMPOSÉ (ou question, pour un slot `answer`).»
 - **factual** — Each part also carries an explicit writing objective, stated in plain words, saying what that part has to accomplish.
-  - `ev-sg-14` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e): «Objectif d'écriture EXPLICITE, en clair — ce que ce slot doit accomplir.»
+  - `ev-sg-14` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 181d44e): «Objectif d'écriture EXPLICITE, en clair — ce que ce slot doit accomplir.»
 - **factual** — The parts are written in the order of the plan, and the body of the article is exactly those texts placed end to end.
-  - `ev-sg-10` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e): «dans l'ordre du plan, et le corps assemblé est EXACTEMENT la concaténation des textes de slots.»
+  - `ev-sg-10` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 181d44e): «dans l'ordre du plan, et le corps assemblé est EXACTEMENT la concaténation des textes de slots.»
 - **editorial** — Because nothing sits between those parts, the outline written into the plan is the outline the reader gets.
 - **recommendation** — If you review AI drafts, read the plan first: it tells you what each section was supposed to do before you judge whether it did it.
 
@@ -84,8 +84,8 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > The draft is written one declared part at a time, and each part may draw only on the evidence assigned to it. A draft that does not pass the fact check is blocked and kept for audit.
 
 - **factual** — The draft is written one declared part at a time, and each part may draw only on the evidence assigned to it.
-  - `ev-sg-09` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e): «La génération s'exécute PAR SLOT DÉCLARÉ.»
-  - `ev-sg-11` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e): «FRONTIÈRE DE PREUVE DURE du slot : aucune autre preuve n'est mobilisable ici.»
+  - `ev-sg-09` (TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 181d44e): «La génération s'exécute PAR SLOT DÉCLARÉ.»
+  - `ev-sg-11` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 181d44e): «FRONTIÈRE DE PREUVE DURE du slot : aucune autre preuve n'est mobilisable ici.»
 - **factual** — A draft that does not pass the fact check is blocked and kept for audit.
   - `ev-sg-02` (TextOS product commit 1a32727, 5 Aug 2026): «gate SEUL pass→truthchecked, alert/block→blocked (draft CONSERVÉ pour audit).»
 
@@ -95,9 +95,9 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > The writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again. That strictness matters because a loosely read answer is where unsupported material tends to slip in.
 
 - **factual** — In TextOS, each part has a hard evidence boundary: the writer may use only the evidence assigned to that part, and nothing else can be brought in there.
-  - `ev-sg-11` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e): «FRONTIÈRE DE PREUVE DURE du slot : aucune autre preuve n'est mobilisable ici.»
+  - `ev-sg-11` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 181d44e): «FRONTIÈRE DE PREUVE DURE du slot : aucune autre preuve n'est mobilisable ici.»
 - **factual** — When a factual part has no usable evidence, the part is refused instead of being filled.
-  - `ev-sg-12` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e): «true = slot FACTUEL : sans preuve utilisable, on refuse le slot au lieu de le remplir.»
+  - `ev-sg-12` (TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 181d44e): «true = slot FACTUEL : sans preuve utilisable, on refuse le slot au lieu de le remplir.»
 - **editorial** — A refused part shows exactly where material is missing, while a gap filled with invented text would read like any other sentence.
 - **factual** — The writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again.
   - `ev-sg-04` (TextOS product commit 1a32727, 5 Aug 2026): «transform STRICT : schéma exact, propriétés inconnues refusées, ids de ledger uniques, chaque evidenceId présent dans le corpus, JSON malformé/incomplet rejeté ; aucun retry réseau»
@@ -109,9 +109,9 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > How strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say. A sentence that drifts from describing into asserting an effect is judged by that rule, not by how the model labelled it.
 
 - **factual** — In TextOS, the verifiable units of a draft are its title, its search description, each sentence of the body and each FAQ answer.
-  - `ev-sg-06` (TextOS product repository file src/server/textos/act/structured-content-draft.ts at 2faf90e): «Unités VÉRIFIABLES du document : title, meta description, chaque phrase du body, chaque réponse FAQ.»
+  - `ev-sg-06` (TextOS product repository file src/server/textos/act/structured-content-draft.ts at 181d44e): «Unités VÉRIFIABLES du document : title, meta description, chaque phrase du body, chaque réponse FAQ.»
 - **factual** — Each of those units has to be covered by a declared statement, and a unit without one blocks the draft as an undeclared fact.
-  - `ev-sg-07` (TextOS product repository file src/server/textos/act/structured-content-draft.ts at 2faf90e): «Chacune doit être couverte par une entrée du statement ledger (sinon BLOCK — fait non déclaré).»
+  - `ev-sg-07` (TextOS product repository file src/server/textos/act/structured-content-draft.ts at 181d44e): «Chacune doit être couverte par une entrée du statement ledger (sinon BLOCK — fait non déclaré).»
 - **editorial** — For an editor, this is the missing trail: each sentence can be looked up in the list of declared statements to see what it rests on.
 - **factual** — How strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say.
   - `ev-sg-05` (TextOS product commit a944097, 5 Aug 2026): «assessStatementStrength DÉTERMINISTE (le TruthCheck est l'autorité, pas le LLM).»
@@ -125,7 +125,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - **factual** — In TextOS, the system rather than the writing model records the draft's provenance: which evidence set was used, which generation method produced it, and a fingerprint of the input.
   - `ev-sg-03` (TextOS product commit 1a32727, 5 Aug 2026): «L'orchestrateur, pas le LLM, fixe evidenceBundleId / generationMethodVersion / generationInputHash.»
 - **factual** — The recorded method reflects how the text was actually produced, and it never names a live model run that did not take place.
-  - `ev-sg-08` (TextOS product repository file src/server/textos/act/structured-generation.ts at 2faf90e): «methodVersion reflétant le transport (jamais un identifiant live sans vraie invocation).»
+  - `ev-sg-08` (TextOS product repository file src/server/textos/act/structured-generation.ts at 181d44e): «methodVersion reflétant le transport (jamais un identifiant live sans vraie invocation).»
 - **editorial** — That record is what lets someone audit a surprising draft later without relying on anyone's memory of how it was made.
 - **factual** — The stated limit is plain: the result is a structured draft backed by evidence, and this step never publishes it.
   - `ev-sg-15` (TextOS product manifest, structured-generation.knownLimits): «Produit un brouillon structuré adossé à des preuves ; il n'est jamais publié par cette couche.»

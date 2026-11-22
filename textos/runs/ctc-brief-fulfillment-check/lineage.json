@@ -1,6 +1,6 @@
 {
   "planId": "how to check that an ai written draft answers the content brief",
-  "planHash": "46f579abba1c1ba243aafd08c41d63aacabebdf9c096945ae3fb275baf2065c2",
+  "planHash": "a5eb1c0271b2fc7bc58f03691c877a0d5ea728a6f7759ee28e4696234be508e8",
   "slotProvenance": [
     {
       "slotId": "title",
@@ -244,5 +244,5 @@
     "verdict": "pass",
     "contradictions": []
   },
-  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
 }

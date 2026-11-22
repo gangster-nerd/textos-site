@@ -14,9 +14,11 @@
     },
     "selfServeCtaGate": {
       "activationProposed": false,
-      "detail": "Capacités requises complètes — aucune activation self-serve n'est proposée dans les bundles courants.",
-      "eligible": true,
-      "missingCapabilities": [],
+      "detail": "Aucune activation self-serve n'est proposée. Capacités absentes/insuffisantes : self-serve-onboarding (publicationStatus=candidate).",
+      "eligible": false,
+      "missingCapabilities": [
+        "self-serve-onboarding (publicationStatus=candidate)"
+      ],
       "status": "green"
     },
     "truthLevelGate": {

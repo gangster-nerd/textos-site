@@ -2,7 +2,7 @@
   "status": "written",
   "result": {
     "planId": "how an ai writer builds an article draft section by section from evidence",
-    "planHash": "625211e097896879f71c86eab56854c52f5bc6c55539f297c22c6835986e974e",
+    "planHash": "871bc7fb4b73a56f6c3a80256af90fb6ef4328f074614959d4bb95e8a4fe57c2",
     "slots": [
       {
         "slotId": "title",

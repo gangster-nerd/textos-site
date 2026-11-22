@@ -1,9 +1,9 @@
 {
-  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "how to measure whether ai answers changed after publishing an article",
-  "executionPlanHash": "205cf9f21d847e717589106edacc95982f77fcf0b1c382712dac511bcf53fb90",
-  "ctcHandoffHash": "78b66c951235d02225703a60ce0e1a41e87d678f0b9d45305a4907decf7b97e3",
+  "executionPlanHash": "2a6f7e3cecdeed538db69ef7c3a4b665392274b11156aec664c99d1ce8b5b16f",
+  "ctcHandoffHash": "12988b815750c9d9b84cb7960fa0783c9f2cdd5c1495b376bc2d151e1b0be1d4",
   "promptHashes": {
     "title": "8e589236840880ce1d53b9243dd3daecafe06b7851f57059cda5ca4316863703",
     "meta": "50a4c52f63421246c9e28c48e2d57fb5db568d8d056904b191657f33e3a38e94",

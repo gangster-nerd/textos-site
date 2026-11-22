@@ -3,12 +3,12 @@
   "articleId": "ctc-reading-cited-sources",
   "textos": {
     "repository": "gangster-nerd/textos-v0",
-    "sha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+    "sha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
   },
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "articleReviewMethodVersion": "ctc-article-review@0.1",
-  "executionPlanHash": "f96861660fde524f1be52789633e96a01ad0503bb1bedf4e058edb8e4d44c7b5",
-  "ctcHandoffHash": "afcde548bebeb4a104e9c0f6028a6dd20796e6aa6b207d3643f560e05db77c27",
+  "executionPlanHash": "d3219f201b97e20495b8ce4b9e3633c06552924e7bc73aabea588b51faf2e565",
+  "ctcHandoffHash": "fe56a900fb91e535df4c7c042cdc028416773c9350bff7a67f3ca66cf2c3c209",
   "writerMethodVersion": "geo-writer@0.2",
   "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
   "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
@@ -24,7 +24,7 @@
   },
   "releaseAllowed": true,
   "publicationChannel": "controlled_preview",
-  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
   "promptHashes": {
     "title": "bebe4e259a730b1b7dcaad62d2892d38a4fb329dd495cf890c36b335f645dcda",
     "meta": "600d534bc011637d1a32bb710dc0073b98490c8c2e0cbb0e9a301ed35806cab4",
@@ -54,8 +54,8 @@
   "figureHashes": {
     "cited-page-path": "6fdd7aa99ebe7e06306d9156098e0132ad00977467354ef3f1a3f3028666edfc"
   },
-  "contentDocumentSha256": "0d20288e553f0770fb07f0d4530c43deac39c4d13a9754779b487918d1df8720",
-  "lineageSha256": "c8b2cb969e840a612209bbf55c6b8714fc847b3d90a8e3bb4d5b00a332236e0d",
-  "resolvedSurfaceSha256": "60ce52ac86eabb235207d5f6527f9c01bf8fa8d6d57b64c9004640ad168e803a",
-  "articleReviewSha256": "581b9feeb2aadf2b057980312b743f6fc22c3f1929c2e45d2a69b8952b2c17cf"
+  "contentDocumentSha256": "1d57035dd10ab03cea6628ac72d5693ee4f4d820e7c01d9f20a4a0c7b16a498c",
+  "lineageSha256": "f4bdf0bb85144bd4b1e024625562e42a95043a1af9d33975d207922bb124621f",
+  "resolvedSurfaceSha256": "4999bade039169af154890d0815e875e51132ef5f77b7096959f8c3504f3ef57",
+  "articleReviewSha256": "4ac7cd82525b702a2273b0f5edfdc6b24b08e6e3809c232e54e8bc6cf78fd47d"
 }

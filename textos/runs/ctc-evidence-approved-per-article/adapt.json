@@ -1,9 +1,9 @@
 {
-  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "how to make an ai writer use only approved facts",
   "executionPlanHash": "299c9a1680231c5b5efec9bbe0eb5d166e6fcc1fca7d06b31ac9954e2f33719d",
-  "ctcHandoffHash": "bea52372a5ffeb499d56d86c248f8b8669cf05e95710c439ed5f50e9c02d9a3a",
+  "ctcHandoffHash": "04fca191d03c6931f101e80ba24630e11a188821d23f4be899616cd29c436861",
   "promptHashes": {
     "title": "2c0ab8033e595cb5e95e1ed697ac70de085203d842802cdd9c8a00d22e299212",
     "meta": "ae6cb0eb90feb4fc60dd1446db2e7ec515dbad07f9053aa56edfd5553c71f381",

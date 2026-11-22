@@ -1,9 +1,9 @@
 {
-  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
   "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
   "planId": "how to check that an ai written draft answers the content brief",
-  "executionPlanHash": "46f579abba1c1ba243aafd08c41d63aacabebdf9c096945ae3fb275baf2065c2",
-  "ctcHandoffHash": "1c99b5848b2cc6daabfca37e857cf0ddbf879adc5a0d350c2c226190d5010fa9",
+  "executionPlanHash": "a5eb1c0271b2fc7bc58f03691c877a0d5ea728a6f7759ee28e4696234be508e8",
+  "ctcHandoffHash": "826744b4b822b3fca755ed1c4c6ad58f6265da0e1618b5b52f892fc5721754a1",
   "promptHashes": {
     "title": "2386bd637fb7994f48bbce1d3a14a4aa6c6495ee3f02e27a144153a6c9279799",
     "meta": "0d4c1b6d8d2dd9e314dc1a437d9b46a78f60d809cc25471aed0019152ad3ac75",

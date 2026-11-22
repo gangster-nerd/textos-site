@@ -11,7 +11,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
 - CTC editorial contract (ctc-editorial-quality@0.1): pass (3 finding(s))
 - Sources shown: 9 (withheld: 0); figures: checked-to-preview d46592828fcf
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `2faf90e681c1b0ccf345a80ea6e637fd89be88ab`
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed`
 
 ## CTC editorial-contract findings
 
@@ -92,7 +92,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - **factual** — Instead, the preview loads the draft by the identifier written in the handover record and recomputes its fingerprints, with no fallback to the latest version.
   - `ev-cp-06` (TextOS product commit 865924a, 6 Aug 2026): «preview consumes the handoff by id, recomputes hashes, refuses any mismatch (no latest fallback)»
 - **factual** — The comparison stops at the first fingerprint that differs, with no tolerance.
-  - `ev-cp-10` (TextOS product repository file src/server/textos/act/generation-handoff.ts at 2faf90e): «Lève à la première discordance — jamais de tolérance»
+  - `ev-cp-10` (TextOS product repository file src/server/textos/act/generation-handoff.ts at 181d44e): «Lève à la première discordance — jamais de tolérance»
 - **factual** — The fingerprint of the content is computed with its fields in a fixed order, so the same draft gives the same fingerprint after it has been stored and read back.
   - `ev-cp-07` (TextOS product commit 865924a, 6 Aug 2026): «add canonical structured-content hash (sorted keys, jsonb round-trip safe)»
 - **factual** — A draft written outside TextOS and imported by hand is rejected if it does not match the brief, the set of evidence or the instructions it was meant for.
@@ -105,7 +105,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 
 - **factual** — In TextOS a draft reaches the internal preview only after both checks pass, any differing fingerprint stops it, and no public address is set.
   - `ev-cp-12` (TextOS product commit 25b4c04, 7 Aug 2026): «enforce invariant in preview: preview only if TruthCheck=pass AND BriefFulfillment=pass»
-  - `ev-cp-10` (TextOS product repository file src/server/textos/act/generation-handoff.ts at 2faf90e): «Lève à la première discordance — jamais de tolérance»
+  - `ev-cp-10` (TextOS product repository file src/server/textos/act/generation-handoff.ts at 181d44e): «Lève à la première discordance — jamais de tolérance»
   - `ev-cp-14` (TextOS product commit 0191bcf, 7 Aug 2026): «publishedAt / publishedUrl stay null, public=false, noindex=true.»
 
 ### section-3 (section) — The page says how the draft was made
@@ -114,15 +114,15 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > The preview record keeps a fingerprint of the content, of the rendered page and of the file produced, along with the version of the template that laid the page out. After the preview file is written, its fingerprint on disk is compared with the one in that record. If someone later asks which page was approved, the answer is a fingerprint to compare, not a recollection.
 
 - **factual** — The preview page opens with a banner that states where the draft came from.
-  - `ev-cp-16` (TextOS product repository file src/server/textos/act/preview.ts at 2faf90e): «Rend l'aperçu contrôlé : `<meta robots noindex,nofollow>` + bandeau de provenance HONNÊTE.»
+  - `ev-cp-16` (TextOS product repository file src/server/textos/act/preview.ts at 181d44e): «Rend l'aperçu contrôlé : `<meta robots noindex,nofollow>` + bandeau de provenance HONNÊTE.»
 - **factual** — It says the draft was generated live only when a real live writing run took place; a draft imported by hand or replayed from a recorded example is shown as not generated live, and an origin TextOS cannot recognise stops the preview instead of being guessed.
   - `ev-cp-02` (TextOS product commit cbe2579, 6 Aug 2026): «Provenance is honest: generatedLive is true only for a real live invocation; handoff transports (::fixture-replay / ::manual-import) are generatedLive:false; an unrecognized methodVersion throws rather than guess.»
 - **factual** — The same banner says the page is an internal preview, not a customer story.
-  - `ev-cp-17` (TextOS product repository file src/server/textos/act/preview.ts at 2faf90e): «Internal preview, not a customer story»
+  - `ev-cp-17` (TextOS product repository file src/server/textos/act/preview.ts at 181d44e): «Internal preview, not a customer story»
 - **factual** — The preview record keeps a fingerprint of the content, of the rendered page and of the file produced, along with the version of the template that laid the page out.
   - `ev-cp-08` (TextOS product commit 865924a, 6 Aug 2026): «enrich PreviewReceipt: schemaVersion, e2eExecutionId, structuredContentHash, rendererVersion, renderHash, artifactSha256 (existing jsonb, no migration)»
 - **factual** — After the preview file is written, its fingerprint on disk is compared with the one in that record.
-  - `ev-cp-11` (TextOS product repository file scripts/demo-run/gb/preview.ts at 2faf90e): «Écrit l'artefact renommé, puis PROUVE que le fichier sur disque == artifactSha256 du receipt.»
+  - `ev-cp-11` (TextOS product repository file scripts/demo-run/gb/preview.ts at 181d44e): «Écrit l'artefact renommé, puis PROUVE que le fichier sur disque == artifactSha256 du receipt.»
 - **editorial** — If someone later asks which page was approved, the answer is a fingerprint to compare, not a recollection.
 
 ### section-4 (section) — What the preview does not decide
@@ -134,7 +134,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
   - `ev-cp-18` (TextOS product manifest, generation-handoff.knownLimits): «Transporte un brouillon et ses empreintes entre génération et aperçu ; ne garantit rien sur le contenu lui-même.»
 - **editorial** — A matching fingerprint tells you the page was not swapped; it does not tell you the argument is sound or the examples are useful.
 - **factual** — A draft whose fact-check did not pass, or whose brief was not accepted, never reaches the preview.
-  - `ev-cp-04` (TextOS product repository file src/server/textos/act/preview.ts at 2faf90e): «Gate d'aperçu : seul un draft `truthchecked` adossé à un brief `accepted` est prévisualisable.»
+  - `ev-cp-04` (TextOS product repository file src/server/textos/act/preview.ts at 181d44e): «Gate d'aperçu : seul un draft `truthchecked` adossé à un brief `accepted` est prévisualisable.»
 - **editorial** — The preview comes after those checks; it is not a further check of quality.
 - **factual** — Publication is its own state in TextOS, distinct from the preview, so going live remains a separate step after your reading.
   - `ev-cp-13` (TextOS product commit 0191bcf, 7 Aug 2026): «Realizes the three orthogonal states: TruthCheck state != Preview state != Publication state.»

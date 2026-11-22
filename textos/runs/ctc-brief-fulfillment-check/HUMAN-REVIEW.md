@@ -11,7 +11,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - Article review (ctc-article-review@0.1): CMO V2 **pass** (article-cmo-v2@1), CONTENT_PASS pass, release allowed
 - CTC editorial contract (ctc-editorial-quality@0.1): pass (3 finding(s))
 - Sources shown: 8 (withheld: 0); figures: brief-to-ready 53995d89d27f
-- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `2faf90e681c1b0ccf345a80ea6e637fd89be88ab`
+- Writer: `geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5` — TextOS `181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed`
 
 ## CTC editorial-contract findings
 
@@ -71,7 +71,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - **editorial** — A fact-check reads the sentences a draft contains and asks whether a source supports them.
 - **editorial** — It does not ask whether the sentences that should be there are there.
 - **factual** — TextOS's design record describes this failure plainly: a draft can be certified true while covering only one of the required points of its brief, an outcome it calls an empty draft certified true.
-  - `ev-bf-07` (TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 2faf90e): «**TruthCheck=pass prouve « fondé », pas « utile »**. Un draft peut être certifié vrai en ne couvrant qu'un des claims requis du brief → « vide certifié vrai ».»
+  - `ev-bf-07` (TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 181d44e): «**TruthCheck=pass prouve « fondé », pas « utile »**. Un draft peut être certifié vrai en ne couvrant qu'un des claims requis du brief → « vide certifié vrai ».»
 - **factual** — A short, two-sentence sample draft that TextOS once used in its tests is now kept as the reference case its brief check has to block.
   - `ev-bf-04` (TextOS product commit 25b4c04, 7 Aug 2026): «the former 2-sentence fixture is now a BriefFulfillment BLOCK oracle»
 - **editorial** — Such a draft can be accurate line by line and still leave the reader without the answer they came for.
@@ -84,13 +84,13 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 
 - **editorial** — The easy shortcut for any writer is to mention a topic in passing so that it looks covered.
 - **factual** — In TextOS, a statement that cites no source does not count as covering a required point, even when it talks about the right topic.
-  - `ev-bf-05` (TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e): «un statement NON fondé ne couvre pas un claim (evidenceIds vide)»
+  - `ev-bf-05` (TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 181d44e): «un statement NON fondé ne couvre pas un claim (evidenceIds vide)»
 - **editorial** — Naming a subject is not the same as backing it up.
 - **factual** — A required point can still be left out on purpose: when a person has accepted the reason for excluding it, the draft can pass without it.
-  - `ev-bf-12` (TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e): «claim requis EXCLU avec raison acceptée → pass (acceptedExcludedClaimTypes)»
+  - `ev-bf-12` (TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 181d44e): «claim requis EXCLU avec raison acceptée → pass (acceptedExcludedClaimTypes)»
 - **editorial** — A gap that someone chose and explained is treated differently from a gap nobody noticed.
 - **factual** — Structure is checked as well: if a section the brief requires is missing, the draft is blocked.
-  - `ev-bf-13` (TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 2faf90e): «section requise manquante → block»
+  - `ev-bf-13` (TextOS product repository file src/server/textos/act/brief-fulfillment.test.ts at 181d44e): «section requise manquante → block»
 
 ### section-3 (section) — What happens when a draft falls short
 
@@ -98,12 +98,12 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > The brief check, the fact-check, the approved sources and the human decision apply in the same way whichever writer produced the draft. Switching the AI model behind the writing does not change what a draft has to deliver against its brief.
 
 - **factual** — In TextOS, an article is marked ready only after it has passed the brief check; otherwise it is stopped with a status that says the brief was not fulfilled.
-  - `ev-bf-09` (TextOS product repository file src/server/textos/act/article-readiness.ts at 2faf90e): «Brief Fulfillment : un `article_ready` l'a franchi (sinon `fulfillment_blocked`).»
+  - `ev-bf-09` (TextOS product repository file src/server/textos/act/article-readiness.ts at 181d44e): «Brief Fulfillment : un `article_ready` l'a franchi (sinon `fulfillment_blocked`).»
 - **factual** — The blocked result lists the missing sections, the required points left uncovered and whether the target query was addressed.
-  - `ev-bf-10` (TextOS product repository file src/server/textos/act/article-creation-spine.ts at 2faf90e): «status: "fulfillment_blocked", missingSections: fulfillment.missingSections, uncoveredClaimTypes: fulfillment.uncoveredClaimTypes.map((x) => x.claimType), targetQueryAddressed: fulfillment.targetQueryAddressed,»
+  - `ev-bf-10` (TextOS product repository file src/server/textos/act/article-creation-spine.ts at 181d44e): «status: "fulfillment_blocked", missingSections: fulfillment.missingSections, uncoveredClaimTypes: fulfillment.uncoveredClaimTypes.map((x) => x.claimType), targetQueryAddressed: fulfillment.targetQueryAddressed,»
 - **editorial** — That turns a vague verdict of not good enough into a short list that a writer or an editor can work through.
 - **factual** — The brief check, the fact-check, the approved sources and the human decision apply in the same way whichever writer produced the draft.
-  - `ev-bf-11` (TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 2faf90e): «Grounded TruthCheck, Brief Fulfillment, preuves et décision humaine s'appliquent à l'identique quel que soit le rédacteur.»
+  - `ev-bf-11` (TextOS product repository file docs/adr/ADR-015-truthcheck-and-generation.md at 181d44e): «Grounded TruthCheck, Brief Fulfillment, preuves et décision humaine s'appliquent à l'identique quel que soit le rédacteur.»
 - **editorial** — Switching the AI model behind the writing does not change what a draft has to deliver against its brief.
 
 ### brief-to-ready-caption (caption)
@@ -113,7 +113,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 - **factual** — In TextOS a draft whose facts are grounded still has to answer its brief before it can be previewed, and only an article that passed that check is marked ready.
   - `ev-bf-01` (TextOS product commit 25b4c04, 7 Aug 2026): «"true content" is not "useful content". TruthCheck=pass only proves grounding, not that the draft answers the accepted brief.»
   - `ev-bf-03` (TextOS product commit 25b4c04, 7 Aug 2026): «enforce invariant in preview: preview only if TruthCheck=pass AND BriefFulfillment=pass»
-  - `ev-bf-09` (TextOS product repository file src/server/textos/act/article-readiness.ts at 2faf90e): «Brief Fulfillment : un `article_ready` l'a franchi (sinon `fulfillment_blocked`).»
+  - `ev-bf-09` (TextOS product repository file src/server/textos/act/article-readiness.ts at 181d44e): «Brief Fulfillment : un `article_ready` l'a franchi (sinon `fulfillment_blocked`).»
 
 ### section-4 (section) — What this check does not tell you
 
@@ -121,7 +121,7 @@ Until `publication.humanReview.status` is `done` in the brief, the article is a 
 > TextOS's product record explicitly forbids describing this check as a promise that the content is useful. Whether an article is good for its reader remains a human judgment. A pass means the draft did what the brief asked; it does not mean the brief asked for the right things.
 
 - **factual** — The target query counts as addressed when its key words appear in the rendered text of the draft.
-  - `ev-bf-06` (TextOS product repository file src/server/textos/act/brief-fulfillment.ts at 2faf90e): «La requête cible est « adressée » si tous ses mots-clés saillants apparaissent dans le contenu rendu.»
+  - `ev-bf-06` (TextOS product repository file src/server/textos/act/brief-fulfillment.ts at 181d44e): «La requête cible est « adressée » si tous ses mots-clés saillants apparaissent dans le contenu rendu.»
 - **editorial** — That is a presence test, not a judgment of how well the question is answered.
 - **factual** — The check also says nothing about truth: it measures whether a draft answers its brief, not whether what it says is correct.
   - `ev-bf-08` (TextOS product manifest, brief-fulfillment-check.knownLimits): «Distinct du TruthCheck : mesure si le brouillon répond au brief, pas s'il dit vrai.»
