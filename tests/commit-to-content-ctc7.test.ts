@@ -224,8 +224,14 @@ describe("CTC-7 — editorialCandidates requis dans bundle + surfaces canoniques
 });
 
 describe("CTC-7 — self-serve exige surface commerciale", () => {
+  // Le manifeste épinglé porte déjà les trois capacités (ADR-027) : elles sont remplacées, pas
+  // dupliquées — sinon le gate lirait la première occurrence, celle du produit.
+  const SELF_SERVE_IDS = ["self-serve-onboarding", "authenticated-product-entry", "ui-measurement-launch"];
   function mfWith(entities: ProductManifest["entities"]): ProductManifest {
-    return { ...pinnedManifest, entities };
+    const added = new Set(entities.filter((e) => SELF_SERVE_IDS.includes(e.id)).map((e) => e.id));
+    const counts = new Map<string, number>();
+    for (const e of entities) counts.set(e.id, (counts.get(e.id) ?? 0) + 1);
+    return { ...pinnedManifest, entities: entities.filter((e) => !(added.has(e.id) && (counts.get(e.id) ?? 0) > 1 && pinnedManifest.entities.includes(e))) };
   }
 
   it("les trois capacités public_marketable mais l'une restreinte à FAQ → eligible=false", () => {

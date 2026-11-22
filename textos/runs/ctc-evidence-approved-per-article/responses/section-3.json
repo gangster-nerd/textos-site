@@ -1,0 +1,105 @@
+{
+  "text": "Once a fact is approved, TextOS offers it to the short answer and to one body section that fits it, by heading and purpose, and not to the opening or to the suggested next step. No type of claim is forced onto the writer. The sources behind those facts are shown with the article, under the wording that was approved. The aim is an article that brings a different fact into each section instead of repeating the same one in new words.\n\nNear repetition is flagged for the person reviewing, and an exact duplicate sentence is blocked outright. A reader notices the difference within two paragraphs. If a tool repeats your strongest proof point in each paragraph, take it as a sign that it has run out of real material.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Once a fact is approved, TextOS offers it to the short answer and to one body section that fits it, by heading and purpose, and not to the opening or to the suggested next step.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ea-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "No type of claim is forced onto the writer.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ea-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2b",
+      "text": "The sources behind those facts are shown with the article, under the wording that was approved.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ea-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The aim is an article that brings a different fact into each section instead of repeating the same one in new words.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Near repetition is flagged for the person reviewing, and an exact duplicate sentence is blocked outright.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ea-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "A reader notices the difference within two paragraphs.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "If a tool repeats your strongest proof point in each paragraph, take it as a sign that it has run out of real material.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

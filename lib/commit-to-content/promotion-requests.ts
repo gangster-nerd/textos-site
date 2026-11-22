@@ -47,7 +47,7 @@ export interface PromotionRequest {
   manualEngineeringRequired: boolean;
   allowedWording: readonly string[];
   prohibitedWording: readonly string[];
-  allowedCtas: readonly ("measurement_request" | "contact" | "labs_signup" | "none")[];
+  allowedCtas: readonly ("measurement_request" | "contact" | "labs_signup" | "beta_access" | "none")[];
   blockingReason: string;
   requiredOwner: "T0" | "PO" | "CPO" | "NONE";
   requiredNextAction: string;

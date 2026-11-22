@@ -1,0 +1,77 @@
+{
+  "text": "Ask who decides the headings and the purpose of each section, the tool or your team, and whether that outline is fixed before writing starts. Ask what the tool does when a section has no supporting material: does it refuse the section, or write something anyway? Ask whether you can see, for a given sentence, which source it cites, and what happens to a sentence that cites nothing. Ask how the tool judges whether a sentence overstates its source, and whether the model's own label can override that judgement. Ask what the draft records about how it was produced, and whether that record could name a live model run that did not happen. Ask whether drafting and publishing are separate steps, with a person deciding the second.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Ask who decides the headings and the purpose of each section, the tool or your team, and whether that outline is fixed before writing starts.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask what the tool does when a section has no supporting material: does it refuse the section, or write something anyway?",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether you can see, for a given sentence, which source it cites, and what happens to a sentence that cites nothing.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask how the tool judges whether a sentence overstates its source, and whether the model's own label can override that judgement.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask what the draft records about how it was produced, and whether that record could name a live model run that did not happen.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Ask whether drafting and publishing are separate steps, with a person deciding the second.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

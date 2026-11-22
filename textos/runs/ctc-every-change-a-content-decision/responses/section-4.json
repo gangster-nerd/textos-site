@@ -1,0 +1,77 @@
+{
+  "text": "No tool at TextOS reads the code to guess that a change deserves an article. Whether a change deserves an article and whether it belongs to the described product are separate questions, answered separately.\n\nEach changed path that no declared evidence covers has to be explained by exactly one disposition in TextOS: none would be the silence the rule closes, and two or more would be ambiguous. A coverage debt does not turn the build red, but it stops a content candidate from becoming ready. Writing about a part of the product before it is described would put the article ahead of the facts.",
+  "statements": [
+    {
+      "id": "s11",
+      "text": "No tool at TextOS reads the code to guess that a change deserves an article.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s12",
+      "text": "Whether a change deserves an article and whether it belongs to the described product are separate questions, answered separately.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s21",
+      "text": "Each changed path that no declared evidence covers has to be explained by exactly one disposition in TextOS: none would be the silence the rule closes, and two or more would be ambiguous.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s22",
+      "text": "A coverage debt does not turn the build red, but it stops a content candidate from becoming ready.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ci-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s23",
+      "text": "Writing about a part of the product before it is described would put the article ahead of the facts.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

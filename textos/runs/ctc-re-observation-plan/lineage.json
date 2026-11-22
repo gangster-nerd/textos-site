@@ -1,0 +1,229 @@
+{
+  "planId": "how to measure whether ai answers changed after publishing an article",
+  "planHash": "205cf9f21d847e717589106edacc95982f77fcf0b1c382712dac511bcf53fb90",
+  "slotProvenance": [
+    {
+      "slotId": "title",
+      "role": "title",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS freezes its starting point before an article goes live",
+      "statementIds": [
+        "stmt:5:title:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ro-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-ro-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "meta",
+      "role": "meta_description",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS freezes a starting point and a plan to measure again, and that plan demonstrates no effect on its own.",
+      "statementIds": [
+        "stmt:4:meta:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ro-17"
+      ],
+      "usableEvidenceIds": [
+        "ev-ro-17"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "lead",
+      "role": "lead",
+      "headingLevel": null,
+      "heading": null,
+      "text": "A few months after an article goes live, someone will ask whether it changed what AI assistants say about your subject. If nobody wrote down beforehand what would be compared, and how, any answer to that question is a story told after the fact. TextOS keeps its plan for looking again as a record of its own, whose life continues after publication, rather than as a passing note inside the preview. This note explains what that plan fixes, what it does not do yet, and where its claims stop.",
+      "statementIds": [
+        "stmt:4:lead:2:s1",
+        "stmt:4:lead:2:s2",
+        "stmt:4:lead:2:s3",
+        "stmt:4:lead:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ro-01"
+      ],
+      "usableEvidenceIds": [
+        "ev-ro-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "answer",
+      "role": "answer",
+      "headingLevel": 2,
+      "heading": "How can you tell whether AI answers changed after you publish?",
+      "text": "TextOS questions AI answer engines with sets of questions that carry a version number. Before an article is published, at the moment it is previewed, TextOS freezes four things: the observation that serves as the starting point, the version of the question set, the version of the measurement method, and the target questions being followed. That is the before picture, fixed while nothing has changed yet. TextOS fills in the change only after a real period has passed since publication, and it describes that change rather than computing an effect.",
+      "statementIds": [
+        "stmt:6:answer:2:s1",
+        "stmt:6:answer:2:s2",
+        "stmt:6:answer:2:s3",
+        "stmt:6:answer:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ro-12",
+        "ev-ro-02",
+        "ev-ro-03"
+      ],
+      "usableEvidenceIds": [
+        "ev-ro-12",
+        "ev-ro-02",
+        "ev-ro-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-1",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Comparing like with like",
+      "text": "Answer engines change the way they cite sources, and the tools that read those citations get corrected, so in TextOS a series of observations can only be compared when the measurement method stays the same or carries an explicit version. Otherwise, a shift in the numbers may only mean that the ruler moved. In TextOS, the set of questions is treated as a measuring instrument: it defines what is observed, it can be explained and audited, it carries a version, and it cannot be changed once validated.\n\nAn automated test checks that the TextOS re-observation plan keeps both the version of the question set and the version of the measurement method. The preview record and the re-observation plan in TextOS point to the same draft and the same content fingerprints. That way, the article being followed is the one that was previewed, not a later variant of it.",
+      "statementIds": [
+        "stmt:9:section-1:2:s1",
+        "stmt:9:section-1:2:s2",
+        "stmt:9:section-1:2:s3",
+        "stmt:9:section-1:2:s4",
+        "stmt:9:section-1:2:s5",
+        "stmt:9:section-1:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ro-11",
+        "ev-ro-13",
+        "ev-ro-10",
+        "ev-ro-09"
+      ],
+      "usableEvidenceIds": [
+        "ev-ro-11",
+        "ev-ro-13",
+        "ev-ro-10",
+        "ev-ro-09"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-2",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What the plan does not do yet",
+      "text": "When TextOS creates a re-observation plan, it writes only the initial state: awaiting publication, not measurable yet, with no publication record, no publication date and no planned window. Publishing or updating an article does not yet move that plan forward in TextOS, and wiring the two together was explicitly left out of scope. In plain terms, the second look is planned, not triggered.\n\nIn the version of TextOS described here, no scheduler runs re-observations, so the article card is not allowed to call a new measurement scheduled and shows the planned window as a recommendation instead. The end-to-end report TextOS produces labels the re-observation plan as planned and not yet measurable. If a dashboard shows you a scheduled follow-up measurement, it is fair to ask what will actually run it.",
+      "statementIds": [
+        "stmt:9:section-2:2:s1",
+        "stmt:9:section-2:2:s2",
+        "stmt:9:section-2:2:s3",
+        "stmt:9:section-2:2:s4",
+        "stmt:9:section-2:2:s5",
+        "stmt:9:section-2:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ro-05",
+        "ev-ro-07",
+        "ev-ro-06",
+        "ev-ro-08"
+      ],
+      "usableEvidenceIds": [
+        "ev-ro-05",
+        "ev-ro-07",
+        "ev-ro-06",
+        "ev-ro-08"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "second-look-caption",
+      "role": "caption",
+      "headingLevel": null,
+      "heading": null,
+      "text": "A TextOS re-observation plan can be not measurable yet, have a window open after publication, or hold a descriptive change that is not causal; today only the initial, not-measurable state is written.",
+      "statementIds": [
+        "stmt:19:second-look-caption:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ro-04",
+        "ev-ro-05"
+      ],
+      "usableEvidenceIds": [
+        "ev-ro-04",
+        "ev-ro-05"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-3",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "A change observed is not a change caused",
+      "text": "TextOS does not present an update to an article as the reason a variation happened; the change stays descriptive. Its rules exclude any causal claim and any attribution, because an answer engine changes for a thousand reasons. The article is only one of the things that may have moved in the meantime.\n\nWhen several actions touch the same question within the same re-observation window, TextOS attributes no effect to any one of them. The furthest state a TextOS plan can reach is a measured change that is descriptive and explicitly not causal. What you get is an observed evolution, compared on the same terms, with its uncertainty stated, and not a verdict on the article's success.",
+      "statementIds": [
+        "stmt:9:section-3:2:s1",
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:s3",
+        "stmt:9:section-3:2:s4",
+        "stmt:9:section-3:2:s5",
+        "stmt:9:section-3:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-ro-14",
+        "ev-ro-16",
+        "ev-ro-15",
+        "ev-ro-04"
+      ],
+      "usableEvidenceIds": [
+        "ev-ro-14",
+        "ev-ro-16",
+        "ev-ro-15",
+        "ev-ro-04"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "verify",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What to ask any AI content vendor",
+      "text": "Ask what exactly is recorded before an article goes live, and whether that record can still be edited afterwards. Ask whether the questions used after publication are the same set, in the same version, as the ones used before. Ask whether a change in how answers are read would be flagged as a break in the series rather than mixed into the trend. Ask who or what actually runs the follow-up measurement, and when it is planned. Ask how a report separates a change that was observed from a change that the article caused. Treat any claim that one article moved AI answers on its own with caution when other changes happened in the same period.",
+      "statementIds": [
+        "stmt:6:verify:2:s1",
+        "stmt:6:verify:2:s2",
+        "stmt:6:verify:2:s3",
+        "stmt:6:verify:2:s4",
+        "stmt:6:verify:2:s5",
+        "stmt:6:verify:2:s6"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "editorial-next-step",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "text": "A related note on graduated publication explains how publishing is opened up step by step, and why any effect is traced as a descriptive change. Another explains why the work starts by observing answer engines rather than by optimising a score. A third shows why an article that was produced is not an article that was checked.",
+      "statementIds": [
+        "stmt:19:editorial-next-step:2:s1",
+        "stmt:19:editorial-next-step:2:s2",
+        "stmt:19:editorial-next-step:2:s3"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    }
+  ],
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "1469d740876138215fe73c7a110709df658192128cfc4d1e71992c5632ad40f3",
+  "truthCheck": {
+    "verdict": "pass",
+    "contradictions": []
+  },
+  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+}

@@ -1,0 +1,77 @@
+{
+  "text": "In TextOS, each part has a hard evidence boundary: the writer may use only the evidence assigned to that part, and nothing else can be brought in there. When a factual part has no usable evidence, the part is refused instead of being filled. A refused part shows exactly where material is missing, while a gap filled with invented text would read like any other sentence.\n\nThe writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again. That strictness matters because a loosely read answer is where unsupported material tends to slip in.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS, each part has a hard evidence boundary: the writer may use only the evidence assigned to that part, and nothing else can be brought in there.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "When a factual part has no usable evidence, the part is refused instead of being filled.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "A refused part shows exactly where material is missing, while a gap filled with invented text would read like any other sentence.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "That strictness matters because a loosely read answer is where unsupported material tends to slip in.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

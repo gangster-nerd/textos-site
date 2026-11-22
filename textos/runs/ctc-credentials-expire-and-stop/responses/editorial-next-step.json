@@ -1,0 +1,29 @@
+{
+  "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A second note follows an article through a writing-model failure.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

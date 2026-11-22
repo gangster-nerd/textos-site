@@ -1,6 +1,9 @@
 // A2 — TextOS SurfacePolicy.
 //
-// surfacePolicyVersion = "textos-site@1".
+// surfacePolicyVersion = "textos-site@2" (CMO-CONVERSION-SURFACE-2).
+// Bumped from @1 because the reference article projection now derives a
+// ResolvedConversionPlan (commercial CTA placements, editorial next step,
+// newsletter retention action) — a materially different presentation contract.
 //
 // This module owns TextOS-specific presentation decisions: navigation integration, author
 // display, content-type presentation, indexability policy, metadata/schema policy, and
@@ -13,8 +16,8 @@ import {
   SurfacePolicySchema,
 } from "../contract/surface-policy";
 
-export const TEXTOS_SITE_POLICY_ID = "textos-site.reference@1" as const;
-export const TEXTOS_SITE_POLICY_VERSION = "textos-site@1" as const;
+export const TEXTOS_SITE_POLICY_ID = "textos-site.reference@2" as const;
+export const TEXTOS_SITE_POLICY_VERSION = "textos-site@2" as const;
 
 // TextOS reference presentation for article-like content. Owns navigation, author display,
 // CTA authorization at the surface layer, indexability, and metadata emission.

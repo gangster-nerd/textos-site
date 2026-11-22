@@ -13,7 +13,7 @@ import type { BlockNode, HeadingNode } from "../contract/mdast-semantic";
 import { renderBlock } from "./block-renderers";
 import { assignHeadingIds } from "./mdast-renderer";
 
-export const RENDER_VERSION = "reference@1" as const;
+export const RENDER_VERSION = "reference@3" as const;
 
 /**
  * Pre-compute a heading-id map so the H2/H3 anchors emitted in the body match
@@ -42,11 +42,21 @@ export interface RenderReferenceBodyProps {
   renderContextualCta?: (block: import("../contract/content-document").ContentBlock) =>
     | ReactElement
     | null;
+  /**
+   * SITE_ONLY hook : block ids the managed surface has decided to consume
+   * (i.e. re-project outside of the body flow — the trailing "Related …"
+   * section whose links are already fed into the Related module). Consumed
+   * blocks are NOT rendered at all — no hidden/aria-hidden markers. Exact
+   * render-parity is preserved by the evaluator's own `consumedBlockIds`
+   * option (see conformance/render-parity/evaluate-render-parity.ts).
+   */
+  consumedBlockIds?: ReadonlySet<string>;
 }
 
 export function RenderReferenceBody({
   resolved,
   renderContextualCta,
+  consumedBlockIds,
 }: RenderReferenceBodyProps): ReactElement {
   const headingIdByNode = buildHeadingIdMap(resolved);
   return (
@@ -59,7 +69,7 @@ export function RenderReferenceBody({
       data-cse-composition-signature={resolved.compositionSignature}
     >
       {resolved.blocks
-        .filter((rb) => rb.visible)
+        .filter((rb) => rb.visible && !(consumedBlockIds && consumedBlockIds.has(rb.block.id)))
         .map((rb) => (
           <div
             key={rb.block.id}

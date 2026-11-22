@@ -1,0 +1,564 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-evidence-approved-per-article",
+  "flow": "commit_to_content",
+  "slug": "a-source-is-not-evidence-until-someone-approves-it",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "evidence-activation-lot-c-2026-10-25",
+        "sourceCommits": [
+          "d1dfde75cc9632771d057ad40ff2356c1d27660d",
+          "c137a99faffe2fa0a298d78c7fba41289f617164"
+        ]
+      },
+      {
+        "groupId": "evidence-offered-not-imposed-lot-d-2026-10-26",
+        "sourceCommits": [
+          "e2e40e58a9c2af7dd96b7572f41534067f172c59"
+        ]
+      },
+      {
+        "groupId": "evidence-selection-e1-2026-10-26",
+        "sourceCommits": [
+          "a36d47992cc90840bf0c8488ac292e7381564860"
+        ]
+      },
+      {
+        "groupId": "source-candidates-a2-2026-10-26",
+        "sourceCommits": [
+          "cf5b34af83e5fd28a09a3bf1adf0fa19b8cc641c"
+        ]
+      }
+    ],
+    "buyerQuestion": "How do I make sure an AI writer only uses facts that someone actually approved for my article?",
+    "targetQuery": "how to make an ai writer use only approved facts",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "evidence-governance"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+    "approvedAt": "2026-10-26"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-produced-is-not-validated",
+      "textos-site:ctc:ctc-reading-cited-sources",
+      "textos-insight:no-affirmation-without-evidence"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-ea-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "d1dfde75cc9632771d057ad40ff2356c1d27660d",
+        "quote": "une source observée n'est jamais présentée comme une preuve ; un humain identifié l'approuve pour CET article, sous un libellé qu'il valide, et l'article peut alors s'appuyer sur ce fait et afficher sa source."
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-02",
+      "source": {
+        "kind": "product_commit",
+        "sha": "d1dfde75cc9632771d057ad40ff2356c1d27660d",
+        "quote": "identité non humaine refusée, décision validée par les primitives existantes approveEvidenceForUse + clearEvidenceForPublicUse AVANT écriture ;"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "d1dfde75cc9632771d057ad40ff2356c1d27660d",
+        "quote": "seules les preuves approuvées ET utilisables (policy centrale) sont offertes aux sections de fond, sous le libellé public approuvé (projection existante) ; sources gouvernées visibles ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-04",
+      "source": {
+        "kind": "product_commit",
+        "sha": "d1dfde75cc9632771d057ad40ff2356c1d27660d",
+        "quote": "décision périmée si l'extrait change ;"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-05",
+      "source": {
+        "kind": "product_commit",
+        "sha": "d1dfde75cc9632771d057ad40ff2356c1d27660d",
+        "quote": "table exclue du transfert de workspace (décision humaine non recopiable)."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "c137a99faffe2fa0a298d78c7fba41289f617164",
+        "quote": "révocation qui retire l'usage à la rédaction et à la sortie WordPress"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-07",
+      "source": {
+        "kind": "product_commit",
+        "sha": "c137a99faffe2fa0a298d78c7fba41289f617164",
+        "quote": "aucune identité reçue en paramètre ; bypass opérateur et absence de session refusés ;"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-08",
+      "source": {
+        "kind": "product_commit",
+        "sha": "e2e40e58a9c2af7dd96b7572f41534067f172c59",
+        "quote": "une preuve approuvée est offerte à la réponse courte et à UNE section de fond (pertinence avec le titre et l'objectif, charge équilibrée), jamais à l'ouverture ni à la prochaine étape ; aucun type d'affirmation imposé ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-09",
+      "source": {
+        "kind": "product_commit",
+        "sha": "e2e40e58a9c2af7dd96b7572f41534067f172c59",
+        "quote": "signaux non bloquants, doublons exacts toujours bloquants."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-10",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a36d47992cc90840bf0c8488ac292e7381564860",
+        "quote": "sélection d'ensemble déterministe parmi les preuves approuvées et utilisables : pertinence, couverture et spécificité guident ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-11",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a36d47992cc90840bf0c8488ac292e7381564860",
+        "quote": "corroboration entre sources indépendantes conservée, répétition d'une même source écartée, plafonds, manque explicite."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-12",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a36d47992cc90840bf0c8488ac292e7381564860",
+        "quote": "projection « pourquoi ces preuves » sans identifiant interne."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ea-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "cf5b34af83e5fd28a09a3bf1adf0fa19b8cc641c",
+        "quote": "qualification par le geste humain existant ; rien d'approuvé ni d'offert au rédacteur."
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that an observed source becomes usable evidence only after a person approves it for that article.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ea-01"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: in TextOS a person approves each piece of evidence for one article, under wording they validate, and can withdraw it.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ea-01",
+        "ev-ea-06"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How does an AI writer end up using only facts you approved?",
+      "writingObjective": "Answer directly: a source the system observed is never presented as evidence; an identified person approves it for this article under wording they validate; only approved and usable evidence is offered to the writer.",
+      "buyerIntent": "What is the rule?",
+      "allowedEvidenceIds": [
+        "ev-ea-01",
+        "ev-ea-03"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the CMO's worry — an AI writer that treats anything it found online as a fact about their brand — and say how TextOS answered it in October 2026, without the mechanism yet.",
+      "buyerIntent": "Will the writer use facts I never checked?",
+      "allowedEvidenceIds": [
+        "ev-ea-01"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "evidence-path-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure that shows the path of a source in one article: candidate, approved by a named person, offered to the writer, withdrawn. One factual sentence, grounded in the evidence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ea-01",
+        "ev-ea-06",
+        "ev-ea-13"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 280,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Only a person can say yes",
+      "writingObjective": "Explain who may approve: a non-human identity is refused, the identity comes from the signed-in session and is never passed in by a caller, operator shortcuts are refused, and the approval is validated before anything is written.",
+      "buyerIntent": "Could an automated process approve on my behalf?",
+      "allowedEvidenceIds": [
+        "ev-ea-02",
+        "ev-ea-07"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "An approval belongs to one article and one wording",
+      "writingObjective": "Explain why an approval is narrow: it lapses when the quoted passage changes, it is not copied when a workspace is transferred, and withdrawing it removes the fact from writing and from the draft sent to WordPress.",
+      "buyerIntent": "What if the source changes or I change my mind?",
+      "allowedEvidenceIds": [
+        "ev-ea-04",
+        "ev-ea-05",
+        "ev-ea-06"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Offered to the writer, never imposed",
+      "writingObjective": "Explain how approved evidence is used: offered to the short answer and to one body section that it fits, never to the opening or the next step, with no claim type forced on the writer; repeated wording is flagged and exact duplicates blocked.",
+      "buyerIntent": "Will one approved fact be repeated everywhere?",
+      "allowedEvidenceIds": [
+        "ev-ea-03",
+        "ev-ea-08",
+        "ev-ea-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Choosing among approved facts, and saying why",
+      "writingObjective": "Explain the selection among approved evidence: deterministic, guided by relevance, coverage and specificity, keeping corroboration between independent sources, setting aside repetition of one source, stating gaps, and showing the reader why these facts were used without internal identifiers. End with what a candidate passage is: proposed, never approved or offered by itself.",
+      "buyerIntent": "How are approved facts chosen?",
+      "allowedEvidenceIds": [
+        "ev-ea-10",
+        "ev-ea-11",
+        "ev-ea-12",
+        "ev-ea-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 600,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor of AI-written content, one question per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the two related notes: the difference between an article that was produced and one that was checked, and how cited pages are read before any passage is proposed. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, without a link",
+    "decidedAt": "2026-10-27",
+    "reason": "The note cites these product commits; their short SHA and subject are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "evidence-path",
+      "template": "flow",
+      "title": "From observed source to usable evidence",
+      "subtitle": "Illustrative path for one article. A person decides at the boundary.",
+      "nodes": [
+        {
+          "tag": "qualify",
+          "label": "Candidate passage",
+          "evidenceIds": [
+            "ev-ea-13"
+          ]
+        },
+        {
+          "tag": "approve",
+          "label": "Approved for this article",
+          "evidenceIds": [
+            "ev-ea-01"
+          ]
+        },
+        {
+          "tag": "offer",
+          "label": "Offered to the writer",
+          "evidenceIds": [
+            "ev-ea-08"
+          ]
+        },
+        {
+          "tag": "withdraw",
+          "label": "Withdrawn from drafts",
+          "evidenceIds": [
+            "ev-ea-06"
+          ]
+        }
+      ],
+      "highlightNode": 1,
+      "boundary": {
+        "afterNode": 0,
+        "title": "Human decision",
+        "lines": [
+          "A named person approves;",
+          "a non-human identity cannot."
+        ],
+        "evidenceIds": [
+          "ev-ea-02"
+        ]
+      },
+      "anchorSectionKey": "lead",
+      "captionSlotId": "evidence-path-caption"
+    }
+  ]
+}

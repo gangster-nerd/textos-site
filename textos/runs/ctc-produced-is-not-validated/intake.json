@@ -1,0 +1,795 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "article-quality-lot-a-2026-10-25",
+        "sourceCommits": [
+          "16faee404184d31e40d907e885d3bf0867c7eea4"
+        ]
+      },
+      {
+        "groupId": "article-quality-lot-b-2026-10-25",
+        "sourceCommits": [
+          "01b0babf50422eaf6f3fe2c02ef979b54684ff0c",
+          "8463e78b5bbd2a3d86f2f278598dd03ba491c944"
+        ]
+      },
+      {
+        "groupId": "capability-continuity-2026-10-26",
+        "sourceCommits": [
+          "3e6277df2a0ec2c1a97cd22c5691e24c62e6e8f4",
+          "38568f2971d6f0f461724674783873003c8fd1a0"
+        ]
+      },
+      {
+        "groupId": "writer-run-status-r1-2026-10-26",
+        "sourceCommits": [
+          "683e90adcef1a05fa7c4ccb10e727ec57e751b5f"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I tell whether an AI-written article was actually checked before it reaches my website?",
+    "targetQuery": "how to know if an ai written article was checked before it is published",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "article-validation",
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-produced-is-not-validated",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-pv-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 16faee4, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T12:09:13+00:00",
+      "contentHash": "21a6078c200ba554fb3fea734c9e492ad4ffe0a8eed9c7097f9161225271c6a3",
+      "excerpt": "le spine ne réécrit plus le verdict TruthCheck en « pass »",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 16faee4, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T12:09:13+00:00",
+      "contentHash": "643ac5cf3b78a70281d3161e5f50f0e255ae060458ffba6fe098cfeae3b1b22a",
+      "excerpt": "un article techniquement produit n'est plus présenté comme validé. Une alerte de vérité permet la consultation et la correction humaine, jamais la préparation d'un brouillon WordPress.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 16faee4, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T12:09:13+00:00",
+      "contentHash": "c6c76a67b9076b7186b86784310d5bfb035859444ef0140232c358b9c8df44cb",
+      "excerpt": "seule règle d'aptitude WordPress (TruthCheck pass ET CMO V2 conforme), fail-closed",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 16faee4, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T12:09:13+00:00",
+      "contentHash": "77c3b3c5c33e3087bac8208a5d57a32f08117b2ad65f4aae2586e437aed61d1c",
+      "excerpt": "page de revue : suppression du « TruthCheck : validé » codé en dur, verdict persisté via ValidationStateBadge, mention « non certifié » sur alerte ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 01b0bab, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:03:09+00:00",
+      "contentHash": "b364eceab8235ee9edc851684178c83752034a47d66874f69d69fc1038e3b337",
+      "excerpt": "TextOS décide de la stratégie de l'article et le rédacteur l'exécute.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 01b0bab, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:03:09+00:00",
+      "contentHash": "8284ad8de9298a0c72937ff7a1eb75fcb761cf8a8225cac9daf59491460baca3",
+      "excerpt": "contrôle déterministe et indépendant du fournisseur (langue, profondeur, sections, questions, objet d'information, sources, répétitions, profil article.draft@1)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 01b0bab, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:03:09+00:00",
+      "contentHash": "3d29e530b6cdd45e2f17ad6d2e720b1eb64fb7f9ff4370e0ce238413897e4337",
+      "excerpt": "seul `pass` rend l'article apte (readiness, Décision, exécution WordPress) ; « non évalué » bloque avec un code distinct ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 8463e78, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:30:39+00:00",
+      "contentHash": "cda9bd11b134382cf53c184b0da4c7fe396633bca5d5d2ed3262e5fff198a6bc",
+      "excerpt": "un `pass` n'est plus lisible comme une preuve d'excellence ; la revue humaine porte sur le fond, guidée par les constats et repères.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 8463e78, 25 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-25T13:30:39+00:00",
+      "contentHash": "a6c33636950d0d5d79abfbfe15c7d8e2dc4480b15b8f6f3ac9a87f643f5a26fa",
+      "excerpt": "le gate déclare sa portée (scope: structural), ce qu'il mesure et ce qu'il ne mesure pas (utilité, argumentation, originalité, autorité des sources, performance GEO/SEO) ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 3e6277d, 26 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T18:53:19+01:00",
+      "contentHash": "5ce245c6fe210c04b81d62d7566e3a6fe20d1bea37379e686fd07d3a264ba1f8",
+      "excerpt": "detect missing capability receipts, masked TruthCheck alerts and content drift before claiming journey continuity. A consistent receipt is not editorial excellence, GEO effect or publication permission.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 38568f2, 26 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T20:29:56+01:00",
+      "contentHash": "f185e4a2cb3a30922c0836c978e74c8e994092e0bda1fd8f65603d306a1ad5bb",
+      "excerpt": "detect a required claim, buyer context or governed evidence lost before writing even when the resulting activation receipts remain consistent.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 38568f2, 26 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T20:29:56+01:00",
+      "contentHash": "8fe03280c9288c7ccfa20f8dbe33126f3586f616f7cd6c991fcc237f3ebe3e9f",
+      "excerpt": "optional evidence is not forced into the article.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-pv-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 683e90a, 26 Oct 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-26T11:55:41+00:00",
+      "contentHash": "b95e142b106e336e85f19bf97c61aa6ad0f7b1dbbfbc6e9f929bf7578b37f6bb",
+      "excerpt": "« rédaction en cours, relancez à partir de HH:MM » au lieu d'un diagnostic d'échec ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-26 to feed textos-site through Commit-to-Content",
+      "approvedAt": "2026-10-26",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-produced-is-not-validated"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that a produced article is no longer presented as a validated one.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-pv-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: in TextOS only a passing fact-check and a conforming article may reach WordPress, and a pass is not presented as proof of excellence.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-pv-03",
+        "ev-pv-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation — a dashboard that says an AI article is ready — and say that TextOS stopped equating 'written' with 'checked' in October 2026.",
+      "buyerIntent": "Can I trust a 'ready' label?",
+      "allowedEvidenceIds": [
+        "ev-pv-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can you tell an AI article was really checked?",
+      "writingObjective": "Answer directly: the fact-check verdict is no longer rewritten to pass, a truth alert allows reading and correction but never a WordPress draft, and one rule decides eligibility.",
+      "buyerIntent": "What exactly is checked before my CMS?",
+      "allowedEvidenceIds": [
+        "ev-pv-01",
+        "ev-pv-02",
+        "ev-pv-03"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The label on the screen tells the truth",
+      "writingObjective": "Explain the review screen change: a hard-coded 'validated' label removed, the stored verdict shown, 'not certified' shown on an alert; and that TextOS decides the article's strategy while the writer executes it.",
+      "buyerIntent": "Does the interface say what really happened?",
+      "allowedEvidenceIds": [
+        "ev-pv-04",
+        "ev-pv-05"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1200,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "One rule for what may reach your website",
+      "writingObjective": "Explain the single eligibility rule (fact-check pass and a conforming article), that it fails closed, that only a quality-gate pass makes an article eligible while 'not evaluated' blocks with its own code, and what the structural check looks at.",
+      "buyerIntent": "What decides eligibility?",
+      "allowedEvidenceIds": [
+        "ev-pv-03",
+        "ev-pv-06",
+        "ev-pv-07"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "written-to-eligible-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-pv-01",
+        "ev-pv-03",
+        "ev-pv-07"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What a pass does not prove",
+      "writingObjective": "Explain that a pass is not presented as proof of excellence, that the gate states what it does not measure (usefulness, argument, originality, source authority, search performance), and that human review judges substance; add that waiting for a writer is shown as waiting, not as failure.",
+      "buyerIntent": "Does a pass mean the article is good?",
+      "allowedEvidenceIds": [
+        "ev-pv-08",
+        "ev-pv-09",
+        "ev-pv-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Checking that nothing was lost on the way",
+      "writingObjective": "Explain the continuity checks: missing receipts, masked alerts and drift detected before claiming continuity; a required claim, buyer context or approved fact lost before writing detected even when receipts look consistent; optional material not forced in; and that a consistent receipt is not quality, search effect or permission to publish.",
+      "buyerIntent": "Could something I asked for silently disappear?",
+      "allowedEvidenceIds": [
+        "ev-pv-10",
+        "ev-pv-11",
+        "ev-pv-12"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

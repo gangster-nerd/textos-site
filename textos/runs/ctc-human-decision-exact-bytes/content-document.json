@@ -1,0 +1,254 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-site:ctc:ctc-human-decision-exact-bytes",
+    "contentType": "product_article",
+    "slug": "agent-can-prepare-a-draft-not-approve-it",
+    "language": "en-US",
+    "title": "TextOS's API keeps WordPress draft creation behind a human decision",
+    "description": "TextOS keeps three API effects, WordPress draft creation among them, under human review, and no machine identity can switch that gate to automatic execution."
+  },
+  "editorial": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "geo-writer",
+    "statusVocabularyVersion": "geo-writer@0.2",
+    "sourceStatus": "ARTICLE_GUIDE",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:6:answer:2:s4",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:25:prepared-to-draft-caption:2:s1",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:9:section-2:2:s5",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:s4",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
+    "evidenceRefs": [
+      "ev-hd-06",
+      "ev-hd-05",
+      "ev-hd-07",
+      "ev-hd-08",
+      "ev-hd-01",
+      "ev-hd-03",
+      "ev-hd-02",
+      "ev-hd-04",
+      "ev-hd-10",
+      "ev-hd-11",
+      "ev-hd-09"
+    ],
+    "capabilityIds": []
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "860f494aa8f2d2a367b2b1f3f8e4158fb30e0ee6deb6fb785f6e38ee1ac119d4"
+  },
+  "body": [
+    {
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "TextOS's API names three effects that need a human decision: approving a question panel, accepting an opportunity brief and creating a WordPress draft. Those effects stay under review, and no service account calling the API can switch them to automatic execution. When a person approves, TextOS records that person's identity on the decision and issues a one-hour permission to act. At run time that permission is checked against the action again, claimed, used for that action and then consumed."
+      }
+    },
+    {
+      "id": "lead:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Handing an AI agent the keys to a content API raises a plain worry: what keeps it from putting text nobody signed off into your website? In TextOS's API, the answer is a human gate that no machine account is allowed to turn into automatic execution. The rest of this note explains what the agent may do alone, what needs a person's sign-off, and how that sign-off is spent."
+      }
+    },
+    {
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Preparing is not doing"
+      }
+    },
+    {
+      "id": "section-1:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "On its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step. A fingerprint here is a short code computed from the content, which changes as soon as a single character changes. The website's login secrets are not part of that fingerprint and are not exposed by it.\n\nCreating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler."
+      }
+    },
+    {
+      "id": "figure:prepared-to-draft",
+      "kind": "figure",
+      "data": {
+        "src": "/diagrams/ctc/prepared-to-draft-c8b6aaf2f535.svg",
+        "alt": "From a prepared action to a WordPress draft. A 4-step flow: Agent prepares, then Person signs off, then Checked again at run time, then Used once, then spent. A dashed boundary after \"Agent prepares\" is labelled Human gate: No machine account can switch it to automatic execution.",
+        "caption": "In TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent."
+      }
+    },
+    {
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "An approval covers exact bytes, once"
+      }
+    },
+    {
+      "id": "section-2:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Suppose the draft is edited after you signed it off. TextOS then treats the approval as stale and makes it fail before any request reaches WordPress, and the same happens if the fact-check record or the destination has changed. An attempt that carries a fingerprint which does not match uses up nothing from the approval, since no action could run anyway.\n\nOne approval also backs one job only: two separate requests cannot queue two jobs under the same permission and leave a race to decide which one runs. When the job starts, TextOS works out the subject of the permission afresh, claims the permission, carries out the action and only then marks the permission as spent."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Whose name is on the decision"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Accountability follows the person, not the machine. When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.\n\nOne moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did. For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI writing vendor"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are.",
+          "Ask what happens to a sign-off when the draft is edited after it was given.",
+          "Ask whether one sign-off can be used twice, or by two jobs at once.",
+          "Ask whose name is recorded when a machine account carries out a job that a person signed off.",
+          "When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "Another note explains how long an agent's access key lasts, and how it can be cut off in one step. A second note covers why a draft that was produced is not yet a draft that was checked."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-hd-06",
+      "kind": "source",
+      "data": {
+        "ref": "ev-hd-06",
+        "title": "TextOS product commit 23d1ed3, 26 Sep 2026"
+      }
+    },
+    {
+      "id": "source:2:ev-hd-08",
+      "kind": "source",
+      "data": {
+        "ref": "ev-hd-08",
+        "title": "TextOS product commit 0222212, 26 Sep 2026"
+      }
+    },
+    {
+      "id": "source:3:ev-hd-01",
+      "kind": "source",
+      "data": {
+        "ref": "ev-hd-01",
+        "title": "TextOS product commit 722f177, 26 Sep 2026"
+      }
+    },
+    {
+      "id": "source:4:ev-hd-04",
+      "kind": "source",
+      "data": {
+        "ref": "ev-hd-04",
+        "title": "TextOS product commit 8610b7b, 26 Sep 2026"
+      }
+    },
+    {
+      "id": "source:5:ev-hd-10",
+      "kind": "source",
+      "data": {
+        "ref": "ev-hd-10",
+        "title": "TextOS product commit cda781a, 26 Sep 2026"
+      }
+    },
+    {
+      "id": "source:6:ev-hd-11",
+      "kind": "source",
+      "data": {
+        "ref": "ev-hd-11",
+        "title": "TextOS product commit 7e0b459, 26 Sep 2026"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "conversionAllowed": false
+  },
+  "lifecycle": {},
+  "seo": {
+    "indexingIntent": "noindex",
+    "targetQuery": "how to require human approval before an ai agent creates a cms draft",
+    "searchIntent": "buyer_decision"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "text": "Ask what exactly is recorded before an article goes live, and whether that record can still be edited afterwards. Ask whether the questions used after publication are the same set, in the same version, as the ones used before. Ask whether a change in how answers are read would be flagged as a break in the series rather than mixed into the trend. Ask who or what actually runs the follow-up measurement, and when it is planned. Ask how a report separates a change that was observed from a change that the article caused. Treat any claim that one article moved AI answers on its own with caution when other changes happened in the same period.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Ask what exactly is recorded before an article goes live, and whether that record can still be edited afterwards.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask whether the questions used after publication are the same set, in the same version, as the ones used before.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether a change in how answers are read would be flagged as a break in the series rather than mixed into the trend.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask who or what actually runs the follow-up measurement, and when it is planned.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask how a report separates a change that was observed from a change that the article caused.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Treat any claim that one article moved AI answers on its own with caution when other changes happened in the same period.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

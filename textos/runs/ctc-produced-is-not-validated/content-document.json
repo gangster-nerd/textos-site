@@ -1,0 +1,280 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-site:ctc:ctc-produced-is-not-validated",
+    "contentType": "product_article",
+    "slug": "an-article-that-was-produced-is-not-an-article-that-was-checked",
+    "language": "en-US",
+    "title": "TextOS no longer presents a produced article as a validated one",
+    "description": "In TextOS only an article that passes its fact-check and conforms may reach WordPress, and a pass is no longer read as proof of excellence."
+  },
+  "editorial": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "geo-writer",
+    "statusVocabularyVersion": "geo-writer@0.2",
+    "sourceStatus": "ARTICLE_GUIDE",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:4:lead:2:s4",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:6:answer:2:s4",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:9:section-1:2:s5",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:27:written-to-eligible-caption:2:s1",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:s4",
+      "stmt:9:section-4:2:s1",
+      "stmt:9:section-4:2:s2",
+      "stmt:9:section-4:2:s3",
+      "stmt:9:section-4:2:s4",
+      "stmt:9:section-4:2:s5",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
+    "evidenceRefs": [
+      "ev-pv-02",
+      "ev-pv-03",
+      "ev-pv-08",
+      "ev-pv-01",
+      "ev-pv-04",
+      "ev-pv-05",
+      "ev-pv-07",
+      "ev-pv-06",
+      "ev-pv-09",
+      "ev-pv-13",
+      "ev-pv-10",
+      "ev-pv-11",
+      "ev-pv-12"
+    ],
+    "capabilityIds": [
+      "grounded-truth-check"
+    ]
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "b796fd952f18258b7d56dff4e8fbb754390c871e6cf0530201998e67bf280b84"
+  },
+  "body": [
+    {
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "The fact-check verdict produced while writing is no longer rewritten into a pass. When TextOS raises a truth alert, a person can read and correct the article, but no WordPress draft can be prepared from it. A single rule decides whether a TextOS article may go to WordPress: the fact-check passes and the article conforms to the marketing review policy, and anything else stays closed. A label on the screen is therefore the end of a check, not just the end of a draft."
+      }
+    },
+    {
+      "id": "lead:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "A content dashboard that says an article is ready invites you to stop reading. That label is only worth something if it means the article was checked, and not simply that a model finished writing. TextOS no longer presents an article as validated just because it was technically produced. Here is what changed, and what a passing result still does not tell you."
+      }
+    },
+    {
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "The label on the screen tells the truth"
+      }
+    },
+    {
+      "id": "section-1:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "TextOS removed a 'validated' label that was hard-coded on the review page; the page now shows the verdict that was actually stored, and says 'not certified' when there is an alert. It is a small change on screen, and a large one for anyone who signs off on content. Nobody has to guess whether 'ready' means written or checked.\n\nTextOS decides the strategy of each article, and the writer carries it out. That division helps when something goes wrong: the plan can be inspected separately from the prose that followed it."
+      }
+    },
+    {
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "One rule for what may reach your website"
+      }
+    },
+    {
+      "id": "section-2:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick."
+      }
+    },
+    {
+      "id": "figure:written-to-eligible",
+      "kind": "figure",
+      "data": {
+        "src": "/diagrams/ctc/written-to-eligible-21cb10614a4b.svg",
+        "alt": "From written to eligible for WordPress. A 4-step flow: Article written, then Fact-check verdict kept, then Quality check passed, then Eligible for WordPress. A dashed boundary after \"Quality check passed\" is labelled Single rule: Both checks pass, or the article stays out.",
+        "caption": "In TextOS an article becomes eligible for WordPress only when its own fact-check verdict, kept as written, passes and the article conforms; an article that was not evaluated is blocked."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What a pass does not prove"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "In TextOS, a pass is no longer read as proof of excellence; human review judges the substance, guided by the findings and reference points. The quality check states its own scope and lists what it does not measure: usefulness, argument, originality, source authority and search performance. Those are exactly the questions a marketing lead cares about, which is why a person still reads the article.\n\nWhen no writer is free, the screen now says that writing is in progress and when to try again, instead of showing a failure."
+      }
+    },
+    {
+      "id": "section-4:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Checking that nothing was lost on the way"
+      }
+    },
+    {
+      "id": "section-4:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "TextOS looks for missing records of each step, masked truth alerts and drift in the content before it claims that an article's journey was continuous. A consistent record is not editorial excellence, an effect on search, or permission to publish. Those are three different questions, and a single green tick answers none of them.\n\nIt also detects a required claim, a piece of buyer context or a governed fact that was lost before writing, even when each record looks consistent. Optional material is not forced into the article."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI writing vendor"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "Ask whether status labels are computed from stored results or written into the interface.",
+          "Ask whether the rule that lets content reach your website is written in one place or spread across screens.",
+          "Ask what an article that was not checked looks like on screen, and whether it can still be sent to your website.",
+          "Treat any score that claims to judge originality or search impact automatically with caution, and ask what it actually looked at.",
+          "When you brief an AI writer, ask how you would find out if one of your instructions did not reach it."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "The previous note explains who may say yes to a source before an article can rely on it. Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-pv-02",
+      "kind": "source",
+      "data": {
+        "ref": "ev-pv-02",
+        "title": "TextOS product commit 16faee4, 25 Oct 2026"
+      }
+    },
+    {
+      "id": "source:2:ev-pv-08",
+      "kind": "source",
+      "data": {
+        "ref": "ev-pv-08",
+        "title": "TextOS product commit 8463e78, 25 Oct 2026"
+      }
+    },
+    {
+      "id": "source:3:ev-pv-05",
+      "kind": "source",
+      "data": {
+        "ref": "ev-pv-05",
+        "title": "TextOS product commit 01b0bab, 25 Oct 2026"
+      }
+    },
+    {
+      "id": "source:4:ev-pv-13",
+      "kind": "source",
+      "data": {
+        "ref": "ev-pv-13",
+        "title": "TextOS product commit 683e90a, 26 Oct 2026"
+      }
+    },
+    {
+      "id": "source:5:ev-pv-10",
+      "kind": "source",
+      "data": {
+        "ref": "ev-pv-10",
+        "title": "TextOS product commit 3e6277d, 26 Oct 2026"
+      }
+    },
+    {
+      "id": "source:6:ev-pv-11",
+      "kind": "source",
+      "data": {
+        "ref": "ev-pv-11",
+        "title": "TextOS product commit 38568f2, 26 Oct 2026"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "conversionAllowed": false
+  },
+  "lifecycle": {},
+  "seo": {
+    "indexingIntent": "noindex",
+    "targetQuery": "how to know if an ai written article was checked before it is published",
+    "searchIntent": "buyer_decision"
+  }
+}

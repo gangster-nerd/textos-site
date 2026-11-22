@@ -1,0 +1,325 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days. A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends. These limits are enforced by the TextOS service itself, not only by its command-line tool."
+        },
+        "id": "answer-1",
+        "kind": "answer",
+        "slot": "short-answer"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": "short-answer",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "An access key handed to an outside agent tends to outlive the job it was created for. TextOS treated that permanent key as a gap to close before its first customer trial of the API. It also closed the operational control gap that a first customer would face."
+        },
+        "id": "lead:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Replacing a key without a gap"
+        },
+        "id": "section-1:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.\n\nA single key can also be revoked explicitly in TextOS. When a key is issued or replaced, the output shows its exact end date next to the key that is displayed only that one time."
+        },
+        "id": "section-1:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "alt": "Access that ends, and switches that stop it. 4 distinct states: 30 days by default (90 days at most; 60 minutes left when issued.); Replaced in one step (Old key revoked; the new one shown once.); Three switches (API off, writes frozen, one capability denied.); The backlog stops too (Queued jobs are authorized again first.).",
+          "caption": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.",
+          "src": "/diagrams/ctc/access-that-ends-17b913ea98d9.svg"
+        },
+        "id": "figure:access-that-ends",
+        "kind": "figure"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Three switches for a bad day"
+        },
+        "id": "section-2:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 5,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "TextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability. A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.\n\nThe switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run."
+        },
+        "id": "section-2:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 6,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What older keys keep doing"
+        },
+        "id": "section-3:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 7,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nIn TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests."
+        },
+        "id": "section-3:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 8,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "When the queue fills up or an account changes"
+        },
+        "id": "section-4:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 9,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "In TextOS, a queued job passes a second admission check before it starts running. When the running limits are reached, the job stays in the queue and is marked as deferred. A backlog of queued work in TextOS cannot burst past those limits.\n\nAt the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace. An account removed after its work was queued therefore cannot start that work in TextOS. Access is judged when the work runs, not only when it was submitted."
+        },
+        "id": "section-4:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 10,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What to ask any AI writing vendor"
+        },
+        "id": "verify:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 11,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "items": [
+            "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
+            "Ask whether switching the API off also stops jobs that are already queued.",
+            "Ask whether a replacement key can be displayed a second time, and where it is kept.",
+            "Ask whether emergency steps can be taken without editing the database by hand.",
+            "Ask whether a job that waited in a queue is checked again before it runs."
+          ]
+        },
+        "id": "verify:decision-points",
+        "kind": "steps"
+      },
+      "hiddenReason": null,
+      "order": 12,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Where to go next"
+        },
+        "id": "editorial-next-step:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 13,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure."
+        },
+        "id": "editorial-next-step:body",
+        "kind": "paragraph",
+        "slot": "editorial-next-step"
+      },
+      "hiddenReason": null,
+      "order": 14,
+      "region": "editorial-next-step",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Sources"
+        },
+        "id": "sources:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 15,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cr-08",
+          "title": "TextOS product commit c9ccfe9, 26 Sep 2026"
+        },
+        "id": "source:1:ev-cr-08",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 16,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cr-03",
+          "title": "TextOS product commit 6fe385e, 26 Sep 2026"
+        },
+        "id": "source:2:ev-cr-03",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 17,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cr-12",
+          "title": "TextOS product commit 17523af, 26 Sep 2026"
+        },
+        "id": "source:3:ev-cr-12",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 18,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-credentials-expire-and-stop::api-credentials-that-expire-and-a-switch-to-stop-them::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:figure:access-that-ends:v|5:section-2:heading:v|6:section-2:body:v|7:section-3:heading:v|8:section-3:body:v|9:section-4:heading:v|10:section-4:body:v|11:verify:heading:v|12:verify:decision-points:v|13:editorial-next-step:heading:v|14:editorial-next-step:body:v|15:sources:heading:v|16:source:1:ev-cr-08:v|17:source:2:ev-cr-03:v|18:source:3:ev-cr-12:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "product_article",
+  "conversion": {
+    "ctaIntentId": null,
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.",
+  "documentId": "textos-site:ctc:ctc-credentials-expire-and-stop",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": "article-review",
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "Article"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": false,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-article-review@0.1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 3,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "api-credentials-that-expire-and-a-switch-to-stop-them",
+  "surface": "reference",
+  "title": "Every new TextOS API credential now expires, after 30 days by default",
+  "truth": {
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "answer",
+    "paragraph",
+    "heading",
+    "figure",
+    "steps",
+    "source"
+  ]
+}

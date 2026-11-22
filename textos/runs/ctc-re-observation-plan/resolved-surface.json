@@ -1,0 +1,397 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "TextOS questions AI answer engines with sets of questions that carry a version number. Before an article is published, at the moment it is previewed, TextOS freezes four things: the observation that serves as the starting point, the version of the question set, the version of the measurement method, and the target questions being followed. That is the before picture, fixed while nothing has changed yet. TextOS fills in the change only after a real period has passed since publication, and it describes that change rather than computing an effect."
+        },
+        "id": "answer-1",
+        "kind": "answer",
+        "slot": "short-answer"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": "short-answer",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A few months after an article goes live, someone will ask whether it changed what AI assistants say about your subject. If nobody wrote down beforehand what would be compared, and how, any answer to that question is a story told after the fact. TextOS keeps its plan for looking again as a record of its own, whose life continues after publication, rather than as a passing note inside the preview. This note explains what that plan fixes, what it does not do yet, and where its claims stop."
+        },
+        "id": "lead:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Comparing like with like"
+        },
+        "id": "section-1:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Answer engines change the way they cite sources, and the tools that read those citations get corrected, so in TextOS a series of observations can only be compared when the measurement method stays the same or carries an explicit version. Otherwise, a shift in the numbers may only mean that the ruler moved. In TextOS, the set of questions is treated as a measuring instrument: it defines what is observed, it can be explained and audited, it carries a version, and it cannot be changed once validated.\n\nAn automated test checks that the TextOS re-observation plan keeps both the version of the question set and the version of the measurement method. The preview record and the re-observation plan in TextOS point to the same draft and the same content fingerprints. That way, the article being followed is the one that was previewed, not a later variant of it."
+        },
+        "id": "section-1:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What the plan does not do yet"
+        },
+        "id": "section-2:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "When TextOS creates a re-observation plan, it writes only the initial state: awaiting publication, not measurable yet, with no publication record, no publication date and no planned window. Publishing or updating an article does not yet move that plan forward in TextOS, and wiring the two together was explicitly left out of scope. In plain terms, the second look is planned, not triggered.\n\nIn the version of TextOS described here, no scheduler runs re-observations, so the article card is not allowed to call a new measurement scheduled and shows the planned window as a recommendation instead. The end-to-end report TextOS produces labels the re-observation plan as planned and not yet measurable. If a dashboard shows you a scheduled follow-up measurement, it is fair to ask what will actually run it."
+        },
+        "id": "section-2:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 5,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "alt": "The life of a re-observation plan. A 4-step flow: Starting point frozen, then Not measurable yet, then Window open, then Change described. A dashed boundary after \"Not measurable yet\" is labelled Not wired yet: Publishing does not yet move the plan forward.",
+          "caption": "A TextOS re-observation plan can be not measurable yet, have a window open after publication, or hold a descriptive change that is not causal; today only the initial, not-measurable state is written.",
+          "src": "/diagrams/ctc/second-look-5d2e4fcd91e1.svg"
+        },
+        "id": "figure:second-look",
+        "kind": "figure"
+      },
+      "hiddenReason": null,
+      "order": 6,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A change observed is not a change caused"
+        },
+        "id": "section-3:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 7,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "TextOS does not present an update to an article as the reason a variation happened; the change stays descriptive. Its rules exclude any causal claim and any attribution, because an answer engine changes for a thousand reasons. The article is only one of the things that may have moved in the meantime.\n\nWhen several actions touch the same question within the same re-observation window, TextOS attributes no effect to any one of them. The furthest state a TextOS plan can reach is a measured change that is descriptive and explicitly not causal. What you get is an observed evolution, compared on the same terms, with its uncertainty stated, and not a verdict on the article's success."
+        },
+        "id": "section-3:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 8,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What to ask any AI content vendor"
+        },
+        "id": "verify:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 9,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "items": [
+            "Ask what exactly is recorded before an article goes live, and whether that record can still be edited afterwards.",
+            "Ask whether the questions used after publication are the same set, in the same version, as the ones used before.",
+            "Ask whether a change in how answers are read would be flagged as a break in the series rather than mixed into the trend.",
+            "Ask who or what actually runs the follow-up measurement, and when it is planned.",
+            "Ask how a report separates a change that was observed from a change that the article caused.",
+            "Treat any claim that one article moved AI answers on its own with caution when other changes happened in the same period."
+          ]
+        },
+        "id": "verify:decision-points",
+        "kind": "steps"
+      },
+      "hiddenReason": null,
+      "order": 10,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Where to go next"
+        },
+        "id": "editorial-next-step:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 11,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A related note on graduated publication explains how publishing is opened up step by step, and why any effect is traced as a descriptive change. Another explains why the work starts by observing answer engines rather than by optimising a score. A third shows why an article that was produced is not an article that was checked."
+        },
+        "id": "editorial-next-step:body",
+        "kind": "paragraph",
+        "slot": "editorial-next-step"
+      },
+      "hiddenReason": null,
+      "order": 12,
+      "region": "editorial-next-step",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Sources"
+        },
+        "id": "sources:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 13,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-02",
+          "title": "TextOS product commit 7ac42fb, 7 Aug 2026"
+        },
+        "id": "source:1:ev-ro-02",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 14,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-17",
+          "title": "TextOS product manifest, re-observation-plan.knownLimits"
+        },
+        "id": "source:2:ev-ro-17",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 15,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-12",
+          "title": "TextOS product repository file docs/adr/ADR-001-observatory-architecture.md at 2faf90e"
+        },
+        "id": "source:3:ev-ro-12",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 16,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-13",
+          "title": "TextOS product repository file docs/adr/ADR-005-query-panel-strategy.md at 2faf90e"
+        },
+        "id": "source:4:ev-ro-13",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 17,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-10",
+          "title": "TextOS product repository file src/server/textos/query-intelligence/demand/demand-authority-boundary.test.ts at 2faf90e"
+        },
+        "id": "source:5:ev-ro-10",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 18,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-09",
+          "title": "TextOS product repository file src/server/textos/act/reporting/authority-intervention-report.ts at 2faf90e"
+        },
+        "id": "source:6:ev-ro-09",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 19,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-07",
+          "title": "TextOS product repository file docs/adr/ADR-024-intervention-contract-promotion.md at 2faf90e"
+        },
+        "id": "source:7:ev-ro-07",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 20,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-06",
+          "title": "TextOS product commit a9b4c63, 1 Oct 2026"
+        },
+        "id": "source:8:ev-ro-06",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 21,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-04",
+          "title": "TextOS product repository file src/server/textos/db/schema/enums.ts at 2faf90e"
+        },
+        "id": "source:9:ev-ro-04",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 22,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-ro-16",
+          "title": "TextOS product repository file docs/adr/ADR-016-graduated-publication.md at 2faf90e"
+        },
+        "id": "source:10:ev-ro-16",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 23,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-re-observation-plan::plan-the-second-look-before-the-article-goes-live::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:section-2:heading:v|5:section-2:body:v|6:figure:second-look:v|7:section-3:heading:v|8:section-3:body:v|9:verify:heading:v|10:verify:decision-points:v|11:editorial-next-step:heading:v|12:editorial-next-step:body:v|13:sources:heading:v|14:source:1:ev-ro-02:v|15:source:2:ev-ro-17:v|16:source:3:ev-ro-12:v|17:source:4:ev-ro-13:v|18:source:5:ev-ro-10:v|19:source:6:ev-ro-09:v|20:source:7:ev-ro-07:v|21:source:8:ev-ro-06:v|22:source:9:ev-ro-04:v|23:source:10:ev-ro-16:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "product_article",
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "TextOS freezes a starting point and a plan to measure again, and that plan demonstrates no effect on its own.",
+  "documentId": "textos-site:ctc:ctc-re-observation-plan",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": "article-review",
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "Article"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": false,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-article-review@0.1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 4,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "plan-the-second-look-before-the-article-goes-live",
+  "surface": "reference",
+  "title": "TextOS freezes its starting point before an article goes live",
+  "truth": {
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "answer",
+    "paragraph",
+    "heading",
+    "figure",
+    "steps",
+    "source"
+  ]
+}

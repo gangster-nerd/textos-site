@@ -1,0 +1,109 @@
+{
+  "text": "The preview step in TextOS no longer picks whichever draft is the latest one. Picking the latest draft is a quiet risk: if another version is saved in between, the page you sign off on may not be the one that was checked. Instead, the preview loads the draft by the identifier written in the handover record and recomputes its fingerprints, with no fallback to the latest version. The comparison stops at the first fingerprint that differs, with no tolerance.\n\nThe fingerprint of the content is computed with its fields in a fixed order, so the same draft gives the same fingerprint after it has been stored and read back. A draft written outside TextOS and imported by hand is rejected if it does not match the brief, the set of evidence or the instructions it was meant for. A mismatch is treated as a reason to stop, not as a detail to smooth over.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The preview step in TextOS no longer picks whichever draft is the latest one.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Picking the latest draft is a quiet risk: if another version is saved in between, the page you sign off on may not be the one that was checked.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Instead, the preview loads the draft by the identifier written in the handover record and recomputes its fingerprints, with no fallback to the latest version.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The comparison stops at the first fingerprint that differs, with no tolerance.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The fingerprint of the content is computed with its fields in a fixed order, so the same draft gives the same fingerprint after it has been stored and read back.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "A draft written outside TextOS and imported by hand is rejected if it does not match the brief, the set of evidence or the instructions it was meant for.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-19"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "A mismatch is treated as a reason to stop, not as a detail to smooth over.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

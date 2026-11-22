@@ -1,0 +1,854 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "structured-draft-2026-08-05",
+        "sourceCommits": [
+          "a944097c401d066154719c2a09c882a9cc970e54"
+        ]
+      },
+      {
+        "groupId": "structured-generation-pipeline-2026-08-05",
+        "sourceCommits": [
+          "1a32727659c37d6991218e7ff2251691a5bc293a"
+        ]
+      }
+    ],
+    "buyerQuestion": "When an AI tool drafts an article from our material, how is the draft actually put together, and can we see what each sentence rests on?",
+    "targetQuery": "how an ai writer builds an article draft section by section from evidence",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "structured-drafting",
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-structured-generation",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-sg-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1a32727, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:31:00+02:00",
+      "contentHash": "eb59187ea40136bb2cebde434ec3832d78b0bf62fa0b0b9daf6ff94ed5e49acf",
+      "excerpt": "brief accepté requis → corpus approuvé persisté → génération → groundedTruthCheck (profil du run)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1a32727, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:31:00+02:00",
+      "contentHash": "fa9c819490e3d4ccb60a6813898ec8effbb9b839935130812cda93efcbea26f0",
+      "excerpt": "gate SEUL pass→truthchecked, alert/block→blocked (draft CONSERVÉ pour audit).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1a32727, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:31:00+02:00",
+      "contentHash": "0751c238f14003802eeef331ad084415b7ebc0d081fb8ffdd79ce8072371af0f",
+      "excerpt": "L'orchestrateur, pas le LLM, fixe evidenceBundleId / generationMethodVersion / generationInputHash.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 1a32727, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:31:00+02:00",
+      "contentHash": "dd4b55c1409ed368c15168a43638696ea85b318d7462019f259d1423364734e4",
+      "excerpt": "transform STRICT : schéma exact, propriétés inconnues refusées, ids de ledger uniques, chaque evidenceId présent dans le corpus, JSON malformé/incomplet rejeté ; aucun retry réseau",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit a944097, 5 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-05T12:09:55+02:00",
+      "contentHash": "4d69f8b1a02c0611578bf9a0da008d753c6ec97baa0a54e72220ebe16729c2ea",
+      "excerpt": "assessStatementStrength DÉTERMINISTE (le TruthCheck est l'autorité, pas le LLM).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/structured-content-draft.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "7b4cd95eb9b423f686051fcdf1f06d15ebe16b5386a56e70dac98e8e134b2085",
+      "excerpt": "Unités VÉRIFIABLES du document : title, meta description, chaque phrase du body, chaque réponse FAQ.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/structured-content-draft.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "157144b913c11cdd1b249d467f465f130f6d9737f39d64d4e3379ceabaca90af",
+      "excerpt": "Chacune doit être couverte par une entrée du statement ledger (sinon BLOCK — fait non déclaré).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/structured-generation.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "d18ed0dbe0094f62c42d1a956ff8416907492d286772a69222a5e277d715578a",
+      "excerpt": "methodVersion reflétant le transport (jamais un identifiant live sans vraie invocation).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "94e403562a675958e36dccc28147e79f2e9ba7d576c3f4e3e5554e8c236135bf",
+      "excerpt": "La génération s'exécute PAR SLOT DÉCLARÉ.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written.",
+        "Describes the part-by-part writer whose output is projected into the structured draft."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/geo-writer/writer.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "acbdc892af29213b616a60bd1730894dc2fff276ca20f79411d745526e8876c9",
+      "excerpt": "dans l'ordre du plan, et le corps assemblé est EXACTEMENT la concaténation des textes de slots.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "70898719516b7addfad38a78e27b40034d7903b8df573d76b9ce9ff363906ac8",
+      "excerpt": "FRONTIÈRE DE PREUVE DURE du slot : aucune autre preuve n'est mobilisable ici.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "14a85f89ba10d160480effa4e316ef7b312177afc13f4031484eaad5b4cb90ee",
+      "excerpt": "true = slot FACTUEL : sans preuve utilisable, on refuse le slot au lieu de le remplir.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "1ccb2176b07dd33b938afe8e634ec198e04d160b28e53a3ccc05854c70abcc90",
+      "excerpt": "Libellé de titre IMPOSÉ (ou question, pour un slot `answer`).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-14",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/geo-writer/execution-plan.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "26701aec4b1f16aaa42e00f8ba69920ad22f229fb870e88007e1ed3145162f39",
+      "excerpt": "Objectif d'écriture EXPLICITE, en clair — ce que ce slot doit accomplir.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-sg-15",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product manifest, structured-generation.knownLimits",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "c372ea1a7fbf91151454d64404a8a536add70b35df581ef9b56db33628f0d68d",
+      "excerpt": "Produit un brouillon structuré adossé à des preuves ; il n'est jamais publié par cette couche.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-structured-generation"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that an article draft is written one declared part at a time.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-sg-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS writes a draft part by part, and the structured, evidence-backed draft is never published by that step.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-sg-09",
+        "ev-sg-15"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation — an AI tool hands back a finished-looking article and nobody can say which sentence rests on what — and say that in TextOS drafting starts only from an accepted brief and a stored, approved set of evidence.",
+      "buyerIntent": "Where does an AI draft come from?",
+      "allowedEvidenceIds": [
+        "ev-sg-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How is a governed AI draft put together?",
+      "writingObjective": "Answer directly: the sequence is accepted brief, approved evidence, drafting, then a fact check; drafting runs one declared part at a time; only a passing check moves the draft forward, and a blocked draft is kept for audit rather than discarded.",
+      "buyerIntent": "What happens between my brief and the draft?",
+      "allowedEvidenceIds": [
+        "ev-sg-01",
+        "ev-sg-09",
+        "ev-sg-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The outline is decided before a word is written",
+      "writingObjective": "Explain that each part's heading is imposed on the writer (or, for the direct answer, its question), that each part carries an explicit writing objective in plain words, and that the parts are written in the plan's order with the article body being exactly the parts put end to end. Say what that changes for a reader checking the draft.",
+      "buyerIntent": "Who decides the structure of the article?",
+      "allowedEvidenceIds": [
+        "ev-sg-13",
+        "ev-sg-14",
+        "ev-sg-10"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "assembled-draft-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one or two factual sentences, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-sg-09",
+        "ev-sg-11",
+        "ev-sg-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Each part may only use the evidence assigned to it",
+      "writingObjective": "Explain the per-part evidence boundary (no other evidence may be used in that part), that a factual part with no usable evidence is refused rather than filled, and that the writer's answer is read strictly: exact format, unknown fields refused, every cited evidence reference must exist in the supplied set, malformed answers rejected, no network retry to repair them.",
+      "buyerIntent": "What stops the writer from filling gaps with invented material?",
+      "allowedEvidenceIds": [
+        "ev-sg-11",
+        "ev-sg-12",
+        "ev-sg-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Every sentence is declared, and its strength is measured",
+      "writingObjective": "Explain the verifiable units of a draft (title, search description, each sentence of the body, each FAQ answer), that each must be covered by a declared statement or the draft is blocked as carrying an undeclared fact, and that how strong a sentence is (descriptive, causal, quantified) is assessed by a deterministic rule, with the fact check as the authority rather than the writing model.",
+      "buyerIntent": "Can I see what each sentence rests on?",
+      "allowedEvidenceIds": [
+        "ev-sg-06",
+        "ev-sg-07",
+        "ev-sg-05"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What the draft records about itself, and what it does not do",
+      "writingObjective": "Explain that the system, not the writing model, records the draft's provenance (which evidence set, which generation method, a fingerprint of the input); that the recorded method reflects how the text was actually produced and never claims a live model run that did not happen; and the stated limit: the result is a structured, evidence-backed draft that this step never publishes.",
+      "buyerIntent": "What does the draft prove, and what does it not?",
+      "allowedEvidenceIds": [
+        "ev-sg-03",
+        "ev-sg-08",
+        "ev-sg-15"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes: who approves the evidence an article may use, and how a written article is told apart from a checked one. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "text": "If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are. Ask what happens to a sign-off when the draft is edited after it was given. Ask whether one sign-off can be used twice, or by two jobs at once. Ask whose name is recorded when a machine account carries out a job that a person signed off. When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask what happens to a sign-off when the draft is edited after it was given.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether one sign-off can be used twice, or by two jobs at once.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask whose name is recorded when a machine account carries out a job that a person signed off.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

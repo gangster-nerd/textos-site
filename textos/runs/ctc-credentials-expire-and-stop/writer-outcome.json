@@ -1,0 +1,850 @@
+{
+  "status": "written",
+  "result": {
+    "planId": "how to make ai agent api credentials expire and stop them in an emergency",
+    "planHash": "974cf757c1e021b9016ace37bc1a469c90ef11d1847791fafe53d1e44733ff41",
+    "slots": [
+      {
+        "slotId": "title",
+        "role": "title",
+        "headingLevel": null,
+        "heading": null,
+        "text": "Every new TextOS API credential now expires, after 30 days by default",
+        "statementIds": [
+          "stmt:5:title:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-08",
+          "ev-cr-09"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-08",
+          "ev-cr-09"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "meta",
+        "role": "meta_description",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.",
+        "statementIds": [
+          "stmt:4:meta:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-09",
+          "ev-cr-03",
+          "ev-cr-05",
+          "ev-cr-14"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-09",
+          "ev-cr-03",
+          "ev-cr-05",
+          "ev-cr-14"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "lead",
+        "role": "lead",
+        "headingLevel": null,
+        "heading": null,
+        "text": "An access key handed to an outside agent tends to outlive the job it was created for. TextOS treated that permanent key as a gap to close before its first customer trial of the API. It also closed the operational control gap that a first customer would face.",
+        "statementIds": [
+          "stmt:4:lead:2:s1",
+          "stmt:4:lead:2:s2",
+          "stmt:4:lead:2:s3"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-08",
+          "ev-cr-01"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-01",
+          "ev-cr-08"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "answer",
+        "role": "answer",
+        "headingLevel": 2,
+        "heading": "How long does an agent's API access last?",
+        "text": "Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days. A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends. These limits are enforced by the TextOS service itself, not only by its command-line tool.",
+        "statementIds": [
+          "stmt:6:answer:2:s1",
+          "stmt:6:answer:2:s2",
+          "stmt:6:answer:2:s3"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-09",
+          "ev-cr-10"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-09",
+          "ev-cr-10"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-1",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Replacing a key without a gap",
+        "text": "Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.\n\nA single key can also be revoked explicitly in TextOS. When a key is issued or replaced, the output shows its exact end date next to the key that is displayed only that one time.",
+        "statementIds": [
+          "stmt:9:section-1:2:s1",
+          "stmt:9:section-1:2:s2",
+          "stmt:9:section-1:2:s3",
+          "stmt:9:section-1:2:s4",
+          "stmt:9:section-1:2:x1",
+          "stmt:9:section-1:2:x2"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-02",
+          "ev-cr-04",
+          "ev-cr-03",
+          "ev-cr-07",
+          "ev-cr-19",
+          "ev-cr-20"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-02",
+          "ev-cr-03",
+          "ev-cr-04",
+          "ev-cr-07",
+          "ev-cr-19",
+          "ev-cr-20"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "access-that-ends-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.",
+        "statementIds": [
+          "stmt:24:access-that-ends-caption:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-09",
+          "ev-cr-02",
+          "ev-cr-03"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-09",
+          "ev-cr-02",
+          "ev-cr-03"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-2",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Three switches for a bad day",
+        "text": "TextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability. A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.\n\nThe switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run.",
+        "statementIds": [
+          "stmt:9:section-2:2:s1",
+          "stmt:9:section-2:2:s2",
+          "stmt:9:section-2:2:s3",
+          "stmt:9:section-2:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-05",
+          "ev-cr-14",
+          "ev-cr-15",
+          "ev-cr-06",
+          "ev-cr-12",
+          "ev-cr-13"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-05",
+          "ev-cr-14",
+          "ev-cr-15",
+          "ev-cr-06",
+          "ev-cr-12",
+          "ev-cr-13"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-3",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What older keys keep doing",
+        "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nIn TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests.",
+        "statementIds": [
+          "stmt:9:section-3:2:s1",
+          "stmt:9:section-3:2:s2",
+          "stmt:9:section-3:2:x1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-11",
+          "ev-cr-21"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-11",
+          "ev-cr-21"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-4",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "When the queue fills up or an account changes",
+        "text": "In TextOS, a queued job passes a second admission check before it starts running. When the running limits are reached, the job stays in the queue and is marked as deferred. A backlog of queued work in TextOS cannot burst past those limits.\n\nAt the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace. An account removed after its work was queued therefore cannot start that work in TextOS. Access is judged when the work runs, not only when it was submitted.",
+        "statementIds": [
+          "stmt:9:section-4:3:s11",
+          "stmt:9:section-4:3:s12",
+          "stmt:9:section-4:3:s13",
+          "stmt:9:section-4:3:s21",
+          "stmt:9:section-4:3:s22",
+          "stmt:9:section-4:3:s23"
+        ],
+        "evidenceIdsUsed": [
+          "ev-cr-16",
+          "ev-cr-17",
+          "ev-cr-22",
+          "ev-cr-18"
+        ],
+        "usableEvidenceIds": [
+          "ev-cr-16",
+          "ev-cr-17",
+          "ev-cr-18",
+          "ev-cr-22"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI writing vendor",
+        "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand. Ask whether a job that waited in a queue is checked again before it runs.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4",
+          "stmt:6:verify:2:s5"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      }
+    ],
+    "document": {
+      "title": "Every new TextOS API credential now expires, after 30 days by default",
+      "slug": "every-new-textos-api-credential-now-expires-after-30-days-by-default",
+      "metaDescription": "TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.",
+      "body": "An access key handed to an outside agent tends to outlive the job it was created for. TextOS treated that permanent key as a gap to close before its first customer trial of the API. It also closed the operational control gap that a first customer would face.\n\nReplacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.\n\nA single key can also be revoked explicitly in TextOS. When a key is issued or replaced, the output shows its exact end date next to the key that is displayed only that one time.\n\nIn TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.\n\nTextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability. A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.\n\nThe switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run.\n\nKeys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nIn TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests.\n\nIn TextOS, a queued job passes a second admission check before it starts running. When the running limits are reached, the job stays in the queue and is marked as deferred. A backlog of queued work in TextOS cannot burst past those limits.\n\nAt the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace. An account removed after its work was queued therefore cannot start that work in TextOS. Access is judged when the work runs, not only when it was submitted.\n\nWhen you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand. Ask whether a job that waited in a queue is checked again before it runs.\n\nAnother note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure.",
+      "faq": [
+        {
+          "question": "How long does an agent's API access last?",
+          "answer": "Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days. A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends. These limits are enforced by the TextOS service itself, not only by its command-line tool."
+        }
+      ],
+      "statementLedger": [
+        {
+          "id": "stmt:5:title:2:s1",
+          "text": "Every new TextOS API credential now expires, after 30 days by default",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-08",
+            "ev-cr-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:meta:2:s1",
+          "text": "TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-09",
+            "ev-cr-03",
+            "ev-cr-05",
+            "ev-cr-14"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s1",
+          "text": "An access key handed to an outside agent tends to outlive the job it was created for.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s2",
+          "text": "TextOS treated that permanent key as a gap to close before its first customer trial of the API.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s3",
+          "text": "It also closed the operational control gap that a first customer would face.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s1",
+          "text": "Every new TextOS credential gets a lifetime of 30 days by default, and no more than 90 days.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s2",
+          "text": "A credential has to have at least 60 minutes left when it is issued, and a missing end date falls back to the 30-day default instead of creating a key that never ends.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s3",
+          "text": "These limits are enforced by the TextOS service itself, not only by its command-line tool.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s1",
+          "text": "Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s2",
+          "text": "The new key is shown once and is not stored in readable form.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-04"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s3",
+          "text": "Revoking an account in TextOS also revokes every active credential it holds.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s4",
+          "text": "Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-07"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:x1",
+          "text": "A single key can also be revoked explicitly in TextOS.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-19"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:x2",
+          "text": "When a key is issued or replaced, the output shows its exact end date next to the key that is displayed only that one time.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-20"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:24:access-that-ends-caption:2:s1",
+          "text": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-09",
+            "ev-cr-02",
+            "ev-cr-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s1",
+          "text": "TextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-cr-05",
+            "ev-cr-14",
+            "ev-cr-15"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s2",
+          "text": "A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-cr-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s3",
+          "text": "The switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-cr-12"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s4",
+          "text": "Queued work is authorized again before it takes a place to run.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-cr-13"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s1",
+          "text": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-11"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s2",
+          "text": "That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:x1",
+          "text": "In TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-21"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s11",
+          "text": "In TextOS, a queued job passes a second admission check before it starts running.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-cr-16"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s12",
+          "text": "When the running limits are reached, the job stays in the queue and is marked as deferred.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-cr-17"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s13",
+          "text": "A backlog of queued work in TextOS cannot burst past those limits.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-cr-22"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s21",
+          "text": "At the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle",
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-cr-18"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s22",
+          "text": "An account removed after its work was queued therefore cannot start that work in TextOS.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "credential_lifecycle"
+          ],
+          "evidenceIds": [
+            "ev-cr-18"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:3:s23",
+          "text": "Access is judged when the work runs, not only when it was submitted.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s1",
+          "text": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask whether switching the API off also stops jobs that are already queued.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask whether a replacement key can be displayed a second time, and where it is kept.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "Ask whether emergency steps can be taken without editing the database by hand.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s5",
+          "text": "Ask whether a job that waited in a queue is checked again before it runs.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "Another note explains what stops an agent from putting a draft nobody signed off into your website.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "A second note follows an article through a writing-model failure.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        }
+      ],
+      "claimsExcluded": [],
+      "sections": [
+        {
+          "key": "lead",
+          "heading": "",
+          "body": "An access key handed to an outside agent tends to outlive the job it was created for. TextOS treated that permanent key as a gap to close before its first customer trial of the API. It also closed the operational control gap that a first customer would face."
+        },
+        {
+          "key": "section-1",
+          "heading": "Replacing a key without a gap",
+          "body": "Replacing a key is a single step in TextOS: the old credential is revoked and its replacement recorded in one database transaction. The new key is shown once and is not stored in readable form.\n\nRevoking an account in TextOS also revokes every active credential it holds. Emergency actions go through a dedicated command-line tool, so nobody has to edit the database by hand under pressure.\n\nA single key can also be revoked explicitly in TextOS. When a key is issued or replaced, the output shows its exact end date next to the key that is displayed only that one time."
+        },
+        {
+          "key": "access-that-ends-caption",
+          "heading": "",
+          "body": "In TextOS a new key lives 30 days by default and 90 days at most, can be replaced in one step, and stops working when its account is revoked."
+        },
+        {
+          "key": "section-2",
+          "heading": "Three switches for a bad day",
+          "body": "TextOS has three switches for a bad day: one turns the whole API off, one freezes writes while keeping reads and diagnostics, and one denies a single named capability. A caller that reaches a switched-off path gets a clear answer to try again later rather than an ambiguous internal error.\n\nThe switches also apply inside the workers that run queued jobs, so turning the API off stops the backlog and not only new requests. Queued work is authorized again before it takes a place to run."
+        },
+        {
+          "key": "section-3",
+          "heading": "What older keys keep doing",
+          "body": "Keys issued in TextOS before lifetimes existed keep working until someone deliberately rotates them, which avoids an unannounced outage. That is a trade-off: an older key stays valid longer, but nobody's integration breaks without warning.\n\nIn TextOS, the default lifetime, its bounds and the handling of a missing end date are covered by documentation and tests."
+        },
+        {
+          "key": "section-4",
+          "heading": "When the queue fills up or an account changes",
+          "body": "In TextOS, a queued job passes a second admission check before it starts running. When the running limits are reached, the job stays in the queue and is marked as deferred. A backlog of queued work in TextOS cannot burst past those limits.\n\nAt the moment a job starts, TextOS also checks that the account behind it is still active, still belongs to the expected organization and is still bound to the workspace. An account removed after its work was queued therefore cannot start that work in TextOS. Access is judged when the work runs, not only when it was submitted."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI writing vendor",
+          "body": "When you assess a vendor's API, ask how long a key lives by default, whether it can be cut off in one step, and how keys issued before those rules are handled. Ask whether switching the API off also stops jobs that are already queued. Ask whether a replacement key can be displayed a second time, and where it is kept. Ask whether emergency steps can be taken without editing the database by hand. Ask whether a job that waited in a queue is checked again before it runs."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "Another note explains what stops an agent from putting a draft nobody signed off into your website. A second note follows an article through a writing-model failure."
+        }
+      ]
+    },
+    "structuredContentHash": "78f04cec9dfafd6752715d9b75f154f8b1531f8eaf98d9f305ee357db6e24026",
+    "writerMethodVersion": "geo-writer@0.2",
+    "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+    "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+    "truthCheck": {
+      "verdict": "pass",
+      "contradictions": []
+    }
+  }
+}

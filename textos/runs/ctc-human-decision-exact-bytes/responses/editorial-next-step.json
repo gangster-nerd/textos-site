@@ -1,0 +1,29 @@
+{
+  "text": "Another note explains how long an agent's access key lasts, and how it can be cut off in one step. A second note covers why a draft that was produced is not yet a draft that was checked.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Another note explains how long an agent's access key lasts, and how it can be cut off in one step.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A second note covers why a draft that was produced is not yet a draft that was checked.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

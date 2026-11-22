@@ -1,0 +1,61 @@
+{
+  "scopeAliases": ["TextOS", "textos", "textos-site"],
+  "locale": "en-US",
+  "horizonDays": 90,
+  "questions": [
+    {
+      "question": "Which tools measure how often a brand is cited in ChatGPT, Perplexity or Google AI answers?",
+      "rationale": "Supplier search for the job TextOS does: measure whether TextOS is cited among tools that measure brand presence in AI answers.",
+      "demandExpression": "measure brand visibility in ai answers",
+      "intent": "market_mapping",
+      "buyerStage": "supplier_shortlist",
+      "commercialIntent": "high",
+      "targetTransition": "absent_to_cited"
+    },
+    {
+      "question": "How can a marketing team find out whether AI assistants recommend its brand?",
+      "rationale": "Problem-aware entry point of TextOS's market: measure whether TextOS appears when a team first asks how to observe AI recommendations.",
+      "demandExpression": "check if chatgpt recommends my brand",
+      "intent": "customer_pain",
+      "buyerStage": "problem_aware",
+      "commercialIntent": "medium",
+      "targetTransition": "absent_to_cited"
+    },
+    {
+      "question": "What are the alternatives to AI SEO tools that only give a single visibility score?",
+      "rationale": "Alternative question where TextOS's three separate measures (direct, indirect, total) are the relevant difference: measure whether TextOS is cited as that alternative.",
+      "demandExpression": "ai visibility score alternative",
+      "intent": "alternative",
+      "buyerStage": "solution_aware",
+      "commercialIntent": "medium",
+      "targetTransition": "absent_to_cited"
+    },
+    {
+      "question": "How can a brand check that an AI content tool only writes facts it can source?",
+      "rationale": "Proof-seeking question answered by this site's Commit-to-Content notes on evidence approval and fact-checking: measure whether TextOS is cited when buyers ask about sourced AI writing.",
+      "demandExpression": "ai content writer with sourced facts",
+      "intent": "proof_seeking",
+      "buyerStage": "vendor_validation",
+      "commercialIntent": "medium",
+      "targetTransition": "absent_to_cited"
+    },
+    {
+      "question": "Which AI content tools require human approval before publishing to WordPress?",
+      "rationale": "Validation question where TextOS's human decision before a WordPress draft is the relevant fact: measure whether TextOS is cited on governed publication.",
+      "demandExpression": "ai content tool human approval wordpress",
+      "intent": "comparison",
+      "buyerStage": "supplier_shortlist",
+      "commercialIntent": "high",
+      "targetTransition": "absent_to_cited"
+    },
+    {
+      "question": "How do you measure a brand's share of AI answers over time without a black-box score?",
+      "rationale": "Methodology question covered by the site's Authority Presence cluster: measure whether TextOS is cited when buyers ask for a reproducible measurement method.",
+      "demandExpression": "share of model measurement method",
+      "intent": "proof_seeking",
+      "buyerStage": "solution_aware",
+      "commercialIntent": "low",
+      "targetTransition": "absent_to_cited"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "text": "The note on evidence explains who may approve the material an article is allowed to use, one article at a time. Another note shows how a written article is told apart from a checked one before it can reach a website.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The note on evidence explains who may approve the material an article is allowed to use, one article at a time.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Another note shows how a written article is told apart from a checked one before it can reach a website.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

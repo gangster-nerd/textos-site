@@ -1,0 +1,29 @@
+{
+  "text": "The next note covers the step that follows this one: why an article that was produced is not yet an article that was checked. A second note describes how cited pages are read in a bounded step, before any passage is put forward for qualification.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The next note covers the step that follows this one: why an article that was produced is not yet an article that was checked.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A second note describes how cited pages are read in a bounded step, before any passage is put forward for qualification.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

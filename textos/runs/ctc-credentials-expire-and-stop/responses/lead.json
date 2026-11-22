@@ -1,0 +1,49 @@
+{
+  "text": "An access key handed to an outside agent tends to outlive the job it was created for. TextOS treated that permanent key as a gap to close before its first customer trial of the API. It also closed the operational control gap that a first customer would face.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "An access key handed to an outside agent tends to outlive the job it was created for.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS treated that permanent key as a gap to close before its first customer trial of the API.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-cr-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "It also closed the operational control gap that a first customer would face.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-cr-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

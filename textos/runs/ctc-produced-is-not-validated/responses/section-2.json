@@ -1,0 +1,65 @@
+{
+  "text": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code. That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.\n\nThe quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile. Since it does not depend on which model wrote the text, two articles are judged by the same yardstick.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Only a pass from the editorial quality check makes a TextOS article eligible for WordPress, and an article that was not evaluated is blocked with its own code.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "That eligibility rule fails closed: when a condition cannot be confirmed, the answer is no.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The quality check in TextOS is deterministic and independent of the model provider, and it looks at language, depth, sections, questions, structured information, sources, repetition and the article profile.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Since it does not depend on which model wrote the text, two articles are judged by the same yardstick.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

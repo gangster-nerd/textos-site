@@ -1,0 +1,57 @@
+{
+  "text": "A content dashboard that says an article is ready invites you to stop reading. That label is only worth something if it means the article was checked, and not simply that a model finished writing. TextOS no longer presents an article as validated just because it was technically produced. Here is what changed, and what a passing result still does not tell you.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A content dashboard that says an article is ready invites you to stop reading.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "That label is only worth something if it means the article was checked, and not simply that a model finished writing.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "TextOS no longer presents an article as validated just because it was technically produced.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-pv-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Here is what changed, and what a passing result still does not tell you.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

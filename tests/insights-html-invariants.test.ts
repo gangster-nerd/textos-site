@@ -7,6 +7,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
+import { loadCtcArticles } from "@/lib/textos-client/ctc-articles";
 
 const OUT_DIR = path.resolve("out/insights");
 const hasBuild = fs.existsSync(OUT_DIR);
@@ -20,7 +21,8 @@ const files = hasBuild
 
 describe.skipIf(!hasBuild)("out/insights/*.html — source-level invariants", () => {
   it("build produced 12 insight HTML files", () => {
-    expect(files.length).toBe(12);
+    // 12 managed-corpus insights + the verified Commit-to-Content drafts (lib/textos-client).
+    expect(files.length).toBe(12 + loadCtcArticles().length);
   });
 
   it.each(files)("%s : <html lang=\"en\">", (file) => {
@@ -62,12 +64,12 @@ describe.skipIf(!hasBuild)("out/insights/*.html — source-level invariants", ()
     // ManagedTextosSurface stamps data-cse-composition-signature; its presence proves
     // the page was composed through CSE, not through a competing renderer.
     expect(html).toMatch(/data-cse-composition-signature="[^"]+"/);
-    // And carry the reference@1 render version.
-    expect(html).toMatch(/data-cse-render-version="reference@1"/);
+    // And carry the reference@3 render version (CMO-CONVERSION-SURFACE-2).
+    expect(html).toMatch(/data-cse-render-version="reference@3"/);
   });
 
   it.each(files)("%s : uses managed textos surface policy", (file) => {
     const html = fs.readFileSync(path.join(OUT_DIR, file), "utf8");
-    expect(html).toMatch(/data-cse-surface-policy="textos-site\.reference@1"/);
+    expect(html).toMatch(/data-cse-surface-policy="textos-site\.reference@2"/);
   });
 });

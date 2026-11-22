@@ -1,0 +1,22 @@
+{
+  "text": "TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS tries an ordered chain of writers in turn, and each attempt writes the whole article under one writer, never switching models halfway through.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-02",
+        "ev-wf-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

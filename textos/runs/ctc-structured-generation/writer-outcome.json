@@ -1,0 +1,910 @@
+{
+  "status": "written",
+  "result": {
+    "planId": "how an ai writer builds an article draft section by section from evidence",
+    "planHash": "625211e097896879f71c86eab56854c52f5bc6c55539f297c22c6835986e974e",
+    "slots": [
+      {
+        "slotId": "title",
+        "role": "title",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS writes an AI article draft one declared part at a time",
+        "statementIds": [
+          "stmt:5:title:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-09"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-09"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "meta",
+        "role": "meta_description",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS drafts an article one declared part at a time, and the structured, evidence-backed draft it produces is never published by that step.",
+        "statementIds": [
+          "stmt:4:meta:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-09",
+          "ev-sg-15"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-09",
+          "ev-sg-15"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "lead",
+        "role": "lead",
+        "headingLevel": null,
+        "heading": null,
+        "text": "An AI tool hands back an article that reads well, and nobody on your team can say which sentence came from your material and which one the model supplied. Editing it then means re-checking the whole text, because the draft leaves no trail to follow. In TextOS, no draft is written until a brief has been accepted and the approved evidence for it has been stored. The rest of this note follows one draft from its outline to its last sentence.",
+        "statementIds": [
+          "stmt:4:lead:2:s1",
+          "stmt:4:lead:2:s2",
+          "stmt:4:lead:2:s3",
+          "stmt:4:lead:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-01"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-01"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "answer",
+        "role": "answer",
+        "headingLevel": 2,
+        "heading": "How is a governed AI draft put together?",
+        "text": "The order in TextOS is set: accepted brief, stored evidence, drafting, then a fact check of the result. Drafting itself runs one declared part at a time. For whoever edits the draft, that means any paragraph can be traced back to one part and to the material that part was given. Only a passing fact check moves the draft forward; a draft that raises an alert or is blocked stays blocked, and it is kept for audit rather than thrown away. The sections below take these steps in turn, starting with the outline.",
+        "statementIds": [
+          "stmt:6:answer:2:s1",
+          "stmt:6:answer:2:s2",
+          "stmt:6:answer:2:s3",
+          "stmt:6:answer:2:s4",
+          "stmt:6:answer:2:s5"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-01",
+          "ev-sg-09",
+          "ev-sg-02"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-01",
+          "ev-sg-09",
+          "ev-sg-02"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-1",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "The outline is decided before a word is written",
+        "text": "When the writing model decides how an article is organised, the structure itself becomes something nobody chose. In TextOS, the heading of each part is imposed on the writer, and for the direct-answer part the heading is the question to be answered. Each part also carries an explicit writing objective, stated in plain words, saying what that part has to accomplish.\n\nThe parts are written in the order of the plan, and the body of the article is exactly those texts placed end to end. Because nothing sits between those parts, the outline written into the plan is the outline the reader gets. If you review AI drafts, read the plan first: it tells you what each section was supposed to do before you judge whether it did it.",
+        "statementIds": [
+          "stmt:9:section-1:2:s1",
+          "stmt:9:section-1:2:s2",
+          "stmt:9:section-1:2:s3",
+          "stmt:9:section-1:2:s4",
+          "stmt:9:section-1:2:s5",
+          "stmt:9:section-1:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-13",
+          "ev-sg-14",
+          "ev-sg-10"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-13",
+          "ev-sg-14",
+          "ev-sg-10"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "assembled-draft-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "The draft is written one declared part at a time, and each part may draw only on the evidence assigned to it. A draft that does not pass the fact check is blocked and kept for audit.",
+        "statementIds": [
+          "stmt:23:assembled-draft-caption:2:s1",
+          "stmt:23:assembled-draft-caption:2:s2"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-09",
+          "ev-sg-11",
+          "ev-sg-02"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-09",
+          "ev-sg-11",
+          "ev-sg-02"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-2",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Each part may only use the evidence assigned to it",
+        "text": "In TextOS, each part has a hard evidence boundary: the writer may use only the evidence assigned to that part, and nothing else can be brought in there. When a factual part has no usable evidence, the part is refused instead of being filled. A refused part shows exactly where material is missing, while a gap filled with invented text would read like any other sentence.\n\nThe writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again. That strictness matters because a loosely read answer is where unsupported material tends to slip in.",
+        "statementIds": [
+          "stmt:9:section-2:2:s1",
+          "stmt:9:section-2:2:s2",
+          "stmt:9:section-2:2:s3",
+          "stmt:9:section-2:2:s4",
+          "stmt:9:section-2:2:s5"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-11",
+          "ev-sg-12",
+          "ev-sg-04"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-11",
+          "ev-sg-12",
+          "ev-sg-04"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-3",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Every sentence is declared, and its strength is measured",
+        "text": "In TextOS, the verifiable units of a draft are its title, its search description, each sentence of the body and each FAQ answer. Each of those units has to be covered by a declared statement, and a unit without one blocks the draft as an undeclared fact. For an editor, this is the missing trail: each sentence can be looked up in the list of declared statements to see what it rests on.\n\nHow strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say. A sentence that drifts from describing into asserting an effect is judged by that rule, not by how the model labelled it.",
+        "statementIds": [
+          "stmt:9:section-3:2:s1",
+          "stmt:9:section-3:2:s2",
+          "stmt:9:section-3:2:s3",
+          "stmt:9:section-3:2:s4",
+          "stmt:9:section-3:2:s5"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-06",
+          "ev-sg-07",
+          "ev-sg-05"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-06",
+          "ev-sg-07",
+          "ev-sg-05"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-4",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What the draft records about itself, and what it does not do",
+        "text": "In TextOS, the system rather than the writing model records the draft's provenance: which evidence set was used, which generation method produced it, and a fingerprint of the input. The recorded method reflects how the text was actually produced, and it never names a live model run that did not take place. That record is what lets someone audit a surprising draft later without relying on anyone's memory of how it was made.\n\nThe stated limit is plain: the result is a structured draft backed by evidence, and this step never publishes it. Whether and where a draft appears is decided at a later stage, so a draft that passes its checks is still a draft. Treat it as material for an editor's review, not as copy ready to go live.",
+        "statementIds": [
+          "stmt:9:section-4:2:s1",
+          "stmt:9:section-4:2:s2",
+          "stmt:9:section-4:2:s3",
+          "stmt:9:section-4:2:s4",
+          "stmt:9:section-4:2:s5",
+          "stmt:9:section-4:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-sg-03",
+          "ev-sg-08",
+          "ev-sg-15"
+        ],
+        "usableEvidenceIds": [
+          "ev-sg-03",
+          "ev-sg-08",
+          "ev-sg-15"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI writing vendor",
+        "text": "Ask who decides the headings and the purpose of each section, the tool or your team, and whether that outline is fixed before writing starts. Ask what the tool does when a section has no supporting material: does it refuse the section, or write something anyway? Ask whether you can see, for a given sentence, which source it cites, and what happens to a sentence that cites nothing. Ask how the tool judges whether a sentence overstates its source, and whether the model's own label can override that judgement. Ask what the draft records about how it was produced, and whether that record could name a live model run that did not happen. Ask whether drafting and publishing are separate steps, with a person deciding the second.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4",
+          "stmt:6:verify:2:s5",
+          "stmt:6:verify:2:s6"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "The note on evidence explains who may approve the material an article is allowed to use, one article at a time. Another note shows how a written article is told apart from a checked one before it can reach a website.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      }
+    ],
+    "document": {
+      "title": "TextOS writes an AI article draft one declared part at a time",
+      "slug": "textos-writes-an-ai-article-draft-one-declared-part-at-a-time",
+      "metaDescription": "TextOS drafts an article one declared part at a time, and the structured, evidence-backed draft it produces is never published by that step.",
+      "body": "An AI tool hands back an article that reads well, and nobody on your team can say which sentence came from your material and which one the model supplied. Editing it then means re-checking the whole text, because the draft leaves no trail to follow. In TextOS, no draft is written until a brief has been accepted and the approved evidence for it has been stored. The rest of this note follows one draft from its outline to its last sentence.\n\nWhen the writing model decides how an article is organised, the structure itself becomes something nobody chose. In TextOS, the heading of each part is imposed on the writer, and for the direct-answer part the heading is the question to be answered. Each part also carries an explicit writing objective, stated in plain words, saying what that part has to accomplish.\n\nThe parts are written in the order of the plan, and the body of the article is exactly those texts placed end to end. Because nothing sits between those parts, the outline written into the plan is the outline the reader gets. If you review AI drafts, read the plan first: it tells you what each section was supposed to do before you judge whether it did it.\n\nThe draft is written one declared part at a time, and each part may draw only on the evidence assigned to it. A draft that does not pass the fact check is blocked and kept for audit.\n\nIn TextOS, each part has a hard evidence boundary: the writer may use only the evidence assigned to that part, and nothing else can be brought in there. When a factual part has no usable evidence, the part is refused instead of being filled. A refused part shows exactly where material is missing, while a gap filled with invented text would read like any other sentence.\n\nThe writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again. That strictness matters because a loosely read answer is where unsupported material tends to slip in.\n\nIn TextOS, the verifiable units of a draft are its title, its search description, each sentence of the body and each FAQ answer. Each of those units has to be covered by a declared statement, and a unit without one blocks the draft as an undeclared fact. For an editor, this is the missing trail: each sentence can be looked up in the list of declared statements to see what it rests on.\n\nHow strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say. A sentence that drifts from describing into asserting an effect is judged by that rule, not by how the model labelled it.\n\nIn TextOS, the system rather than the writing model records the draft's provenance: which evidence set was used, which generation method produced it, and a fingerprint of the input. The recorded method reflects how the text was actually produced, and it never names a live model run that did not take place. That record is what lets someone audit a surprising draft later without relying on anyone's memory of how it was made.\n\nThe stated limit is plain: the result is a structured draft backed by evidence, and this step never publishes it. Whether and where a draft appears is decided at a later stage, so a draft that passes its checks is still a draft. Treat it as material for an editor's review, not as copy ready to go live.\n\nAsk who decides the headings and the purpose of each section, the tool or your team, and whether that outline is fixed before writing starts. Ask what the tool does when a section has no supporting material: does it refuse the section, or write something anyway? Ask whether you can see, for a given sentence, which source it cites, and what happens to a sentence that cites nothing. Ask how the tool judges whether a sentence overstates its source, and whether the model's own label can override that judgement. Ask what the draft records about how it was produced, and whether that record could name a live model run that did not happen. Ask whether drafting and publishing are separate steps, with a person deciding the second.\n\nThe note on evidence explains who may approve the material an article is allowed to use, one article at a time. Another note shows how a written article is told apart from a checked one before it can reach a website.",
+      "faq": [
+        {
+          "question": "How is a governed AI draft put together?",
+          "answer": "The order in TextOS is set: accepted brief, stored evidence, drafting, then a fact check of the result. Drafting itself runs one declared part at a time. For whoever edits the draft, that means any paragraph can be traced back to one part and to the material that part was given. Only a passing fact check moves the draft forward; a draft that raises an alert or is blocked stays blocked, and it is kept for audit rather than thrown away. The sections below take these steps in turn, starting with the outline."
+        }
+      ],
+      "statementLedger": [
+        {
+          "id": "stmt:5:title:2:s1",
+          "text": "TextOS writes an AI article draft one declared part at a time",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:meta:2:s1",
+          "text": "TextOS drafts an article one declared part at a time, and the structured, evidence-backed draft it produces is never published by that step.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-09",
+            "ev-sg-15"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s1",
+          "text": "An AI tool hands back an article that reads well, and nobody on your team can say which sentence came from your material and which one the model supplied.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s2",
+          "text": "Editing it then means re-checking the whole text, because the draft leaves no trail to follow.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s3",
+          "text": "In TextOS, no draft is written until a brief has been accepted and the approved evidence for it has been stored.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance",
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-sg-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s4",
+          "text": "The rest of this note follows one draft from its outline to its last sentence.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s1",
+          "text": "The order in TextOS is set: accepted brief, stored evidence, drafting, then a fact check of the result.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s2",
+          "text": "Drafting itself runs one declared part at a time.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s3",
+          "text": "For whoever edits the draft, that means any paragraph can be traced back to one part and to the material that part was given.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s4",
+          "text": "Only a passing fact check moves the draft forward; a draft that raises an alert or is blocked stays blocked, and it is kept for audit rather than thrown away.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s5",
+          "text": "The sections below take these steps in turn, starting with the outline.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s1",
+          "text": "When the writing model decides how an article is organised, the structure itself becomes something nobody chose.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s2",
+          "text": "In TextOS, the heading of each part is imposed on the writer, and for the direct-answer part the heading is the question to be answered.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-13"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s3",
+          "text": "Each part also carries an explicit writing objective, stated in plain words, saying what that part has to accomplish.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-14"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s4",
+          "text": "The parts are written in the order of the plan, and the body of the article is exactly those texts placed end to end.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s5",
+          "text": "Because nothing sits between those parts, the outline written into the plan is the outline the reader gets.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s6",
+          "text": "If you review AI drafts, read the plan first: it tells you what each section was supposed to do before you judge whether it did it.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:23:assembled-draft-caption:2:s1",
+          "text": "The draft is written one declared part at a time, and each part may draw only on the evidence assigned to it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-09",
+            "ev-sg-11"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:23:assembled-draft-caption:2:s2",
+          "text": "A draft that does not pass the fact check is blocked and kept for audit.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s1",
+          "text": "In TextOS, each part has a hard evidence boundary: the writer may use only the evidence assigned to that part, and nothing else can be brought in there.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-11"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s2",
+          "text": "When a factual part has no usable evidence, the part is refused instead of being filled.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-12"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s3",
+          "text": "A refused part shows exactly where material is missing, while a gap filled with invented text would read like any other sentence.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s4",
+          "text": "The writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-04"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s5",
+          "text": "That strictness matters because a loosely read answer is where unsupported material tends to slip in.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s1",
+          "text": "In TextOS, the verifiable units of a draft are its title, its search description, each sentence of the body and each FAQ answer.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s2",
+          "text": "Each of those units has to be covered by a declared statement, and a unit without one blocks the draft as an undeclared fact.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-07"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s3",
+          "text": "For an editor, this is the missing trail: each sentence can be looked up in the list of declared statements to see what it rests on.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s4",
+          "text": "How strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-05"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s5",
+          "text": "A sentence that drifts from describing into asserting an effect is judged by that rule, not by how the model labelled it.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s1",
+          "text": "In TextOS, the system rather than the writing model records the draft's provenance: which evidence set was used, which generation method produced it, and a fingerprint of the input.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s2",
+          "text": "The recorded method reflects how the text was actually produced, and it never names a live model run that did not take place.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s3",
+          "text": "That record is what lets someone audit a surprising draft later without relying on anyone's memory of how it was made.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s4",
+          "text": "The stated limit is plain: the result is a structured draft backed by evidence, and this step never publishes it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-sg-15"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s5",
+          "text": "Whether and where a draft appears is decided at a later stage, so a draft that passes its checks is still a draft.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s6",
+          "text": "Treat it as material for an editor's review, not as copy ready to go live.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s1",
+          "text": "Ask who decides the headings and the purpose of each section, the tool or your team, and whether that outline is fixed before writing starts.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask what the tool does when a section has no supporting material: does it refuse the section, or write something anyway?",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask whether you can see, for a given sentence, which source it cites, and what happens to a sentence that cites nothing.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "Ask how the tool judges whether a sentence overstates its source, and whether the model's own label can override that judgement.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s5",
+          "text": "Ask what the draft records about how it was produced, and whether that record could name a live model run that did not happen.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s6",
+          "text": "Ask whether drafting and publishing are separate steps, with a person deciding the second.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "The note on evidence explains who may approve the material an article is allowed to use, one article at a time.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "Another note shows how a written article is told apart from a checked one before it can reach a website.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        }
+      ],
+      "claimsExcluded": [],
+      "sections": [
+        {
+          "key": "lead",
+          "heading": "",
+          "body": "An AI tool hands back an article that reads well, and nobody on your team can say which sentence came from your material and which one the model supplied. Editing it then means re-checking the whole text, because the draft leaves no trail to follow. In TextOS, no draft is written until a brief has been accepted and the approved evidence for it has been stored. The rest of this note follows one draft from its outline to its last sentence."
+        },
+        {
+          "key": "section-1",
+          "heading": "The outline is decided before a word is written",
+          "body": "When the writing model decides how an article is organised, the structure itself becomes something nobody chose. In TextOS, the heading of each part is imposed on the writer, and for the direct-answer part the heading is the question to be answered. Each part also carries an explicit writing objective, stated in plain words, saying what that part has to accomplish.\n\nThe parts are written in the order of the plan, and the body of the article is exactly those texts placed end to end. Because nothing sits between those parts, the outline written into the plan is the outline the reader gets. If you review AI drafts, read the plan first: it tells you what each section was supposed to do before you judge whether it did it."
+        },
+        {
+          "key": "assembled-draft-caption",
+          "heading": "",
+          "body": "The draft is written one declared part at a time, and each part may draw only on the evidence assigned to it. A draft that does not pass the fact check is blocked and kept for audit."
+        },
+        {
+          "key": "section-2",
+          "heading": "Each part may only use the evidence assigned to it",
+          "body": "In TextOS, each part has a hard evidence boundary: the writer may use only the evidence assigned to that part, and nothing else can be brought in there. When a factual part has no usable evidence, the part is refused instead of being filled. A refused part shows exactly where material is missing, while a gap filled with invented text would read like any other sentence.\n\nThe writer's answer is then read strictly: its format has to match exactly, unknown fields are refused, each cited evidence reference has to exist in the supplied set, and a malformed or incomplete answer is rejected rather than requested again. That strictness matters because a loosely read answer is where unsupported material tends to slip in."
+        },
+        {
+          "key": "section-3",
+          "heading": "Every sentence is declared, and its strength is measured",
+          "body": "In TextOS, the verifiable units of a draft are its title, its search description, each sentence of the body and each FAQ answer. Each of those units has to be covered by a declared statement, and a unit without one blocks the draft as an undeclared fact. For an editor, this is the missing trail: each sentence can be looked up in the list of declared statements to see what it rests on.\n\nHow strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say. A sentence that drifts from describing into asserting an effect is judged by that rule, not by how the model labelled it."
+        },
+        {
+          "key": "section-4",
+          "heading": "What the draft records about itself, and what it does not do",
+          "body": "In TextOS, the system rather than the writing model records the draft's provenance: which evidence set was used, which generation method produced it, and a fingerprint of the input. The recorded method reflects how the text was actually produced, and it never names a live model run that did not take place. That record is what lets someone audit a surprising draft later without relying on anyone's memory of how it was made.\n\nThe stated limit is plain: the result is a structured draft backed by evidence, and this step never publishes it. Whether and where a draft appears is decided at a later stage, so a draft that passes its checks is still a draft. Treat it as material for an editor's review, not as copy ready to go live."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI writing vendor",
+          "body": "Ask who decides the headings and the purpose of each section, the tool or your team, and whether that outline is fixed before writing starts. Ask what the tool does when a section has no supporting material: does it refuse the section, or write something anyway? Ask whether you can see, for a given sentence, which source it cites, and what happens to a sentence that cites nothing. Ask how the tool judges whether a sentence overstates its source, and whether the model's own label can override that judgement. Ask what the draft records about how it was produced, and whether that record could name a live model run that did not happen. Ask whether drafting and publishing are separate steps, with a person deciding the second."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "The note on evidence explains who may approve the material an article is allowed to use, one article at a time. Another note shows how a written article is told apart from a checked one before it can reach a website."
+        }
+      ]
+    },
+    "structuredContentHash": "244a01d1804aabdc58397be205a247aa0b9273da6812a30bde35199152b4d36f",
+    "writerMethodVersion": "geo-writer@0.2",
+    "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+    "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+    "truthCheck": {
+      "verdict": "pass",
+      "contradictions": []
+    }
+  }
+}

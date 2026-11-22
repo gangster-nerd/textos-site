@@ -1,0 +1,581 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-re-observation-plan",
+  "flow": "commit_to_content",
+  "slug": "plan-the-second-look-before-the-article-goes-live",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "re-observation-plan"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "re-observation-plan-2026-08-07",
+        "sourceCommits": [
+          "7ac42fb6675e2a4fdded8bcb4224b21cc3d1f26a"
+        ]
+      },
+      {
+        "groupId": "re-measurement-window-wording-2026-10-01",
+        "sourceCommits": [
+          "a9b4c6377afb545d50d5b6e5b38aa0d05fc96e1d"
+        ]
+      }
+    ],
+    "buyerQuestion": "After I publish an article, how will I know whether AI answers about my topic changed, without being told the article caused it?",
+    "targetQuery": "how to measure whether ai answers changed after publishing an article",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "measurement-honesty"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+    "approvedAt": "2026-10-30"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-insight:graduated-publication",
+      "textos-insight:observation-not-optimization",
+      "textos-site:ctc:ctc-produced-is-not-validated"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-ro-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "7ac42fb6675e2a4fdded8bcb4224b21cc3d1f26a",
+        "quote": "Materialize the ReObservationPlanDraft in its own table (lifecycle continues after publication) instead of a minimal in-memory hint buried in the preview receipt."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ro-02",
+      "source": {
+        "kind": "product_commit",
+        "sha": "7ac42fb6675e2a4fdded8bcb4224b21cc3d1f26a",
+        "quote": "freeze baseline at preview time: baselineRunId, queryPanelVersion, measurementMethodVersion, targetQueryHashes"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Names the recorded fields; the target questions are kept as fingerprints, not as text."
+      ]
+    },
+    {
+      "id": "ev-ro-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "7ac42fb6675e2a4fdded8bcb4224b21cc3d1f26a",
+        "quote": "No computeEffect: the descriptive delta is only filled after a real post-publication window."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ro-04",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/db/schema/enums.ts",
+        "quote": "\"not_measurable_yet\", // défaut — pas de publication, aucune fenêtre post-intervention \"window_open\", // fenêtre post-publication ouverte, ré-observation planifiée \"measured\", // delta DESCRIPTIF disponible (jamais causal)"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comments in French; quoted as written. Declares the states a plan can hold, not that a plan has reached them."
+      ]
+    },
+    {
+      "id": "ev-ro-05",
+      "source": {
+        "kind": "product_commit",
+        "sha": "7ac42fb6675e2a4fdded8bcb4224b21cc3d1f26a",
+        "quote": "createReObservationPlan (persist initial state only): awaiting_publication / not_measurable_yet; publicationReceiptId / publishedAt / plannedPostWindow null"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ro-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a9b4c6377afb545d50d5b6e5b38aa0d05fc96e1d",
+        "quote": "No scheduler runs re-observations on this lineage, so the article card must not say a new measurement is « prévue ». The planned window is now shown as a recommendation (« Nouvelle mesure recommandée »), per the demo truth contract."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "The quoted screen labels are in French."
+      ]
+    },
+    {
+      "id": "ev-ro-07",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-024-intervention-contract-promotion.md",
+        "quote": "La publication ou l'update ne modifient pas encore `re_observation_plan`. Câbler ce lien est hors périmètre ici."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ro-08",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/reporting/authority-intervention-report.ts",
+        "quote": "title: \"Re-observation Plan\", epistemicStatus: \"PLANNED — NOT YET MEASURABLE\""
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-ro-09",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/reporting/authority-intervention-report.ts",
+        "quote": "Continuité : le receipt de preview ET le plan de ré-observation pointent le même draft + mêmes hashes."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ro-10",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/query-intelligence/demand/demand-authority-boundary.test.ts",
+        "quote": "`re_observation_plan` conserve queryPanelVersion ET measurementMethodVersion"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Name of an automated test, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ro-11",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-001-observatory-architecture.md",
+        "quote": "Les formats de citation des moteurs changent ; les parsers seront corrigés. Une série temporelle n'est donc comparable que si la méthode de mesure est constante **ou explicitement versionnée**."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ro-12",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-001-observatory-architecture.md",
+        "quote": "interroger des moteurs de réponse sur des panels versionnés ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ro-13",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-005-query-panel-strategy.md",
+        "quote": "il définit le périmètre de vérité observée, il est explicable, versionné, auditable et immuable une fois validé."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written. Describes the question panel."
+      ]
+    },
+    {
+      "id": "ev-ro-14",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-024-intervention-contract-promotion.md",
+        "quote": "Une action d'update n'est jamais présentée comme cause d'une variation : un delta reste descriptif"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ro-15",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-024-intervention-contract-promotion.md",
+        "quote": "Si plusieurs actions touchent un même `query_hash` dans une même fenêtre de réobservation, aucun effet n'est attribuable à l'une d'elles."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-ro-16",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-016-graduated-publication.md",
+        "quote": "aucune affirmation causale (« la publication a fait progresser… »), aucune attribution. Un moteur évolue pour mille raisons (ADR-008)."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written. A rule for how a change is reported, not a measurement."
+      ]
+    },
+    {
+      "id": "ev-ro-17",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "re-observation-plan",
+        "field": "knownLimits",
+        "quote": "Fige une baseline et un plan de re-mesure ; il ne démontre aucun effet par lui-même."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit in French; quoted as written."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that, before an article goes live, it fixes what it will compare AI answers against later.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ro-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS freezes its starting point and plan before publishing, and the plan by itself demonstrates no effect.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ro-17"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation — someone asks months later whether an article changed what AI assistants say — and say that TextOS keeps a plan for looking again whose life continues after publication.",
+      "buyerIntent": "Will I be able to answer 'did it change anything?' honestly?",
+      "allowedEvidenceIds": [
+        "ev-ro-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can you tell whether AI answers changed after you publish?",
+      "writingObjective": "Answer directly: TextOS puts questions to AI answer engines on versioned question sets; at preview time, before anything is published, it freezes the starting observation, the question-set version, the measurement-method version and the target questions; a descriptive change is only filled in after a real window following publication.",
+      "buyerIntent": "What is compared with what, and when?",
+      "allowedEvidenceIds": [
+        "ev-ro-12",
+        "ev-ro-02",
+        "ev-ro-03"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Comparing like with like",
+      "writingObjective": "Explain comparability: engines change how they cite and parsers get fixed, so a series is comparable only if the method stays constant; the question set is a measuring instrument, versioned and unchangeable once validated; an automated test keeps both the question-set version and the method version in the plan; the preview record and the plan point to the same draft and the same fingerprints.",
+      "buyerIntent": "Will the 'after' be measured the same way as the 'before'?",
+      "allowedEvidenceIds": [
+        "ev-ro-11",
+        "ev-ro-13",
+        "ev-ro-10",
+        "ev-ro-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What the plan does not do yet",
+      "writingObjective": "Be candid about the current limits: only the initial state is written, with no effect measured; publishing does not yet move the plan forward; no scheduler runs the second look, so the planned window is shown as a recommendation rather than as scheduled; the end-to-end report labels the plan as planned and not yet measurable.",
+      "buyerIntent": "Is the second look automatic?",
+      "allowedEvidenceIds": [
+        "ev-ro-05",
+        "ev-ro-07",
+        "ev-ro-06",
+        "ev-ro-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "second-look-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites: the states a plan can hold, and that today only the first one is written.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-ro-04",
+        "ev-ro-05"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A change observed is not a change caused",
+      "writingObjective": "Explain the uncertainty rules: an action is never presented as the cause of a variation and a change stays descriptive; no causal claim and no attribution, because an engine changes for many reasons; when several actions touch the same question in the same window, no effect is attributed to any one of them; the plan states only the possible endpoint of its life: a descriptive change, never a causal one.",
+      "buyerIntent": "Will anyone tell me the article 'worked'?",
+      "allowedEvidenceIds": [
+        "ev-ro-14",
+        "ev-ro-16",
+        "ev-ro-15",
+        "ev-ro-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI content vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor who reports on AI answers before and after publishing, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes: how publication is graduated and its effect traced as a descriptive change, why TextOS starts by observing answer engines, and why a produced article is not a checked one. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "second-look",
+      "template": "flow",
+      "title": "The life of a re-observation plan",
+      "subtitle": "States a plan can hold. Today only the first two are written.",
+      "nodes": [
+        {
+          "tag": "before",
+          "label": "Starting point frozen",
+          "evidenceIds": [
+            "ev-ro-02"
+          ]
+        },
+        {
+          "tag": "waiting",
+          "label": "Not measurable yet",
+          "evidenceIds": [
+            "ev-ro-05"
+          ]
+        },
+        {
+          "tag": "window",
+          "label": "Window open",
+          "evidenceIds": [
+            "ev-ro-04"
+          ]
+        },
+        {
+          "tag": "measured",
+          "label": "Change described",
+          "evidenceIds": [
+            "ev-ro-04"
+          ]
+        }
+      ],
+      "highlightNode": 1,
+      "boundary": {
+        "afterNode": 1,
+        "title": "Not wired yet",
+        "lines": [
+          "Publishing does not yet",
+          "move the plan forward."
+        ],
+        "evidenceIds": [
+          "ev-ro-07"
+        ]
+      },
+      "anchorSectionKey": "section-2",
+      "captionSlotId": "second-look-caption"
+    }
+  ]
+}

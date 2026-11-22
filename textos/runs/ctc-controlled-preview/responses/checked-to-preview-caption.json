@@ -1,0 +1,23 @@
+{
+  "text": "In TextOS a draft reaches the internal preview only after both checks pass, any differing fingerprint stops it, and no public address is set.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS a draft reaches the internal preview only after both checks pass, any differing fingerprint stops it, and no public address is set.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-12",
+        "ev-cp-10",
+        "ev-cp-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

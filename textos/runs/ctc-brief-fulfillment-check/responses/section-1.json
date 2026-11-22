@@ -1,0 +1,85 @@
+{
+  "text": "A fact-check reads the sentences a draft contains and asks whether a source supports them. It does not ask whether the sentences that should be there are there. TextOS's design record describes this failure plainly: a draft can be certified true while covering only one of the required points of its brief, an outcome it calls an empty draft certified true.\n\nA short, two-sentence sample draft that TextOS once used in its tests is now kept as the reference case its brief check has to block. Such a draft can be accurate line by line and still leave the reader without the answer they came for. Keeping it as a test case means the gap between correct and complete is checked on purpose, not discovered by a disappointed reader.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A fact-check reads the sentences a draft contains and asks whether a source supports them.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "It does not ask whether the sentences that should be there are there.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "TextOS's design record describes this failure plainly: a draft can be certified true while covering only one of the required points of its brief, an outcome it calls an empty draft certified true.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "A short, two-sentence sample draft that TextOS once used in its tests is now kept as the reference case its brief check has to block.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Such a draft can be accurate line by line and still leave the reader without the answer they came for.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Keeping it as a test case means the gap between correct and complete is checked on purpose, not discovered by a disappointed reader.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

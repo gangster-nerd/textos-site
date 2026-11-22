@@ -1,0 +1,77 @@
+{
+  "text": "In TextOS, the verifiable units of a draft are its title, its search description, each sentence of the body and each FAQ answer. Each of those units has to be covered by a declared statement, and a unit without one blocks the draft as an undeclared fact. For an editor, this is the missing trail: each sentence can be looked up in the list of declared statements to see what it rests on.\n\nHow strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say. A sentence that drifts from describing into asserting an effect is judged by that rule, not by how the model labelled it.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS, the verifiable units of a draft are its title, its search description, each sentence of the body and each FAQ answer.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Each of those units has to be covered by a declared statement, and a unit without one blocks the draft as an undeclared fact.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "For an editor, this is the missing trail: each sentence can be looked up in the list of declared statements to see what it rests on.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "How strong a sentence is, whether it only describes, asserts an effect or puts a number on something, is assessed by a deterministic rule, and the fact check rather than the writing model has the final say.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "A sentence that drifts from describing into asserting an effect is judged by that rule, not by how the model labelled it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

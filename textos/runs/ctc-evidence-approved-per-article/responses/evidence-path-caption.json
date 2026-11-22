@@ -1,0 +1,23 @@
+{
+  "text": "In TextOS a passage found in a source stays a candidate until a named person approves it for one article; only then is it offered to the writer, and withdrawing that decision takes it back out of future drafts.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS a passage found in a source stays a candidate until a named person approves it for one article; only then is it offered to the writer, and withdrawing that decision takes it back out of future drafts.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-13",
+        "ev-ea-01",
+        "ev-ea-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

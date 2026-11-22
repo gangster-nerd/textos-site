@@ -1,0 +1,93 @@
+{
+  "text": "Answer engines change the way they cite sources, and the tools that read those citations get corrected, so in TextOS a series of observations can only be compared when the measurement method stays the same or carries an explicit version. Otherwise, a shift in the numbers may only mean that the ruler moved. In TextOS, the set of questions is treated as a measuring instrument: it defines what is observed, it can be explained and audited, it carries a version, and it cannot be changed once validated.\n\nAn automated test checks that the TextOS re-observation plan keeps both the version of the question set and the version of the measurement method. The preview record and the re-observation plan in TextOS point to the same draft and the same content fingerprints. That way, the article being followed is the one that was previewed, not a later variant of it.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Answer engines change the way they cite sources, and the tools that read those citations get corrected, so in TextOS a series of observations can only be compared when the measurement method stays the same or carries an explicit version.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Otherwise, a shift in the numbers may only mean that the ruler moved.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "In TextOS, the set of questions is treated as a measuring instrument: it defines what is observed, it can be explained and audited, it carries a version, and it cannot be changed once validated.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "An automated test checks that the TextOS re-observation plan keeps both the version of the question set and the version of the measurement method.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The preview record and the re-observation plan in TextOS point to the same draft and the same content fingerprints.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "That way, the article being followed is the one that was previewed, not a later variant of it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

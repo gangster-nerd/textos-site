@@ -1,0 +1,65 @@
+{
+  "text": "Alongside its fact-check, TextOS runs a separate check that compares the draft with the brief it was written for. It looks at three things: each point the brief requires is either backed by a statement with a source or left out for a reason a person accepted, the sections the brief requires are present, and the target search query is addressed. A draft goes to preview only when both the fact-check and the brief check pass. Being right and being what you asked for are answered as two separate questions, instead of being blended into one score.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Alongside its fact-check, TextOS runs a separate check that compares the draft with the brief it was written for.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "It looks at three things: each point the brief requires is either backed by a statement with a source or left out for a reason a person accepted, the sections the brief requires are present, and the target search query is addressed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "A draft goes to preview only when both the fact-check and the brief check pass.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Being right and being what you asked for are answered as two separate questions, instead of being blended into one score.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

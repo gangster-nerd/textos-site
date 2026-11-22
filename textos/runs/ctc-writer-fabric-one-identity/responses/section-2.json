@@ -1,0 +1,53 @@
+{
+  "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries. Retries honour a provider's request to pause only up to ten seconds.\n\nWhen a model refuses to write something, TextOS does not try another model to get around the refusal.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A fallback in TextOS only answers technical failures from a closed list, with bounded retries.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Retries honour a provider's request to pause only up to ten seconds.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "When a model refuses to write something, TextOS does not try another model to get around the refusal.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

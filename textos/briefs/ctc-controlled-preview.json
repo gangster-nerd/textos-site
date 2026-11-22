@@ -1,0 +1,634 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-controlled-preview",
+  "flow": "commit_to_content",
+  "slug": "a-preview-shows-the-exact-draft-that-was-checked",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "controlled-preview"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "controlled-preview-2026-08-06",
+        "sourceCommits": [
+          "5b1dba979f964b330550562b457a6ebd1cae0740",
+          "cbe25796510ba1bdf5bc3cf43f421401013ac1c1",
+          "865924aaf1c14ffaa8903c246cdd13272f518559"
+        ]
+      },
+      {
+        "groupId": "preview-gates-2026-08-07",
+        "sourceCommits": [
+          "25b4c04658ef9764c027865a4b917cb923125193",
+          "0191bcfa9c243b0361c1b87eb629669909c25d1e"
+        ]
+      }
+    ],
+    "buyerQuestion": "Before I approve an AI-written draft, how do I know the preview I am reading is not already public and is exactly the version that was checked?",
+    "targetQuery": "how to preview an ai written article before it is published",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "article-validation"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+    "approvedAt": "2026-10-30"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-produced-is-not-validated",
+      "textos-site:ctc:ctc-human-decision-exact-bytes",
+      "textos-insight:graduated-publication"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-cp-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "cbe25796510ba1bdf5bc3cf43f421401013ac1c1",
+        "quote": "A controlled preview is NOT a publication: distinct `preview` state, publishedUrl never set, noindex artifact, internal-only, never a customer story."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-02",
+      "source": {
+        "kind": "product_commit",
+        "sha": "cbe25796510ba1bdf5bc3cf43f421401013ac1c1",
+        "quote": "Provenance is honest: generatedLive is true only for a real live invocation; handoff transports (::fixture-replay / ::manual-import) are generatedLive:false; an unrecognized methodVersion throws rather than guess."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "cbe25796510ba1bdf5bc3cf43f421401013ac1c1",
+        "quote": "No network. No live publish."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-04",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/preview.ts",
+        "quote": "Gate d'aperçu : seul un draft `truthchecked` adossé à un brief `accepted` est prévisualisable."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp-05",
+      "source": {
+        "kind": "product_commit",
+        "sha": "865924aaf1c14ffaa8903c246cdd13272f518559",
+        "quote": "Close the continuity ruptures R1-R3 from the end-to-end audit: preview no longer selects a draft by \"latest\"."
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "865924aaf1c14ffaa8903c246cdd13272f518559",
+        "quote": "preview consumes the handoff by id, recomputes hashes, refuses any mismatch (no latest fallback)"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-07",
+      "source": {
+        "kind": "product_commit",
+        "sha": "865924aaf1c14ffaa8903c246cdd13272f518559",
+        "quote": "add canonical structured-content hash (sorted keys, jsonb round-trip safe)"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-08",
+      "source": {
+        "kind": "product_commit",
+        "sha": "865924aaf1c14ffaa8903c246cdd13272f518559",
+        "quote": "enrich PreviewReceipt: schemaVersion, e2eExecutionId, structuredContentHash, rendererVersion, renderHash, artifactSha256 (existing jsonb, no migration)"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-09",
+      "source": {
+        "kind": "product_commit",
+        "sha": "865924aaf1c14ffaa8903c246cdd13272f518559",
+        "quote": "rename artifact controlled-preview-<id>.html, robots noindex,nofollow,noarchive,nosnippet"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-10",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/generation-handoff.ts",
+        "quote": "Lève à la première discordance — jamais de tolérance"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp-11",
+      "source": {
+        "kind": "product_file",
+        "path": "scripts/demo-run/gb/preview.ts",
+        "quote": "Écrit l'artefact renommé, puis PROUVE que le fichier sur disque == artifactSha256 du receipt."
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Comment in the offline preview runner; in French, quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp-12",
+      "source": {
+        "kind": "product_commit",
+        "sha": "25b4c04658ef9764c027865a4b917cb923125193",
+        "quote": "enforce invariant in preview: preview only if TruthCheck=pass AND BriefFulfillment=pass"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "0191bcfa9c243b0361c1b87eb629669909c25d1e",
+        "quote": "Realizes the three orthogonal states: TruthCheck state != Preview state != Publication state."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-14",
+      "source": {
+        "kind": "product_commit",
+        "sha": "0191bcfa9c243b0361c1b87eb629669909c25d1e",
+        "quote": "publishedAt / publishedUrl stay null, public=false, noindex=true."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-15",
+      "source": {
+        "kind": "product_commit",
+        "sha": "0191bcfa9c243b0361c1b87eb629669909c25d1e",
+        "quote": "re-preview now works (draft remains truthchecked) — proven by a new test"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-cp-16",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/preview.ts",
+        "quote": "Rend l'aperçu contrôlé : `<meta robots noindex,nofollow>` + bandeau de provenance HONNÊTE."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp-17",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/preview.ts",
+        "quote": "Internal preview, not a customer story"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text of the provenance banner rendered on the preview page."
+      ]
+    },
+    {
+      "id": "ev-cp-18",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "generation-handoff",
+        "field": "knownLimits",
+        "quote": "Transporte un brouillon et ses empreintes entre génération et aperçu ; ne garantit rien sur le contenu lui-même."
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Known limit recorded in the product manifest, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cp-19",
+      "source": {
+        "kind": "product_commit",
+        "sha": "5b1dba979f964b330550562b457a6ebd1cae0740",
+        "quote": "add ImportedGenerationEnvelope + validateImportEnvelope (reject on brief/bundle/prompt mismatch)"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that its controlled preview is not a publication and shows the draft named by the handoff, never another one.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp-01",
+        "ev-cp-06"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: in TextOS a controlled preview is internal and noindex, not a publication, and it refuses any draft whose fingerprints do not match the one handed over.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp-01",
+        "ev-cp-06"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation — being asked to look at an AI draft before anything goes live, and wondering whether the page is already public and whether it is the version that was checked — and say that in TextOS a controlled preview is not a publication.",
+      "buyerIntent": "Is the page I am reviewing already out there?",
+      "allowedEvidenceIds": [
+        "ev-cp-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How do you review an AI draft before anything is published?",
+      "writingObjective": "Answer directly: a draft reaches the preview only after the fact-check and the brief check both pass; the preview is internal and not a publication; and the preview opens the draft named by the handoff, recomputes its fingerprints and refuses any mismatch.",
+      "buyerIntent": "What happens between writing and my review?",
+      "allowedEvidenceIds": [
+        "ev-cp-01",
+        "ev-cp-06",
+        "ev-cp-12"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A preview is not a publication",
+      "writingObjective": "Explain what the preview page is: kept out of search engines and archives, no public address and nothing public, no network and no live publishing; the fact-check state, the preview state and the publication state are kept apart; and a draft can be previewed again without losing its checked status.",
+      "buyerIntent": "Can a preview leak or count as publishing?",
+      "allowedEvidenceIds": [
+        "ev-cp-03",
+        "ev-cp-09",
+        "ev-cp-13",
+        "ev-cp-14",
+        "ev-cp-15"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The page you read is the draft that was checked",
+      "writingObjective": "Explain the handover: the preview no longer picks the most recent draft; it opens the draft named by the handover record, recomputes the fingerprints and stops at the first mismatch without falling back to the latest draft; the fingerprint of the content is computed so it survives being stored and read back; and a draft written elsewhere and imported is rejected if it does not match its brief, evidence or instructions.",
+      "buyerIntent": "How do I know nothing was swapped?",
+      "allowedEvidenceIds": [
+        "ev-cp-05",
+        "ev-cp-06",
+        "ev-cp-07",
+        "ev-cp-10",
+        "ev-cp-19"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "checked-to-preview-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp-10",
+        "ev-cp-12",
+        "ev-cp-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The page says how the draft was made",
+      "writingObjective": "Explain the provenance banner: the preview states whether the draft came from a live writing run or was imported or replayed, an unknown origin stops the preview instead of guessing, and the page says it is an internal preview, not a customer story; and explain that the preview record keeps fingerprints of the content, of the rendered page and of the file, and that the file written is checked against that record.",
+      "buyerIntent": "Will the preview tell me where the text came from?",
+      "allowedEvidenceIds": [
+        "ev-cp-02",
+        "ev-cp-08",
+        "ev-cp-11",
+        "ev-cp-16",
+        "ev-cp-17"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What the preview does not decide",
+      "writingObjective": "Explain the limits honestly: the handover carries a draft and its fingerprints but says nothing about the content itself; only a fact-checked draft tied to an accepted brief can be previewed, so the preview is downstream of checks, not a check of quality; publication is a separate state the preview does not change; judging substance stays with the reader.",
+      "buyerIntent": "Does a clean preview mean the article is good?",
+      "allowedEvidenceIds": [
+        "ev-cp-18",
+        "ev-cp-04",
+        "ev-cp-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "checked-to-preview",
+      "template": "flow",
+      "title": "From a checked draft to an internal preview",
+      "subtitle": "Illustrative path for one draft. Nothing here is published.",
+      "nodes": [
+        {
+          "tag": "checks",
+          "label": "Both checks pass",
+          "evidenceIds": [
+            "ev-cp-12"
+          ]
+        },
+        {
+          "tag": "handoff",
+          "label": "Draft named by fingerprint",
+          "evidenceIds": [
+            "ev-cp-06"
+          ]
+        },
+        {
+          "tag": "verify",
+          "label": "Fingerprints recomputed",
+          "evidenceIds": [
+            "ev-cp-10"
+          ]
+        },
+        {
+          "tag": "preview",
+          "label": "Internal noindex preview",
+          "evidenceIds": [
+            "ev-cp-14"
+          ]
+        }
+      ],
+      "highlightNode": 2,
+      "boundary": {
+        "afterNode": 2,
+        "title": "No fallback",
+        "lines": [
+          "Any mismatch stops the",
+          "preview. No other draft."
+        ],
+        "evidenceIds": [
+          "ev-cp-10",
+          "ev-cp-06"
+        ]
+      },
+      "anchorSectionKey": "section-2",
+      "captionSlotId": "checked-to-preview-caption"
+    }
+  ]
+}

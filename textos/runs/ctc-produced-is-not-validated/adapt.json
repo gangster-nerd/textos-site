@@ -1,0 +1,20 @@
+{
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to know if an ai written article was checked before it is published",
+  "executionPlanHash": "325695eb34e1814b55f7a93e248f54f52dd26941c458bf0cbce3d3691b6b88b6",
+  "ctcHandoffHash": "c8d648525bc277146ab639ae0bd47ef883e7cc09cfeecd133ed06956cec38dbd",
+  "promptHashes": {
+    "title": "6fef642080838e02538cb69c6ba726ba287499d9f3b53fe9dc698f0301db55db",
+    "meta": "e0493bd89aed08133366aeb067d3a1401c607810188720eff5a176551e02f498",
+    "lead": "773630235099b0167a7d489a761edeca812886a77ff9aa234323fc94c2a016f8",
+    "answer": "e4b0d496ebf074d801ed2c81ea1eb2da9452637cd5ea26add2cdecf6b4449097",
+    "section-1": "886594aaf38d029482e930b4040182fd8c7987f1fdf4185327cd10ecf7bdd82e",
+    "section-2": "3cb78360a84f233df0e7d9ba9e36cd1edadd7cccbccf321cd2c21a63ce22009d",
+    "written-to-eligible-caption": "9855dd536ea96f9a21254950bd24c0cefcf0db6e310bf4e3c5e185a07e4757f0",
+    "section-3": "b1afff530df20fe2bf7ed5e6d1e0acf9d4e87d599c49542c3fe65bbaf7e9232d",
+    "section-4": "76c8839aabce112c0a461b086d7a015aa355b6f9b5f314c346d28fd9b840066b",
+    "verify": "9685fe00c517f368d7833be68464976c34ee41bd23d4e72520ce43f3c199d82a",
+    "editorial-next-step": "415a76a5927852a4e6b6077b9f723df06064550c5dc54902f05d03072f34d736"
+  }
+}

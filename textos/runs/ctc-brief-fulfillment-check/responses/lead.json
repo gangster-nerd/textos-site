@@ -1,0 +1,57 @@
+{
+  "text": "Picture an AI draft whose facts all check out against their sources, yet which leaves out half of what your brief asked for. Nothing in it is wrong, so a fact-check has nothing to flag. For TextOS, a passing fact-check only proves that a draft is grounded in its sources, not that it answers the brief it was written for. This note explains the second check that closes that gap, and what that second check does not measure.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Picture an AI draft whose facts all check out against their sources, yet which leaves out half of what your brief asked for.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Nothing in it is wrong, so a fact-check has nothing to flag.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "For TextOS, a passing fact-check only proves that a draft is grounded in its sources, not that it answers the brief it was written for.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note explains the second check that closes that gap, and what that second check does not measure.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

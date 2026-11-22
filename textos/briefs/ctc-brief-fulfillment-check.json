@@ -1,0 +1,575 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-brief-fulfillment-check",
+  "flow": "commit_to_content",
+  "slug": "an-accurate-draft-is-not-a-draft-that-answers-the-brief",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "brief-fulfillment-check"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "brief-fulfillment-v1-2026-08-07",
+        "sourceCommits": [
+          "25b4c04658ef9764c027865a4b917cb923125193"
+        ]
+      },
+      {
+        "groupId": "generation-flow-adr-2026-08-07",
+        "sourceCommits": [
+          "2ff1e76c7dd8dc2cc48d14e41e0babb1b20e0a65"
+        ]
+      },
+      {
+        "groupId": "article-readiness-lot-a-2026-10-25",
+        "sourceCommits": [
+          "16faee404184d31e40d907e885d3bf0867c7eea4"
+        ]
+      },
+      {
+        "groupId": "early-disclosure-batch-2026-10-29",
+        "sourceCommits": [
+          "3fb731a02b57773658b4c270c32052e6c22eeec0"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I tell whether an AI-written draft actually answers the brief I gave it, and not just that its facts are right?",
+    "targetQuery": "how to check that an ai written draft answers the content brief",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "article-validation"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+    "approvedAt": "2026-10-30"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-produced-is-not-validated",
+      "textos-site:ctc:ctc-evidence-approved-per-article",
+      "textos-insight:truthcheck-unmovable-gate"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-bf-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "25b4c04658ef9764c027865a4b917cb923125193",
+        "quote": "\"true content\" is not \"useful content\". TruthCheck=pass only proves grounding, not that the draft answers the accepted brief."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-bf-02",
+      "source": {
+        "kind": "product_commit",
+        "sha": "25b4c04658ef9764c027865a4b917cb923125193",
+        "quote": "add BriefFulfillmentCheck (distinct from TruthCheck): required claim types covered by grounded statements or human-accepted exclusions, required editorial sections, target query"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-bf-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "25b4c04658ef9764c027865a4b917cb923125193",
+        "quote": "enforce invariant in preview: preview only if TruthCheck=pass AND BriefFulfillment=pass"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": []
+    },
+    {
+      "id": "ev-bf-04",
+      "source": {
+        "kind": "product_commit",
+        "sha": "25b4c04658ef9764c027865a4b917cb923125193",
+        "quote": "the former 2-sentence fixture is now a BriefFulfillment BLOCK oracle"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Refers to a test sample: a two-sentence draft kept as the reference case the check must block."
+      ]
+    },
+    {
+      "id": "ev-bf-05",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/brief-fulfillment.test.ts",
+        "quote": "un statement NON fondé ne couvre pas un claim (evidenceIds vide)"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Test name in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-bf-06",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/brief-fulfillment.ts",
+        "quote": "La requête cible est « adressée » si tous ses mots-clés saillants apparaissent dans le contenu rendu."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Source-code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-bf-07",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-015-truthcheck-and-generation.md",
+        "quote": "**TruthCheck=pass prouve « fondé », pas « utile »**. Un draft peut être certifié vrai en ne couvrant qu'un des claims requis du brief → « vide certifié vrai »."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-bf-08",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "brief-fulfillment-check",
+        "field": "knownLimits",
+        "quote": "Distinct du TruthCheck : mesure si le brouillon répond au brief, pas s'il dit vrai."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest known limit, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-bf-09",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/article-readiness.ts",
+        "quote": "Brief Fulfillment : un `article_ready` l'a franchi (sinon `fulfillment_blocked`)."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Source-code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-bf-10",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/article-creation-spine.ts",
+        "quote": "status: \"fulfillment_blocked\", missingSections: fulfillment.missingSections, uncoveredClaimTypes: fulfillment.uncoveredClaimTypes.map((x) => x.claimType), targetQueryAddressed: fulfillment.targetQueryAddressed,"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Source code: the fields of a blocked result."
+      ]
+    },
+    {
+      "id": "ev-bf-11",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-015-truthcheck-and-generation.md",
+        "quote": "Grounded TruthCheck, Brief Fulfillment, preuves et décision humaine s'appliquent à l'identique quel que soit le rédacteur."
+      },
+      "claimTypes": [
+        "content_governance",
+        "writer_resilience"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Architecture decision record in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-bf-12",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/brief-fulfillment.test.ts",
+        "quote": "claim requis EXCLU avec raison acceptée → pass (acceptedExcludedClaimTypes)"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Test name in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-bf-13",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/act/brief-fulfillment.test.ts",
+        "quote": "section requise manquante → block"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Test name in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-bf-14",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "brief-fulfillment-check",
+        "field": "prohibitedClaims",
+        "quote": "guarantees the content is useful"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "A claim the product manifest forbids about this capability; it is cited as a limit, never asserted."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that a draft is checked against the brief it was written for, not only for accuracy.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-bf-02"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS checks that every point the brief requires is covered by a sourced statement or a human-accepted exclusion, and a draft is previewed only when it is both accurate and complete against its brief.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: an AI draft whose facts all check out but that skips half of what the brief asked for. Say that, for TextOS, a fact-check pass only proves the draft is grounded, not that it answers the brief. No date.",
+      "buyerIntent": "Is an accurate draft a finished draft?",
+      "allowedEvidenceIds": [
+        "ev-bf-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How does TextOS know a draft answers its brief?",
+      "writingObjective": "Answer directly: a separate check, distinct from the fact-check, looks at three things (each point the brief requires is covered by a sourced statement or excluded with a reason a person accepted; the required sections are present; the target query is addressed), and a draft is previewed only if both checks pass.",
+      "buyerIntent": "What exactly is checked against my brief?",
+      "allowedEvidenceIds": [
+        "ev-bf-01",
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Accurate is not the same as complete",
+      "writingObjective": "Explain the failure this check exists for: a draft can be certified true while covering only one of the points the brief required, which TextOS calls an empty draft certified true; and that a two-sentence sample draft is now kept as the reference case the check must block.",
+      "buyerIntent": "How can a correct draft still fail me?",
+      "allowedEvidenceIds": [
+        "ev-bf-07",
+        "ev-bf-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What counts as answering the brief",
+      "writingObjective": "Explain the rules in plain language: a statement with no supporting source does not count as covering a required point; a required point may be left out only when a person accepted the reason, and then the draft can pass; a missing required section blocks the draft.",
+      "buyerIntent": "Can the writer just mention a topic to tick the box?",
+      "allowedEvidenceIds": [
+        "ev-bf-05",
+        "ev-bf-12",
+        "ev-bf-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1200,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What happens when a draft falls short",
+      "writingObjective": "Explain the consequence: an article is marked ready only after passing this check, otherwise it is blocked; the blocked result names the missing sections, the uncovered points and whether the target query was addressed; and the same check applies whichever writer produced the draft.",
+      "buyerIntent": "What do I see when a draft misses something?",
+      "allowedEvidenceIds": [
+        "ev-bf-09",
+        "ev-bf-10",
+        "ev-bf-11"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "brief-to-ready-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-bf-01",
+        "ev-bf-03",
+        "ev-bf-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What this check does not tell you",
+      "writingObjective": "Be honest about the limits: the target query counts as addressed when its key words appear in the rendered text, which is not a judgment of quality; the check measures whether the draft answers the brief, not whether it is true; and TextOS does not claim that a pass guarantees useful content, which stays a human judgment.",
+      "buyerIntent": "Does a pass mean the article is good?",
+      "allowedEvidenceIds": [
+        "ev-bf-06",
+        "ev-bf-08",
+        "ev-bf-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "brief-to-ready",
+      "template": "flow",
+      "title": "From written draft to ready article",
+      "subtitle": "Illustrative path for one draft. Both checks must pass.",
+      "nodes": [
+        {
+          "tag": "write",
+          "label": "Draft written",
+          "evidenceIds": [
+            "ev-bf-01"
+          ]
+        },
+        {
+          "tag": "facts",
+          "label": "Facts grounded",
+          "evidenceIds": [
+            "ev-bf-01"
+          ]
+        },
+        {
+          "tag": "brief",
+          "label": "Brief answered",
+          "evidenceIds": [
+            "ev-bf-03"
+          ]
+        },
+        {
+          "tag": "ready",
+          "label": "Marked ready",
+          "evidenceIds": [
+            "ev-bf-09"
+          ]
+        }
+      ],
+      "highlightNode": 2,
+      "boundary": {
+        "afterNode": 1,
+        "title": "Second check",
+        "lines": [
+          "Accurate is not enough:",
+          "the brief must be answered."
+        ],
+        "evidenceIds": [
+          "ev-bf-03"
+        ]
+      },
+      "anchorSectionKey": "section-3",
+      "captionSlotId": "brief-to-ready-caption"
+    }
+  ]
+}

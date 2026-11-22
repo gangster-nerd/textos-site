@@ -1,0 +1,65 @@
+{
+  "text": "TextOS treats an observed source and an approved fact as two different things. A named person approves each source for one specific article, under wording they validate, and only then can the article lean on that fact and show where it came from. When the article is written, only sources that are both approved and usable under TextOS's central rules are offered to its body sections, in the public wording that was approved. Put simply, the writer works from a short list that a person drew up, not from whatever the system happened to read.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS treats an observed source and an approved fact as two different things.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A named person approves each source for one specific article, under wording they validate, and only then can the article lean on that fact and show where it came from.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "When the article is written, only sources that are both approved and usable under TextOS's central rules are offered to its body sections, in the public wording that was approved.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ea-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Put simply, the writer works from a short list that a person drew up, not from whatever the system happened to read.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

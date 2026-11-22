@@ -1,0 +1,22 @@
+{
+  "text": "In TextOS a controlled preview is internal and kept out of search, not a publication, and it refuses a draft whose fingerprints do not match the handover.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS a controlled preview is internal and kept out of search, not a publication, and it refuses a draft whose fingerprints do not match the handover.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-01",
+        "ev-cp-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

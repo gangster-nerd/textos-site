@@ -1,0 +1,248 @@
+{
+  "planId": "how to check that an ai written draft answers the content brief",
+  "planHash": "46f579abba1c1ba243aafd08c41d63aacabebdf9c096945ae3fb275baf2065c2",
+  "slotProvenance": [
+    {
+      "slotId": "title",
+      "role": "title",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS checks a draft against the brief it was written for, not only for accuracy",
+      "statementIds": [
+        "stmt:5:title:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "meta",
+      "role": "meta_description",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS previews a draft only when its facts are grounded and each point its brief requires is covered by a sourced statement or a reason a person accepted.",
+      "statementIds": [
+        "stmt:4:meta:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "lead",
+      "role": "lead",
+      "headingLevel": null,
+      "heading": null,
+      "text": "Picture an AI draft whose facts all check out against their sources, yet which leaves out half of what your brief asked for. Nothing in it is wrong, so a fact-check has nothing to flag. For TextOS, a passing fact-check only proves that a draft is grounded in its sources, not that it answers the brief it was written for. This note explains the second check that closes that gap, and what that second check does not measure.",
+      "statementIds": [
+        "stmt:4:lead:2:s1",
+        "stmt:4:lead:2:s2",
+        "stmt:4:lead:2:s3",
+        "stmt:4:lead:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-01"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "answer",
+      "role": "answer",
+      "headingLevel": 2,
+      "heading": "How does TextOS know a draft answers its brief?",
+      "text": "Alongside its fact-check, TextOS runs a separate check that compares the draft with the brief it was written for. It looks at three things: each point the brief requires is either backed by a statement with a source or left out for a reason a person accepted, the sections the brief requires are present, and the target search query is addressed. A draft goes to preview only when both the fact-check and the brief check pass. Being right and being what you asked for are answered as two separate questions, instead of being blended into one score.",
+      "statementIds": [
+        "stmt:6:answer:2:s1",
+        "stmt:6:answer:2:s2",
+        "stmt:6:answer:2:s3",
+        "stmt:6:answer:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-01",
+        "ev-bf-02",
+        "ev-bf-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-1",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Accurate is not the same as complete",
+      "text": "A fact-check reads the sentences a draft contains and asks whether a source supports them. It does not ask whether the sentences that should be there are there. TextOS's design record describes this failure plainly: a draft can be certified true while covering only one of the required points of its brief, an outcome it calls an empty draft certified true.\n\nA short, two-sentence sample draft that TextOS once used in its tests is now kept as the reference case its brief check has to block. Such a draft can be accurate line by line and still leave the reader without the answer they came for. Keeping it as a test case means the gap between correct and complete is checked on purpose, not discovered by a disappointed reader.",
+      "statementIds": [
+        "stmt:9:section-1:2:s1",
+        "stmt:9:section-1:2:s2",
+        "stmt:9:section-1:2:s3",
+        "stmt:9:section-1:2:s4",
+        "stmt:9:section-1:2:s5",
+        "stmt:9:section-1:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-07",
+        "ev-bf-04"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-07",
+        "ev-bf-04"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-2",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What counts as answering the brief",
+      "text": "The easy shortcut for any writer is to mention a topic in passing so that it looks covered. In TextOS, a statement that cites no source does not count as covering a required point, even when it talks about the right topic. Naming a subject is not the same as backing it up.\n\nA required point can still be left out on purpose: when a person has accepted the reason for excluding it, the draft can pass without it. A gap that someone chose and explained is treated differently from a gap nobody noticed. Structure is checked as well: if a section the brief requires is missing, the draft is blocked.",
+      "statementIds": [
+        "stmt:9:section-2:2:s1",
+        "stmt:9:section-2:2:s2",
+        "stmt:9:section-2:2:s3",
+        "stmt:9:section-2:2:s4",
+        "stmt:9:section-2:2:s5",
+        "stmt:9:section-2:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-05",
+        "ev-bf-12",
+        "ev-bf-13"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-05",
+        "ev-bf-12",
+        "ev-bf-13"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-3",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What happens when a draft falls short",
+      "text": "In TextOS, an article is marked ready only after it has passed the brief check; otherwise it is stopped with a status that says the brief was not fulfilled. The blocked result lists the missing sections, the required points left uncovered and whether the target query was addressed. That turns a vague verdict of not good enough into a short list that a writer or an editor can work through.\n\nThe brief check, the fact-check, the approved sources and the human decision apply in the same way whichever writer produced the draft. Switching the AI model behind the writing does not change what a draft has to deliver against its brief.",
+      "statementIds": [
+        "stmt:9:section-3:2:s1",
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:s3",
+        "stmt:9:section-3:2:s4",
+        "stmt:9:section-3:2:s5"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-09",
+        "ev-bf-10",
+        "ev-bf-11"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-09",
+        "ev-bf-10",
+        "ev-bf-11"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "brief-to-ready-caption",
+      "role": "caption",
+      "headingLevel": null,
+      "heading": null,
+      "text": "In TextOS a draft whose facts are grounded still has to answer its brief before it can be previewed, and only an article that passed that check is marked ready.",
+      "statementIds": [
+        "stmt:22:brief-to-ready-caption:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-01",
+        "ev-bf-03",
+        "ev-bf-09"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-01",
+        "ev-bf-03",
+        "ev-bf-09"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-4",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What this check does not tell you",
+      "text": "The target query counts as addressed when its key words appear in the rendered text of the draft. That is a presence test, not a judgment of how well the question is answered. The check also says nothing about truth: it measures whether a draft answers its brief, not whether what it says is correct.\n\nTextOS's product record explicitly forbids describing this check as a promise that the content is useful. Whether an article is good for its reader remains a human judgment. A pass means the draft did what the brief asked; it does not mean the brief asked for the right things.",
+      "statementIds": [
+        "stmt:9:section-4:2:s1",
+        "stmt:9:section-4:2:s2",
+        "stmt:9:section-4:2:s3",
+        "stmt:9:section-4:2:s4",
+        "stmt:9:section-4:2:s5",
+        "stmt:9:section-4:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-bf-06",
+        "ev-bf-08",
+        "ev-bf-14"
+      ],
+      "usableEvidenceIds": [
+        "ev-bf-06",
+        "ev-bf-08",
+        "ev-bf-14"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "verify",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "text": "Ask whether the tool checks a draft against your brief separately from checking its facts. Ask what happens to a required point the draft does not cover, and who can accept leaving it out. Ask whether a passing mention with no source behind it counts as covering a topic. Ask what a blocked draft shows you: a single score, or a list of what is missing. Ask how the tool decides that your target search query was addressed, and what that test cannot see. Ask whether a point left out on purpose stays visible, with its reason, to the person who reviews the draft.",
+      "statementIds": [
+        "stmt:6:verify:2:s1",
+        "stmt:6:verify:2:s2",
+        "stmt:6:verify:2:s3",
+        "stmt:6:verify:2:s4",
+        "stmt:6:verify:2:s5",
+        "stmt:6:verify:2:s6"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "editorial-next-step",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "text": "The note on produced and checked articles explains why a draft that was written is not yet a draft that was verified. Another note covers who approves the sources an article may rely on before it is written.",
+      "statementIds": [
+        "stmt:19:editorial-next-step:2:s1",
+        "stmt:19:editorial-next-step:2:s2"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    }
+  ],
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "698143c57307644e1b7a373017f7c32c4deadc7a29cc483f48402b0704c9a609",
+  "truthCheck": {
+    "verdict": "pass",
+    "contradictions": []
+  },
+  "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+}

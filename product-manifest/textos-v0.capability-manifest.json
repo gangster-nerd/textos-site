@@ -1,14 +1,81 @@
 {
   "schemaVersion": 2,
-  "statusVocabularyVersion": 3,
+  "statusVocabularyVersion": 4,
   "productRepository": "textos-v0",
-  "snapshotCommit": "d1b8b50552e1b42768a6bd0c0515675e139780d3",
-  "snapshotCommittedAt": "2026-08-08",
+  "snapshotCommit": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "snapshotCommittedAt": "2026-10-29",
   "coverage": {
     "kind": "partial",
-    "note": "16 entités déclarées. Le pipeline Act est désormais couvert (grounded-truth-check, structured-generation, brief-fulfillment-check, controlled-preview, generation-handoff, re-observation-plan), et les preuves de claim-evidence-layer et truth-check ont été rafraîchies : leurs bundles décrivent le comportement courant. RESTENT HORS PÉRIMÈTRE à ce snapshot : (1) deriveOpportunityEconomics — ADR-018, src/server/textos/decide/opportunity-economics.ts ; (2) deriveInterventionSet / MVIS — ADR-018 §7, src/server/textos/decide/intervention-set.ts ; (3) profils de claims et rôle owned_product ; (4) restitution des quatre dimensions d'autorité (readers). Ces absences sont des décisions non prises, pas des oublis. AVERTISSEMENT : aucune des six capacités Act n'est gouvernée par un ADR — ni ADR-015 ni ADR-016 ne les mentionnent. Le garde de tests interdit `public_marketable` sans ADR, donc aucune ne peut être commercialisée avant d'avoir le sien."
+    "note": "34 entités déclarées. L'entrée self-serve (ADR-027) ajoute authenticated-product-entry, self-serve-onboarding et ui-measurement-launch. DECL-1 (29/10/2026) déclare, en internal_only non décidé, les quinze capacités annoncées par une disposition declare_now (Commit-to-Content, panel approuvé, demande gouvernée, Performances, distribution MCP, CLI, mandats, budget, actions, santé du système, brouillon WordPress, quality gate éditorial) ; les sujets annoncés qui ne sont pas des capacités produit sont tenus dans declaration-scope.ts avec leur raison. Le pipeline Act est désormais couvert (grounded-truth-check, structured-generation, brief-fulfillment-check, controlled-preview, generation-handoff, re-observation-plan), et les preuves de claim-evidence-layer et truth-check ont été rafraîchies : leurs bundles décrivent le comportement courant. RESTENT HORS PÉRIMÈTRE à ce snapshot : (1) deriveOpportunityEconomics — ADR-018, src/server/textos/decide/opportunity-economics.ts ; (2) deriveInterventionSet / MVIS — ADR-018 §7, src/server/textos/decide/intervention-set.ts ; (3) profils de claims et rôle owned_product ; (4) restitution des quatre dimensions d'autorité (readers). Ces absences sont des décisions non prises, pas des oublis. AVERTISSEMENT : aucune des six capacités Act n'est gouvernée par un ADR — ni ADR-015 ni ADR-016 ne les mentionnent. Le garde de tests interdit `public_marketable` sans ADR, donc aucune ne peut être commercialisée avant d'avoir le sien."
   },
   "entities": [
+    {
+      "id": "authenticated-product-entry",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_marketable",
+      "allowedSurfaces": [
+        "homepage",
+        "faq"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-27-self-serve-entry-publication.md",
+        "recordedAt": "2026-10-27"
+      },
+      "evidence": [
+        {
+          "id": "magic-link-sign-in-v1",
+          "commits": [
+            "71d92286b234fe8770418f59a85bc3dd329a2d18",
+            "c831a37e489ddc8c69c1d9b2449fe9e8ae12ddfa"
+          ],
+          "paths": [
+            "src/server/identity/auth.ts",
+            "src/server/identity/auth-mode.ts",
+            "app/auth/sign-in/_lib/request-magic-link.ts",
+            "app/auth/sign-in/_lib/return-to.ts"
+          ],
+          "tests": [
+            "src/server/identity/auth-mode.test.ts",
+            "app/auth/sign-in/_lib/request-magic-link.test.ts",
+            "app/auth/sign-in/_lib/return-to.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-027-self-serve-entry-and-public-handoff.md"
+          ]
+        },
+        {
+          "id": "public-handoff-entry-v1",
+          "commits": [
+            "91f06bff660a99d8001510c756b834eb1e1df0bf",
+            "66a1ccd1e1dddf2f970f0546c0ade02b6d5a6993"
+          ],
+          "paths": [
+            "app/auth/start/route.ts",
+            "app/auth/start/_lib/handoff.ts"
+          ],
+          "tests": [
+            "app/auth/start/route.test.ts",
+            "app/auth/start/_lib/handoff.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-027-self-serve-entry-and-public-handoff.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "free trial",
+        "instant results",
+        "no setup",
+        "fully automated",
+        "publishes for you",
+        "guaranteed visibility"
+      ],
+      "knownLimits": [
+        "Fermée tant que le déploiement tourne en AUTH_MODE=off : /auth/start répond 503.",
+        "Connexion par lien magique uniquement : l'envoi suppose un domaine d'envoi vérifié."
+      ]
+    },
     {
       "id": "authority-score",
       "kind": "prohibited_concept",
@@ -29,7 +96,7 @@
       ]
     },
     {
-      "id": "brief-fulfillment-check",
+      "id": "bounded-autonomy-mandates",
       "kind": "capability",
       "implementationStatus": "implemented",
       "publicationStatus": "internal_only",
@@ -37,6 +104,54 @@
       "publicationDecision": {
         "decidedIn": null,
         "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "bounded-autonomy-mandates-v1",
+          "commits": [
+            "a4182c2c051a24546fd8178f8e7e8c5d71e2599f"
+          ],
+          "paths": [
+            "app/(app)/workspaces/[scopeId]/mandates/[id]/page.tsx",
+            "src/server/textos/adapters/workspace-mandates.ts",
+            "src/server/textos/application/autonomy/contracts.ts",
+            "src/server/textos/application/autonomy/grant-binding.ts",
+            "src/server/textos/application/autonomy/intent-store.ts",
+            "src/server/textos/application/autonomy/plan.ts",
+            "src/server/textos/application/autonomy/service.ts",
+            "src/server/textos/db/schema/workspace-autonomy.ts",
+            "src/server/textos/distribution/mandates.ts",
+            "src/server/textos/runtime/mandates.ts"
+          ],
+          "tests": [
+            "src/server/textos/adapters/workspace-mandates.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "fully autonomous",
+        "acts without limits"
+      ],
+      "knownLimits": [
+        "Un mandat borne ce que TextOS peut faire sans nouvelle approbation ; hors mandat, l'approbation humaine reste requise."
+      ]
+    },
+    {
+      "id": "brief-fulfillment-check",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-29-disclosure-proposals.md",
+        "recordedAt": "2026-10-29"
       },
       "evidence": [
         {
@@ -59,6 +174,78 @@
       ],
       "knownLimits": [
         "Distinct du TruthCheck : mesure si le brouillon répond au brief, pas s'il dit vrai."
+      ]
+    },
+    {
+      "id": "business-approved-query-panel",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "business-approved-query-panel-v1",
+          "commits": [
+            "a6a41a702568d1ba13938dfc9367e12193252f9d",
+            "6c9d7fe53fcc1a0ba14cad74308f567c0cb72576",
+            "17086e46d747eb0e6ba03e7f3f7dd122cec0ebdc",
+            "590147b6d6677d58a43aa1e8343505940ba0451c",
+            "e644a5da658588d346800eaabb6e0b1208cd5176",
+            "db6da77773847e119daae91320c4c6762eeedc36",
+            "27aac8e37b26f1edd87eb5b5a2384f511d8a5abe",
+            "b66c3a845b26c0bf945ac55222a98ab6f152da00"
+          ],
+          "paths": [
+            "src/server/textos/query-intelligence/demand/approval-reader.ts",
+            "src/server/textos/query-intelligence/demand/approval-readiness.ts",
+            "src/server/textos/query-intelligence/demand/approval-view.ts",
+            "src/server/textos/query-intelligence/demand/approval.ts",
+            "src/server/textos/query-intelligence/demand/demand-grounding.ts",
+            "src/server/textos/query-intelligence/demand/expected-host.ts",
+            "src/server/textos/query-intelligence/demand/expression-evidence-reader.ts",
+            "src/server/textos/query-intelligence/demand/import-artifact.ts",
+            "src/server/textos/query-intelligence/demand/market.ts",
+            "src/server/textos/query-intelligence/demand/panel-composition.ts",
+            "src/server/textos/query-intelligence/demand/provider/contract.ts",
+            "src/server/textos/query-intelligence/demand/provider/cost-gate.ts",
+            "src/server/textos/query-intelligence/demand/provider/evidence.ts",
+            "src/server/textos/query-intelligence/demand/provider/refusal.ts",
+            "src/server/textos/query-intelligence/demand/provider/repository.ts",
+            "src/server/textos/query-intelligence/demand/provider/request-hash.ts",
+            "src/server/textos/query-intelligence/demand/provider/run.ts",
+            "src/server/textos/query-intelligence/demand/repository.ts",
+            "src/server/textos/query-intelligence/demand/scope-label.ts"
+          ],
+          "tests": [
+            "src/server/textos/query-intelligence/demand-evidence.test.ts",
+            "src/server/textos/query-intelligence/demand/approval-reader.test.ts",
+            "src/server/textos/query-intelligence/demand/approval-readiness.test.ts",
+            "src/server/textos/query-intelligence/demand/approval-view.test.ts",
+            "src/server/textos/query-intelligence/demand/approval.test.ts",
+            "src/server/textos/query-intelligence/demand/demand-grounding.test.ts",
+            "src/server/textos/query-intelligence/demand/expression-evidence-reader.test.ts",
+            "src/server/textos/query-intelligence/demand/import-artifact.test.ts",
+            "src/server/textos/query-intelligence/demand/panel-composition.test.ts",
+            "src/server/textos/query-intelligence/demand/provider/repository.test.ts",
+            "src/server/textos/query-intelligence/demand/provider/run.test.ts",
+            "src/server/textos/query-intelligence/demand/repository.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-005-query-panel-strategy.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "covers every question buyers ask",
+        "real-time demand"
+      ],
+      "knownLimits": [
+        "Le panel mesuré est exactement la version approuvée ; toute modification exige une nouvelle approbation.",
+        "La demande provient de sources importées et datées ; elle n'est pas une mesure du trafic réel."
       ]
     },
     {
@@ -120,14 +307,90 @@
       ]
     },
     {
-      "id": "controlled-preview",
+      "id": "commit-to-content",
       "kind": "capability",
-      "implementationStatus": "implemented",
+      "implementationStatus": "wip_committed_tested",
       "publicationStatus": "internal_only",
       "allowedSurfaces": [],
       "publicationDecision": {
         "decidedIn": null,
         "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "commit-to-content-v1",
+          "commits": [
+            "b6aeea51aee6056408a8e2c1b4cd5adf7c0637a9",
+            "c86537e0afae8af10eb53f6cca14951325a14c3b"
+          ],
+          "paths": [
+            "src/server/textos/act/ctc/article-review.ts",
+            "src/server/textos/act/ctc/editorial-quality.ts",
+            "src/server/textos/act/ctc/figure.ts",
+            "src/server/textos/act/ctc/versions.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/ctc/article-review.test.ts",
+            "src/server/textos/act/ctc/editorial-quality.test.ts",
+            "src/server/textos/act/ctc/figure.test.ts"
+          ],
+          "adrs": []
+        },
+        {
+          "id": "ctc-canonical-qualification-v1",
+          "commits": [
+            "41bf286d6e02e809d365af97f99d378f3941e11c",
+            "2223b9f1630c27cb66ed6f6edc30b1e2b5c729e3",
+            "f231c692eff07778940e03bfb8df1b9a5c6adc4d"
+          ],
+          "paths": [
+            "src/ctc-filter/core/run.ts",
+            "src/ctc-filter/core/exposure.ts",
+            "src/ctc-filter/core/record.ts",
+            "src/server/textos/act/early-disclosure.ts",
+            "src/disclosure/proposals.ts"
+          ],
+          "tests": [
+            "src/ctc-filter/core/exposure.test.ts",
+            "src/ctc-filter/core/record.test.ts",
+            "src/ctc-filter/core/run.test.ts",
+            "src/disclosure/disclosure.test.ts",
+            "src/server/textos/act/early-disclosure.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-029-ctc-filtre-canonique.md",
+            "docs/adr/ADR-034-divulgation-anticipee-beta-bientot.md",
+            "docs/adr/ADR-035-politique-divulgation-anticipee.md",
+            "docs/adr/ADR-036-ctc-une-source-une-qualification.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "publishes automatically",
+        "writes articles without human approval",
+        "works with any repository",
+        "generally available"
+      ],
+      "knownLimits": [
+        "Lit aujourd'hui le seul dépôt de TextOS ; les dépôts clients entreront par la source GitHub (ADR-036).",
+        "Chaque article passe par la revue d'article commune et une approbation humaine ; rien n'est publié automatiquement."
+      ]
+    },
+    {
+      "id": "controlled-preview",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-29-disclosure-proposals.md",
+        "recordedAt": "2026-10-29"
       },
       "evidence": [
         {
@@ -154,6 +417,49 @@
       ],
       "knownLimits": [
         "Aperçu INTERNE, noindex : l'état `preview` est distinct de `published`, et publishedUrl reste nul."
+      ]
+    },
+    {
+      "id": "customer-cli",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "customer-cli-v1",
+          "commits": [
+            "a4182c2c051a24546fd8178f8e7e8c5d71e2599f"
+          ],
+          "paths": [
+            "src/server/textos/customer-cli/http.ts",
+            "src/server/textos/customer-cli/identity.ts",
+            "src/server/textos/customer-cli/mutation.ts",
+            "src/server/textos/customer-cli/operations.ts",
+            "src/server/textos/customer-cli/readers.ts",
+            "src/server/textos/customer-cli/service.ts",
+            "src/server/textos/db/schema/cli-customer-mutation.ts",
+            "src/server/textos/db/schema/cli-customer-session.ts",
+            "src/server/textos/db/schema/cli-device.ts"
+          ],
+          "tests": [
+            "scripts/api-v1/customer-cli.test.ts",
+            "src/server/textos/customer-cli/auth-boundary.test.ts",
+            "src/server/textos/customer-cli/operations.test.ts",
+            "src/server/textos/customer-cli/service.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "full parity with the web app"
+      ],
+      "knownLimits": [
+        "Couvre les opérations exposées par l'API ; aucune parité avec l'interface n'est revendiquée."
       ]
     },
     {
@@ -195,7 +501,7 @@
       ]
     },
     {
-      "id": "generation-handoff",
+      "id": "editorial-quality-gate",
       "kind": "capability",
       "implementationStatus": "implemented",
       "publicationStatus": "internal_only",
@@ -203,6 +509,50 @@
       "publicationDecision": {
         "decidedIn": null,
         "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "editorial-quality-gate-v1",
+          "commits": [
+            "01b0babf50422eaf6f3fe2c02ef979b54684ff0c",
+            "e2e40e58a9c2af7dd96b7572f41534067f172c59",
+            "c86537e0afae8af10eb53f6cca14951325a14c3b"
+          ],
+          "paths": [
+            "src/server/textos/act/editorial-quality-gate.ts",
+            "src/server/textos/act/editorial-quality-review.ts",
+            "src/server/textos/act/editorial-strategy.ts"
+          ],
+          "tests": [
+            "src/server/textos/act/editorial-quality-gate.test.ts",
+            "src/server/textos/act/editorial-strategy.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "guarantees citation by AI answers",
+        "guarantees rankings"
+      ],
+      "knownLimits": [
+        "Évalue un brouillon selon sa stratégie éditoriale et ses preuves ; ne garantit ni citation ni classement."
+      ]
+    },
+    {
+      "id": "generation-handoff",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-29-disclosure-proposals.md",
+        "recordedAt": "2026-10-29"
       },
       "evidence": [
         {
@@ -231,7 +581,7 @@
       ]
     },
     {
-      "id": "grounded-truth-check",
+      "id": "governed-demand-intake",
       "kind": "capability",
       "implementationStatus": "implemented",
       "publicationStatus": "internal_only",
@@ -239,6 +589,46 @@
       "publicationDecision": {
         "decidedIn": null,
         "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "governed-demand-intake-v1",
+          "commits": [
+            "6c9d7fe53fcc1a0ba14cad74308f567c0cb72576"
+          ],
+          "paths": [
+            "src/server/textos/query-intelligence/demand/competitor.ts",
+            "src/server/textos/query-intelligence/demand/demand-seed.ts",
+            "src/server/textos/query-intelligence/demand/market.ts",
+            "src/server/textos/query-intelligence/demand/normalize.ts"
+          ],
+          "tests": [],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "exhaustive market coverage",
+        "real-time demand"
+      ],
+      "knownLimits": [
+        "Chaque expression de demande garde sa provenance ; une source non importée n'y contribue pas."
+      ]
+    },
+    {
+      "id": "grounded-truth-check",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-29-disclosure-proposals.md",
+        "recordedAt": "2026-10-29"
       },
       "evidence": [
         {
@@ -314,6 +704,87 @@
       ],
       "knownLimits": [
         "Dépend de la résolution d'entités : une mention non résolue n'est pas comptée."
+      ]
+    },
+    {
+      "id": "mcp-distribution",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "mcp-distribution-v1",
+          "commits": [
+            "a4182c2c051a24546fd8178f8e7e8c5d71e2599f"
+          ],
+          "paths": [
+            "src/server/textos/api-v1/distribution-browser-ports.ts",
+            "src/server/textos/db/schema/mcp-action.ts",
+            "src/server/textos/db/schema/mcp-connection.ts",
+            "src/server/textos/db/schema/mcp-context.ts",
+            "src/server/textos/db/schema/mcp-runtime.ts",
+            "src/server/textos/distribution/action-intent-context.ts",
+            "src/server/textos/distribution/action-intent-store.ts",
+            "src/server/textos/distribution/action-preview.ts",
+            "src/server/textos/distribution/actions.ts",
+            "src/server/textos/distribution/activation.ts",
+            "src/server/textos/distribution/audit.ts",
+            "src/server/textos/distribution/brief-actions.ts",
+            "src/server/textos/distribution/brief-chunks.ts",
+            "src/server/textos/distribution/brief-preparation.ts",
+            "src/server/textos/distribution/browser-actor.ts",
+            "src/server/textos/distribution/browser-error.ts",
+            "src/server/textos/distribution/browser.ts",
+            "src/server/textos/distribution/channels.ts",
+            "src/server/textos/distribution/client-metadata.ts",
+            "src/server/textos/distribution/clients.ts",
+            "src/server/textos/distribution/config.ts",
+            "src/server/textos/distribution/context-selection.ts",
+            "src/server/textos/distribution/deliveries.ts",
+            "src/server/textos/distribution/errors.ts",
+            "src/server/textos/distribution/execution-principal.ts",
+            "src/server/textos/distribution/http.ts",
+            "src/server/textos/distribution/job-authorization.ts",
+            "src/server/textos/distribution/job-results.ts",
+            "src/server/textos/distribution/maintenance.ts",
+            "src/server/textos/distribution/markdown.ts",
+            "src/server/textos/distribution/native-review.ts",
+            "src/server/textos/distribution/oauth.ts",
+            "src/server/textos/distribution/onboarding.ts",
+            "src/server/textos/distribution/operations.ts",
+            "src/server/textos/distribution/opportunity-presentation.ts",
+            "src/server/textos/distribution/output-contracts.ts",
+            "src/server/textos/distribution/product.ts",
+            "src/server/textos/distribution/reads.ts",
+            "src/server/textos/distribution/request-boundary.ts",
+            "src/server/textos/distribution/review-content.ts",
+            "src/server/textos/distribution/server.ts",
+            "src/server/textos/distribution/tool-permissions.ts",
+            "src/server/textos/mcp/core-server.ts",
+            "src/server/textos/mcp/textos-mcp-server.ts"
+          ],
+          "tests": [
+            "src/server/textos/distribution/brief-actions.test.ts",
+            "src/server/textos/distribution/clients.test.ts",
+            "src/server/textos/distribution/http.test.ts",
+            "src/server/textos/distribution/markdown.test.ts",
+            "src/server/textos/distribution/oauth.test.ts",
+            "src/server/textos/distribution/tool-permissions.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "works with every AI assistant",
+        "acts without approval"
+      ],
+      "knownLimits": [
+        "Les actions passent par une prévisualisation et une approbation ; les lectures sont limitées à l'organisation connectée."
       ]
     },
     {
@@ -413,6 +884,77 @@
       ]
     },
     {
+      "id": "performance-checks",
+      "kind": "capability",
+      "implementationStatus": "wip_committed_tested",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "performance-checks-v1",
+          "commits": [
+            "b230cbbb44038dc25aa496a84d134eab34a4e489"
+          ],
+          "paths": [
+            "src/server/textos/performance/activation.ts",
+            "src/server/textos/performance/check-planner.ts",
+            "src/server/textos/performance/check-runner.ts",
+            "src/server/textos/performance/planner-snapshot.ts"
+          ],
+          "tests": [
+            "src/server/textos/performance/activation.test.ts",
+            "src/server/textos/performance/check-planner.test.ts",
+            "src/server/textos/performance/check-runner.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "continuous monitoring",
+        "real-time tracking"
+      ],
+      "knownLimits": [
+        "Les vérifications sont planifiées à intervalle ; elles ne sont pas continues."
+      ]
+    },
+    {
+      "id": "publication-observation",
+      "kind": "capability",
+      "implementationStatus": "wip_committed_tested",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "publication-observation-v1",
+          "commits": [
+            "b230cbbb44038dc25aa496a84d134eab34a4e489"
+          ],
+          "paths": [
+            "src/server/textos/performance/publication-observer.ts",
+            "src/server/textos/performance/scope-contents.ts"
+          ],
+          "tests": [
+            "src/server/textos/performance/publication-observer.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "detects every publication"
+      ],
+      "knownLimits": [
+        "Observe les contenus rattachés à l'espace de mesure ; ne surveille pas tout le site."
+      ]
+    },
+    {
       "id": "quality-ledger",
       "kind": "capability",
       "implementationStatus": "implemented",
@@ -453,14 +995,83 @@
       ]
     },
     {
-      "id": "re-observation-plan",
+      "id": "question-performance",
       "kind": "capability",
-      "implementationStatus": "implemented",
+      "implementationStatus": "wip_committed_tested",
       "publicationStatus": "internal_only",
       "allowedSurfaces": [],
       "publicationDecision": {
         "decidedIn": null,
         "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "question-performance-v1",
+          "commits": [
+            "b230cbbb44038dc25aa496a84d134eab34a4e489",
+            "fdb7cac00167ca33639df2e5c85a7e2f34aa23c6",
+            "2f6ed1c0d9bed0f7f966cbd83865a57e2f116491",
+            "d8df9cb84a99993dd5b0621159a9c201f40fe90f"
+          ],
+          "paths": [
+            "src/server/textos/performance/chain-state.ts",
+            "src/server/textos/performance/check-origin.ts",
+            "src/server/textos/performance/contract.ts",
+            "src/server/textos/performance/cron.ts",
+            "src/server/textos/performance/facts.ts",
+            "src/server/textos/performance/question-series.ts",
+            "src/server/textos/performance/recommendation.ts",
+            "src/server/textos/performance/rules.ts",
+            "src/server/textos/performance/system-actor.ts",
+            "src/server/textos/performance/url-match.ts",
+            "src/server/textos/workspace/performance-access.ts",
+            "src/server/textos/workspace/performance-acquisition-guard.ts",
+            "src/server/textos/workspace/performance-reader.ts",
+            "src/server/textos/workspace/performance-viewer-read.ts",
+            "src/server/textos/workspace/performance-visit-cursor.ts",
+            "src/server/textos/workspace/view-contracts/performance.ts"
+          ],
+          "tests": [
+            "src/server/textos/performance/cron.test.ts",
+            "src/server/textos/performance/facts.test.ts",
+            "src/server/textos/performance/question-series.test.ts",
+            "src/server/textos/performance/recommendation.test.ts",
+            "src/server/textos/performance/url-match.test.ts",
+            "src/server/textos/workspace/performance-acquisition-guard.test.ts",
+            "src/server/textos/workspace/performance-reader.test.ts",
+            "src/server/textos/workspace/performance-viewer-read.test.ts",
+            "src/server/textos/workspace/performance-visit-cursor.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-026-editorial-action-vocabulary-objective-cockpit.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "proves causality",
+        "guarantees results",
+        "real-time tracking"
+      ],
+      "knownLimits": [
+        "Décrit une évolution observée, avec comparabilité et incertitude ; n'établit jamais de causalité.",
+        "Reprise en cours (trace des appels planifiés) : la lecture dépend de l'offre de l'organisation."
+      ]
+    },
+    {
+      "id": "re-observation-plan",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-29-disclosure-proposals.md",
+        "recordedAt": "2026-10-29"
       },
       "evidence": [
         {
@@ -526,7 +1137,54 @@
       ]
     },
     {
-      "id": "structured-generation",
+      "id": "self-serve-onboarding",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_marketable",
+      "allowedSurfaces": [
+        "homepage",
+        "faq"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-27-self-serve-entry-publication.md",
+        "recordedAt": "2026-10-27"
+      },
+      "evidence": [
+        {
+          "id": "first-login-organization-v1",
+          "commits": [
+            "1d6fcd91ad00f6f27c4b3ae5f76a54c4345a6153",
+            "49d76769196aa1b610db8aa9438599bf4a3d1167"
+          ],
+          "paths": [
+            "src/server/identity/organization-provisioning.ts",
+            "app/(app)/onboarding/organization/_lib/onboarding-actions.ts",
+            "app/(app)/workspaces/layout.tsx"
+          ],
+          "tests": [
+            "src/server/identity/organization-provisioning.test.ts",
+            "src/server/authorization/post-auth-landing.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-027-self-serve-entry-and-public-handoff.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "free trial",
+        "instant results",
+        "no setup",
+        "fully automated",
+        "publishes for you",
+        "guaranteed visibility"
+      ],
+      "knownLimits": [
+        "Aucune invitation, aucune facturation, aucun plan : seul le propriétaire entre.",
+        "Un plafond de consommation par organisation (mesures, analyses de demande, rédactions) borne la dépense ; il se relève par l'opérateur."
+      ]
+    },
+    {
+      "id": "site-derived-site-expressions",
       "kind": "capability",
       "implementationStatus": "implemented",
       "publicationStatus": "internal_only",
@@ -534,6 +1192,44 @@
       "publicationDecision": {
         "decidedIn": null,
         "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "site-derived-site-expressions-v1",
+          "commits": [
+            "bbb0c041743bbd023c673892331f773cc19926cb"
+          ],
+          "paths": [
+            "src/server/textos/query-intelligence/demand/site-seed-derivation.ts"
+          ],
+          "tests": [
+            "src/server/textos/query-intelligence/demand/site-seed-derivation.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "understands your whole website"
+      ],
+      "knownLimits": [
+        "Dérive des expressions des pages lues du site ; une page non lue n'y contribue pas."
+      ]
+    },
+    {
+      "id": "structured-generation",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_beta",
+      "allowedSurfaces": [
+        "homepage",
+        "product_article",
+        "faq",
+        "developer_note",
+        "changelog"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-29-disclosure-proposals.md",
+        "recordedAt": "2026-10-29"
       },
       "evidence": [
         {
@@ -660,6 +1356,237 @@
       "knownLimits": [
         "Le truthcheck conditionne la génération ; il ne prononce pas de verdict de vérité.",
         "La publication est graduée et suppose une validation humaine."
+      ]
+    },
+    {
+      "id": "ui-measurement-launch",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "public_marketable",
+      "allowedSurfaces": [
+        "homepage",
+        "faq"
+      ],
+      "publicationDecision": {
+        "decidedIn": "docs/governance/publication/2026-10-27-self-serve-entry-publication.md",
+        "recordedAt": "2026-10-27"
+      },
+      "evidence": [
+        {
+          "id": "ui-setup-and-approved-panel-launch-v1",
+          "commits": [
+            "d2f3b1d8e66f0f96c7e82a6f4083214e38b906dc",
+            "24124e7a16460c30981fcfb5fad48be0044caf27",
+            "17086e46d747eb0e6ba03e7f3f7dd122cec0ebdc"
+          ],
+          "paths": [
+            "app/(app)/workspaces/new/_lib/launch-actions.ts",
+            "src/server/self-serve/launch.ts",
+            "src/server/self-serve/launch-approved-panel.ts",
+            "src/server/self-serve/provider-resolution.ts",
+            "src/server/self-serve/organization-allowance.ts",
+            "app/(app)/workspaces/[scopeId]/questions/_lib/approve-panel-action.ts"
+          ],
+          "tests": [
+            "src/server/self-serve/launch.test.ts",
+            "src/server/self-serve/launch-approved-panel.test.ts",
+            "src/server/self-serve/launch-action-fail-closed.test.ts",
+            "src/server/self-serve/provider-resolution.test.ts",
+            "src/server/self-serve/organization-allowance.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-027-self-serve-entry-and-public-handoff.md",
+            "docs/adr/ADR-009-observe-orchestration.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "free trial",
+        "instant results",
+        "no setup",
+        "fully automated",
+        "publishes for you",
+        "guaranteed visibility"
+      ],
+      "knownLimits": [
+        "Mesure réelle seulement si le fournisseur est configuré ; sinon l'interface renvoie vers l'opérateur.",
+        "Hors des profils de claims gouvernés, la mesure tourne mais sa lecture sémantique (claims, écarts, briefs) est indisponible.",
+        "Une seule surface de réponse mesurée (Perplexity) ; le panel est approuvé par l'utilisateur avant toute mesure.",
+        "Plafond d'appels de mesure par organisation sur une fenêtre glissante : au-delà, le lancement est refusé avant toute dépense."
+      ]
+    },
+    {
+      "id": "workspace-action-lifecycle",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "workspace-action-lifecycle-v1",
+          "commits": [
+            "a4182c2c051a24546fd8178f8e7e8c5d71e2599f"
+          ],
+          "paths": [
+            "app/(app)/workspaces/[scopeId]/actions/[id]/page.tsx",
+            "app/(app)/workspaces/[scopeId]/actions/preview/page.tsx",
+            "app/(app)/workspaces/[scopeId]/jobs/[jobId]/result/page.tsx",
+            "src/server/textos/adapters/workspace-actions.ts",
+            "src/server/textos/adapters/workspace-browser.ts",
+            "src/server/textos/application/actions/durable-intent-store.ts",
+            "src/server/textos/application/actions/intent-service.ts",
+            "src/server/textos/application/actions/intent-store.ts",
+            "src/server/textos/application/actions/job-result.ts",
+            "src/server/textos/application/actions/native-review.ts",
+            "src/server/textos/application/actions/preview.ts",
+            "src/server/textos/application/actions/workspace-delegation.ts",
+            "src/server/textos/db/schema/workspace-action-intent.ts"
+          ],
+          "tests": [
+            "src/server/textos/adapters/workspace-actions.test.ts",
+            "src/server/textos/application/actions/intent-service.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "executes actions without approval"
+      ],
+      "knownLimits": [
+        "Chaque action est prévisualisée, approuvée puis exécutée ; son résultat se lit par job."
+      ]
+    },
+    {
+      "id": "workspace-budget-policy",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "workspace-budget-policy-v1",
+          "commits": [
+            "a4182c2c051a24546fd8178f8e7e8c5d71e2599f"
+          ],
+          "paths": [
+            "app/(app)/workspaces/[scopeId]/budget/actions.ts",
+            "app/(app)/workspaces/[scopeId]/budget/page.tsx",
+            "src/server/textos/adapters/budget-money.ts",
+            "src/server/textos/application/budget/contracts.ts",
+            "src/server/textos/application/budget/service.ts",
+            "src/server/textos/db/schema/workspace-budget.ts"
+          ],
+          "tests": [
+            "src/server/textos/application/budget/budget-concurrency.pg.test.ts",
+            "src/server/textos/application/budget/workspace-budget.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "guarantees cost savings"
+      ],
+      "knownLimits": [
+        "Le budget plafonne les dépenses engagées par l'espace ; il ne prévoit pas le coût d'un contenu."
+      ]
+    },
+    {
+      "id": "workspace-scoped-wordpress-draft",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "workspace-scoped-wordpress-draft-v1",
+          "commits": [
+            "26f608f1b7a306baba1fe0949535a5542cbaed8f",
+            "4e849134441593f710de867cf92c3b46675c3f8b"
+          ],
+          "paths": [
+            "app/(app)/workspaces/[scopeId]/articles/_lib/draft-preview-action.ts",
+            "app/(app)/workspaces/[scopeId]/articles/page.tsx",
+            "src/server/textos/act/article-draft-preview.ts",
+            "src/server/textos/act/providers/wordpress/workspace-resolver.ts"
+          ],
+          "tests": [
+            "app/(app)/workspaces/[scopeId]/articles/_lib/draft-preview-action.test.ts",
+            "src/server/textos/act/article-draft-preview.test.ts",
+            "src/server/textos/act/providers/wordpress/workspace-resolver.test.ts"
+          ],
+          "adrs": [
+            "docs/adr/ADR-022-workspace-credential-storage.md"
+          ]
+        }
+      ],
+      "prohibitedClaims": [
+        "publishes to WordPress automatically"
+      ],
+      "knownLimits": [
+        "Crée un brouillon, jamais une publication ; publier reste une décision humaine dans WordPress."
+      ]
+    },
+    {
+      "id": "workspace-system-health",
+      "kind": "capability",
+      "implementationStatus": "implemented",
+      "publicationStatus": "internal_only",
+      "allowedSurfaces": [],
+      "publicationDecision": {
+        "decidedIn": null,
+        "recordedAt": null
+      },
+      "evidence": [
+        {
+          "id": "workspace-system-health-v1",
+          "commits": [
+            "a4182c2c051a24546fd8178f8e7e8c5d71e2599f"
+          ],
+          "paths": [
+            "src/server/textos/system-health/domain-resolution.ts",
+            "src/server/textos/system-health/fixtures.ts",
+            "src/server/textos/system-health/governance.ts",
+            "src/server/textos/system-health/http-response.ts",
+            "src/server/textos/system-health/machine-service.ts",
+            "src/server/textos/system-health/operational-contract.ts",
+            "src/server/textos/system-health/operational-evidence.ts",
+            "src/server/textos/system-health/projection.ts",
+            "src/server/textos/system-health/provider-quotas.ts",
+            "src/server/textos/system-health/service.ts",
+            "src/server/textos/system-health/system-snapshot.ts",
+            "src/server/textos/system-health/technical-details.ts",
+            "src/server/textos/system-health/workspace-details.ts"
+          ],
+          "tests": [
+            "src/server/textos/system-health/domain-resolution.test.ts",
+            "src/server/textos/system-health/governance.test.ts",
+            "src/server/textos/system-health/operational-evidence.test.ts",
+            "src/server/textos/system-health/projection.test.ts",
+            "src/server/textos/system-health/provider-quotas.test.ts",
+            "src/server/textos/system-health/service.test.ts",
+            "src/server/textos/system-health/system-snapshot.test.ts",
+            "src/server/textos/system-health/workspace-details.test.ts"
+          ],
+          "adrs": []
+        }
+      ],
+      "prohibitedClaims": [
+        "guarantees uptime"
+      ],
+      "knownLimits": [
+        "Rend compte de l'état observé des dépendances ; ce n'est pas un engagement de disponibilité."
       ]
     }
   ]

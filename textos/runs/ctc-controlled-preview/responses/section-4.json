@@ -1,0 +1,89 @@
+{
+  "text": "The handover in TextOS carries a draft and its fingerprints from writing to preview, and by its own stated limit it vouches for nothing in the content itself. A matching fingerprint tells you the page was not swapped; it does not tell you the argument is sound or the examples are useful. A draft whose fact-check did not pass, or whose brief was not accepted, never reaches the preview. The preview comes after those checks; it is not a further check of quality.\n\nPublication is its own state in TextOS, distinct from the preview, so going live remains a separate step after your reading. Whether the article is useful, well argued and worth publishing under your name is still for the person reading the preview to judge.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The handover in TextOS carries a draft and its fingerprints from writing to preview, and by its own stated limit it vouches for nothing in the content itself.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-18"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A matching fingerprint tells you the page was not swapped; it does not tell you the argument is sound or the examples are useful.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "A draft whose fact-check did not pass, or whose brief was not accepted, never reaches the preview.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The preview comes after those checks; it is not a further check of quality.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Publication is its own state in TextOS, distinct from the preview, so going live remains a separate step after your reading.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Whether the article is useful, well argued and worth publishing under your name is still for the person reading the preview to judge.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

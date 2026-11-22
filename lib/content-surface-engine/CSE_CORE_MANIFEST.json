@@ -1,0 +1,119 @@
+{
+  "manifestVersion": "cse-core-manifest@1",
+  "scope": "PRODUCT_CORE",
+  "source": {
+    "repository": "https://github.com/gangster-nerd/textos-site.git",
+    "baseSha": "1f4057b15e6c790b65b7fb2dd5b674fc398a917a",
+    "baseShaNote": "baseSha is the origin/main parent from which CMO incubation started. It is NOT the SHA of the commit hosting this manifest; that would be self-referential. A future promotion-receipt (post CSE-PROMOTION-1) carries candidateCommitSha separately."
+  },
+  "contentDocumentContractFingerprint": "4cefe8c6ed8917180870a37a3f3dbf5d2ff3d9395563dc683fc189b4e47b7e7b",
+  "contentDocumentContractFingerprintSource": {
+    "schemaPath": "contracts/content-document@1.schema.json",
+    "algorithm": "sha256(file bytes)",
+    "note": "Canonical fingerprint of the ContentDocument wire contract. Matches scripts/a3r-report.ts CONTRACT_FINGERPRINT."
+  },
+  "surfaceContractSetDigest": "d19681d04f58c4cbdf647fa9ab3737fc9b5f935ffaa2528f580629c502911451",
+  "surfaceContractSetDigestNote": "Digest over the three surface-contract version literals (content-document@1, surface-policy@1, resolved-content-surface@1). This is a set identifier, NOT the ContentDocument contract fingerprint.",
+  "contractVersions": [
+    "content-document@1",
+    "surface-policy@1",
+    "resolved-content-surface@1"
+  ],
+  "aggregateDigest": "48ed443b944223e2583a3d8fe1f0d03c0531f37df3855c245737a3b6c30aecd0",
+  "fileCount": 22,
+  "files": [
+    {
+      "path": "lib/content-surface-engine/authority/compile-authority.ts",
+      "sha256": "96d24f67c86be63d2b4239ec87520b0c2979bb56d9d6fd436d7838bb1ccf0dba"
+    },
+    {
+      "path": "lib/content-surface-engine/authority/editorial-identity-policy.ts",
+      "sha256": "761d0390c56deac71aa2e627f3139b85ec5ae622e4e844fd61a2bb93d267b74d"
+    },
+    {
+      "path": "lib/content-surface-engine/composition/provenance-authority.ts",
+      "sha256": "b830fec7e74d7bf5b397414210605a6e800ea98529aeacd51d2a1653618ed7e7"
+    },
+    {
+      "path": "lib/content-surface-engine/composition/resolve-content-surface.ts",
+      "sha256": "4f6df87888efa997e081b59ec3f6dabd4430612d554bc08a38209cb8c945cd48"
+    },
+    {
+      "path": "lib/content-surface-engine/conformance/content-pass.ts",
+      "sha256": "690f4565b44e61e40901eab80fcb46ec07d57b0c982046860aa08dc7e2c16e42"
+    },
+    {
+      "path": "lib/content-surface-engine/conformance/fidelity-pass/index.ts",
+      "sha256": "c6d12e861ff6660df3014383d8725ffd19bea65f7dd186c6b7712593b005f74b"
+    },
+    {
+      "path": "lib/content-surface-engine/conformance/fidelity-pass/markdown-evaluator.ts",
+      "sha256": "5f844b72ecd2efaa1911ddaa1e44c394d2a789b9c2c5f3a6960470995fb5f0ee"
+    },
+    {
+      "path": "lib/content-surface-engine/conformance/fidelity-pass/result.ts",
+      "sha256": "c77a3410d223ef08e25b4d3a88583c31220f748ae2f3ebea0ed8422dde4dc0aa"
+    },
+    {
+      "path": "lib/content-surface-engine/conformance/fixtures.ts",
+      "sha256": "657c486b24da689ddd3ee9620b368ef4c07a558926f9a4820443ebe5d5dac610"
+    },
+    {
+      "path": "lib/content-surface-engine/contract/content-document.ts",
+      "sha256": "033d43ae6daf4100522fee236f0c5350d26ee0c1b9f020d5f50440ce60199629"
+    },
+    {
+      "path": "lib/content-surface-engine/contract/resolved-content-surface.ts",
+      "sha256": "1af4a868430393c164b8a8a08e01a97ce65fcbba356dfaebd3fee149c4b64d3c"
+    },
+    {
+      "path": "lib/content-surface-engine/contract/surface-policy.ts",
+      "sha256": "3c9373777d7f7f75a3dde6f80320a4ce9efaef5d508638b828ad0bb3b0b02cbd"
+    },
+    {
+      "path": "lib/content-surface-engine/lifecycle/lifecycle.ts",
+      "sha256": "758e95c6d6d928b4f45cfc02827c1ec4ce0e00151764284fe940be48e1bd0254"
+    },
+    {
+      "path": "lib/content-surface-engine/link-graph/link-graph.ts",
+      "sha256": "477286f19f2ec23cdfd42bb2130651570b64e98a461839db7b382a5acf1cf978"
+    },
+    {
+      "path": "lib/content-surface-engine/producers/markdown/content-document-to-mdast.ts",
+      "sha256": "0f8d1eea94e9fdf2f9e2849eb583233b4419020a7938e489fe1845672877d2f3"
+    },
+    {
+      "path": "lib/content-surface-engine/producers/markdown/fidelity-oracle.ts",
+      "sha256": "3eef032d9c24080061be01f9ddc644351939c15332bf6d142e79b28152aec89a"
+    },
+    {
+      "path": "lib/content-surface-engine/producers/markdown/mdast-to-content-document.ts",
+      "sha256": "ff2f0be32ea6bfa7cada90cfc5bb3b68bbea02274f92045edcc1096f4aa9af15"
+    },
+    {
+      "path": "lib/content-surface-engine/producers/markdown/normalize-mdast.ts",
+      "sha256": "2e92ff4f7e68b751facd90f7efc1af8c0ee26357fd5907077f080ddd2f805b44"
+    },
+    {
+      "path": "lib/content-surface-engine/producers/markdown/parse-markdown.ts",
+      "sha256": "f6d6503f93f62d243f964c7f1ebe483b18b53b93a3baaf3eea034d880198c7d6"
+    },
+    {
+      "path": "lib/content-surface-engine/publication/indexable.ts",
+      "sha256": "614344529581622d5007cce72e8e72673943050298e417e0ae2e47730934a895"
+    },
+    {
+      "path": "lib/content-surface-engine/publication/publication-pass.ts",
+      "sha256": "2476d2e7ad1bd3fe120b6e7b1bdace37e244e22c386ef6be19ba8e36deffad72"
+    },
+    {
+      "path": "lib/content-surface-engine/receipt/receipt.ts",
+      "sha256": "2ec68d4e42e511410d53221be11f5e66201d1394f47bfdb6ea96ae12544e07b4"
+    }
+  ],
+  "reproduction": {
+    "command": "node scripts/cse-core-digest.mjs --check",
+    "algorithm": "sha256",
+    "canonicalization": "per file: sha256(file bytes); aggregate: sha256(join('\\n', sorted('<sha>  <path>')) + '\\n'). --check also asserts scope list matches exactly (no missing, extra, duplicate, or non-canonical ordering)."
+  }
+}

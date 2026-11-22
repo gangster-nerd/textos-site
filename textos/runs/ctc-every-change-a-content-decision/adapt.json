@@ -1,0 +1,20 @@
+{
+  "textosRef": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to decide which product changes deserve public content",
+  "executionPlanHash": "ba50567f65548a99e1a14def4ebab316e6604debc4ced80478e48f633d6790dd",
+  "ctcHandoffHash": "6b3b4a5dd4fa725ca20e7f5278add8a8a4bea00e296db25f1773b80b82b30a1e",
+  "promptHashes": {
+    "title": "e78efe1e4252748951adfd149629f4fe6a70eba10f9bb6aca55885be44aebf19",
+    "meta": "cfb9ec09217a45233525e08cd4475f92297abf4bce3b60667a040427a4b65fd6",
+    "lead": "1360e693b2c3beb3d870426395910cb2d47bfc7504442c3da832451bd58b67c5",
+    "answer": "36f3fe4a1ce61da27adeed52fd3b10087af723d2ea6265da41a85206d77873da",
+    "section-1": "a9874581138ebc360b4fcfa545be45e0f424bdc27f06ecd28ad32ee948e1feee",
+    "change-to-decision-caption": "6a1e59bfeb1139d12dacfb4be0207af7251b68ee661c6be93cd10613cc753b8d",
+    "section-2": "4ca2b03c190e2a41b46058e57af064a398699dbed042ee93a6d41f9a7d6666b6",
+    "section-4": "b291d7e18b82a2c558c9df6a28e0db0f1b2adc324d4ef15215b24786927157fc",
+    "section-3": "17cd869e224458f1bd5f86c33bca72a985598380e2133a53a0d28da78a6c152f",
+    "verify": "7ed13f503c42fcf73d44f51c18141834c08fda5b81f3591da7508e2fff9d8477",
+    "editorial-next-step": "adc8aa04ae387f2678fb947de3a055d08702bb7281565741c7af33c0df34bf7d"
+  }
+}

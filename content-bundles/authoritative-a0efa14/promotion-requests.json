@@ -290,8 +290,8 @@
     "blockingReason": "—",
     "capabilityId": "commit-to-content",
     "clamped": false,
-    "currentImplementationStatus": null,
-    "currentPublicationStatus": null,
+    "currentImplementationStatus": "wip_committed_tested",
+    "currentPublicationStatus": "internal_only",
     "customerDeliverableNow": false,
     "disclosureAuthority": "CPO_DISCLOSURE_APPROVED",
     "effectivePublicMaturity": "INTERNAL_LABS",
@@ -301,7 +301,7 @@
       "textos-site: scripts/content-{sync,verify,status}.ts",
       "textos-site: docs/commit-to-content-v1.md"
     ],
-    "manifestCeiling": "PRIVATE",
+    "manifestCeiling": "INTERNAL_LABS",
     "manualEngineeringRequired": false,
     "prohibitedWording": [
       "available",

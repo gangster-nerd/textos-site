@@ -1,0 +1,89 @@
+{
+  "text": "When the writing model decides how an article is organised, the structure itself becomes something nobody chose. In TextOS, the heading of each part is imposed on the writer, and for the direct-answer part the heading is the question to be answered. Each part also carries an explicit writing objective, stated in plain words, saying what that part has to accomplish.\n\nThe parts are written in the order of the plan, and the body of the article is exactly those texts placed end to end. Because nothing sits between those parts, the outline written into the plan is the outline the reader gets. If you review AI drafts, read the plan first: it tells you what each section was supposed to do before you judge whether it did it.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "When the writing model decides how an article is organised, the structure itself becomes something nobody chose.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS, the heading of each part is imposed on the writer, and for the direct-answer part the heading is the question to be answered.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Each part also carries an explicit writing objective, stated in plain words, saying what that part has to accomplish.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The parts are written in the order of the plan, and the body of the article is exactly those texts placed end to end.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Because nothing sits between those parts, the outline written into the plan is the outline the reader gets.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "If you review AI drafts, read the plan first: it tells you what each section was supposed to do before you judge whether it did it.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

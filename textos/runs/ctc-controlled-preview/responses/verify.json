@@ -1,0 +1,65 @@
+{
+  "text": "Ask whether a preview of an AI draft has a public address, and whether search engines are told to ignore it. Ask how the tool knows that the draft on the preview page is the one that passed its checks, and what happens when the two differ. Ask whether the preview picks the latest draft or a draft named explicitly. Ask whether the page tells you how the text was produced, and what it shows when that origin is unknown. Ask which decisions a preview does not make for you, starting with publication.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Ask whether a preview of an AI draft has a public address, and whether search engines are told to ignore it.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask how the tool knows that the draft on the preview page is the one that passed its checks, and what happens when the two differ.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether the preview picks the latest draft or a draft named explicitly.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask whether the page tells you how the text was produced, and what it shows when that origin is unknown.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask which decisions a preview does not make for you, starting with publication.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

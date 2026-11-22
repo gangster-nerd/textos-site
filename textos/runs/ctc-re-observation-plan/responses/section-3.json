@@ -1,0 +1,93 @@
+{
+  "text": "TextOS does not present an update to an article as the reason a variation happened; the change stays descriptive. Its rules exclude any causal claim and any attribution, because an answer engine changes for a thousand reasons. The article is only one of the things that may have moved in the meantime.\n\nWhen several actions touch the same question within the same re-observation window, TextOS attributes no effect to any one of them. The furthest state a TextOS plan can reach is a measured change that is descriptive and explicitly not causal. What you get is an observed evolution, compared on the same terms, with its uncertainty stated, and not a verdict on the article's success.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS does not present an update to an article as the reason a variation happened; the change stays descriptive.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Its rules exclude any causal claim and any attribution, because an answer engine changes for a thousand reasons.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-16"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The article is only one of the things that may have moved in the meantime.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "When several actions touch the same question within the same re-observation window, TextOS attributes no effect to any one of them.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The furthest state a TextOS plan can reach is a measured change that is descriptive and explicitly not causal.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "What you get is an observed evolution, compared on the same terms, with its uncertainty stated, and not a verdict on the article's success.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

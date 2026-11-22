@@ -25,6 +25,7 @@ import { evaluatePublicationPass } from "@/lib/content-surface-engine/publicatio
 import { evaluateLifecycle } from "@/lib/content-surface-engine/lifecycle";
 import { loadManagedCorpus } from "@/lib/content-surface-engine/conformance/corpus-loader";
 import { listInsightEntries, listInsightSlugs } from "@/lib/content-surface-engine/site-integration";
+import { loadCtcArticles } from "@/lib/textos-client/ctc-articles";
 
 const corpus = loadManagedCorpus();
 
@@ -87,11 +88,12 @@ describe("CTC-CSE-CONVERGENCE-1 — corpus × CSE pipeline", () => {
     }
   });
 
-  it("`listInsightSlugs` exactly matches the loaded corpus", () => {
+  it("`listInsightSlugs` exactly matches the loaded corpus plus the verified Commit-to-Content runs", () => {
     const catalog = new Set(listInsightSlugs());
-    const corpusSlugs = new Set(corpus.map((d) => d.identity.slug));
-    expect(catalog).toEqual(corpusSlugs);
-    expect(listInsightEntries().length).toBe(12);
+    const ctc = loadCtcArticles();
+    const expected = new Set([...corpus, ...ctc.map((a) => a.document)].map((d) => d.identity.slug));
+    expect(catalog).toEqual(expected);
+    expect(listInsightEntries().length).toBe(12 + ctc.length);
   });
 
   it("SEO invariant: draft cannot request indexingIntent=index (contract-level rejection)", () => {
@@ -110,8 +112,16 @@ describe("CTC-CSE-CONVERGENCE-1 — corpus × CSE pipeline", () => {
     // slot somewhere in the body (contextual placement). This prevents the "final-only"
     // regression — a CTA that only appears at the foot would be a regression to the
     // original PR #19 shape.
+    //
+    // PR #22 (CMO-CONVERSION-SURFACE-2) : la surface gérée rend désormais un emplacement `header`
+    // en tête d'article. authority-intelligence-not-ai-seo a reçu l'intention MEASURE_BRAND dans
+    // PR #22 sans `cta_slot` dans son corps (le corps ne se retouche pas à la main) : elle porte
+    // header + final, jamais final seul — asserté sur le HTML par a2r-mutation-tests.test.ts.
+    // Toute autre absence reste une régression.
+    const HEADER_AND_FINAL_ONLY = new Set(["authority-intelligence-not-ai-seo"]);
     for (const doc of corpus) {
       if (!doc.conversion.ctaIntentId) continue;
+      if (HEADER_AND_FINAL_ONLY.has(doc.identity.slug)) continue;
       const hasPrimary = doc.body.some(
         (b: ContentDocument["body"][number]) => b.slot === "primary-cta",
       );

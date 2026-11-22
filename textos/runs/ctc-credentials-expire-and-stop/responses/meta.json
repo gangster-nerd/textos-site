@@ -1,0 +1,24 @@
+{
+  "text": "TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS API credentials expire after 30 days by default, an account can be revoked with all its keys, and switches can shut the API or its writes down.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-cr-09",
+        "ev-cr-03",
+        "ev-cr-05",
+        "ev-cr-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-labelledby="prepared-to-draft-title prepared-to-draft-desc">
+  <title id="prepared-to-draft-title">From a prepared action to a WordPress draft</title>
+  <desc id="prepared-to-draft-desc">From a prepared action to a WordPress draft. A 4-step flow: Agent prepares, then Person signs off, then Checked again at run time, then Used once, then spent. A dashed boundary after &quot;Agent prepares&quot; is labelled Human gate: No machine account can switch it to automatic execution.</desc>
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="15" refY="8" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#4d7fa6"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="720" rx="24" fill="#101216"/>
+  <text x="72" y="82" fill="#f7f8f9" font-family="system-ui, sans-serif" font-size="34" font-weight="600">From a prepared action to a WordPress draft</text>
+  <text x="72" y="124" fill="#9aa0a6" font-family="system-ui, sans-serif" font-size="22">Illustrative path for one draft. The agent prepares; a person decides.</text>
+  <g font-family="system-ui, sans-serif">
+      <rect x="54" y="246" width="246" height="174" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="177" y="292" text-anchor="middle" fill="#7cc4ff" font-size="18" font-weight="600">1 · PREPARE</text>
+    <text x="177" y="350" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">Agent prepares</text>
+    <rect x="336" y="246" width="246" height="174" rx="18" fill="#0b0c0e" stroke="#7cc4ff" stroke-width="3"/>
+    <text x="459" y="292" text-anchor="middle" fill="#7cc4ff" font-size="18" font-weight="600">2 · DECIDE</text>
+    <text x="459" y="350" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">Person signs off</text>
+    <rect x="618" y="246" width="246" height="174" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="741" y="292" text-anchor="middle" fill="#7cc4ff" font-size="18" font-weight="600">3 · CHECK</text>
+    <text x="741" y="337" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">Checked again</text>
+    <text x="741" y="370" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">at run time</text>
+    <rect x="900" y="246" width="246" height="174" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="1023" y="292" text-anchor="middle" fill="#7cc4ff" font-size="18" font-weight="600">4 · SPEND</text>
+    <text x="1023" y="337" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">Used once,</text>
+    <text x="1023" y="370" text-anchor="middle" fill="#f7f8f9" font-size="24" font-weight="600">then spent</text>
+  </g>
+  <g stroke="#4d7fa6" stroke-width="3" marker-end="url(#arrow)">
+    <line x1="306" y1="333" x2="330" y2="333"/>
+    <line x1="588" y1="333" x2="612" y2="333"/>
+    <line x1="870" y1="333" x2="894" y2="333"/>
+</g>
+  <line x1="318" y1="194" x2="318" y2="484" stroke="#7cc4ff" stroke-width="3" stroke-dasharray="10 10"/>
+  <rect x="130" y="500" width="376" height="110" rx="16" fill="#0b0c0e" stroke="#4d7fa6" stroke-width="2"/>
+  <text x="318" y="540" text-anchor="middle" fill="#7cc4ff" font-family="system-ui, sans-serif" font-size="20" font-weight="600">HUMAN GATE</text>
+  <text x="318" y="570" text-anchor="middle" fill="#e9eaec" font-family="system-ui, sans-serif" font-size="18">No machine account can switch</text>
+    <text x="318" y="596" text-anchor="middle" fill="#e9eaec" font-family="system-ui, sans-serif" font-size="18">it to automatic execution.</text>
+</svg>

@@ -1,0 +1,101 @@
+{
+  "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged. Applying its database change remains a human release decision.\n\nAt release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.\n\nThe certification script refuses any editorial result other than an article ready for review. The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind. The commit that added that tool applied nothing by itself.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The change shipped with an exit: a single setting restores the previous TextOS path with one writer, unchanged.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Applying its database change remains a human release decision.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "At release, its gate was an offline replay of a synthetic example, and no writing route had yet been certified live.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "x1",
+      "text": "The certification script refuses any editorial result other than an article ready for review.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "x2",
+      "text": "The release tool for the database change refuses a target that is not pinned, or one that is already migrated or lagging behind.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "x3",
+      "text": "The commit that added that tool applied nothing by itself.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

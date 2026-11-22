@@ -1,0 +1,77 @@
+{
+  "text": "In TextOS, an article is marked ready only after it has passed the brief check; otherwise it is stopped with a status that says the brief was not fulfilled. The blocked result lists the missing sections, the required points left uncovered and whether the target query was addressed. That turns a vague verdict of not good enough into a short list that a writer or an editor can work through.\n\nThe brief check, the fact-check, the approved sources and the human decision apply in the same way whichever writer produced the draft. Switching the AI model behind the writing does not change what a draft has to deliver against its brief.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "In TextOS, an article is marked ready only after it has passed the brief check; otherwise it is stopped with a status that says the brief was not fulfilled.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The blocked result lists the missing sections, the required points left uncovered and whether the target query was addressed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "That turns a vague verdict of not good enough into a short list that a writer or an editor can work through.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The brief check, the fact-check, the approved sources and the human decision apply in the same way whichever writer produced the draft.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Switching the AI model behind the writing does not change what a draft has to deliver against its brief.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

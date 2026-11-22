@@ -1,0 +1,52 @@
+[
+  {
+    "evidenceId": "ev-rs-01",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-02",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-03",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-04",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-05",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-06",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-07",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-08",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-09",
+    "usable": true,
+    "reason": "utilisable"
+  },
+  {
+    "evidenceId": "ev-rs-10",
+    "usable": true,
+    "reason": "utilisable"
+  }
+]

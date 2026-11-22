@@ -1,0 +1,427 @@
+[
+  {
+    "evidenceId": "ev-ro-01",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-02",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-03",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-04",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-05",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-06",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-07",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-08",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-09",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-10",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-11",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-12",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-13",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-14",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-15",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-16",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  },
+  {
+    "evidenceId": "ev-ro-17",
+    "decision": "APPROVE_PUBLIC_USE",
+    "clientValidationDecision": "DO_NOT_VALIDATE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-10-30",
+    "scope": {
+      "channel": "controlled_preview",
+      "candidateId": "ctc-re-observation-plan"
+    },
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab",
+    "before": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "pending",
+      "publicExcerpt": null
+    },
+    "after": {
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "publicExcerpt": null
+    },
+    "approvedPublicWording": null,
+    "reason": "The note cites these product commits; their reference and date are already public in this site's commit ledger."
+  }
+]

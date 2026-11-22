@@ -1,0 +1,93 @@
+{
+  "text": "Each writing run in TextOS is admitted in one atomic step and carries a fencing token. A fencing token is a counter that lets a system ignore a worker whose turn has already passed. Each attempt is written to a log in TextOS that only accepts additions.\n\nIf a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule. The readiness view lists the chain of writers without calling the network and without showing any secret value. Someone running the system can see which writers are lined up without exposing a single key.",
+  "statements": [
+    {
+      "id": "s11",
+      "text": "Each writing run in TextOS is admitted in one atomic step and carries a fencing token.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-16"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s12",
+      "text": "A fencing token is a counter that lets a system ignore a worker whose turn has already passed.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s13",
+      "text": "Each attempt is written to a log in TextOS that only accepts additions.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s21",
+      "text": "If a model provider raises an error during a run, the claim on the part being written is released under the same fencing rule.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s22",
+      "text": "The readiness view lists the chain of writers without calling the network and without showing any secret value.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "writer_resilience"
+      ],
+      "evidenceIds": [
+        "ev-wf-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s23",
+      "text": "Someone running the system can see which writers are lined up without exposing a single key.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

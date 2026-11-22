@@ -1,0 +1,20 @@
+{
+  "id": "textos-engineering-notes",
+  "version": "0.1",
+  "claimTypes": [
+    "human_authorization",
+    "execution_safety",
+    "credential_lifecycle",
+    "writer_resilience",
+    "content_governance",
+    "availability"
+  ],
+  "lexicon": {
+    "human_authorization": ["human decision", "human approval", "approves", "approved", "approval", "trust grant", "grant", "reviewer"],
+    "execution_safety": ["idempotency", "idempotent", "replay", "reclaim", "retry", "crash", "stale", "envelope", "hash"],
+    "credential_lifecycle": ["credential", "credentials", "token", "tokens", "expiry", "expires", "rotation", "revoke", "revoked", "kill switch", "kill switches"],
+    "writer_resilience": ["fallback", "outage", "writer profile", "writer profiles", "checkpoint", "checkpoints"],
+    "content_governance": ["impact record", "impact decision", "public content", "manifest", "coverage", "evidence"],
+    "availability": ["self-serve", "self serve", "sign up", "available", "generally available", "pricing"]
+  }
+}

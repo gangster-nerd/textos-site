@@ -1,0 +1,976 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "controlled-preview-2026-08-06",
+        "sourceCommits": [
+          "5b1dba979f964b330550562b457a6ebd1cae0740",
+          "cbe25796510ba1bdf5bc3cf43f421401013ac1c1",
+          "865924aaf1c14ffaa8903c246cdd13272f518559"
+        ]
+      },
+      {
+        "groupId": "preview-gates-2026-08-07",
+        "sourceCommits": [
+          "25b4c04658ef9764c027865a4b917cb923125193",
+          "0191bcfa9c243b0361c1b87eb629669909c25d1e"
+        ]
+      }
+    ],
+    "buyerQuestion": "Before I approve an AI-written draft, how do I know the preview I am reading is not already public and is exactly the version that was checked?",
+    "targetQuery": "how to preview an ai written article before it is published",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "article-validation",
+    "canonicalProductSha": "2faf90e681c1b0ccf345a80ea6e637fd89be88ab"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-controlled-preview",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-cp-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit cbe2579, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T12:53:43+02:00",
+      "contentHash": "1112ac10aaf0606f6c72c73d1776270f479b14bf516055838b3805d375533c73",
+      "excerpt": "A controlled preview is NOT a publication: distinct `preview` state, publishedUrl never set, noindex artifact, internal-only, never a customer story.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit cbe2579, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T12:53:43+02:00",
+      "contentHash": "b51f428c88ad9de0461e33de31ad2d07ba0f3d0d8616d4db1626a9e6c0ae1a9e",
+      "excerpt": "Provenance is honest: generatedLive is true only for a real live invocation; handoff transports (::fixture-replay / ::manual-import) are generatedLive:false; an unrecognized methodVersion throws rather than guess.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit cbe2579, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T12:53:43+02:00",
+      "contentHash": "b603a46e7ef78c88bf40e84803f4bb47c18cd0760122f261cd116f2b085ec1c7",
+      "excerpt": "No network. No live publish.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "da6c6be0b89eecd828c4c954a45b06606c1cdbeb8c96cf99e489e8d37d55e837",
+      "excerpt": "Gate d'aperçu : seul un draft `truthchecked` adossé à un brief `accepted` est prévisualisable.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 865924a, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T18:13:57+02:00",
+      "contentHash": "0f271b511890634eddd1b92fe5e9672d09aa98adeef4f7326fb61a305053dc27",
+      "excerpt": "Close the continuity ruptures R1-R3 from the end-to-end audit: preview no longer selects a draft by \"latest\".",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 865924a, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T18:13:57+02:00",
+      "contentHash": "c7cc242d4802e4852c3354d2049a558e0652c1df26d5445bef35a93f94646e1e",
+      "excerpt": "preview consumes the handoff by id, recomputes hashes, refuses any mismatch (no latest fallback)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 865924a, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T18:13:57+02:00",
+      "contentHash": "4a684e69f617723ed6d5f98a83c33bf908c79160386820f2978e28656216d93b",
+      "excerpt": "add canonical structured-content hash (sorted keys, jsonb round-trip safe)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 865924a, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T18:13:57+02:00",
+      "contentHash": "5d308edbd3ef5eaa86b2116c1ee1ffc6b59ed5096ba92cccbf3b42e234b2065d",
+      "excerpt": "enrich PreviewReceipt: schemaVersion, e2eExecutionId, structuredContentHash, rendererVersion, renderHash, artifactSha256 (existing jsonb, no migration)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 865924a, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T18:13:57+02:00",
+      "contentHash": "90cb5c406847e7c3e73e45a3cbc3c0219ea9ae0c9383b23b5493ede281dad516",
+      "excerpt": "rename artifact controlled-preview-<id>.html, robots noindex,nofollow,noarchive,nosnippet",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/generation-handoff.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "028cd1c8a2fb0c7a873946ec380a487cfd3d4564f3563694152cf79bdf12764d",
+      "excerpt": "Lève à la première discordance — jamais de tolérance",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file scripts/demo-run/gb/preview.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "08a4ab0fb4ce0fe89e50999943b57065508262e0cfbcaa74b2c8d523d06f9db1",
+      "excerpt": "Écrit l'artefact renommé, puis PROUVE que le fichier sur disque == artifactSha256 du receipt.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Comment in the offline preview runner; in French, quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 25b4c04, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T10:17:21+02:00",
+      "contentHash": "920bee255fcc2938f4dc035ad8dd4bac8cf38d8a709ee98a708600b1c51c1d08",
+      "excerpt": "enforce invariant in preview: preview only if TruthCheck=pass AND BriefFulfillment=pass",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 0191bcf, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T13:22:05+02:00",
+      "contentHash": "ee979ec263a9251be965772828a4cd1caa83a4437f9ad87449365a2df59102b5",
+      "excerpt": "Realizes the three orthogonal states: TruthCheck state != Preview state != Publication state.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-14",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 0191bcf, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T13:22:05+02:00",
+      "contentHash": "b063aa737565cf4afb25867d0a490d19194f0dd02fec67f6b07c611dc0130628",
+      "excerpt": "publishedAt / publishedUrl stay null, public=false, noindex=true.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-15",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 0191bcf, 7 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-07T13:22:05+02:00",
+      "contentHash": "f0a0f8162dce11aeb9ff44fb90a06f49cc567d1b7da167211780fd1588e8c57a",
+      "excerpt": "re-preview now works (draft remains truthchecked) — proven by a new test",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-16",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "e95ac51d2f9347e0bb8abe8bb133be6618bae2a38ac7242af41386706692947a",
+      "excerpt": "Rend l'aperçu contrôlé : `<meta robots noindex,nofollow>` + bandeau de provenance HONNÊTE.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-17",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/act/preview.ts at 2faf90e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "9e8ab581bbc5626dfa3bd3974657c13b2964d4ef86ff821a8bc0ad7c37895012",
+      "excerpt": "Internal preview, not a customer story",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text of the provenance banner rendered on the preview page."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-18",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product manifest, generation-handoff.knownLimits",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-10-29T23:26:50+01:00",
+      "contentHash": "8fd24ef245294498980d9114fd31c4a0c99bd9ac109268e51a6a435216cc6b42",
+      "excerpt": "Transporte un brouillon et ses empreintes entre génération et aperçu ; ne garantit rien sur le contenu lui-même.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Known limit recorded in the product manifest, in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-cp-19",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 5b1dba9, 6 Aug 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-08-06T12:29:12+02:00",
+      "contentHash": "ce3a56f2b6a0fa7dada501391c103a3cf5889a45dc7bcdaadccf0fcfed6fcd3d",
+      "excerpt": "add ImportedGenerationEnvelope + validateImportEnvelope (reject on brief/bundle/prompt mismatch)",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-10-30 to publish the first disclosure batch through Commit-to-Content",
+      "approvedAt": "2026-10-30",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-controlled-preview"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that its controlled preview is not a publication and shows the draft named by the handoff, never another one.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp-01",
+        "ev-cp-06"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: in TextOS a controlled preview is internal and noindex, not a publication, and it refuses any draft whose fingerprints do not match the one handed over.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp-01",
+        "ev-cp-06"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation — being asked to look at an AI draft before anything goes live, and wondering whether the page is already public and whether it is the version that was checked — and say that in TextOS a controlled preview is not a publication.",
+      "buyerIntent": "Is the page I am reviewing already out there?",
+      "allowedEvidenceIds": [
+        "ev-cp-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How do you review an AI draft before anything is published?",
+      "writingObjective": "Answer directly: a draft reaches the preview only after the fact-check and the brief check both pass; the preview is internal and not a publication; and the preview opens the draft named by the handoff, recomputes its fingerprints and refuses any mismatch.",
+      "buyerIntent": "What happens between writing and my review?",
+      "allowedEvidenceIds": [
+        "ev-cp-01",
+        "ev-cp-06",
+        "ev-cp-12"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A preview is not a publication",
+      "writingObjective": "Explain what the preview page is: kept out of search engines and archives, no public address and nothing public, no network and no live publishing; the fact-check state, the preview state and the publication state are kept apart; and a draft can be previewed again without losing its checked status.",
+      "buyerIntent": "Can a preview leak or count as publishing?",
+      "allowedEvidenceIds": [
+        "ev-cp-03",
+        "ev-cp-09",
+        "ev-cp-13",
+        "ev-cp-14",
+        "ev-cp-15"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The page you read is the draft that was checked",
+      "writingObjective": "Explain the handover: the preview no longer picks the most recent draft; it opens the draft named by the handover record, recomputes the fingerprints and stops at the first mismatch without falling back to the latest draft; the fingerprint of the content is computed so it survives being stored and read back; and a draft written elsewhere and imported is rejected if it does not match its brief, evidence or instructions.",
+      "buyerIntent": "How do I know nothing was swapped?",
+      "allowedEvidenceIds": [
+        "ev-cp-05",
+        "ev-cp-06",
+        "ev-cp-07",
+        "ev-cp-10",
+        "ev-cp-19"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "checked-to-preview-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one factual sentence, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cp-10",
+        "ev-cp-12",
+        "ev-cp-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The page says how the draft was made",
+      "writingObjective": "Explain the provenance banner: the preview states whether the draft came from a live writing run or was imported or replayed, an unknown origin stops the preview instead of guessing, and the page says it is an internal preview, not a customer story; and explain that the preview record keeps fingerprints of the content, of the rendered page and of the file, and that the file written is checked against that record.",
+      "buyerIntent": "Will the preview tell me where the text came from?",
+      "allowedEvidenceIds": [
+        "ev-cp-02",
+        "ev-cp-08",
+        "ev-cp-11",
+        "ev-cp-16",
+        "ev-cp-17"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What the preview does not decide",
+      "writingObjective": "Explain the limits honestly: the handover carries a draft and its fingerprints but says nothing about the content itself; only a fact-checked draft tied to an accepted brief can be previewed, so the preview is downstream of checks, not a check of quality; publication is a separate state the preview does not change; judging substance stays with the reader.",
+      "buyerIntent": "Does a clean preview mean the article is good?",
+      "allowedEvidenceIds": [
+        "ev-cp-18",
+        "ev-cp-04",
+        "ev-cp-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 510,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI writing vendor",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "text": "The preview page opens with a banner that states where the draft came from. It says the draft was generated live only when a real live writing run took place; a draft imported by hand or replayed from a recorded example is shown as not generated live, and an origin TextOS cannot recognise stops the preview instead of being guessed. The same banner says the page is an internal preview, not a customer story.\n\nThe preview record keeps a fingerprint of the content, of the rendered page and of the file produced, along with the version of the template that laid the page out. After the preview file is written, its fingerprint on disk is compared with the one in that record. If someone later asks which page was approved, the answer is a fingerprint to compare, not a recollection.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The preview page opens with a banner that states where the draft came from.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-16"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "It says the draft was generated live only when a real live writing run took place; a draft imported by hand or replayed from a recorded example is shown as not generated live, and an origin TextOS cannot recognise stops the preview instead of being guessed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The same banner says the page is an internal preview, not a customer story.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-17"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The preview record keeps a fingerprint of the content, of the rendered page and of the file produced, along with the version of the template that laid the page out.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "After the preview file is written, its fingerprint on disk is compared with the one in that record.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cp-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "If someone later asks which page was approved, the answer is a fingerprint to compare, not a recollection.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

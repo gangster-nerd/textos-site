@@ -1,0 +1,57 @@
+{
+  "text": "A few months after an article goes live, someone will ask whether it changed what AI assistants say about your subject. If nobody wrote down beforehand what would be compared, and how, any answer to that question is a story told after the fact. TextOS keeps its plan for looking again as a record of its own, whose life continues after publication, rather than as a passing note inside the preview. This note explains what that plan fixes, what it does not do yet, and where its claims stop.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A few months after an article goes live, someone will ask whether it changed what AI assistants say about your subject.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "If nobody wrote down beforehand what would be compared, and how, any answer to that question is a story told after the fact.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "TextOS keeps its plan for looking again as a record of its own, whose life continues after publication, rather than as a passing note inside the preview.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-ro-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note explains what that plan fixes, what it does not do yet, and where its claims stop.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

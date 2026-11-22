@@ -1,0 +1,22 @@
+{
+  "text": "TextOS drafts an article one declared part at a time, and the structured, evidence-backed draft it produces is never published by that step.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS drafts an article one declared part at a time, and the structured, evidence-backed draft it produces is never published by that step.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-sg-09",
+        "ev-sg-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

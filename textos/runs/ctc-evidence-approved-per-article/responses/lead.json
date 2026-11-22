@@ -1,0 +1,57 @@
+{
+  "text": "Most worries about AI writing are not about style. They are about a sentence that states something about your brand which nobody on your side ever checked. In TextOS, a source the system has merely observed is not presented as a fact: an identified person approves it for one article, under wording that person validates, before the article may rely on it. This note walks through how that rule works and what it changes for the person signing off.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Most worries about AI writing are not about style.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "They are about a sentence that states something about your brand which nobody on your side ever checked.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "In TextOS, a source the system has merely observed is not presented as a fact: an identified person approves it for one article, under wording that person validates, before the article may rely on it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-ea-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note walks through how that rule works and what it changes for the person signing off.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

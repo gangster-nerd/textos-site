@@ -1,0 +1,29 @@
+{
+  "text": "The previous note explains who may say yes to a source before an article can rely on it. Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The previous note explains who may say yes to a source before an article can rely on it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Another note follows a long article through a writing-model failure, from the first attempt to the next writer in line.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

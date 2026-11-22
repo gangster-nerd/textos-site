@@ -1,0 +1,713 @@
+{
+  "status": "written",
+  "result": {
+    "planId": "how to require human approval before an ai agent creates a cms draft",
+    "planHash": "080a3de15b5efe29824493db75e39470b3b38939b9c9d878bb351eea8837b30c",
+    "slots": [
+      {
+        "slotId": "title",
+        "role": "title",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS's API keeps WordPress draft creation behind a human decision",
+        "statementIds": [
+          "stmt:5:title:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-hd-06"
+        ],
+        "usableEvidenceIds": [
+          "ev-hd-05",
+          "ev-hd-06"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "meta",
+        "role": "meta_description",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS keeps three API effects, WordPress draft creation among them, under human review, and no machine identity can switch that gate to automatic execution.",
+        "statementIds": [
+          "stmt:4:meta:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-hd-05",
+          "ev-hd-06"
+        ],
+        "usableEvidenceIds": [
+          "ev-hd-05",
+          "ev-hd-06",
+          "ev-hd-08"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "lead",
+        "role": "lead",
+        "headingLevel": null,
+        "heading": null,
+        "text": "Handing an AI agent the keys to a content API raises a plain worry: what keeps it from putting text nobody signed off into your website? In TextOS's API, the answer is a human gate that no machine account is allowed to turn into automatic execution. The rest of this note explains what the agent may do alone, what needs a person's sign-off, and how that sign-off is spent.",
+        "statementIds": [
+          "stmt:4:lead:2:s1",
+          "stmt:4:lead:2:s2",
+          "stmt:4:lead:2:s3"
+        ],
+        "evidenceIdsUsed": [
+          "ev-hd-06"
+        ],
+        "usableEvidenceIds": [
+          "ev-hd-06"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "answer",
+        "role": "answer",
+        "headingLevel": 2,
+        "heading": "What stops an agent from creating an unapproved draft?",
+        "text": "TextOS's API names three effects that need a human decision: approving a question panel, accepting an opportunity brief and creating a WordPress draft. Those effects stay under review, and no service account calling the API can switch them to automatic execution. When a person approves, TextOS records that person's identity on the decision and issues a one-hour permission to act. At run time that permission is checked against the action again, claimed, used for that action and then consumed.",
+        "statementIds": [
+          "stmt:6:answer:2:s1",
+          "stmt:6:answer:2:s2",
+          "stmt:6:answer:2:s3",
+          "stmt:6:answer:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-hd-05",
+          "ev-hd-06",
+          "ev-hd-07",
+          "ev-hd-08"
+        ],
+        "usableEvidenceIds": [
+          "ev-hd-05",
+          "ev-hd-06",
+          "ev-hd-07",
+          "ev-hd-08"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-1",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Preparing is not doing",
+        "text": "On its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step. A fingerprint here is a short code computed from the content, which changes as soon as a single character changes. The website's login secrets are not part of that fingerprint and are not exposed by it.\n\nCreating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler.",
+        "statementIds": [
+          "stmt:9:section-1:2:s1",
+          "stmt:9:section-1:2:s2",
+          "stmt:9:section-1:2:s3",
+          "stmt:9:section-1:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-hd-01",
+          "ev-hd-03"
+        ],
+        "usableEvidenceIds": [
+          "ev-hd-01",
+          "ev-hd-03"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "prepared-to-draft-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "In TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent.",
+        "statementIds": [
+          "stmt:25:prepared-to-draft-caption:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-hd-01",
+          "ev-hd-07",
+          "ev-hd-08"
+        ],
+        "usableEvidenceIds": [
+          "ev-hd-01",
+          "ev-hd-07",
+          "ev-hd-08"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-2",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "An approval covers exact bytes, once",
+        "text": "Suppose the draft is edited after you signed it off. TextOS then treats the approval as stale and makes it fail before any request reaches WordPress, and the same happens if the fact-check record or the destination has changed. An attempt that carries a fingerprint which does not match uses up nothing from the approval, since no action could run anyway.\n\nOne approval also backs one job only: two separate requests cannot queue two jobs under the same permission and leave a race to decide which one runs. When the job starts, TextOS works out the subject of the permission afresh, claims the permission, carries out the action and only then marks the permission as spent.",
+        "statementIds": [
+          "stmt:9:section-2:2:s1",
+          "stmt:9:section-2:2:s2",
+          "stmt:9:section-2:2:s3",
+          "stmt:9:section-2:2:s4",
+          "stmt:9:section-2:2:s5"
+        ],
+        "evidenceIdsUsed": [
+          "ev-hd-02",
+          "ev-hd-04",
+          "ev-hd-10",
+          "ev-hd-08"
+        ],
+        "usableEvidenceIds": [
+          "ev-hd-02",
+          "ev-hd-04",
+          "ev-hd-08",
+          "ev-hd-10"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-3",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Whose name is on the decision",
+        "text": "Accountability follows the person, not the machine. When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.\n\nOne moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did. For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically.",
+        "statementIds": [
+          "stmt:9:section-3:2:s1",
+          "stmt:9:section-3:2:s2",
+          "stmt:9:section-3:2:s3",
+          "stmt:9:section-3:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-hd-11",
+          "ev-hd-09"
+        ],
+        "usableEvidenceIds": [
+          "ev-hd-07",
+          "ev-hd-09",
+          "ev-hd-11"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI writing vendor",
+        "text": "If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are. Ask what happens to a sign-off when the draft is edited after it was given. Ask whether one sign-off can be used twice, or by two jobs at once. Ask whose name is recorded when a machine account carries out a job that a person signed off. When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4",
+          "stmt:6:verify:2:s5"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "Another note explains how long an agent's access key lasts, and how it can be cut off in one step. A second note covers why a draft that was produced is not yet a draft that was checked.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      }
+    ],
+    "document": {
+      "title": "TextOS's API keeps WordPress draft creation behind a human decision",
+      "slug": "textos-s-api-keeps-wordpress-draft-creation-behind-a-human-decision",
+      "metaDescription": "TextOS keeps three API effects, WordPress draft creation among them, under human review, and no machine identity can switch that gate to automatic execution.",
+      "body": "Handing an AI agent the keys to a content API raises a plain worry: what keeps it from putting text nobody signed off into your website? In TextOS's API, the answer is a human gate that no machine account is allowed to turn into automatic execution. The rest of this note explains what the agent may do alone, what needs a person's sign-off, and how that sign-off is spent.\n\nOn its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step. A fingerprint here is a short code computed from the content, which changes as soon as a single character changes. The website's login secrets are not part of that fingerprint and are not exposed by it.\n\nCreating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler.\n\nIn TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent.\n\nSuppose the draft is edited after you signed it off. TextOS then treats the approval as stale and makes it fail before any request reaches WordPress, and the same happens if the fact-check record or the destination has changed. An attempt that carries a fingerprint which does not match uses up nothing from the approval, since no action could run anyway.\n\nOne approval also backs one job only: two separate requests cannot queue two jobs under the same permission and leave a race to decide which one runs. When the job starts, TextOS works out the subject of the permission afresh, claims the permission, carries out the action and only then marks the permission as spent.\n\nAccountability follows the person, not the machine. When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.\n\nOne moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did. For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically.\n\nIf you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are. Ask what happens to a sign-off when the draft is edited after it was given. Ask whether one sign-off can be used twice, or by two jobs at once. Ask whose name is recorded when a machine account carries out a job that a person signed off. When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.\n\nAnother note explains how long an agent's access key lasts, and how it can be cut off in one step. A second note covers why a draft that was produced is not yet a draft that was checked.",
+      "faq": [
+        {
+          "question": "What stops an agent from creating an unapproved draft?",
+          "answer": "TextOS's API names three effects that need a human decision: approving a question panel, accepting an opportunity brief and creating a WordPress draft. Those effects stay under review, and no service account calling the API can switch them to automatic execution. When a person approves, TextOS records that person's identity on the decision and issues a one-hour permission to act. At run time that permission is checked against the action again, claimed, used for that action and then consumed."
+        }
+      ],
+      "statementLedger": [
+        {
+          "id": "stmt:5:title:2:s1",
+          "text": "TextOS's API keeps WordPress draft creation behind a human decision",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-hd-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:meta:2:s1",
+          "text": "TextOS keeps three API effects, WordPress draft creation among them, under human review, and no machine identity can switch that gate to automatic execution.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-hd-05",
+            "ev-hd-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s1",
+          "text": "Handing an AI agent the keys to a content API raises a plain worry: what keeps it from putting text nobody signed off into your website?",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s2",
+          "text": "In TextOS's API, the answer is a human gate that no machine account is allowed to turn into automatic execution.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-hd-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s3",
+          "text": "The rest of this note explains what the agent may do alone, what needs a person's sign-off, and how that sign-off is spent.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s1",
+          "text": "TextOS's API names three effects that need a human decision: approving a question panel, accepting an opportunity brief and creating a WordPress draft.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-hd-05"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s2",
+          "text": "Those effects stay under review, and no service account calling the API can switch them to automatic execution.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-hd-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s3",
+          "text": "When a person approves, TextOS records that person's identity on the decision and issues a one-hour permission to act.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-hd-07"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s4",
+          "text": "At run time that permission is checked against the action again, claimed, used for that action and then consumed.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s1",
+          "text": "On its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s2",
+          "text": "A fingerprint here is a short code computed from the content, which changes as soon as a single character changes.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s3",
+          "text": "The website's login secrets are not part of that fingerprint and are not exposed by it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s4",
+          "text": "Creating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-hd-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:25:prepared-to-draft-caption:2:s1",
+          "text": "In TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-01",
+            "ev-hd-07",
+            "ev-hd-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s1",
+          "text": "Suppose the draft is edited after you signed it off.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s2",
+          "text": "TextOS then treats the approval as stale and makes it fail before any request reaches WordPress, and the same happens if the fact-check record or the destination has changed.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s3",
+          "text": "An attempt that carries a fingerprint which does not match uses up nothing from the approval, since no action could run anyway.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-04"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s4",
+          "text": "One approval also backs one job only: two separate requests cannot queue two jobs under the same permission and leave a race to decide which one runs.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s5",
+          "text": "When the job starts, TextOS works out the subject of the permission afresh, claims the permission, carries out the action and only then marks the permission as spent.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s1",
+          "text": "Accountability follows the person, not the machine.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s2",
+          "text": "When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-hd-11"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s3",
+          "text": "One moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s4",
+          "text": "For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-hd-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s1",
+          "text": "If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask what happens to a sign-off when the draft is edited after it was given.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask whether one sign-off can be used twice, or by two jobs at once.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "Ask whose name is recorded when a machine account carries out a job that a person signed off.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s5",
+          "text": "When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "Another note explains how long an agent's access key lasts, and how it can be cut off in one step.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "A second note covers why a draft that was produced is not yet a draft that was checked.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        }
+      ],
+      "claimsExcluded": [],
+      "sections": [
+        {
+          "key": "lead",
+          "heading": "",
+          "body": "Handing an AI agent the keys to a content API raises a plain worry: what keeps it from putting text nobody signed off into your website? In TextOS's API, the answer is a human gate that no machine account is allowed to turn into automatic execution. The rest of this note explains what the agent may do alone, what needs a person's sign-off, and how that sign-off is spent."
+        },
+        {
+          "key": "section-1",
+          "heading": "Preparing is not doing",
+          "body": "On its own, an agent can ask TextOS to prepare a draft action: TextOS works out the exact action and its fingerprint from the draft, its fact-check record and the destination, and nothing leaves the system at that step. A fingerprint here is a short code computed from the content, which changes as soon as a single character changes. The website's login secrets are not part of that fingerprint and are not exposed by it.\n\nCreating the draft inside WordPress is a separate step, which TextOS deliberately did not relabel as an internal proposal to keep the API simpler."
+        },
+        {
+          "key": "prepared-to-draft-caption",
+          "heading": "",
+          "body": "In TextOS an agent can prepare a draft action alone, but creating the WordPress draft waits for a person, whose one-hour permission is checked again, used and then spent."
+        },
+        {
+          "key": "section-2",
+          "heading": "An approval covers exact bytes, once",
+          "body": "Suppose the draft is edited after you signed it off. TextOS then treats the approval as stale and makes it fail before any request reaches WordPress, and the same happens if the fact-check record or the destination has changed. An attempt that carries a fingerprint which does not match uses up nothing from the approval, since no action could run anyway.\n\nOne approval also backs one job only: two separate requests cannot queue two jobs under the same permission and leave a race to decide which one runs. When the job starts, TextOS works out the subject of the permission afresh, claims the permission, carries out the action and only then marks the permission as spent."
+        },
+        {
+          "key": "section-3",
+          "heading": "Whose name is on the decision",
+          "body": "Accountability follows the person, not the machine. When a job runs later on behalf of a service account, TextOS records the real human who approved it, not the identity of the service account that executed it.\n\nOne moment stays ambiguous for TextOS: WordPress can create the draft before TextOS has recorded that it did. For that window, draft creation is marked for reconciliation when a worker is recovered, and TextOS does not retry it automatically."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI writing vendor",
+          "body": "If you are evaluating an agent-driven content tool, ask which of its actions change something outside the tool, and whether those actions are named for what they are. Ask what happens to a sign-off when the draft is edited after it was given. Ask whether one sign-off can be used twice, or by two jobs at once. Ask whose name is recorded when a machine account carries out a job that a person signed off. When you assess any tool that writes to your website, ask what it does when it cannot tell whether a write went through."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "Another note explains how long an agent's access key lasts, and how it can be cut off in one step. A second note covers why a draft that was produced is not yet a draft that was checked."
+        }
+      ]
+    },
+    "structuredContentHash": "860f494aa8f2d2a367b2b1f3f8e4158fb30e0ee6deb6fb785f6e38ee1ac119d4",
+    "writerMethodVersion": "geo-writer@0.2",
+    "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+    "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+    "truthCheck": {
+      "verdict": "pass",
+      "contradictions": []
+    }
+  }
+}

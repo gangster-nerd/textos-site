@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-labelledby="access-that-ends-title access-that-ends-desc">
+  <title id="access-that-ends-title">Access that ends, and switches that stop it</title>
+  <desc id="access-that-ends-desc">Access that ends, and switches that stop it. 4 distinct states: 30 days by default (90 days at most; 60 minutes left when issued.); Replaced in one step (Old key revoked; the new one shown once.); Three switches (API off, writes frozen, one capability denied.); The backlog stops too (Queued jobs are authorized again first.).</desc>
+  <rect width="1200" height="720" rx="24" fill="#101216"/>
+  <text x="72" y="82" fill="#f7f8f9" font-family="system-ui, sans-serif" font-size="34" font-weight="600">Access that ends, and switches that stop it</text>
+  <g font-family="system-ui, sans-serif">
+      <rect x="72" y="176" width="514" height="220" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="96" y="224" fill="#7cc4ff" font-size="18" font-weight="600">LIFETIME</text>
+    <text x="96" y="268" fill="#f7f8f9" font-size="26" font-weight="600">30 days by default</text>
+    <text x="96" y="312" fill="#9aa0a6" font-size="19">90 days at most; 60</text>
+    <text x="96" y="339" fill="#9aa0a6" font-size="19">minutes left when issued.</text>
+    <rect x="614" y="176" width="514" height="220" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="638" y="224" fill="#7cc4ff" font-size="18" font-weight="600">REPLACE</text>
+    <text x="638" y="268" fill="#f7f8f9" font-size="26" font-weight="600">Replaced in one step</text>
+    <text x="638" y="312" fill="#9aa0a6" font-size="19">Old key revoked; the new one shown once.</text>
+    <rect x="72" y="424" width="514" height="220" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="96" y="472" fill="#7cc4ff" font-size="18" font-weight="600">SWITCHES</text>
+    <text x="96" y="516" fill="#f7f8f9" font-size="26" font-weight="600">Three switches</text>
+    <text x="96" y="560" fill="#9aa0a6" font-size="19">API off, writes frozen,</text>
+    <text x="96" y="587" fill="#9aa0a6" font-size="19">one capability denied.</text>
+    <rect x="614" y="424" width="514" height="220" rx="18" fill="#0b0c0e" stroke="#2f333a" stroke-width="2"/>
+    <text x="638" y="472" fill="#7cc4ff" font-size="18" font-weight="600">QUEUE</text>
+    <text x="638" y="516" fill="#f7f8f9" font-size="26" font-weight="600">The backlog stops too</text>
+    <text x="638" y="560" fill="#9aa0a6" font-size="19">Queued jobs are authorized again first.</text>
+  </g>
+</svg>

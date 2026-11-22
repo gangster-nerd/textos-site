@@ -1,0 +1,21 @@
+{
+  "text": "TextOS checks a draft against the brief it was written for, not only for accuracy",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS checks a draft against the brief it was written for, not only for accuracy",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-bf-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

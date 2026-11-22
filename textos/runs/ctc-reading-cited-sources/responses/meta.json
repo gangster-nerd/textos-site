@@ -1,0 +1,23 @@
+{
+  "text": "TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, and only proposes passages for a person to qualify.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS reads cited pages in a bounded, resumable step, checks robots.txt first, and only proposes passages for a person to qualify.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-rs-01",
+        "ev-rs-02",
+        "ev-rs-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}
