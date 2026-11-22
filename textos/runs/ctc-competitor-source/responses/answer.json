@@ -1,0 +1,65 @@
+{
+  "text": "Start from the answers themselves rather than from the rivals' websites. From the citations its own measurements have already stored, TextOS shows, for each question, who the answer names instead of you, which sources the engines relied on, which kinds of pages were cited, and how citations moved between comparable runs. It records what is cited and, dated, what competitors' public pages say, and it does not lend them any intent or causality. It is also not a copy of their sites handed to a writing model: TextOS built it as a source family on existing parts of the product, not as a parallel system and not as retrieval over competitor sites.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Start from the answers themselves rather than from the rivals' websites.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "From the citations its own measurements have already stored, TextOS shows, for each question, who the answer names instead of you, which sources the engines relied on, which kinds of pages were cited, and how citations moved between comparable runs.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "It records what is cited and, dated, what competitors' public pages say, and it does not lend them any intent or causality.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "It is also not a copy of their sites handed to a writing model: TextOS built it as a source family on existing parts of the product, not as a parallel system and not as retrieval over competitor sites.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

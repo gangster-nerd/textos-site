@@ -1,0 +1,37 @@
+{
+  "text": "Nothing runs until a person approves it in TextOS. TextOS checks the conditions again after the decision is recorded, and once more when the work runs.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Nothing runs until a person approves it in TextOS.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-al-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS checks the conditions again after the decision is recorded, and once more when the work runs.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-al-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

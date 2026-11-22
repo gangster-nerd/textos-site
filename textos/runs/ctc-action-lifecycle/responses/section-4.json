@@ -1,0 +1,74 @@
+{
+  "text": "A deposited draft is still a draft until someone puts it live. When TextOS later checks a draft it deposited and finds that it has been published, it records a human publication. The record says who acted: the person published, the tool observed.\n\nTextOS also refuses to vouch for the published text, because that text may have been edited after the draft was deposited, so no content match is claimed. For anyone reading the history of a page later, this keeps two questions apart: when it went live, and whether it still says what was signed off before it went live.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A deposited draft is still a draft until someone puts it live.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "When TextOS later checks a draft it deposited and finds that it has been published, it records a human publication.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-al-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The record says who acted: the person published, the tool observed.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "TextOS also refuses to vouch for the published text, because that text may have been edited after the draft was deposited, so no content match is claimed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-al-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "For anyone reading the history of a page later, this keeps two questions apart: when it went live, and whether it still says what was signed off before it went live.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "text": "The point of a preview is to let you say yes to the real thing, not to a summary of it. TextOS reviews the same governed payload that would be sent at run time, not a simplified Markdown version of it. It shows that payload as an inert reading view, with no attributes, links, images or scripts, so looking at it cannot trigger anything.\n\nJust as important, looking does not commit you. A TextOS preview performs no write: it stores no sign-off, creates no job and changes nothing at the destination. For anyone about to let a change reach their website, that means the decision can be taken slowly, by comparing what will be sent with what was asked for.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The point of a preview is to let you say yes to the real thing, not to a summary of it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS reviews the same governed payload that would be sent at run time, not a simplified Markdown version of it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-al-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "It shows that payload as an inert reading view, with no attributes, links, images or scripts, so looking at it cannot trigger anything.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-al-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Just as important, looking does not commit you.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "A TextOS preview performs no write: it stores no sign-off, creates no job and changes nothing at the destination.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-al-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "For anyone about to let a change reach their website, that means the decision can be taken slowly, by comparing what will be sent with what was asked for.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "text": "Nobody is a competitor by default. TextOS hard-codes no competitor, and a rival is only linked to a website when someone declares that link. Feedback from your team on what matters is recorded as a human choice, kept within your organization, and it reorders what you see without hiding anything. Briefs your team already accepted or published are looked at again against the latest measurement, with nothing closed or changed automatically.\n\nOne part stays switched off on purpose. TextOS reads no third-party page until its governance decision on reading such pages is ratified and a legal opinion on text and data mining has been given. Until then, what you see rests on the answers measured for you, not on fetching your rivals' sites.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Nobody is a competitor by default.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS hard-codes no competitor, and a rival is only linked to a website when someone declares that link.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Feedback from your team on what matters is recorded as a human choice, kept within your organization, and it reorders what you see without hiding anything.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-cs-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Briefs your team already accepted or published are looked at again against the latest measurement, with nothing closed or changed automatically.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-cs-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "One part stays switched off on purpose.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "TextOS reads no third-party page until its governance decision on reading such pages is ratified and a legal opinion on text and data mining has been given.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "Until then, what you see rests on the answers measured for you, not on fetching your rivals' sites.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

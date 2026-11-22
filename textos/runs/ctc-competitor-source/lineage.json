@@ -1,0 +1,247 @@
+{
+  "planId": "how to see which competitors ai assistants cite instead of my brand",
+  "planHash": "87c4869e3d8232b8b24e9d696723a55d51c1d854f99d7d9ff800659036762de9",
+  "slotProvenance": [
+    {
+      "slotId": "title",
+      "role": "title",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS dates who AI answers cite, and lends no competitor a motive",
+      "statementIds": [
+        "stmt:5:title:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cs-08"
+      ],
+      "usableEvidenceIds": [
+        "ev-cs-08"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "meta",
+      "role": "meta_description",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS keeps a dated record of who AI answers cite and what rivals' public pages say, and lends them no motive.",
+      "statementIds": [
+        "stmt:4:meta:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cs-08"
+      ],
+      "usableEvidenceIds": [
+        "ev-cs-08",
+        "ev-cs-09"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "lead",
+      "role": "lead",
+      "headingLevel": null,
+      "heading": null,
+      "text": "You ask an AI assistant a question your business should own, and it recommends someone else. The natural reaction is to build a theory on the spot about their pages, their domain or some clever trick. Theories like that are quick to form and costly to act on: a team can spend a quarter chasing a reason that turns out not to exist. This note is about a different habit: keeping a dated, question-by-question record of who gets named, and refusing to guess at motives.",
+      "statementIds": [
+        "stmt:4:lead:2:s1",
+        "stmt:4:lead:2:s2",
+        "stmt:4:lead:2:s3",
+        "stmt:4:lead:2:s4"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "answer",
+      "role": "answer",
+      "headingLevel": 2,
+      "heading": "How can I find out which competitors AI assistants cite instead of me?",
+      "text": "Start from the answers themselves rather than from the rivals' websites. From the citations its own measurements have already stored, TextOS shows, for each question, who the answer names instead of you, which sources the engines relied on, which kinds of pages were cited, and how citations moved between comparable runs. It records what is cited and, dated, what competitors' public pages say, and it does not lend them any intent or causality. It is also not a copy of their sites handed to a writing model: TextOS built it as a source family on existing parts of the product, not as a parallel system and not as retrieval over competitor sites.",
+      "statementIds": [
+        "stmt:6:answer:2:s1",
+        "stmt:6:answer:2:s2",
+        "stmt:6:answer:2:s3",
+        "stmt:6:answer:2:s4"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cs-02",
+        "ev-cs-08",
+        "ev-cs-01"
+      ],
+      "usableEvidenceIds": [
+        "ev-cs-02",
+        "ev-cs-08",
+        "ev-cs-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-1",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "A record of who gets cited, question by question",
+      "text": "The value for a marketing lead is a view you can act on without an analyst in the loop. Question by question, TextOS sets out who was named in your place, the sources the engines appear to have leaned on, the pages they cited, and how those citations shifted from one comparable run to the next. Comparable matters here: two runs are only set side by side when they asked the same questions in the same way, so a change in the list reflects the answers, not a change in the test.\n\nMost weeks, a long list of movements is more noise than signal. So the weekly summary keeps only a short list of facts that call for a decision since the previous comparable run. Each of those facts is meant to end in a choice for your team, such as whether a page deserves attention, rather than in another chart to read.",
+      "statementIds": [
+        "stmt:9:section-1:2:s1",
+        "stmt:9:section-1:2:s2",
+        "stmt:9:section-1:2:s3",
+        "stmt:9:section-1:2:s4",
+        "stmt:9:section-1:2:s5",
+        "stmt:9:section-1:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cs-02",
+        "ev-cs-06"
+      ],
+      "usableEvidenceIds": [
+        "ev-cs-02",
+        "ev-cs-06"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "record-path-caption",
+      "role": "caption",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS treats a run without usable answers as unknown, never as absent. Each week it keeps a short list of facts that call for a decision.",
+      "statementIds": [
+        "stmt:19:record-path-caption:2:s1",
+        "stmt:19:record-path-caption:2:s2"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cs-03",
+        "ev-cs-06"
+      ],
+      "usableEvidenceIds": [
+        "ev-cs-03",
+        "ev-cs-06"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-2",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Not seen is not the same as absent",
+      "text": "The most misleading line in any competitive report is a confident zero. TextOS treats a run that produced no usable answer as unknown, never as absent. Likewise, a competitor that TextOS did not see is not recorded as a competitor that is not there, and every absence carries the coverage behind it.\n\nThe same rule applies to patterns across several questions. Whenever TextOS reports a pattern, it shows how many cases it rests on and how many were not observed. For a reader, this is protection against the classic mistake of reallocating budget because a rival seemed to vanish from answers in a week when nothing was measured.",
+      "statementIds": [
+        "stmt:9:section-2:2:s1",
+        "stmt:9:section-2:2:s2",
+        "stmt:9:section-2:2:s3",
+        "stmt:9:section-2:2:s4",
+        "stmt:9:section-2:2:s5",
+        "stmt:9:section-2:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cs-03",
+        "ev-cs-09",
+        "ev-cs-13"
+      ],
+      "usableEvidenceIds": [
+        "ev-cs-03",
+        "ev-cs-09",
+        "ev-cs-13"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-3",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Description, never a recipe or a motive",
+      "text": "Teams often hope a tool like this will hand them a formula: copy these features of the winning page and you will be cited next. TextOS deliberately stops short of that, comparing observable properties of your cited and non-cited pages with denominators and a minimum sample size, as a description and never as a recipe.\n\nWhen a competitor's page changes and answers shift soon after, TextOS reports only that the two were seen together after the change began. And nothing it learns about rivals is pasted into your drafts, because TextOS did not build it as retrieval over competitor sites. The interpretation stays with the people who know the market, with the facts laid out in front of them.",
+      "statementIds": [
+        "stmt:9:section-3:2:s1",
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:s3",
+        "stmt:9:section-3:2:s4",
+        "stmt:9:section-3:2:s5"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cs-05",
+        "ev-cs-04",
+        "ev-cs-01"
+      ],
+      "usableEvidenceIds": [
+        "ev-cs-05",
+        "ev-cs-04",
+        "ev-cs-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-4",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Who decides who your competitors are, and what stays switched off",
+      "text": "Nobody is a competitor by default. TextOS hard-codes no competitor, and a rival is only linked to a website when someone declares that link. Feedback from your team on what matters is recorded as a human choice, kept within your organization, and it reorders what you see without hiding anything. Briefs your team already accepted or published are looked at again against the latest measurement, with nothing closed or changed automatically.\n\nOne part stays switched off on purpose. TextOS reads no third-party page until its governance decision on reading such pages is ratified and a legal opinion on text and data mining has been given. Until then, what you see rests on the answers measured for you, not on fetching your rivals' sites.",
+      "statementIds": [
+        "stmt:9:section-4:2:s1",
+        "stmt:9:section-4:2:s2",
+        "stmt:9:section-4:2:s3",
+        "stmt:9:section-4:2:s4",
+        "stmt:9:section-4:2:s5",
+        "stmt:9:section-4:2:s6",
+        "stmt:9:section-4:2:s7"
+      ],
+      "evidenceIdsUsed": [
+        "ev-cs-11",
+        "ev-cs-12",
+        "ev-cs-07",
+        "ev-cs-10"
+      ],
+      "usableEvidenceIds": [
+        "ev-cs-11",
+        "ev-cs-12",
+        "ev-cs-07",
+        "ev-cs-10"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "verify",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What to ask any tool that reports on competitors in AI answers",
+      "text": "When a vendor reports on your competitors in AI answers, ask whether each finding is dated and tied to a specific question. Ask how the tool tells apart a rival it did not see from a rival that is not there. Ask whether it claims to know why a rival is named, and what that claim rests on. Ask who decides which companies count as your competitors. Ask whether anything learned about rivals ends up copied into your own pages. Ask whether two weeks are only compared when the same questions were asked in the same way. Ask how your team can say that a reported fact does not matter, and whether that choice hides it or only moves it down.",
+      "statementIds": [
+        "stmt:6:verify:2:s1",
+        "stmt:6:verify:2:s2",
+        "stmt:6:verify:2:s3",
+        "stmt:6:verify:2:s4",
+        "stmt:6:verify:2:s5",
+        "stmt:6:verify:2:s6",
+        "stmt:6:verify:2:s7"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "editorial-next-step",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "text": "Another note explains how a second look at an answer is planned before an article goes live. A second one describes what a writing tool should do with the sources it reads.",
+      "statementIds": [
+        "stmt:19:editorial-next-step:2:s1",
+        "stmt:19:editorial-next-step:2:s2"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    }
+  ],
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "7bccde82ced5f2831c4844bbcdde9d02596b0f362277dece6957c5627fca4315",
+  "truthCheck": {
+    "verdict": "pass",
+    "contradictions": []
+  },
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
+}

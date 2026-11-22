@@ -1,0 +1,85 @@
+{
+  "text": "The value for a marketing lead is a view you can act on without an analyst in the loop. Question by question, TextOS sets out who was named in your place, the sources the engines appear to have leaned on, the pages they cited, and how those citations shifted from one comparable run to the next. Comparable matters here: two runs are only set side by side when they asked the same questions in the same way, so a change in the list reflects the answers, not a change in the test.\n\nMost weeks, a long list of movements is more noise than signal. So the weekly summary keeps only a short list of facts that call for a decision since the previous comparable run. Each of those facts is meant to end in a choice for your team, such as whether a page deserves attention, rather than in another chart to read.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The value for a marketing lead is a view you can act on without an analyst in the loop.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Question by question, TextOS sets out who was named in your place, the sources the engines appear to have leaned on, the pages they cited, and how those citations shifted from one comparable run to the next.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Comparable matters here: two runs are only set side by side when they asked the same questions in the same way, so a change in the list reflects the answers, not a change in the test.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Most weeks, a long list of movements is more noise than signal.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "So the weekly summary keeps only a short list of facts that call for a decision since the previous comparable run.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Each of those facts is meant to end in a choice for your team, such as whether a page deserves attention, rather than in another chart to read.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

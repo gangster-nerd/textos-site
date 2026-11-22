@@ -1,0 +1,61 @@
+{
+  "receiptVersion": 2,
+  "articleId": "ctc-action-lifecycle",
+  "textos": {
+    "repository": "gangster-nerd/textos-v0",
+    "sha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
+  },
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "articleReviewMethodVersion": "ctc-article-review@0.1",
+  "executionPlanHash": "27045bf07bfc49d0182dddd89a15a718a44c7b07c2afb71f7a83603bba38a8a7",
+  "ctcHandoffHash": "5dce651b8e9c306716116ec39ab2ef8e99ffaa7a4d865bb27d531cfe5aa22f3a",
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "859ba49d0fbb1242f91a29f0bb6f05c6eb02982f8e146868dd7fdc8834a511da",
+  "truthCheckVerdict": "pass",
+  "cmoV2": {
+    "version": "article-cmo-v2@1",
+    "passed": true
+  },
+  "ctcEditorialQuality": {
+    "gateVersion": "ctc-editorial-quality@0.1",
+    "verdict": "pass"
+  },
+  "releaseAllowed": true,
+  "publicationChannel": "controlled_preview",
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "promptHashes": {
+    "title": "400dd60350dbbb71b9dea39ce5f1a18703f9017474bbce23b784cc213102b270",
+    "meta": "32ae84980821057b751e836240fd898373f57bf2417b5427d6873a30da8adace",
+    "lead": "5a9b0d4ab3e48a545c427d6ab7b5112802fa213d37a3810e9b9d01e297706dbf",
+    "answer": "f5c326318256e720dc0e051c553b751accc9b915d1ef85c9bf345a3b1f69808e",
+    "section-1": "6f3bb9aefe5928b315e1902b62f913441ff081de4357a7f93840902d63177279",
+    "action-path-caption": "37ecc0db3edc709b93076126a654952109c5747c0a1f36e3514579c686a8e528",
+    "section-2": "d85a4fbc8b7c7ca86e6b4e87eb7a78a588c77e2073a1acba11bcaf1748cc2ae7",
+    "section-3": "10e6873dbdb692c7e5ddbd5187f78470ae4fe5bc04d4e07c1db95db7944b185d",
+    "section-4": "c638b2a07c6663a2ed0dca15bdae502f24f4785bb47d0a7b6d56e4d2ba41c1bd",
+    "verify": "0205a03e86e35a5033811d4a4278100364a557b7763735c43a34efae1ae892fa",
+    "editorial-next-step": "4e416e02f65fd5cb8feb5a1e218576a1dfeb4d1979de84c9798a4ff5929faad0"
+  },
+  "responseHashes": {
+    "title": "a66ae9f39ad767879e0b7ce1e53d8b542874c1e72877faa2300ab9093ced41d6",
+    "meta": "b278dde932c82fbca066af64c798f23c1f1e20c19170e9b7895eef163eb17181",
+    "lead": "a87620a63adff8089882264cc56aa8c07c683ca8bd40af940c1f88af9d4098c3",
+    "answer": "59debcf51ceb88d9f542bb39203ae3e0bf57ab71c53ae86c947159408e9fdd70",
+    "section-1": "e306a7d7b1d0b9b6be8c17487b17d4c17f00fb1291235b563125bec7aa6f467c",
+    "action-path-caption": "1840edc3cb0ee6cf1867403cc042953c203a302b08dcb113f51468dc94d0e668",
+    "section-2": "5e2f1211625d6bc2fb730eac7e138ff66cb740ab289ab8ccd666e9ba2fa07d08",
+    "section-3": "6383cc9500b7b69867493a98cecf0770bea3a572b6b0c46141e4f72cc0d9eeb6",
+    "section-4": "34d2e920b55cf07226a4e6bb7b4841591c7d73d892834fcce5514ec2c407474a",
+    "verify": "cc6a6c75a6a66fc964eaf7cddf3eaaf8a4487b6d1d77609bc0d4cf32c6f1176f",
+    "editorial-next-step": "6082165085c6754d9f37076466d4f47c45a06989af68babfdc032f08c72afe4e"
+  },
+  "figureHashes": {
+    "action-path": "8d635ee283350a852350790021f679373299c7359eab84699ebcbe73e245f5d9"
+  },
+  "contentDocumentSha256": "571090d8963e606982f52f9db58d7942efcf8483ff2d715d096cd956e8f78682",
+  "lineageSha256": "b4ee8e1bc5164dc73a3c5d54758a9adda9e589580dbdfeae1505243d10e6925e",
+  "resolvedSurfaceSha256": "ebd18f1e46d660e22648ff29326fa47bd9e4a3c42f03329863d655cdb691e0cc",
+  "articleReviewSha256": "00327f6d538350df7fdd8994f2036a920c3963b10edc693da6238db47df55149"
+}

@@ -1,0 +1,572 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-action-lifecycle",
+  "flow": "commit_to_content",
+  "slug": "from-preview-to-result-following-one-action-on-your-site",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "workspace-action-lifecycle"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "action-surface-2026-11-03",
+        "sourceCommits": [
+          "4a1f6fe2629f999332aca104379a59351653bff2"
+        ]
+      },
+      {
+        "groupId": "publication-observed-2026-11-03",
+        "sourceCommits": [
+          "5b6737d2ecdf1a6d8eb6d6992eabe1521c0201af"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I follow an action I started, from its preview through to its result?",
+    "targetQuery": "how to track an ai content action from preview to published",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "action-lifecycle"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+    "approvedAt": "2026-11-22"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-human-decision-exact-bytes",
+      "textos-site:ctc:ctc-assistant-connection",
+      "textos-site:ctc:ctc-controlled-preview"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-al-01",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "workspace-action-lifecycle",
+        "field": "knownLimits",
+        "quote": "Chaque action est prévisualisée, approuvée puis exécutée ; son résultat se lit par job."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-02",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/preview.ts",
+        "quote": "Preview without any write: no persisted approval, grant, job or destination mutation."
+      },
+      "claimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-03",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/preview.ts",
+        "quote": "Review the same governed native payload as execution, not a Markdown approximation."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-04",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/native-review.ts",
+        "quote": "Inert reading view of the actual Gutenberg payload: no attributes, links, images or scripts."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written.",
+        "Gutenberg is the WordPress block editor format."
+      ]
+    },
+    {
+      "id": "ev-al-05",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/distribution/prepare.ts",
+        "quote": "Nothing runs until a human approves it in TextOS."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text returned to a connected assistant; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-06",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/intent-service.ts",
+        "quote": "A request can be interrupted before its decision is attached. Rejection is still final."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-07",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/intent-service.ts",
+        "quote": "Re-check after decision persistence and before queue admission. The worker checks again."
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-08",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/intent-service.ts",
+        "quote": "Une mise à jour de page (E3) exige toujours la revue humaine : aucun mandat ne la couvre."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-09",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4a1f6fe2629f999332aca104379a59351653bff2",
+        "quote": "Page update approval reserved to organization owners and admins"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message line; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-10",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/distribution/server.ts",
+        "quote": "Job success is not proof of publication."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Tool description sent to a connected assistant; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-11",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/job-result.ts",
+        "quote": "A provider \"verified\" status proves existence/status, not editor-source parity."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-12",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/job-result.ts",
+        "quote": "seule une parité prouvée est un succès ; le reçu dit la page et l'état observés."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written.",
+        "Applies to page updates written by TextOS."
+      ]
+    },
+    {
+      "id": "ev-al-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "5b6737d2ecdf1a6d8eb6d6992eabe1521c0201af",
+        "quote": "record a human publication when verifying a deposited wordpress draft"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit subject; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-al-14",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/application/actions/job-result.ts",
+        "quote": "(le texte publié a pu être modifié : aucune parité n'est revendiquée)."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written.",
+        "Applies to a draft that a person published."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that every action is previewed, decided, run, and its result read back.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-al-01"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: in TextOS an action is previewed, approved, then run, and a finished job is not taken as proof that anything was published.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-al-01",
+        "ev-al-10"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: they asked a tool to do something on their site, and now they cannot tell whether it is waiting, done, or live. Say that this note follows one action from its first preview to the result someone can check.",
+      "buyerIntent": "Where is the thing I asked for?",
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can I follow an action I started, from its preview through to its result?",
+      "writingObjective": "Answer directly: each action moves through a preview, a decision, a run, and a result read per job; the preview writes nothing; and a job that finished is never presented as proof that something was published.",
+      "buyerIntent": "How can I follow an action I started, from its preview through to its result?",
+      "allowedEvidenceIds": [
+        "ev-al-01",
+        "ev-al-02",
+        "ev-al-10"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Before anything runs: a preview that changes nothing",
+      "writingObjective": "Explain what the person sees before deciding: the preview stores no sign-off and touches no destination; what is reviewed is the same payload that would be sent, not a simplified rendering; and it is shown as an inert reading view with no links, images or scripts. Say what that changes for someone about to approve a change to their site.",
+      "buyerIntent": "What exactly am I looking at before I say yes?",
+      "allowedEvidenceIds": [
+        "ev-al-02",
+        "ev-al-03",
+        "ev-al-04"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "execution_safety",
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "action-path-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one or two factual sentences, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-al-05",
+        "ev-al-07"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The decision, and the checks that follow it",
+      "writingObjective": "Explain that nothing runs until a person approves it in TextOS; that a request interrupted before its decision stays open while a rejection is final; that the conditions are checked again after the decision is recorded and once more when the job runs; and that a page update always requires a human review, no standing permission covers it, and only organization owners and admins may approve one.",
+      "buyerIntent": "Who can say yes, and what happens after they do?",
+      "allowedEvidenceIds": [
+        "ev-al-05",
+        "ev-al-06",
+        "ev-al-07",
+        "ev-al-08",
+        "ev-al-09"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A finished job is not a published page",
+      "writingObjective": "Explain that a job completing is not treated as proof of publication; that a destination saying a draft exists only proves it exists, not that its content matches what was approved; and that for a page update only a proven content match counts as success, with the result naming the page and the state that were observed.",
+      "buyerIntent": "How do I know the change really landed?",
+      "allowedEvidenceIds": [
+        "ev-al-10",
+        "ev-al-11",
+        "ev-al-12"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "When the page goes live, the person published it",
+      "writingObjective": "Explain that when TextOS later checks a draft it deposited and finds it published, it records that a person published it, and that it claims no match with the published text because the text may have been edited. Say what that means for reading the history of a page.",
+      "buyerIntent": "Who published it, and is it still what was approved?",
+      "allowedEvidenceIds": [
+        "ev-al-13",
+        "ev-al-14"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any tool that acts on your site",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-11-22",
+    "reason": "The note cites these product commits and files; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "action-path",
+      "template": "flow",
+      "title": "One action, from preview to result",
+      "subtitle": "Illustrative path for one action. Nothing runs before a person decides.",
+      "nodes": [
+        {
+          "tag": "preview",
+          "label": "Preview, nothing written",
+          "evidenceIds": [
+            "ev-al-02"
+          ]
+        },
+        {
+          "tag": "decide",
+          "label": "Person decides",
+          "evidenceIds": [
+            "ev-al-05"
+          ]
+        },
+        {
+          "tag": "run",
+          "label": "Checked again, then run",
+          "evidenceIds": [
+            "ev-al-07"
+          ]
+        },
+        {
+          "tag": "result",
+          "label": "Result read back",
+          "evidenceIds": [
+            "ev-al-12"
+          ]
+        }
+      ],
+      "highlightNode": 3,
+      "boundary": {
+        "afterNode": 2,
+        "title": "Not publication",
+        "lines": [
+          "A finished job is not",
+          "proof of publication."
+        ],
+        "evidenceIds": [
+          "ev-al-10"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "action-path-caption"
+    }
+  ]
+}

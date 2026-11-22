@@ -1,0 +1,53 @@
+{
+  "text": "You ask an AI assistant a question your business should own, and it recommends someone else. The natural reaction is to build a theory on the spot about their pages, their domain or some clever trick. Theories like that are quick to form and costly to act on: a team can spend a quarter chasing a reason that turns out not to exist. This note is about a different habit: keeping a dated, question-by-question record of who gets named, and refusing to guess at motives.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "You ask an AI assistant a question your business should own, and it recommends someone else.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The natural reaction is to build a theory on the spot about their pages, their domain or some clever trick.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Theories like that are quick to form and costly to act on: a team can spend a quarter chasing a reason that turns out not to exist.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note is about a different habit: keeping a dated, question-by-question record of who gets named, and refusing to guess at motives.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

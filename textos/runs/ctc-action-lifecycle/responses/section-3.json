@@ -1,0 +1,89 @@
+{
+  "text": "The most common confusion in any tool that acts on a website is between done and live. TextOS keeps them apart by design, stating that job success is not proof of publication. The same caution applies to what the destination reports: in TextOS, a verified status from the provider proves that the item exists and what state it is in, not that its content matches what was approved.\n\nPage updates get the strictest reading. For a page that TextOS updates, only a proven content match counts as success, and the result names the page and the state that were observed. In practice, a result screen can therefore say that the page was found but the match could not be confirmed, which is more useful to you than a tick.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The most common confusion in any tool that acts on a website is between done and live.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS keeps them apart by design, stating that job success is not proof of publication.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-al-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The same caution applies to what the destination reports: in TextOS, a verified status from the provider proves that the item exists and what state it is in, not that its content matches what was approved.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-al-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Page updates get the strictest reading.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "For a page that TextOS updates, only a proven content match counts as success, and the result names the page and the state that were observed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-al-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "In practice, a result screen can therefore say that the page was found but the match could not be confirmed, which is more useful to you than a tick.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

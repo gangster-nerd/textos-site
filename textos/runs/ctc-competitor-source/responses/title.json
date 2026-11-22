@@ -1,0 +1,21 @@
+{
+  "text": "TextOS dates who AI answers cite, and lends no competitor a motive",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS dates who AI answers cite, and lends no competitor a motive",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

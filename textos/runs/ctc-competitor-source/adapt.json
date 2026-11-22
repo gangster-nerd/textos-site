@@ -1,0 +1,20 @@
+{
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to see which competitors ai assistants cite instead of my brand",
+  "executionPlanHash": "87c4869e3d8232b8b24e9d696723a55d51c1d854f99d7d9ff800659036762de9",
+  "ctcHandoffHash": "35860b0d4718ca912be2f11c775b92c1eb73ff1d4318ef3a9bb08268e5714a48",
+  "promptHashes": {
+    "title": "891c4084a72ef30af724fcee53e2b697e3e840fa28f37b080fe28e55278c8307",
+    "meta": "7d7063d3eb60dc9b2b4520ae1f6bbca8cb7fbdcb8d80f45477a12a9bd7a2d785",
+    "lead": "47a8b08e384b04ba8e22f1b848409af2c6c682199ac5538574b4afd29583bf6d",
+    "answer": "d44aad14c233a2c34006b1480d45a2383eebe44f8d07e77a7d643aed71ddb55e",
+    "section-1": "ac71ea2fd9b0c45f33d45956d9ccf69493c1282e88cfa4e08c1f5bdb6b0344da",
+    "record-path-caption": "14288c193f19e93c6796ac52561dd33c9f8436d32114ec1050c9abca0b3f0d6e",
+    "section-2": "01b96932e2c15e71024c92081aecca493d8a93ea38f97004216a41b492950a97",
+    "section-3": "bdad81c26ad6ac1ae0db1dbc7d69e4c19b9dc4259537fff6108b06434cc648cb",
+    "section-4": "374935e1ce9c03100ab08c2b076b1a1e2415122146676285d3ce5d9670dc1384",
+    "verify": "797ae2c824d4451d3dd1a88fbb8418fcc52343093b5699bcf27a2237b6f14ab1",
+    "editorial-next-step": "a8d581f26c2928e0185a59e13ea4e4d2a27a70cdbc607dd4748c857c7ed87619"
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "Each action you start in TextOS moves through the same stages: it is previewed, approved, then run, and its result is read per job. The preview is only a look: TextOS writes nothing at that point, records no sign-off and touches no destination. The end of the path is kept just as honest, because TextOS states that job success is not proof of publication. So the screen you check tells you which of those stages the action is in, rather than collapsing them into a single word such as done."
+        },
+        "id": "answer-1",
+        "kind": "answer",
+        "slot": "short-answer"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": "short-answer",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "You asked a tool to change something on your site, and now the question is simple: is it waiting for someone, done, or already live? Most tools answer with a green tick that hides three different situations. This note follows one action from the first preview a person looks at to the result that can be checked afterwards, and shows where each state is kept apart from the next."
+        },
+        "id": "lead:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Before anything runs: a preview that changes nothing"
+        },
+        "id": "section-1:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The point of a preview is to let you say yes to the real thing, not to a summary of it. TextOS reviews the same governed payload that would be sent at run time, not a simplified Markdown version of it. It shows that payload as an inert reading view, with no attributes, links, images or scripts, so looking at it cannot trigger anything.\n\nJust as important, looking does not commit you. A TextOS preview performs no write: it stores no sign-off, creates no job and changes nothing at the destination. For anyone about to let a change reach their website, that means the decision can be taken slowly, by comparing what will be sent with what was asked for."
+        },
+        "id": "section-1:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "alt": "One action, from preview to result. A 4-step flow: Preview, nothing written, then Person decides, then Checked again, then run, then Result read back. A dashed boundary after \"Checked again, then run\" is labelled Not publication: A finished job is not proof of publication.",
+          "caption": "Nothing runs until a person approves it in TextOS. TextOS checks the conditions again after the decision is recorded, and once more when the work runs.",
+          "src": "/diagrams/ctc/action-path-8d635ee28335.svg"
+        },
+        "id": "figure:action-path",
+        "kind": "figure"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The decision, and the checks that follow it"
+        },
+        "id": "section-2:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 5,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The second stage is the decision, and it belongs to a person. TextOS states that nothing runs until a human approves it in TextOS. If a request is interrupted before its decision is attached it can still be decided, but a rejection is final.\n\nSaying yes does not end the checks. TextOS checks the conditions again once the decision is recorded and before the work is queued, and the process that carries it out checks again. Changing a live page goes further still: TextOS requires a human review for every page update, and no standing permission covers one. Only the owners and admins of an organization can approve a page update."
+        },
+        "id": "section-2:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 6,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A finished job is not a published page"
+        },
+        "id": "section-3:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 7,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The most common confusion in any tool that acts on a website is between done and live. TextOS keeps them apart by design, stating that job success is not proof of publication. The same caution applies to what the destination reports: in TextOS, a verified status from the provider proves that the item exists and what state it is in, not that its content matches what was approved.\n\nPage updates get the strictest reading. For a page that TextOS updates, only a proven content match counts as success, and the result names the page and the state that were observed. In practice, a result screen can therefore say that the page was found but the match could not be confirmed, which is more useful to you than a tick."
+        },
+        "id": "section-3:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 8,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "When the page goes live, the person published it"
+        },
+        "id": "section-4:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 9,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A deposited draft is still a draft until someone puts it live. When TextOS later checks a draft it deposited and finds that it has been published, it records a human publication. The record says who acted: the person published, the tool observed.\n\nTextOS also refuses to vouch for the published text, because that text may have been edited after the draft was deposited, so no content match is claimed. For anyone reading the history of a page later, this keeps two questions apart: when it went live, and whether it still says what was signed off before it went live."
+        },
+        "id": "section-4:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 10,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What to ask any tool that acts on your site"
+        },
+        "id": "verify:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 11,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "items": [
+            "Before you let any tool act on your site, ask what it shows you before anything runs, and whether that view is the exact content it will send.",
+            "Ask whether opening a preview can change anything by itself.",
+            "Ask what is checked again between your yes and the moment the work actually runs.",
+            "Ask how its status screen separates a finished task, a draft sitting in your site, and a page that is live.",
+            "Ask what it records when someone edits a page after it was put live.",
+            "Ask who in your organization is allowed to say yes to a change on a live page, and whether a standing permission can ever stand in for that person.",
+            "Ask what happens to a request that was interrupted halfway, and whether a refusal can be reopened by someone else later."
+          ]
+        },
+        "id": "verify:decision-points",
+        "kind": "steps"
+      },
+      "hiddenReason": null,
+      "order": 12,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Where to go next"
+        },
+        "id": "editorial-next-step:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 13,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Another note shows how a person's sign-off is tied to the exact draft it covers and used only once. A second note explains what an AI assistant connected to the product can prepare, and what stays with a person."
+        },
+        "id": "editorial-next-step:body",
+        "kind": "paragraph",
+        "slot": "editorial-next-step"
+      },
+      "hiddenReason": null,
+      "order": 14,
+      "region": "editorial-next-step",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Sources"
+        },
+        "id": "sources:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 15,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-01",
+          "title": "TextOS product manifest, workspace-action-lifecycle.knownLimits"
+        },
+        "id": "source:1:ev-al-01",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 16,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-10",
+          "title": "TextOS product repository file src/server/textos/distribution/server.ts at 181d44e"
+        },
+        "id": "source:2:ev-al-10",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 17,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-02",
+          "title": "TextOS product repository file src/server/textos/application/actions/preview.ts at 181d44e"
+        },
+        "id": "source:3:ev-al-02",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 18,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-04",
+          "title": "TextOS product repository file src/server/textos/application/actions/native-review.ts at 181d44e"
+        },
+        "id": "source:4:ev-al-04",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 19,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-05",
+          "title": "TextOS product repository file src/server/textos/distribution/prepare.ts at 181d44e"
+        },
+        "id": "source:5:ev-al-05",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 20,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-07",
+          "title": "TextOS product repository file src/server/textos/application/actions/intent-service.ts at 181d44e"
+        },
+        "id": "source:6:ev-al-07",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 21,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-09",
+          "title": "TextOS product commit 4a1f6fe, 3 Nov 2026"
+        },
+        "id": "source:7:ev-al-09",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 22,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-11",
+          "title": "TextOS product repository file src/server/textos/application/actions/job-result.ts at 181d44e"
+        },
+        "id": "source:8:ev-al-11",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 23,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-al-13",
+          "title": "TextOS product commit 5b6737d, 3 Nov 2026"
+        },
+        "id": "source:9:ev-al-13",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 24,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-action-lifecycle::from-preview-to-result-following-one-action-on-your-site::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:figure:action-path:v|5:section-2:heading:v|6:section-2:body:v|7:section-3:heading:v|8:section-3:body:v|9:section-4:heading:v|10:section-4:body:v|11:verify:heading:v|12:verify:decision-points:v|13:editorial-next-step:heading:v|14:editorial-next-step:body:v|15:sources:heading:v|16:source:1:ev-al-01:v|17:source:2:ev-al-10:v|18:source:3:ev-al-02:v|19:source:4:ev-al-04:v|20:source:5:ev-al-05:v|21:source:6:ev-al-07:v|22:source:7:ev-al-09:v|23:source:8:ev-al-11:v|24:source:9:ev-al-13:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "product_article",
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "In TextOS an action is previewed, approved, then run, and a job that finished is not taken as proof that anything was published.",
+  "documentId": "textos-site:ctc:ctc-action-lifecycle",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": "article-review",
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "Article"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": false,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-article-review@0.1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 4,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "from-preview-to-result-following-one-action-on-your-site",
+  "surface": "reference",
+  "title": "TextOS takes each action from preview to decision, run and a result read back",
+  "truth": {
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "answer",
+    "paragraph",
+    "heading",
+    "figure",
+    "steps",
+    "source"
+  ]
+}

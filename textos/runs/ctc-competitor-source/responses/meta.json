@@ -1,0 +1,21 @@
+{
+  "text": "TextOS keeps a dated record of who AI answers cite and what rivals' public pages say, and lends them no motive.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS keeps a dated record of who AI answers cite and what rivals' public pages say, and lends them no motive.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

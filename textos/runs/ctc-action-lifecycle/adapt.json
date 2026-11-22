@@ -1,0 +1,20 @@
+{
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to track an ai content action from preview to published",
+  "executionPlanHash": "27045bf07bfc49d0182dddd89a15a718a44c7b07c2afb71f7a83603bba38a8a7",
+  "ctcHandoffHash": "5dce651b8e9c306716116ec39ab2ef8e99ffaa7a4d865bb27d531cfe5aa22f3a",
+  "promptHashes": {
+    "title": "400dd60350dbbb71b9dea39ce5f1a18703f9017474bbce23b784cc213102b270",
+    "meta": "32ae84980821057b751e836240fd898373f57bf2417b5427d6873a30da8adace",
+    "lead": "5a9b0d4ab3e48a545c427d6ab7b5112802fa213d37a3810e9b9d01e297706dbf",
+    "answer": "f5c326318256e720dc0e051c553b751accc9b915d1ef85c9bf345a3b1f69808e",
+    "section-1": "6f3bb9aefe5928b315e1902b62f913441ff081de4357a7f93840902d63177279",
+    "action-path-caption": "37ecc0db3edc709b93076126a654952109c5747c0a1f36e3514579c686a8e528",
+    "section-2": "d85a4fbc8b7c7ca86e6b4e87eb7a78a588c77e2073a1acba11bcaf1748cc2ae7",
+    "section-3": "10e6873dbdb692c7e5ddbd5187f78470ae4fe5bc04d4e07c1db95db7944b185d",
+    "section-4": "c638b2a07c6663a2ed0dca15bdae502f24f4785bb47d0a7b6d56e4d2ba41c1bd",
+    "verify": "0205a03e86e35a5033811d4a4278100364a557b7763735c43a34efae1ae892fa",
+    "editorial-next-step": "4e416e02f65fd5cb8feb5a1e218576a1dfeb4d1979de84c9798a4ff5929faad0"
+  }
+}

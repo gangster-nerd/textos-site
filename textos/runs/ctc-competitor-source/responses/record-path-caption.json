@@ -1,0 +1,37 @@
+{
+  "text": "TextOS treats a run without usable answers as unknown, never as absent. Each week it keeps a short list of facts that call for a decision.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS treats a run without usable answers as unknown, never as absent.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Each week it keeps a short list of facts that call for a decision.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

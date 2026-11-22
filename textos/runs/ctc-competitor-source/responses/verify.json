@@ -1,0 +1,89 @@
+{
+  "text": "When a vendor reports on your competitors in AI answers, ask whether each finding is dated and tied to a specific question. Ask how the tool tells apart a rival it did not see from a rival that is not there. Ask whether it claims to know why a rival is named, and what that claim rests on. Ask who decides which companies count as your competitors. Ask whether anything learned about rivals ends up copied into your own pages. Ask whether two weeks are only compared when the same questions were asked in the same way. Ask how your team can say that a reported fact does not matter, and whether that choice hides it or only moves it down.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "When a vendor reports on your competitors in AI answers, ask whether each finding is dated and tied to a specific question.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask how the tool tells apart a rival it did not see from a rival that is not there.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether it claims to know why a rival is named, and what that claim rests on.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask who decides which companies count as your competitors.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask whether anything learned about rivals ends up copied into your own pages.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Ask whether two weeks are only compared when the same questions were asked in the same way.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "Ask how your team can say that a reported fact does not matter, and whether that choice hides it or only moves it down.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

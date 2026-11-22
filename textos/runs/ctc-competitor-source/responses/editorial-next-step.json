@@ -1,0 +1,29 @@
+{
+  "text": "Another note explains how a second look at an answer is planned before an article goes live. A second one describes what a writing tool should do with the sources it reads.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Another note explains how a second look at an answer is planned before an article goes live.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A second one describes what a writing tool should do with the sources it reads.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

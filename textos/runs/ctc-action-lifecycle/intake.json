@@ -1,0 +1,825 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "action-surface-2026-11-03",
+        "sourceCommits": [
+          "4a1f6fe2629f999332aca104379a59351653bff2"
+        ]
+      },
+      {
+        "groupId": "publication-observed-2026-11-03",
+        "sourceCommits": [
+          "5b6737d2ecdf1a6d8eb6d6992eabe1521c0201af"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I follow an action I started, from its preview through to its result?",
+    "targetQuery": "how to track an ai content action from preview to published",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "action-lifecycle",
+    "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-action-lifecycle",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-al-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product manifest, workspace-action-lifecycle.knownLimits",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "8f6311ab4e229bd99a9a22867c85ff5dac10398a1131127c9f07e510693c37d2",
+      "excerpt": "Chaque action est prévisualisée, approuvée puis exécutée ; son résultat se lit par job.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/preview.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "23ca2557254226c5ce32366df481478b296cf7a6f6d80497de3fef3283cdc1c2",
+      "excerpt": "Preview without any write: no persisted approval, grant, job or destination mutation.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/preview.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "01d9dae3fcc0ffa28e6d88ef18684a0d0b43d7e412392537da3deed36f65ad35",
+      "excerpt": "Review the same governed native payload as execution, not a Markdown approximation.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/native-review.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "c0f9eebe18e6020200d73b39ec41351401d0b66de28e9fb6646d4d51bafdf128",
+      "excerpt": "Inert reading view of the actual Gutenberg payload: no attributes, links, images or scripts.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written.",
+        "Gutenberg is the WordPress block editor format."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/distribution/prepare.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "bf7bd76e06bae0672a8d80596006a66b63274aa10dc6c7dabc237238e6288206",
+      "excerpt": "Nothing runs until a human approves it in TextOS.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Text returned to a connected assistant; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/intent-service.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "00a52167850666f1444dba695ec1ac832ab5c744ce084f16e5efff94ed135d30",
+      "excerpt": "A request can be interrupted before its decision is attached. Rejection is still final.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/intent-service.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "20ed733f6d86128a6e5b0a48a30385c0abcfc9f9532985252bf1ad02dac9a082",
+      "excerpt": "Re-check after decision persistence and before queue admission. The worker checks again.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/intent-service.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "cc3f0968e8dc73508ed12efe01f5c2f476f7ddc1034c16239898785586c1e68b",
+      "excerpt": "Une mise à jour de page (E3) exige toujours la revue humaine : aucun mandat ne la couvre.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 4a1f6fe, 3 Nov 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-03T19:13:38+01:00",
+      "contentHash": "e4449be27befd7a3deb3cc7a2676d7f85aa44ea87e170e59890902d81f18917c",
+      "excerpt": "Page update approval reserved to organization owners and admins",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message line; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/distribution/server.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "f2612742660b481a47c07f4ebde4dbf93ef12cdabf3fa146717b3032be47b7ad",
+      "excerpt": "Job success is not proof of publication.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Tool description sent to a connected assistant; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/job-result.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "9abb4f6f5ef2423aba7d133d710e8279a4cef29c6db928fa6c712821ecdb60bb",
+      "excerpt": "A provider \"verified\" status proves existence/status, not editor-source parity.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/job-result.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "27898ca6de0598504327c9518f671ec34fd5e5742068bc9ab512a0da0fa4918f",
+      "excerpt": "seule une parité prouvée est un succès ; le reçu dit la page et l'état observés.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written.",
+        "Applies to page updates written by TextOS."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 5b6737d, 3 Nov 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-03T23:33:47+01:00",
+      "contentHash": "556d9e4fa55eb86364bd95e3f1803aecc9a73608b54e8005d5de77f8c70dae69",
+      "excerpt": "record a human publication when verifying a deposited wordpress draft",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit subject; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-al-14",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/application/actions/job-result.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "dcffb08ce7ae0dcea189f62d53d9e7e09e5aefc12d6087e7c8eec72964b2de76",
+      "excerpt": "(le texte publié a pu être modifié : aucune parité n'est revendiquée).",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written.",
+        "Applies to a draft that a person published."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-action-lifecycle"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that every action is previewed, decided, run, and its result read back.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-al-01"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: in TextOS an action is previewed, approved, then run, and a finished job is not taken as proof that anything was published.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-al-01",
+        "ev-al-10"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: they asked a tool to do something on their site, and now they cannot tell whether it is waiting, done, or live. Say that this note follows one action from its first preview to the result someone can check.",
+      "buyerIntent": "Where is the thing I asked for?",
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can I follow an action I started, from its preview through to its result?",
+      "writingObjective": "Answer directly: each action moves through a preview, a decision, a run, and a result read per job; the preview writes nothing; and a job that finished is never presented as proof that something was published.",
+      "buyerIntent": "How can I follow an action I started, from its preview through to its result?",
+      "allowedEvidenceIds": [
+        "ev-al-01",
+        "ev-al-02",
+        "ev-al-10"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Before anything runs: a preview that changes nothing",
+      "writingObjective": "Explain what the person sees before deciding: the preview stores no sign-off and touches no destination; what is reviewed is the same payload that would be sent, not a simplified rendering; and it is shown as an inert reading view with no links, images or scripts. Say what that changes for someone about to approve a change to their site.",
+      "buyerIntent": "What exactly am I looking at before I say yes?",
+      "allowedEvidenceIds": [
+        "ev-al-02",
+        "ev-al-03",
+        "ev-al-04"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "execution_safety",
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "action-path-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one or two factual sentences, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-al-05",
+        "ev-al-07"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "The decision, and the checks that follow it",
+      "writingObjective": "Explain that nothing runs until a person approves it in TextOS; that a request interrupted before its decision stays open while a rejection is final; that the conditions are checked again after the decision is recorded and once more when the job runs; and that a page update always requires a human review, no standing permission covers it, and only organization owners and admins may approve one.",
+      "buyerIntent": "Who can say yes, and what happens after they do?",
+      "allowedEvidenceIds": [
+        "ev-al-05",
+        "ev-al-06",
+        "ev-al-07",
+        "ev-al-08",
+        "ev-al-09"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A finished job is not a published page",
+      "writingObjective": "Explain that a job completing is not treated as proof of publication; that a destination saying a draft exists only proves it exists, not that its content matches what was approved; and that for a page update only a proven content match counts as success, with the result naming the page and the state that were observed.",
+      "buyerIntent": "How do I know the change really landed?",
+      "allowedEvidenceIds": [
+        "ev-al-10",
+        "ev-al-11",
+        "ev-al-12"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "When the page goes live, the person published it",
+      "writingObjective": "Explain that when TextOS later checks a draft it deposited and finds it published, it records that a person published it, and that it claims no match with the published text because the text may have been edited. Say what that means for reading the history of a page.",
+      "buyerIntent": "Who published it, and is it still what was approved?",
+      "allowedEvidenceIds": [
+        "ev-al-13",
+        "ev-al-14"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any tool that acts on your site",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

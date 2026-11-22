@@ -1,0 +1,551 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-competitor-source",
+  "flow": "commit_to_content",
+  "slug": "seeing-which-competitors-ai-answers-cite-without-guessing-why",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "competitor-source"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "competitor-read-model-2026-10-22",
+        "sourceCommits": [
+          "4400c5b3a85f51c580ebeb25cf58666ef6aa4213",
+          "c77f43183d05c3487a19a09c8723cd70ab84f66b",
+          "defc97bbdabd447f3afc8675cf8f20d68ca60ad5"
+        ]
+      },
+      {
+        "groupId": "weekly-brief-and-validation-2026-10-22",
+        "sourceCommits": [
+          "807f2d582112987d041f1499516c156de1dc6c5d"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I find out which competitors AI assistants cite instead of me?",
+    "targetQuery": "how to see which competitors ai assistants cite instead of my brand",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "competitor-citations"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+    "approvedAt": "2026-11-22"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-reading-cited-sources",
+      "textos-site:ctc:ctc-re-observation-plan",
+      "textos-insight:observation-not-optimization"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-cs-01",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4400c5b3a85f51c580ebeb25cf58666ef6aa4213",
+        "quote": "Competitor Source as a source family on existing primitives, not a parallel architecture and not a RAG over competitor sites."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-02",
+      "source": {
+        "kind": "product_commit",
+        "sha": "4400c5b3a85f51c580ebeb25cf58666ef6aa4213",
+        "quote": "per-question \"why them\", engine-perceived sources, cited surfaces, citation movements between comparable runs"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Describes the read model built over citations already persisted by TextOS measurements."
+      ]
+    },
+    {
+      "id": "ev-cs-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "c77f43183d05c3487a19a09c8723cd70ab84f66b",
+        "quote": "runs without eligible answers are unknown, never absent;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-04",
+      "source": {
+        "kind": "product_commit",
+        "sha": "c77f43183d05c3487a19a09c8723cd70ab84f66b",
+        "quote": "co-occurrences observed after the change began, never causal"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-05",
+      "source": {
+        "kind": "product_commit",
+        "sha": "defc97bbdabd447f3afc8675cf8f20d68ca60ad5",
+        "quote": "observable page properties compared between the client's cited and non-cited pages of the current measurement, with denominators and a minimum sample size; descriptive, never a recipe"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "807f2d582112987d041f1499516c156de1dc6c5d",
+        "quote": "at most three decidable facts since the previous comparable run"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-07",
+      "source": {
+        "kind": "product_commit",
+        "sha": "807f2d582112987d041f1499516c156de1dc6c5d",
+        "quote": "nothing closed or modified automatically"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Refers to accepted or published briefs re-evaluated against the current measurement."
+      ]
+    },
+    {
+      "id": "ev-cs-08",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "competitor-source",
+        "field": "knownLimits",
+        "quote": "Constate qui les moteurs citent et ce que les pages publiques des concurrents disent, datés ; ne prête aucune intention ni causalité."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-09",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "competitor-source",
+        "field": "knownLimits",
+        "quote": "Une absence observée n'est pas une absence chez le concurrent : chaque absence porte sa couverture."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-10",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "competitor-source",
+        "field": "knownLimits",
+        "quote": "Aucune page tierce n'est lue tant que l'ADR-024 n'est pas ratifiée et que l'avis juridique TDM n'est pas rendu."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written.",
+        "States that reading third-party pages is not in service until a governance decision and a legal opinion."
+      ]
+    },
+    {
+      "id": "ev-cs-11",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/competitor-source/FINALISATION.md",
+        "quote": "Aucun concurrent n'est codé en dur. Le rattachement roster ↔ domaine ne se fait que par déclaration."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Permanent safeguard listed in the capability's finalisation document, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-12",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/competitor-source/FINALISATION.md",
+        "quote": "Elles sont humaines, cloisonnées par organisation, et réordonnent sans masquer."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Refers to validations (human feedback on facts and signals), in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-cs-13",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/competitor-source/FINALISATION.md",
+        "quote": "Un pattern porte toujours son dénominateur et ses non-observés."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Permanent safeguard, in French; quoted as written."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that it records which sources AI answers cite, dated, without lending competitors intent or cause.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cs-08"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS keeps a dated record of who AI answers cite and what competitors' public pages say, and never explains why.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cs-08",
+        "ev-cs-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: an AI assistant recommends someone else for a question they should own, and the instinct is to guess why. Say the note is about keeping a record rather than a theory.",
+      "buyerIntent": "Why does AI cite them and not me?",
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can I find out which competitors AI assistants cite instead of me?",
+      "writingObjective": "Answer directly: TextOS reads, question by question, which sources the engines cited in its own measurements, with dates; it records what is cited and what public pages say, without attributing intent or cause; it is not a copy of competitors' sites fed to a writer.",
+      "buyerIntent": "How can I find out which competitors AI assistants cite instead of me?",
+      "allowedEvidenceIds": [
+        "ev-cs-02",
+        "ev-cs-08",
+        "ev-cs-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A record of who gets cited, question by question",
+      "writingObjective": "Explain the per-question view built from measurements already taken: who was cited, which sources the engines relied on, which surfaces, and how citations moved between comparable runs. Then explain the weekly summary: at most three facts that call for a decision since the previous comparable run.",
+      "buyerIntent": "What do I actually get to see?",
+      "allowedEvidenceIds": [
+        "ev-cs-02",
+        "ev-cs-06"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "record-path-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one or two factual sentences, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-cs-03",
+        "ev-cs-06"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Not seen is not the same as absent",
+      "writingObjective": "Explain why an absence is never read as a zero: a run with no usable answer is unknown, an absence observed by TextOS is not an absence at the competitor and always carries its coverage, and a pattern always shows its denominator and what was not observed. Say what that protects a reader from.",
+      "buyerIntent": "Can I trust it when it says a competitor is not there?",
+      "allowedEvidenceIds": [
+        "ev-cs-03",
+        "ev-cs-09",
+        "ev-cs-13"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Description, never a recipe or a motive",
+      "writingObjective": "Explain that TextOS describes and never lends intent or causality: page properties of cited and non-cited pages are compared with denominators and a minimum sample, descriptively and never as a recipe; co-occurrences after a change are never presented as causes; and the capability is not a copy of competitors' sites fed to a writer.",
+      "buyerIntent": "Will it tell me what to copy?",
+      "allowedEvidenceIds": [
+        "ev-cs-05",
+        "ev-cs-04",
+        "ev-cs-01"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Who decides who your competitors are, and what stays switched off",
+      "writingObjective": "Explain that no competitor is hard-coded and linking a competitor to a site only comes from a declaration; that human feedback on facts reorders without hiding and stays within one organization; that past briefs are re-assessed without anything being closed or changed automatically; and that no third-party page is read until a governance decision is ratified and a legal opinion is given.",
+      "buyerIntent": "Who decides what it watches?",
+      "allowedEvidenceIds": [
+        "ev-cs-11",
+        "ev-cs-12",
+        "ev-cs-07",
+        "ev-cs-10"
+      ],
+      "requiredClaimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any tool that reports on competitors in AI answers",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-11-22",
+    "reason": "The note cites these product commits and files; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "record-path",
+      "template": "flow",
+      "title": "From a measured answer to a weekly fact",
+      "subtitle": "Illustrative path for one question. A record, not a motive.",
+      "nodes": [
+        {
+          "tag": "measure",
+          "label": "Answers measured",
+          "evidenceIds": [
+            "ev-cs-02"
+          ]
+        },
+        {
+          "tag": "cite",
+          "label": "Cited sources dated",
+          "evidenceIds": [
+            "ev-cs-08"
+          ]
+        },
+        {
+          "tag": "compare",
+          "label": "Runs compared",
+          "evidenceIds": [
+            "ev-cs-03"
+          ]
+        },
+        {
+          "tag": "decide",
+          "label": "Up to three facts",
+          "evidenceIds": [
+            "ev-cs-06"
+          ]
+        }
+      ],
+      "highlightNode": 2,
+      "boundary": {
+        "afterNode": 1,
+        "title": "Record, not motive",
+        "lines": [
+          "No intent or cause",
+          "is lent to a competitor."
+        ],
+        "evidenceIds": [
+          "ev-cs-08"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "record-path-caption"
+    }
+  ]
+}

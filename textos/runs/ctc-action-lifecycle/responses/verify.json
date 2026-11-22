@@ -1,0 +1,89 @@
+{
+  "text": "Before you let any tool act on your site, ask what it shows you before anything runs, and whether that view is the exact content it will send. Ask whether opening a preview can change anything by itself. Ask what is checked again between your yes and the moment the work actually runs. Ask how its status screen separates a finished task, a draft sitting in your site, and a page that is live. Ask what it records when someone edits a page after it was put live. Ask who in your organization is allowed to say yes to a change on a live page, and whether a standing permission can ever stand in for that person. Ask what happens to a request that was interrupted halfway, and whether a refusal can be reopened by someone else later.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Before you let any tool act on your site, ask what it shows you before anything runs, and whether that view is the exact content it will send.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask whether opening a preview can change anything by itself.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask what is checked again between your yes and the moment the work actually runs.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask how its status screen separates a finished task, a draft sitting in your site, and a page that is live.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask what it records when someone edits a page after it was put live.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Ask who in your organization is allowed to say yes to a change on a live page, and whether a standing permission can ever stand in for that person.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "Ask what happens to a request that was interrupted halfway, and whether a refusal can be reopened by someone else later.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

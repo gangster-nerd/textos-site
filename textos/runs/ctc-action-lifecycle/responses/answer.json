@@ -1,0 +1,66 @@
+{
+  "text": "Each action you start in TextOS moves through the same stages: it is previewed, approved, then run, and its result is read per job. The preview is only a look: TextOS writes nothing at that point, records no sign-off and touches no destination. The end of the path is kept just as honest, because TextOS states that job success is not proof of publication. So the screen you check tells you which of those stages the action is in, rather than collapsing them into a single word such as done.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Each action you start in TextOS moves through the same stages: it is previewed, approved, then run, and its result is read per job.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-al-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The preview is only a look: TextOS writes nothing at that point, records no sign-off and touches no destination.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-al-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The end of the path is kept just as honest, because TextOS states that job success is not proof of publication.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-al-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "So the screen you check tells you which of those stages the action is in, rather than collapsing them into a single word such as done.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

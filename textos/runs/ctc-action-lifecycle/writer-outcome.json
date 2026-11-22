@@ -1,0 +1,921 @@
+{
+  "status": "written",
+  "result": {
+    "planId": "how to track an ai content action from preview to published",
+    "planHash": "27045bf07bfc49d0182dddd89a15a718a44c7b07c2afb71f7a83603bba38a8a7",
+    "slots": [
+      {
+        "slotId": "title",
+        "role": "title",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS takes each action from preview to decision, run and a result read back",
+        "statementIds": [
+          "stmt:5:title:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-al-01"
+        ],
+        "usableEvidenceIds": [
+          "ev-al-01"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "meta",
+        "role": "meta_description",
+        "headingLevel": null,
+        "heading": null,
+        "text": "In TextOS an action is previewed, approved, then run, and a job that finished is not taken as proof that anything was published.",
+        "statementIds": [
+          "stmt:4:meta:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-al-01",
+          "ev-al-10"
+        ],
+        "usableEvidenceIds": [
+          "ev-al-01",
+          "ev-al-10"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "lead",
+        "role": "lead",
+        "headingLevel": null,
+        "heading": null,
+        "text": "You asked a tool to change something on your site, and now the question is simple: is it waiting for someone, done, or already live? Most tools answer with a green tick that hides three different situations. This note follows one action from the first preview a person looks at to the result that can be checked afterwards, and shows where each state is kept apart from the next.",
+        "statementIds": [
+          "stmt:4:lead:2:s1",
+          "stmt:4:lead:2:s2",
+          "stmt:4:lead:2:s3"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "answer",
+        "role": "answer",
+        "headingLevel": 2,
+        "heading": "How can I follow an action I started, from its preview through to its result?",
+        "text": "Each action you start in TextOS moves through the same stages: it is previewed, approved, then run, and its result is read per job. The preview is only a look: TextOS writes nothing at that point, records no sign-off and touches no destination. The end of the path is kept just as honest, because TextOS states that job success is not proof of publication. So the screen you check tells you which of those stages the action is in, rather than collapsing them into a single word such as done.",
+        "statementIds": [
+          "stmt:6:answer:2:s1",
+          "stmt:6:answer:2:s2",
+          "stmt:6:answer:2:s3",
+          "stmt:6:answer:2:s4"
+        ],
+        "evidenceIdsUsed": [
+          "ev-al-01",
+          "ev-al-02",
+          "ev-al-10"
+        ],
+        "usableEvidenceIds": [
+          "ev-al-01",
+          "ev-al-02",
+          "ev-al-10"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-1",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Before anything runs: a preview that changes nothing",
+        "text": "The point of a preview is to let you say yes to the real thing, not to a summary of it. TextOS reviews the same governed payload that would be sent at run time, not a simplified Markdown version of it. It shows that payload as an inert reading view, with no attributes, links, images or scripts, so looking at it cannot trigger anything.\n\nJust as important, looking does not commit you. A TextOS preview performs no write: it stores no sign-off, creates no job and changes nothing at the destination. For anyone about to let a change reach their website, that means the decision can be taken slowly, by comparing what will be sent with what was asked for.",
+        "statementIds": [
+          "stmt:9:section-1:2:s1",
+          "stmt:9:section-1:2:s2",
+          "stmt:9:section-1:2:s3",
+          "stmt:9:section-1:2:s4",
+          "stmt:9:section-1:2:s5",
+          "stmt:9:section-1:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-al-03",
+          "ev-al-04",
+          "ev-al-02"
+        ],
+        "usableEvidenceIds": [
+          "ev-al-02",
+          "ev-al-03",
+          "ev-al-04"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "action-path-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "Nothing runs until a person approves it in TextOS. TextOS checks the conditions again after the decision is recorded, and once more when the work runs.",
+        "statementIds": [
+          "stmt:19:action-path-caption:2:s1",
+          "stmt:19:action-path-caption:2:s2"
+        ],
+        "evidenceIdsUsed": [
+          "ev-al-05",
+          "ev-al-07"
+        ],
+        "usableEvidenceIds": [
+          "ev-al-05",
+          "ev-al-07"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-2",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "The decision, and the checks that follow it",
+        "text": "The second stage is the decision, and it belongs to a person. TextOS states that nothing runs until a human approves it in TextOS. If a request is interrupted before its decision is attached it can still be decided, but a rejection is final.\n\nSaying yes does not end the checks. TextOS checks the conditions again once the decision is recorded and before the work is queued, and the process that carries it out checks again. Changing a live page goes further still: TextOS requires a human review for every page update, and no standing permission covers one. Only the owners and admins of an organization can approve a page update.",
+        "statementIds": [
+          "stmt:9:section-2:2:s1",
+          "stmt:9:section-2:2:s2",
+          "stmt:9:section-2:2:s3",
+          "stmt:9:section-2:2:s4",
+          "stmt:9:section-2:2:s5",
+          "stmt:9:section-2:2:s6",
+          "stmt:9:section-2:2:s7"
+        ],
+        "evidenceIdsUsed": [
+          "ev-al-05",
+          "ev-al-06",
+          "ev-al-07",
+          "ev-al-08",
+          "ev-al-09"
+        ],
+        "usableEvidenceIds": [
+          "ev-al-05",
+          "ev-al-06",
+          "ev-al-07",
+          "ev-al-08",
+          "ev-al-09"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-3",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "A finished job is not a published page",
+        "text": "The most common confusion in any tool that acts on a website is between done and live. TextOS keeps them apart by design, stating that job success is not proof of publication. The same caution applies to what the destination reports: in TextOS, a verified status from the provider proves that the item exists and what state it is in, not that its content matches what was approved.\n\nPage updates get the strictest reading. For a page that TextOS updates, only a proven content match counts as success, and the result names the page and the state that were observed. In practice, a result screen can therefore say that the page was found but the match could not be confirmed, which is more useful to you than a tick.",
+        "statementIds": [
+          "stmt:9:section-3:2:s1",
+          "stmt:9:section-3:2:s2",
+          "stmt:9:section-3:2:s3",
+          "stmt:9:section-3:2:s4",
+          "stmt:9:section-3:2:s5",
+          "stmt:9:section-3:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-al-10",
+          "ev-al-11",
+          "ev-al-12"
+        ],
+        "usableEvidenceIds": [
+          "ev-al-10",
+          "ev-al-11",
+          "ev-al-12"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-4",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "When the page goes live, the person published it",
+        "text": "A deposited draft is still a draft until someone puts it live. When TextOS later checks a draft it deposited and finds that it has been published, it records a human publication. The record says who acted: the person published, the tool observed.\n\nTextOS also refuses to vouch for the published text, because that text may have been edited after the draft was deposited, so no content match is claimed. For anyone reading the history of a page later, this keeps two questions apart: when it went live, and whether it still says what was signed off before it went live.",
+        "statementIds": [
+          "stmt:9:section-4:2:s1",
+          "stmt:9:section-4:2:s2",
+          "stmt:9:section-4:2:s3",
+          "stmt:9:section-4:2:s4",
+          "stmt:9:section-4:2:s5"
+        ],
+        "evidenceIdsUsed": [
+          "ev-al-13",
+          "ev-al-14"
+        ],
+        "usableEvidenceIds": [
+          "ev-al-13",
+          "ev-al-14"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any tool that acts on your site",
+        "text": "Before you let any tool act on your site, ask what it shows you before anything runs, and whether that view is the exact content it will send. Ask whether opening a preview can change anything by itself. Ask what is checked again between your yes and the moment the work actually runs. Ask how its status screen separates a finished task, a draft sitting in your site, and a page that is live. Ask what it records when someone edits a page after it was put live. Ask who in your organization is allowed to say yes to a change on a live page, and whether a standing permission can ever stand in for that person. Ask what happens to a request that was interrupted halfway, and whether a refusal can be reopened by someone else later.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4",
+          "stmt:6:verify:2:s5",
+          "stmt:6:verify:2:s6",
+          "stmt:6:verify:2:s7"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "Another note shows how a person's sign-off is tied to the exact draft it covers and used only once. A second note explains what an AI assistant connected to the product can prepare, and what stays with a person.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      }
+    ],
+    "document": {
+      "title": "TextOS takes each action from preview to decision, run and a result read back",
+      "slug": "textos-takes-each-action-from-preview-to-decision-run-and-a-result-read-back",
+      "metaDescription": "In TextOS an action is previewed, approved, then run, and a job that finished is not taken as proof that anything was published.",
+      "body": "You asked a tool to change something on your site, and now the question is simple: is it waiting for someone, done, or already live? Most tools answer with a green tick that hides three different situations. This note follows one action from the first preview a person looks at to the result that can be checked afterwards, and shows where each state is kept apart from the next.\n\nThe point of a preview is to let you say yes to the real thing, not to a summary of it. TextOS reviews the same governed payload that would be sent at run time, not a simplified Markdown version of it. It shows that payload as an inert reading view, with no attributes, links, images or scripts, so looking at it cannot trigger anything.\n\nJust as important, looking does not commit you. A TextOS preview performs no write: it stores no sign-off, creates no job and changes nothing at the destination. For anyone about to let a change reach their website, that means the decision can be taken slowly, by comparing what will be sent with what was asked for.\n\nNothing runs until a person approves it in TextOS. TextOS checks the conditions again after the decision is recorded, and once more when the work runs.\n\nThe second stage is the decision, and it belongs to a person. TextOS states that nothing runs until a human approves it in TextOS. If a request is interrupted before its decision is attached it can still be decided, but a rejection is final.\n\nSaying yes does not end the checks. TextOS checks the conditions again once the decision is recorded and before the work is queued, and the process that carries it out checks again. Changing a live page goes further still: TextOS requires a human review for every page update, and no standing permission covers one. Only the owners and admins of an organization can approve a page update.\n\nThe most common confusion in any tool that acts on a website is between done and live. TextOS keeps them apart by design, stating that job success is not proof of publication. The same caution applies to what the destination reports: in TextOS, a verified status from the provider proves that the item exists and what state it is in, not that its content matches what was approved.\n\nPage updates get the strictest reading. For a page that TextOS updates, only a proven content match counts as success, and the result names the page and the state that were observed. In practice, a result screen can therefore say that the page was found but the match could not be confirmed, which is more useful to you than a tick.\n\nA deposited draft is still a draft until someone puts it live. When TextOS later checks a draft it deposited and finds that it has been published, it records a human publication. The record says who acted: the person published, the tool observed.\n\nTextOS also refuses to vouch for the published text, because that text may have been edited after the draft was deposited, so no content match is claimed. For anyone reading the history of a page later, this keeps two questions apart: when it went live, and whether it still says what was signed off before it went live.\n\nBefore you let any tool act on your site, ask what it shows you before anything runs, and whether that view is the exact content it will send. Ask whether opening a preview can change anything by itself. Ask what is checked again between your yes and the moment the work actually runs. Ask how its status screen separates a finished task, a draft sitting in your site, and a page that is live. Ask what it records when someone edits a page after it was put live. Ask who in your organization is allowed to say yes to a change on a live page, and whether a standing permission can ever stand in for that person. Ask what happens to a request that was interrupted halfway, and whether a refusal can be reopened by someone else later.\n\nAnother note shows how a person's sign-off is tied to the exact draft it covers and used only once. A second note explains what an AI assistant connected to the product can prepare, and what stays with a person.",
+      "faq": [
+        {
+          "question": "How can I follow an action I started, from its preview through to its result?",
+          "answer": "Each action you start in TextOS moves through the same stages: it is previewed, approved, then run, and its result is read per job. The preview is only a look: TextOS writes nothing at that point, records no sign-off and touches no destination. The end of the path is kept just as honest, because TextOS states that job success is not proof of publication. So the screen you check tells you which of those stages the action is in, rather than collapsing them into a single word such as done."
+        }
+      ],
+      "statementLedger": [
+        {
+          "id": "stmt:5:title:2:s1",
+          "text": "TextOS takes each action from preview to decision, run and a result read back",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-al-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:meta:2:s1",
+          "text": "In TextOS an action is previewed, approved, then run, and a job that finished is not taken as proof that anything was published.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-01",
+            "ev-al-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s1",
+          "text": "You asked a tool to change something on your site, and now the question is simple: is it waiting for someone, done, or already live?",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s2",
+          "text": "Most tools answer with a green tick that hides three different situations.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s3",
+          "text": "This note follows one action from the first preview a person looks at to the result that can be checked afterwards, and shows where each state is kept apart from the next.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s1",
+          "text": "Each action you start in TextOS moves through the same stages: it is previewed, approved, then run, and its result is read per job.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-al-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s2",
+          "text": "The preview is only a look: TextOS writes nothing at that point, records no sign-off and touches no destination.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-al-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s3",
+          "text": "The end of the path is kept just as honest, because TextOS states that job success is not proof of publication.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s4",
+          "text": "So the screen you check tells you which of those stages the action is in, rather than collapsing them into a single word such as done.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s1",
+          "text": "The point of a preview is to let you say yes to the real thing, not to a summary of it.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s2",
+          "text": "TextOS reviews the same governed payload that would be sent at run time, not a simplified Markdown version of it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s3",
+          "text": "It shows that payload as an inert reading view, with no attributes, links, images or scripts, so looking at it cannot trigger anything.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-04"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s4",
+          "text": "Just as important, looking does not commit you.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s5",
+          "text": "A TextOS preview performs no write: it stores no sign-off, creates no job and changes nothing at the destination.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-al-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s6",
+          "text": "For anyone about to let a change reach their website, that means the decision can be taken slowly, by comparing what will be sent with what was asked for.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:action-path-caption:2:s1",
+          "text": "Nothing runs until a person approves it in TextOS.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-al-05"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:action-path-caption:2:s2",
+          "text": "TextOS checks the conditions again after the decision is recorded, and once more when the work runs.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-al-07"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s1",
+          "text": "The second stage is the decision, and it belongs to a person.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s2",
+          "text": "TextOS states that nothing runs until a human approves it in TextOS.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-al-05"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s3",
+          "text": "If a request is interrupted before its decision is attached it can still be decided, but a rejection is final.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-al-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s4",
+          "text": "Saying yes does not end the checks.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s5",
+          "text": "TextOS checks the conditions again once the decision is recorded and before the work is queued, and the process that carries it out checks again.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "execution_safety"
+          ],
+          "evidenceIds": [
+            "ev-al-07"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s6",
+          "text": "Changing a live page goes further still: TextOS requires a human review for every page update, and no standing permission covers one.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-al-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s7",
+          "text": "Only the owners and admins of an organization can approve a page update.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-al-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s1",
+          "text": "The most common confusion in any tool that acts on a website is between done and live.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s2",
+          "text": "TextOS keeps them apart by design, stating that job success is not proof of publication.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s3",
+          "text": "The same caution applies to what the destination reports: in TextOS, a verified status from the provider proves that the item exists and what state it is in, not that its content matches what was approved.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-11"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s4",
+          "text": "Page updates get the strictest reading.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s5",
+          "text": "For a page that TextOS updates, only a proven content match counts as success, and the result names the page and the state that were observed.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-12"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s6",
+          "text": "In practice, a result screen can therefore say that the page was found but the match could not be confirmed, which is more useful to you than a tick.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s1",
+          "text": "A deposited draft is still a draft until someone puts it live.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s2",
+          "text": "When TextOS later checks a draft it deposited and finds that it has been published, it records a human publication.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-13"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s3",
+          "text": "The record says who acted: the person published, the tool observed.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s4",
+          "text": "TextOS also refuses to vouch for the published text, because that text may have been edited after the draft was deposited, so no content match is claimed.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-al-14"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s5",
+          "text": "For anyone reading the history of a page later, this keeps two questions apart: when it went live, and whether it still says what was signed off before it went live.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s1",
+          "text": "Before you let any tool act on your site, ask what it shows you before anything runs, and whether that view is the exact content it will send.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask whether opening a preview can change anything by itself.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask what is checked again between your yes and the moment the work actually runs.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "Ask how its status screen separates a finished task, a draft sitting in your site, and a page that is live.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s5",
+          "text": "Ask what it records when someone edits a page after it was put live.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s6",
+          "text": "Ask who in your organization is allowed to say yes to a change on a live page, and whether a standing permission can ever stand in for that person.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s7",
+          "text": "Ask what happens to a request that was interrupted halfway, and whether a refusal can be reopened by someone else later.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "Another note shows how a person's sign-off is tied to the exact draft it covers and used only once.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "A second note explains what an AI assistant connected to the product can prepare, and what stays with a person.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        }
+      ],
+      "claimsExcluded": [],
+      "sections": [
+        {
+          "key": "lead",
+          "heading": "",
+          "body": "You asked a tool to change something on your site, and now the question is simple: is it waiting for someone, done, or already live? Most tools answer with a green tick that hides three different situations. This note follows one action from the first preview a person looks at to the result that can be checked afterwards, and shows where each state is kept apart from the next."
+        },
+        {
+          "key": "section-1",
+          "heading": "Before anything runs: a preview that changes nothing",
+          "body": "The point of a preview is to let you say yes to the real thing, not to a summary of it. TextOS reviews the same governed payload that would be sent at run time, not a simplified Markdown version of it. It shows that payload as an inert reading view, with no attributes, links, images or scripts, so looking at it cannot trigger anything.\n\nJust as important, looking does not commit you. A TextOS preview performs no write: it stores no sign-off, creates no job and changes nothing at the destination. For anyone about to let a change reach their website, that means the decision can be taken slowly, by comparing what will be sent with what was asked for."
+        },
+        {
+          "key": "action-path-caption",
+          "heading": "",
+          "body": "Nothing runs until a person approves it in TextOS. TextOS checks the conditions again after the decision is recorded, and once more when the work runs."
+        },
+        {
+          "key": "section-2",
+          "heading": "The decision, and the checks that follow it",
+          "body": "The second stage is the decision, and it belongs to a person. TextOS states that nothing runs until a human approves it in TextOS. If a request is interrupted before its decision is attached it can still be decided, but a rejection is final.\n\nSaying yes does not end the checks. TextOS checks the conditions again once the decision is recorded and before the work is queued, and the process that carries it out checks again. Changing a live page goes further still: TextOS requires a human review for every page update, and no standing permission covers one. Only the owners and admins of an organization can approve a page update."
+        },
+        {
+          "key": "section-3",
+          "heading": "A finished job is not a published page",
+          "body": "The most common confusion in any tool that acts on a website is between done and live. TextOS keeps them apart by design, stating that job success is not proof of publication. The same caution applies to what the destination reports: in TextOS, a verified status from the provider proves that the item exists and what state it is in, not that its content matches what was approved.\n\nPage updates get the strictest reading. For a page that TextOS updates, only a proven content match counts as success, and the result names the page and the state that were observed. In practice, a result screen can therefore say that the page was found but the match could not be confirmed, which is more useful to you than a tick."
+        },
+        {
+          "key": "section-4",
+          "heading": "When the page goes live, the person published it",
+          "body": "A deposited draft is still a draft until someone puts it live. When TextOS later checks a draft it deposited and finds that it has been published, it records a human publication. The record says who acted: the person published, the tool observed.\n\nTextOS also refuses to vouch for the published text, because that text may have been edited after the draft was deposited, so no content match is claimed. For anyone reading the history of a page later, this keeps two questions apart: when it went live, and whether it still says what was signed off before it went live."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any tool that acts on your site",
+          "body": "Before you let any tool act on your site, ask what it shows you before anything runs, and whether that view is the exact content it will send. Ask whether opening a preview can change anything by itself. Ask what is checked again between your yes and the moment the work actually runs. Ask how its status screen separates a finished task, a draft sitting in your site, and a page that is live. Ask what it records when someone edits a page after it was put live. Ask who in your organization is allowed to say yes to a change on a live page, and whether a standing permission can ever stand in for that person. Ask what happens to a request that was interrupted halfway, and whether a refusal can be reopened by someone else later."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "Another note shows how a person's sign-off is tied to the exact draft it covers and used only once. A second note explains what an AI assistant connected to the product can prepare, and what stays with a person."
+        }
+      ]
+    },
+    "structuredContentHash": "859ba49d0fbb1242f91a29f0bb6f05c6eb02982f8e146868dd7fdc8834a511da",
+    "writerMethodVersion": "geo-writer@0.2",
+    "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+    "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+    "truthCheck": {
+      "verdict": "pass",
+      "contradictions": []
+    }
+  }
+}

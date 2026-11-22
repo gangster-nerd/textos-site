@@ -1,0 +1,369 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "Start from the answers themselves rather than from the rivals' websites. From the citations its own measurements have already stored, TextOS shows, for each question, who the answer names instead of you, which sources the engines relied on, which kinds of pages were cited, and how citations moved between comparable runs. It records what is cited and, dated, what competitors' public pages say, and it does not lend them any intent or causality. It is also not a copy of their sites handed to a writing model: TextOS built it as a source family on existing parts of the product, not as a parallel system and not as retrieval over competitor sites."
+        },
+        "id": "answer-1",
+        "kind": "answer",
+        "slot": "short-answer"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": "short-answer",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "You ask an AI assistant a question your business should own, and it recommends someone else. The natural reaction is to build a theory on the spot about their pages, their domain or some clever trick. Theories like that are quick to form and costly to act on: a team can spend a quarter chasing a reason that turns out not to exist. This note is about a different habit: keeping a dated, question-by-question record of who gets named, and refusing to guess at motives."
+        },
+        "id": "lead:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "A record of who gets cited, question by question"
+        },
+        "id": "section-1:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The value for a marketing lead is a view you can act on without an analyst in the loop. Question by question, TextOS sets out who was named in your place, the sources the engines appear to have leaned on, the pages they cited, and how those citations shifted from one comparable run to the next. Comparable matters here: two runs are only set side by side when they asked the same questions in the same way, so a change in the list reflects the answers, not a change in the test.\n\nMost weeks, a long list of movements is more noise than signal. So the weekly summary keeps only a short list of facts that call for a decision since the previous comparable run. Each of those facts is meant to end in a choice for your team, such as whether a page deserves attention, rather than in another chart to read."
+        },
+        "id": "section-1:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "alt": "From a measured answer to a weekly fact. A 4-step flow: Answers measured, then Cited sources dated, then Runs compared, then Up to three facts. A dashed boundary after \"Cited sources dated\" is labelled Record, not motive: No intent or cause is lent to a competitor.",
+          "caption": "TextOS treats a run without usable answers as unknown, never as absent. Each week it keeps a short list of facts that call for a decision.",
+          "src": "/diagrams/ctc/record-path-abd3dd314228.svg"
+        },
+        "id": "figure:record-path",
+        "kind": "figure"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Not seen is not the same as absent"
+        },
+        "id": "section-2:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 5,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "The most misleading line in any competitive report is a confident zero. TextOS treats a run that produced no usable answer as unknown, never as absent. Likewise, a competitor that TextOS did not see is not recorded as a competitor that is not there, and every absence carries the coverage behind it.\n\nThe same rule applies to patterns across several questions. Whenever TextOS reports a pattern, it shows how many cases it rests on and how many were not observed. For a reader, this is protection against the classic mistake of reallocating budget because a rival seemed to vanish from answers in a week when nothing was measured."
+        },
+        "id": "section-2:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 6,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Description, never a recipe or a motive"
+        },
+        "id": "section-3:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 7,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Teams often hope a tool like this will hand them a formula: copy these features of the winning page and you will be cited next. TextOS deliberately stops short of that, comparing observable properties of your cited and non-cited pages with denominators and a minimum sample size, as a description and never as a recipe.\n\nWhen a competitor's page changes and answers shift soon after, TextOS reports only that the two were seen together after the change began. And nothing it learns about rivals is pasted into your drafts, because TextOS did not build it as retrieval over competitor sites. The interpretation stays with the people who know the market, with the facts laid out in front of them."
+        },
+        "id": "section-3:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 8,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Who decides who your competitors are, and what stays switched off"
+        },
+        "id": "section-4:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 9,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Nobody is a competitor by default. TextOS hard-codes no competitor, and a rival is only linked to a website when someone declares that link. Feedback from your team on what matters is recorded as a human choice, kept within your organization, and it reorders what you see without hiding anything. Briefs your team already accepted or published are looked at again against the latest measurement, with nothing closed or changed automatically.\n\nOne part stays switched off on purpose. TextOS reads no third-party page until its governance decision on reading such pages is ratified and a legal opinion on text and data mining has been given. Until then, what you see rests on the answers measured for you, not on fetching your rivals' sites."
+        },
+        "id": "section-4:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 10,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What to ask any tool that reports on competitors in AI answers"
+        },
+        "id": "verify:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 11,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "items": [
+            "When a vendor reports on your competitors in AI answers, ask whether each finding is dated and tied to a specific question.",
+            "Ask how the tool tells apart a rival it did not see from a rival that is not there.",
+            "Ask whether it claims to know why a rival is named, and what that claim rests on.",
+            "Ask who decides which companies count as your competitors.",
+            "Ask whether anything learned about rivals ends up copied into your own pages.",
+            "Ask whether two weeks are only compared when the same questions were asked in the same way.",
+            "Ask how your team can say that a reported fact does not matter, and whether that choice hides it or only moves it down."
+          ]
+        },
+        "id": "verify:decision-points",
+        "kind": "steps"
+      },
+      "hiddenReason": null,
+      "order": 12,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Where to go next"
+        },
+        "id": "editorial-next-step:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 13,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Another note explains how a second look at an answer is planned before an article goes live. A second one describes what a writing tool should do with the sources it reads."
+        },
+        "id": "editorial-next-step:body",
+        "kind": "paragraph",
+        "slot": "editorial-next-step"
+      },
+      "hiddenReason": null,
+      "order": 14,
+      "region": "editorial-next-step",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Sources"
+        },
+        "id": "sources:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 15,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cs-08",
+          "title": "TextOS product manifest, competitor-source.knownLimits"
+        },
+        "id": "source:1:ev-cs-08",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 16,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cs-02",
+          "title": "TextOS product commit 4400c5b, 22 Oct 2026"
+        },
+        "id": "source:2:ev-cs-02",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 17,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cs-06",
+          "title": "TextOS product commit 807f2d5, 22 Oct 2026"
+        },
+        "id": "source:3:ev-cs-06",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 18,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cs-03",
+          "title": "TextOS product commit c77f431, 22 Oct 2026"
+        },
+        "id": "source:4:ev-cs-03",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 19,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cs-13",
+          "title": "TextOS product repository file docs/competitor-source/FINALISATION.md at 181d44e"
+        },
+        "id": "source:5:ev-cs-13",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 20,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-cs-05",
+          "title": "TextOS product commit defc97b, 22 Oct 2026"
+        },
+        "id": "source:6:ev-cs-05",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 21,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-competitor-source::seeing-which-competitors-ai-answers-cite-without-guessing-why::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:figure:record-path:v|5:section-2:heading:v|6:section-2:body:v|7:section-3:heading:v|8:section-3:body:v|9:section-4:heading:v|10:section-4:body:v|11:verify:heading:v|12:verify:decision-points:v|13:editorial-next-step:heading:v|14:editorial-next-step:body:v|15:sources:heading:v|16:source:1:ev-cs-08:v|17:source:2:ev-cs-02:v|18:source:3:ev-cs-06:v|19:source:4:ev-cs-03:v|20:source:5:ev-cs-13:v|21:source:6:ev-cs-05:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "product_article",
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "TextOS keeps a dated record of who AI answers cite and what rivals' public pages say, and lends them no motive.",
+  "documentId": "textos-site:ctc:ctc-competitor-source",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": "article-review",
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "Article"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": false,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-article-review@0.1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 4,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "seeing-which-competitors-ai-answers-cite-without-guessing-why",
+  "surface": "reference",
+  "title": "TextOS dates who AI answers cite, and lends no competitor a motive",
+  "truth": {
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "answer",
+    "paragraph",
+    "heading",
+    "figure",
+    "steps",
+    "source"
+  ]
+}

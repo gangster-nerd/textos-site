@@ -1,0 +1,77 @@
+{
+  "text": "Teams often hope a tool like this will hand them a formula: copy these features of the winning page and you will be cited next. TextOS deliberately stops short of that, comparing observable properties of your cited and non-cited pages with denominators and a minimum sample size, as a description and never as a recipe.\n\nWhen a competitor's page changes and answers shift soon after, TextOS reports only that the two were seen together after the change began. And nothing it learns about rivals is pasted into your drafts, because TextOS did not build it as retrieval over competitor sites. The interpretation stays with the people who know the market, with the facts laid out in front of them.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Teams often hope a tool like this will hand them a formula: copy these features of the winning page and you will be cited next.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS deliberately stops short of that, comparing observable properties of your cited and non-cited pages with denominators and a minimum sample size, as a description and never as a recipe.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "When a competitor's page changes and answers shift soon after, TextOS reports only that the two were seen together after the change began.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "And nothing it learns about rivals is pasted into your drafts, because TextOS did not build it as retrieval over competitor sites.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The interpretation stays with the people who know the market, with the facts laid out in front of them.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "text": "The most misleading line in any competitive report is a confident zero. TextOS treats a run that produced no usable answer as unknown, never as absent. Likewise, a competitor that TextOS did not see is not recorded as a competitor that is not there, and every absence carries the coverage behind it.\n\nThe same rule applies to patterns across several questions. Whenever TextOS reports a pattern, it shows how many cases it rests on and how many were not observed. For a reader, this is protection against the classic mistake of reallocating budget because a rival seemed to vanish from answers in a week when nothing was measured.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The most misleading line in any competitive report is a confident zero.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS treats a run that produced no usable answer as unknown, never as absent.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Likewise, a competitor that TextOS did not see is not recorded as a competitor that is not there, and every absence carries the coverage behind it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The same rule applies to patterns across several questions.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Whenever TextOS reports a pattern, it shows how many cases it rests on and how many were not observed.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-cs-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "For a reader, this is protection against the classic mistake of reallocating budget because a rival seemed to vanish from answers in a week when nothing was measured.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

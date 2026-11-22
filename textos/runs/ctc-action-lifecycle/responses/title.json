@@ -1,0 +1,21 @@
+{
+  "text": "TextOS takes each action from preview to decision, run and a result read back",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS takes each action from preview to decision, run and a result read back",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-al-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

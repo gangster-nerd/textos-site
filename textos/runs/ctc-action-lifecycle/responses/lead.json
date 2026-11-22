@@ -1,0 +1,41 @@
+{
+  "text": "You asked a tool to change something on your site, and now the question is simple: is it waiting for someone, done, or already live? Most tools answer with a green tick that hides three different situations. This note follows one action from the first preview a person looks at to the result that can be checked afterwards, and shows where each state is kept apart from the next.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "You asked a tool to change something on your site, and now the question is simple: is it waiting for someone, done, or already live?",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Most tools answer with a green tick that hides three different situations.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "This note follows one action from the first preview a person looks at to the result that can be checked afterwards, and shows where each state is kept apart from the next.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "text": "The second stage is the decision, and it belongs to a person. TextOS states that nothing runs until a human approves it in TextOS. If a request is interrupted before its decision is attached it can still be decided, but a rejection is final.\n\nSaying yes does not end the checks. TextOS checks the conditions again once the decision is recorded and before the work is queued, and the process that carries it out checks again. Changing a live page goes further still: TextOS requires a human review for every page update, and no standing permission covers one. Only the owners and admins of an organization can approve a page update.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The second stage is the decision, and it belongs to a person.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS states that nothing runs until a human approves it in TextOS.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-al-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "If a request is interrupted before its decision is attached it can still be decided, but a rejection is final.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-al-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Saying yes does not end the checks.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "TextOS checks the conditions again once the decision is recorded and before the work is queued, and the process that carries it out checks again.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-al-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Changing a live page goes further still: TextOS requires a human review for every page update, and no standing permission covers one.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-al-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "Only the owners and admins of an organization can approve a page update.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-al-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}
