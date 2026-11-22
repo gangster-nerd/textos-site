@@ -13,10 +13,15 @@
 // Commit-to-Content client: the articles TextOS wrote for this site (textos/runs/**) join the
 // same catalogue once lib/textos-client has verified their receipts and projected them. A run
 // that does not check throws here, at build time.
+//
+// Git delivery client: the drafts TextOS deposited under textos/deliveries/ (governed Git delivery,
+// merged by a human) join the same catalogue once lib/textos-client/git-drafts has verified them.
+// A deposited file that does not check throws here too.
 
 import type { ContentDocument } from "../contract/content-document";
 import { loadManagedCorpus } from "../conformance/corpus-loader";
 import { loadCtcArticles } from "@/lib/textos-client/ctc-articles";
+import { loadGitDrafts } from "@/lib/textos-client/git-drafts";
 import { earlyDisclosureLabel, type EarlyDisclosure } from "@/lib/content/early-disclosure";
 import { editorialEyebrowLabel } from "./editorial-eyebrow";
 
@@ -35,6 +40,7 @@ function build(): readonly InsightEntry[] {
   const sources = [
     ...loadManagedCorpus().map((document) => ({ document, earlyDisclosure: null as EarlyDisclosure | null })),
     ...loadCtcArticles().map((a) => ({ document: a.document, earlyDisclosure: a.earlyDisclosure })),
+    ...loadGitDrafts().map((d) => ({ document: d.document, earlyDisclosure: null as EarlyDisclosure | null })),
   ];
   const docs = sources.map((source) => source.document);
   const slugs = new Set<string>();
