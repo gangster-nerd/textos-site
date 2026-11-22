@@ -1,0 +1,53 @@
+{
+  "text": "You published a new page, and a few weeks later someone asks whether it changed how often AI assistants mention you. A single global score rarely answers that: it blends questions that moved with questions that did not, and it tends to invite claims of credit. The more useful view starts from the questions your buyers actually ask, followed one by one over time. This note explains how that follow-up is organized, and what it deliberately refuses to conclude.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "You published a new page, and a few weeks later someone asks whether it changed how often AI assistants mention you.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A single global score rarely answers that: it blends questions that moved with questions that did not, and it tends to invite claims of credit.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The more useful view starts from the questions your buyers actually ask, followed one by one over time.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note explains how that follow-up is organized, and what it deliberately refuses to conclude.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to track ai search visibility over time for each question",
+  "executionPlanHash": "39f7f78fdb22ccdc7f69d2ede620c14dad891aa4bff213689fd77738886e0c5c",
+  "ctcHandoffHash": "d5161c660304e30ee34915309f5302ab4ce54492b0957c9856c946453375536d",
+  "promptHashes": {
+    "title": "f983d56232de908220f15ecb144bfa0d1117820d827cfad9b6afc8c91d92937d",
+    "meta": "d44a2aa9d1d45c477ad6a3c2963fdf230f6f98c8ae225705fdd522aa8d4d6d17",
+    "lead": "aa94ff19073f8e415b8ac16abd0ad9adab9163482c915f6adf19e2e6d4dde64d",
+    "answer": "14330fdf200c118ddb8fe7e2931a15e02c802c5f0d5ddcaf7e3d2ceba32613a9",
+    "section-1": "b649906bd31efc573fd7cf85d974fd013886bc71b5f77f3b2132228a48a894dc",
+    "question-timeline-caption": "2cedcc04320cdb802d6bf47e1849d1ca06ecd0d9dbba7477ea142c08eb92d7b8",
+    "section-2": "6ac61b979bf9a7ce7424da9bb8784873924126829722143aa39b993d8d4ac387",
+    "section-3": "cf2308696bc307c1fdf3439eb3df28f619b62c78031467cb281842cbda545afa",
+    "section-4": "d2963cbaa4795794936f0fa45a4beb2f76d179282765d1678f0571f78df90171",
+    "verify": "050a26af9dc6c02ba164861650beae653a36e7051395e480613f2b8421f5452a",
+    "editorial-next-step": "dbfd5647faa64ba2b43f2384cc775c36c094d60855f240f2e26075570944b640"
+  }
+}

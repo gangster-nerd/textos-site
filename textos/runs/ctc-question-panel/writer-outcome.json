@@ -1,0 +1,962 @@
+{
+  "status": "written",
+  "result": {
+    "planId": "how to choose and approve the questions ai visibility is measured on",
+    "planHash": "a721fb6451653adfa3b9bb5eaa38c283e6d7e3f40c27c185ea41907e55d8c0c6",
+    "slots": [
+      {
+        "slotId": "title",
+        "role": "title",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS measures exactly the list of questions a person approved",
+        "statementIds": [
+          "stmt:5:title:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-qp-15"
+        ],
+        "usableEvidenceIds": [
+          "ev-qp-15"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "meta",
+        "role": "meta_description",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS drafts candidate questions from traced sources for a person to retain and approve, and the version it measures is the version approved.",
+        "statementIds": [
+          "stmt:4:meta:2:s1"
+        ],
+        "evidenceIdsUsed": [
+          "ev-qp-01",
+          "ev-qp-16"
+        ],
+        "usableEvidenceIds": [
+          "ev-qp-01",
+          "ev-qp-16"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "lead",
+        "role": "lead",
+        "headingLevel": null,
+        "heading": null,
+        "text": "A report on how often AI assistants mention your brand is only as honest as the questions behind it. In most tools, that list is picked for you, out of sight, and it can quietly change between two reports. When the numbers move, nobody can then say whether the market moved or the list did. This note explains how the list is proposed, what grounds it, and who signs it off before anything is counted.",
+        "statementIds": [
+          "stmt:4:lead:2:s1",
+          "stmt:4:lead:2:s2",
+          "stmt:4:lead:2:s3",
+          "stmt:4:lead:2:s4"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "answer",
+        "role": "answer",
+        "headingLevel": 2,
+        "heading": "How can I approve the list of questions I want to be measured on?",
+        "text": "You sign off on a list that is proposed to you, rather than building it from a blank page. TextOS formulates candidate questions from traced sources, and each one is measured only after a person has retained and approved it. The demand figures attached to a question come from imported, dated sources, and TextOS is explicit that they are not a measure of real traffic. Approving the questions and launching their measurement form one single, indivisible step in TextOS. The result is a list you can read, question by question, before a single answer is collected.",
+        "statementIds": [
+          "stmt:6:answer:2:s1",
+          "stmt:6:answer:2:s2",
+          "stmt:6:answer:2:s3",
+          "stmt:6:answer:2:s4",
+          "stmt:6:answer:2:s5"
+        ],
+        "evidenceIdsUsed": [
+          "ev-qp-01",
+          "ev-qp-05",
+          "ev-qp-10"
+        ],
+        "usableEvidenceIds": [
+          "ev-qp-01",
+          "ev-qp-05",
+          "ev-qp-10"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-1",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Each question says where it came from",
+        "text": "When you review a proposed list, the first thing worth knowing is who wrote each line. In TextOS, the label saying a question was drafted by the product is set on the server, and the browser can never assign or swap it. So a line you wrote yourself cannot pass as a suggestion, and a suggestion cannot pass as yours.\n\nThe origin of a wording also stays fixed: in TextOS, demand data, even exact and observed, does not change how a question is recorded as having been formulated. TextOS keeps three things apart: how a question is worded, whether demand for it is proven, and whether it matters to the business. That separation is the useful part when you read the list, because a strong number cannot dress up a question you would not have picked yourself.",
+        "statementIds": [
+          "stmt:9:section-1:2:s1",
+          "stmt:9:section-1:2:s2",
+          "stmt:9:section-1:2:s3",
+          "stmt:9:section-1:2:s4",
+          "stmt:9:section-1:2:s5",
+          "stmt:9:section-1:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-qp-04",
+          "ev-qp-02",
+          "ev-qp-03"
+        ],
+        "usableEvidenceIds": [
+          "ev-qp-02",
+          "ev-qp-03",
+          "ev-qp-04"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "panel-path-caption",
+        "role": "caption",
+        "headingLevel": null,
+        "heading": null,
+        "text": "TextOS formulates candidate questions from traced sources, a person retains and approves them, and approving the list launches its measurement in one step. TextOS measures exactly the approved version.",
+        "statementIds": [
+          "stmt:18:panel-path-caption:2:s1",
+          "stmt:18:panel-path-caption:2:s2"
+        ],
+        "evidenceIdsUsed": [
+          "ev-qp-01",
+          "ev-qp-10",
+          "ev-qp-15"
+        ],
+        "usableEvidenceIds": [
+          "ev-qp-01",
+          "ev-qp-10",
+          "ev-qp-15"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-2",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Demand decides what is measured, never the result",
+        "text": "The temptation in this kind of tool is to let the data flatter the result. TextOS draws the line in its own product history: demand decides what is measured, never the result. Among the shortcuts the code refuses, TextOS lists attaching a search volume to the single question being measured. That matters because one question only stands in for many ways of asking the same thing, so a monthly figure pinned on it would overstate what it represents.\n\nThe same rule closes the manual route. In TextOS, demand strength can no longer be typed in by an operator. Instead, TextOS derives demand strength from evidence, or leaves it absent. A blank is less pleasant to read than a confident label, but it tells you something true about what is known.",
+        "statementIds": [
+          "stmt:9:section-2:2:s1",
+          "stmt:9:section-2:2:s2",
+          "stmt:9:section-2:2:s3",
+          "stmt:9:section-2:2:s4",
+          "stmt:9:section-2:2:s5",
+          "stmt:9:section-2:2:s6",
+          "stmt:9:section-2:2:s7",
+          "stmt:9:section-2:2:s8"
+        ],
+        "evidenceIdsUsed": [
+          "ev-qp-06",
+          "ev-qp-07",
+          "ev-qp-08",
+          "ev-qp-09"
+        ],
+        "usableEvidenceIds": [
+          "ev-qp-06",
+          "ev-qp-07",
+          "ev-qp-08",
+          "ev-qp-09"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-3",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Approving the list is one deliberate gesture",
+        "text": "Signing off a list is also the moment the yardstick is fixed. In TextOS, the business approval of the list and the pre-registration of what will count as success are one and the same gesture. Because both happen together, the criteria cannot be picked after the first results have been seen.\n\nIf a draft list has problems, TextOS reports all of them at once, on the stated view that fixing a five-question form one error at a time is a punishment, not a help. Some lists are refused outright: TextOS built its review screen to refuse locking a list that cannot be measured. The product history gives the reason: approving a list in that state would produce a starting point structurally unable to move.",
+        "statementIds": [
+          "stmt:9:section-3:2:s1",
+          "stmt:9:section-3:2:s2",
+          "stmt:9:section-3:2:s3",
+          "stmt:9:section-3:2:s4",
+          "stmt:9:section-3:2:s5",
+          "stmt:9:section-3:2:s6"
+        ],
+        "evidenceIdsUsed": [
+          "ev-qp-11",
+          "ev-qp-12",
+          "ev-qp-13",
+          "ev-qp-14"
+        ],
+        "usableEvidenceIds": [
+          "ev-qp-11",
+          "ev-qp-12",
+          "ev-qp-13",
+          "ev-qp-14"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "section-4",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What gets measured is what you approved, nothing else",
+        "text": "Comparisons over time only hold if the list underneath stays put. TextOS states the rule plainly in its product history: the version measured is the version approved. Any change to the list in TextOS requires a new approval, and the measured list is exactly the approved version.\n\nFor a marketing lead, this is what makes a before-and-after comparison worth reading. If a question is added, dropped or reworded, that change is visible as a new version you signed off, rather than a silent edit hidden inside a trend line.",
+        "statementIds": [
+          "stmt:9:section-4:2:s1",
+          "stmt:9:section-4:2:s2",
+          "stmt:9:section-4:2:s3",
+          "stmt:9:section-4:2:s4",
+          "stmt:9:section-4:2:s5"
+        ],
+        "evidenceIdsUsed": [
+          "ev-qp-16",
+          "ev-qp-15"
+        ],
+        "usableEvidenceIds": [
+          "ev-qp-16",
+          "ev-qp-15"
+        ],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "verify",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "What to ask any AI visibility vendor about its questions",
+        "text": "Before trusting any report on your visibility in AI answers, ask to see the exact list of questions behind it. Ask who wrote each question, and whether the tool records that origin. Ask where the demand figures come from, how old they are, and whether they describe real traffic. Ask whether the list can change between two reports without you signing off the new version. Ask whether a label such as strong demand was derived from data or simply typed in by someone. Ask what the tool does with a question it cannot measure: whether it warns you before you lock the list, or lets the gap show up later as a flat zero. Ask when the criteria for success are fixed: before the first results, or after.",
+        "statementIds": [
+          "stmt:6:verify:2:s1",
+          "stmt:6:verify:2:s2",
+          "stmt:6:verify:2:s3",
+          "stmt:6:verify:2:s4",
+          "stmt:6:verify:2:s5",
+          "stmt:6:verify:2:s6",
+          "stmt:6:verify:2:s7"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      },
+      {
+        "slotId": "editorial-next-step",
+        "role": "section",
+        "headingLevel": 2,
+        "heading": "Where to go next",
+        "text": "Another note explains how a second look is planned before an article goes live, so that a change can be compared with the starting point. A second note covers what an AI assistant connected to the product can prepare, and what stays with a person.",
+        "statementIds": [
+          "stmt:19:editorial-next-step:2:s1",
+          "stmt:19:editorial-next-step:2:s2"
+        ],
+        "evidenceIdsUsed": [],
+        "usableEvidenceIds": [],
+        "excludedEvidence": []
+      }
+    ],
+    "document": {
+      "title": "TextOS measures exactly the list of questions a person approved",
+      "slug": "textos-measures-exactly-the-list-of-questions-a-person-approved",
+      "metaDescription": "TextOS drafts candidate questions from traced sources for a person to retain and approve, and the version it measures is the version approved.",
+      "body": "A report on how often AI assistants mention your brand is only as honest as the questions behind it. In most tools, that list is picked for you, out of sight, and it can quietly change between two reports. When the numbers move, nobody can then say whether the market moved or the list did. This note explains how the list is proposed, what grounds it, and who signs it off before anything is counted.\n\nWhen you review a proposed list, the first thing worth knowing is who wrote each line. In TextOS, the label saying a question was drafted by the product is set on the server, and the browser can never assign or swap it. So a line you wrote yourself cannot pass as a suggestion, and a suggestion cannot pass as yours.\n\nThe origin of a wording also stays fixed: in TextOS, demand data, even exact and observed, does not change how a question is recorded as having been formulated. TextOS keeps three things apart: how a question is worded, whether demand for it is proven, and whether it matters to the business. That separation is the useful part when you read the list, because a strong number cannot dress up a question you would not have picked yourself.\n\nTextOS formulates candidate questions from traced sources, a person retains and approves them, and approving the list launches its measurement in one step. TextOS measures exactly the approved version.\n\nThe temptation in this kind of tool is to let the data flatter the result. TextOS draws the line in its own product history: demand decides what is measured, never the result. Among the shortcuts the code refuses, TextOS lists attaching a search volume to the single question being measured. That matters because one question only stands in for many ways of asking the same thing, so a monthly figure pinned on it would overstate what it represents.\n\nThe same rule closes the manual route. In TextOS, demand strength can no longer be typed in by an operator. Instead, TextOS derives demand strength from evidence, or leaves it absent. A blank is less pleasant to read than a confident label, but it tells you something true about what is known.\n\nSigning off a list is also the moment the yardstick is fixed. In TextOS, the business approval of the list and the pre-registration of what will count as success are one and the same gesture. Because both happen together, the criteria cannot be picked after the first results have been seen.\n\nIf a draft list has problems, TextOS reports all of them at once, on the stated view that fixing a five-question form one error at a time is a punishment, not a help. Some lists are refused outright: TextOS built its review screen to refuse locking a list that cannot be measured. The product history gives the reason: approving a list in that state would produce a starting point structurally unable to move.\n\nComparisons over time only hold if the list underneath stays put. TextOS states the rule plainly in its product history: the version measured is the version approved. Any change to the list in TextOS requires a new approval, and the measured list is exactly the approved version.\n\nFor a marketing lead, this is what makes a before-and-after comparison worth reading. If a question is added, dropped or reworded, that change is visible as a new version you signed off, rather than a silent edit hidden inside a trend line.\n\nBefore trusting any report on your visibility in AI answers, ask to see the exact list of questions behind it. Ask who wrote each question, and whether the tool records that origin. Ask where the demand figures come from, how old they are, and whether they describe real traffic. Ask whether the list can change between two reports without you signing off the new version. Ask whether a label such as strong demand was derived from data or simply typed in by someone. Ask what the tool does with a question it cannot measure: whether it warns you before you lock the list, or lets the gap show up later as a flat zero. Ask when the criteria for success are fixed: before the first results, or after.\n\nAnother note explains how a second look is planned before an article goes live, so that a change can be compared with the starting point. A second note covers what an AI assistant connected to the product can prepare, and what stays with a person.",
+      "faq": [
+        {
+          "question": "How can I approve the list of questions I want to be measured on?",
+          "answer": "You sign off on a list that is proposed to you, rather than building it from a blank page. TextOS formulates candidate questions from traced sources, and each one is measured only after a person has retained and approved it. The demand figures attached to a question come from imported, dated sources, and TextOS is explicit that they are not a measure of real traffic. Approving the questions and launching their measurement form one single, indivisible step in TextOS. The result is a list you can read, question by question, before a single answer is collected."
+        }
+      ],
+      "statementLedger": [
+        {
+          "id": "stmt:5:title:2:s1",
+          "text": "TextOS measures exactly the list of questions a person approved",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-15"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:meta:2:s1",
+          "text": "TextOS drafts candidate questions from traced sources for a person to retain and approve, and the version it measures is the version approved.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-01",
+            "ev-qp-16"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s1",
+          "text": "A report on how often AI assistants mention your brand is only as honest as the questions behind it.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s2",
+          "text": "In most tools, that list is picked for you, out of sight, and it can quietly change between two reports.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s3",
+          "text": "When the numbers move, nobody can then say whether the market moved or the list did.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:4:lead:2:s4",
+          "text": "This note explains how the list is proposed, what grounds it, and who signs it off before anything is counted.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s1",
+          "text": "You sign off on a list that is proposed to you, rather than building it from a blank page.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s2",
+          "text": "TextOS formulates candidate questions from traced sources, and each one is measured only after a person has retained and approved it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-01"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s3",
+          "text": "The demand figures attached to a question come from imported, dated sources, and TextOS is explicit that they are not a measure of real traffic.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-05"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s4",
+          "text": "Approving the questions and launching their measurement form one single, indivisible step in TextOS.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:answer:2:s5",
+          "text": "The result is a list you can read, question by question, before a single answer is collected.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s1",
+          "text": "When you review a proposed list, the first thing worth knowing is who wrote each line.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s2",
+          "text": "In TextOS, the label saying a question was drafted by the product is set on the server, and the browser can never assign or swap it.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-04"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s3",
+          "text": "So a line you wrote yourself cannot pass as a suggestion, and a suggestion cannot pass as yours.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s4",
+          "text": "The origin of a wording also stays fixed: in TextOS, demand data, even exact and observed, does not change how a question is recorded as having been formulated.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-02"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s5",
+          "text": "TextOS keeps three things apart: how a question is worded, whether demand for it is proven, and whether it matters to the business.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-03"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-1:2:s6",
+          "text": "That separation is the useful part when you read the list, because a strong number cannot dress up a question you would not have picked yourself.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:18:panel-path-caption:2:s1",
+          "text": "TextOS formulates candidate questions from traced sources, a person retains and approves them, and approving the list launches its measurement in one step.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization",
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-01",
+            "ev-qp-10"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:18:panel-path-caption:2:s2",
+          "text": "TextOS measures exactly the approved version.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-15"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s1",
+          "text": "The temptation in this kind of tool is to let the data flatter the result.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s2",
+          "text": "TextOS draws the line in its own product history: demand decides what is measured, never the result.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-06"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s3",
+          "text": "Among the shortcuts the code refuses, TextOS lists attaching a search volume to the single question being measured.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-07"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s4",
+          "text": "That matters because one question only stands in for many ways of asking the same thing, so a monthly figure pinned on it would overstate what it represents.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s5",
+          "text": "The same rule closes the manual route.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s6",
+          "text": "In TextOS, demand strength can no longer be typed in by an operator.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-08"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s7",
+          "text": "Instead, TextOS derives demand strength from evidence, or leaves it absent.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "content_governance"
+          ],
+          "evidenceIds": [
+            "ev-qp-09"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-2:2:s8",
+          "text": "A blank is less pleasant to read than a confident label, but it tells you something true about what is known.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s1",
+          "text": "Signing off a list is also the moment the yardstick is fixed.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s2",
+          "text": "In TextOS, the business approval of the list and the pre-registration of what will count as success are one and the same gesture.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-11"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s3",
+          "text": "Because both happen together, the criteria cannot be picked after the first results have been seen.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s4",
+          "text": "If a draft list has problems, TextOS reports all of them at once, on the stated view that fixing a five-question form one error at a time is a punishment, not a help.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-12"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s5",
+          "text": "Some lists are refused outright: TextOS built its review screen to refuse locking a list that cannot be measured.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-13"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-3:2:s6",
+          "text": "The product history gives the reason: approving a list in that state would produce a starting point structurally unable to move.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-14"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s1",
+          "text": "Comparisons over time only hold if the list underneath stays put.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s2",
+          "text": "TextOS states the rule plainly in its product history: the version measured is the version approved.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-16"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s3",
+          "text": "Any change to the list in TextOS requires a new approval, and the measured list is exactly the approved version.",
+          "kind": "factual",
+          "subject": {
+            "kind": "tracked_brand",
+            "name": "TextOS"
+          },
+          "claimTypes": [
+            "human_authorization"
+          ],
+          "evidenceIds": [
+            "ev-qp-15"
+          ],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s4",
+          "text": "For a marketing lead, this is what makes a before-and-after comparison worth reading.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:9:section-4:2:s5",
+          "text": "If a question is added, dropped or reworded, that change is visible as a new version you signed off, rather than a silent edit hidden inside a trend line.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s1",
+          "text": "Before trusting any report on your visibility in AI answers, ask to see the exact list of questions behind it.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s2",
+          "text": "Ask who wrote each question, and whether the tool records that origin.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s3",
+          "text": "Ask where the demand figures come from, how old they are, and whether they describe real traffic.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s4",
+          "text": "Ask whether the list can change between two reports without you signing off the new version.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s5",
+          "text": "Ask whether a label such as strong demand was derived from data or simply typed in by someone.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s6",
+          "text": "Ask what the tool does with a question it cannot measure: whether it warns you before you lock the list, or lets the gap show up later as a flat zero.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:6:verify:2:s7",
+          "text": "Ask when the criteria for success are fixed: before the first results, or after.",
+          "kind": "recommendation",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s1",
+          "text": "Another note explains how a second look is planned before an article goes live, so that a change can be compared with the starting point.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        },
+        {
+          "id": "stmt:19:editorial-next-step:2:s2",
+          "text": "A second note covers what an AI assistant connected to the product can prepare, and what stays with a person.",
+          "kind": "editorial",
+          "subject": {
+            "kind": "general_domain",
+            "name": null
+          },
+          "claimTypes": [],
+          "evidenceIds": [],
+          "evidenceStrengthRequired": "descriptive"
+        }
+      ],
+      "claimsExcluded": [],
+      "sections": [
+        {
+          "key": "lead",
+          "heading": "",
+          "body": "A report on how often AI assistants mention your brand is only as honest as the questions behind it. In most tools, that list is picked for you, out of sight, and it can quietly change between two reports. When the numbers move, nobody can then say whether the market moved or the list did. This note explains how the list is proposed, what grounds it, and who signs it off before anything is counted."
+        },
+        {
+          "key": "section-1",
+          "heading": "Each question says where it came from",
+          "body": "When you review a proposed list, the first thing worth knowing is who wrote each line. In TextOS, the label saying a question was drafted by the product is set on the server, and the browser can never assign or swap it. So a line you wrote yourself cannot pass as a suggestion, and a suggestion cannot pass as yours.\n\nThe origin of a wording also stays fixed: in TextOS, demand data, even exact and observed, does not change how a question is recorded as having been formulated. TextOS keeps three things apart: how a question is worded, whether demand for it is proven, and whether it matters to the business. That separation is the useful part when you read the list, because a strong number cannot dress up a question you would not have picked yourself."
+        },
+        {
+          "key": "panel-path-caption",
+          "heading": "",
+          "body": "TextOS formulates candidate questions from traced sources, a person retains and approves them, and approving the list launches its measurement in one step. TextOS measures exactly the approved version."
+        },
+        {
+          "key": "section-2",
+          "heading": "Demand decides what is measured, never the result",
+          "body": "The temptation in this kind of tool is to let the data flatter the result. TextOS draws the line in its own product history: demand decides what is measured, never the result. Among the shortcuts the code refuses, TextOS lists attaching a search volume to the single question being measured. That matters because one question only stands in for many ways of asking the same thing, so a monthly figure pinned on it would overstate what it represents.\n\nThe same rule closes the manual route. In TextOS, demand strength can no longer be typed in by an operator. Instead, TextOS derives demand strength from evidence, or leaves it absent. A blank is less pleasant to read than a confident label, but it tells you something true about what is known."
+        },
+        {
+          "key": "section-3",
+          "heading": "Approving the list is one deliberate gesture",
+          "body": "Signing off a list is also the moment the yardstick is fixed. In TextOS, the business approval of the list and the pre-registration of what will count as success are one and the same gesture. Because both happen together, the criteria cannot be picked after the first results have been seen.\n\nIf a draft list has problems, TextOS reports all of them at once, on the stated view that fixing a five-question form one error at a time is a punishment, not a help. Some lists are refused outright: TextOS built its review screen to refuse locking a list that cannot be measured. The product history gives the reason: approving a list in that state would produce a starting point structurally unable to move."
+        },
+        {
+          "key": "section-4",
+          "heading": "What gets measured is what you approved, nothing else",
+          "body": "Comparisons over time only hold if the list underneath stays put. TextOS states the rule plainly in its product history: the version measured is the version approved. Any change to the list in TextOS requires a new approval, and the measured list is exactly the approved version.\n\nFor a marketing lead, this is what makes a before-and-after comparison worth reading. If a question is added, dropped or reworded, that change is visible as a new version you signed off, rather than a silent edit hidden inside a trend line."
+        },
+        {
+          "key": "verify",
+          "heading": "What to ask any AI visibility vendor about its questions",
+          "body": "Before trusting any report on your visibility in AI answers, ask to see the exact list of questions behind it. Ask who wrote each question, and whether the tool records that origin. Ask where the demand figures come from, how old they are, and whether they describe real traffic. Ask whether the list can change between two reports without you signing off the new version. Ask whether a label such as strong demand was derived from data or simply typed in by someone. Ask what the tool does with a question it cannot measure: whether it warns you before you lock the list, or lets the gap show up later as a flat zero. Ask when the criteria for success are fixed: before the first results, or after."
+        },
+        {
+          "key": "editorial-next-step",
+          "heading": "Where to go next",
+          "body": "Another note explains how a second look is planned before an article goes live, so that a change can be compared with the starting point. A second note covers what an AI assistant connected to the product can prepare, and what stays with a person."
+        }
+      ]
+    },
+    "structuredContentHash": "12e5cb470a4382b4bc7d7d7e4d44d78fa9486a116e0a62b29c80b7fad2d4366b",
+    "writerMethodVersion": "geo-writer@0.2",
+    "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+    "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+    "truthCheck": {
+      "verdict": "pass",
+      "contradictions": []
+    }
+  }
+}

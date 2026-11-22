@@ -1,0 +1,320 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-site:ctc:ctc-question-panel",
+    "contentType": "product_article",
+    "slug": "approving-the-questions-your-ai-visibility-is-measured-on",
+    "language": "en-US",
+    "title": "TextOS measures exactly the list of questions a person approved",
+    "description": "TextOS drafts candidate questions from traced sources for a person to retain and approve, and the version it measures is the version approved."
+  },
+  "editorial": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "geo-writer",
+    "statusVocabularyVersion": "geo-writer@0.2",
+    "sourceStatus": "ARTICLE_GUIDE",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:4:lead:2:s4",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:6:answer:2:s4",
+      "stmt:6:answer:2:s5",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:9:section-1:2:s5",
+      "stmt:9:section-1:2:s6",
+      "stmt:18:panel-path-caption:2:s1",
+      "stmt:18:panel-path-caption:2:s2",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:9:section-2:2:s5",
+      "stmt:9:section-2:2:s6",
+      "stmt:9:section-2:2:s7",
+      "stmt:9:section-2:2:s8",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:s4",
+      "stmt:9:section-3:2:s5",
+      "stmt:9:section-3:2:s6",
+      "stmt:9:section-4:2:s1",
+      "stmt:9:section-4:2:s2",
+      "stmt:9:section-4:2:s3",
+      "stmt:9:section-4:2:s4",
+      "stmt:9:section-4:2:s5",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
+      "stmt:6:verify:2:s6",
+      "stmt:6:verify:2:s7",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
+    "evidenceRefs": [
+      "ev-qp-15",
+      "ev-qp-01",
+      "ev-qp-16",
+      "ev-qp-05",
+      "ev-qp-10",
+      "ev-qp-04",
+      "ev-qp-02",
+      "ev-qp-03",
+      "ev-qp-06",
+      "ev-qp-07",
+      "ev-qp-08",
+      "ev-qp-09",
+      "ev-qp-11",
+      "ev-qp-12",
+      "ev-qp-13",
+      "ev-qp-14"
+    ],
+    "capabilityIds": [
+      "business-approved-query-panel"
+    ]
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "12e5cb470a4382b4bc7d7d7e4d44d78fa9486a116e0a62b29c80b7fad2d4366b"
+  },
+  "body": [
+    {
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "You sign off on a list that is proposed to you, rather than building it from a blank page. TextOS formulates candidate questions from traced sources, and each one is measured only after a person has retained and approved it. The demand figures attached to a question come from imported, dated sources, and TextOS is explicit that they are not a measure of real traffic. Approving the questions and launching their measurement form one single, indivisible step in TextOS. The result is a list you can read, question by question, before a single answer is collected."
+      }
+    },
+    {
+      "id": "lead:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "A report on how often AI assistants mention your brand is only as honest as the questions behind it. In most tools, that list is picked for you, out of sight, and it can quietly change between two reports. When the numbers move, nobody can then say whether the market moved or the list did. This note explains how the list is proposed, what grounds it, and who signs it off before anything is counted."
+      }
+    },
+    {
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Each question says where it came from"
+      }
+    },
+    {
+      "id": "section-1:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "When you review a proposed list, the first thing worth knowing is who wrote each line. In TextOS, the label saying a question was drafted by the product is set on the server, and the browser can never assign or swap it. So a line you wrote yourself cannot pass as a suggestion, and a suggestion cannot pass as yours.\n\nThe origin of a wording also stays fixed: in TextOS, demand data, even exact and observed, does not change how a question is recorded as having been formulated. TextOS keeps three things apart: how a question is worded, whether demand for it is proven, and whether it matters to the business. That separation is the useful part when you read the list, because a strong number cannot dress up a question you would not have picked yourself."
+      }
+    },
+    {
+      "id": "figure:panel-path",
+      "kind": "figure",
+      "data": {
+        "src": "/diagrams/ctc/panel-path-e26a4ff425c5.svg",
+        "alt": "From proposed questions to a measured list. A 4-step flow: TextOS drafts questions, then Dated demand attached, then Person approves the list, then That exact version measured. A dashed boundary after \"Dated demand attached\" is labelled One gate: Approving the list and launching the measurement are one step.",
+        "caption": "TextOS formulates candidate questions from traced sources, a person retains and approves them, and approving the list launches its measurement in one step. TextOS measures exactly the approved version."
+      }
+    },
+    {
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Demand decides what is measured, never the result"
+      }
+    },
+    {
+      "id": "section-2:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "The temptation in this kind of tool is to let the data flatter the result. TextOS draws the line in its own product history: demand decides what is measured, never the result. Among the shortcuts the code refuses, TextOS lists attaching a search volume to the single question being measured. That matters because one question only stands in for many ways of asking the same thing, so a monthly figure pinned on it would overstate what it represents.\n\nThe same rule closes the manual route. In TextOS, demand strength can no longer be typed in by an operator. Instead, TextOS derives demand strength from evidence, or leaves it absent. A blank is less pleasant to read than a confident label, but it tells you something true about what is known."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Approving the list is one deliberate gesture"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Signing off a list is also the moment the yardstick is fixed. In TextOS, the business approval of the list and the pre-registration of what will count as success are one and the same gesture. Because both happen together, the criteria cannot be picked after the first results have been seen.\n\nIf a draft list has problems, TextOS reports all of them at once, on the stated view that fixing a five-question form one error at a time is a punishment, not a help. Some lists are refused outright: TextOS built its review screen to refuse locking a list that cannot be measured. The product history gives the reason: approving a list in that state would produce a starting point structurally unable to move."
+      }
+    },
+    {
+      "id": "section-4:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What gets measured is what you approved, nothing else"
+      }
+    },
+    {
+      "id": "section-4:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Comparisons over time only hold if the list underneath stays put. TextOS states the rule plainly in its product history: the version measured is the version approved. Any change to the list in TextOS requires a new approval, and the measured list is exactly the approved version.\n\nFor a marketing lead, this is what makes a before-and-after comparison worth reading. If a question is added, dropped or reworded, that change is visible as a new version you signed off, rather than a silent edit hidden inside a trend line."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI visibility vendor about its questions"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "Before trusting any report on your visibility in AI answers, ask to see the exact list of questions behind it.",
+          "Ask who wrote each question, and whether the tool records that origin.",
+          "Ask where the demand figures come from, how old they are, and whether they describe real traffic.",
+          "Ask whether the list can change between two reports without you signing off the new version.",
+          "Ask whether a label such as strong demand was derived from data or simply typed in by someone.",
+          "Ask what the tool does with a question it cannot measure: whether it warns you before you lock the list, or lets the gap show up later as a flat zero.",
+          "Ask when the criteria for success are fixed: before the first results, or after."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "Another note explains how a second look is planned before an article goes live, so that a change can be compared with the starting point. A second note covers what an AI assistant connected to the product can prepare, and what stays with a person."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-qp-15",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-15",
+        "title": "TextOS product manifest, business-approved-query-panel.knownLimits"
+      }
+    },
+    {
+      "id": "source:2:ev-qp-01",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-01",
+        "title": "TextOS product repository file docs/adr/ADR-005-V4-TEXTOS-DRAFTED-PROVENANCE-2026-11-07.md at 181d44e"
+      }
+    },
+    {
+      "id": "source:3:ev-qp-16",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-16",
+        "title": "TextOS product commit 17086e4, 22 Sep 2026"
+      }
+    },
+    {
+      "id": "source:4:ev-qp-10",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-10",
+        "title": "TextOS product repository file src/server/textos/query-intelligence/demand/approval.ts at 181d44e"
+      }
+    },
+    {
+      "id": "source:5:ev-qp-06",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-06",
+        "title": "TextOS product commit 6c9d7fe, 21 Sep 2026"
+      }
+    },
+    {
+      "id": "source:6:ev-qp-08",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-08",
+        "title": "TextOS product commit db6da77, 22 Sep 2026"
+      }
+    },
+    {
+      "id": "source:7:ev-qp-09",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-09",
+        "title": "TextOS product commit e644a5d, 22 Sep 2026"
+      }
+    },
+    {
+      "id": "source:8:ev-qp-12",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-12",
+        "title": "TextOS product commit b66c3a8, 22 Sep 2026"
+      }
+    },
+    {
+      "id": "source:9:ev-qp-13",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-13",
+        "title": "TextOS product commit a6a41a7, 21 Sep 2026"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "conversionAllowed": false
+  },
+  "lifecycle": {},
+  "seo": {
+    "indexingIntent": "noindex",
+    "targetQuery": "how to choose and approve the questions ai visibility is measured on",
+    "searchIntent": "buyer_decision"
+  }
+}

@@ -1,0 +1,582 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-question-performance",
+  "flow": "commit_to_content",
+  "slug": "tracking-ai-visibility-one-question-at-a-time",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "question-performance"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "question-series-2026-09-23",
+        "sourceCommits": [
+          "b230cbbb44038dc25aa496a84d134eab34a4e489"
+        ]
+      },
+      {
+        "groupId": "scheduled-checks-2026-09-24",
+        "sourceCommits": [
+          "d8df9cb84a99993dd5b0621159a9c201f40fe90f",
+          "2f6ed1c0d9bed0f7f966cbd83865a57e2f116491"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I track how my presence evolves, question by question?",
+    "targetQuery": "how to track ai search visibility over time for each question",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "question-performance"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+    "approvedAt": "2026-11-22"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-re-observation-plan",
+      "textos-insight:observation-not-optimization",
+      "textos-insight:no-affirmation-without-evidence"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-qp-01",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/question-series.ts",
+        "quote": "La question est l'unité de résultat."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-02",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/question-series.ts",
+        "quote": "une nouvelle version de panel NE rompt PAS la série si la question y figure avec le MÊME"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written.",
+        "The sentence continues: with the same objective; a different objective opens a new series."
+      ]
+    },
+    {
+      "id": "ev-qp-03",
+      "source": {
+        "kind": "product_commit",
+        "sha": "b230cbbb44038dc25aa496a84d134eab34a4e489",
+        "quote": "lectures J+1/J+7/J+30, continuité par question ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-04",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/rules.ts",
+        "quote": "Une mesure plus tôt ou plus tard n'est jamais présentée comme la mesure J+N"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-05",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/question-series.ts",
+        "quote": "une rupture de méthode, de surface ou de locale ne produit JAMAIS de delta"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-06",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/question-series.ts",
+        "quote": "avant / maintenant à FENÊTRES ÉGALES"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-07",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/question-series.ts",
+        "quote": "Comparable seulement à nombre de réponses égal et non nul."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-08",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/question-series.ts",
+        "quote": "aucun gain n'est attribué à un contenu"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-09",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "question-performance",
+        "field": "knownLimits",
+        "quote": "Décrit une évolution observée, avec comparabilité et incertitude ; n'établit jamais de causalité."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-10",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/contract.ts",
+        "quote": "toute proportion porte son dénominateur (`CountRatio`), jamais un pourcentage seul ;"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-11",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/contract.ts",
+        "quote": "toute valeur non prouvée est `null`, jamais `0`"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-12",
+      "source": {
+        "kind": "product_commit",
+        "sha": "d8df9cb84a99993dd5b0621159a9c201f40fe90f",
+        "quote": "Performances ne devance ni ne gêne la baseline du client."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "2f6ed1c0d9bed0f7f966cbd83865a57e2f116491",
+        "quote": "une relance créerait une mesure utilisateur qui deviendrait la mesure en vigueur."
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; explains why a manual relaunch is refused on a scheduled check."
+      ]
+    },
+    {
+      "id": "ev-qp-14",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/performance/rules.ts",
+        "quote": "Aucune de ces valeurs n'est un seuil « choisi à l'écran »"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-15",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "question-performance",
+        "field": "knownLimits",
+        "quote": "Reprise en cours (trace des appels planifiés) : la lecture dépend de l'offre de l'organisation."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that it follows presence one question at a time and describes change without crediting it to a cause.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS tracks each buyer question over time and describes the observed change, with its comparability, never as proof of a cause.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: they published something and want to know whether their presence in AI answers moved, but a single global number hides which questions changed and tempts everyone to claim credit. Say that the useful unit is the question.",
+      "buyerIntent": "How do I know whether anything moved?",
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can I track how my presence evolves, question by question?",
+      "writingObjective": "Answer directly: TextOS makes the question the unit of result; it reads each question at fixed points after a publication (day 1, day 7, day 30) and keeps the question's history continuous; what it reports is an observed evolution with its comparability and uncertainty, never a cause.",
+      "buyerIntent": "How can I track how my presence evolves, question by question?",
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-03",
+        "ev-qp-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "One timeline per question, kept intact",
+      "writingObjective": "Explain that each tracked question has its own timeline, that a new version of the question list does not break that timeline as long as the question keeps the same objective, and that a change of method, surface or language never produces a before/after difference: the timeline restarts instead. Say what that changes for a team reading the results.",
+      "buyerIntent": "Will my history survive when the question list changes?",
+      "allowedEvidenceIds": [
+        "ev-qp-02",
+        "ev-qp-05"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "question-timeline-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one or two factual sentences, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-03",
+        "ev-qp-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Day 1, day 7, day 30 mean exactly that",
+      "writingObjective": "Explain the fixed readings after a publication, that a reading taken a day early or late is never presented as the day-N reading but shown at its real delay, and that the thresholds behind these readings are fixed product rules, not settings chosen on screen. Say why strict dates matter to a buyer comparing weeks.",
+      "buyerIntent": "Can the dates be trusted?",
+      "allowedEvidenceIds": [
+        "ev-qp-04",
+        "ev-qp-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A before and after only when the windows match",
+      "writingObjective": "Explain the comparison rule: before and now are compared over equal windows, and only when both sides rest on the same, non-zero number of answers; otherwise there is no comparison. Add that every proportion carries its denominator rather than a bare percentage, and that an unproven value is shown as unknown rather than as zero.",
+      "buyerIntent": "When is a comparison fair?",
+      "allowedEvidenceIds": [
+        "ev-qp-06",
+        "ev-qp-07",
+        "ev-qp-10",
+        "ev-qp-11"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What the tracking never claims",
+      "writingObjective": "Explain that no gain is credited to a piece of content, that the result describes an observed evolution with comparability and uncertainty, never causality; that scheduled checks never get ahead of or interfere with the customer's own reference measurement; that a scheduled check cannot be relaunched by hand because the relaunch would become the measurement of record; and that, while the work is still in progress, which readings an organization gets depends on its plan.",
+      "buyerIntent": "Will it tell me my article caused the change?",
+      "allowedEvidenceIds": [
+        "ev-qp-08",
+        "ev-qp-09",
+        "ev-qp-12",
+        "ev-qp-13",
+        "ev-qp-15"
+      ],
+      "requiredClaimTypes": [
+        "content_governance",
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI visibility tracker",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-11-22",
+    "reason": "The note cites these product commits and files; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "question-timeline",
+      "template": "flow",
+      "title": "How one question is followed",
+      "subtitle": "Illustrative path for one question. Change is described, never credited.",
+      "nodes": [
+        {
+          "tag": "question",
+          "label": "One question, one line",
+          "evidenceIds": [
+            "ev-qp-01"
+          ]
+        },
+        {
+          "tag": "read",
+          "label": "Read at day 1, 7, 30",
+          "evidenceIds": [
+            "ev-qp-03"
+          ]
+        },
+        {
+          "tag": "date",
+          "label": "Shown at its real day",
+          "evidenceIds": [
+            "ev-qp-04"
+          ]
+        },
+        {
+          "tag": "describe",
+          "label": "Described, not credited",
+          "evidenceIds": [
+            "ev-qp-08"
+          ]
+        }
+      ],
+      "highlightNode": 1,
+      "boundary": {
+        "afterNode": 2,
+        "title": "Comparison rule",
+        "lines": [
+          "Before and now only over",
+          "equal windows."
+        ],
+        "evidenceIds": [
+          "ev-qp-06"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "question-timeline-caption"
+    }
+  ]
+}

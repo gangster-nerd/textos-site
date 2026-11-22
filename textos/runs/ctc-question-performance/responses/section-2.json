@@ -1,0 +1,85 @@
+{
+  "text": "Dates are where most reporting quietly bends. A reading taken on day 6 or day 9 is easy to round to day 7, and over a few months those small shortcuts make periods look comparable when they are not. TextOS refuses that rounding: a reading taken earlier or later is never presented as the day-N reading, and it is shown at its real delay instead.\n\nThe rules behind these readings are not adjustable in the interface either. TextOS keeps them as fixed product rules, and none of them is a threshold chosen on screen. For a buyer comparing one month with the next, this means the yardstick did not move between the two reports.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Dates are where most reporting quietly bends.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A reading taken on day 6 or day 9 is easy to round to day 7, and over a few months those small shortcuts make periods look comparable when they are not.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "TextOS refuses that rounding: a reading taken earlier or later is never presented as the day-N reading, and it is shown at its real delay instead.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The rules behind these readings are not adjustable in the interface either.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "TextOS keeps them as fixed product rules, and none of them is a threshold chosen on screen.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "For a buyer comparing one month with the next, this means the yardstick did not move between the two reports.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

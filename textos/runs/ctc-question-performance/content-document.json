@@ -1,0 +1,304 @@
+{
+  "contentSchemaVersion": "content-document@1",
+  "identity": {
+    "documentId": "textos-site:ctc:ctc-question-performance",
+    "contentType": "product_article",
+    "slug": "tracking-ai-visibility-one-question-at-a-time",
+    "language": "en-US",
+    "title": "TextOS tracks presence one buyer question at a time, as an observed evolution",
+    "description": "TextOS treats each buyer question as the unit of result and describes the observed evolution with its comparability, never as proof of what caused it."
+  },
+  "editorial": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "topicIds": [],
+    "audience": "Buyer looking for a practical decision guide",
+    "funnelStage": "consideration"
+  },
+  "truth": {
+    "statusVocabulary": "geo-writer",
+    "statusVocabularyVersion": "geo-writer@0.2",
+    "sourceStatus": "ARTICLE_GUIDE",
+    "publicationStatus": "draft",
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "claimIds": [
+      "stmt:5:title:2:s1",
+      "stmt:4:meta:2:s1",
+      "stmt:4:lead:2:s1",
+      "stmt:4:lead:2:s2",
+      "stmt:4:lead:2:s3",
+      "stmt:4:lead:2:s4",
+      "stmt:6:answer:2:s1",
+      "stmt:6:answer:2:s2",
+      "stmt:6:answer:2:s3",
+      "stmt:6:answer:2:s4",
+      "stmt:6:answer:2:s5",
+      "stmt:9:section-1:2:s1",
+      "stmt:9:section-1:2:s2",
+      "stmt:9:section-1:2:s3",
+      "stmt:9:section-1:2:s4",
+      "stmt:9:section-1:2:s5",
+      "stmt:9:section-1:2:s6",
+      "stmt:25:question-timeline-caption:2:s1",
+      "stmt:25:question-timeline-caption:2:s2",
+      "stmt:9:section-2:2:s1",
+      "stmt:9:section-2:2:s2",
+      "stmt:9:section-2:2:s3",
+      "stmt:9:section-2:2:s4",
+      "stmt:9:section-2:2:s5",
+      "stmt:9:section-2:2:s6",
+      "stmt:9:section-3:2:s1",
+      "stmt:9:section-3:2:s2",
+      "stmt:9:section-3:2:s3",
+      "stmt:9:section-3:2:s4",
+      "stmt:9:section-3:2:s5",
+      "stmt:9:section-3:2:s6",
+      "stmt:9:section-3:2:s7",
+      "stmt:9:section-4:2:s1",
+      "stmt:9:section-4:2:s2",
+      "stmt:9:section-4:2:s3",
+      "stmt:9:section-4:2:s4",
+      "stmt:9:section-4:2:s5",
+      "stmt:9:section-4:2:s6",
+      "stmt:9:section-4:2:s7",
+      "stmt:6:verify:2:s1",
+      "stmt:6:verify:2:s2",
+      "stmt:6:verify:2:s3",
+      "stmt:6:verify:2:s4",
+      "stmt:6:verify:2:s5",
+      "stmt:6:verify:2:s6",
+      "stmt:6:verify:2:s7",
+      "stmt:19:editorial-next-step:2:s1",
+      "stmt:19:editorial-next-step:2:s2"
+    ],
+    "evidenceRefs": [
+      "ev-qp-01",
+      "ev-qp-09",
+      "ev-qp-03",
+      "ev-qp-02",
+      "ev-qp-05",
+      "ev-qp-04",
+      "ev-qp-14",
+      "ev-qp-06",
+      "ev-qp-07",
+      "ev-qp-10",
+      "ev-qp-11",
+      "ev-qp-08",
+      "ev-qp-12",
+      "ev-qp-13",
+      "ev-qp-15"
+    ],
+    "capabilityIds": [
+      "question-performance"
+    ]
+  },
+  "provenance": {
+    "sourceAuthority": "UNCERTIFIED",
+    "sourceEvidenceDigest": "a37b463c25ee3ebe587ec7a2bd4bfc76a0cd3f65ab59bc5d2fc628481ff5ed13"
+  },
+  "body": [
+    {
+      "id": "answer-1",
+      "kind": "answer",
+      "slot": "short-answer",
+      "data": {
+        "text": "Follow the question, not a blended score. In TextOS, the question is the unit of result: each tracked question carries its own timeline. After a publication, TextOS reads that question at fixed points, on day 1, day 7 and day 30, and keeps the question's history continuous from one reading to the next. What you get back is described as an observed evolution, stated with its comparability and its uncertainty, and TextOS never presents it as causality. That makes the follow-up useful for steering the next action, without turning it into a verdict on the last one."
+      }
+    },
+    {
+      "id": "lead:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "You published a new page, and a few weeks later someone asks whether it changed how often AI assistants mention you. A single global score rarely answers that: it blends questions that moved with questions that did not, and it tends to invite claims of credit. The more useful view starts from the questions your buyers actually ask, followed one by one over time. This note explains how that follow-up is organized, and what it deliberately refuses to conclude."
+      }
+    },
+    {
+      "id": "section-1:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "One timeline per question, kept intact"
+      }
+    },
+    {
+      "id": "section-1:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "For a team, the first worry is losing history when the list of tracked questions is revised. In TextOS, a new version of the question list does not break a question's timeline as long as that question keeps the same objective there. A question that keeps its purpose therefore keeps its past, so this quarter's reading can still be set against last quarter's.\n\nThe opposite case is handled just as strictly. When the way of measuring, the answer surface or the language changes, TextOS never produces a before-and-after difference across that break. The timeline starts again instead, because a jump that comes from a new measuring method says nothing about how your presence moved."
+      }
+    },
+    {
+      "id": "figure:question-timeline",
+      "kind": "figure",
+      "data": {
+        "src": "/diagrams/ctc/question-timeline-f1c7b74344cd.svg",
+        "alt": "How one question is followed. A 4-step flow: One question, one line, then Read at day 1, 7, 30, then Shown at its real day, then Described, not credited. A dashed boundary after \"Shown at its real day\" is labelled Comparison rule: Before and now only over equal windows.",
+        "caption": "TextOS reads each tracked question at day 1, day 7 and day 30 after a publication, keeping its history continuous. A reading taken earlier or later is never presented as the day-N reading."
+      }
+    },
+    {
+      "id": "section-2:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Day 1, day 7, day 30 mean exactly that"
+      }
+    },
+    {
+      "id": "section-2:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "Dates are where most reporting quietly bends. A reading taken on day 6 or day 9 is easy to round to day 7, and over a few months those small shortcuts make periods look comparable when they are not. TextOS refuses that rounding: a reading taken earlier or later is never presented as the day-N reading, and it is shown at its real delay instead.\n\nThe rules behind these readings are not adjustable in the interface either. TextOS keeps them as fixed product rules, and none of them is a threshold chosen on screen. For a buyer comparing one month with the next, this means the yardstick did not move between the two reports."
+      }
+    },
+    {
+      "id": "section-3:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "A before and after only when the windows match"
+      }
+    },
+    {
+      "id": "section-3:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "A before-and-after picture is only fair if both sides were measured the same way. TextOS compares before and now over equal windows, with the same number of checks on each side. It also treats the pair as comparable only when both sides rest on the same, non-zero number of answers. When that condition fails, the honest outcome is no comparison at all, rather than a gap that looks precise.\n\nThe numbers themselves follow the same discipline. Every proportion TextOS reports carries its denominator, never a bare percentage. A value it cannot establish is left empty rather than written as zero, so a missing reading is never mistaken for a bad one."
+      }
+    },
+    {
+      "id": "section-4:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What the tracking never claims"
+      }
+    },
+    {
+      "id": "section-4:body",
+      "kind": "paragraph",
+      "data": {
+        "text": "The tempting conclusion is that the new article caused the change. TextOS does not draw it: no gain is credited to a piece of content. The product describes an observed evolution, with its comparability and uncertainty, and never establishes causality.\n\nThe schedule is kept out of the customer's way as well. TextOS's scheduled checks never get ahead of, or interfere with, the customer's own reference measurement. A scheduled check cannot be relaunched by hand, because that relaunch would create a user measurement that becomes the measurement of record. This part of the product is still being completed, and for now which readings an organization receives depends on its plan."
+      }
+    },
+    {
+      "id": "verify:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "What to ask any AI visibility tracker"
+      }
+    },
+    {
+      "id": "verify:decision-points",
+      "kind": "steps",
+      "data": {
+        "items": [
+          "Before you trust any AI visibility tracker, ask whether it reports by buyer question or only as one blended score.",
+          "Ask what happens to a question's history when the list of tracked questions changes.",
+          "Ask whether a reading labelled day 7 was really taken on day 7.",
+          "Ask how a before-and-after comparison is protected when the measuring method changes.",
+          "Ask whether the tool ever states that a page caused a change, and on what basis.",
+          "Ask whether a percentage on the report comes with the number of answers behind it.",
+          "Ask what the report shows when a reading could not be taken, and whether a blank can be mistaken for a zero."
+        ]
+      }
+    },
+    {
+      "id": "editorial-next-step:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Where to go next"
+      }
+    },
+    {
+      "id": "editorial-next-step:body",
+      "kind": "paragraph",
+      "slot": "editorial-next-step",
+      "data": {
+        "text": "Another note explains how the second look at a published article is planned before it goes live. Two earlier essays cover why observing beats optimizing blindly, and why nothing should be stated without support."
+      }
+    },
+    {
+      "id": "sources:heading",
+      "kind": "heading",
+      "level": 2,
+      "data": {
+        "text": "Sources"
+      }
+    },
+    {
+      "id": "source:1:ev-qp-01",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-01",
+        "title": "TextOS product repository file src/server/textos/performance/question-series.ts at 181d44e"
+      }
+    },
+    {
+      "id": "source:2:ev-qp-09",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-09",
+        "title": "TextOS product manifest, question-performance.knownLimits"
+      }
+    },
+    {
+      "id": "source:3:ev-qp-03",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-03",
+        "title": "TextOS product commit b230cbb, 23 Sep 2026"
+      }
+    },
+    {
+      "id": "source:4:ev-qp-04",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-04",
+        "title": "TextOS product repository file src/server/textos/performance/rules.ts at 181d44e"
+      }
+    },
+    {
+      "id": "source:5:ev-qp-10",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-10",
+        "title": "TextOS product repository file src/server/textos/performance/contract.ts at 181d44e"
+      }
+    },
+    {
+      "id": "source:6:ev-qp-12",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-12",
+        "title": "TextOS product commit d8df9cb, 24 Sep 2026"
+      }
+    },
+    {
+      "id": "source:7:ev-qp-13",
+      "kind": "source",
+      "data": {
+        "ref": "ev-qp-13",
+        "title": "TextOS product commit 2f6ed1c, 24 Sep 2026"
+      }
+    }
+  ],
+  "relationships": {
+    "relatedContentIds": []
+  },
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "conversionAllowed": false
+  },
+  "lifecycle": {},
+  "seo": {
+    "indexingIntent": "noindex",
+    "targetQuery": "how to track ai search visibility over time for each question",
+    "searchIntent": "buyer_decision"
+  }
+}

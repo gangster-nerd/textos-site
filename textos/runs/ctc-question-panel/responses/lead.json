@@ -1,0 +1,53 @@
+{
+  "text": "A report on how often AI assistants mention your brand is only as honest as the questions behind it. In most tools, that list is picked for you, out of sight, and it can quietly change between two reports. When the numbers move, nobody can then say whether the market moved or the list did. This note explains how the list is proposed, what grounds it, and who signs it off before anything is counted.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A report on how often AI assistants mention your brand is only as honest as the questions behind it.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In most tools, that list is picked for you, out of sight, and it can quietly change between two reports.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "When the numbers move, nobody can then say whether the market moved or the list did.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "This note explains how the list is proposed, what grounds it, and who signs it off before anything is counted.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

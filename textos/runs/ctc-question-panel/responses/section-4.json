@@ -1,0 +1,73 @@
+{
+  "text": "Comparisons over time only hold if the list underneath stays put. TextOS states the rule plainly in its product history: the version measured is the version approved. Any change to the list in TextOS requires a new approval, and the measured list is exactly the approved version.\n\nFor a marketing lead, this is what makes a before-and-after comparison worth reading. If a question is added, dropped or reworded, that change is visible as a new version you signed off, rather than a silent edit hidden inside a trend line.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Comparisons over time only hold if the list underneath stays put.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS states the rule plainly in its product history: the version measured is the version approved.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-qp-16"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Any change to the list in TextOS requires a new approval, and the measured list is exactly the approved version.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-qp-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "For a marketing lead, this is what makes a before-and-after comparison worth reading.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "If a question is added, dropped or reworded, that change is visible as a new version you signed off, rather than a silent edit hidden inside a trend line.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

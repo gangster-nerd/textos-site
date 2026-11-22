@@ -1,0 +1,20 @@
+{
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "how to choose and approve the questions ai visibility is measured on",
+  "executionPlanHash": "a721fb6451653adfa3b9bb5eaa38c283e6d7e3f40c27c185ea41907e55d8c0c6",
+  "ctcHandoffHash": "642244a7cc5093444bc00113b4818c953ee8a366205f480e8a5192a8d3f737cd",
+  "promptHashes": {
+    "title": "d8c496ef493181edc78b42678ed918dd6512a1691ab94fe4ece18041b3ad760e",
+    "meta": "9c1c7a4dbe598468b91080263a62f8e8b1bda87f0f11989c238417ac19cf9a4b",
+    "lead": "df723fb3f67f968b119c208ec05fdd5694e8fdfcaf8b142ab346825997c91dd4",
+    "answer": "4e47cff6e41dfcd06e1ca431b82e4d9c9654acb12c2065e0640a02a3338600c8",
+    "section-1": "eb4ea72a42fa07bbe6f3441ecf9eff4255c72b4d5d8c161ac1e5509b2f255b52",
+    "panel-path-caption": "b583d1c9a6418c6dcb00f8301210a46b3d4e00da0d834d90b09f6d378ceb41d3",
+    "section-2": "2113d495829e279fdc1a3d3edd4c2038d2bdce28df88c8e8c36a31a7a24387bb",
+    "section-3": "00fb4c0e53a06c6566f784d12cba70040217af11390d5618ec6e97758df3a746",
+    "section-4": "63975b609220f73e0c15da233b3b4b1efdf8d62e0aa3a0e31048b86deb031e95",
+    "verify": "a139b3945bae710e7532802411a9b9fae86418d300cf6bb6299811e5cc969a90",
+    "editorial-next-step": "df02c68db320a5bd4f2472efc5d2b435ee8daf0d7d732338b9231d2da959362c"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "text": "You sign off on a list that is proposed to you, rather than building it from a blank page. TextOS formulates candidate questions from traced sources, and each one is measured only after a person has retained and approved it. The demand figures attached to a question come from imported, dated sources, and TextOS is explicit that they are not a measure of real traffic. Approving the questions and launching their measurement form one single, indivisible step in TextOS. The result is a list you can read, question by question, before a single answer is collected.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "You sign off on a list that is proposed to you, rather than building it from a blank page.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS formulates candidate questions from traced sources, and each one is measured only after a person has retained and approved it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The demand figures attached to a question come from imported, dated sources, and TextOS is explicit that they are not a measure of real traffic.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Approving the questions and launching their measurement form one single, indivisible step in TextOS.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-qp-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The result is a list you can read, question by question, before a single answer is collected.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

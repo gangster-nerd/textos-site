@@ -1,0 +1,89 @@
+{
+  "text": "Before trusting any report on your visibility in AI answers, ask to see the exact list of questions behind it. Ask who wrote each question, and whether the tool records that origin. Ask where the demand figures come from, how old they are, and whether they describe real traffic. Ask whether the list can change between two reports without you signing off the new version. Ask whether a label such as strong demand was derived from data or simply typed in by someone. Ask what the tool does with a question it cannot measure: whether it warns you before you lock the list, or lets the gap show up later as a flat zero. Ask when the criteria for success are fixed: before the first results, or after.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Before trusting any report on your visibility in AI answers, ask to see the exact list of questions behind it.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask who wrote each question, and whether the tool records that origin.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask where the demand figures come from, how old they are, and whether they describe real traffic.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask whether the list can change between two reports without you signing off the new version.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask whether a label such as strong demand was derived from data or simply typed in by someone.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Ask what the tool does with a question it cannot measure: whether it warns you before you lock the list, or lets the gap show up later as a flat zero.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "Ask when the criteria for success are fixed: before the first results, or after.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

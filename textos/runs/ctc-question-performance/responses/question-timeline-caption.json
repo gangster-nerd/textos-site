@@ -1,0 +1,37 @@
+{
+  "text": "TextOS reads each tracked question at day 1, day 7 and day 30 after a publication, keeping its history continuous. A reading taken earlier or later is never presented as the day-N reading.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS reads each tracked question at day 1, day 7 and day 30 after a publication, keeping its history continuous.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A reading taken earlier or later is never presented as the day-N reading.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

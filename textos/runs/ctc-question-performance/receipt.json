@@ -1,0 +1,61 @@
+{
+  "receiptVersion": 2,
+  "articleId": "ctc-question-performance",
+  "textos": {
+    "repository": "gangster-nerd/textos-v0",
+    "sha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
+  },
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "articleReviewMethodVersion": "ctc-article-review@0.1",
+  "executionPlanHash": "39f7f78fdb22ccdc7f69d2ede620c14dad891aa4bff213689fd77738886e0c5c",
+  "ctcHandoffHash": "d5161c660304e30ee34915309f5302ab4ce54492b0957c9856c946453375536d",
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "a37b463c25ee3ebe587ec7a2bd4bfc76a0cd3f65ab59bc5d2fc628481ff5ed13",
+  "truthCheckVerdict": "pass",
+  "cmoV2": {
+    "version": "article-cmo-v2@1",
+    "passed": true
+  },
+  "ctcEditorialQuality": {
+    "gateVersion": "ctc-editorial-quality@0.1",
+    "verdict": "pass"
+  },
+  "releaseAllowed": true,
+  "publicationChannel": "controlled_preview",
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "promptHashes": {
+    "title": "f983d56232de908220f15ecb144bfa0d1117820d827cfad9b6afc8c91d92937d",
+    "meta": "d44a2aa9d1d45c477ad6a3c2963fdf230f6f98c8ae225705fdd522aa8d4d6d17",
+    "lead": "aa94ff19073f8e415b8ac16abd0ad9adab9163482c915f6adf19e2e6d4dde64d",
+    "answer": "14330fdf200c118ddb8fe7e2931a15e02c802c5f0d5ddcaf7e3d2ceba32613a9",
+    "section-1": "b649906bd31efc573fd7cf85d974fd013886bc71b5f77f3b2132228a48a894dc",
+    "question-timeline-caption": "2cedcc04320cdb802d6bf47e1849d1ca06ecd0d9dbba7477ea142c08eb92d7b8",
+    "section-2": "6ac61b979bf9a7ce7424da9bb8784873924126829722143aa39b993d8d4ac387",
+    "section-3": "cf2308696bc307c1fdf3439eb3df28f619b62c78031467cb281842cbda545afa",
+    "section-4": "d2963cbaa4795794936f0fa45a4beb2f76d179282765d1678f0571f78df90171",
+    "verify": "050a26af9dc6c02ba164861650beae653a36e7051395e480613f2b8421f5452a",
+    "editorial-next-step": "dbfd5647faa64ba2b43f2384cc775c36c094d60855f240f2e26075570944b640"
+  },
+  "responseHashes": {
+    "title": "a6cf412b4c1bd996aa6c81f140b1b114535f6154fd2ac23eeee2306c2e6a357e",
+    "meta": "4747bae322d1df17d669486c7d39f34592b810fe22e710cfb34462a71226f3ae",
+    "lead": "996e5f8387bcfbe1224cf5fe4c5dd1062e0fd514cc868f3202c26ab6d7836728",
+    "answer": "5c3ed65f61934bb216a448a0a12d54530593decebbc6524eded2f3797f33cbed",
+    "section-1": "7e605eab32610d5003982f060a216939202fcd1a22b1c9d8b22f29287d301860",
+    "question-timeline-caption": "dd27f917ccde931bb24de7dabe683832e0055adec5e7665e1367a8bde6bbd700",
+    "section-2": "12f35e9d87b4bebb4558ce09bd4aad0ab88790f6c87b4bf234a0d3be0479f52c",
+    "section-3": "4b4e51543d43361f7da950cbe9a9ba19803d24bd812a54c086bf59e49a9b9d16",
+    "section-4": "8c198e0e9c93744e175ac44ce207b89fa7935b1107685685cb8450cca8c07517",
+    "verify": "f99ad40b106b302ef56f59e42e636b6bc04422cfd0d44c617b7bdf94bd82218e",
+    "editorial-next-step": "6cc9c589ab742ff37bad625104aaabc6993e5764ac895da23a449932825836ef"
+  },
+  "figureHashes": {
+    "question-timeline": "f1c7b74344cd80ad5aab61b24c9b4516c2aaf3d659272bec76ff4721f259a86b"
+  },
+  "contentDocumentSha256": "10f3d6c5a007de3ba8d35ab6bc1f718ad3cc26ffe0f827e3749396213a8c5918",
+  "lineageSha256": "96dbfb160c5910d5f8aebb2ce4d31143256be783fc12deaeafe8977efdc877e4",
+  "resolvedSurfaceSha256": "206566766a0b88153e23d1da821386806b0d94276ef9dd3a5f771f51ca9cfd8d",
+  "articleReviewSha256": "fe3d90e845e5b87df181f42e453bcc9d05dcfb90346f9703bbcb79c330e17392"
+}

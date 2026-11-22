@@ -1,0 +1,605 @@
+{
+  "briefVersion": 1,
+  "articleId": "ctc-question-panel",
+  "flow": "commit_to_content",
+  "slug": "approving-the-questions-your-ai-visibility-is-measured-on",
+  "locale": "en-US",
+  "publicationChannel": "controlled_preview",
+  "entityIds": [
+    "business-approved-query-panel"
+  ],
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "demand-decides-what-is-measured-2026-09-21",
+        "sourceCommits": [
+          "6c9d7fe53fcc1a0ba14cad74308f567c0cb72576",
+          "a6a41a702568d1ba13938dfc9367e12193252f9d"
+        ]
+      },
+      {
+        "groupId": "approved-version-is-measured-2026-09-22",
+        "sourceCommits": [
+          "17086e46d747eb0e6ba03e7f3f7dd122cec0ebdc",
+          "db6da77773847e119daae91320c4c6762eeedc36",
+          "e644a5da658588d346800eaabb6e0b1208cd5176",
+          "b66c3a845b26c0bf945ac55222a98ab6f152da00"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I approve the list of questions I want to be measured on?",
+    "targetQuery": "how to choose and approve the questions ai visibility is measured on",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "question-panel"
+  },
+  "approval": {
+    "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+    "approvedAt": "2026-11-22"
+  },
+  "editorial": {
+    "authorIds": [
+      "marc-prempain"
+    ],
+    "primaryTopicId": "how-we-build",
+    "topicIds": [
+      "how-we-build"
+    ],
+    "audience": "reader-technical",
+    "funnelStage": "awareness",
+    "relatedDocumentIds": [
+      "textos-site:ctc:ctc-re-observation-plan",
+      "textos-site:ctc:ctc-assistant-connection",
+      "textos-insight:three-measures-never-one-score"
+    ]
+  },
+  "publication": {
+    "humanReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev-qp-01",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-005-V4-TEXTOS-DRAFTED-PROVENANCE-2026-11-07.md",
+        "quote": "désigne une question formulée dans TextOS à partir de sources tracées, puis retenue et approuvée par un humain selon la porte existante."
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written.",
+        "Accepted product decision record (ADR-005 v4)."
+      ]
+    },
+    {
+      "id": "ev-qp-02",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-005-V4-TEXTOS-DRAFTED-PROVENANCE-2026-11-07.md",
+        "quote": "Une preuve de demande, même exacte et observée, ne modifie pas cette origine ou ce statut de formulation."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-03",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-005-V4-TEXTOS-DRAFTED-PROVENANCE-2026-11-07.md",
+        "quote": "La formulation, la demande prouvée et la validation stratégique demeurent trois axes distincts."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-04",
+      "source": {
+        "kind": "product_file",
+        "path": "docs/adr/ADR-005-V4-TEXTOS-DRAFTED-PROVENANCE-2026-11-07.md",
+        "quote": "Le client ne peut jamais attribuer ou substituer `textos_drafted`."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written.",
+        "`textos_drafted` is the internal name of the origin \"drafted by TextOS\"; \"le client\" here means the browser or API caller, not the customer."
+      ]
+    },
+    {
+      "id": "ev-qp-05",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "business-approved-query-panel",
+        "field": "knownLimits",
+        "quote": "La demande provient de sources importées et datées ; elle n'est pas une mesure du trafic réel."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written.",
+        "States a limit: demand is not a measure of real traffic."
+      ]
+    },
+    {
+      "id": "ev-qp-06",
+      "source": {
+        "kind": "product_commit",
+        "sha": "6c9d7fe53fcc1a0ba14cad74308f567c0cb72576",
+        "quote": "la demande décide CE QU'ON MESURE, jamais le résultat"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-07",
+      "source": {
+        "kind": "product_commit",
+        "sha": "6c9d7fe53fcc1a0ba14cad74308f567c0cb72576",
+        "quote": "rattacher un volume à la question mesurée."
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written.",
+        "Listed in the commit among the things the code refuses to do."
+      ]
+    },
+    {
+      "id": "ev-qp-08",
+      "source": {
+        "kind": "product_commit",
+        "sha": "db6da77773847e119daae91320c4c6762eeedc36",
+        "quote": "la force de demande n'est plus saisissable"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-09",
+      "source": {
+        "kind": "product_commit",
+        "sha": "e644a5da658588d346800eaabb6e0b1208cd5176",
+        "quote": "la force de demande est dérivée de preuves, ou absente"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-10",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/query-intelligence/demand/approval.ts",
+        "quote": "« Approuver les N questions et lancer la mesure ». UNE porte, atomique."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written.",
+        "Code comment."
+      ]
+    },
+    {
+      "id": "ev-qp-11",
+      "source": {
+        "kind": "product_file",
+        "path": "src/server/textos/query-intelligence/demand/approval.ts",
+        "quote": "L'approbation business et le pré-enregistrement ADR-022 sont le MÊME geste."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written.",
+        "Code comment; pre-registration fixes the success criteria before results are seen."
+      ]
+    },
+    {
+      "id": "ev-qp-12",
+      "source": {
+        "kind": "product_commit",
+        "sha": "b66c3a845b26c0bf945ac55222a98ab6f152da00",
+        "quote": "La composition rend TOUS ses refus d'un coup : corriger un formulaire de cinq questions une erreur à la fois est une punition, pas une aide."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-13",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a6a41a702568d1ba13938dfc9367e12193252f9d",
+        "quote": "la surface qui refuse de figer un panel non mesurable"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-14",
+      "source": {
+        "kind": "product_commit",
+        "sha": "a6a41a702568d1ba13938dfc9367e12193252f9d",
+        "quote": "Approuver un panel dans cet état produirait une baseline structurellement incapable de bouger"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written.",
+        "The state meant here is a tracked brand with no declared domain, so no citation can be attributed to it."
+      ]
+    },
+    {
+      "id": "ev-qp-15",
+      "source": {
+        "kind": "manifest_field",
+        "entityId": "business-approved-query-panel",
+        "field": "knownLimits",
+        "quote": "Le panel mesuré est exactement la version approuvée ; toute modification exige une nouvelle approbation."
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ]
+    },
+    {
+      "id": "ev-qp-16",
+      "source": {
+        "kind": "product_commit",
+        "sha": "17086e46d747eb0e6ba03e7f3f7dd122cec0ebdc",
+        "quote": "la version mesurée est la version approuvée"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Written in French; quoted as written."
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that the questions it measures are the exact list a person approved.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-15"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS proposes the questions, a person approves the list, and the version measured is exactly the one approved.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-16"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: a tool that tells you how often AI assistants mention you is only as honest as the list of questions it asks, and that list is usually chosen for you, out of sight. Say that this note explains how the list is proposed, grounded and approved.",
+      "buyerIntent": "Who decides which questions I am measured on?",
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can I approve the list of questions I want to be measured on?",
+      "writingObjective": "Answer directly: TextOS drafts candidate questions from traced sources and labels where each one comes from; demand comes from imported, dated sources and is not a measure of real traffic; a person approves the list, and approving and launching the measurement are a single gate; the measured panel is exactly the approved version.",
+      "buyerIntent": "How can I approve the list of questions I want to be measured on?",
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-05",
+        "ev-qp-10"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Each question says where it came from",
+      "writingObjective": "Explain that a question drafted inside TextOS from traced sources keeps that origin until it is approved; that later demand data does not relabel how it was formulated; and that how a question is worded, whether demand for it is proven and whether it matters to the business stay three separate things. Say what that changes for a reader reviewing the list.",
+      "buyerIntent": "How do I know who wrote each question?",
+      "allowedEvidenceIds": [
+        "ev-qp-02",
+        "ev-qp-03",
+        "ev-qp-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "panel-path-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one or two factual sentences, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-10",
+        "ev-qp-15"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Demand decides what is measured, never the result",
+      "writingObjective": "Explain that demand data is used to choose what to measure and never to set the outcome; that the system refuses to attach a search volume to a single measured question; that demand strength can no longer be typed in by hand; and that it is derived from evidence or left absent.",
+      "buyerIntent": "Can a tool inflate how important a question looks?",
+      "allowedEvidenceIds": [
+        "ev-qp-06",
+        "ev-qp-07",
+        "ev-qp-08",
+        "ev-qp-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Approving the list is one deliberate gesture",
+      "writingObjective": "Explain that approving the questions and starting the measurement are one atomic gate, and that the approval and the pre-registration of success criteria are the same gesture, so the yardstick cannot be chosen after the first results; that all objections to a draft list are returned at once; and that the system refuses to lock a list that could never show a change.",
+      "buyerIntent": "What happens when I press approve?",
+      "allowedEvidenceIds": [
+        "ev-qp-11",
+        "ev-qp-12",
+        "ev-qp-13",
+        "ev-qp-14"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What gets measured is what you approved, nothing else",
+      "writingObjective": "Explain that the version measured is the version approved, and that any change to the list requires a new approval. Say why this matters when comparing before and after.",
+      "buyerIntent": "Can the list drift after I approve it?",
+      "allowedEvidenceIds": [
+        "ev-qp-16",
+        "ev-qp-15"
+      ],
+      "requiredClaimTypes": [
+        "human_authorization"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 1100,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI visibility vendor about its questions",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ],
+  "publicUseClearance": {
+    "decision": "APPROVE_PUBLIC_USE",
+    "actor": "operator:claude-code, applying the CPO decision of 2026-10-27 on Commit-to-Content sources",
+    "actorCapacity": "CPO decision CPO-2026-10-27-ctc-sources-without-link (docs/decisions/): product commits cited by a note are shown as Sources, by reference and date, without a link",
+    "decidedAt": "2026-11-22",
+    "reason": "The note cites these product commits and files; their reference and date are already public in this site's commit ledger."
+  },
+  "figures": [
+    {
+      "id": "panel-path",
+      "template": "flow",
+      "title": "From proposed questions to a measured list",
+      "subtitle": "Illustrative path for one list. TextOS proposes; a person approves.",
+      "nodes": [
+        {
+          "tag": "draft",
+          "label": "TextOS drafts questions",
+          "evidenceIds": [
+            "ev-qp-01"
+          ]
+        },
+        {
+          "tag": "ground",
+          "label": "Dated demand attached",
+          "evidenceIds": [
+            "ev-qp-05"
+          ]
+        },
+        {
+          "tag": "approve",
+          "label": "Person approves the list",
+          "evidenceIds": [
+            "ev-qp-10"
+          ]
+        },
+        {
+          "tag": "measure",
+          "label": "That exact version measured",
+          "evidenceIds": [
+            "ev-qp-15"
+          ]
+        }
+      ],
+      "highlightNode": 2,
+      "boundary": {
+        "afterNode": 1,
+        "title": "One gate",
+        "lines": [
+          "Approving the list and launching",
+          "the measurement are one step."
+        ],
+        "evidenceIds": [
+          "ev-qp-10"
+        ]
+      },
+      "anchorSectionKey": "section-1",
+      "captionSlotId": "panel-path-caption"
+    }
+  ]
+}

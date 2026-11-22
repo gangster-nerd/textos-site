@@ -1,0 +1,77 @@
+{
+  "text": "Follow the question, not a blended score. In TextOS, the question is the unit of result: each tracked question carries its own timeline. After a publication, TextOS reads that question at fixed points, on day 1, day 7 and day 30, and keeps the question's history continuous from one reading to the next. What you get back is described as an observed evolution, stated with its comparability and its uncertainty, and TextOS never presents it as causality. That makes the follow-up useful for steering the next action, without turning it into a verdict on the last one.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Follow the question, not a blended score.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS, the question is the unit of result: each tracked question carries its own timeline.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "After a publication, TextOS reads that question at fixed points, on day 1, day 7 and day 30, and keeps the question's history continuous from one reading to the next.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "What you get back is described as an observed evolution, stated with its comparability and its uncertainty, and TextOS never presents it as causality.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "That makes the follow-up useful for steering the next action, without turning it into a verdict on the last one.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

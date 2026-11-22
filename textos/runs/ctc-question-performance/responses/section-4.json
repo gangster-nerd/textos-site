@@ -1,0 +1,109 @@
+{
+  "text": "The tempting conclusion is that the new article caused the change. TextOS does not draw it: no gain is credited to a piece of content. The product describes an observed evolution, with its comparability and uncertainty, and never establishes causality.\n\nThe schedule is kept out of the customer's way as well. TextOS's scheduled checks never get ahead of, or interfere with, the customer's own reference measurement. A scheduled check cannot be relaunched by hand, because that relaunch would create a user measurement that becomes the measurement of record. This part of the product is still being completed, and for now which readings an organization receives depends on its plan.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The tempting conclusion is that the new article caused the change.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS does not draw it: no gain is credited to a piece of content.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The product describes an observed evolution, with its comparability and uncertainty, and never establishes causality.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The schedule is kept out of the customer's way as well.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "TextOS's scheduled checks never get ahead of, or interfere with, the customer's own reference measurement.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "A scheduled check cannot be relaunched by hand, because that relaunch would create a user measurement that becomes the measurement of record.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-qp-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "This part of the product is still being completed, and for now which readings an organization receives depends on its plan.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

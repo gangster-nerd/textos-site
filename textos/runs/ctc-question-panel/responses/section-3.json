@@ -1,0 +1,93 @@
+{
+  "text": "Signing off a list is also the moment the yardstick is fixed. In TextOS, the business approval of the list and the pre-registration of what will count as success are one and the same gesture. Because both happen together, the criteria cannot be picked after the first results have been seen.\n\nIf a draft list has problems, TextOS reports all of them at once, on the stated view that fixing a five-question form one error at a time is a punishment, not a help. Some lists are refused outright: TextOS built its review screen to refuse locking a list that cannot be measured. The product history gives the reason: approving a list in that state would produce a starting point structurally unable to move.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Signing off a list is also the moment the yardstick is fixed.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS, the business approval of the list and the pre-registration of what will count as success are one and the same gesture.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-qp-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Because both happen together, the criteria cannot be picked after the first results have been seen.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "If a draft list has problems, TextOS reports all of them at once, on the stated view that fixing a five-question form one error at a time is a punishment, not a help.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-qp-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Some lists are refused outright: TextOS built its review screen to refuse locking a list that cannot be measured.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-qp-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "The product history gives the reason: approving a list in that state would produce a starting point structurally unable to move.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-qp-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

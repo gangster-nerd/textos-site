@@ -1,0 +1,89 @@
+{
+  "text": "When you review a proposed list, the first thing worth knowing is who wrote each line. In TextOS, the label saying a question was drafted by the product is set on the server, and the browser can never assign or swap it. So a line you wrote yourself cannot pass as a suggestion, and a suggestion cannot pass as yours.\n\nThe origin of a wording also stays fixed: in TextOS, demand data, even exact and observed, does not change how a question is recorded as having been formulated. TextOS keeps three things apart: how a question is worded, whether demand for it is proven, and whether it matters to the business. That separation is the useful part when you read the list, because a strong number cannot dress up a question you would not have picked yourself.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "When you review a proposed list, the first thing worth knowing is who wrote each line.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS, the label saying a question was drafted by the product is set on the server, and the browser can never assign or swap it.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "So a line you wrote yourself cannot pass as a suggestion, and a suggestion cannot pass as yours.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The origin of a wording also stays fixed: in TextOS, demand data, even exact and observed, does not change how a question is recorded as having been formulated.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "TextOS keeps three things apart: how a question is worded, whether demand for it is proven, and whether it matters to the business.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "That separation is the useful part when you read the list, because a strong number cannot dress up a question you would not have picked yourself.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,852 @@
+{
+  "provenance": {
+    "ctcSourceGroups": [
+      {
+        "groupId": "question-series-2026-09-23",
+        "sourceCommits": [
+          "b230cbbb44038dc25aa496a84d134eab34a4e489"
+        ]
+      },
+      {
+        "groupId": "scheduled-checks-2026-09-24",
+        "sourceCommits": [
+          "d8df9cb84a99993dd5b0621159a9c201f40fe90f",
+          "2f6ed1c0d9bed0f7f966cbd83865a57e2f116491"
+        ]
+      }
+    ],
+    "buyerQuestion": "How can I track how my presence evolves, question by question?",
+    "targetQuery": "how to track ai search visibility over time for each question",
+    "targetQueryProvenance": "HUMAN_CMO",
+    "demandEvidenceStatus": "NOT_MEASURED",
+    "demandEvidenceRefs": [],
+    "keywordVolumeStatus": "UNKNOWN",
+    "searchIntent": "informational",
+    "topicCluster": "question-performance",
+    "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
+  },
+  "locale": "en-US",
+  "policy": {
+    "mode": "grounded_tracked_brand_authorized",
+    "trackedEntityId": "textos",
+    "trackedBrandNames": [
+      "TextOS"
+    ],
+    "forbiddenProductNames": []
+  },
+  "publicationContext": {
+    "channel": "controlled_preview",
+    "briefId": "ctc-question-performance",
+    "locale": "en-US"
+  },
+  "claimProfile": {
+    "id": "textos-engineering-notes",
+    "version": "0.1",
+    "claimTypes": [
+      "human_authorization",
+      "execution_safety",
+      "credential_lifecycle",
+      "writer_resilience",
+      "content_governance",
+      "availability"
+    ],
+    "lexicon": {
+      "human_authorization": [
+        "human decision",
+        "human approval",
+        "approves",
+        "approved",
+        "approval",
+        "trust grant",
+        "grant",
+        "reviewer"
+      ],
+      "execution_safety": [
+        "idempotency",
+        "idempotent",
+        "replay",
+        "reclaim",
+        "retry",
+        "crash",
+        "stale",
+        "envelope",
+        "hash"
+      ],
+      "credential_lifecycle": [
+        "credential",
+        "credentials",
+        "token",
+        "tokens",
+        "expiry",
+        "expires",
+        "rotation",
+        "revoke",
+        "revoked",
+        "kill switch",
+        "kill switches"
+      ],
+      "writer_resilience": [
+        "fallback",
+        "outage",
+        "writer profile",
+        "writer profiles",
+        "checkpoint",
+        "checkpoints"
+      ],
+      "content_governance": [
+        "impact record",
+        "impact decision",
+        "public content",
+        "manifest",
+        "coverage",
+        "evidence"
+      ],
+      "availability": [
+        "self-serve",
+        "self serve",
+        "sign up",
+        "available",
+        "generally available",
+        "pricing"
+      ]
+    }
+  },
+  "roster": [
+    {
+      "name": "TextOS",
+      "aliases": [
+        "TextOS"
+      ],
+      "matchedTrackedEntityId": "textos",
+      "role": "tracked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-qp-01",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/question-series.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "be7105efd9165920a17bfc021df77d3692cc09011f123f3feacddbf5f3f0926d",
+      "excerpt": "La question est l'unité de résultat.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-02",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/question-series.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "4838ffdfefd0ebaccac23ce2415313f9fdd9c9b439d279a7c74ce7b1470b0802",
+      "excerpt": "une nouvelle version de panel NE rompt PAS la série si la question y figure avec le MÊME",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written.",
+        "The sentence continues: with the same objective; a different objective opens a new series."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-03",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit b230cbb, 23 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-23T19:51:27+00:00",
+      "contentHash": "2ca2fb43a1ba447c25b1701318ff313e0e11bc0abbcde684c6f9c017ed682f1c",
+      "excerpt": "lectures J+1/J+7/J+30, continuité par question ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-04",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/rules.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "d2299787a2e1df47d3902edd6adbf5ce71c4cf07ea03a21cfae014757965c184",
+      "excerpt": "Une mesure plus tôt ou plus tard n'est jamais présentée comme la mesure J+N",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-05",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/question-series.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "98fd243f39c029b710694e5f2226db6ac7bf9f03acb6ae16c9d64bb188dc3242",
+      "excerpt": "une rupture de méthode, de surface ou de locale ne produit JAMAIS de delta",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-06",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/question-series.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "7efe4d3be05ca426669c531b91e7c1976b5a0caed3d417ee3c482453e8cc6299",
+      "excerpt": "avant / maintenant à FENÊTRES ÉGALES",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-07",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/question-series.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "59e665f6095d017f83aa6def4d51dc4e370b209b679706dee8ceb0681ae8a4e9",
+      "excerpt": "Comparable seulement à nombre de réponses égal et non nul.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-08",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/question-series.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "7070ae24f38bec9209983730c7cc0219e863bced5adf2fc49b2f322b717564a0",
+      "excerpt": "aucun gain n'est attribué à un contenu",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-09",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product manifest, question-performance.knownLimits",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "56b8fc4d4ce820cd23c9d6309efaec204c84ba529db293a57865dda157a4bed3",
+      "excerpt": "Décrit une évolution observée, avec comparabilité et incertitude ; n'établit jamais de causalité.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-10",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/contract.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "d9159f733540ec4467e8942d42768be37ddb6bbb474ca7a317405d4ed6b12e0e",
+      "excerpt": "toute proportion porte son dénominateur (`CountRatio`), jamais un pourcentage seul ;",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-11",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/contract.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "9166fa7848c70b2c502bbad8bcaf611b2a561e3321630ad94ead5b37422557b4",
+      "excerpt": "toute valeur non prouvée est `null`, jamais `0`",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-12",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit d8df9cb, 24 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-24T08:57:07+00:00",
+      "contentHash": "11eddd8d5b0e86a3adaefdda6aa0567812b03c2f89bb593dca8678086ddd44fa",
+      "excerpt": "Performances ne devance ni ne gêne la baseline du client.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-13",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product commit 2f6ed1c, 24 Sep 2026",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-09-24T10:57:12+00:00",
+      "contentHash": "76c5cb07094cf502563f90ed8251e706f8eceae03dcffb334d888b86c11612e4",
+      "excerpt": "une relance créerait une mesure utilisateur qui deviendrait la mesure en vigueur.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Commit message in French; explains why a manual relaunch is refused on a scheduled check."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-14",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product repository file src/server/textos/performance/rules.ts at 181d44e",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "90e5a6b16e46901f7bd392d5e094a872e25275444bb47b97736276ddeff9830b",
+      "excerpt": "Aucune de ces valeurs n'est un seuil « choisi à l'écran »",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Code comment in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    },
+    {
+      "id": "ev-qp-15",
+      "kind": "official_brand_evidence",
+      "sourceUrl": null,
+      "sourceTitle": "TextOS product manifest, question-performance.knownLimits",
+      "sourcePublisher": "TextOS product repository (gangster-nerd/textos-v0), V1 certification trunk",
+      "retrievedAt": "2026-11-22T18:33:04+00:00",
+      "contentHash": "3d4d3347a003ade797d562b8938ce47a7bb61d820abbeb53b5773db94dc7c7b8",
+      "excerpt": "Reprise en cours (trace des appels planifiés) : la lecture dépend de l'offre de l'organisation.",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "maxSupportStrength": "descriptive",
+      "limitations": [
+        "Product manifest limit, in French; quoted as written."
+      ],
+      "epistemicStatus": "operator_supplied",
+      "publicUse": "allowed",
+      "approvedForGeneration": true,
+      "approvedBy": "operator:claude-code, acting as TextOS CTO/CMO under the owner's instruction of 2026-11-22 to write the August–November history through Commit-to-Content",
+      "approvedAt": "2026-11-22",
+      "approvalScope": {
+        "briefIds": [
+          "ctc-question-performance"
+        ],
+        "locale": "en-US",
+        "channel": "controlled_preview"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "State as a fact about TextOS that it follows presence one question at a time and describes change without crediting it to a cause.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 30,
+      "maxChars": 95,
+      "evidenceRequired": true
+    },
+    {
+      "id": "meta",
+      "role": "meta_description",
+      "blockKind": "single_line",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "One sentence for a search result: TextOS tracks each buyer question over time and describes the observed change, with its comparability, never as proof of a cause.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 90,
+      "maxChars": 170,
+      "evidenceRequired": true
+    },
+    {
+      "id": "lead",
+      "role": "lead",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Open on the reader's situation: they published something and want to know whether their presence in AI answers moved, but a single global number hides which questions changed and tempts everyone to claim credit. Say that the useful unit is the question.",
+      "buyerIntent": "How do I know whether anything moved?",
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 300,
+      "maxChars": 700,
+      "evidenceRequired": false
+    },
+    {
+      "id": "answer",
+      "role": "answer",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "How can I track how my presence evolves, question by question?",
+      "writingObjective": "Answer directly: TextOS makes the question the unit of result; it reads each question at fixed points after a publication (day 1, day 7, day 30) and keeps the question's history continuous; what it reports is an observed evolution with its comparability and uncertainty, never a cause.",
+      "buyerIntent": "How can I track how my presence evolves, question by question?",
+      "allowedEvidenceIds": [
+        "ev-qp-01",
+        "ev-qp-03",
+        "ev-qp-09"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 450,
+      "maxChars": 900,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-1",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "One timeline per question, kept intact",
+      "writingObjective": "Explain that each tracked question has its own timeline, that a new version of the question list does not break that timeline as long as the question keeps the same objective, and that a change of method, surface or language never produces a before/after difference: the timeline restarts instead. Say what that changes for a team reading the results.",
+      "buyerIntent": "Will my history survive when the question list changes?",
+      "allowedEvidenceIds": [
+        "ev-qp-02",
+        "ev-qp-05"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "question-timeline-caption",
+      "role": "caption",
+      "blockKind": "paragraph",
+      "headingLevel": null,
+      "heading": null,
+      "writingObjective": "Caption the figure of this note in one or two factual sentences, grounded in the evidence it cites.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [
+        "ev-qp-03",
+        "ev-qp-04"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [],
+      "minChars": 80,
+      "maxChars": 300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-2",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "Day 1, day 7, day 30 mean exactly that",
+      "writingObjective": "Explain the fixed readings after a publication, that a reading taken a day early or late is never presented as the day-N reading but shown at its real delay, and that the thresholds behind these readings are fixed product rules, not settings chosen on screen. Say why strict dates matter to a buyer comparing weeks.",
+      "buyerIntent": "Can the dates be trusted?",
+      "allowedEvidenceIds": [
+        "ev-qp-04",
+        "ev-qp-14"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-3",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "A before and after only when the windows match",
+      "writingObjective": "Explain the comparison rule: before and now are compared over equal windows, and only when both sides rest on the same, non-zero number of answers; otherwise there is no comparison. Add that every proportion carries its denominator rather than a bare percentage, and that an unproven value is shown as unknown rather than as zero.",
+      "buyerIntent": "When is a comparison fair?",
+      "allowedEvidenceIds": [
+        "ev-qp-06",
+        "ev-qp-07",
+        "ev-qp-10",
+        "ev-qp-11"
+      ],
+      "requiredClaimTypes": [
+        "content_governance"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1300,
+      "evidenceRequired": true
+    },
+    {
+      "id": "section-4",
+      "role": "section",
+      "blockKind": "multi_paragraph",
+      "headingLevel": 2,
+      "heading": "What the tracking never claims",
+      "writingObjective": "Explain that no gain is credited to a piece of content, that the result describes an observed evolution with comparability and uncertainty, never causality; that scheduled checks never get ahead of or interfere with the customer's own reference measurement; that a scheduled check cannot be relaunched by hand because the relaunch would become the measurement of record; and that, while the work is still in progress, which readings an organization gets depends on its plan.",
+      "buyerIntent": "Will it tell me my article caused the change?",
+      "allowedEvidenceIds": [
+        "ev-qp-08",
+        "ev-qp-09",
+        "ev-qp-12",
+        "ev-qp-13",
+        "ev-qp-15"
+      ],
+      "requiredClaimTypes": [
+        "content_governance",
+        "execution_safety"
+      ],
+      "unsupportedClaimTypes": [
+        "availability"
+      ],
+      "minChars": 550,
+      "maxChars": 1400,
+      "evidenceRequired": true
+    },
+    {
+      "id": "verify",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "What to ask any AI visibility tracker",
+      "writingObjective": "Give the buyer a short list of questions to put to any vendor, one per sentence, drawn from the mechanisms this note describes. Recommendations only, no claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 300,
+      "maxChars": 900,
+      "evidenceRequired": false
+    },
+    {
+      "id": "editorial-next-step",
+      "role": "section",
+      "blockKind": "paragraph",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "writingObjective": "Point the reader to the related notes. No claim about TextOS.",
+      "buyerIntent": null,
+      "allowedEvidenceIds": [],
+      "requiredClaimTypes": [],
+      "unsupportedClaimTypes": [],
+      "minChars": 120,
+      "maxChars": 500,
+      "evidenceRequired": false
+    }
+  ]
+}

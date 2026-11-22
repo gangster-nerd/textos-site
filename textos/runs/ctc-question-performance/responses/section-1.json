@@ -1,0 +1,85 @@
+{
+  "text": "For a team, the first worry is losing history when the list of tracked questions is revised. In TextOS, a new version of the question list does not break a question's timeline as long as that question keeps the same objective there. A question that keeps its purpose therefore keeps its past, so this quarter's reading can still be set against last quarter's.\n\nThe opposite case is handled just as strictly. When the way of measuring, the answer surface or the language changes, TextOS never produces a before-and-after difference across that break. The timeline starts again instead, because a jump that comes from a new measuring method says nothing about how your presence moved.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "For a team, the first worry is losing history when the list of tracked questions is revised.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "In TextOS, a new version of the question list does not break a question's timeline as long as that question keeps the same objective there.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "A question that keeps its purpose therefore keeps its past, so this quarter's reading can still be set against last quarter's.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The opposite case is handled just as strictly.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "When the way of measuring, the answer surface or the language changes, TextOS never produces a before-and-after difference across that break.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "The timeline starts again instead, because a jump that comes from a new measuring method says nothing about how your presence moved.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

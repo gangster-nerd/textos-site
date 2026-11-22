@@ -1,0 +1,29 @@
+{
+  "text": "Another note explains how a second look is planned before an article goes live, so that a change can be compared with the starting point. A second note covers what an AI assistant connected to the product can prepare, and what stays with a person.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Another note explains how a second look is planned before an article goes live, so that a change can be compared with the starting point.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A second note covers what an AI assistant connected to the product can prepare, and what stays with a person.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

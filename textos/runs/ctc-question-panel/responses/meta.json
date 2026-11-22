@@ -1,0 +1,23 @@
+{
+  "text": "TextOS drafts candidate questions from traced sources for a person to retain and approve, and the version it measures is the version approved.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS drafts candidate questions from traced sources for a person to retain and approve, and the version it measures is the version approved.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-01",
+        "ev-qp-16"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "text": "Another note explains how the second look at a published article is planned before it goes live. Two earlier essays cover why observing beats optimizing blindly, and why nothing should be stated without support.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Another note explains how the second look at a published article is planned before it goes live.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Two earlier essays cover why observing beats optimizing blindly, and why nothing should be stated without support.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

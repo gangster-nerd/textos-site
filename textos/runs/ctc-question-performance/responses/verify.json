@@ -1,0 +1,89 @@
+{
+  "text": "Before you trust any AI visibility tracker, ask whether it reports by buyer question or only as one blended score. Ask what happens to a question's history when the list of tracked questions changes. Ask whether a reading labelled day 7 was really taken on day 7. Ask how a before-and-after comparison is protected when the measuring method changes. Ask whether the tool ever states that a page caused a change, and on what basis. Ask whether a percentage on the report comes with the number of answers behind it. Ask what the report shows when a reading could not be taken, and whether a blank can be mistaken for a zero.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Before you trust any AI visibility tracker, ask whether it reports by buyer question or only as one blended score.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask what happens to a question's history when the list of tracked questions changes.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask whether a reading labelled day 7 was really taken on day 7.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask how a before-and-after comparison is protected when the measuring method changes.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask whether the tool ever states that a page caused a change, and on what basis.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Ask whether a percentage on the report comes with the number of answers behind it.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "Ask what the report shows when a reading could not be taken, and whether a blank can be mistaken for a zero.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "text": "A before-and-after picture is only fair if both sides were measured the same way. TextOS compares before and now over equal windows, with the same number of checks on each side. It also treats the pair as comparable only when both sides rest on the same, non-zero number of answers. When that condition fails, the honest outcome is no comparison at all, rather than a gap that looks precise.\n\nThe numbers themselves follow the same discipline. Every proportion TextOS reports carries its denominator, never a bare percentage. A value it cannot establish is left empty rather than written as zero, so a missing reading is never mistaken for a bad one.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "A before-and-after picture is only fair if both sides were measured the same way.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS compares before and now over equal windows, with the same number of checks on each side.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "It also treats the pair as comparable only when both sides rest on the same, non-zero number of answers.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "When that condition fails, the honest outcome is no comparison at all, rather than a gap that looks precise.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The numbers themselves follow the same discipline.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "Every proportion TextOS reports carries its denominator, never a bare percentage.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "A value it cannot establish is left empty rather than written as zero, so a missing reading is never mistaken for a bad one.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-qp-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}
