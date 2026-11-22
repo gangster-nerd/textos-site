@@ -1,0 +1,53 @@
+{
+  "text": "Many marketing leads would rather ask the AI assistant they already use than learn one more dashboard. The worry comes right after: once a tool is wired into the assistant, what can that assistant now do in your name, on your site, without you noticing? The short answer is that the assistant can do the reading and the preparing, while the commitments stay with a person. What follows explains where that line sits, and why the useful work can still happen inside the conversation.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Many marketing leads would rather ask the AI assistant they already use than learn one more dashboard.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "The worry comes right after: once a tool is wired into the assistant, what can that assistant now do in your name, on your site, without you noticing?",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The short answer is that the assistant can do the reading and the preparing, while the commitments stay with a person.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "What follows explains where that line sits, and why the useful work can still happen inside the conversation.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

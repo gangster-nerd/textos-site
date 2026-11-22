@@ -1,0 +1,20 @@
+{
+  "textosRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
+  "adapterMethodVersion": "ctc-geo-writer-adapter@0.1",
+  "planId": "use an seo tool from my ai assistant without giving it publish rights",
+  "executionPlanHash": "725987655048ad5d839e34d12e32725203eb84d52e9b720d5406f8175a9328e6",
+  "ctcHandoffHash": "18fd88b4108ad74223c22b958921131bf7350df13bfbf192e14a91fc9c109b45",
+  "promptHashes": {
+    "title": "c5daf250488d8d1cf81cb5ca7f537767f04b887527106480e3ad1e70f6132577",
+    "meta": "aa09425daf7f7e8aaba08d4d0f768f6043b3d0320c147d5837e3a5bdc6bf570d",
+    "lead": "c528959687e6690fc63070321201897aec6694de980eb69329a658a2cf08cb82",
+    "answer": "948a6243a1640aeb65db5852076a35b1f60ea923fde5d58661f0e29aae3a80df",
+    "section-1": "a3b77184d63e8b432948b0979a8d474cd70982915d786d4b7d85d43ab6e15a79",
+    "connection-path-caption": "eeb9d5b4b0606fe57c7229cbce21685169a149fb58764bd74a6ef253547d7c33",
+    "section-2": "48da3fb457e2c24768fcbe2b72bc38a957a37aacfb4ca96e0786b6508ae1297a",
+    "section-3": "a259a36909b665611b2ee8428c967f60fb6adeaecea60730808d3b190d1fc931",
+    "section-4": "44e323aa50b655f0ab5b3876ddeb85367259de4aeedabae06c009bc4a372d996",
+    "verify": "010c2dc7f9d57309e6b8e736bd8a55a95dcc8a4f722cfd1042b6f2305273cd99",
+    "editorial-next-step": "fe1ab7b9bd6d7327013b479c0575c15139880fe5293c40b3613c3dfbfbb8a546"
+  }
+}

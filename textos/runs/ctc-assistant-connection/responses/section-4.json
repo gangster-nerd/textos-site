@@ -1,0 +1,114 @@
+{
+  "text": "Some teams would like the assistant to carry on with routine drafting on its own. TextOS allows this through a mandate, which requires one explicit initial consent, after which only its bounded draft creation and readback may continue on their own. TextOS also tells the assistant never to infer permission to publish from a mandate. The product records a further limit: mandates cover finite draft creation and readback only, and the budget ledger does not impose a provider spend cap.\n\nReporting is held to the same standard, since TextOS treats a declared delivery as a declaration, not as proof of publication. New assistant clients do not get in freely either: TextOS added a restricted way for them to register, closed by default. That registration scheme comes with quotas, a limited lifetime, the ability to revoke a client and an audit log.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Some teams would like the assistant to carry on with routine drafting on its own.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS allows this through a mandate, which requires one explicit initial consent, after which only its bounded draft creation and readback may continue on their own.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-md-06"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "TextOS also tells the assistant never to infer permission to publish from a mandate.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-07"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "The product records a further limit: mandates cover finite draft creation and readback only, and the budget ledger does not impose a provider spend cap.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "execution_safety"
+      ],
+      "evidenceIds": [
+        "ev-md-10"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Reporting is held to the same standard, since TextOS treats a declared delivery as a declaration, not as proof of publication.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-md-08"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "New assistant clients do not get in freely either: TextOS added a restricted way for them to register, closed by default.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-md-12"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s7",
+      "text": "That registration scheme comes with quotas, a limited lifetime, the ability to revoke a client and an audit log.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-md-11"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

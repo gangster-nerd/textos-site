@@ -1,0 +1,86 @@
+{
+  "text": "An assistant that reads the web can be steered by what it reads. A competitor page, a captured AI answer or a paragraph of site copy can contain a sentence written to look like an order. TextOS labels such third-party text, wherever it returns it, as material to analyze, never as instructions to follow or permission to act, and it states that only the human review in TextOS authorizes an action.\n\nBecause that label travels with the data itself, it still applies when an assistant only keeps part of the conversation in view. The connection is also told to report emptiness honestly: TextOS instructs the assistant that empty results are real and that it must never invent opportunities. For the reader, this means a quiet week shows up as a quiet week, not as a list of made-up topics written to look busy.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "An assistant that reads the web can be steered by what it reads.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A competitor page, a captured AI answer or a paragraph of site copy can contain a sentence written to look like an order.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "TextOS labels such third-party text, wherever it returns it, as material to analyze, never as instructions to follow or permission to act, and it states that only the human review in TextOS authorizes an action.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance",
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-04"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Because that label travels with the data itself, it still applies when an assistant only keeps part of the conversation in view.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "The connection is also told to report emptiness honestly: TextOS instructs the assistant that empty results are real and that it must never invent opportunities.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "content_governance"
+      ],
+      "evidenceIds": [
+        "ev-md-05"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "For the reader, this means a quiet week shows up as a quiet week, not as a list of made-up topics written to look busy.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

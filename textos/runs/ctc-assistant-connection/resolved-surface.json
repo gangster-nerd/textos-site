@@ -1,0 +1,367 @@
+{
+  "authorship": {
+    "authorIds": [],
+    "reviewerIds": [],
+    "showAuthor": false,
+    "showReviewers": false
+  },
+  "blocks": [
+    {
+      "block": {
+        "data": {
+          "text": "Yes, within a deliberate boundary. An assistant reaches TextOS through a connection that a person consents to, rather than through a shared password or a standing key. Through that connection it can read what TextOS holds for the connected organization and prepare actions, but each action goes through a preview and an approval, and reads stay limited to that one organization. Some steps are out of the connection's reach altogether: TextOS states that its server cannot approve, publish publicly, connect destinations or grant Git permissions. In practice, the assistant becomes a fast way to look and to prepare, and the person keeps the decisions."
+        },
+        "id": "answer-1",
+        "kind": "answer",
+        "slot": "short-answer"
+      },
+      "hiddenReason": null,
+      "order": 0,
+      "region": "short-answer",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Many marketing leads would rather ask the AI assistant they already use than learn one more dashboard. The worry comes right after: once a tool is wired into the assistant, what can that assistant now do in your name, on your site, without you noticing? The short answer is that the assistant can do the reading and the preparing, while the commitments stay with a person. What follows explains where that line sits, and why the useful work can still happen inside the conversation."
+        },
+        "id": "lead:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 1,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What the assistant can do, and what it cannot"
+        },
+        "id": "section-1:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 2,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "For a team, the practical consequence is simple: the assistant can save hours of reading and preparing, but it cannot commit you to anything. TextOS keeps every action behind a preview and an approval, and keeps reads inside the organization the person connected. So asking the assistant to look across another client's workspace, or to push a change straight through, is simply not something the connection offers.\n\nDecisions are not taken in the chat. TextOS requires human decisions to go through its authenticated review page, so the person who decides is the person who is signed in, not whoever typed in the conversation. That matters most to anyone who lets an assistant near a live website, because the steps with lasting consequences stay with a named person."
+        },
+        "id": "section-1:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 3,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "alt": "What a connected assistant can do. A 4-step flow: Person consents, then Assistant reads and prepares, then Person decides in TextOS, then Existing worker runs it. A dashed boundary after \"Assistant reads and prepares\" is labelled Server limit: The server cannot approve or publish publicly.",
+          "caption": "TextOS scopes the assistant's connection by a person's consent and sends every decision to its authenticated review page. TextOS states that its server cannot approve or publish publicly.",
+          "src": "/diagrams/ctc/connection-path-4ae8f5be1d9b.svg"
+        },
+        "id": "figure:connection-path",
+        "kind": "figure"
+      },
+      "hiddenReason": null,
+      "order": 4,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Text the assistant reads is not an order"
+        },
+        "id": "section-2:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 5,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "An assistant that reads the web can be steered by what it reads. A competitor page, a captured AI answer or a paragraph of site copy can contain a sentence written to look like an order. TextOS labels such third-party text, wherever it returns it, as material to analyze, never as instructions to follow or permission to act, and it states that only the human review in TextOS authorizes an action.\n\nBecause that label travels with the data itself, it still applies when an assistant only keeps part of the conversation in view. The connection is also told to report emptiness honestly: TextOS instructs the assistant that empty results are real and that it must never invent opportunities. For the reader, this means a quiet week shows up as a quiet week, not as a list of made-up topics written to look busy."
+        },
+        "id": "section-2:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 6,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Approving from the conversation, under the same rules"
+        },
+        "id": "section-3:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 7,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "There is one narrow case where a person can sign off without leaving the conversation: allowing a draft to be deposited, from a view shown inside the assistant. Even there, TextOS does not rely on the assistant hiding the sign-off button from the model alone.\n\nThe sign-off is a one-time token tied to the connection, the user, the workspace, the draft and its exact snapshot hash, and it expires after ten minutes. A hash, in this sense, is a short code computed from the content that changes as soon as the content does, so a sign-off cannot be carried over to a different version. TextOS also keeps public publication out of this path entirely: what a person can allow from the conversation is a draft, not a live page."
+        },
+        "id": "section-3:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 8,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Mandates, client registration and what they do not grant"
+        },
+        "id": "section-4:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 9,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Some teams would like the assistant to carry on with routine drafting on its own. TextOS allows this through a mandate, which requires one explicit initial consent, after which only its bounded draft creation and readback may continue on their own. TextOS also tells the assistant never to infer permission to publish from a mandate. The product records a further limit: mandates cover finite draft creation and readback only, and the budget ledger does not impose a provider spend cap.\n\nReporting is held to the same standard, since TextOS treats a declared delivery as a declaration, not as proof of publication. New assistant clients do not get in freely either: TextOS added a restricted way for them to register, closed by default. That registration scheme comes with quotas, a limited lifetime, the ability to revoke a client and an audit log."
+        },
+        "id": "section-4:body",
+        "kind": "paragraph"
+      },
+      "hiddenReason": null,
+      "order": 10,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "What to ask any vendor whose tool talks to your assistant"
+        },
+        "id": "verify:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 11,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "items": [
+            "Before you connect any marketing tool to your assistant, ask what the assistant can do through that connection without you signing off.",
+            "Ask where sign-offs actually happen, and whether the person who signs is the person who is logged in.",
+            "Ask what the tool does when a web page or an AI answer contains text written to look like a command.",
+            "Ask whether a standing permission could ever be read as permission to publish.",
+            "Ask how you would cut off one assistant client while leaving the others connected."
+          ]
+        },
+        "id": "verify:decision-points",
+        "kind": "steps"
+      },
+      "hiddenReason": null,
+      "order": 12,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Where to go next"
+        },
+        "id": "editorial-next-step:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 13,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Another note shows how a person's sign-off is tied to the exact draft it covers and used only once. A second note explains how an agent's access ends, and how it can be stopped at once."
+        },
+        "id": "editorial-next-step:body",
+        "kind": "paragraph",
+        "slot": "editorial-next-step"
+      },
+      "hiddenReason": null,
+      "order": 14,
+      "region": "editorial-next-step",
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "text": "Sources"
+        },
+        "id": "sources:heading",
+        "kind": "heading",
+        "level": 2
+      },
+      "hiddenReason": null,
+      "order": 15,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-md-02",
+          "title": "TextOS product repository file src/server/textos/distribution/server.ts at 181d44e"
+        },
+        "id": "source:1:ev-md-02",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 16,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-md-09",
+          "title": "TextOS product manifest, mcp-distribution.knownLimits"
+        },
+        "id": "source:2:ev-md-09",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 17,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-md-04",
+          "title": "TextOS product repository file src/server/textos/distribution/content-policy.ts at 181d44e"
+        },
+        "id": "source:3:ev-md-04",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 18,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-md-13",
+          "title": "TextOS product repository file src/server/textos/distribution/article-view/approval.ts at 181d44e"
+        },
+        "id": "source:4:ev-md-13",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 19,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-md-10",
+          "title": "TextOS product commit a4182c2, 27 Oct 2026"
+        },
+        "id": "source:5:ev-md-10",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 20,
+      "region": null,
+      "visible": true
+    },
+    {
+      "block": {
+        "data": {
+          "ref": "ev-md-12",
+          "title": "TextOS product commit ee5078e, 16 Nov 2026"
+        },
+        "id": "source:6:ev-md-12",
+        "kind": "source"
+      },
+      "hiddenReason": null,
+      "order": 21,
+      "region": null,
+      "visible": true
+    }
+  ],
+  "compositionSignature": "content-document@1::textos-site:ctc:ctc-assistant-connection::using-textos-from-your-ai-assistant-without-handing-it-the-keys::draft::native,reference::surface-policy@1::textos-article-review@0.1::reference::0:answer-1:v|1:lead:body:v|2:section-1:heading:v|3:section-1:body:v|4:figure:connection-path:v|5:section-2:heading:v|6:section-2:body:v|7:section-3:heading:v|8:section-3:body:v|9:section-4:heading:v|10:section-4:body:v|11:verify:heading:v|12:verify:decision-points:v|13:editorial-next-step:heading:v|14:editorial-next-step:body:v|15:sources:heading:v|16:source:1:ev-md-02:v|17:source:2:ev-md-09:v|18:source:3:ev-md-04:v|19:source:4:ev-md-13:v|20:source:5:ev-md-10:v|21:source:6:ev-md-12:v",
+  "contentSchemaVersion": "content-document@1",
+  "contentType": "product_article",
+  "conversion": {
+    "ctaIntentId": "beta_access",
+    "ctaSuppressedReason": "document.conversionAllowed=false",
+    "effectiveCtaAllowed": false
+  },
+  "description": "TextOS connects to an AI assistant only with the person's consent, and that connection can never approve, publish publicly or grant Git permissions.",
+  "documentId": "textos-site:ctc:ctc-assistant-connection",
+  "language": "en-US",
+  "metadata": {
+    "analyticsSurfaceTag": "article-review",
+    "canonicalPath": null,
+    "effectiveIndexing": "noindex",
+    "emitSchemaOrg": true,
+    "indexingDowngraded": false,
+    "schemaType": "Article"
+  },
+  "navigation": {
+    "relatedContentIds": [],
+    "showBreadcrumbs": false,
+    "showRelatedContent": false,
+    "showTableOfContents": true
+  },
+  "policyId": "textos-article-review@0.1",
+  "policyVersion": "surface-policy@1",
+  "readingTimeMinutes": 4,
+  "resolvedSchemaVersion": "resolved-content-surface@1",
+  "slug": "using-textos-from-your-ai-assistant-without-handing-it-the-keys",
+  "surface": "reference",
+  "title": "TextOS lets your assistant prepare work, never approve or publish it",
+  "truth": {
+    "allowedSurfaces": [
+      "reference",
+      "native"
+    ],
+    "publicationStatus": "draft",
+    "sourceAuthority": "UNCERTIFIED"
+  },
+  "visibleBlockKinds": [
+    "answer",
+    "paragraph",
+    "heading",
+    "figure",
+    "steps",
+    "source"
+  ]
+}

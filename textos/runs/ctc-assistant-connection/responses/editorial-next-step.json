@@ -1,0 +1,29 @@
+{
+  "text": "Another note shows how a person's sign-off is tied to the exact draft it covers and used only once. A second note explains how an agent's access ends, and how it can be stopped at once.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Another note shows how a person's sign-off is tied to the exact draft it covers and used only once.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "A second note explains how an agent's access ends, and how it can be stopped at once.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

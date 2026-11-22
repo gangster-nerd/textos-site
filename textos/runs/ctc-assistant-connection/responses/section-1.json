@@ -1,0 +1,85 @@
+{
+  "text": "For a team, the practical consequence is simple: the assistant can save hours of reading and preparing, but it cannot commit you to anything. TextOS keeps every action behind a preview and an approval, and keeps reads inside the organization the person connected. So asking the assistant to look across another client's workspace, or to push a change straight through, is simply not something the connection offers.\n\nDecisions are not taken in the chat. TextOS requires human decisions to go through its authenticated review page, so the person who decides is the person who is signed in, not whoever typed in the conversation. That matters most to anyone who lets an assistant near a live website, because the steps with lasting consequences stay with a named person.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "For a team, the practical consequence is simple: the assistant can save hours of reading and preparing, but it cannot commit you to anything.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "TextOS keeps every action behind a preview and an approval, and keeps reads inside the organization the person connected.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "So asking the assistant to look across another client's workspace, or to push a change straight through, is simply not something the connection offers.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Decisions are not taken in the chat.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "TextOS requires human decisions to go through its authenticated review page, so the person who decides is the person who is signed in, not whoever typed in the conversation.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-03"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s6",
+      "text": "That matters most to anyone who lets an assistant near a live website, because the steps with lasting consequences stay with a named person.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "text": "Before you connect any marketing tool to your assistant, ask what the assistant can do through that connection without you signing off. Ask where sign-offs actually happen, and whether the person who signs is the person who is logged in. Ask what the tool does when a web page or an AI answer contains text written to look like a command. Ask whether a standing permission could ever be read as permission to publish. Ask how you would cut off one assistant client while leaving the others connected.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Before you connect any marketing tool to your assistant, ask what the assistant can do through that connection without you signing off.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Ask where sign-offs actually happen, and whether the person who signs is the person who is logged in.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Ask what the tool does when a web page or an AI answer contains text written to look like a command.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Ask whether a standing permission could ever be read as permission to publish.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "Ask how you would cut off one assistant client while leaving the others connected.",
+      "kind": "recommendation",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

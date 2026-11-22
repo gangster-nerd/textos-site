@@ -1,0 +1,22 @@
+{
+  "text": "TextOS connects to an AI assistant only with the person's consent, and that connection can never approve, publish publicly or grant Git permissions.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "TextOS connects to an AI assistant only with the person's consent, and that connection can never approve, publish publicly or grant Git permissions.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-01",
+        "ev-md-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

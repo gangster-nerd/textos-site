@@ -1,0 +1,77 @@
+{
+  "text": "Yes, within a deliberate boundary. An assistant reaches TextOS through a connection that a person consents to, rather than through a shared password or a standing key. Through that connection it can read what TextOS holds for the connected organization and prepare actions, but each action goes through a preview and an approval, and reads stay limited to that one organization. Some steps are out of the connection's reach altogether: TextOS states that its server cannot approve, publish publicly, connect destinations or grant Git permissions. In practice, the assistant becomes a fast way to look and to prepare, and the person keeps the decisions.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "Yes, within a deliberate boundary.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "An assistant reaches TextOS through a connection that a person consents to, rather than through a shared password or a standing key.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-01"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "Through that connection it can read what TextOS holds for the connected organization and prepare actions, but each action goes through a preview and an approval, and reads stay limited to that one organization.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-09"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "Some steps are out of the connection's reach altogether: TextOS states that its server cannot approve, publish publicly, connect destinations or grant Git permissions.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-02"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "In practice, the assistant becomes a fast way to look and to prepare, and the person keeps the decisions.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

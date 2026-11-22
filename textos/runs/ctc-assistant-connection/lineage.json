@@ -1,0 +1,256 @@
+{
+  "planId": "use an seo tool from my ai assistant without giving it publish rights",
+  "planHash": "725987655048ad5d839e34d12e32725203eb84d52e9b720d5406f8175a9328e6",
+  "slotProvenance": [
+    {
+      "slotId": "title",
+      "role": "title",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS lets your assistant prepare work, never approve or publish it",
+      "statementIds": [
+        "stmt:5:title:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-md-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-md-02",
+        "ev-md-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "meta",
+      "role": "meta_description",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS connects to an AI assistant only with the person's consent, and that connection can never approve, publish publicly or grant Git permissions.",
+      "statementIds": [
+        "stmt:4:meta:2:s1"
+      ],
+      "evidenceIdsUsed": [
+        "ev-md-01",
+        "ev-md-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-md-01",
+        "ev-md-02",
+        "ev-md-03"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "lead",
+      "role": "lead",
+      "headingLevel": null,
+      "heading": null,
+      "text": "Many marketing leads would rather ask the AI assistant they already use than learn one more dashboard. The worry comes right after: once a tool is wired into the assistant, what can that assistant now do in your name, on your site, without you noticing? The short answer is that the assistant can do the reading and the preparing, while the commitments stay with a person. What follows explains where that line sits, and why the useful work can still happen inside the conversation.",
+      "statementIds": [
+        "stmt:4:lead:2:s1",
+        "stmt:4:lead:2:s2",
+        "stmt:4:lead:2:s3",
+        "stmt:4:lead:2:s4"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [
+        "ev-md-01"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "answer",
+      "role": "answer",
+      "headingLevel": 2,
+      "heading": "Can I use TextOS from my AI assistant instead of its own interface?",
+      "text": "Yes, within a deliberate boundary. An assistant reaches TextOS through a connection that a person consents to, rather than through a shared password or a standing key. Through that connection it can read what TextOS holds for the connected organization and prepare actions, but each action goes through a preview and an approval, and reads stay limited to that one organization. Some steps are out of the connection's reach altogether: TextOS states that its server cannot approve, publish publicly, connect destinations or grant Git permissions. In practice, the assistant becomes a fast way to look and to prepare, and the person keeps the decisions.",
+      "statementIds": [
+        "stmt:6:answer:2:s1",
+        "stmt:6:answer:2:s2",
+        "stmt:6:answer:2:s3",
+        "stmt:6:answer:2:s4",
+        "stmt:6:answer:2:s5"
+      ],
+      "evidenceIdsUsed": [
+        "ev-md-01",
+        "ev-md-09",
+        "ev-md-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-md-01",
+        "ev-md-09",
+        "ev-md-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-1",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What the assistant can do, and what it cannot",
+      "text": "For a team, the practical consequence is simple: the assistant can save hours of reading and preparing, but it cannot commit you to anything. TextOS keeps every action behind a preview and an approval, and keeps reads inside the organization the person connected. So asking the assistant to look across another client's workspace, or to push a change straight through, is simply not something the connection offers.\n\nDecisions are not taken in the chat. TextOS requires human decisions to go through its authenticated review page, so the person who decides is the person who is signed in, not whoever typed in the conversation. That matters most to anyone who lets an assistant near a live website, because the steps with lasting consequences stay with a named person.",
+      "statementIds": [
+        "stmt:9:section-1:2:s1",
+        "stmt:9:section-1:2:s2",
+        "stmt:9:section-1:2:s3",
+        "stmt:9:section-1:2:s4",
+        "stmt:9:section-1:2:s5",
+        "stmt:9:section-1:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-md-09",
+        "ev-md-03"
+      ],
+      "usableEvidenceIds": [
+        "ev-md-02",
+        "ev-md-03",
+        "ev-md-09"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "connection-path-caption",
+      "role": "caption",
+      "headingLevel": null,
+      "heading": null,
+      "text": "TextOS scopes the assistant's connection by a person's consent and sends every decision to its authenticated review page. TextOS states that its server cannot approve or publish publicly.",
+      "statementIds": [
+        "stmt:23:connection-path-caption:2:s1",
+        "stmt:23:connection-path-caption:2:s2"
+      ],
+      "evidenceIdsUsed": [
+        "ev-md-01",
+        "ev-md-03",
+        "ev-md-02"
+      ],
+      "usableEvidenceIds": [
+        "ev-md-01",
+        "ev-md-03",
+        "ev-md-02"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-2",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Text the assistant reads is not an order",
+      "text": "An assistant that reads the web can be steered by what it reads. A competitor page, a captured AI answer or a paragraph of site copy can contain a sentence written to look like an order. TextOS labels such third-party text, wherever it returns it, as material to analyze, never as instructions to follow or permission to act, and it states that only the human review in TextOS authorizes an action.\n\nBecause that label travels with the data itself, it still applies when an assistant only keeps part of the conversation in view. The connection is also told to report emptiness honestly: TextOS instructs the assistant that empty results are real and that it must never invent opportunities. For the reader, this means a quiet week shows up as a quiet week, not as a list of made-up topics written to look busy.",
+      "statementIds": [
+        "stmt:9:section-2:2:s1",
+        "stmt:9:section-2:2:s2",
+        "stmt:9:section-2:2:s3",
+        "stmt:9:section-2:2:s4",
+        "stmt:9:section-2:2:s5",
+        "stmt:9:section-2:2:s6"
+      ],
+      "evidenceIdsUsed": [
+        "ev-md-04",
+        "ev-md-05"
+      ],
+      "usableEvidenceIds": [
+        "ev-md-04",
+        "ev-md-05"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-3",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Approving from the conversation, under the same rules",
+      "text": "There is one narrow case where a person can sign off without leaving the conversation: allowing a draft to be deposited, from a view shown inside the assistant. Even there, TextOS does not rely on the assistant hiding the sign-off button from the model alone.\n\nThe sign-off is a one-time token tied to the connection, the user, the workspace, the draft and its exact snapshot hash, and it expires after ten minutes. A hash, in this sense, is a short code computed from the content that changes as soon as the content does, so a sign-off cannot be carried over to a different version. TextOS also keeps public publication out of this path entirely: what a person can allow from the conversation is a draft, not a live page.",
+      "statementIds": [
+        "stmt:9:section-3:2:s1",
+        "stmt:9:section-3:2:s2",
+        "stmt:9:section-3:2:s3",
+        "stmt:9:section-3:2:s4",
+        "stmt:9:section-3:2:s5"
+      ],
+      "evidenceIdsUsed": [
+        "ev-md-13",
+        "ev-md-14",
+        "ev-md-15"
+      ],
+      "usableEvidenceIds": [
+        "ev-md-13",
+        "ev-md-14",
+        "ev-md-15"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "section-4",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Mandates, client registration and what they do not grant",
+      "text": "Some teams would like the assistant to carry on with routine drafting on its own. TextOS allows this through a mandate, which requires one explicit initial consent, after which only its bounded draft creation and readback may continue on their own. TextOS also tells the assistant never to infer permission to publish from a mandate. The product records a further limit: mandates cover finite draft creation and readback only, and the budget ledger does not impose a provider spend cap.\n\nReporting is held to the same standard, since TextOS treats a declared delivery as a declaration, not as proof of publication. New assistant clients do not get in freely either: TextOS added a restricted way for them to register, closed by default. That registration scheme comes with quotas, a limited lifetime, the ability to revoke a client and an audit log.",
+      "statementIds": [
+        "stmt:9:section-4:2:s1",
+        "stmt:9:section-4:2:s2",
+        "stmt:9:section-4:2:s3",
+        "stmt:9:section-4:2:s4",
+        "stmt:9:section-4:2:s5",
+        "stmt:9:section-4:2:s6",
+        "stmt:9:section-4:2:s7"
+      ],
+      "evidenceIdsUsed": [
+        "ev-md-06",
+        "ev-md-07",
+        "ev-md-10",
+        "ev-md-08",
+        "ev-md-12",
+        "ev-md-11"
+      ],
+      "usableEvidenceIds": [
+        "ev-md-06",
+        "ev-md-07",
+        "ev-md-10",
+        "ev-md-08",
+        "ev-md-11",
+        "ev-md-12"
+      ],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "verify",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "What to ask any vendor whose tool talks to your assistant",
+      "text": "Before you connect any marketing tool to your assistant, ask what the assistant can do through that connection without you signing off. Ask where sign-offs actually happen, and whether the person who signs is the person who is logged in. Ask what the tool does when a web page or an AI answer contains text written to look like a command. Ask whether a standing permission could ever be read as permission to publish. Ask how you would cut off one assistant client while leaving the others connected.",
+      "statementIds": [
+        "stmt:6:verify:2:s1",
+        "stmt:6:verify:2:s2",
+        "stmt:6:verify:2:s3",
+        "stmt:6:verify:2:s4",
+        "stmt:6:verify:2:s5"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    },
+    {
+      "slotId": "editorial-next-step",
+      "role": "section",
+      "headingLevel": 2,
+      "heading": "Where to go next",
+      "text": "Another note shows how a person's sign-off is tied to the exact draft it covers and used only once. A second note explains how an agent's access ends, and how it can be stopped at once.",
+      "statementIds": [
+        "stmt:19:editorial-next-step:2:s1",
+        "stmt:19:editorial-next-step:2:s2"
+      ],
+      "evidenceIdsUsed": [],
+      "usableEvidenceIds": [],
+      "excludedEvidence": []
+    }
+  ],
+  "writerMethodVersion": "geo-writer@0.2",
+  "slotProviderMethodVersion": "operator:claude-code|geo-writer-slot@0.5",
+  "derivationIdentity": "geo-writer@0.2::operator:claude-code|geo-writer-slot@0.5",
+  "structuredContentHash": "48a87dcabbb3edf28476e80797419a30940e5236a4d71a0aaeb9521d44ce9b0f",
+  "truthCheck": {
+    "verdict": "pass",
+    "contradictions": []
+  },
+  "canonicalProductSha": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed"
+}

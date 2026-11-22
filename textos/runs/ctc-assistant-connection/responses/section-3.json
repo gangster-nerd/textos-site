@@ -1,0 +1,78 @@
+{
+  "text": "There is one narrow case where a person can sign off without leaving the conversation: allowing a draft to be deposited, from a view shown inside the assistant. Even there, TextOS does not rely on the assistant hiding the sign-off button from the model alone.\n\nThe sign-off is a one-time token tied to the connection, the user, the workspace, the draft and its exact snapshot hash, and it expires after ten minutes. A hash, in this sense, is a short code computed from the content that changes as soon as the content does, so a sign-off cannot be carried over to a different version. TextOS also keeps public publication out of this path entirely: what a person can allow from the conversation is a draft, not a live page.",
+  "statements": [
+    {
+      "id": "s1",
+      "text": "There is one narrow case where a person can sign off without leaving the conversation: allowing a draft to be deposited, from a view shown inside the assistant.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s2",
+      "text": "Even there, TextOS does not rely on the assistant hiding the sign-off button from the model alone.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-13"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s3",
+      "text": "The sign-off is a one-time token tied to the connection, the user, the workspace, the draft and its exact snapshot hash, and it expires after ten minutes.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization",
+        "credential_lifecycle"
+      ],
+      "evidenceIds": [
+        "ev-md-14"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s4",
+      "text": "A hash, in this sense, is a short code computed from the content that changes as soon as the content does, so a sign-off cannot be carried over to a different version.",
+      "kind": "editorial",
+      "subject": {
+        "kind": "general_domain",
+        "name": null
+      },
+      "claimTypes": [],
+      "evidenceIds": [],
+      "evidenceStrengthRequired": "descriptive"
+    },
+    {
+      "id": "s5",
+      "text": "TextOS also keeps public publication out of this path entirely: what a person can allow from the conversation is a draft, not a live page.",
+      "kind": "factual",
+      "subject": {
+        "kind": "tracked_brand",
+        "name": "TextOS"
+      },
+      "claimTypes": [
+        "human_authorization"
+      ],
+      "evidenceIds": [
+        "ev-md-15"
+      ],
+      "evidenceStrengthRequired": "descriptive"
+    }
+  ]
+}

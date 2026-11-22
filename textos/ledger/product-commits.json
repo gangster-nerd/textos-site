@@ -2,7 +2,7 @@
   "ledgerVersion": 1,
   "productRepository": "gangster-nerd/textos-v0",
   "productRef": "181d44ef0938d49c1d5eb6aa639c6c2820a1b0ed",
-  "commitCount": 39,
+  "commitCount": 41,
   "commits": [
     {
       "sha": "a944097c401d066154719c2a09c882a9cc970e54",
@@ -304,11 +304,27 @@
       ]
     },
     {
+      "sha": "a4182c2c051a24546fd8178f8e7e8c5d71e2599f",
+      "date": "2026-10-27T10:49:45+01:00",
+      "subject": "feat(rc16): rebuild distribution and mandates on the shared mcp v2 core",
+      "citedBy": [
+        "ctc-assistant-connection"
+      ]
+    },
+    {
       "sha": "3fb731a02b57773658b4c270c32052e6c22eeec0",
       "date": "2026-10-29T13:17:02+00:00",
       "subject": "feat(truth): premier lot de divulgation anticipée — six capacités du pipeline Act en bêta (ADR-035)",
       "citedBy": [
         "ctc-brief-fulfillment-check"
+      ]
+    },
+    {
+      "sha": "ee5078e2e33301feaec42ece5cb76c1fffd47e98",
+      "date": "2026-11-16T10:49:11+00:00",
+      "subject": "feat: ajouter l'enregistrement dynamique restreint des clients mcp, fermé par défaut",
+      "citedBy": [
+        "ctc-assistant-connection"
       ]
     },
     {
