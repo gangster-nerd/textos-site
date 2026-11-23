@@ -7,7 +7,8 @@
 // the draft — and only if every one of these holds:
 //
 //   - the file is `textos-git-draft@1`, with `publication: "not_requested"` and nothing else;
-//   - the article is TextOS's governed projection (`textos-headless-delivery@1`): TruthCheck `pass`,
+//   - the article is TextOS's PUBLIC projection (`textos-git-public-article@1`), with no internal
+//     identifier at all (no UUID, no workspace/draft/brief/TruthCheck field): TruthCheck `pass`,
 //     content contract `content-document@1`, `publication.status: "not_requested"`;
 //   - the ContentDocument parses, is a draft, is `noindex`, and its evidence digest is the written
 //     content hash TextOS recorded;
@@ -56,12 +57,16 @@ export const GIT_DELIVERY_REVIEW_DIR = path.join("textos", "delivery-reviews");
 const SITE_AUTHOR_IDS = ["marc-prempain"] as const;
 const SITE_TOPIC_ID = "how-we-build";
 
+/**
+ * The PUBLIC article TextOS deposits (`textos-git-public-article@1`, textos-v0 `git-public-article.ts`): the
+ * governed projection WITHOUT any internal identifier (Release Owner decision of 23/11/2026). No workspace,
+ * draft, brief or TruthCheck id; the document id is `textos-<slug>` and each cited source is `source-<n>`.
+ */
 interface HeadlessArticle {
-  schemaVersion: "textos-headless-delivery@1";
-  workspaceId: string;
+  schemaVersion: "textos-git-public-article@1";
   locale: string;
-  source: { contentDraftId: string; briefId: string; writerMethodVersion: string; structuredContentHash: string };
-  truthCheck: { verdict: string; truthCheckId: string };
+  source: { writerMethodVersion: string; structuredContentHash: string };
+  truthCheck: { verdict: string };
   contentContract: { version: string; fingerprint: string };
   contentDocument: unknown;
   resolvedSurface: ResolvedSurfaceRecord;
@@ -101,6 +106,7 @@ export interface GitDraft {
   document: ContentDocument;
 }
 
+const UUID = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
 const sha256 = (text: string) => createHash("sha256").update(text, "utf8").digest("hex");
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
 /** Key-order-independent JSON, the way TextOS hashes its own projections. */
@@ -136,7 +142,12 @@ export function verifyGitDraft(input: {
   const a = value.article;
   if (!isRecord(a)) return [...issues, "article is not an object"];
   const article = a as unknown as HeadlessArticle;
-  if (article.schemaVersion !== "textos-headless-delivery@1") issues.push(`article schema is ${String(article.schemaVersion)}`);
+  if (article.schemaVersion !== "textos-git-public-article@1") issues.push(`article schema is ${String(article.schemaVersion)}`);
+  // Decision of 23/11/2026: no internal identifier may reach this public repository or the site.
+  if (UUID.test(bytes)) issues.push("carries an internal identifier (UUID)");
+  for (const key of ["workspaceId", "contentDraftId", "briefId", "truthCheckId"]) {
+    if (bytes.includes(`"${key}"`)) issues.push(`carries the internal identifier field ${key}`);
+  }
   if (!isRecord(article.publication) || article.publication.status !== "not_requested") issues.push("article publication status is not not_requested");
   if (!isRecord(article.truthCheck) || article.truthCheck.verdict !== "pass") issues.push("TruthCheck verdict is not pass");
   if (!isRecord(article.contentContract) || article.contentContract.version !== "content-document@1") issues.push("content contract is not content-document@1");

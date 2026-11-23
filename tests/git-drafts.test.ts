@@ -33,16 +33,15 @@ function deposit(mutate: (article: Json) => void = () => {}): string {
   const doc = JSON.parse(readFileSync(path.join(ROOT, RUN, "content-document.json"), "utf8")) as Json;
   const surface = JSON.parse(readFileSync(path.join(ROOT, RUN, "resolved-surface.json"), "utf8")) as Json;
   doc.identity.slug = SLUG;
-  doc.identity.documentId = "11111111-1111-4111-8111-111111111111";
+  doc.identity.documentId = `textos-${SLUG}`;
   surface.slug = SLUG;
   surface.documentId = doc.identity.documentId;
+  // The PUBLIC projection TextOS deposits: no workspace, draft, brief or TruthCheck id (decision of 23/11/2026).
   const article: Json = {
-    schemaVersion: "textos-headless-delivery@1",
-    workspaceId: "22222222-2222-4222-8222-222222222222",
+    schemaVersion: "textos-git-public-article@1",
     locale: doc.identity.language,
-    source: { contentDraftId: doc.identity.documentId, briefId: "33333333-3333-4333-8333-333333333333",
-      writerMethodVersion: "geo-writer@0.2", structuredContentHash: doc.provenance.sourceEvidenceDigest },
-    truthCheck: { verdict: "pass", truthCheckId: "44444444-4444-4444-8444-444444444444" },
+    source: { writerMethodVersion: "geo-writer@0.2", structuredContentHash: doc.provenance.sourceEvidenceDigest },
+    truthCheck: { verdict: "pass" },
     contentContract: { version: "content-document@1", fingerprint: "f".repeat(64) },
     contentDocument: doc,
     resolvedSurface: surface,
@@ -118,6 +117,11 @@ describe("Git delivery client — an altered file fails the build", () => {
   it("an extra top-level key", () => {
     const value = JSON.parse(deposit());
     refused({ [at]: `${JSON.stringify({ ...value, deploy: true })}\n` }, /top-level keys/);
+  });
+  it("an internal identifier (UUID or id field) anywhere in the deposit", () => {
+    refused({ [at]: deposit((a) => { a.contentDocument.seo.targetQuery = "how to 22222222-2222-4222-8222-222222222222"; }) }, /internal identifier \(UUID\)/);
+    refused({ [at]: deposit((a) => { a.workspaceId = "w"; }) }, /internal identifier field workspaceId/);
+    refused({ [at]: deposit((a) => { a.schemaVersion = "textos-headless-delivery@1"; }) }, /article schema is textos-headless-delivery@1/);
   });
   it("TruthCheck not pass", () => refused({ [at]: deposit((a) => { a.truthCheck.verdict = "fail"; }) }, /TruthCheck verdict is not pass/));
   it("a document that claims to be published or indexable", () => {
