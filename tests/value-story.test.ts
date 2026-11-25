@@ -73,8 +73,12 @@ describe("récit de valeur — aucune causalité garantie", () => {
     expect(VALUE_STORY_WRITE_TEXT).toMatch(/drafts/);
     expect(VALUE_STORY_WRITE_TEXT).toMatch(/you review it and publish it/i);
     expect(VALUE_STORY_FRAMES.map((f) => f.label)).not.toContain("Write & publish");
-    const home = readFileSync(path.join(ROOT, "app", "page.tsx"), "utf8");
+    const home = readFileSync(path.join(ROOT, "app", "en", "page.tsx"), "utf8");
     expect(home).not.toMatch(/into published,/);
     expect(home).toMatch(/draft that you review and publish/);
+    // Version française (page d'accueil `/` depuis le 25/11/2026) : même règle, le client relit et publie.
+    const accueil = readFileSync(path.join(ROOT, "app", "page.tsx"), "utf8");
+    expect(accueil).toMatch(/Vous le relisez et le publiez/);
+    expect(accueil).toMatch(/Publier ne garantit pas une citation/);
   });
 });

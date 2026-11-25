@@ -47,6 +47,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const entries: MetadataRoute.Sitemap = [
     { url: `${siteConfig.origin}/`, priority: 1 },
+    // Version anglaise de la page d'accueil (la page `/` est en français depuis le 25/11/2026).
+    { url: `${siteConfig.origin}/en`, priority: 0.9 },
   ];
 
   if (faqDocs.length > 0) {

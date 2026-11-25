@@ -22,7 +22,9 @@ import {
 } from "@/lib/product-proof/public-vocabulary";
 
 const OUT = path.join(process.cwd(), "out");
-const HOME_HTML = path.join(OUT, "index.html");
+// La preuve produit (composant anglais) vit sur la page d'accueil ANGLAISE `/en` depuis le 25/11/2026 ; la page
+// `/` est en français et renvoie vers elle.
+const HOME_HTML = path.join(OUT, "en.html");
 
 describe("fixture Product Proof", () => {
   test("la preuve publique est illustrative, jamais autre chose", () => {
