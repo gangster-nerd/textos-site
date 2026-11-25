@@ -132,26 +132,26 @@ export default function Accueil() {
       </ul>
 
       <h2>Comment ça marche</h2>
-      <ol className="measures" aria-label="De l'absence à la citation, exemple illustratif">
+      <ul className="measures" aria-label="De l'absence à la citation, exemple illustratif">
         <li>
-          <span className="data-label">Absent</span>
+          <span className="data-label">1 · Absent</span>
           <span>Sur une question de votre marché, les réponses des IA citent d&rsquo;autres acteurs, pas vous.</span>
         </li>
         <li>
-          <span className="data-label">Écart repéré</span>
+          <span className="data-label">2 · Écart repéré</span>
           <span>TextOS signale l&rsquo;absence de citation de votre marque sur cette question.</span>
         </li>
         <li>
-          <span className="data-label">Brouillon et approbation</span>
+          <span className="data-label">3 · Brouillon et approbation</span>
           <span>
             TextOS rédige un article sourcé qui répond à l&rsquo;écart. Vous le relisez et le publiez.
           </span>
         </li>
         <li>
-          <span className="data-label">Présence observée</span>
+          <span className="data-label">4 · Présence observée</span>
           <span>TextOS remesure la même question pour voir si votre présence a changé.</span>
         </li>
-      </ol>
+      </ul>
       <p className="muted">
         Exemple illustratif, pas une exécution réelle. Publier ne garantit pas une citation : TextOS
         remesure pour savoir si la présence a été gagnée.
